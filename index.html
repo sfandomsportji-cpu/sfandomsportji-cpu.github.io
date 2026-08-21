@@ -3,18 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <meta name="description" content="SFANDOM — Sports data, analysis and forecasting." />
   <meta name="theme-color" content="#050505" />
   <title>SFANDOM | Sports Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=20260822-0442" />
   <style>
-    /* Mobile hero hotfix: keep the source reel fully visible and separate it from the forecast UI. */
+    /* Dedicated reel frame. Desktop keeps the cinematic background; mobile gets a real 16:9 safe frame. */
+    .hero-reel-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;background:#050505}
+    .hero-reel-wrap .hero-reel{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.55;filter:saturate(.9) contrast(1.1)}
+    .hero-reel-safe-logo{display:none}
+
     @media (max-width:900px){
       .hero-v2{overflow:visible!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;padding-top:0!important;gap:0!important}
-      .hero-v2>.hero-reel{position:relative!important;inset:auto!important;display:block!important;z-index:3!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;margin:0 auto 34px!important;object-fit:contain!important;object-position:center!important;background:#050505!important;opacity:1!important;filter:saturate(1) contrast(1.03) brightness(.9)!important;border:1px solid #242424!important}
+      .hero-reel-wrap{position:relative!important;inset:auto!important;z-index:3!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;margin:0 auto 34px!important;border:1px solid #242424!important;overflow:hidden!important;background:#050505!important}
+      .hero-reel-wrap .hero-reel{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;opacity:1!important;filter:saturate(1) contrast(1.03) brightness(.9)!important;background:#050505!important}
+      .hero-reel-wrap:after{content:"";position:absolute;z-index:1;top:0;right:0;width:38%;height:100%;pointer-events:none;background:linear-gradient(90deg,transparent 0%,rgba(5,5,5,.34) 42%,rgba(5,5,5,.92) 88%,#050505 100%)}
+      .hero-reel-safe-logo{display:flex;position:absolute;z-index:2;right:14px;top:14px;align-items:center;justify-content:center;width:58px;height:58px;padding:7px;background:rgba(5,5,5,.76);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px)}
+      .hero-reel-safe-logo img{display:block;width:100%;height:100%;object-fit:contain}
       .hero-copy{width:100%!important;position:relative!important;z-index:4!important}
       .hero-visual{position:relative!important;z-index:4!important;height:auto!important;min-height:0!important;padding:44px 0 64px!important;gap:14px!important;overflow:visible!important}
       .hero-visual .tag-one{position:static!important;order:-1!important;align-self:center!important;margin:0 0 4px!important}
@@ -22,7 +33,8 @@
       .hero-social{position:static!important;align-self:center!important;margin-top:12px!important}
     }
     @media (max-width:620px){
-      .hero-v2>.hero-reel{width:100%!important;margin:0 auto 28px!important;aspect-ratio:16/9!important;object-fit:contain!important}
+      .hero-reel-wrap{width:100%!important;margin:0 auto 28px!important;aspect-ratio:16/9!important}
+      .hero-reel-safe-logo{right:10px;top:10px;width:50px;height:50px;padding:6px}
       .hero-visual{padding:34px 0 56px!important}
       .forecast-card{width:min(320px,100%)!important;padding:22px!important}
       .forecast-score strong{font-size:3rem!important}
@@ -43,7 +55,10 @@
 
   <main id="top">
     <section class="hero hero-v2 reveal">
-      <video class="hero-reel" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/sfandom-hero-reel.mp4" type="video/mp4"></video>
+      <div class="hero-reel-wrap">
+        <video class="hero-reel" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/sfandom-hero-reel.mp4?v=20260822-0442" type="video/mp4"></video>
+        <div class="hero-reel-safe-logo" aria-hidden="true"><img src="assets/sfandom-logo-official.png?v=20260822-0442" alt=""></div>
+      </div>
       <div class="hero-noise"></div>
       <div class="hero-copy">
         <div class="live-chip"><i></i> SPORTS INTELLIGENCE · SEOUL</div>
@@ -114,7 +129,6 @@
       </div>
     </section>
 
-
     <section class="section home-kairo reveal">
       <div class="home-kairo-art">
         <span>JI · KAIRO · ANALYSIS TEAM</span>
@@ -138,8 +152,6 @@
   <script>
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-
   </script>
 </body>
 </html>
