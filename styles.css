@@ -26,3 +26,9 @@
   .hero-reel-meta a{font-size:.5rem}
 }
 @media(prefers-reduced-motion:reduce){.hero-reel-shell{display:none}}
+
+
+/* Reliable video fallback while official embeds initialize */
+.hero-reel-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.52;filter:saturate(.9) contrast(1.08) brightness(.72)}
+.hero-youtube-player{opacity:0;transition:opacity .35s ease}
+.hero-reel-shell.youtube-playing .hero-youtube-player{opacity:1}
