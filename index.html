@@ -10,6 +10,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Mobile hero hotfix: keep the source reel fully visible and separate it from the forecast UI. */
+    @media (max-width:900px){
+      .hero-v2{overflow:visible!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;padding-top:0!important;gap:0!important}
+      .hero-v2>.hero-reel{position:relative!important;inset:auto!important;display:block!important;z-index:3!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;margin:0 auto 34px!important;object-fit:contain!important;object-position:center!important;background:#050505!important;opacity:1!important;filter:saturate(1) contrast(1.03) brightness(.9)!important;border:1px solid #242424!important}
+      .hero-copy{width:100%!important;position:relative!important;z-index:4!important}
+      .hero-visual{position:relative!important;z-index:4!important;height:auto!important;min-height:0!important;padding:44px 0 64px!important;gap:14px!important;overflow:visible!important}
+      .hero-visual .tag-one{position:static!important;order:-1!important;align-self:center!important;margin:0 0 4px!important}
+      .forecast-card{position:relative!important;left:auto!important;bottom:auto!important;width:min(330px,100%)!important;margin:0 auto!important}
+      .hero-social{position:static!important;align-self:center!important;margin-top:12px!important}
+    }
+    @media (max-width:620px){
+      .hero-v2>.hero-reel{width:100%!important;margin:0 auto 28px!important;aspect-ratio:16/9!important;object-fit:contain!important}
+      .hero-visual{padding:34px 0 56px!important}
+      .forecast-card{width:min(320px,100%)!important;padding:22px!important}
+      .forecast-score strong{font-size:3rem!important}
+      .tag-one{font-size:.58rem!important}
+    }
+  </style>
 </head>
 <body class="home-v2">
   <header class="site-header">
