@@ -24,7 +24,18 @@
 
   <main id="top">
     <section class="hero hero-v2 reveal">
-      <video class="hero-reel" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/sfandom-hero-reel.mp4" type="video/mp4"></video>
+      <div class="hero-reel-shell" aria-label="공식 스포츠 하이라이트 영상">
+        <div id="hero-youtube-player" class="hero-youtube-player"></div>
+        <div class="hero-reel-shade"></div>
+        <div class="hero-reel-meta">
+          <span id="hero-league-label">PREMIER LEAGUE</span>
+          <a id="hero-source-link" href="https://www.youtube.com/channel/UCG5qGWdu8nIRZqJ_GgDwQ-w" target="_blank" rel="noopener noreferrer">OFFICIAL HIGHLIGHT ↗</a>
+        </div>
+        <div class="hero-logo-ending" aria-hidden="true">
+          <img src="assets/sfandom-logo-official.png" alt="">
+          <strong>SFANDOM</strong>
+        </div>
+      </div>
       <div class="hero-noise"></div>
       <div class="hero-copy">
         <div class="live-chip"><i></i> SPORTS INTELLIGENCE · SEOUL</div>
@@ -116,6 +127,55 @@
   </main>
 
   <footer class="footer-v2"><div><a class="brand" href="index.html"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a><p>SPORTS DATA · ANALYSIS · FORECAST</p></div><div class="footer-links"><a href="analysis.html">분석</a><a href="content.html">콘텐츠</a><a href="about.html">소개</a></div><small>© 2026 SFANDOM. ALL RIGHTS RESERVED.</small></footer>
-  <script>const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</script>
+  <script>
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    const highlightChannels=[
+      {label:'PREMIER LEAGUE',playlist:'UUG5qGWdu8nIRZqJ_GgDwQ-w',url:'https://www.youtube.com/channel/UCG5qGWdu8nIRZqJ_GgDwQ-w'},
+      {label:'NBA',playlist:'UUWJ2lWNubArHWmf3FIHbfcQ',url:'https://www.youtube.com/channel/UCWJ2lWNubArHWmf3FIHbfcQ'},
+      {label:'MLB',playlist:'UUoLrcjPV5PbUrUyXq5mjc_A',url:'https://www.youtube.com/channel/UCoLrcjPV5PbUrUyXq5mjc_A'}
+    ];
+    let highlightPlayer,highlightIndex=0,highlightTimer;
+    const reelShell=document.querySelector('.hero-reel-shell');
+    const leagueLabel=document.getElementById('hero-league-label');
+    const sourceLink=document.getElementById('hero-source-link');
+
+    function loadHighlight(index){
+      clearTimeout(highlightTimer);
+      highlightIndex=index;
+      reelShell.classList.remove('show-logo');
+      const item=highlightChannels[index];
+      leagueLabel.textContent=item.label;
+      sourceLink.href=item.url;
+      sourceLink.hidden=false;
+      highlightPlayer.loadPlaylist({listType:'playlist',list:item.playlist,index:0,startSeconds:8});
+      highlightPlayer.mute();
+      highlightTimer=setTimeout(()=>{
+        if(index<highlightChannels.length-1) loadHighlight(index+1);
+        else showLogoEnding();
+      },3000);
+    }
+    function showLogoEnding(){
+      clearTimeout(highlightTimer);
+      highlightPlayer.pauseVideo();
+      sourceLink.hidden=true;
+      leagueLabel.textContent='SFANDOM';
+      reelShell.classList.add('show-logo');
+      highlightTimer=setTimeout(()=>loadHighlight(0),1900);
+    }
+    window.onYouTubeIframeAPIReady=()=>{
+      highlightPlayer=new YT.Player('hero-youtube-player',{
+        playerVars:{autoplay:1,controls:0,disablekb:1,fs:0,iv_load_policy:3,playsinline:1,rel:0},
+        events:{
+          onReady:event=>{event.target.mute();loadHighlight(0)},
+          onError:()=>loadHighlight((highlightIndex+1)%highlightChannels.length)
+        }
+      });
+    };
+    const youtubeApi=document.createElement('script');
+    youtubeApi.src='https://www.youtube.com/iframe_api';
+    document.head.appendChild(youtubeApi);
+  </script>
 </body>
 </html>
