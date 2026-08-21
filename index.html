@@ -25,6 +25,7 @@
   <main id="top">
     <section class="hero hero-v2 reveal">
       <div class="hero-reel-shell" aria-label="공식 스포츠 하이라이트 영상">
+        <video class="hero-reel-fallback" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/sfandom-hero-reel.mp4" type="video/mp4"></video>
         <div id="hero-youtube-player" class="hero-youtube-player"></div>
         <div class="hero-reel-shade"></div>
         <div class="hero-reel-meta">
@@ -132,33 +133,33 @@
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
     const highlightChannels=[
-      {label:'PREMIER LEAGUE',playlist:'UUG5qGWdu8nIRZqJ_GgDwQ-w',url:'https://www.youtube.com/channel/UCG5qGWdu8nIRZqJ_GgDwQ-w'},
-      {label:'NBA',playlist:'UUWJ2lWNubArHWmf3FIHbfcQ',url:'https://www.youtube.com/channel/UCWJ2lWNubArHWmf3FIHbfcQ'},
-      {label:'MLB',playlist:'UUoLrcjPV5PbUrUyXq5mjc_A',url:'https://www.youtube.com/channel/UCoLrcjPV5PbUrUyXq5mjc_A'}
+      {label:'PREMIER LEAGUE',videoId:'ZOhjvpl9ibE',start:18,url:'https://www.youtube.com/watch?v=ZOhjvpl9ibE'},
+      {label:'NBA',videoId:'w0VqTmf2iLI',start:12,url:'https://www.youtube.com/watch?v=w0VqTmf2iLI'},
+      {label:'MLB',videoId:'1LYYzihoPJw',start:10,url:'https://www.youtube.com/watch?v=1LYYzihoPJw'}
     ];
-    let highlightPlayer,highlightIndex=0,highlightTimer;
+    let highlightPlayer,highlightIndex=0,highlightTimer,highlightSafetyTimer;
     const reelShell=document.querySelector('.hero-reel-shell');
     const leagueLabel=document.getElementById('hero-league-label');
     const sourceLink=document.getElementById('hero-source-link');
 
     function loadHighlight(index){
       clearTimeout(highlightTimer);
+      clearTimeout(highlightSafetyTimer);
       highlightIndex=index;
-      reelShell.classList.remove('show-logo');
+      reelShell.classList.remove('show-logo','youtube-playing');
       const item=highlightChannels[index];
       leagueLabel.textContent=item.label;
       sourceLink.href=item.url;
       sourceLink.hidden=false;
-      highlightPlayer.loadPlaylist({listType:'playlist',list:item.playlist,index:0,startSeconds:8});
+      highlightPlayer.loadVideoById({videoId:item.videoId,startSeconds:item.start});
       highlightPlayer.mute();
-      highlightTimer=setTimeout(()=>{
-        if(index<highlightChannels.length-1) loadHighlight(index+1);
-        else showLogoEnding();
-      },3000);
+      highlightSafetyTimer=setTimeout(()=>loadHighlight((index+1)%highlightChannels.length),8000);
     }
     function showLogoEnding(){
       clearTimeout(highlightTimer);
+      clearTimeout(highlightSafetyTimer);
       highlightPlayer.pauseVideo();
+      reelShell.classList.remove('youtube-playing');
       sourceLink.hidden=true;
       leagueLabel.textContent='SFANDOM';
       reelShell.classList.add('show-logo');
@@ -169,6 +170,18 @@
         playerVars:{autoplay:1,controls:0,disablekb:1,fs:0,iv_load_policy:3,playsinline:1,rel:0},
         events:{
           onReady:event=>{event.target.mute();loadHighlight(0)},
+          onStateChange:event=>{
+            if(event.data===YT.PlayerState.PLAYING){
+              clearTimeout(highlightSafetyTimer);
+              reelShell.classList.add('youtube-playing');
+              clearTimeout(highlightTimer);
+              const playingIndex=highlightIndex;
+              highlightTimer=setTimeout(()=>{
+                if(playingIndex<highlightChannels.length-1) loadHighlight(playingIndex+1);
+                else showLogoEnding();
+              },3000);
+            }
+          },
           onError:()=>loadHighlight((highlightIndex+1)%highlightChannels.length)
         }
       });
