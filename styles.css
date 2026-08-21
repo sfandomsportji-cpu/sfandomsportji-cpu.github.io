@@ -13,3 +13,14 @@
   .hero-copy{width:100%}
   .hero-v2 h1{font-size:clamp(3.05rem,15vw,4.4rem);line-height:.94}
 }
+
+
+/* Keep the hero reel in a safe 16:9 frame on mobile and tablet viewports. */
+@media (max-width:900px){
+  .hero-v2{display:flex;flex-direction:column;align-items:stretch;padding-top:0;gap:0}
+  .hero-v2>.hero-reel{position:relative;inset:auto;display:block;z-index:3;flex:none;width:calc(100% + 48px);height:auto;aspect-ratio:16/9;margin:0 -24px 40px;object-fit:contain;object-position:center;background:#050505;opacity:.94;filter:saturate(1) contrast(1.04) brightness(.88);border-bottom:1px solid #292929}
+  .hero-copy{width:100%}
+}
+@media (max-width:620px){
+  .hero-v2>.hero-reel{width:calc(100% + 36px);margin-left:-18px;margin-right:-18px;height:auto;aspect-ratio:16/9;object-fit:contain}
+}
