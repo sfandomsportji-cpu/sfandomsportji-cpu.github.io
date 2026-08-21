@@ -46,3 +46,8 @@
   .hero-copy{width:100%}
   .hero-v2 h1{font-size:clamp(3.05rem,15vw,4.4rem);line-height:.94}
 }
+
+
+/* Crop YouTube's transient title chrome out of the visible reel */
+.hero-youtube-player iframe{top:-58px;bottom:auto;height:calc(100% + 116px)}
+@media(max-width:620px){.hero-youtube-player iframe{top:-48px;height:calc(100% + 96px)}}
