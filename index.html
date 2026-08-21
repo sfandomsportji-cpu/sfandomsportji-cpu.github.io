@@ -24,19 +24,7 @@
 
   <main id="top">
     <section class="hero hero-v2 reveal">
-      <div class="hero-reel-shell" aria-label="공식 스포츠 하이라이트 영상">
-        <video class="hero-reel-fallback" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/sfandom-hero-reel.mp4" type="video/mp4"></video>
-        <div id="hero-youtube-player" class="hero-youtube-player"></div>
-        <div class="hero-reel-shade"></div>
-        <div class="hero-reel-meta">
-          <span id="hero-league-label">PREMIER LEAGUE</span>
-          <a id="hero-source-link" href="https://www.youtube.com/channel/UCG5qGWdu8nIRZqJ_GgDwQ-w" target="_blank" rel="noopener noreferrer">OFFICIAL HIGHLIGHT ↗</a>
-        </div>
-        <div class="hero-logo-ending" aria-hidden="true">
-          <img src="assets/sfandom-logo-official.png" alt="">
-          <strong>SFANDOM</strong>
-        </div>
-      </div>
+      <video class="hero-reel" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/sfandom-hero-reel.mp4" type="video/mp4"></video>
       <div class="hero-noise"></div>
       <div class="hero-copy">
         <div class="live-chip"><i></i> SPORTS INTELLIGENCE · SEOUL</div>
@@ -132,63 +120,7 @@
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    const highlightChannels=[
-      {label:'PREMIER LEAGUE',videoId:'ZOhjvpl9ibE',start:18,url:'https://www.youtube.com/watch?v=ZOhjvpl9ibE'},
-      {label:'NBA',videoId:'w0VqTmf2iLI',start:12,url:'https://www.youtube.com/watch?v=w0VqTmf2iLI'},
-      {label:'MLB',videoId:'1LYYzihoPJw',start:10,url:'https://www.youtube.com/watch?v=1LYYzihoPJw'}
-    ];
-    let highlightPlayer,highlightIndex=0,highlightTimer,highlightSafetyTimer;
-    const reelShell=document.querySelector('.hero-reel-shell');
-    const leagueLabel=document.getElementById('hero-league-label');
-    const sourceLink=document.getElementById('hero-source-link');
 
-    function loadHighlight(index){
-      clearTimeout(highlightTimer);
-      clearTimeout(highlightSafetyTimer);
-      highlightIndex=index;
-      reelShell.classList.remove('show-logo','youtube-playing');
-      const item=highlightChannels[index];
-      leagueLabel.textContent=item.label;
-      sourceLink.href=item.url;
-      sourceLink.hidden=false;
-      highlightPlayer.loadVideoById({videoId:item.videoId,startSeconds:item.start});
-      highlightPlayer.mute();
-      highlightSafetyTimer=setTimeout(()=>loadHighlight((index+1)%highlightChannels.length),8000);
-    }
-    function showLogoEnding(){
-      clearTimeout(highlightTimer);
-      clearTimeout(highlightSafetyTimer);
-      highlightPlayer.pauseVideo();
-      reelShell.classList.remove('youtube-playing');
-      sourceLink.hidden=true;
-      leagueLabel.textContent='SFANDOM';
-      reelShell.classList.add('show-logo');
-      highlightTimer=setTimeout(()=>loadHighlight(0),1900);
-    }
-    window.onYouTubeIframeAPIReady=()=>{
-      highlightPlayer=new YT.Player('hero-youtube-player',{
-        playerVars:{autoplay:1,controls:0,disablekb:1,fs:0,iv_load_policy:3,playsinline:1,rel:0},
-        events:{
-          onReady:event=>{event.target.mute();loadHighlight(0)},
-          onStateChange:event=>{
-            if(event.data===YT.PlayerState.PLAYING){
-              clearTimeout(highlightSafetyTimer);
-              reelShell.classList.add('youtube-playing');
-              clearTimeout(highlightTimer);
-              const playingIndex=highlightIndex;
-              highlightTimer=setTimeout(()=>{
-                if(playingIndex<highlightChannels.length-1) loadHighlight(playingIndex+1);
-                else showLogoEnding();
-              },3000);
-            }
-          },
-          onError:()=>loadHighlight((highlightIndex+1)%highlightChannels.length)
-        }
-      });
-    };
-    const youtubeApi=document.createElement('script');
-    youtubeApi.src='https://www.youtube.com/iframe_api';
-    document.head.appendChild(youtubeApi);
   </script>
 </body>
 </html>
