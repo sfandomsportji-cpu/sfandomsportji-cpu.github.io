@@ -17,6 +17,7 @@ jobs:
       - name: Add featured reel section
         shell: bash
         run: |
+          # Triggered after workflow file exists on main.
           python - <<'PY'
           from pathlib import Path
 
