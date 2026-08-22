@@ -1,4 +1,4 @@
-name: Import featured video
+name: Compact featured video
 
 on:
   push:
@@ -10,57 +10,49 @@ permissions:
   contents: write
 
 jobs:
-  import-video:
+  compact-video:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Install media tools
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install yt-dlp
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-
-      - name: Download the SFANDOM reel media
-        run: |
-          mkdir -p assets /tmp/sfandom-video
-          yt-dlp --no-playlist -f "bv*+ba/b" --merge-output-format mp4 \
-            -o "/tmp/sfandom-video/source.%(ext)s" \
-            "https://www.instagram.com/reel/DcSS7W5yI80/"
-          SRC="$(find /tmp/sfandom-video -maxdepth 1 -type f | head -n 1)"
-          test -n "$SRC"
-          ffmpeg -y -i "$SRC" \
-            -vf "scale=720:-2" \
-            -c:v libx264 -preset medium -crf 27 \
-            -c:a aac -b:a 96k \
-            -movflags +faststart \
-            assets/sfandom-mlb-daily-2026-08-21.mp4
-
-      - name: Replace Instagram embed with local MP4 player
+      - name: Simplify featured video section
+        shell: bash
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
+
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
-          old = '<iframe src="https://www.instagram.com/reel/DcSS7W5yI80/embed/" title="SFANDOM MLB Daily Highlights — 2026.08.21" loading="lazy" allowfullscreen scrolling="no" frameborder="0" style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;"></iframe>'
-          new = '<video controls playsinline preload="metadata" title="SFANDOM MLB Daily Highlights — 2026.08.21" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;"><source src="assets/sfandom-mlb-daily-2026-08-21.mp4?v=20260823-1" type="video/mp4"></video>'
-          if old not in s:
-              raise SystemExit('Instagram embed marker not found in index.html')
-          s = s.replace(old, new, 1)
-          s = s.replace('<span>SFANDOM · REEL</span>', '<span>SFANDOM · ORIGINAL VIDEO</span>', 1)
-          s = s.replace('<a class="btn primary" href="https://www.instagram.com/reel/DcSS7W5yI80/" target="_blank" rel="noopener noreferrer">Instagram에서 보기 <b>↗</b></a>', '<a class="btn primary" href="#featured-reel-20260821">사이트에서 재생 <b>▶</b></a>', 1)
-          p.write_text(s, encoding='utf-8')
+          pattern = re.compile(
+              r'    <section id="featured-reel-20260821".*?</section>\n\n(?=    <section class="section promise reveal">)',
+              re.S,
+          )
+          block = '''    <section id="featured-reel-20260821" class="section reveal" aria-label="SFANDOM MLB Daily Highlights" style="padding-top:24px;padding-bottom:88px;">
+      <div style="width:min(100%,520px);margin:0 auto;">
+        <div style="position:relative;width:100%;aspect-ratio:9/16;background:#000;border:1px solid #2c2c2c;overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.35);">
+          <video controls playsinline preload="metadata" title="SFANDOM MLB Daily Highlights — 2026.08.21" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;"><source src="assets/sfandom-mlb-daily-2026-08-21.mp4?v=20260823-2" type="video/mp4"></video>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 2px 0;color:#8c8c8c;font-size:.72rem;letter-spacing:.12em;">
+          <span>MLB DAILY</span><span>2026.08.21 KST</span>
+        </div>
+      </div>
+    </section>
+
+'''
+          new_s, n = pattern.subn(block, s, count=1)
+          if n != 1:
+              raise SystemExit(f'Featured section replacement count: {n}')
+          p.write_text(new_s, encoding='utf-8')
           PY
 
-      - name: Commit local video player
+      - name: Commit compact layout
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets/sfandom-mlb-daily-2026-08-21.mp4
+          git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Replace Instagram embed with local featured video"
+          git commit -m "Simplify featured video layout"
           git push
