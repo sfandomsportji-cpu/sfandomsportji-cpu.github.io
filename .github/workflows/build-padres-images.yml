@@ -1,0 +1,41 @@
+name: Build Padres website images
+
+on:
+  push:
+    paths:
+      - '.github/workflows/build-padres-images.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build optimized images
+        shell: bash
+        run: |
+          cat assets/.padres-build-avif/pick-*.b64 | tr -d '\n' | base64 --decode > assets/2026-08-22-padres-pick.avif
+          cat assets/.padres-build-avif/hit-*.b64 | tr -d '\n' | base64 --decode > assets/2026-08-22-padres-hit.avif
+
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('assets/2026-08-22-padres-pick.svg?v=20260823',
+                        'assets/2026-08-22-padres-pick.avif?v=20260823-2')
+          s = s.replace('assets/2026-08-22-padres-hit.svg?v=20260823',
+                        'assets/2026-08-22-padres-hit.avif?v=20260823-2')
+          p.write_text(s, encoding='utf-8')
+          PY
+
+          rm -f assets/2026-08-22-padres-pick.svg assets/2026-08-22-padres-hit.svg
+          rm -rf assets/.padres-build-avif assets/.padres-build
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Replace Padres placeholders with optimized images'
+          git push
