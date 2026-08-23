@@ -66,4 +66,10 @@
   .signature-watermark{right:9px;bottom:10px;width:40px;height:40px;padding:5px}
   .signature-foot{padding:11px 14px 13px;align-items:flex-start;flex-direction:column;gap:10px}
   .signature-dots{width:100%;justify-content:space-between}.signature-dot{flex:1;max-width:28px}
+  #signature-moments{padding-bottom:20px!important}
+  .promise{padding-top:34px!important}
+}
+@media (min-width:621px) and (max-width:900px){
+  #signature-moments{padding-bottom:32px!important}
+  .promise{padding-top:48px!important}
 }
