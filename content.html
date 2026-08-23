@@ -3,12 +3,74 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="SFANDOM sports media content formats." />
-  <title>Content | SFANDOM</title>
+  <meta name="description" content="SFANDOM MLB Film Room — verified key plays, starters and KST game information." />
+  <meta name="theme-color" content="#050505" />
+  <title>MLB Film Room | SFANDOM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260823-filmroom" />
+  <style>
+    :root{--fr-red:#f02b32;--fr-red2:#a50912;--fr-bg:#050505;--fr-panel:#0a0a0b;--fr-line:#252527;--fr-muted:#919197;--fr-white:#f5f5f7}
+    body{background:var(--fr-bg);color:var(--fr-white)}
+    .filmroom{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:86px 0 118px}
+    .filmroom-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:46px;align-items:end;padding-bottom:36px;border-bottom:1px solid var(--fr-line)}
+    .filmroom-kicker{display:flex;align-items:center;gap:10px;margin:0 0 16px;color:#d7d7da;font:800 .72rem/1 Inter,sans-serif;letter-spacing:.18em}
+    .filmroom-kicker i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--fr-red);box-shadow:0 0 18px rgba(240,43,50,.72)}
+    .filmroom h1{margin:0;font:900 clamp(3rem,7.6vw,7.2rem)/.84 Inter,Noto Sans KR,sans-serif;letter-spacing:-.07em;text-transform:uppercase}
+    .filmroom h1 span{display:block;color:var(--fr-red)}
+    .filmroom-intro{margin:0 0 4px;color:#aaaab0;font-size:.96rem;line-height:1.85}
+    .verify-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+    .verify-row span{padding:8px 10px;border:1px solid #343438;background:#0b0b0d;color:#c7c7cb;font:700 .66rem/1 Inter,sans-serif;letter-spacing:.11em}
+
+    .film-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
+    .film-card{position:relative;min-height:420px;overflow:hidden;border:1px solid var(--fr-line);background:linear-gradient(145deg,#101012 0%,#070708 54%,#040404 100%);color:inherit;text-decoration:none;isolation:isolate;transition:border-color .25s ease,transform .25s ease}
+    .film-card:before{content:"";position:absolute;z-index:-2;right:-19%;top:-26%;width:58%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(240,43,50,.22) 0%,rgba(240,43,50,.07) 38%,transparent 70%)}
+    .film-card:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.76) 100%);pointer-events:none}
+    .film-card:hover{border-color:#5d2a2d;transform:translateY(-2px)}
+    .film-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 22px 0}
+    .film-num{font:900 .7rem/1 Inter,sans-serif;letter-spacing:.16em;color:#7e7e84}
+    .film-chip{padding:7px 9px;background:var(--fr-red);color:#fff;font:900 .62rem/1 Inter,sans-serif;letter-spacing:.13em}
+    .film-stage{padding:46px 22px 30px}
+    .film-teams{display:flex;align-items:flex-end;gap:10px;margin-bottom:20px;font-family:Inter,sans-serif}
+    .film-teams strong{font-size:clamp(2rem,4.4vw,4.15rem);line-height:.88;letter-spacing:-.065em}
+    .film-teams em{font-style:normal;font-size:.8rem;font-weight:900;color:#5f5f64;letter-spacing:.12em;margin-bottom:4px}
+    .film-score{display:flex;align-items:baseline;gap:9px;margin:0 0 8px;font-family:Inter,sans-serif}
+    .film-score b{font-size:clamp(3rem,5.8vw,5.5rem);line-height:.9;letter-spacing:-.06em}
+    .film-score span{font-size:.72rem;font-weight:800;letter-spacing:.12em;color:#88888e}
+    .film-story{margin:26px 0 0;font:900 clamp(1.45rem,2.7vw,2.4rem)/1.02 Inter,Noto Sans KR,sans-serif;letter-spacing:-.045em;text-transform:uppercase}
+    .film-story .red{color:var(--fr-red)}
+    .film-sub{margin:11px 0 0;color:#a6a6ab;font-size:.82rem;line-height:1.65}
+    .film-meta{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--fr-line);margin-top:auto}
+    .film-meta div{padding:16px 22px;min-width:0}
+    .film-meta div+div{border-left:1px solid var(--fr-line)}
+    .film-meta small{display:block;color:#696970;font:800 .58rem/1 Inter,sans-serif;letter-spacing:.14em;margin-bottom:7px}
+    .film-meta b{display:block;color:#d7d7da;font-size:.74rem;line-height:1.45;white-space:normal}
+    .film-watch{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 22px;border-top:1px solid var(--fr-line);background:#070708;font:900 .67rem/1 Inter,sans-serif;letter-spacing:.13em;color:#eee}
+    .film-watch span:last-child{color:var(--fr-red);font-size:1rem}
+    .film-progress{height:2px;background:#1a1a1c;overflow:hidden}
+    .film-progress i{display:block;height:100%;width:15%;background:linear-gradient(90deg,var(--fr-red2),var(--fr-red))}
+
+    .film-note{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px;padding-top:25px;border-top:1px solid var(--fr-line)}
+    .film-note p{margin:0;color:#77777d;font-size:.75rem;line-height:1.7}
+    .film-note strong{color:#b8b8bc}
+
+    @media(max-width:820px){
+      .filmroom{width:min(100% - 28px,1180px);padding:56px 0 86px}
+      .filmroom-head{grid-template-columns:1fr;gap:26px}
+      .film-grid{grid-template-columns:1fr}
+      .film-card{min-height:0}
+      .film-stage{padding-top:38px}
+      .film-note{grid-template-columns:1fr}
+    }
+    @media(max-width:480px){
+      .filmroom h1{font-size:clamp(2.7rem,15vw,4.5rem)}
+      .film-teams strong{font-size:2.65rem}
+      .film-score b{font-size:4.1rem}
+      .film-meta{grid-template-columns:1fr}
+      .film-meta div+div{border-left:0;border-top:1px solid var(--fr-line)}
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -21,25 +83,72 @@
   </header>
 
   <main>
-    <section class="page-hero">
-      <p class="eyebrow">SFANDOM CONTENT</p>
-      <h1>빠르게 보고,<br><span>정확하게 이해합니다.</span></h1>
-      <p>경기 전 프리뷰부터 경기 후 리뷰까지, 짧고 강한 영상과 데이터 중심 그래픽으로 스포츠 정보를 전달합니다.</p>
-    </section>
-
-    <section class="section">
-      <div class="content-list">
-        <article><span>01</span><div><h3>DATA FORECAST</h3><p>경기 전 핵심 비교 통계와 최종 방향을 빠르게 정리하는 데이터 프리뷰.</p></div><b>PREVIEW</b></article>
-        <article><span>02</span><div><h3>MATCH FOCUS</h3><p>하나의 경기, 하나의 핵심 변수에 집중하는 짧고 선명한 분석.</p></div><b>FOCUS</b></article>
-        <article><span>03</span><div><h3>HOT ISSUE</h3><p>선수, 팀, 이적, 기록과 이슈를 스포츠 미디어 톤으로 빠르게 전달.</p></div><b>NEWS</b></article>
-        <article><span>04</span><div><h3>REVIEW</h3><p>결과만 보여주는 것이 아니라 경기 전 판단과 실제 결과를 함께 복기.</p></div><b>RECAP</b></article>
+    <section class="filmroom" aria-labelledby="filmroom-title">
+      <div class="filmroom-head">
+        <div>
+          <p class="filmroom-kicker"><i></i> 2026.08.23 KST · MLB DAILY</p>
+          <h1 id="filmroom-title">FILM<span>ROOM.</span></h1>
+        </div>
+        <div>
+          <p class="filmroom-intro">길게 보여주지 않습니다. 오늘 경기에서 결과를 바꾼 장면과 가장 강한 장면만 고릅니다. 경기 정보는 MLB 공식 기록을 기준으로 검수합니다.</p>
+          <div class="verify-row" aria-label="검수 상태"><span>KST VERIFIED</span><span>STARTERS VERIFIED</span><span>LINEUPS VERIFIED</span></div>
+        </div>
       </div>
-    </section>
 
-    <section class="section feature-band">
-      <p class="eyebrow">SHORT-FORM FIRST</p>
-      <h2>방송의 속도감,<br>데이터의 정확성.</h2>
-      <p class="wide-copy">SFANDOM의 메인 콘텐츠는 영상 중심입니다. 방송 그래픽의 속도감과 데이터 분석의 명료함을 결합해 작은 화면에서도 핵심 정보가 먼저 보이도록 설계합니다.</p>
+      <div class="film-grid">
+        <a class="film-card" href="https://www.mlb.com/bluejays/video/heliot-ramos-grounds-out-third-baseman-kazuma-okamoto-to-first-baseman-vl" target="_blank" rel="noopener noreferrer" aria-label="Toronto Blue Jays at New York Yankees official MLB key play">
+          <div class="film-top"><span class="film-num">FEATURE 01</span><span class="film-chip">PITCHING</span></div>
+          <div class="film-stage">
+            <div class="film-teams"><strong>TOR</strong><em>AT</em><strong>NYY</strong></div>
+            <div class="film-score"><b>4–3</b><span>FINAL</span></div>
+            <h2 class="film-story">CEASE TAKES <span class="red">NO-HIT BID</span><br>INTO THE 7TH</h2>
+            <p class="film-sub">Dylan Cease · 8 K · Toronto wins a one-run game in New York.</p>
+          </div>
+          <div class="film-meta"><div><small>KST · BALLPARK</small><b>08.23 · 02:35<br>Yankee Stadium</b></div><div><small>STARTERS</small><b>Dylan Cease (RHP)<br>Ryan Weathers (LHP)</b></div></div>
+          <div class="film-watch"><span>OFFICIAL KEY PLAY · MLB.COM</span><span>↗</span></div><div class="film-progress"><i></i></div>
+        </a>
+
+        <a class="film-card" href="https://www.mlb.com/mariners/video/rand-arozarena-s-walk-off-two-run-homer-19" target="_blank" rel="noopener noreferrer" aria-label="Chicago Cubs at Seattle Mariners official MLB key play">
+          <div class="film-top"><span class="film-num">FEATURE 02</span><span class="film-chip">WALK-OFF</span></div>
+          <div class="film-stage">
+            <div class="film-teams"><strong>CHC</strong><em>AT</em><strong>SEA</strong></div>
+            <div class="film-score"><b>4–5</b><span>FINAL</span></div>
+            <h2 class="film-story">AROZARENA <span class="red">WALKS IT OFF</span><br>WITH A 2-RUN HR</h2>
+            <p class="film-sub">Bottom 9 · 2 outs · 403 ft · Seattle scores three in the ninth.</p>
+          </div>
+          <div class="film-meta"><div><small>KST · BALLPARK</small><b>08.23 · 08:15<br>T-Mobile Park</b></div><div><small>STARTERS</small><b>David Peterson (LHP)<br>Kade Anderson (LHP)</b></div></div>
+          <div class="film-watch"><span>OFFICIAL KEY PLAY · MLB.COM</span><span>↗</span></div><div class="film-progress"><i></i></div>
+        </a>
+
+        <a class="film-card" href="https://www.mlb.com/video/kyle-tucker-s-two-run-single-x6519" target="_blank" rel="noopener noreferrer" aria-label="Pittsburgh Pirates at Los Angeles Dodgers official MLB key play">
+          <div class="film-top"><span class="film-num">FEATURE 03</span><span class="film-chip">GO-AHEAD</span></div>
+          <div class="film-stage">
+            <div class="film-teams"><strong>PIT</strong><em>AT</em><strong>LAD</strong></div>
+            <div class="film-score"><b>3–4</b><span>FINAL</span></div>
+            <h2 class="film-story">TUCKER DELIVERS THE <span class="red">GO-AHEAD</span><br>2-RUN SINGLE</h2>
+            <p class="film-sub">Bottom 5 · Dodgers erase an early 3–0 deficit and take the lead.</p>
+          </div>
+          <div class="film-meta"><div><small>KST · BALLPARK</small><b>08.23 · 08:15<br>UNIQLO Field at Dodger Stadium</b></div><div><small>STARTERS</small><b>Jared Jones (RHP)<br>Tarik Skubal (LHP)</b></div></div>
+          <div class="film-watch"><span>OFFICIAL KEY PLAY · MLB.COM</span><span>↗</span></div><div class="film-progress"><i></i></div>
+        </a>
+
+        <a class="film-card" href="https://www.mlb.com/video/ryan-fernandez-in-play-run-s-to-bryce-harper" target="_blank" rel="noopener noreferrer" aria-label="St. Louis Cardinals at Philadelphia Phillies official MLB key play">
+          <div class="film-top"><span class="film-num">FEATURE 04</span><span class="film-chip">POWER</span></div>
+          <div class="film-stage">
+            <div class="film-teams"><strong>STL</strong><em>AT</em><strong>PHI</strong></div>
+            <div class="film-score"><b>3–12</b><span>FINAL</span></div>
+            <h2 class="film-story">HARPER CRUSHES A <span class="red">3-RUN HR</span><br>PAINTER DOMINATES</h2>
+            <p class="film-sub">Harper · 389 ft · Painter: 7 IP, 1 ER, 8 K in Philadelphia's rout.</p>
+          </div>
+          <div class="film-meta"><div><small>KST · BALLPARK</small><b>08.23 · 07:05<br>Citizens Bank Park</b></div><div><small>STARTERS</small><b>Quinn Mathews (LHP)<br>Andrew Painter (RHP)</b></div></div>
+          <div class="film-watch"><span>OFFICIAL KEY PLAY · MLB.COM</span><span>↗</span></div><div class="film-progress"><i></i></div>
+        </a>
+      </div>
+
+      <div class="film-note">
+        <p><strong>EDITORIAL STANDARD</strong><br>날짜·경기 시작시간은 한국시간(KST) 기준. 구장, 실제 선발투수와 확정 선발 라인업을 공식 MLB 기록으로 검수한 경기만 게시합니다.</p>
+        <p><strong>VIDEO SOURCE</strong><br>현재 카드의 경기 장면은 MLB 공식 영상 페이지로 연결됩니다. SFANDOM 15초 편집본은 사용 권한이 확보된 영상 소스로 교체할 수 있도록 동일 구조로 설계했습니다.</p>
+      </div>
     </section>
   </main>
 
