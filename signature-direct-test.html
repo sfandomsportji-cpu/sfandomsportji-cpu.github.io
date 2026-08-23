@@ -11,28 +11,68 @@
 </head>
 <body>
 <main class="wrap">
-  <div class="top"><b>SFANDOM · DIRECT VIDEO TEST</b><span>NO IFRAME · NO AUTO PICK · <em>ONE VERIFIED ASSET ONLY</em></span></div>
+  <div class="top"><b>SFANDOM · DIRECT VIDEO TEST</b><span>EXACT IN-GAME HIGHLIGHT · <em>NO DATA VIZ / NO PROMO</em></span></div>
   <section class="stage">
     <div class="bar"><div class="brand"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></div><div class="identity">MOMENTS THAT MATTER · <b>VERIFIED BY DATA</b></div></div>
     <div class="screen">
-      <div id="fallback" class="fallback"><div><strong>MLB 원본 영상 불러오는 중</strong>광고 플레이어나 자동선택 로직은 사용하지 않습니다.</div></div>
-      <video id="player" autoplay muted playsinline preload="auto" loop src="https://darkroom-clips.mlb.com/48af094e-dcb5-484c-b77b-8aa3451fefc3.mp4"></video>
+      <div id="fallback" class="fallback"><div><strong>오타니 50호 실제 경기 하이라이트를 찾는 중</strong>MLB game highlights 목록에서 정확한 경기 영상만 선택합니다.</div></div>
+      <video id="player" autoplay muted playsinline preload="auto" loop></video>
       <div class="shade"></div>
       <div class="counter">MOMENT 01 / 10</div>
       <div id="status" class="status">LOADING</div>
-      <div class="copy"><h1>OHTANI<br>50–50</h1><p>MLB original asset · September 19, 2024</p></div>
+      <div class="copy"><h1>OHTANI<br>50–50</h1><p>Shohei Ohtani homers, creates the 50-50 club · September 19, 2024</p></div>
     </div>
     <div class="rule"><i></i></div>
-    <div class="foot"><b>HARDCODED MLB ORIGINAL ASSET</b><span>darkroom-clips.mlb.com · direct MP4</span></div>
+    <div class="foot"><b>EXACT MLB IN-GAME HIGHLIGHT</b><span id="detail">highlights.highlights.items → exact title → playback</span></div>
   </section>
 </main>
 <script>
-(()=>{
+(async()=>{
+  const API='https://statsapi.mlb.com/api/v1/game/746011/content';
+  const EXACT='shohei ohtani homers, creates the 50-50 club';
   const player=document.getElementById('player');
   const status=document.getElementById('status');
   const fallback=document.getElementById('fallback');
-  player.addEventListener('loadeddata',()=>{fallback.style.display='none';status.textContent='REAL VIDEO READY';status.classList.add('ok');player.play().catch(()=>{});},{once:true});
-  player.addEventListener('error',()=>{status.textContent='VIDEO LOAD ERROR';status.classList.add('err');fallback.innerHTML='<div><strong>직접 MP4 로드 실패</strong>광고영상으로 되돌아가지 않습니다.</div>';});
+  const detail=document.getElementById('detail');
+  const norm=s=>(s||'').trim().toLowerCase().replace(/[–—]/g,'-').replace(/\s+/g,' ');
+  function choosePlayback(item){
+    const all=(item.playbacks||[]).filter(p=>p&&p.url);
+    const mp4=all.filter(p=>/\.mp4(?:\?|$)/i.test(p.url));
+    const pool=mp4.length?mp4:all;
+    pool.sort((a,b)=>{
+      const aq=(a.width||0)*(a.height||0),bq=(b.width||0)*(b.height||0);
+      if(bq!==aq)return bq-aq;
+      return String(b.name||'').localeCompare(String(a.name||''));
+    });
+    return pool[0];
+  }
+  try{
+    const r=await fetch(API,{mode:'cors',cache:'no-store'});
+    if(!r.ok)throw new Error('StatsAPI HTTP '+r.status);
+    const data=await r.json();
+    const items=data?.highlights?.highlights?.items||[];
+    let item=items.find(x=>norm(x.title)===EXACT);
+    if(!item)item=items.find(x=>norm(x.title).includes('shohei ohtani homers')&&norm(x.title).includes('50-50 club'));
+    if(!item)throw new Error('정확한 in-game highlight 항목을 찾지 못했습니다');
+    const playback=choosePlayback(item);
+    if(!playback?.url)throw new Error('해당 경기 하이라이트의 playback URL이 없습니다');
+    detail.textContent=(item.title||'MLB in-game highlight')+' · '+(playback.name||'playback');
+    player.src=playback.url;
+    player.addEventListener('loadeddata',()=>{
+      fallback.style.display='none';
+      status.textContent='IN-GAME VIDEO READY';
+      status.className='status ok';
+      player.play().catch(()=>{});
+    },{once:true});
+    player.addEventListener('error',()=>{
+      status.textContent='VIDEO LOAD ERROR';status.className='status err';
+      fallback.innerHTML='<div><strong>경기 하이라이트 파일 로드 실패</strong>Data Viz나 광고 영상으로 대체하지 않습니다.</div>';
+    });
+  }catch(e){
+    status.textContent='SOURCE ERROR';status.className='status err';
+    detail.textContent=String(e.message||e);
+    fallback.innerHTML='<div><strong>정확한 경기 영상 선택 실패</strong>'+String(e.message||e)+'<br>다른 홍보 영상으로 대체하지 않습니다.</div>';
+  }
 })();
 </script>
 </body>
