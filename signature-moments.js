@@ -16,7 +16,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     {a:'OHTANI',b:'50–50',sub:"MLB's first 50-HR / 50-SB season · 2024",start:0,gamePk:746011,exact:'shohei ohtani homers, creates the 50-50 club'},
     {a:'FREEMAN',b:'WALK-OFF SLAM',sub:'World Series Game 1 · October 25, 2024',start:5.2,date:'2024-10-25',away:147,home:119,exact:"freddie freeman's walk-off grand slam"},
     {a:'JUDGE',b:'300 HR',sub:'Fastest to 300 career home runs · August 14, 2024',start:0.15,date:'2024-08-14',away:147,home:145,exact:"aaron judge's 300th career homer (43)"},
-    {a:'MILLER',b:'102+ MPH HEAT',sub:'Strikes out Volpe, Soto and Judge for the save · April 22, 2024',start:0,ms:40000,date:'2024-04-22',away:133,home:147,exact:'mason miller strikes out the side with 102+ mph heat'}
+    {a:'MILLER',b:"K'S THE SIDE",sub:'6th save · 30⅔-inning scoreless streak · April 16, 2026',start:44.5,ms:36000,gamePk:823313,exact:'miller strikes out side, extends scoreless streak'}
   ];
   const cache=new Map();
   let current=0,timer=null,endTimer=null,loadToken=0;
