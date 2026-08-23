@@ -135,5 +135,6 @@ jobs:
             echo 'Music files already up to date.'
           else
             git commit -m 'Add approved SFANDOM R&B background music'
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
