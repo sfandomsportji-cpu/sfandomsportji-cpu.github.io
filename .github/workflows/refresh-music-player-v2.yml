@@ -1,0 +1,43 @@
+name: Refresh SFANDOM Music Player V2
+
+on:
+  push:
+    paths:
+      - '.github/workflows/refresh-music-player-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bust music player cache on site pages
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          stamp='20260824-0703'
+          changed=[]
+          for p in Path('.').glob('*.html'):
+              s=p.read_text(encoding='utf-8')
+              old=s
+              import re
+              s=re.sub(r'music-player\.js\?v=[0-9-]+', f'music-player.js?v={stamp}', s)
+              s=re.sub(r'music-player\.css\?v=[0-9-]+', f'music-player.css?v={stamp}', s)
+              if s!=old:
+                  p.write_text(s,encoding='utf-8')
+                  changed.append(str(p))
+          print('Updated:', ', '.join(changed) or 'none')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '*.html'
+          if git diff --cached --quiet; then
+            echo 'No HTML cache refs needed updating.'
+          else
+            git commit -m 'Refresh SFANDOM music player assets'
+            git pull --rebase origin main
+            git push origin main
+          fi
