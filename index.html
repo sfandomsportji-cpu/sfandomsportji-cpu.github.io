@@ -21,6 +21,38 @@
     .hero-reel-safe-logo{display:none}
     .hero-copy,.hero-visual{position:relative;z-index:2}
 
+    /* Signature Moments: passive autoplay film, no click required. */
+    .signature-shell{width:min(1180px,100%);margin:0 auto;background:#050505;border:1px solid #27272a;box-shadow:0 24px 90px rgba(0,0,0,.42);overflow:hidden}
+    .signature-top{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:20px 22px 16px}
+    .signature-brand{display:flex;align-items:center;gap:10px;font-size:.76rem;font-weight:900;letter-spacing:.18em}
+    .signature-brand img{display:block;width:30px;height:30px;object-fit:contain}
+    .signature-identity{font-size:.66rem;font-weight:800;letter-spacing:.13em;color:#a6a6ac;text-align:right}
+    .signature-identity b{color:#ef2d35}
+    .signature-screen{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden;border-top:1px solid #242428;border-bottom:1px solid #242428}
+    .signature-player{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;pointer-events:none}
+    .signature-shade{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 100%),linear-gradient(0deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,0) 43%)}
+    .signature-counter{position:absolute;z-index:4;left:20px;top:18px;padding:7px 9px;background:rgba(5,5,5,.72);border:1px solid rgba(255,255,255,.14);font-size:.62rem;font-weight:900;letter-spacing:.17em;color:#ef2d35;backdrop-filter:blur(8px)}
+    .signature-copy{position:absolute;z-index:4;left:22px;bottom:24px;max-width:72%;pointer-events:none}
+    .signature-copy h2{margin:0;color:#fff;font-size:clamp(2.2rem,6vw,5.2rem);line-height:.84;letter-spacing:-.065em;font-weight:900;text-transform:uppercase;text-shadow:0 4px 28px rgba(0,0,0,.74)}
+    .signature-copy p{display:inline-block;margin:14px 0 0;padding:7px 9px;background:rgba(5,5,5,.7);color:#c7c7cb;font-size:.68rem;font-weight:700;letter-spacing:.05em}
+    .signature-watermark{position:absolute;z-index:4;right:16px;bottom:16px;width:54px;height:54px;padding:7px;background:rgba(5,5,5,.72);border:1px solid rgba(255,255,255,.14);pointer-events:none}
+    .signature-watermark img{display:block;width:100%;height:100%;object-fit:contain}
+    .signature-progress{position:absolute;z-index:8;left:0;right:0;bottom:0;height:3px;background:#18181b}
+    .signature-progress i{display:block;height:100%;width:10%;background:#ef2d35;transition:width .35s ease}
+    .signature-end{position:absolute;z-index:10;inset:0;display:flex;align-items:center;justify-content:center;background:#050505;text-align:center;opacity:0;pointer-events:none;transition:opacity 1s ease}
+    .signature-end.show{opacity:1}
+    .signature-end img{width:min(112px,24vw);height:auto;margin-bottom:16px}
+    .signature-end strong{display:block;font-size:clamp(2.5rem,7vw,5.2rem);line-height:.9;letter-spacing:-.055em}
+    .signature-end strong em{font-style:normal;color:#ef2d35}
+    .signature-end span{display:block;margin-top:14px;color:#f1f1f2;font-size:clamp(.62rem,1.3vw,.82rem);font-weight:800;letter-spacing:.17em}
+    .signature-end i{display:block;width:0;height:1px;margin:20px auto 0;background:#ef2d35;transition:width .9s ease .15s}
+    .signature-end.show i{width:92px}
+    .signature-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 22px 16px;color:#77777d;font-size:.62rem;letter-spacing:.1em}
+    .signature-foot b{color:#bdbdc1}
+    .signature-dots{display:flex;gap:6px}
+    .signature-dot{display:block;width:25px;height:3px;background:#303034}
+    .signature-dot.active{background:#ef2d35}
+
     @media (max-width:900px){
       .hero-v2{overflow:visible!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;padding-top:0!important;gap:0!important}
       .hero-reel-wrap{position:relative!important;inset:auto!important;z-index:3!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;margin:0 auto 34px!important;border:1px solid #242424!important;overflow:hidden!important;background:#050505!important;display:block!important}
@@ -40,6 +72,16 @@
       .hero-visual{padding:34px 0 56px!important}
       .forecast-card{width:min(320px,100%)!important;padding:22px!important}
       .forecast-score strong{font-size:3rem!important}
+      .signature-top{padding:15px 14px 12px}
+      .signature-brand{font-size:.66rem}.signature-brand img{width:25px;height:25px}
+      .signature-identity{max-width:62%;font-size:.52rem;line-height:1.45}
+      .signature-counter{left:10px;top:10px;font-size:.52rem;padding:6px 7px}
+      .signature-copy{left:12px;bottom:16px;max-width:76%}
+      .signature-copy h2{font-size:clamp(1.65rem,9.2vw,3rem)}
+      .signature-copy p{margin-top:9px;font-size:.52rem;padding:5px 6px}
+      .signature-watermark{right:9px;bottom:10px;width:40px;height:40px;padding:5px}
+      .signature-foot{padding:11px 14px 13px;align-items:flex-start;flex-direction:column;gap:10px}
+      .signature-dots{width:100%;justify-content:space-between}.signature-dot{flex:1;max-width:28px}
     }
   </style>
 </head>
@@ -116,14 +158,22 @@
       </div>
     </section>
 
-    <section id="featured-reel-20260821" class="section reveal" aria-label="SFANDOM MLB Daily Highlights" style="padding-top:24px;padding-bottom:88px;">
-      <div style="width:min(100%,520px);margin:0 auto;">
-        <div style="position:relative;width:100%;aspect-ratio:9/16;background:#000;border:1px solid #2c2c2c;overflow:hidden;box-shadow:0 20px 70px rgba(0,0,0,.35);">
-          <video controls playsinline preload="metadata" title="SFANDOM MLB Daily Highlights — 2026.08.21" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;"><source src="assets/sfandom-mlb-daily-2026-08-21.mp4?v=20260823-2" type="video/mp4"></video>
+    <section id="signature-moments" class="section reveal" aria-label="SFANDOM Signature Moments" style="padding-top:24px;padding-bottom:88px;">
+      <div class="signature-shell">
+        <div class="signature-top">
+          <div class="signature-brand"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></div>
+          <div class="signature-identity">MOMENTS THAT MATTER · <b>VERIFIED BY DATA</b></div>
         </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 2px 0;color:#8c8c8c;font-size:.72rem;letter-spacing:.12em;">
-          <span>MLB DAILY</span><span>2026.08.21 KST</span>
+        <div class="signature-screen">
+          <iframe id="signaturePlayer" class="signature-player" title="SFANDOM Signature Moment" allow="autoplay; fullscreen; picture-in-picture" tabindex="-1" aria-hidden="true"></iframe>
+          <div class="signature-shade"></div>
+          <div class="signature-counter" id="signatureCounter">MOMENT 01 / 10</div>
+          <div class="signature-copy"><h2 id="signatureTitle">OHTANI<br>50–50</h2><p id="signatureSub">Historic milestone · 2024</p></div>
+          <div class="signature-watermark"><img src="assets/sfandom-logo-official.png" alt=""></div>
+          <div class="signature-progress"><i id="signatureProgress"></i></div>
+          <div class="signature-end" id="signatureEnd"><div><img src="assets/sfandom-logo-official.png" alt="SFANDOM"><strong>SFANDOM<em>.</em></strong><span>WE PURSUE VALUE THROUGH DATA.</span><i></i></div></div>
         </div>
+        <div class="signature-foot"><b>10 SIGNATURE MOMENTS · AUTO PLAY</b><div class="signature-dots" id="signatureDots" aria-hidden="true"></div></div>
       </div>
     </section>
 
@@ -185,6 +235,53 @@
   <script>
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    (()=>{
+      const player=document.getElementById('signaturePlayer');
+      if(!player) return;
+      const counter=document.getElementById('signatureCounter');
+      const title=document.getElementById('signatureTitle');
+      const sub=document.getElementById('signatureSub');
+      const progress=document.getElementById('signatureProgress');
+      const end=document.getElementById('signatureEnd');
+      const dots=document.getElementById('signatureDots');
+      const MOMENT_MS=12000, END_MS=2400;
+      const moments=[
+        {a:'OHTANI',b:'50–50',sub:"MLB's first 50-HR / 50-SB season · 2024",slug:'shohei-ohtani-s-50th-homer-and-50th-stolen-base'},
+        {a:'FREEMAN',b:'WALK-OFF SLAM',sub:'World Series Game 1 · historic finish · 2024',slug:'freddie-freeman-hits-a-grand-slam-1-to-right-field-chris-taylor-scores-to'},
+        {a:'JUDGE',b:'300 HR',sub:'300th career home run · Field View · 2024',slug:'field-view-aaron-judge-s-300th-home-run'},
+        {a:'SKENES',b:'PURE HEAT',sub:'Nine-strikeout outing · Field View · 2024',slug:'field-view-paul-skenes-strikeout'},
+        {a:'MERRILL',b:'WALK-OFF',sub:'Walk-off homer · San Diego · 2024',slug:'jackson-merrill-homers-19-on-a-fly-ball-to-right-field'},
+        {a:'RALEIGH',b:'60 HR',sub:'Historic 60th home run · Seattle · 2025',slug:'cal-raleigh-homers-60-on-a-fly-ball-to-right-field'},
+        {a:'YAMAMOTO',b:'COMPLETE GAME',sub:'World Series Game 2 · complete-game finish · 2025',slug:'yoshinobu-yamamoto-in-play-out-s-to-daulton-varsho-sglvmg'},
+        {a:'SPRINGER',b:'GAME 7',sub:'Go-ahead 3-run HR · ALCS Game 7 · 2025',slug:'field-view-george-springer-s-three-run-home-run'},
+        {a:'FREEMAN',b:'18TH INNING',sub:'World Series Game 3 walk-off HR · 2025',slug:'field-view-freddie-freeman-s-18th-inning-walk-off-hr'},
+        {a:'SOTO',b:'CLUTCH',sub:'Go-ahead home run · New York · 2026',slug:'juan-soto-comes-up-clutch-with-go-ahead-homer'}
+      ];
+      moments.forEach((_,i)=>{const d=document.createElement('i');d.className='signature-dot'+(i===0?' active':'');dots.appendChild(d)});
+      let current=0,timer=null,endTimer=null;
+      const embed=slug=>'https://www.mlb.com/unified-player/embed/'+slug+'?autoPlay=true&mute=true&useHTML=true&volume=0';
+      function render(){
+        clearTimeout(timer);clearTimeout(endTimer);end.classList.remove('show');
+        const m=moments[current];
+        counter.textContent='MOMENT '+String(current+1).padStart(2,'0')+' / 10';
+        title.innerHTML=m.a+'<br>'+m.b;
+        sub.textContent=m.sub;
+        progress.style.width=((current+1)*10)+'%';
+        [...dots.children].forEach((d,i)=>d.classList.toggle('active',i===current));
+        player.src='about:blank';
+        setTimeout(()=>{player.src=embed(m.slug)},80);
+        timer=setTimeout(next,MOMENT_MS);
+      }
+      function next(){
+        if(current===moments.length-1){
+          player.src='about:blank';
+          end.classList.add('show');
+          endTimer=setTimeout(()=>{end.classList.remove('show');current=0;render()},END_MS);
+        }else{current+=1;render()}
+      }
+      render();
+    })();
   </script>
 </body>
 </html>
