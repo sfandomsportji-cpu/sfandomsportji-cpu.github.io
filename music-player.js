@@ -18,7 +18,7 @@
 
   const audio=new Audio();
   audio.preload='metadata';
-  audio.volume=.12;
+  audio.volume=.22;
 
   const shell=document.createElement('aside');
   shell.className='sf-music-player';
