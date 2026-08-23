@@ -10,14 +10,17 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const progress=document.getElementById('signatureProgress');
   const end=document.getElementById('signatureEnd');
   const dots=document.getElementById('signatureDots');
+  const footLabel=document.querySelector('#signature-moments .signature-foot b');
   const MOMENT_MS=12000,END_MS=2400;
   const moments=[
     {a:'OHTANI',b:'50–50',sub:"MLB's first 50-HR / 50-SB season · 2024",start:0,gamePk:746011,exact:'shohei ohtani homers, creates the 50-50 club'},
-    {a:'FREEMAN',b:'WALK-OFF SLAM',sub:'World Series Game 1 · October 25, 2024',start:5.2,date:'2024-10-25',away:147,home:119,exact:"freddie freeman's walk-off grand slam"}
+    {a:'FREEMAN',b:'WALK-OFF SLAM',sub:'World Series Game 1 · October 25, 2024',start:5.2,date:'2024-10-25',away:147,home:119,exact:"freddie freeman's walk-off grand slam"},
+    {a:'JUDGE',b:'300 HR',sub:'Fastest to 300 career home runs · August 14, 2024',start:0.15,date:'2024-08-14',away:147,home:145,exact:"aaron judge's 300th career homer (43)"}
   ];
   const cache=new Map();
   let current=0,timer=null,endTimer=null,loadToken=0;
   const norm=s=>(s||'').trim().toLowerCase().replace(/[’‘]/g,"'").replace(/[–—]/g,'-').replace(/\s+/g,' ');
+  if(footLabel)footLabel.textContent=moments.length+' VERIFIED MOMENTS · AUTO PLAY';
   moments.forEach((_,i)=>{const d=document.createElement('i');d.className='signature-dot'+(i===0?' active':'');dots.appendChild(d)});
 
   function tags(item){return (item.keywordsAll||[]).map(x=>norm(x.displayName||x.value||x.name)).join(' | ')}
@@ -50,7 +53,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     if(!item)item=items.find(x=>norm(x.title).includes(norm(m.exact)));
     if(!item)throw new Error('exact in-game highlight not found');
     const k=tags(item);
-    if(i===1&&k&&!k.includes('in-game highlight'))throw new Error('not in-game highlight');
+    if(i>0&&k&&!k.includes('in-game highlight'))throw new Error('not in-game highlight');
     const playback=choosePlayback(item);
     if(!playback?.url)throw new Error('playback not found');
     const out={url:playback.url,start:m.start||0};
