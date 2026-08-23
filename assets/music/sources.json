@@ -1,1 +1,26 @@
-[]
+[
+  {
+    "file": "assets/music/sfandom-rnb-02-modern-rnb.mp3",
+    "title": "Modern R&B",
+    "artist": "-SunSet-",
+    "source_page": "https://pixabay.com/music/beats-modern-rampb-550856/",
+    "license": "Pixabay Content License",
+    "license_url": "https://pixabay.com/service/license-summary/"
+  },
+  {
+    "file": "assets/music/sfandom-rnb-03-private-thoughts.mp3",
+    "title": "Private Thoughts - Chill Late Night Trapsoul Instrumental",
+    "artist": "JayStacksBeats",
+    "source_page": "https://pixabay.com/music/funk-private-thoughts-chill-late-night-trapsoul-instrumental-462717/",
+    "license": "Pixabay Content License",
+    "license_url": "https://pixabay.com/service/license-summary/"
+  },
+  {
+    "file": "assets/music/sfandom-rnb-04-low-glow.mp3",
+    "title": "Low Glow - Warm R&B Chill for Relaxed Focus",
+    "artist": "OpenUseMusic",
+    "source_page": "https://pixabay.com/music/rnb-low-glow-warm-rampb-chill-for-relaxed-focus-460279/",
+    "license": "Pixabay Content License",
+    "license_url": "https://pixabay.com/service/license-summary/"
+  }
+]

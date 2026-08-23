@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Smooth Rnb Beat",
+    "page": "https://pixabay.com/music/beats-smooth-rnb-beat-409348/",
+    "http_status": 403,
+    "title_seen": "Just a moment...",
+    "body_preview": "pixabay.com\nPerforming security verification\n\nThis website uses a security service to protect against malicious bots. This page is displayed while the website verifies you are not a bot.\n\nRay ID: a2fd26c76865179d\nPerformance and Security by Cloudflare\nPrivacy",
+    "error": "Error: No Pixabay MP3 URL found in rendered page\n    at [stdin]:60:21"
+  },
+  {
+    "title": "Modern R&B",
+    "page": "https://pixabay.com/music/beats-modern-rampb-550856/",
+    "http_status": 200,
+    "title_seen": "Modern R&B | Royalty-free Music - Pixabay",
+    "body_preview": "Music\nExplore\nLog in\nJoin\nUpload\nModern R&B\n-SunSet-\n0:00\n2:30\nAuto-match your soundtrack to your footage with one-click Beat Sync.\nTry Canva Pro for free\nAI generated\nBackground music, Calm, Cool music. Free for use.\nComments\nThe community are waiting to hear from you!\nLog in or Join Pixabay to vie",
+    "mp3_url_found": true,
+    "download_bytes": 4801515
+  },
+  {
+    "title": "Private Thoughts - Chill Late Night Trapsoul Instrumental",
+    "page": "https://pixabay.com/music/funk-private-thoughts-chill-late-night-trapsoul-instrumental-462717/",
+    "http_status": 200,
+    "title_seen": "Private Thoughts - Chill Late Night Trapsoul Instrumental | Royalty-free Music - Pixabay",
+    "body_preview": "Music\nExplore\nLog in\nJoin\nUpload\nPrivate Thoughts - Chill Late Night Trapsoul Instrumental\nJayStacksBeats\n0:00\n2:40\nAuto-match your soundtrack to your footage with one-click Beat Sync.\nTry Canva Pro for free\nAI generated\nTrapsoul, Trap soul instrumental, Rnb instrumental music. Free for use.\nComment",
+    "mp3_url_found": true,
+    "download_bytes": 5119488
+  },
+  {
+    "title": "Low Glow - Warm R&B Chill for Relaxed Focus",
+    "page": "https://pixabay.com/music/rnb-low-glow-warm-rampb-chill-for-relaxed-focus-460279/",
+    "http_status": 200,
+    "title_seen": "Low Glow - Warm R&B Chill for Relaxed Focus | Royalty-free Music - Pixabay",
+    "body_preview": "Music\nExplore\nLog in\nJoin\nUpload\nLow Glow - Warm R&B Chill for Relaxed Focus\nOpenUseMusic\n0:00\n4:40\nAuto-match your soundtrack to your footage with one-click Beat Sync.\nTry Canva Pro for free\nAI generated\nSoulful, Chill, R b music. Free for use.\n1 comment\nThe community are waiting to hear from you!\n",
+    "mp3_url_found": true,
+    "download_bytes": 8944128
+  }
+]
