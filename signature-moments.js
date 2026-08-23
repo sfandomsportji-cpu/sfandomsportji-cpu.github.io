@@ -11,17 +11,17 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const end=document.getElementById('signatureEnd');
   const dots=document.getElementById('signatureDots');
   const footLabel=document.querySelector('#signature-moments .signature-foot b');
-  const MOMENT_MS=12000,END_MS=2400;
+  const MOMENT_MS=12000,END_MS=3200;
   const moments=[
     {a:'OHTANI',b:'50–50',sub:"MLB's first 50-HR / 50-SB season · 2024",start:0,gamePk:746011,exact:'shohei ohtani homers, creates the 50-50 club'},
     {a:'FREEMAN',b:'WALK-OFF SLAM',sub:'World Series Game 1 · October 25, 2024',start:5.2,date:'2024-10-25',away:147,home:119,exact:"freddie freeman's walk-off grand slam"},
     {a:'JUDGE',b:'300 HR',sub:'Fastest to 300 career home runs · August 14, 2024',start:0.15,date:'2024-08-14',away:147,home:145,exact:"aaron judge's 300th career homer (43)"},
-    {a:'MILLER',b:'FINAL OUT',sub:'Final game at Oakland Coliseum · September 26, 2024',start:0,date:'2024-09-26',away:140,home:133,exact:'mason miller closes out final oakland coliseum game'}
+    {a:'MILLER',b:'102+ MPH HEAT',sub:'Strikes out Volpe, Soto and Judge for the save · April 22, 2024',start:0,ms:40000,date:'2024-04-22',away:133,home:147,exact:'mason miller strikes out the side with 102+ mph heat'}
   ];
   const cache=new Map();
   let current=0,timer=null,endTimer=null,loadToken=0;
   const norm=s=>(s||'').trim().toLowerCase().replace(/[’‘]/g,"'").replace(/[–—]/g,'-').replace(/\s+/g,' ');
-  if(end)end.classList.remove('show');
+  if(end){end.classList.remove('show');end.style.transition='opacity 1.35s ease'}
   if(footLabel)footLabel.textContent=moments.length+' VERIFIED MOMENTS · AUTO PLAY';
   if(dots)dots.innerHTML='';
   moments.forEach((_,i)=>{const d=document.createElement('i');d.className='signature-dot'+(i===0?' active':'');dots.appendChild(d)});
@@ -75,7 +75,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     [...dots.children].forEach((d,n)=>d.classList.toggle('active',n===i));
   }
   function clearPlayer(){player.pause();player.removeAttribute('src');player.load()}
-  function scheduleNext(){clearTimeout(timer);timer=setTimeout(next,MOMENT_MS)}
+  function scheduleNext(){clearTimeout(timer);timer=setTimeout(next,moments[current].ms||MOMENT_MS)}
   async function render(){
     clearTimeout(timer);clearTimeout(endTimer);
     if(end)end.classList.remove('show');
@@ -106,7 +106,11 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     if(current===moments.length-1){
       clearPlayer();
       if(end)end.classList.add('show');
-      endTimer=setTimeout(()=>{if(end)end.classList.remove('show');current=0;render()},END_MS);
+      endTimer=setTimeout(()=>{
+        if(end)end.classList.remove('show');
+        current=0;
+        render();
+      },END_MS);
     }else{
       current+=1;
       render();
