@@ -6,18 +6,22 @@
     {src:'assets/music/sfandom-rnb-04-low-glow.mp3',title:'Low Glow',artist:'OpenUseMusic',source:'https://pixabay.com/music/rnb-low-glow-warm-rampb-chill-for-relaxed-focus-460279/'}
   ];
 
-  const K={index:'sfandomMusicIndex',time:'sfandomMusicTime',enabled:'sfandomMusicEnabled'};
+  // V2 keys intentionally reset the previous test-state once. After this,
+  // a visitor's MUSIC OFF choice is remembered normally.
+  const K={index:'sfandomMusicIndexV2',time:'sfandomMusicTimeV2',enabled:'sfandomMusicEnabledV2'};
   const get=(k,f)=>{try{const v=localStorage.getItem(k);return v===null?f:v}catch{return f}};
   const set=(k,v)=>{try{localStorage.setItem(k,String(v))}catch{}};
 
   let index=Math.max(0,Math.min(tracks.length-1,parseInt(get(K.index,'0'),10)||0));
   let enabled=get(K.enabled,'1')!=='0';
-  let unlocked=false;
   let restoreTime=Math.max(0,parseFloat(get(K.time,'0'))||0);
   let lastSave=0;
+  let userUnlocked=false;
 
   const audio=new Audio();
-  audio.preload='metadata';
+  audio.preload='auto';
+  audio.autoplay=true;
+  audio.playsInline=true;
   audio.volume=.22;
 
   const shell=document.createElement('aside');
@@ -48,6 +52,7 @@
     const playing=!audio.paused&&!audio.ended;
     shell.classList.toggle('is-playing',playing);
     shell.classList.toggle('is-off',!enabled);
+    shell.classList.toggle('is-blocked',enabled&&!playing&&!userUnlocked);
     toggle.textContent=playing?'Ⅱ':'▶';
     toggle.setAttribute('aria-label',playing?'Pause background music':'Play background music');
   }
@@ -58,29 +63,37 @@
     set(K.enabled,enabled?'1':'0');
   }
 
+  function tryPlay({gesture=false}={}){
+    if(!enabled)return Promise.resolve(false);
+    if(gesture)userUnlocked=true;
+    const p=audio.play();
+    if(!p||typeof p.then!=='function'){updateUI();return Promise.resolve(true)}
+    return p.then(()=>{updateUI();return true}).catch(()=>{updateUI();return false});
+  }
+
   function loadCurrent({resume=false,autoplay=false}={}){
     const t=tracks[index];
     audio.pause();
     audio.src=t.src;
     audio.load();
     updateUI();
-    const onMeta=()=>{
+
+    const restore=()=>{
       if(resume&&restoreTime>0&&Number.isFinite(audio.duration)&&restoreTime<audio.duration-2){
         try{audio.currentTime=restoreTime}catch{}
       }
       restoreTime=0;
-      if(autoplay&&enabled&&unlocked)audio.play().catch(()=>{});
+      if(autoplay&&enabled)tryPlay({gesture:userUnlocked});
       updateUI();
     };
-    audio.addEventListener('loadedmetadata',onMeta,{once:true});
+    audio.addEventListener('loadedmetadata',restore,{once:true});
   }
 
-  function play(){
-    unlocked=true;
+  function playFromControl(){
     enabled=true;
+    userUnlocked=true;
     set(K.enabled,'1');
-    if(!audio.src)loadCurrent({resume:true});
-    audio.play().catch(()=>{});
+    tryPlay({gesture:true});
     updateUI();
   }
 
@@ -98,15 +111,24 @@
     restoreTime=0;
     set(K.index,index);
     set(K.time,'0');
-    loadCurrent({autoplay:enabled&&unlocked});
+    loadCurrent({autoplay:enabled});
   }
 
-  shell.querySelector('[data-prev]').addEventListener('click',()=>{unlocked=true;move(-1)});
-  shell.querySelector('[data-next]').addEventListener('click',()=>{unlocked=true;move(1)});
-  toggle.addEventListener('click',()=>{
-    unlocked=true;
+  shell.querySelector('[data-prev]').addEventListener('click',e=>{
+    e.stopPropagation();
+    userUnlocked=true;
+    move(-1);
+  });
+  shell.querySelector('[data-next]').addEventListener('click',e=>{
+    e.stopPropagation();
+    userUnlocked=true;
+    move(1);
+  });
+  toggle.addEventListener('click',e=>{
+    e.stopPropagation();
+    userUnlocked=true;
     if(!audio.paused){pause();return}
-    play();
+    playFromControl();
   });
 
   audio.addEventListener('play',updateUI);
@@ -114,23 +136,30 @@
   audio.addEventListener('ended',()=>move(1));
   audio.addEventListener('error',()=>{
     shell.classList.add('has-error');
-    setTimeout(()=>{shell.classList.remove('has-error');move(1)},1800);
+    setTimeout(()=>{shell.classList.remove('has-error');move(1)},1200);
   });
   audio.addEventListener('timeupdate',()=>{
     const now=Date.now();
     if(now-lastSave>5000){lastSave=now;persist()}
   });
 
-  const unlock=()=>{
-    unlocked=true;
-    if(enabled)audio.play().catch(()=>{});
-    updateUI();
+  // Best-effort audible autoplay. Browsers that permit it start immediately.
+  // If a mobile browser blocks it, the visitor's very first interaction starts it.
+  const unlock=e=>{
+    if(!enabled)return;
+    if(e&&shell.contains(e.target))return;
+    userUnlocked=true;
+    tryPlay({gesture:true});
   };
-  document.addEventListener('pointerdown',unlock,{once:true,capture:true});
+  ['pointerdown','touchstart','click'].forEach(type=>document.addEventListener(type,unlock,{once:true,capture:true,passive:true}));
   document.addEventListener('keydown',unlock,{once:true,capture:true});
   window.addEventListener('pagehide',persist);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)persist()});
 
-  loadCurrent({resume:true});
+  loadCurrent({resume:true,autoplay:false});
+  // Try immediately on page load; allowed on desktop/sessions with autoplay permission.
+  tryPlay({gesture:false});
+  // Retry when media becomes playable. This also helps after internal page navigation.
+  audio.addEventListener('canplay',()=>{if(enabled&&!userUnlocked)tryPlay({gesture:false})},{once:true});
   updateUI();
 })();
