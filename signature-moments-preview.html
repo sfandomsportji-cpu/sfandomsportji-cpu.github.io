@@ -35,12 +35,14 @@
           </div>
         </div>
       </div>
-      <div class="footer"><div class="source"><b>AUTO PLAY STRUCTURE</b> · 10 moments · final video target 12–15 sec each</div><div class="dots" id="dots"></div></div>
+      <div class="footer"><div class="source"><b>AUTO PLAY STRUCTURE</b> · 10 moments · 12 sec each · approx. 2:02 total</div><div class="dots" id="dots"></div></div>
     </section>
-    <p class="hint"><strong>현재는 영상 없는 디자인 샘플입니다.</strong> 10개 프레임이 자동으로 순환하고 마지막에 SFANDOM 로고와 슬로건이 페이드인/아웃됩니다.</p>
+    <p class="hint"><strong>현재는 영상 없는 디자인 샘플입니다.</strong> 실제 메인 적용 기준으로 각 장면을 12초씩 보여주고, 10번째 장면 뒤에는 약 2초 동안 SFANDOM 로고와 슬로건이 페이드인/아웃됩니다.</p>
   </main>
   <script>
     (()=>{
+      const MOMENT_MS=12000;
+      const END_MS=2200;
       const moments=[
         ['OHTANI','50–50','Historic milestone · Official source selected'],
         ['FREEMAN','WALK-OFF SLAM','World Series · Iconic finish'],
@@ -58,7 +60,7 @@
       moments.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.className='dot';b.setAttribute('aria-label','Moment '+(i+1));b.addEventListener('click',()=>{current=i;render();restart()});dots.appendChild(b)});
       const render=()=>{[...dots.children].forEach((d,i)=>d.classList.toggle('active',i===current));counter.textContent='MOMENT '+String(current+1).padStart(2,'0')+' / 10';title.innerHTML=moments[current][0]+'<br>'+moments[current][1];sub.textContent=moments[current][2];progress.style.width=((current+1)*10)+'%'};
       const restart=()=>{clearTimeout(timer);clearTimeout(endTimer);endcard.classList.remove('show');schedule()};
-      const schedule=()=>{timer=setTimeout(()=>{if(current===moments.length-1){endcard.classList.add('show');endTimer=setTimeout(()=>{endcard.classList.remove('show');current=0;render();schedule()},2600)}else{current+=1;render();schedule()}},2600)};
+      const schedule=()=>{timer=setTimeout(()=>{if(current===moments.length-1){endcard.classList.add('show');endTimer=setTimeout(()=>{endcard.classList.remove('show');current=0;render();schedule()},END_MS)}else{current+=1;render();schedule()}},MOMENT_MS)};
       render();schedule();
     })();
   </script>
