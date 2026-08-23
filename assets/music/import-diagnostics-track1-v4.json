@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://pixabay.com/nl/music/beats-smooth-rnb-beat-409348/",
+    "status": 403,
+    "title": "Even geduld...",
+    "error": "Error: MP3 URL not found\n    at [stdin]:39:21"
+  },
+  {
+    "url": "https://pixabay.com/de/music/schl%C3%A4gt-smooth-rnb-beat-409348/",
+    "status": 200,
+    "title": "Smooth Rnb Beat | Lizenzfreie Musik - Pixabay",
+    "download_bytes": 4365165
+  }
+]
