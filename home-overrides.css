@@ -73,3 +73,7 @@
   #signature-moments{padding-bottom:32px!important}
   .promise{padding-top:48px!important}
 }
+
+/* Ji + KAIRO mascot duo: use a normal WebP asset to avoid broken embedded SVG data. */
+.home-kairo-art{background:#090909 url('assets/ji-kairo-duo.webp?v=20260825-0236') center/cover no-repeat!important}
+.home-kairo-art img{opacity:0!important;pointer-events:none!important}
