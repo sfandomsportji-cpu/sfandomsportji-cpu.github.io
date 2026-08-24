@@ -26,21 +26,22 @@
     }
   }
 
-  // V2 keys intentionally reset the previous test-state once. After this,
-  // a visitor's MUSIC OFF choice is remembered normally.
   const K={index:'sfandomMusicIndexV2',time:'sfandomMusicTimeV2',enabled:'sfandomMusicEnabledV2'};
   const get=(k,f)=>{try{const v=localStorage.getItem(k);return v===null?f:v}catch{return f}};
   const set=(k,v)=>{try{localStorage.setItem(k,String(v))}catch{}};
 
   let index=Math.max(0,Math.min(tracks.length-1,parseInt(get(K.index,'0'),10)||0));
-  let enabled=get(K.enabled,'1')!=='0';
+  // Music always starts OFF on a fresh page load. Playback begins only
+  // after the visitor explicitly presses the player button.
+  let enabled=false;
+  set(K.enabled,'0');
   let restoreTime=Math.max(0,parseFloat(get(K.time,'0'))||0);
   let lastSave=0;
   let userUnlocked=false;
 
   const audio=new Audio();
-  audio.preload='auto';
-  audio.autoplay=true;
+  audio.preload='metadata';
+  audio.autoplay=false;
   audio.playsInline=true;
   audio.volume=.22;
 
@@ -72,7 +73,7 @@
     const playing=!audio.paused&&!audio.ended;
     shell.classList.toggle('is-playing',playing);
     shell.classList.toggle('is-off',!enabled);
-    shell.classList.toggle('is-blocked',enabled&&!playing&&!userUnlocked);
+    shell.classList.remove('is-blocked');
     toggle.textContent=playing?'Ⅱ':'▶';
     toggle.setAttribute('aria-label',playing?'Pause background music':'Play background music');
   }
@@ -163,23 +164,11 @@
     if(now-lastSave>5000){lastSave=now;persist()}
   });
 
-  // Best-effort audible autoplay. Browsers that permit it start immediately.
-  // If a mobile browser blocks it, the visitor's very first interaction starts it.
-  const unlock=e=>{
-    if(!enabled)return;
-    if(e&&shell.contains(e.target))return;
-    userUnlocked=true;
-    tryPlay({gesture:true});
-  };
-  ['pointerdown','touchstart','click'].forEach(type=>document.addEventListener(type,unlock,{once:true,capture:true,passive:true}));
-  document.addEventListener('keydown',unlock,{once:true,capture:true});
   window.addEventListener('pagehide',persist);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)persist()});
 
+  // Load track metadata only. Never start playback on page load or on a
+  // generic click/touch/key event; the player button is the sole trigger.
   loadCurrent({resume:true,autoplay:false});
-  // Try immediately on page load; allowed on desktop/sessions with autoplay permission.
-  tryPlay({gesture:false});
-  // Retry when media becomes playable. This also helps after internal page navigation.
-  audio.addEventListener('canplay',()=>{if(enabled&&!userUnlocked)tryPlay({gesture:false})},{once:true});
   updateUI();
 })();
