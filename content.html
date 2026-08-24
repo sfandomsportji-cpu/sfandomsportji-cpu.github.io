@@ -3,75 +3,59 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="SFANDOM MLB Film Room — verified key plays, starters and KST game information." />
+  <meta name="description" content="SFANDOM MLB Daily — verified results, key plays and official MLB player images." />
   <meta name="theme-color" content="#050505" />
-  <title>MLB Film Room | SFANDOM</title>
+  <title>MLB Daily | SFANDOM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260823-filmroom" />
+  <link rel="stylesheet" href="styles.css?v=20260824-1702" />
+  <link rel="stylesheet" href="music-player.css?v=20260824-1702" />
   <style>
-    :root{--fr-red:#f02b32;--fr-red2:#a50912;--fr-bg:#050505;--fr-panel:#0a0a0b;--fr-line:#252527;--fr-muted:#919197;--fr-white:#f5f5f7}
-    body{background:var(--fr-bg);color:var(--fr-white)}
-    .filmroom{width:min(1180px,calc(100% - 40px));margin:0 auto;padding:86px 0 118px}
-    .filmroom-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:46px;align-items:end;padding-bottom:36px;border-bottom:1px solid var(--fr-line)}
-    .filmroom-kicker{display:flex;align-items:center;gap:10px;margin:0 0 16px;color:#d7d7da;font:800 .72rem/1 Inter,sans-serif;letter-spacing:.18em}
-    .filmroom-kicker i{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--fr-red);box-shadow:0 0 18px rgba(240,43,50,.72)}
-    .filmroom h1{margin:0;font:900 clamp(3rem,7.6vw,7.2rem)/.84 Inter,Noto Sans KR,sans-serif;letter-spacing:-.07em;text-transform:uppercase}
-    .filmroom h1 span{display:block;color:var(--fr-red)}
-    .filmroom-intro{margin:0 0 4px;color:#aaaab0;font-size:.96rem;line-height:1.85}
-    .verify-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-    .verify-row span{padding:8px 10px;border:1px solid #343438;background:#0b0b0d;color:#c7c7cb;font:700 .66rem/1 Inter,sans-serif;letter-spacing:.11em}
-
-    .film-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
-    .film-card{position:relative;min-height:420px;overflow:hidden;border:1px solid var(--fr-line);background:linear-gradient(145deg,#101012 0%,#070708 54%,#040404 100%);color:inherit;text-decoration:none;isolation:isolate;transition:border-color .25s ease,transform .25s ease}
-    .film-card:before{content:"";position:absolute;z-index:-2;right:-19%;top:-26%;width:58%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(240,43,50,.22) 0%,rgba(240,43,50,.07) 38%,transparent 70%)}
-    .film-card:after{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.76) 100%);pointer-events:none}
-    .film-card:hover{border-color:#5d2a2d;transform:translateY(-2px)}
-    .film-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 22px 0}
-    .film-num{font:900 .7rem/1 Inter,sans-serif;letter-spacing:.16em;color:#7e7e84}
-    .film-chip{padding:7px 9px;background:var(--fr-red);color:#fff;font:900 .62rem/1 Inter,sans-serif;letter-spacing:.13em}
-    .film-stage{padding:46px 22px 30px}
-    .film-teams{display:flex;align-items:flex-end;gap:10px;margin-bottom:20px;font-family:Inter,sans-serif}
-    .film-teams strong{font-size:clamp(2rem,4.4vw,4.15rem);line-height:.88;letter-spacing:-.065em}
-    .film-teams em{font-style:normal;font-size:.8rem;font-weight:900;color:#5f5f64;letter-spacing:.12em;margin-bottom:4px}
-    .film-score{display:flex;align-items:baseline;gap:9px;margin:0 0 8px;font-family:Inter,sans-serif}
-    .film-score b{font-size:clamp(3rem,5.8vw,5.5rem);line-height:.9;letter-spacing:-.06em}
-    .film-score span{font-size:.72rem;font-weight:800;letter-spacing:.12em;color:#88888e}
-    .film-story{margin:26px 0 0;font:900 clamp(1.45rem,2.7vw,2.4rem)/1.02 Inter,Noto Sans KR,sans-serif;letter-spacing:-.045em;text-transform:uppercase}
-    .film-story .red{color:var(--fr-red)}
-    .film-sub{margin:11px 0 0;color:#a6a6ab;font-size:.82rem;line-height:1.65}
-    .film-meta{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--fr-line);margin-top:auto}
-    .film-meta div{padding:16px 22px;min-width:0}
-    .film-meta div+div{border-left:1px solid var(--fr-line)}
-    .film-meta small{display:block;color:#696970;font:800 .58rem/1 Inter,sans-serif;letter-spacing:.14em;margin-bottom:7px}
-    .film-meta b{display:block;color:#d7d7da;font-size:.74rem;line-height:1.45;white-space:normal}
-    .film-watch{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 22px;border-top:1px solid var(--fr-line);background:#070708;font:900 .67rem/1 Inter,sans-serif;letter-spacing:.13em;color:#eee}
-    .film-watch span:last-child{color:var(--fr-red);font-size:1rem}
-    .film-progress{height:2px;background:#1a1a1c;overflow:hidden}
-    .film-progress i{display:block;height:100%;width:15%;background:linear-gradient(90deg,var(--fr-red2),var(--fr-red))}
-
-    .film-note{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px;padding-top:25px;border-top:1px solid var(--fr-line)}
-    .film-note p{margin:0;color:#77777d;font-size:.75rem;line-height:1.7}
-    .film-note strong{color:#b8b8bc}
-
-    @media(max-width:820px){
-      .filmroom{width:min(100% - 28px,1180px);padding:56px 0 86px}
-      .filmroom-head{grid-template-columns:1fr;gap:26px}
-      .film-grid{grid-template-columns:1fr}
-      .film-card{min-height:0}
-      .film-stage{padding-top:38px}
-      .film-note{grid-template-columns:1fr}
-    }
-    @media(max-width:480px){
-      .filmroom h1{font-size:clamp(2.7rem,15vw,4.5rem)}
-      .film-teams strong{font-size:2.65rem}
-      .film-score b{font-size:4.1rem}
-      .film-meta{grid-template-columns:1fr}
-      .film-meta div+div{border-left:0;border-top:1px solid var(--fr-line)}
-    }
+    :root{--red:#f02b32;--bg:#050505;--panel:#0a0a0b;--line:#262629;--muted:#8f8f96;--white:#f7f7f8}
+    body{background:var(--bg);color:var(--white)}
+    .daily{width:min(1240px,calc(100% - 40px));margin:0 auto;padding:82px 0 118px}
+    .daily-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:44px;align-items:end;padding-bottom:34px;border-bottom:1px solid var(--line)}
+    .daily-kicker{display:flex;align-items:center;gap:10px;margin:0 0 15px;color:#d5d5d8;font:800 .72rem/1 Inter,sans-serif;letter-spacing:.18em}
+    .daily-kicker i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 18px rgba(240,43,50,.7)}
+    .daily h1{margin:0;font:900 clamp(3rem,7.2vw,7rem)/.86 Inter,Noto Sans KR,sans-serif;letter-spacing:-.07em}
+    .daily h1 span{display:block;color:var(--red)}
+    .daily-intro{margin:0;color:#a7a7ad;font-size:.95rem;line-height:1.85}
+    .verify{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+    .verify span{padding:8px 10px;border:1px solid #343438;background:#0b0b0d;color:#c7c7cb;font:800 .64rem/1 Inter,sans-serif;letter-spacing:.1em}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
+    .card{position:relative;min-height:505px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,#111113 0%,#080809 54%,#040404 100%);color:inherit;text-decoration:none;isolation:isolate;transition:.25s ease}
+    .card:hover{transform:translateY(-2px);border-color:#653034}
+    .card:before{content:"";position:absolute;z-index:-2;right:-17%;top:-20%;width:64%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(240,43,50,.22),rgba(240,43,50,.04) 49%,transparent 72%)}
+    .player{position:absolute;z-index:-1;right:-2%;bottom:86px;width:47%;height:72%;object-fit:contain;object-position:center bottom;filter:contrast(1.05) saturate(.9);opacity:.96}
+    .shade{position:absolute;z-index:0;inset:0;background:linear-gradient(90deg,rgba(5,5,5,.98) 0%,rgba(5,5,5,.94) 41%,rgba(5,5,5,.26) 72%,rgba(5,5,5,.08) 100%);pointer-events:none}
+    .top,.stage,.meta,.watch{position:relative;z-index:1}
+    .top{display:flex;justify-content:space-between;align-items:center;padding:21px 22px 0}
+    .num{color:#818187;font:900 .68rem/1 Inter,sans-serif;letter-spacing:.17em}
+    .chip{padding:7px 9px;background:var(--red);font:900 .61rem/1 Inter,sans-serif;letter-spacing:.12em}
+    .stage{padding:44px 22px 32px;max-width:72%}
+    .teams{display:flex;align-items:flex-end;gap:10px;margin-bottom:18px;font-family:Inter,sans-serif}
+    .teams strong{font-size:clamp(2.3rem,4.5vw,4.4rem);line-height:.86;letter-spacing:-.06em}
+    .teams em{font-style:normal;color:#66666c;font-size:.72rem;font-weight:900;letter-spacing:.12em;margin-bottom:4px}
+    .score{display:flex;align-items:baseline;gap:9px;margin-bottom:22px;font-family:Inter,sans-serif}
+    .score b{font-size:clamp(3.4rem,6vw,5.8rem);line-height:.88;letter-spacing:-.06em}
+    .score span{color:#85858b;font-size:.7rem;font-weight:900;letter-spacing:.13em}
+    .story{margin:0;font:900 clamp(1.55rem,2.6vw,2.45rem)/1.02 Inter,Noto Sans KR,sans-serif;letter-spacing:-.045em;text-transform:uppercase}
+    .story .red{color:var(--red)}
+    .sub{margin:11px 0 0;color:#a6a6ab;font-size:.82rem;line-height:1.7;max-width:520px}
+    .hero-name{margin-top:20px;color:#fff;font:800 .7rem/1 Inter,sans-serif;letter-spacing:.12em}
+    .hero-name span{color:var(--red)}
+    .meta{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:auto;background:rgba(5,5,5,.74)}
+    .meta div{padding:16px 22px}.meta div+div{border-left:1px solid var(--line)}
+    .meta small{display:block;color:#707077;font:800 .58rem/1 Inter,sans-serif;letter-spacing:.13em;margin-bottom:7px}
+    .meta b{display:block;color:#d9d9dc;font-size:.74rem;line-height:1.5}
+    .watch{display:flex;align-items:center;justify-content:space-between;padding:15px 22px;border-top:1px solid var(--line);background:#070708;font:900 .65rem/1 Inter,sans-serif;letter-spacing:.13em}
+    .watch span:last-child{font-size:1rem;color:var(--red)}
+    .source-note{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px;padding-top:25px;border-top:1px solid var(--line)}
+    .source-note p{margin:0;color:#77777d;font-size:.75rem;line-height:1.7}.source-note strong{color:#b8b8bc}
+    @media(max-width:850px){.daily{width:min(100% - 28px,1240px);padding:58px 0 86px}.daily-head{grid-template-columns:1fr;gap:25px}.grid{grid-template-columns:1fr}.card{min-height:500px}.stage{max-width:70%}.player{width:50%}}
+    @media(max-width:520px){.daily h1{font-size:clamp(2.7rem,15vw,4.5rem)}.card{min-height:530px}.stage{max-width:100%;padding-top:36px;padding-bottom:170px}.player{width:62%;height:46%;bottom:110px;right:-7%;opacity:.78}.shade{background:linear-gradient(180deg,rgba(5,5,5,.98) 0%,rgba(5,5,5,.91) 52%,rgba(5,5,5,.45) 76%,rgba(5,5,5,.2) 100%)}.teams strong{font-size:2.7rem}.score b{font-size:4.2rem}.meta{grid-template-columns:1fr}.meta div+div{border-left:0;border-top:1px solid var(--line)}.source-note{grid-template-columns:1fr}}
   </style>
-  <link rel="stylesheet" href="music-player.css?v=20260824-0703" />
 </head>
 <body>
   <header class="site-header">
@@ -84,76 +68,88 @@
   </header>
 
   <main>
-    <section class="filmroom" aria-labelledby="filmroom-title">
-      <div class="filmroom-head">
+    <section class="daily" aria-labelledby="daily-title">
+      <div class="daily-head">
         <div>
-          <p class="filmroom-kicker"><i></i> 2026.08.23 KST · MLB DAILY</p>
-          <h1 id="filmroom-title">FILM<span>ROOM.</span></h1>
+          <p class="daily-kicker"><i></i> 2026.08.24 KST · MLB DAILY</p>
+          <h1 id="daily-title">TODAY'S<span>GAME.</span></h1>
         </div>
         <div>
-          <p class="filmroom-intro">길게 보여주지 않습니다. 오늘 경기에서 결과를 바꾼 장면과 가장 강한 장면만 고릅니다. 경기 정보는 MLB 공식 기록을 기준으로 검수합니다.</p>
-          <div class="verify-row" aria-label="검수 상태"><span>KST VERIFIED</span><span>STARTERS VERIFIED</span><span>LINEUPS VERIFIED</span></div>
+          <p class="daily-intro">오늘 끝난 경기만 다룹니다. 결과와 핵심 장면은 MLB 공식 기록으로 확인하고, 선수 이미지는 MLB 공식 선수 페이지의 이미지를 사용합니다.</p>
+          <div class="verify"><span>DATE VERIFIED</span><span>RESULT VERIFIED</span><span>PLAYER TEAM VERIFIED</span><span>MLB SOURCE</span></div>
         </div>
       </div>
 
-      <div class="film-grid">
-        <a class="film-card" href="https://www.mlb.com/bluejays/video/heliot-ramos-grounds-out-third-baseman-kazuma-okamoto-to-first-baseman-vl" target="_blank" rel="noopener noreferrer" aria-label="Toronto Blue Jays at New York Yankees official MLB key play">
-          <div class="film-top"><span class="film-num">FEATURE 01</span><span class="film-chip">PITCHING</span></div>
-          <div class="film-stage">
-            <div class="film-teams"><strong>TOR</strong><em>AT</em><strong>NYY</strong></div>
-            <div class="film-score"><b>4–3</b><span>FINAL</span></div>
-            <h2 class="film-story">CEASE TAKES <span class="red">NO-HIT BID</span><br>INTO THE 7TH</h2>
-            <p class="film-sub">Dylan Cease · 8 K · Toronto wins a one-run game in New York.</p>
+      <div class="grid">
+        <a class="card" href="https://www.mlb.com/news/ian-happ-hits-grand-slam-as-cubs-win-vs-mariners" target="_blank" rel="noopener noreferrer" aria-label="Chicago Cubs 19 Seattle Mariners 2 MLB recap">
+          <img class="player" src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_640%2Cq_auto%3Abest/v1/people/664023/headshot/67/current" alt="Ian Happ, Chicago Cubs" loading="lazy">
+          <div class="shade"></div>
+          <div class="top"><span class="num">FEATURE 01</span><span class="chip">GRAND SLAM</span></div>
+          <div class="stage">
+            <div class="teams"><strong>CHC</strong><em>AT</em><strong>SEA</strong></div>
+            <div class="score"><b>19–2</b><span>FINAL</span></div>
+            <h2 class="story">HAPP BREAKS IT OPEN<br>WITH A <span class="red">GRAND SLAM</span></h2>
+            <p class="sub">3회 Ian Happ의 만루홈런으로 흐름을 갈랐고, 컵스는 한 경기 두 개의 그랜드슬램을 포함해 19점을 폭발시켰습니다.</p>
+            <div class="hero-name">HERO · <span>IAN HAPP · CHICAGO CUBS</span></div>
           </div>
-          <div class="film-meta"><div><small>KST · BALLPARK</small><b>08.23 · 02:35<br>Yankee Stadium</b></div><div><small>STARTERS</small><b>Dylan Cease (RHP)<br>Ryan Weathers (LHP)</b></div></div>
-          <div class="film-watch"><span>OFFICIAL KEY PLAY · MLB.COM</span><span>↗</span></div><div class="film-progress"><i></i></div>
+          <div class="meta"><div><small>KST · BALLPARK</small><b>08.24 · T-Mobile Park<br>Seattle, WA</b></div><div><small>KEY DATA</small><b>Cubs 19 runs · Two grand slams<br>Happ opens the floodgates</b></div></div>
+          <div class="watch"><span>OFFICIAL RECAP · MLB.COM</span><span>↗</span></div>
         </a>
 
-        <a class="film-card" href="https://www.mlb.com/mariners/video/rand-arozarena-s-walk-off-two-run-homer-19" target="_blank" rel="noopener noreferrer" aria-label="Chicago Cubs at Seattle Mariners official MLB key play">
-          <div class="film-top"><span class="film-num">FEATURE 02</span><span class="film-chip">WALK-OFF</span></div>
-          <div class="film-stage">
-            <div class="film-teams"><strong>CHC</strong><em>AT</em><strong>SEA</strong></div>
-            <div class="film-score"><b>4–5</b><span>FINAL</span></div>
-            <h2 class="film-story">AROZARENA <span class="red">WALKS IT OFF</span><br>WITH A 2-RUN HR</h2>
-            <p class="film-sub">Bottom 9 · 2 outs · 403 ft · Seattle scores three in the ninth.</p>
+        <a class="card" href="https://www.mlb.com/news/fernando-tatis-jr-homers-twice-in-padres-win-over-twins" target="_blank" rel="noopener noreferrer" aria-label="Minnesota Twins 1 San Diego Padres 8 MLB recap">
+          <img class="player" src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_640%2Cq_auto%3Abest/v1/people/665487/headshot/67/current" alt="Fernando Tatis Jr., San Diego Padres" loading="lazy">
+          <div class="shade"></div>
+          <div class="top"><span class="num">FEATURE 02</span><span class="chip">2-HR GAME</span></div>
+          <div class="stage">
+            <div class="teams"><strong>MIN</strong><em>AT</em><strong>SD</strong></div>
+            <div class="score"><b>1–8</b><span>FINAL</span></div>
+            <h2 class="story">TATIS GOES 4-FOR-5<br>AND HITS <span class="red">TWO HOMERS</span></h2>
+            <p class="sub">Fernando Tatis Jr.가 4안타와 2홈런으로 경기 전체를 지배했습니다. 샌디에이고는 미네소타를 8–1로 꺾고 시리즈 스윕을 완성했습니다.</p>
+            <div class="hero-name">HERO · <span>FERNANDO TATIS JR. · SAN DIEGO PADRES</span></div>
           </div>
-          <div class="film-meta"><div><small>KST · BALLPARK</small><b>08.23 · 08:15<br>T-Mobile Park</b></div><div><small>STARTERS</small><b>David Peterson (LHP)<br>Kade Anderson (LHP)</b></div></div>
-          <div class="film-watch"><span>OFFICIAL KEY PLAY · MLB.COM</span><span>↗</span></div><div class="film-progress"><i></i></div>
+          <div class="meta"><div><small>KST · BALLPARK</small><b>08.24 · Petco Park<br>San Diego, CA</b></div><div><small>KEY DATA</small><b>Tatis 4-for-5 · 2 HR<br>Padres complete the sweep</b></div></div>
+          <div class="watch"><span>OFFICIAL RECAP · MLB.COM</span><span>↗</span></div>
         </a>
 
-        <a class="film-card" href="https://www.mlb.com/video/kyle-tucker-s-two-run-single-x6519" target="_blank" rel="noopener noreferrer" aria-label="Pittsburgh Pirates at Los Angeles Dodgers official MLB key play">
-          <div class="film-top"><span class="film-num">FEATURE 03</span><span class="film-chip">GO-AHEAD</span></div>
-          <div class="film-stage">
-            <div class="film-teams"><strong>PIT</strong><em>AT</em><strong>LAD</strong></div>
-            <div class="film-score"><b>3–4</b><span>FINAL</span></div>
-            <h2 class="film-story">TUCKER DELIVERS THE <span class="red">GO-AHEAD</span><br>2-RUN SINGLE</h2>
-            <p class="film-sub">Bottom 5 · Dodgers erase an early 3–0 deficit and take the lead.</p>
+        <a class="card" href="https://www.mlb.com/news/phillies-score-six-runs-in-ninth-inning-to-walk-off-cardinals" target="_blank" rel="noopener noreferrer" aria-label="St. Louis Cardinals 4 Philadelphia Phillies 6 MLB recap">
+          <img class="player" src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_640%2Cq_auto%3Abest/v1/people/656941/headshot/67/current" alt="Kyle Schwarber, Philadelphia Phillies" loading="lazy">
+          <div class="shade"></div>
+          <div class="top"><span class="num">FEATURE 03</span><span class="chip">WALK-OFF</span></div>
+          <div class="stage">
+            <div class="teams"><strong>STL</strong><em>AT</em><strong>PHI</strong></div>
+            <div class="score"><b>4–6</b><span>FINAL</span></div>
+            <h2 class="story">SIX-RUN 9TH.<br>SCHWARBER <span class="red">WALKS IT OFF</span></h2>
+            <p class="sub">필라델피아는 9회말 4점 열세를 뒤집었습니다. Kyle Schwarber가 459피트 끝내기 홈런으로 6득점 빅이닝을 완성했습니다.</p>
+            <div class="hero-name">HERO · <span>KYLE SCHWARBER · PHILADELPHIA PHILLIES</span></div>
           </div>
-          <div class="film-meta"><div><small>KST · BALLPARK</small><b>08.23 · 08:15<br>UNIQLO Field at Dodger Stadium</b></div><div><small>STARTERS</small><b>Jared Jones (RHP)<br>Tarik Skubal (LHP)</b></div></div>
-          <div class="film-watch"><span>OFFICIAL KEY PLAY · MLB.COM</span><span>↗</span></div><div class="film-progress"><i></i></div>
+          <div class="meta"><div><small>KST · BALLPARK</small><b>08.24 · Citizens Bank Park<br>Philadelphia, PA</b></div><div><small>KEY DATA</small><b>6 runs in the 9th · 459 ft HR<br>Phillies ninth straight win</b></div></div>
+          <div class="watch"><span>OFFICIAL RECAP · MLB.COM</span><span>↗</span></div>
         </a>
 
-        <a class="film-card" href="https://www.mlb.com/video/ryan-fernandez-in-play-run-s-to-bryce-harper" target="_blank" rel="noopener noreferrer" aria-label="St. Louis Cardinals at Philadelphia Phillies official MLB key play">
-          <div class="film-top"><span class="film-num">FEATURE 04</span><span class="film-chip">POWER</span></div>
-          <div class="film-stage">
-            <div class="film-teams"><strong>STL</strong><em>AT</em><strong>PHI</strong></div>
-            <div class="film-score"><b>3–12</b><span>FINAL</span></div>
-            <h2 class="film-story">HARPER CRUSHES A <span class="red">3-RUN HR</span><br>PAINTER DOMINATES</h2>
-            <p class="film-sub">Harper · 389 ft · Painter: 7 IP, 1 ER, 8 K in Philadelphia's rout.</p>
+        <a class="card" href="https://www.mlb.com/news/mauricio-dubon-michael-harris-ii-braves-win-2026-little-league-classic" target="_blank" rel="noopener noreferrer" aria-label="Atlanta Braves 4 Milwaukee Brewers 2 MLB recap">
+          <img class="player" src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_640%2Cq_auto%3Abest/v1/people/671739/headshot/67/current" alt="Michael Harris II, Atlanta Braves" loading="lazy">
+          <div class="shade"></div>
+          <div class="top"><span class="num">FEATURE 04</span><span class="chip">LATE POWER</span></div>
+          <div class="stage">
+            <div class="teams"><strong>ATL</strong><em>AT</em><strong>MIL</strong></div>
+            <div class="score"><b>4–2</b><span>FINAL</span></div>
+            <h2 class="story">HARRIS ADDS THE<br><span class="red">9TH-INNING HOMER</span></h2>
+            <p class="sub">Michael Harris II가 9회 솔로홈런으로 리드를 벌렸고, 애틀랜타가 Little League Classic에서 밀워키를 4–2로 제압했습니다.</p>
+            <div class="hero-name">HERO · <span>MICHAEL HARRIS II · ATLANTA BRAVES</span></div>
           </div>
-          <div class="film-meta"><div><small>KST · BALLPARK</small><b>08.23 · 07:05<br>Citizens Bank Park</b></div><div><small>STARTERS</small><b>Quinn Mathews (LHP)<br>Andrew Painter (RHP)</b></div></div>
-          <div class="film-watch"><span>OFFICIAL KEY PLAY · MLB.COM</span><span>↗</span></div><div class="film-progress"><i></i></div>
+          <div class="meta"><div><small>KST · BALLPARK</small><b>08.24 · Journey Bank Ballpark<br>Williamsport, PA</b></div><div><small>KEY DATA</small><b>Harris · 21st HR of season<br>Insurance run in the 9th</b></div></div>
+          <div class="watch"><span>OFFICIAL RECAP · MLB.COM</span><span>↗</span></div>
         </a>
       </div>
 
-      <div class="film-note">
-        <p><strong>EDITORIAL STANDARD</strong><br>날짜·경기 시작시간은 한국시간(KST) 기준. 구장, 실제 선발투수와 확정 선발 라인업을 공식 MLB 기록으로 검수한 경기만 게시합니다.</p>
-        <p><strong>VIDEO SOURCE</strong><br>현재 카드의 경기 장면은 MLB 공식 영상 페이지로 연결됩니다. SFANDOM 15초 편집본은 사용 권한이 확보된 영상 소스로 교체할 수 있도록 동일 구조로 설계했습니다.</p>
+      <div class="source-note">
+        <p><strong>SFANDOM EDITORIAL STANDARD</strong><br>게시 전 한국시간 날짜, 최종 스코어, 선수 소속팀, 핵심 플레이를 MLB 공식 기록과 교차 확인합니다. 생성형 이미지로 선수 얼굴을 대체하지 않습니다.</p>
+        <p><strong>IMAGE / DATA SOURCE</strong><br>선수 이미지는 MLB 공식 선수 이미지 CDN, 경기 결과와 핵심 장면은 MLB.com 공식 경기 기사 기준입니다. 각 카드를 누르면 해당 MLB 원문으로 이동합니다.</p>
       </div>
     </section>
   </main>
 
-  <footer class="footer-v2"><div><a class="brand" href="index.html"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a><p>스포츠 데이터 · 분석 · 예측</p></div><div class="footer-links"><a href="analysis.html">분석</a><a href="content.html">콘텐츠</a><a href="about.html">소개</a></div><small>© 2026 SFANDOM. ALL RIGHTS RESERVED.</small></footer>
-  <script src="music-player.js?v=20260824-0703"></script>
+  <footer class="footer"><div class="footer-brand"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></div><div class="footer-center">경기의 흐름을 읽습니다.</div><div class="footer-links"><a href="index.html">Home</a><a href="analysis.html">Analysis</a><a href="about.html">About</a></div></footer>
+  <script src="music-player.js?v=20260824-1702"></script>
 </body>
 </html>
