@@ -10,7 +10,21 @@
 }
 .home-kairo-art img{display:none!important}
 
+@media (max-width:900px){
+  /* Keep the mobile hero visually connected to the sports ticker. */
+  .hero-v2{padding-bottom:8px!important}
+  .hero-visual{padding-bottom:18px!important;gap:8px!important}
+  .hero-social{margin-top:0!important}
+  .hero-v2 + .ticker-v2{margin-top:0!important}
+}
+
 @media (max-width:620px){
+  /* Remove the oversized dead space under FOLLOW on phones. */
+  .hero-v2{padding-bottom:0!important}
+  .hero-visual{padding:26px 0 14px!important;gap:8px!important}
+  .hero-social{margin-top:0!important}
+  .ticker-track{padding-top:14px!important;padding-bottom:14px!important}
+
   /* Remove the oversized dead space between MEDIA LIBRARY and KAIRO PICK ARCHIVE. */
   .daily-read{padding-bottom:26px!important}
   .daily-read + .section{padding-top:30px!important}
