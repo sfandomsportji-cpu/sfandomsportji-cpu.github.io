@@ -74,6 +74,6 @@
   .promise{padding-top:48px!important}
 }
 
-/* Ji + KAIRO mascot duo: render the homepage source image directly. */
-.home-kairo-art{background:#090909!important}
-.home-kairo-art img{opacity:1!important;pointer-events:auto!important;width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;filter:none!important}
+/* Ji + KAIRO mascot duo: approved final artwork, direct asset, no SVG fallback. */
+.home-kairo-art{background:#090909 url('assets/ji-kairo-duo-approved-final.webp?v=20260825-0406') center/cover no-repeat!important}
+.home-kairo-art img{display:none!important}
