@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20260822-0451" />
   <link rel="stylesheet" href="home-overrides.css?v=20260823-1605" />
-  <link rel="stylesheet" href="daily-analysis.css?v=20260824-0831" />
+  <link rel="stylesheet" href="daily-analysis.css?v=20260824-1710" />
   <link rel="stylesheet" href="music-player.css?v=20260824-0703" />
 </head>
 <body class="home-v2">
@@ -69,40 +69,81 @@
     <section class="ticker ticker-v2" aria-label="Sports categories"><div class="ticker-track"><span>MLB</span><i>◆</i><span>NBA</span><i>◆</i><span>KBO</span><i>◆</i><span>KBL</span><i>◆</i><span>VOLLEYBALL</span><i>◆</i><span>FOOTBALL</span><i>◆</i><span>DATA FORECAST</span><i>◆</i><span>MATCH FOCUS</span></div></section>
 
     <section class="section daily-read reveal" aria-labelledby="daily-read-title">
-      <div class="daily-read-shell">
-        <div class="daily-read-head">
+      <div class="daily-feature-shell">
+        <div class="daily-feature-head">
           <div>
-            <p class="eyebrow">TODAY'S REAL MATCH</p>
-            <h2 id="daily-read-title">실제 경기를 보고,<br><span>이렇게 해석합니다.</span></h2>
+            <p class="eyebrow">NEXT MATCH FOCUS · MLB</p>
+            <h2 id="daily-read-title">사진으로 보고,<br><span>흐름으로 읽습니다.</span></h2>
           </div>
-          <div class="daily-read-meta">2026.08.24 KST<br>MLB · PIT @ LAD</div>
+          <div class="daily-feature-meta">2026.08.25 KST · 10:40<br>PHILADELPHIA @ SEATTLE</div>
         </div>
-        <div class="daily-match">
-          <div class="daily-match-main">
-            <div class="daily-league"><span>UNIQLO FIELD AT DODGER STADIUM</span><b>PRE-GAME LENS</b></div>
-            <div class="daily-teams">
-              <div class="daily-team"><small>PITTSBURGH PIRATES</small><strong>63–68</strong><span>최근 두 경기 모두 1점 차 패배</span></div>
-              <div class="daily-vs">AT</div>
-              <div class="daily-team"><small>LOS ANGELES DODGERS</small><strong>79–51</strong><span>NL West 1위 · 홈 시리즈 우세</span></div>
+
+        <div class="daily-matchup-stage">
+          <article class="daily-player-card phi" aria-label="Philadelphia Phillies starter Zack Wheeler">
+            <div class="daily-photo">
+              <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_700,q_auto:best/v1/people/554430/headshot/67/current" alt="Philadelphia Phillies pitcher Zack Wheeler" loading="lazy" decoding="async">
             </div>
-            <div class="daily-starters">
-              <div class="daily-starter"><small>PIT STARTER · RHP</small><b>Lake Bachar</b><span>1–2 · ERA 3.75 · 73 SO</span></div>
-              <div class="daily-starter"><small>LAD STARTER · LHP</small><b>Blake Snell</b><span>1–1 · ERA 3.60 · 20 SO</span></div>
-            </div>
-          </div>
-          <div class="daily-match-side">
-            <div>
-              <span class="daily-point-label">WHAT WE READ</span>
-              <div class="daily-point-list">
-                <div class="daily-point"><b>① 선발 이름값보다 현재 이닝 안정성</b><p>Snell의 최근 복귀 흐름과 실제 소화 이닝을 먼저 보고, 시즌 명성만으로 우위를 과대평가하지 않습니다.</p></div>
-                <div class="daily-point"><b>② 시리즈가 보여준 접전 구조</b><p>직전 두 경기가 5–4, 4–3의 1점 차였습니다. 전력 차이보다 후반 불펜과 한 번의 득점권 승부가 중요해진 흐름입니다.</p></div>
-                <div class="daily-point"><b>③ 강팀 승리보다 ‘어떻게 이기는가’</b><p>SFANDOM은 단순 승패보다 선발 우위가 실제 경기 중반까지 유지되는지, 접전이 후반 변동성을 키우는지를 함께 봅니다.</p></div>
+            <div class="daily-player-info">
+              <span class="daily-team-label">PHILADELPHIA PHILLIES · RHP</span>
+              <h3>ZACK <b>WHEELER</b></h3>
+              <div class="daily-stat-row">
+                <span><strong>10–4</strong>RECORD</span>
+                <span><strong>2.92</strong>ERA</span>
+                <span><strong>144</strong>SO</span>
               </div>
+              <p>시즌 전체 숫자는 강합니다. 다만 최근 5경기 ERA 6.64의 흔들림을 오늘 다시 끌어올릴 수 있는지가 핵심입니다.</p>
             </div>
-            <div class="daily-verdict"><small>SFANDOM VIEW</small><p>“다저스가 강하다”에서 끝내지 않습니다. 선발–중반 이닝–불펜으로 이어지는 경기 구조가 실제 우위와 맞는지를 확인한 뒤 접근합니다.</p></div>
+          </article>
+
+          <div class="daily-matchup-center" aria-label="Philadelphia Phillies at Seattle Mariners">
+            <small>MLB · T-MOBILE PARK</small>
+            <strong>PHI</strong>
+            <span>AT</span>
+            <strong>SEA</strong>
+            <p>73–58 · 62–69<br>10:40 KST</p>
+          </div>
+
+          <article class="daily-player-card sea" aria-label="Seattle Mariners starter Logan Gilbert">
+            <div class="daily-photo">
+              <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_700,q_auto:best/v1/people/669302/headshot/67/current" alt="Seattle Mariners pitcher Logan Gilbert" loading="lazy" decoding="async">
+            </div>
+            <div class="daily-player-info">
+              <span class="daily-team-label">SEATTLE MARINERS · RHP</span>
+              <h3>LOGAN <b>GILBERT</b></h3>
+              <div class="daily-stat-row">
+                <span><strong>10–7</strong>RECORD</span>
+                <span><strong>3.35</strong>ERA</span>
+                <span><strong>157</strong>SO</span>
+              </div>
+              <p>홈에서 6경기 연속 퀄리티스타트. 시애틀은 Gilbert가 중반 이닝까지 만들어주는 안정적인 경기 구조가 강점입니다.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="daily-story-grid">
+          <article class="daily-story">
+            <small>01 · COMEBACK POINT</small>
+            <h4>Wheeler, 시즌 성적보다 최근 흐름을 먼저 본다.</h4>
+            <p>10승과 2점대 ERA만 보면 충분히 강합니다. 그러나 최근 5경기 실점 흐름이 달라진 만큼, 초반 구위와 이닝당 출루 억제가 첫 체크포인트입니다.</p>
+          </article>
+          <article class="daily-story">
+            <small>02 · HOME RHYTHM</small>
+            <h4>Gilbert, 홈 6연속 QS가 만드는 안정감.</h4>
+            <p>단순 홈 이점보다 중요한 건 반복된 이닝 소화입니다. 경기 초반을 넘긴 뒤에도 같은 템포를 유지하는지가 시애틀 쪽 핵심입니다.</p>
+          </article>
+          <article class="daily-story daily-verdict-wide">
+            <small>SFANDOM READ</small>
+            <p>“필라델피아가 더 강하다”에서 끝내지 않습니다. 이 경기는 <b>반등이 필요한 에이스의 현재 구위</b>와 <b>홈에서 반복되고 있는 선발 안정성</b>이 충돌하는 경기입니다. 사진으로 선수를 먼저 보여주고, 숫자는 그 이야기를 설명하는 근거로 사용합니다.</p>
+          </article>
+        </div>
+
+        <div class="daily-source">
+          <span>DATA CHECK · MLB OFFICIAL · 2026.08.24 US DATE</span>
+          <div class="daily-source-links">
+            <a href="https://www.mlb.com/stories/game-preview/823097" target="_blank" rel="noopener noreferrer">GAME PREVIEW · MLB ↗</a>
+            <a href="https://www.mlb.com/phillies/roster/probable-pitchers" target="_blank" rel="noopener noreferrer">PITCHERS · MLB ↗</a>
           </div>
         </div>
-        <div class="daily-source"><span>DATA CHECK · MLB / 2026-08-23 US TIME</span><a href="https://www.mlb.com/dodgers/roster/starting-lineups/today" target="_blank" rel="noopener noreferrer">SOURCE · MLB ↗</a></div>
       </div>
     </section>
 
