@@ -3,153 +3,73 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="SFANDOM MLB Daily — verified results, key plays and official MLB player images." />
+  <meta name="description" content="SFANDOM Daily Content — 경기 결과, 핵심 장면과 데이터 해석." />
   <meta name="theme-color" content="#050505" />
-  <title>MLB Daily | SFANDOM</title>
+  <title>Content | SFANDOM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260824-1702" />
-  <link rel="stylesheet" href="music-player.css?v=20260824-1702" />
+  <link rel="stylesheet" href="styles.css?v=20260824-1808" />
+  <link rel="stylesheet" href="music-player.css?v=20260824-1808" />
   <style>
-    :root{--red:#f02b32;--bg:#050505;--panel:#0a0a0b;--line:#262629;--muted:#8f8f96;--white:#f7f7f8}
-    body{background:var(--bg);color:var(--white)}
-    .daily{width:min(1240px,calc(100% - 40px));margin:0 auto;padding:82px 0 118px}
-    .daily-head{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:44px;align-items:end;padding-bottom:34px;border-bottom:1px solid var(--line)}
-    .daily-kicker{display:flex;align-items:center;gap:10px;margin:0 0 15px;color:#d5d5d8;font:800 .72rem/1 Inter,sans-serif;letter-spacing:.18em}
-    .daily-kicker i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 18px rgba(240,43,50,.7)}
-    .daily h1{margin:0;font:900 clamp(3rem,7.2vw,7rem)/.86 Inter,Noto Sans KR,sans-serif;letter-spacing:-.07em}
-    .daily h1 span{display:block;color:var(--red)}
-    .daily-intro{margin:0;color:#a7a7ad;font-size:.95rem;line-height:1.85}
-    .verify{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-    .verify span{padding:8px 10px;border:1px solid #343438;background:#0b0b0d;color:#c7c7cb;font:800 .64rem/1 Inter,sans-serif;letter-spacing:.1em}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
-    .card{position:relative;min-height:505px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,#111113 0%,#080809 54%,#040404 100%);color:inherit;text-decoration:none;isolation:isolate;transition:.25s ease}
-    .card:hover{transform:translateY(-2px);border-color:#653034}
-    .card:before{content:"";position:absolute;z-index:-2;right:-17%;top:-20%;width:64%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(240,43,50,.22),rgba(240,43,50,.04) 49%,transparent 72%)}
-    .player{position:absolute;z-index:-1;right:-2%;bottom:86px;width:47%;height:72%;object-fit:contain;object-position:center bottom;filter:contrast(1.05) saturate(.9);opacity:.96}
-    .shade{position:absolute;z-index:0;inset:0;background:linear-gradient(90deg,rgba(5,5,5,.98) 0%,rgba(5,5,5,.94) 41%,rgba(5,5,5,.26) 72%,rgba(5,5,5,.08) 100%);pointer-events:none}
-    .top,.stage,.meta,.watch{position:relative;z-index:1}
-    .top{display:flex;justify-content:space-between;align-items:center;padding:21px 22px 0}
-    .num{color:#818187;font:900 .68rem/1 Inter,sans-serif;letter-spacing:.17em}
-    .chip{padding:7px 9px;background:var(--red);font:900 .61rem/1 Inter,sans-serif;letter-spacing:.12em}
-    .stage{padding:44px 22px 32px;max-width:72%}
-    .teams{display:flex;align-items:flex-end;gap:10px;margin-bottom:18px;font-family:Inter,sans-serif}
-    .teams strong{font-size:clamp(2.3rem,4.5vw,4.4rem);line-height:.86;letter-spacing:-.06em}
-    .teams em{font-style:normal;color:#66666c;font-size:.72rem;font-weight:900;letter-spacing:.12em;margin-bottom:4px}
-    .score{display:flex;align-items:baseline;gap:9px;margin-bottom:22px;font-family:Inter,sans-serif}
-    .score b{font-size:clamp(3.4rem,6vw,5.8rem);line-height:.88;letter-spacing:-.06em}
-    .score span{color:#85858b;font-size:.7rem;font-weight:900;letter-spacing:.13em}
-    .story{margin:0;font:900 clamp(1.55rem,2.6vw,2.45rem)/1.02 Inter,Noto Sans KR,sans-serif;letter-spacing:-.045em;text-transform:uppercase}
-    .story .red{color:var(--red)}
-    .sub{margin:11px 0 0;color:#a6a6ab;font-size:.82rem;line-height:1.7;max-width:520px}
-    .hero-name{margin-top:20px;color:#fff;font:800 .7rem/1 Inter,sans-serif;letter-spacing:.12em}
-    .hero-name span{color:var(--red)}
-    .meta{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-top:auto;background:rgba(5,5,5,.74)}
-    .meta div{padding:16px 22px}.meta div+div{border-left:1px solid var(--line)}
-    .meta small{display:block;color:#707077;font:800 .58rem/1 Inter,sans-serif;letter-spacing:.13em;margin-bottom:7px}
-    .meta b{display:block;color:#d9d9dc;font-size:.74rem;line-height:1.5}
-    .watch{display:flex;align-items:center;justify-content:space-between;padding:15px 22px;border-top:1px solid var(--line);background:#070708;font:900 .65rem/1 Inter,sans-serif;letter-spacing:.13em}
-    .watch span:last-child{font-size:1rem;color:var(--red)}
-    .source-note{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px;padding-top:25px;border-top:1px solid var(--line)}
-    .source-note p{margin:0;color:#77777d;font-size:.75rem;line-height:1.7}.source-note strong{color:#b8b8bc}
-    @media(max-width:850px){.daily{width:min(100% - 28px,1240px);padding:58px 0 86px}.daily-head{grid-template-columns:1fr;gap:25px}.grid{grid-template-columns:1fr}.card{min-height:500px}.stage{max-width:70%}.player{width:50%}}
-    @media(max-width:520px){.daily h1{font-size:clamp(2.7rem,15vw,4.5rem)}.card{min-height:530px}.stage{max-width:100%;padding-top:36px;padding-bottom:170px}.player{width:62%;height:46%;bottom:110px;right:-7%;opacity:.78}.shade{background:linear-gradient(180deg,rgba(5,5,5,.98) 0%,rgba(5,5,5,.91) 52%,rgba(5,5,5,.45) 76%,rgba(5,5,5,.2) 100%)}.teams strong{font-size:2.7rem}.score b{font-size:4.2rem}.meta{grid-template-columns:1fr}.meta div+div{border-left:0;border-top:1px solid var(--line)}.source-note{grid-template-columns:1fr}}
+    :root{--red:#ef2d2d;--bg:#050505;--panel:#0a0a0b;--panel2:#101011;--line:#29292c;--muted:#8f8f96;--text:#f5f5f6}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,'Noto Sans KR',sans-serif}
+    .content-page{width:min(1220px,calc(100% - 40px));margin:0 auto;padding:76px 0 104px}
+    .content-head{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);gap:48px;align-items:end;padding-bottom:30px;border-bottom:1px solid var(--line)}
+    .content-kicker{margin:0 0 13px;color:var(--red);font-size:.68rem;font-weight:900;letter-spacing:.18em}
+    .content-head h1{margin:0;font-size:clamp(3rem,6.1vw,6rem);line-height:.88;letter-spacing:-.065em}
+    .content-head h1 span{display:block;color:var(--red)}
+    .content-intro{margin:0;color:#aaaab0;font-size:.94rem;line-height:1.8}
+    .content-intro b{color:#fff}
+    .content-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+    .content-tags span{padding:7px 9px;border:1px solid #343438;background:#0c0c0d;color:#bcbcc1;font-size:.58rem;font-weight:900;letter-spacing:.11em}
+    .lead-story{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);min-height:470px;margin-top:28px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(125deg,#14090c 0%,#0b0b0c 48%,#070707 100%);color:#fff;text-decoration:none}
+    .lead-copy{position:relative;z-index:2;padding:34px;display:flex;flex-direction:column;justify-content:space-between}
+    .lead-top{display:flex;justify-content:space-between;gap:18px;color:#85858b;font-size:.61rem;font-weight:900;letter-spacing:.13em}.lead-top b{color:var(--red)}
+    .lead-score{margin:34px 0 16px;font-size:clamp(3.6rem,7vw,6.8rem);font-weight:900;line-height:.82;letter-spacing:-.07em}
+    .lead-match{margin:0 0 14px;color:#bdbdc2;font-size:.67rem;font-weight:900;letter-spacing:.14em}
+    .lead-copy h2{max-width:680px;margin:0;font-size:clamp(2rem,4vw,4rem);line-height:.95;letter-spacing:-.05em}.lead-copy h2 span{color:var(--red)}
+    .lead-copy p{max-width:650px;margin:16px 0 0;color:#b4b4b9;font-size:.88rem;line-height:1.72}
+    .lead-data{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}.lead-data span{padding:9px 11px;border:1px solid #333337;background:rgba(8,8,9,.78);font-size:.62rem;font-weight:800;color:#d4d4d7}
+    .lead-visual{position:relative;min-height:470px;overflow:hidden;background:radial-gradient(circle at 60% 34%,rgba(239,45,45,.16),transparent 38%)}
+    .lead-visual img{position:absolute;inset:18px 0 0;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:saturate(.9) contrast(1.04)}
+    .lead-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0b0b0c 0%,rgba(11,11,12,.05) 28%,rgba(5,5,5,.08) 66%,#080808 100%)}
+    .lead-hero{position:absolute;z-index:2;right:24px;bottom:24px;text-align:right}.lead-hero small{display:block;color:#77777d;font-size:.58rem;font-weight:900;letter-spacing:.14em;margin-bottom:5px}.lead-hero b{font-size:1rem;letter-spacing:-.02em}
+    .section-bar{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin:62px 0 18px}.section-bar p{margin:0;color:var(--red);font-size:.65rem;font-weight:900;letter-spacing:.16em}.section-bar h2{margin:7px 0 0;font-size:clamp(1.8rem,3.4vw,3.25rem);letter-spacing:-.045em}.section-bar span{max-width:390px;color:#7d7d83;font-size:.75rem;line-height:1.65;text-align:right}
+    .story-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.story-card{display:flex;flex-direction:column;min-height:430px;overflow:hidden;border:1px solid var(--line);background:var(--panel);color:#fff;text-decoration:none;transition:.2s ease}.story-card:hover{transform:translateY(-2px);border-color:#49494f}
+    .story-image{position:relative;height:220px;overflow:hidden;background:#0e0e10}.story-image img{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:saturate(.9) contrast(1.04)}.story-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,#0a0a0b 100%)}
+    .story-no{position:absolute;z-index:2;left:15px;top:15px;padding:7px 8px;background:#050505;border:1px solid #333337;color:#aaaab0;font-size:.55rem;font-weight:900;letter-spacing:.12em}
+    .story-body{display:flex;flex:1;flex-direction:column;padding:20px 20px 18px}.story-match{color:#7b7b81;font-size:.57rem;font-weight:900;letter-spacing:.13em}.story-score{margin:9px 0 13px;font-size:2.35rem;font-weight:900;line-height:1;letter-spacing:-.055em}.story-body h3{margin:0;font-size:1.25rem;line-height:1.12;letter-spacing:-.035em}.story-body h3 span{color:var(--red)}.story-body p{margin:11px 0 18px;color:#a3a3a8;font-size:.78rem;line-height:1.65}.story-data{margin-top:auto;padding-top:14px;border-top:1px solid #242427;color:#bcbcc1;font-size:.65rem;line-height:1.55}.story-link{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:#77777d;font-size:.57rem;font-weight:900;letter-spacing:.11em}.story-link b{color:var(--red);font-size:.9rem}
+    .editorial{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}.editorial article{padding:26px;border:1px solid var(--line);background:#09090a}.editorial small{display:block;margin-bottom:10px;color:var(--red);font-size:.6rem;font-weight:900;letter-spacing:.15em}.editorial h3{margin:0 0 9px;font-size:1.15rem;letter-spacing:-.025em}.editorial p{margin:0;color:#929298;font-size:.78rem;line-height:1.7}
+    .content-footer{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:72px;padding-top:26px;border-top:1px solid var(--line)}.content-footer-brand{font-size:1.35rem;font-weight:900;letter-spacing:.08em}.content-footer-brand em{font-style:normal;color:var(--red)}.content-footer-copy{margin-top:7px;color:#66666c;font-size:.64rem;letter-spacing:.08em}.content-footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:18px}.content-footer-links a{color:#8b8b91;text-decoration:none;font-size:.68rem;font-weight:800}.content-footer-links a:hover{color:#fff}
+    @media(max-width:920px){.content-head{grid-template-columns:1fr;gap:24px}.lead-story{grid-template-columns:1fr;min-height:0}.lead-visual{min-height:360px;order:-1}.lead-copy{padding:28px}.story-grid{grid-template-columns:1fr 1fr}.story-card:last-child{grid-column:1/-1}.section-bar{align-items:flex-start;flex-direction:column}.section-bar span{text-align:left}.editorial{grid-template-columns:1fr}}
+    @media(max-width:620px){.content-page{width:min(100% - 28px,1220px);padding:54px 0 88px}.content-head h1{font-size:3.5rem}.lead-visual{min-height:300px}.lead-copy{padding:22px}.lead-score{margin-top:24px}.lead-data{gap:6px}.story-grid{grid-template-columns:1fr}.story-card:last-child{grid-column:auto}.story-card{min-height:0}.story-image{height:210px}.content-footer{align-items:flex-start;flex-direction:column}.content-footer-links{justify-content:flex-start}.editorial article{padding:22px}}
   </style>
 </head>
 <body>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="SFANDOM home"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a>
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="analysis.html">분석</a>
-      <a class="active" href="content.html">콘텐츠</a>
-      <a href="about.html">소개</a>
-    </nav>
+    <nav class="nav" aria-label="Primary navigation"><a href="analysis.html">분석</a><a class="active" href="content.html">콘텐츠</a><a href="about.html">소개</a></nav>
   </header>
-
-  <main>
-    <section class="daily" aria-labelledby="daily-title">
-      <div class="daily-head">
-        <div>
-          <p class="daily-kicker"><i></i> 2026.08.24 KST · MLB DAILY</p>
-          <h1 id="daily-title">TODAY'S<span>GAME.</span></h1>
-        </div>
-        <div>
-          <p class="daily-intro">오늘 끝난 경기만 다룹니다. 결과와 핵심 장면은 MLB 공식 기록으로 확인하고, 선수 이미지는 MLB 공식 선수 페이지의 이미지를 사용합니다.</p>
-          <div class="verify"><span>DATE VERIFIED</span><span>RESULT VERIFIED</span><span>PLAYER TEAM VERIFIED</span><span>MLB SOURCE</span></div>
-        </div>
-      </div>
-
-      <div class="grid">
-        <a class="card" href="https://www.mlb.com/news/ian-happ-hits-grand-slam-as-cubs-win-vs-mariners" target="_blank" rel="noopener noreferrer" aria-label="Chicago Cubs 19 Seattle Mariners 2 MLB recap">
-          <img class="player" src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_640%2Cq_auto%3Abest/v1/people/664023/headshot/67/current" alt="Ian Happ, Chicago Cubs" loading="lazy">
-          <div class="shade"></div>
-          <div class="top"><span class="num">FEATURE 01</span><span class="chip">GRAND SLAM</span></div>
-          <div class="stage">
-            <div class="teams"><strong>CHC</strong><em>AT</em><strong>SEA</strong></div>
-            <div class="score"><b>19–2</b><span>FINAL</span></div>
-            <h2 class="story">HAPP BREAKS IT OPEN<br>WITH A <span class="red">GRAND SLAM</span></h2>
-            <p class="sub">3회 Ian Happ의 만루홈런으로 흐름을 갈랐고, 컵스는 한 경기 두 개의 그랜드슬램을 포함해 19점을 폭발시켰습니다.</p>
-            <div class="hero-name">HERO · <span>IAN HAPP · CHICAGO CUBS</span></div>
-          </div>
-          <div class="meta"><div><small>KST · BALLPARK</small><b>08.24 · T-Mobile Park<br>Seattle, WA</b></div><div><small>KEY DATA</small><b>Cubs 19 runs · Two grand slams<br>Happ opens the floodgates</b></div></div>
-          <div class="watch"><span>OFFICIAL RECAP · MLB.COM</span><span>↗</span></div>
-        </a>
-
-        <a class="card" href="https://www.mlb.com/news/fernando-tatis-jr-homers-twice-in-padres-win-over-twins" target="_blank" rel="noopener noreferrer" aria-label="Minnesota Twins 1 San Diego Padres 8 MLB recap">
-          <img class="player" src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_640%2Cq_auto%3Abest/v1/people/665487/headshot/67/current" alt="Fernando Tatis Jr., San Diego Padres" loading="lazy">
-          <div class="shade"></div>
-          <div class="top"><span class="num">FEATURE 02</span><span class="chip">2-HR GAME</span></div>
-          <div class="stage">
-            <div class="teams"><strong>MIN</strong><em>AT</em><strong>SD</strong></div>
-            <div class="score"><b>1–8</b><span>FINAL</span></div>
-            <h2 class="story">TATIS GOES 4-FOR-5<br>AND HITS <span class="red">TWO HOMERS</span></h2>
-            <p class="sub">Fernando Tatis Jr.가 4안타와 2홈런으로 경기 전체를 지배했습니다. 샌디에이고는 미네소타를 8–1로 꺾고 시리즈 스윕을 완성했습니다.</p>
-            <div class="hero-name">HERO · <span>FERNANDO TATIS JR. · SAN DIEGO PADRES</span></div>
-          </div>
-          <div class="meta"><div><small>KST · BALLPARK</small><b>08.24 · Petco Park<br>San Diego, CA</b></div><div><small>KEY DATA</small><b>Tatis 4-for-5 · 2 HR<br>Padres complete the sweep</b></div></div>
-          <div class="watch"><span>OFFICIAL RECAP · MLB.COM</span><span>↗</span></div>
-        </a>
-
-        <a class="card" href="https://www.mlb.com/news/phillies-score-six-runs-in-ninth-inning-to-walk-off-cardinals" target="_blank" rel="noopener noreferrer" aria-label="St. Louis Cardinals 4 Philadelphia Phillies 6 MLB recap">
-          <img class="player" src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_640%2Cq_auto%3Abest/v1/people/656941/headshot/67/current" alt="Kyle Schwarber, Philadelphia Phillies" loading="lazy">
-          <div class="shade"></div>
-          <div class="top"><span class="num">FEATURE 03</span><span class="chip">WALK-OFF</span></div>
-          <div class="stage">
-            <div class="teams"><strong>STL</strong><em>AT</em><strong>PHI</strong></div>
-            <div class="score"><b>4–6</b><span>FINAL</span></div>
-            <h2 class="story">SIX-RUN 9TH.<br>SCHWARBER <span class="red">WALKS IT OFF</span></h2>
-            <p class="sub">필라델피아는 9회말 4점 열세를 뒤집었습니다. Kyle Schwarber가 459피트 끝내기 홈런으로 6득점 빅이닝을 완성했습니다.</p>
-            <div class="hero-name">HERO · <span>KYLE SCHWARBER · PHILADELPHIA PHILLIES</span></div>
-          </div>
-          <div class="meta"><div><small>KST · BALLPARK</small><b>08.24 · Citizens Bank Park<br>Philadelphia, PA</b></div><div><small>KEY DATA</small><b>6 runs in the 9th · 459 ft HR<br>Phillies ninth straight win</b></div></div>
-          <div class="watch"><span>OFFICIAL RECAP · MLB.COM</span><span>↗</span></div>
-        </a>
-
-        <a class="card" href="https://www.mlb.com/news/mauricio-dubon-michael-harris-ii-braves-win-2026-little-league-classic" target="_blank" rel="noopener noreferrer" aria-label="Atlanta Braves 4 Milwaukee Brewers 2 MLB recap">
-          <img class="player" src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_640%2Cq_auto%3Abest/v1/people/671739/headshot/67/current" alt="Michael Harris II, Atlanta Braves" loading="lazy">
-          <div class="shade"></div>
-          <div class="top"><span class="num">FEATURE 04</span><span class="chip">LATE POWER</span></div>
-          <div class="stage">
-            <div class="teams"><strong>ATL</strong><em>AT</em><strong>MIL</strong></div>
-            <div class="score"><b>4–2</b><span>FINAL</span></div>
-            <h2 class="story">HARRIS ADDS THE<br><span class="red">9TH-INNING HOMER</span></h2>
-            <p class="sub">Michael Harris II가 9회 솔로홈런으로 리드를 벌렸고, 애틀랜타가 Little League Classic에서 밀워키를 4–2로 제압했습니다.</p>
-            <div class="hero-name">HERO · <span>MICHAEL HARRIS II · ATLANTA BRAVES</span></div>
-          </div>
-          <div class="meta"><div><small>KST · BALLPARK</small><b>08.24 · Journey Bank Ballpark<br>Williamsport, PA</b></div><div><small>KEY DATA</small><b>Harris · 21st HR of season<br>Insurance run in the 9th</b></div></div>
-          <div class="watch"><span>OFFICIAL RECAP · MLB.COM</span><span>↗</span></div>
-        </a>
-      </div>
-
-      <div class="source-note">
-        <p><strong>SFANDOM EDITORIAL STANDARD</strong><br>게시 전 한국시간 날짜, 최종 스코어, 선수 소속팀, 핵심 플레이를 MLB 공식 기록과 교차 확인합니다. 생성형 이미지로 선수 얼굴을 대체하지 않습니다.</p>
-        <p><strong>IMAGE / DATA SOURCE</strong><br>선수 이미지는 MLB 공식 선수 이미지 CDN, 경기 결과와 핵심 장면은 MLB.com 공식 경기 기사 기준입니다. 각 카드를 누르면 해당 MLB 원문으로 이동합니다.</p>
-      </div>
+  <main class="content-page">
+    <section class="content-head" aria-labelledby="content-title">
+      <div><p class="content-kicker">2026.08.24 KST · DAILY CONTENT</p><h1 id="content-title">오늘의 장면,<span>흐름으로 남깁니다.</span></h1></div>
+      <div><p class="content-intro">결과만 나열하지 않습니다. <b>경기의 흐름을 바꾼 장면과 숫자</b>를 고르고, 다음 분석에 남길 포인트를 짧고 명확하게 기록합니다.</p><div class="content-tags"><span>RESULT</span><span>KEY MOMENT</span><span>PLAYER</span><span>DATA</span></div></div>
     </section>
+    <a class="lead-story" href="https://www.mlb.com/news/phillies-score-six-runs-in-ninth-inning-to-walk-off-cardinals" target="_blank" rel="noopener noreferrer" aria-label="St. Louis Cardinals 4 Philadelphia Phillies 6 MLB recap">
+      <div class="lead-copy"><div><div class="lead-top"><span>LEAD STORY · MLB</span><b>WALK-OFF</b></div><div class="lead-score">4–6</div><p class="lead-match">ST. LOUIS @ PHILADELPHIA · FINAL</p><h2>9회 4점 차를 뒤집은<br><span>6득점 빅이닝.</span></h2><p>필라델피아는 마지막 이닝에 경기 전체의 흐름을 뒤집었습니다. Kyle Schwarber의 459피트 끝내기 홈런이 대역전극을 완성했습니다.</p><div class="lead-data"><span>6 RUNS · 9TH</span><span>459 FT WALK-OFF HR</span><span>PHI 9TH STRAIGHT WIN</span></div></div><div class="story-link"><span>OFFICIAL RECAP · MLB.COM</span><b>↗</b></div></div>
+      <div class="lead-visual"><img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_760%2Cq_auto%3Abest/v1/people/656941/headshot/67/current" alt="Kyle Schwarber, Philadelphia Phillies" loading="lazy"><div class="lead-hero"><small>KEY PLAYER</small><b>KYLE SCHWARBER</b></div></div>
+    </a>
+    <div class="section-bar"><div><p>MORE FROM TODAY</p><h2>오늘 놓치면 아쉬운 3장면</h2></div><span>스코어보다 경기의 방향을 바꾼 플레이와 선수에 집중합니다.</span></div>
+    <section class="story-grid" aria-label="오늘의 MLB 주요 장면">
+      <a class="story-card" href="https://www.mlb.com/news/ian-happ-hits-grand-slam-as-cubs-win-vs-mariners" target="_blank" rel="noopener noreferrer"><div class="story-image"><span class="story-no">01 · GRAND SLAM</span><img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_620%2Cq_auto%3Abest/v1/people/664023/headshot/67/current" alt="Ian Happ, Chicago Cubs" loading="lazy"></div><div class="story-body"><span class="story-match">CHICAGO CUBS @ SEATTLE · FINAL</span><div class="story-score">19–2</div><h3>Happ의 만루홈런,<br><span>경기를 완전히 열어젖혔다.</span></h3><p>3회 만루홈런 이후 컵스 타선이 폭발했습니다. 한 경기 두 개의 그랜드슬램과 19득점이라는 압도적 결과로 이어졌습니다.</p><div class="story-data">IAN HAPP · GRAND SLAM<br>CUBS · 19 RUNS</div><div class="story-link"><span>MLB RECAP</span><b>↗</b></div></div></a>
+      <a class="story-card" href="https://www.mlb.com/news/fernando-tatis-jr-homers-twice-in-padres-win-over-twins" target="_blank" rel="noopener noreferrer"><div class="story-image"><span class="story-no">02 · 2-HR GAME</span><img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_620%2Cq_auto%3Abest/v1/people/665487/headshot/67/current" alt="Fernando Tatis Jr., San Diego Padres" loading="lazy"></div><div class="story-body"><span class="story-match">MINNESOTA @ SAN DIEGO · FINAL</span><div class="story-score">1–8</div><h3>Tatis 4안타 2홈런,<br><span>한 선수가 경기의 온도를 바꿨다.</span></h3><p>Fernando Tatis Jr.가 5타수 4안타, 2홈런으로 경기 전체를 지배했습니다. 샌디에이고는 미네소타를 8–1로 꺾고 시리즈 스윕을 완성했습니다.</p><div class="story-data">TATIS · 4-FOR-5 · 2 HR<br>PADRES · SERIES SWEEP</div><div class="story-link"><span>MLB RECAP</span><b>↗</b></div></div></a>
+      <a class="story-card" href="https://www.mlb.com/news/mauricio-dubon-michael-harris-ii-braves-win-2026-little-league-classic" target="_blank" rel="noopener noreferrer"><div class="story-image"><span class="story-no">03 · LATE POWER</span><img src="https://img.mlbstatic.com/mlb-photos/image/upload/d_people%3Ageneric%3Aheadshot%3A67%3Acurrent.png/w_620%2Cq_auto%3Abest/v1/people/671739/headshot/67/current" alt="Michael Harris II, Atlanta Braves" loading="lazy"></div><div class="story-body"><span class="story-match">ATLANTA @ MILWAUKEE · FINAL</span><div class="story-score">4–2</div><h3>9회 추가 홈런,<br><span>한 점의 여유가 승리를 굳혔다.</span></h3><p>Michael Harris II의 9회 솔로홈런이 마지막 여유를 만들었습니다. 접전에서 추가점의 가치가 그대로 드러난 장면이었습니다.</p><div class="story-data">HARRIS II · 21ST HR<br>9TH-INNING INSURANCE RUN</div><div class="story-link"><span>MLB RECAP</span><b>↗</b></div></div></a>
+    </section>
+    <section class="editorial" aria-label="SFANDOM 콘텐츠 기준"><article><small>SFANDOM CONTENT STANDARD</small><h3>숫자는 결과가 아니라 설명의 근거로 사용합니다.</h3><p>최종 스코어, 핵심 플레이, 선수 소속과 한국시간 기준 날짜를 확인한 뒤 게시합니다. 중요한 것은 숫자를 많이 보여주는 것이 아니라, 그 숫자가 경기에서 무엇을 의미했는지 전달하는 것입니다.</p></article><article><small>DATA & SOURCE</small><h3>공식 기록을 기준으로 핵심 장면만 선별합니다.</h3><p>경기 결과와 핵심 플레이는 MLB 공식 기록 및 기사 기준으로 교차 확인하며, 각 콘텐츠에서 원문을 바로 확인할 수 있도록 연결합니다.</p></article></section>
+    <footer class="content-footer"><div><div class="content-footer-brand">SFANDOM<em>.</em></div><div class="content-footer-copy">SPORTS DATA · ANALYSIS · FORECAST</div></div><div class="content-footer-links"><a href="index.html">HOME</a><a href="analysis.html">ANALYSIS</a><a href="about.html">ABOUT</a><a href="terms.html">TERMS</a><a href="privacy.html">PRIVACY</a></div></footer>
   </main>
-
-  <footer class="footer"><div class="footer-brand"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></div><div class="footer-center">경기의 흐름을 읽습니다.</div><div class="footer-links"><a href="index.html">Home</a><a href="analysis.html">Analysis</a><a href="about.html">About</a></div></footer>
-  <script src="music-player.js?v=20260824-1702"></script>
+  <script src="music-player.js?v=20260824-1808"></script>
 </body>
 </html>
