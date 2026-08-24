@@ -6,15 +6,24 @@
     {src:'assets/music/sfandom-rnb-04-low-glow.mp3',title:'Low Glow',artist:'OpenUseMusic',source:'https://pixabay.com/music/rnb-low-glow-warm-rampb-chill-for-relaxed-focus-460279/'}
   ];
 
-  // Keep the legal page discoverable across every current SFANDOM page
+  // Keep legal pages discoverable across every current SFANDOM page
   // without duplicating footer markup maintenance.
   const footerLinks=document.querySelector('.footer-links');
-  if(footerLinks&&!footerLinks.querySelector('a[href="terms.html"]')){
-    const legal=document.createElement('a');
-    legal.href='terms.html';
-    legal.textContent='이용약관';
-    legal.setAttribute('aria-label','SFANDOM 이용약관');
-    footerLinks.appendChild(legal);
+  if(footerLinks){
+    if(!footerLinks.querySelector('a[href="terms.html"]')){
+      const terms=document.createElement('a');
+      terms.href='terms.html';
+      terms.textContent='이용약관';
+      terms.setAttribute('aria-label','SFANDOM 이용약관');
+      footerLinks.appendChild(terms);
+    }
+    if(!footerLinks.querySelector('a[href="privacy.html"]')){
+      const privacy=document.createElement('a');
+      privacy.href='privacy.html';
+      privacy.textContent='개인정보 처리방침';
+      privacy.setAttribute('aria-label','SFANDOM 개인정보 처리방침');
+      footerLinks.appendChild(privacy);
+    }
   }
 
   // V2 keys intentionally reset the previous test-state once. After this,
