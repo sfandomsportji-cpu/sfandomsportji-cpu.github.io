@@ -6,38 +6,23 @@
     {src:'assets/music/sfandom-rnb-04-low-glow.mp3',title:'Low Glow',artist:'OpenUseMusic',source:'https://pixabay.com/music/rnb-low-glow-warm-rampb-chill-for-relaxed-focus-460279/'}
   ];
 
-  // Keep legal pages discoverable across every current SFANDOM page
-  // without duplicating footer markup maintenance.
   const footerLinks=document.querySelector('.footer-links');
   if(footerLinks){
     if(!footerLinks.querySelector('a[href="terms.html"]')){
-      const terms=document.createElement('a');
-      terms.href='terms.html';
-      terms.textContent='이용약관';
-      terms.setAttribute('aria-label','SFANDOM 이용약관');
-      footerLinks.appendChild(terms);
+      const terms=document.createElement('a');terms.href='terms.html';terms.textContent='이용약관';footerLinks.appendChild(terms);
     }
     if(!footerLinks.querySelector('a[href="privacy.html"]')){
-      const privacy=document.createElement('a');
-      privacy.href='privacy.html';
-      privacy.textContent='개인정보 처리방침';
-      privacy.setAttribute('aria-label','SFANDOM 개인정보 처리방침');
-      footerLinks.appendChild(privacy);
+      const privacy=document.createElement('a');privacy.href='privacy.html';privacy.textContent='개인정보 처리방침';footerLinks.appendChild(privacy);
     }
   }
 
-  const K={index:'sfandomMusicIndexV2',time:'sfandomMusicTimeV2',enabled:'sfandomMusicEnabledV2'};
+  const K={index:'sfandomMusicIndexV3',time:'sfandomMusicTimeV3'};
   const get=(k,f)=>{try{const v=localStorage.getItem(k);return v===null?f:v}catch{return f}};
   const set=(k,v)=>{try{localStorage.setItem(k,String(v))}catch{}};
-
   let index=Math.max(0,Math.min(tracks.length-1,parseInt(get(K.index,'0'),10)||0));
-  // Music always starts OFF on a fresh page load. Playback begins only
-  // after the visitor explicitly presses the player button.
-  let enabled=false;
-  set(K.enabled,'0');
   let restoreTime=Math.max(0,parseFloat(get(K.time,'0'))||0);
+  let enabled=false;
   let lastSave=0;
-  let userUnlocked=false;
 
   const audio=new Audio();
   audio.preload='metadata';
@@ -47,128 +32,95 @@
 
   const shell=document.createElement('aside');
   shell.className='sf-music-player';
-  shell.setAttribute('aria-label','SFANDOM background music');
+  shell.setAttribute('aria-label','SFANDOM music player');
   shell.innerHTML=`
-    <div class="sf-music-now">
-      <span class="sf-music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      <span class="sf-music-copy"><b>SFANDOM RADIO</b><small id="sfMusicTitle">R&B</small></span>
+    <div class="sf-music-main">
+      <button type="button" class="sf-music-now" data-list aria-expanded="false" aria-label="Choose a track">
+        <span class="sf-music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="sf-music-copy"><b>SFANDOM RADIO</b><small id="sfMusicTitle">R&B</small></span>
+        <span class="sf-music-chevron" aria-hidden="true">⌃</span>
+      </button>
+      <div class="sf-music-actions">
+        <button type="button" data-prev aria-label="Previous track">‹</button>
+        <button type="button" class="sf-music-toggle" data-toggle aria-label="Play selected track">▶</button>
+        <button type="button" data-next aria-label="Next track">›</button>
+      </div>
     </div>
-    <div class="sf-music-actions">
-      <button type="button" data-prev aria-label="Previous track">‹</button>
-      <button type="button" class="sf-music-toggle" data-toggle aria-label="Play or pause background music">▶</button>
-      <button type="button" data-next aria-label="Next track">›</button>
-      <a data-source href="#" target="_blank" rel="noopener noreferrer" aria-label="Music source">↗</a>
+    <div class="sf-music-list" data-track-list hidden>
+      <div class="sf-music-list-head"><span>CHOOSE TRACK</span><small>재생할 음악을 선택하세요</small></div>
+      ${tracks.map((t,i)=>`<button type="button" data-track="${i}"><span>${String(i+1).padStart(2,'0')}</span><b>${t.title}</b><small>${t.artist}</small></button>`).join('')}
     </div>`;
   document.body.appendChild(shell);
 
   const titleEl=shell.querySelector('#sfMusicTitle');
   const toggle=shell.querySelector('[data-toggle]');
-  const source=shell.querySelector('[data-source]');
+  const listBtn=shell.querySelector('[data-list]');
+  const list=shell.querySelector('[data-track-list]');
 
   function updateUI(){
     const t=tracks[index];
-    titleEl.textContent=`${String(index+1).padStart(2,'0')}/${String(tracks.length).padStart(2,'0')} · ${t.title}`;
-    titleEl.title=`${t.title} — ${t.artist}`;
-    source.href=t.source;
     const playing=!audio.paused&&!audio.ended;
+    titleEl.textContent=`${String(index+1).padStart(2,'0')} · ${t.title}`;
+    titleEl.title=`${t.title} — ${t.artist}`;
     shell.classList.toggle('is-playing',playing);
-    shell.classList.toggle('is-off',!enabled);
-    shell.classList.remove('is-blocked');
+    shell.classList.toggle('is-open',!list.hidden);
     toggle.textContent=playing?'Ⅱ':'▶';
-    toggle.setAttribute('aria-label',playing?'Pause background music':'Play background music');
+    toggle.setAttribute('aria-label',playing?'Pause music':'Play selected track');
+    listBtn.setAttribute('aria-expanded',String(!list.hidden));
+    shell.querySelectorAll('[data-track]').forEach((btn,i)=>btn.classList.toggle('is-active',i===index));
   }
 
   function persist(){
     set(K.index,index);
     set(K.time,Number.isFinite(audio.currentTime)?audio.currentTime:0);
-    set(K.enabled,enabled?'1':'0');
   }
 
-  function tryPlay({gesture=false}={}){
-    if(!enabled)return Promise.resolve(false);
-    if(gesture)userUnlocked=true;
-    const p=audio.play();
-    if(!p||typeof p.then!=='function'){updateUI();return Promise.resolve(true)}
-    return p.then(()=>{updateUI();return true}).catch(()=>{updateUI();return false});
-  }
-
-  function loadCurrent({resume=false,autoplay=false}={}){
+  function loadCurrent({resume=false,play=false}={}){
     const t=tracks[index];
     audio.pause();
     audio.src=t.src;
     audio.load();
-    updateUI();
-
-    const restore=()=>{
-      if(resume&&restoreTime>0&&Number.isFinite(audio.duration)&&restoreTime<audio.duration-2){
-        try{audio.currentTime=restoreTime}catch{}
-      }
+    const ready=()=>{
+      if(resume&&restoreTime>0&&Number.isFinite(audio.duration)&&restoreTime<audio.duration-2){try{audio.currentTime=restoreTime}catch{}}
       restoreTime=0;
-      if(autoplay&&enabled)tryPlay({gesture:userUnlocked});
+      if(play){enabled=true;audio.play().catch(()=>{});}else{enabled=false;}
       updateUI();
     };
-    audio.addEventListener('loadedmetadata',restore,{once:true});
-  }
-
-  function playFromControl(){
-    enabled=true;
-    userUnlocked=true;
-    set(K.enabled,'1');
-    tryPlay({gesture:true});
+    audio.addEventListener('loadedmetadata',ready,{once:true});
     updateUI();
   }
 
-  function pause(){
-    enabled=false;
-    set(K.enabled,'0');
-    audio.pause();
+  function selectTrack(nextIndex){
     persist();
-    updateUI();
-  }
-
-  function move(delta){
-    persist();
-    index=(index+delta+tracks.length)%tracks.length;
+    index=nextIndex;
     restoreTime=0;
-    set(K.index,index);
-    set(K.time,'0');
-    loadCurrent({autoplay:enabled});
+    set(K.index,index);set(K.time,'0');
+    list.hidden=true;
+    loadCurrent({play:true});
   }
 
-  shell.querySelector('[data-prev]').addEventListener('click',e=>{
-    e.stopPropagation();
-    userUnlocked=true;
-    move(-1);
-  });
-  shell.querySelector('[data-next]').addEventListener('click',e=>{
-    e.stopPropagation();
-    userUnlocked=true;
-    move(1);
-  });
+  function move(delta){selectTrack((index+delta+tracks.length)%tracks.length)}
+
+  listBtn.addEventListener('click',e=>{e.stopPropagation();list.hidden=!list.hidden;updateUI()});
+  shell.querySelectorAll('[data-track]').forEach(btn=>btn.addEventListener('click',e=>{e.stopPropagation();selectTrack(parseInt(btn.dataset.track,10))}));
+  shell.querySelector('[data-prev]').addEventListener('click',e=>{e.stopPropagation();move(-1)});
+  shell.querySelector('[data-next]').addEventListener('click',e=>{e.stopPropagation();move(1)});
   toggle.addEventListener('click',e=>{
     e.stopPropagation();
-    userUnlocked=true;
-    if(!audio.paused){pause();return}
-    playFromControl();
+    if(!audio.src){loadCurrent({play:true});return}
+    if(audio.paused){enabled=true;audio.play().catch(()=>{});}else{enabled=false;audio.pause();}
+    updateUI();
   });
 
+  document.addEventListener('click',e=>{if(!shell.contains(e.target)&&!list.hidden){list.hidden=true;updateUI()}});
   audio.addEventListener('play',updateUI);
   audio.addEventListener('pause',updateUI);
   audio.addEventListener('ended',()=>move(1));
-  audio.addEventListener('error',()=>{
-    shell.classList.add('has-error');
-    setTimeout(()=>{shell.classList.remove('has-error');move(1)},1200);
-  });
-  audio.addEventListener('timeupdate',()=>{
-    const now=Date.now();
-    if(now-lastSave>5000){lastSave=now;persist()}
-  });
-
+  audio.addEventListener('timeupdate',()=>{const now=Date.now();if(now-lastSave>5000){lastSave=now;persist()}});
+  audio.addEventListener('error',()=>{shell.classList.add('has-error');setTimeout(()=>shell.classList.remove('has-error'),1200)});
   window.addEventListener('pagehide',persist);
   document.addEventListener('visibilitychange',()=>{if(document.hidden)persist()});
 
-  // Load track metadata only. Never start playback on page load or on a
-  // generic click/touch/key event; the player button is the sole trigger.
-  loadCurrent({resume:true,autoplay:false});
+  loadCurrent({resume:true,play:false});
   updateUI();
 })();
