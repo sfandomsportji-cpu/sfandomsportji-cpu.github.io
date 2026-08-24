@@ -6,6 +6,17 @@
     {src:'assets/music/sfandom-rnb-04-low-glow.mp3',title:'Low Glow',artist:'OpenUseMusic',source:'https://pixabay.com/music/rnb-low-glow-warm-rampb-chill-for-relaxed-focus-460279/'}
   ];
 
+  // Keep the legal page discoverable across every current SFANDOM page
+  // without duplicating footer markup maintenance.
+  const footerLinks=document.querySelector('.footer-links');
+  if(footerLinks&&!footerLinks.querySelector('a[href="terms.html"]')){
+    const legal=document.createElement('a');
+    legal.href='terms.html';
+    legal.textContent='이용약관';
+    legal.setAttribute('aria-label','SFANDOM 이용약관');
+    footerLinks.appendChild(legal);
+  }
+
   // V2 keys intentionally reset the previous test-state once. After this,
   // a visitor's MUSIC OFF choice is remembered normally.
   const K={index:'sfandomMusicIndexV2',time:'sfandomMusicTimeV2',enabled:'sfandomMusicEnabledV2'};
