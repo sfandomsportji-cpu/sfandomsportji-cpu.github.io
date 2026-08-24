@@ -1,13 +1,12 @@
 @import url('./home-overrides-base.css?v=20260825-0610');
 
-/* 2026-08-25 mobile cleanup: mascot clarity + archive spacing */
+/* 2026-08-25 mobile cleanup: vivid mascot + compact archive spacing */
 .home-kairo-art{
   background-color:#050505!important;
-  background-image:linear-gradient(rgba(0,0,0,.035),rgba(0,0,0,.035)),url('assets/ji-kairo-duo-approved-final.webp?v=20260825-0610')!important;
+  background-image:url('assets/ji-kairo-duo-vivid-420.avif?v=20260825-0616')!important;
   background-repeat:no-repeat!important;
   background-position:center!important;
-  background-size:min(360px,82%) auto!important;
-  background-blend-mode:multiply!important;
+  background-size:min(390px,86%) auto!important;
 }
 .home-kairo-art img{display:none!important}
 
@@ -16,9 +15,9 @@
   .daily-read{padding-bottom:26px!important}
   .daily-read + .section{padding-top:30px!important}
 
-  /* Keep the approved mascot closer to its source resolution so it does not look washed out. */
+  /* Show the sharper mascot close to its native size. */
   .home-kairo{padding-top:34px!important;padding-bottom:48px!important;gap:26px!important}
-  .home-kairo-art{height:370px!important;min-height:0!important;background-size:min(330px,84vw) auto!important}
+  .home-kairo-art{height:370px!important;min-height:0!important;background-size:min(350px,88vw) auto!important}
   .home-kairo-art span{z-index:2!important;color:#a6a6aa!important}
 
   /* Improve legibility of muted mobile labels without changing the dark theme. */
