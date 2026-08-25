@@ -1,4 +1,11 @@
 (() => {
+  const exitCta = document.querySelector('.live-header-cta');
+  if (exitCta) {
+    exitCta.href = 'index.html';
+    exitCta.textContent = '나가기 ↗';
+    exitCta.setAttribute('aria-label', 'SFANDOM LIVE 나가기');
+  }
+
   const STORAGE_KEY = 'sfandom_live_messages_v01';
   const NICK_KEY = 'sfandom_live_nickname_v01';
   const CLIENT_KEY = 'sfandom_live_client_v01';
