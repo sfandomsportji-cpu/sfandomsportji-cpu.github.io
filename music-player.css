@@ -99,7 +99,7 @@
   /* Footer index baseline remains explicit and centered. */
   body.home-v2 .footer-v2{align-items:center!important;text-align:center!important}
   body.home-v2 .footer-v2>small::before{
-    content:"SFANDOM VIEW INDEX · 80,000 · BASE 80,000";
+    content:"SFANDOM VIEW INDEX · 84,512 · BASE 80,000";
     display:block;
     margin-bottom:7px;
     color:#a8a8ad;
@@ -113,12 +113,13 @@
 
 /* Homepage view index: editorial index, intentionally distinct from raw visitor analytics. */
 body.home-v2 .hero-v2::after{
-  content:"VIEW INDEX\A 80,000";
+  content:"VIEW INDEX\A 84,512";
   white-space:pre;
   position:absolute;
   z-index:8;
   top:104px;
-  right:24px;
+  left:24px;
+  right:auto;
   min-width:126px;
   padding:10px 13px 9px;
   border:1px solid rgba(255,255,255,.16);
@@ -126,7 +127,7 @@ body.home-v2 .hero-v2::after{
   background:rgba(7,7,7,.78);
   backdrop-filter:blur(10px);
   color:#8f8f94;
-  text-align:right;
+  text-align:left;
   font-size:.56rem;
   font-weight:900;
   line-height:1.25;
@@ -137,9 +138,10 @@ body.home-v2 .hero-v2::after{
 body.home-v2 .hero-v2::after{color:#8f8f94}
 @media (max-width:620px){
   body.home-v2 .hero-v2::after{
-    top:calc((100vw - 32px) * .5625 - 44px);
-    right:12px;
-    min-width:108px;
+    top:calc((100vw - 32px) * .5625 + 30px);
+    left:0;
+    right:auto;
+    min-width:104px;
     padding:8px 10px 7px;
     font-size:.5rem;
     line-height:1.2;
