@@ -129,7 +129,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     pickSection.innerHTML=`
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:28px;">
         <div><p class="eyebrow">SFANDOM & KAIRO PICK ARCHIVE · 2026.08.25 KST</p><h2 id="pick-result-title" style="margin:8px 0 0;font-size:clamp(2rem,4vw,4.2rem);line-height:.96;letter-spacing:-.05em;">결과까지 남겨야,<br><span style="color:#ef2d2d;">기록이 됩니다.</span></h2></div>
-        <p style="max-width:460px;margin:0;color:#a7a7a7;line-height:1.75;">맞은 픽도, 빗나간 픽도 같은 기준으로 기록합니다. 오늘 탬파베이 단통은 4–1로 깔끔하게 적중했습니다.</p>
+        <p style="max-width:460px;margin:0;color:#a7a7a7;line-height:1.75;">적중만 골라 보여주지 않습니다. 기준선에서 얼마나 벗어났는지까지 그대로 기록합니다.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
         <a href="archive/picks/#pick-001" aria-label="픽 1 말라가 데포르티보 오버 2.5 복기" style="display:block;padding:28px;border:1px solid #493438;background:linear-gradient(145deg,#12090b,#080809 72%);text-decoration:none;color:#fff;">
@@ -139,22 +139,15 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
           <div style="display:flex;justify-content:space-between;gap:18px;margin:20px 0;padding:18px 0;border-top:1px solid #332b2d;border-bottom:1px solid #332b2d;"><span style="color:#999da5;">FINAL TOTAL</span><strong style="font-size:1.55rem;">2 GOALS</strong></div>
           <p style="margin:0;color:#b5b7bd;line-height:1.75;"><b style="color:#fff;">0.5 차이로 미적중.</b> 2.5 기준선에서 단 반 골이 부족했습니다. 아쉬운 결과까지 그대로 남기며, 관리 중인 누적 공개 픽 기준 <b style="color:#f0cf57;">적중률 90%를 유지</b>합니다.</p>
         </a>
-        <a href="archive/picks/#pick-002" aria-label="픽 2 탬파베이 승 적중" style="display:block;overflow:hidden;border:1px solid #2f7651;background:linear-gradient(145deg,#07160f,#080809 76%);text-decoration:none;color:#fff;">
-          <div style="position:relative;height:245px;overflow:hidden;background:#081019;">
-            <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_900,q_auto:best/v1/people/656876/headshot/67/current" alt="탬파베이 선발 드류 라스무센" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:50% 12%;filter:saturate(.9) contrast(1.04);">
-            <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,10,8,.95) 0%,rgba(4,10,8,.42) 52%,rgba(4,10,8,.12) 100%);"></div>
-            <div style="position:absolute;left:22px;top:20px;padding:7px 9px;border:1px solid #2f7651;background:rgba(7,22,15,.88);color:#70e6a5;font-size:.64rem;font-weight:900;letter-spacing:.14em;">HIT ✓ · MLB</div>
-            <div style="position:absolute;left:22px;bottom:20px;"><small style="display:block;color:#8fc3a8;font-size:.62rem;font-weight:900;letter-spacing:.12em;">FINAL SCORE</small><strong style="display:block;margin-top:4px;font-size:clamp(2.7rem,6vw,5rem);line-height:.88;letter-spacing:-.065em;">TB 4–1 DET</strong></div>
-          </div>
-          <div style="padding:26px 28px 28px;">
-            <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;"><span style="padding:7px 9px;border:1px solid #2f7651;color:#70e6a5;font-size:.62rem;font-weight:900;letter-spacing:.12em;">PICK 02 · RESULT</span><b style="color:#70e6a5;font-size:.72rem;letter-spacing:.1em;">TAMPA BAY WIN ✓</b></div>
-            <p style="margin:24px 0 7px;color:#777b84;font-size:.68rem;font-weight:900;letter-spacing:.1em;">RASMUSSEN · 6 IP · 3 H · 1 ER · 0 BB · 5 K</p>
-            <h3 style="margin:0;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.055em;">ML · SINGLE HIT</h3>
-            <p style="margin:18px 0 0;color:#b5b7bd;line-height:1.75;">선발 매치업에서 본 우위가 그대로 경기 구조로 연결됐습니다. <b style="color:#fff;">라스무센이 6이닝 1실점으로 버티고, 탬파가 1회부터 잡은 리드를 끝까지 지켰습니다.</b> 단통 한 방향, 시원하게 적중.</p>
-          </div>
+        <a href="analysis.html" aria-label="픽 2 탬파베이 승" style="display:block;padding:28px;border:1px solid #303943;background:linear-gradient(145deg,#091019,#080809 72%);text-decoration:none;color:#fff;">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;"><span style="padding:7px 9px;border:1px solid #31475f;color:#77bfff;font-size:.62rem;font-weight:900;letter-spacing:.12em;">PICK 02 · MLB</span><b style="color:#77bfff;font-size:.72rem;letter-spacing:.1em;">CURRENT</b></div>
+          <p style="margin:26px 0 7px;color:#777b84;font-size:.68rem;font-weight:900;letter-spacing:.1em;">TAMPA BAY RAYS @ DETROIT TIGERS</p>
+          <h3 style="margin:0;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.055em;">TAMPA BAY WIN</h3>
+          <div style="display:flex;justify-content:space-between;gap:18px;margin:20px 0;padding:18px 0;border-top:1px solid #29313a;border-bottom:1px solid #29313a;"><span style="color:#999da5;">MARKET</span><strong style="font-size:1.55rem;">ML · SINGLE</strong></div>
+          <p style="margin:0;color:#b5b7bd;line-height:1.75;">오늘은 여러 시장을 섞지 않고 <b style="color:#fff;">탬파베이 승 한 방향</b>으로만 선택했습니다. 상세 근거와 실제 게시 시각은 분석 페이지에 그대로 남깁니다.</p>
         </a>
       </div>
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid #222;"><span style="margin-right:8px;color:#777;font-size:.62rem;font-weight:900;letter-spacing:.14em;">PICK ARCHIVE</span><a href="archive/picks/#pick-001" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #ef2d2d;background:#17090b;color:#fff;text-decoration:none;font-size:.72rem;font-weight:900;">01</a><a href="archive/picks/#pick-002" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #2f7651;background:#07160f;color:#70e6a5;text-decoration:none;font-size:.72rem;font-weight:900;">02</a><a href="archive/picks/" style="margin-left:5px;color:#aaa;text-decoration:none;font-size:.66rem;font-weight:800;letter-spacing:.08em;">전체 기록 →</a></div>`;
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid #222;"><span style="margin-right:8px;color:#777;font-size:.62rem;font-weight:900;letter-spacing:.14em;">PICK ARCHIVE</span><a href="archive/picks/#pick-001" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #ef2d2d;background:#17090b;color:#fff;text-decoration:none;font-size:.72rem;font-weight:900;">01</a><a href="archive/picks/#pick-002" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.72rem;font-weight:900;">02</a><a href="archive/picks/" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.72rem;font-weight:900;">03</a><a href="archive/picks/" style="margin-left:5px;color:#aaa;text-decoration:none;font-size:.66rem;font-weight:800;letter-spacing:.08em;">전체 기록 →</a></div>`;
   }
 
   const mediaRow=document.querySelector('[aria-label="미디어 기록 바로가기"]');
