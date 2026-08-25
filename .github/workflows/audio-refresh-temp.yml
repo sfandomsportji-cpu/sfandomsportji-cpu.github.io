@@ -1,48 +1,85 @@
-name: Temporary browser audio probe
+name: Temporary validated audio build
 
 on:
   push:
     branches: [audio-refresh-20260825]
 
 jobs:
-  probe:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Install browser probe
+        with:
+          fetch-depth: 0
+
+      - name: Install audio validation tools
         run: |
-          python -m pip install playwright
+          python -m pip install playwright mutagen
           python -m playwright install --with-deps chromium
-      - name: Resolve confirmed track
+
+      - name: Resolve download and validate five tracks
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
-          import re
+          import json, re, urllib.request
+          from pathlib import Path
           from html import unescape
+          from mutagen.mp3 import MP3
           from playwright.sync_api import sync_playwright
 
-          url='https://pixabay.com/music/funk-upbeat-danceable-funky-indie-pop-energetic-dance-funky-catchy-473869/'
-          with sync_playwright() as p:
-              browser=p.chromium.launch(headless=True)
-              page=browser.new_page(
-                  user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
-                  locale='en-US'
-              )
-              response=page.goto(url,wait_until='domcontentloaded',timeout=90000)
-              print('HTTP_STATUS', response.status if response else None)
-              page.wait_for_timeout(5000)
+          tracks = [
+            {
+              'file':'assets/music/sfandom-energy-01-danceable-funky-indie-pop.mp3',
+              'title':'Danceable Funky Indie Pop',
+              'full_title':'Upbeat Danceable Funky Indie Pop (Energetic Dance Funky Catchy)',
+              'artist':'Sound_For_You',
+              'source':'https://pixabay.com/music/funk-upbeat-danceable-funky-indie-pop-energetic-dance-funky-catchy-473869/'
+            },
+            {
+              'file':'assets/music/sfandom-energy-02-indie-pop-rock-funky-guitar.mp3',
+              'title':'Indie Pop Rock Funky Guitar',
+              'full_title':'Indie Pop Rock Funky Guitar (Fun Happy Youthful Catchy Indie Rock)',
+              'artist':'Sound_For_You',
+              'source':'https://pixabay.com/music/rock-indie-pop-rock-funky-guitar-fun-happy-youthful-catchy-indie-rock-475294/'
+            },
+            {
+              'file':'assets/music/sfandom-energy-03-uplifting-fun-indie-pop-rock.mp3',
+              'title':'Uplifting Fun Indie Pop Rock',
+              'full_title':'Uplifting Fun Indie Pop Rock (Funky Guitar Riff Fun Youthful Vibe)',
+              'artist':'Sound_For_You',
+              'source':'https://pixabay.com/music/acoustic-group-uplifting-fun-indie-pop-rock-funky-guitar-riff-fun-youthful-vibe-484929/'
+            },
+            {
+              'file':'assets/music/sfandom-energy-04-upbeat-party-pop.mp3',
+              'title':'Upbeat Party Pop',
+              'full_title':'Upbeat Party Pop (Energetic Indie Pop with catchy Guitars)',
+              'artist':'Sound_For_You',
+              'source':'https://pixabay.com/music/electronic-upbeat-party-pop-energetic-indie-pop-with-catchy-guitars-487926/'
+            },
+            {
+              'file':'assets/music/sfandom-energy-05-happy-indie-pop.mp3',
+              'title':'Happy Indie Pop',
+              'full_title':'Happy Indie Pop (Energetic Upbeat Uplifting Catchy Indie Pop)',
+              'artist':'Sound_For_You',
+              'source':'https://pixabay.com/music/acoustic-group-happy-indie-pop-energetic-upbeat-uplifting-catchy-indie-pop-487485/'
+            }
+          ]
+
+          def resolve(page, url):
+              response=page.goto(url, wait_until='domcontentloaded', timeout=90000)
+              if not response or response.status != 200:
+                  raise RuntimeError(f'Page load failed: {url} status={response.status if response else None}')
+              page.wait_for_timeout(3500)
               html=page.content()
-              print('TITLE', page.title())
-              print('HTML_LEN', len(html))
               candidates=[]
-              patterns=[
+              for pat in [
                   r'https://[^"\'<> ]+\.mp3[^"\'<> ]*',
-                  r'"contentUrl"\s*:\s*"([^"]+)"',
-                  r'<meta[^>]+(?:property|name)=["\'](?:og:audio|og:audio:url|og:audio:secure_url|twitter:player:stream)["\'][^>]+content=["\']([^"\']+)["\']'
-              ]
-              for pat in patterns:
-                  for m in re.finditer(pat,html,re.I):
+                  r'"contentUrl"\s*:\s*"([^"]+)"'
+              ]:
+                  for m in re.finditer(pat, html, re.I):
                       val=m.group(1) if m.lastindex else m.group(0)
                       val=unescape(val).replace('\\u0026','&').replace('\\/','/')
                       if val not in candidates:
@@ -50,10 +87,108 @@ jobs:
               for resource in page.evaluate("performance.getEntriesByType('resource').map(e=>e.name)"):
                   if '.mp3' in resource.lower() and resource not in candidates:
                       candidates.append(resource)
-              print('CANDIDATE_COUNT',len(candidates))
-              for c in candidates[:20]:
-                  print('AUDIO_CANDIDATE',c[:1000])
-              browser.close()
+              candidates=[c for c in candidates if 'pixabay.com' in c and '.mp3' in c.lower()]
               if not candidates:
-                  raise SystemExit('No browser audio candidate found')
+                  raise RuntimeError(f'No MP3 candidate found: {url}')
+              return candidates[0]
+
+          Path('assets/music').mkdir(parents=True, exist_ok=True)
+          report=[]
+
+          with sync_playwright() as p:
+              browser=p.chromium.launch(headless=True)
+              context=browser.new_context(
+                  user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36',
+                  locale='en-US'
+              )
+              page=context.new_page()
+              for i,t in enumerate(tracks,1):
+                  print(f'RESOLVE {i}/5 {t["title"]}')
+                  audio_url=resolve(page,t['source'])
+                  print('DIRECT_AUDIO', audio_url)
+                  req=urllib.request.Request(audio_url,headers={'User-Agent':'Mozilla/5.0','Referer':t['source']})
+                  with urllib.request.urlopen(req,timeout=90) as r:
+                      data=r.read()
+                  out=Path(t['file'])
+                  out.write_bytes(data)
+
+                  size=out.stat().st_size
+                  if size < 500_000:
+                      raise RuntimeError(f'File too small: {out} {size}')
+                  audio=MP3(out)
+                  duration=float(audio.info.length)
+                  if not (90 <= duration <= 240):
+                      raise RuntimeError(f'Unexpected duration: {out} {duration}')
+                  print(f'VALIDATED {out} bytes={size} duration={duration:.2f}')
+
+                  report.append({
+                      'file':t['file'],
+                      'title':t['full_title'],
+                      'display_title':t['title'],
+                      'artist':t['artist'],
+                      'source_page':t['source'],
+                      'license':'Pixabay Content License',
+                      'license_url':'https://pixabay.com/service/license-summary/',
+                      'duration_seconds':round(duration,2),
+                      'size_bytes':size
+                  })
+              browser.close()
+
+          if len(report) != 5:
+              raise RuntimeError('Five-track validation did not complete')
+
+          Path('assets/music/sources.json').write_text(
+              json.dumps(report,ensure_ascii=False,indent=2)+'\n',
+              encoding='utf-8'
+          )
+
+          js_path=Path('music-player.js')
+          js=js_path.read_text(encoding='utf-8')
+          start=js.find('  const tracks=[')
+          if start < 0:
+              raise RuntimeError('tracks block start not found')
+          end=js.find('  ];',start)
+          if end < 0:
+              raise RuntimeError('tracks block end not found')
+          end += len('  ];')
+          new_block="""  const tracks=[
+            {src:'assets/music/sfandom-energy-01-danceable-funky-indie-pop.mp3',title:'Danceable Funky Indie Pop',artist:'Sound_For_You',source:'https://pixabay.com/music/funk-upbeat-danceable-funky-indie-pop-energetic-dance-funky-catchy-473869/'},
+            {src:'assets/music/sfandom-energy-02-indie-pop-rock-funky-guitar.mp3',title:'Indie Pop Rock Funky Guitar',artist:'Sound_For_You',source:'https://pixabay.com/music/rock-indie-pop-rock-funky-guitar-fun-happy-youthful-catchy-indie-rock-475294/'},
+            {src:'assets/music/sfandom-energy-03-uplifting-fun-indie-pop-rock.mp3',title:'Uplifting Fun Indie Pop Rock',artist:'Sound_For_You',source:'https://pixabay.com/music/acoustic-group-uplifting-fun-indie-pop-rock-funky-guitar-riff-fun-youthful-vibe-484929/'},
+            {src:'assets/music/sfandom-energy-04-upbeat-party-pop.mp3',title:'Upbeat Party Pop',artist:'Sound_For_You',source:'https://pixabay.com/music/electronic-upbeat-party-pop-energetic-indie-pop-with-catchy-guitars-487926/'},
+            {src:'assets/music/sfandom-energy-05-happy-indie-pop.mp3',title:'Happy Indie Pop',artist:'Sound_For_You',source:'https://pixabay.com/music/acoustic-group-happy-indie-pop-energetic-upbeat-uplifting-catchy-indie-pop-487485/'}
+          ];"""
+          js=js[:start]+new_block+js[end:]
+          js=js.replace("sfandomMusicIndexV3","sfandomMusicIndexV4")
+          js=js.replace("sfandomMusicTimeV3","sfandomMusicTimeV4")
+          js=js.replace('<small id="sfMusicTitle">R&B</small>','<small id="sfMusicTitle">FUNK POP</small>')
+          if 'audio.autoplay=false' not in js:
+              raise RuntimeError('Autoplay safety check failed')
+          js_path.write_text(js,encoding='utf-8')
           PY
+
+      - name: Verify scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m json.tool assets/music/sources.json >/dev/null
+          test "$(find assets/music -maxdepth 1 -name 'sfandom-energy-*.mp3' | wc -l)" -eq 5
+          grep -q "sfandomMusicIndexV4" music-player.js
+          grep -q "audio.autoplay=false" music-player.js
+          git status --short
+          unexpected="$(git status --short | awk '{print $2}' | grep -Ev '^music-player\.js$|^assets/music/sources\.json$|^assets/music/sfandom-energy-[0-9][0-9]-.*\.mp3$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "Unexpected changed files:"
+            echo "$unexpected"
+            exit 1
+          fi
+
+      - name: Commit validated audio only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "sfandomsportji-cpu"
+          git config user.email "sfandomsportji@gmail.com"
+          git add music-player.js assets/music/sources.json assets/music/sfandom-energy-*.mp3
+          git commit -m "Add validated five-track upbeat SFANDOM playlist"
+          git push origin HEAD:audio-refresh-20260825
