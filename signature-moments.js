@@ -128,26 +128,26 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     pickSection.style.paddingBottom='58px';
     pickSection.innerHTML=`
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:28px;">
-        <div><p class="eyebrow">SFANDOM & KAIRO PICK ARCHIVE · 2026.08.25 KST</p><h2 id="pick-result-title" style="margin:8px 0 0;font-size:clamp(2rem,4vw,4.2rem);line-height:.96;letter-spacing:-.05em;">결과까지 남겨야,<br><span style="color:#ef2d2d;">기록이 됩니다.</span></h2></div>
-        <p style="max-width:460px;margin:0;color:#a7a7a7;line-height:1.75;">적중만 골라 보여주지 않습니다. 기준선에서 얼마나 벗어났는지까지 그대로 기록합니다.</p>
+        <div><p class="eyebrow">SFANDOM & KAIRO PICKS · 2026.08.26 KST</p><h2 id="pick-result-title" style="margin:8px 0 0;font-size:clamp(2rem,4vw,4.2rem);line-height:.96;letter-spacing:-.05em;">오늘의 선택은,<br><span style="color:#ef2d2d;">승리 두 방향.</span></h2></div>
+        <p style="max-width:460px;margin:0;color:#a7a7a7;line-height:1.75;">한국시간 오늘 경기에서 다저스와 워싱턴 승리만 선택합니다. 이전 공개 픽은 전체 보관함에 결과까지 그대로 남깁니다.</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
-        <a href="archive/picks/#pick-001" aria-label="픽 1 말라가 데포르티보 오버 2.5 복기" style="display:block;padding:28px;border:1px solid #493438;background:linear-gradient(145deg,#12090b,#080809 72%);text-decoration:none;color:#fff;">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;"><span style="padding:7px 9px;border:1px solid #5d4146;color:#ff777c;font-size:.62rem;font-weight:900;letter-spacing:.12em;">PICK 01 · REVIEW</span><b style="color:#ff777c;font-size:.72rem;letter-spacing:.1em;">MISS · −0.5</b></div>
-          <p style="margin:26px 0 7px;color:#777b84;font-size:.68rem;font-weight:900;letter-spacing:.1em;">FOOTBALL · MÁLAGA · DEPORTIVO</p>
-          <h3 style="margin:0;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.055em;">OVER 2.5</h3>
-          <div style="display:flex;justify-content:space-between;gap:18px;margin:20px 0;padding:18px 0;border-top:1px solid #332b2d;border-bottom:1px solid #332b2d;"><span style="color:#999da5;">FINAL TOTAL</span><strong style="font-size:1.55rem;">2 GOALS</strong></div>
-          <p style="margin:0;color:#b5b7bd;line-height:1.75;"><b style="color:#fff;">0.5 차이로 미적중.</b> 2.5 기준선에서 단 반 골이 부족했습니다. 아쉬운 결과까지 그대로 남기며, 관리 중인 누적 공개 픽 기준 <b style="color:#f0cf57;">적중률 90%를 유지</b>합니다.</p>
+        <a href="analysis.html" aria-label="픽 1 로스앤젤레스 다저스 승" style="display:block;padding:28px;border:1px solid #304968;background:linear-gradient(145deg,#081526,#080809 72%);text-decoration:none;color:#fff;">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;"><span style="padding:7px 9px;border:1px solid #31557d;color:#75baff;font-size:.62rem;font-weight:900;letter-spacing:.12em;">PICK 01 · MLB</span><b style="color:#75baff;font-size:.72rem;letter-spacing:.1em;">CURRENT</b></div>
+          <p style="margin:26px 0 7px;color:#777b84;font-size:.68rem;font-weight:900;letter-spacing:.1em;">LOS ANGELES DODGERS @ ATLANTA BRAVES · 08:15 KST</p>
+          <h3 style="margin:0;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.055em;">DODGERS WIN</h3>
+          <div style="display:flex;justify-content:space-between;gap:18px;margin:20px 0;padding:18px 0;border-top:1px solid #29394a;border-bottom:1px solid #29394a;"><span style="color:#999da5;">MARKET</span><strong style="font-size:1.55rem;">ML · SINGLE</strong></div>
+          <p style="margin:0;color:#b5b7bd;line-height:1.75;"><b style="color:#fff;">Tyler Glasnow 3–0 · ERA 2.72</b>가 선발로 예고됐습니다. 상대는 Bryce Elder 8–7 · ERA 3.92. 오늘 메인 선택은 <b style="color:#fff;">다저스 승리</b>입니다.</p>
         </a>
-        <a href="analysis.html" aria-label="픽 2 탬파베이 승" style="display:block;padding:28px;border:1px solid #303943;background:linear-gradient(145deg,#091019,#080809 72%);text-decoration:none;color:#fff;">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;"><span style="padding:7px 9px;border:1px solid #31475f;color:#77bfff;font-size:.62rem;font-weight:900;letter-spacing:.12em;">PICK 02 · MLB</span><b style="color:#77bfff;font-size:.72rem;letter-spacing:.1em;">CURRENT</b></div>
-          <p style="margin:26px 0 7px;color:#777b84;font-size:.68rem;font-weight:900;letter-spacing:.1em;">TAMPA BAY RAYS @ DETROIT TIGERS</p>
-          <h3 style="margin:0;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.055em;">TAMPA BAY WIN</h3>
-          <div style="display:flex;justify-content:space-between;gap:18px;margin:20px 0;padding:18px 0;border-top:1px solid #29313a;border-bottom:1px solid #29313a;"><span style="color:#999da5;">MARKET</span><strong style="font-size:1.55rem;">ML · SINGLE</strong></div>
-          <p style="margin:0;color:#b5b7bd;line-height:1.75;">오늘은 여러 시장을 섞지 않고 <b style="color:#fff;">탬파베이 승 한 방향</b>으로만 선택했습니다. 상세 근거와 실제 게시 시각은 분석 페이지에 그대로 남깁니다.</p>
+        <a href="analysis.html" aria-label="픽 2 워싱턴 내셔널스 승" style="display:block;padding:28px;border:1px solid #4b3438;background:linear-gradient(145deg,#170a0d,#080809 72%);text-decoration:none;color:#fff;">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;"><span style="padding:7px 9px;border:1px solid #683b43;color:#ff7a80;font-size:.62rem;font-weight:900;letter-spacing:.12em;">PICK 02 · MLB</span><b style="color:#ff7a80;font-size:.72rem;letter-spacing:.1em;">CURRENT</b></div>
+          <p style="margin:26px 0 7px;color:#777b84;font-size:.68rem;font-weight:900;letter-spacing:.1em;">COLORADO ROCKIES @ WASHINGTON NATIONALS · 07:45 KST</p>
+          <h3 style="margin:0;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.055em;">WASHINGTON WIN</h3>
+          <div style="display:flex;justify-content:space-between;gap:18px;margin:20px 0;padding:18px 0;border-top:1px solid #3b2c2f;border-bottom:1px solid #3b2c2f;"><span style="color:#999da5;">MARKET</span><strong style="font-size:1.55rem;">ML · SINGLE</strong></div>
+          <p style="margin:0;color:#b5b7bd;line-height:1.75;"><b style="color:#fff;">Andrew Alvarez 2–5 · ERA 3.60</b>와 Colorado의 Kyle Freeland 4–10 · ERA 6.37 매치업입니다. 두 번째 선택은 <b style="color:#fff;">워싱턴 승리</b>입니다.</p>
         </a>
       </div>
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid #222;"><a href="archive/picks/" aria-label="SFANDOM and KAIRO picks archive" style="display:inline-flex;align-items:center;justify-content:center;min-width:178px;height:40px;padding:0 16px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.72rem;font-weight:900;letter-spacing:.08em;">SFANDOM&KAIRO픽</a></div>`;
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid #222;"><a href="archive/picks/" aria-label="SFANDOM and KAIRO all picks archive" style="display:inline-flex;align-items:center;justify-content:center;min-width:190px;height:40px;padding:0 16px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.72rem;font-weight:900;letter-spacing:.08em;">전체 픽 보관함 →</a></div>`;
   }
 
   const mediaRow=document.querySelector('[aria-label="미디어 기록 바로가기"]');
@@ -199,7 +199,8 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   function getMessages(){try{const x=JSON.parse(localStorage.getItem(MSG_KEY)||'[]');return Array.isArray(x)?x.slice(-3):[]}catch{return[]}}
   function render(){
     const list=getMessages();feed.replaceChildren();
-    if(!list.length){const e=document.createElement('div');e.className='sf-live-empty';e.textContent='아직 대화가 없습니다.\n첫 메시지를 남겨보세요.';feed.appendChild(e);return}
+    if(!list.length){const e=document.createElement('div');e.className='sf-live-empty';e.textContent='아직 대화가 없습니다.\
+첫 메시지를 남겨보세요.';feed.appendChild(e);return}
     list.forEach(m=>{const el=document.createElement('div');el.className='sf-live-mini';const meta=document.createElement('div');meta.className='sf-live-mini-meta';const b=document.createElement('b');b.textContent=m.nickname||'Guest';const tag=document.createElement('span');tag.textContent=m.topic||'GENERAL';const p=document.createElement('p');p.textContent=m.text||'';meta.append(b,tag);el.append(meta,p);feed.appendChild(el)});feed.scrollTop=feed.scrollHeight;
   }
   function ensureNick(){
