@@ -137,3 +137,16 @@ body.home-v2 .site-header::before{
     letter-spacing:.06em;
   }
 }
+
+/* Wide desktop: detach the view index from the logo and use the far-left header gutter. */
+@media (min-width:1100px){
+  body.home-v2 .site-header::before{
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    min-width:76px;
+    margin:0;
+    padding:3px 0 2px 9px;
+  }
+}
