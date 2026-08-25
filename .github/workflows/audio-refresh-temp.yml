@@ -1,16 +1,48 @@
-name: Temporary audio diagnostic
+name: Temporary audio probe
 
 on:
   push:
     branches: [audio-refresh-20260825]
 
 jobs:
-  diagnostic:
+  probe:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Confirm runner
+      - name: Probe five Pixabay pages
+        shell: bash
         run: |
-          echo "runner-ok"
-          python --version
-          git status --short
+          set -euo pipefail
+          python - <<'PY'
+          import json, re, urllib.request
+          from html import unescape
+
+          urls = [
+            'https://pixabay.com/music/funk-upbeat-danceable-funky-indie-pop-energetic-dance-funky-catchy-473869/',
+            'https://pixabay.com/music/rock-indie-pop-rock-funky-guitar-fun-happy-youthful-catchy-indie-rock-475294/',
+            'https://pixabay.com/music/acoustic-group-uplifting-fun-indie-pop-rock-funky-guitar-riff-fun-youthful-vibe-484929/',
+            'https://pixabay.com/music/electronic-upbeat-party-pop-energetic-indie-pop-with-catchy-guitars-487926/',
+            'https://pixabay.com/music/acoustic-group-happy-indie-pop-energetic-upbeat-uplifting-catchy-indie-pop-487485/'
+          ]
+          headers={'User-Agent':'Mozilla/5.0','Accept-Language':'en-US,en;q=0.9'}
+          for i,url in enumerate(urls,1):
+              req=urllib.request.Request(url,headers=headers)
+              with urllib.request.urlopen(req,timeout=30) as r:
+                  html=r.read().decode('utf-8','replace')
+              candidates=[]
+              for pat in [
+                  r'https://[^"\'<> ]+\.mp3[^"\'<> ]*',
+                  r'"contentUrl"\s*:\s*"([^"]+)"',
+                  r'<meta[^>]+(?:property|name)=["\'](?:og:audio|og:audio:url|og:audio:secure_url|twitter:player:stream)["\'][^>]+content=["\']([^"\']+)["\']'
+              ]:
+                  for m in re.finditer(pat,html,re.I):
+                      val=m.group(1) if m.lastindex else m.group(0)
+                      val=unescape(val).replace('\\u0026','&').replace('\\/','/')
+                      if val not in candidates:
+                          candidates.append(val)
+              print(f'TRACK {i}: html={len(html)} candidates={len(candidates)}')
+              for c in candidates[:8]:
+                  print('AUDIO_CANDIDATE', c[:500])
+              if not candidates:
+                  raise SystemExit(f'No audio candidate found for track {i}')
+          PY
