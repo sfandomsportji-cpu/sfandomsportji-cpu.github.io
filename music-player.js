@@ -360,18 +360,17 @@
     return true;
   }
 
+  /*
+   * Stability first: use native document navigation for every site link.
+   * Replacing the complete body/head in-place left the page blank whenever a
+   * route stylesheet or page script failed during the swap. Persist the radio
+   * position before the browser leaves, but never intercept the navigation.
+   */
+  document.documentElement.classList.remove('sf-route-loading');
   document.addEventListener('click',e=>{
-    if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
     const anchor=e.target.closest?.('a[href]');
-    if(!anchor||shell.contains(anchor))return;
-    let url;
-    try{url=new URL(anchor.href,location.href)}catch{return}
-    if(!routeable(anchor,url))return;
-    e.preventDefault();
-    navigate(url.href);
-  });
-
-  window.addEventListener('popstate',()=>navigate(location.href,{push:false}));
+    if(anchor&&!shell.contains(anchor))persist();
+  },{capture:true});
 
   enhanceChrome();
   enhanceHome();
