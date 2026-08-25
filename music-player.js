@@ -352,6 +352,8 @@
     if(anchor.target&&anchor.target.toLowerCase()!=='_self')return false;
     if(url.origin!==location.origin)return false;
     if(!/^https?:$/.test(url.protocol))return false;
+    const homeTarget=url.pathname==='/'||url.pathname.endsWith('/index.html');
+    if(anchor.classList.contains('brand')&&homeTarget)return false;
     if(url.pathname===location.pathname&&url.search===location.search&&url.hash)return false;
     const last=url.pathname.split('/').pop()||'';
     if(last&&/\.[a-z0-9]{2,8}$/i.test(last)&&!/\.html?$/i.test(last))return false;
