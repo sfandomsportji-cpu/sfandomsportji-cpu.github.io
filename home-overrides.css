@@ -10,6 +10,34 @@
 }
 .home-kairo-art img{display:none!important}
 
+/* Pick archive shortcut: keep only one branded entry. */
+section[aria-labelledby="pick-result-title"] > div:last-child > span,
+section[aria-labelledby="pick-result-title"] > div:last-child > a:not(:last-child){display:none!important}
+section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:auto!important;
+  height:40px!important;
+  min-width:178px!important;
+  margin-left:0!important;
+  padding:0 16px!important;
+  border:1px solid #393939!important;
+  background:#0b0b0c!important;
+  color:transparent!important;
+  font-size:0!important;
+  font-weight:900!important;
+  letter-spacing:.08em!important;
+  text-decoration:none!important;
+}
+section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::after{
+  content:"SFANDOM&KAIRO픽";
+  color:#fff;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
 @media (max-width:900px){
   /* Keep the mobile hero visually connected to the sports ticker. */
   .hero-v2{padding-bottom:8px!important}
