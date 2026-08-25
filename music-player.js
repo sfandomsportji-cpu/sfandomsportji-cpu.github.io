@@ -1,4 +1,5 @@
 (()=>{
+  const MUSIC_ENABLED=false;
   const tracks=[
     {src:'/assets/music/sfandom-energy-01-danceable-funky-indie-pop.mp3',title:'Danceable Funky Indie Pop',artist:'Sound_For_You',source:'https://pixabay.com/music/funk-upbeat-danceable-funky-indie-pop-energetic-dance-funky-catchy-473869/'},
     {src:'/assets/music/sfandom-energy-02-pop-punk-rock.mp3',title:'Pop Punk Rock Music',artist:'lNPLUSMUSIC',source:'https://pixabay.com/music/rock-pop-punk-rock-music-469456/'},
@@ -41,7 +42,7 @@
       <div class="sf-music-list-head"><span>CHOOSE TRACK</span><small>재생할 음악을 선택하세요</small></div>
       ${tracks.map((t,i)=>`<button type="button" data-track="${i}"><span>${String(i+1).padStart(2,'0')}</span><b>${t.title}</b><small>${t.artist}</small></button>`).join('')}
     </div>`;
-  document.body.appendChild(shell);
+  if(MUSIC_ENABLED)document.body.appendChild(shell);
 
   const titleEl=shell.querySelector('#sfMusicTitle');
   const toggle=shell.querySelector('[data-toggle]');
@@ -376,6 +377,8 @@
   enhanceHome();
   maybeShowPreamble();
   markRouteStyles();
-  loadCurrent({resume:true,play:false});
-  updateUI();
+  if(MUSIC_ENABLED){
+    loadCurrent({resume:true,play:false});
+    updateUI();
+  }
 })();
