@@ -2,3 +2,111 @@
 
 /* Persistent header guard: main page CSS is swapped during seamless navigation. Keep the SFANDOM logo and header geometry stable so there is no oversized-logo flash between pages. */
 .site-header{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:73px}.site-header .brand{display:inline-flex;align-items:center;gap:10px;flex:0 0 auto;text-decoration:none}.site-header .brand img{display:block!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;max-width:40px!important;max-height:40px!important;object-fit:contain!important;border-radius:0!important}.site-header .nav{display:flex;align-items:center;margin-left:auto}.site-header .nav a{white-space:nowrap}html.sf-route-loading .site-header .brand img{transform:none!important;filter:none!important;animation:none!important;transition:none!important}@media(max-width:620px){.site-header{min-height:64px}.site-header .brand img{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;max-width:40px!important;max-height:40px!important}}
+
+/* 2026-08-26: mobile home alignment hotfix. This stylesheet loads last, so these rules are authoritative. */
+@media (max-width:620px){
+  body.home-v2{overflow-x:hidden!important}
+  body.home-v2 main{width:100%!important;max-width:100%!important;overflow:hidden!important}
+
+  /* One visual axis for video, copy, sections and footer. */
+  body.home-v2 .hero-v2,
+  body.home-v2 .section,
+  body.home-v2 .footer-v2{
+    box-sizing:border-box!important;
+    width:calc(100% - 32px)!important;
+    max-width:none!important;
+    margin-left:16px!important;
+    margin-right:16px!important;
+    padding-left:0!important;
+    padding-right:0!important;
+  }
+  body.home-v2 .hero-v2{padding-top:0!important;gap:0!important}
+  body.home-v2 .hero-reel-wrap{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0 auto 30px!important;
+  }
+
+  /* Hero text: visually centered under the video. */
+  body.home-v2 .hero-copy{text-align:center!important;width:100%!important;margin:0 auto!important}
+  body.home-v2 .hero-copy .live-chip{margin:0 auto 22px!important}
+  body.home-v2 .hero-copy .eyebrow{text-align:center!important}
+  body.home-v2 .hero-v2 h1{
+    width:100%!important;
+    margin:0 auto!important;
+    text-align:center!important;
+    font-size:clamp(3.25rem,15.6vw,4.9rem)!important;
+    line-height:.9!important;
+    letter-spacing:-.065em!important;
+  }
+  body.home-v2 .hero-kicker,
+  body.home-v2 .hero-text{width:100%!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important;text-align:center!important}
+  body.home-v2 .hero-actions{width:100%!important;justify-content:center!important}
+
+  /* Major section heads should not look pinned to the left edge. */
+  body.home-v2 .morning-news-head,
+  body.home-v2 .promise-head,
+  body.home-v2 .section-head,
+  body.home-v2 .data-copy,
+  body.home-v2 .home-kairo-copy,
+  body.home-v2 .manifesto,
+  body.home-v2 .daily-feature-head{
+    text-align:center!important;
+  }
+  body.home-v2 .morning-news-head,
+  body.home-v2 .promise-head,
+  body.home-v2 .section-head{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+  }
+  body.home-v2 .morning-news-head>p,
+  body.home-v2 .promise-head>p,
+  body.home-v2 .data-copy>p,
+  body.home-v2 .home-kairo-copy>p{
+    margin-left:auto!important;
+    margin-right:auto!important;
+    max-width:94%!important;
+  }
+  body.home-v2 .section h2,
+  body.home-v2 .daily-feature-head h2{
+    width:100%!important;
+    text-align:center!important;
+    margin-left:auto!important;
+    margin-right:auto!important;
+  }
+  body.home-v2 .daily-feature-meta{text-align:center!important;width:100%!important}
+
+  /* Keep card/story body copy readable; only the section-level hierarchy is centered. */
+  body.home-v2 .morning-news-copy,
+  body.home-v2 .daily-player-info,
+  body.home-v2 .daily-verdict-wide,
+  body.home-v2 .content-rail a,
+  body.home-v2 .promise-grid article{text-align:left!important}
+
+  /* Header: fit all five labels without the first item being clipped. */
+  body.home-v2 .site-header{padding:10px 14px!important;gap:8px!important;overflow:hidden!important}
+  body.home-v2 .site-header .brand{margin:0!important}
+  body.home-v2 .site-header .nav{
+    min-width:0!important;
+    margin-left:4px!important;
+    gap:10px!important;
+    overflow:visible!important;
+    white-space:nowrap!important;
+  }
+  body.home-v2 .site-header .nav a{font-size:.54rem!important;letter-spacing:.09em!important}
+
+  /* Footer index baseline remains explicit and centered. */
+  body.home-v2 .footer-v2{align-items:center!important;text-align:center!important}
+  body.home-v2 .footer-v2>small::before{
+    content:"SFANDOM VIEW INDEX · 100,000 · BASE 100,000";
+    display:block;
+    margin-bottom:7px;
+    color:#a8a8ad;
+    font-size:.59rem;
+    font-weight:900;
+    letter-spacing:.1em;
+    line-height:1.5;
+    text-align:center;
+  }
+}
