@@ -111,7 +111,7 @@
   }
 }
 
-/* Homepage view index: compact header label immediately left of the logo. */
+/* Homepage view index: compact header label. */
 body.home-v2 .site-header::before{
   content:"VIEW INDEX\A 84,512";
   white-space:pre;
@@ -138,11 +138,12 @@ body.home-v2 .site-header::before{
   }
 }
 
-/* Wide desktop: detach the view index from the logo and use the far-left header gutter. */
+/* Wide desktop: detach the view index and place it in the far-right empty header gutter. */
 @media (min-width:1100px){
   body.home-v2 .site-header::before{
     position:absolute;
-    left:18px;
+    left:auto;
+    right:18px;
     top:50%;
     transform:translateY(-50%);
     min-width:76px;
