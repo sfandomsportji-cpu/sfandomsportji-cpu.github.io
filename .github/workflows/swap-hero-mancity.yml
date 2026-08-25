@@ -1,0 +1,81 @@
+name: Swap homepage hero to Manchester City
+
+on:
+  push:
+    paths:
+      - '.github/workflows/swap-hero-mancity.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  swap-hero:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Replace hero reel safely
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+          old = '<video class="hero-reel" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/sfandom-hero-reel.mp4?v=20260822-0451" type="video/mp4"></video>'
+          new = '<iframe class="hero-reel hero-reel-youtube" src="https://www.youtube-nocookie.com/embed/BIvZl-fWz_Y?autoplay=1&amp;mute=1&amp;controls=0&amp;disablekb=1&amp;fs=0&amp;loop=1&amp;playlist=BIvZl-fWz_Y&amp;playsinline=1&amp;rel=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;start=7" title="Manchester City official highlight background" tabindex="-1" aria-hidden="true" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>'
+          if old not in html:
+              raise SystemExit('Expected current hero video markup was not found; aborting to avoid a broad edit.')
+          html = html.replace(old, new, 1)
+          html = html.replace('home-overrides.css?v=20260826-0218', 'home-overrides.css?v=20260826-0258', 1)
+          index.write_text(html, encoding='utf-8')
+
+          css_path = Path('home-overrides.css')
+          css = css_path.read_text(encoding='utf-8')
+          marker = '/* Manchester City official hero reel · 2026-08-26 */'
+          addition = r'''
+
+/* Manchester City official hero reel · 2026-08-26 */
+body.home-v2 .hero-reel-wrap .hero-reel-youtube{
+  position:absolute!important;
+  inset:auto!important;
+  top:50%!important;
+  left:50%!important;
+  width:118%!important;
+  height:118%!important;
+  min-width:118%!important;
+  min-height:118%!important;
+  border:0!important;
+  transform:translate(-50%,-50%)!important;
+  transform-origin:center!important;
+  pointer-events:none!important;
+  opacity:.62!important;
+  filter:saturate(.95) contrast(1.08)!important;
+  background:#050505!important;
+}
+@media (max-width:900px){
+  body.home-v2 .hero-reel-wrap .hero-reel-youtube{
+    width:120%!important;
+    height:120%!important;
+    min-width:120%!important;
+    min-height:120%!important;
+    opacity:1!important;
+    filter:saturate(1) contrast(1.03) brightness(.9)!important;
+  }
+}
+'''
+          if marker not in css:
+              css_path.write_text(css + addition, encoding='utf-8')
+          PY
+
+      - name: Commit homepage-only change and remove one-shot workflow
+        shell: bash
+        run: |
+          git config user.name "sfandom-site-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git rm .github/workflows/swap-hero-mancity.yml
+          git add index.html home-overrides.css
+          git commit -m "Replace homepage hero with Manchester City highlight"
+          git push
