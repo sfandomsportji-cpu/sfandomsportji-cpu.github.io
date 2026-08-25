@@ -1,34 +1,57 @@
 [
   {
-    "file": "assets/music/sfandom-rnb-01-smooth-rnb-beat.mp3",
-    "title": "Smooth Rnb Beat",
-    "artist": "Tunetank",
-    "source_page": "https://pixabay.com/music/beats-smooth-rnb-beat-409348/",
+    "file": "assets/music/sfandom-energy-01-danceable-funky-indie-pop.mp3",
+    "title": "Upbeat Danceable Funky Indie Pop (Energetic Dance Funky Catchy)",
+    "display_title": "Danceable Funky Indie Pop",
+    "artist": "Sound_For_You",
+    "source_page": "https://pixabay.com/music/funk-upbeat-danceable-funky-indie-pop-energetic-dance-funky-catchy-473869/",
     "license": "Pixabay Content License",
-    "license_url": "https://pixabay.com/service/license-summary/"
+    "license_url": "https://pixabay.com/service/license-summary/",
+    "duration_seconds": 109.58,
+    "size_bytes": 3506677
   },
   {
-    "file": "assets/music/sfandom-rnb-02-modern-rnb.mp3",
-    "title": "Modern R&B",
-    "artist": "-SunSet-",
-    "source_page": "https://pixabay.com/music/beats-modern-rampb-550856/",
+    "file": "assets/music/sfandom-energy-02-indie-pop-rock-funky-guitar.mp3",
+    "title": "Indie Pop Rock Funky Guitar (Fun Happy Youthful Catchy Indie Rock)",
+    "display_title": "Indie Pop Rock Funky Guitar",
+    "artist": "Sound_For_You",
+    "source_page": "https://pixabay.com/music/rock-indie-pop-rock-funky-guitar-fun-happy-youthful-catchy-indie-rock-475294/",
     "license": "Pixabay Content License",
-    "license_url": "https://pixabay.com/service/license-summary/"
+    "license_url": "https://pixabay.com/service/license-summary/",
+    "duration_seconds": 116.14,
+    "size_bytes": 3716493
   },
   {
-    "file": "assets/music/sfandom-rnb-03-private-thoughts.mp3",
-    "title": "Private Thoughts - Chill Late Night Trapsoul Instrumental",
-    "artist": "JayStacksBeats",
-    "source_page": "https://pixabay.com/music/funk-private-thoughts-chill-late-night-trapsoul-instrumental-462717/",
+    "file": "assets/music/sfandom-energy-03-uplifting-fun-indie-pop-rock.mp3",
+    "title": "Uplifting Fun Indie Pop Rock (Funky Guitar Riff Fun Youthful Vibe)",
+    "display_title": "Uplifting Fun Indie Pop Rock",
+    "artist": "Sound_For_You",
+    "source_page": "https://pixabay.com/music/acoustic-group-uplifting-fun-indie-pop-rock-funky-guitar-riff-fun-youthful-vibe-484929/",
     "license": "Pixabay Content License",
-    "license_url": "https://pixabay.com/service/license-summary/"
+    "license_url": "https://pixabay.com/service/license-summary/",
+    "duration_seconds": 130.35,
+    "size_bytes": 4171232
   },
   {
-    "file": "assets/music/sfandom-rnb-04-low-glow.mp3",
-    "title": "Low Glow - Warm R&B Chill for Relaxed Focus",
-    "artist": "OpenUseMusic",
-    "source_page": "https://pixabay.com/music/rnb-low-glow-warm-rampb-chill-for-relaxed-focus-460279/",
+    "file": "assets/music/sfandom-energy-04-upbeat-party-pop.mp3",
+    "title": "Upbeat Party Pop (Energetic Indie Pop with catchy Guitars)",
+    "display_title": "Upbeat Party Pop",
+    "artist": "Sound_For_You",
+    "source_page": "https://pixabay.com/music/electronic-upbeat-party-pop-energetic-indie-pop-with-catchy-guitars-487926/",
     "license": "Pixabay Content License",
-    "license_url": "https://pixabay.com/service/license-summary/"
+    "license_url": "https://pixabay.com/service/license-summary/",
+    "duration_seconds": 135.29,
+    "size_bytes": 4329221
+  },
+  {
+    "file": "assets/music/sfandom-energy-05-happy-indie-pop.mp3",
+    "title": "Happy Indie Pop (Energetic Upbeat Uplifting Catchy Indie Pop)",
+    "display_title": "Happy Indie Pop",
+    "artist": "Sound_For_You",
+    "source_page": "https://pixabay.com/music/acoustic-group-happy-indie-pop-energetic-upbeat-uplifting-catchy-indie-pop-487485/",
+    "license": "Pixabay Content License",
+    "license_url": "https://pixabay.com/service/license-summary/",
+    "duration_seconds": 133.56,
+    "size_bytes": 4274050
   }
 ]

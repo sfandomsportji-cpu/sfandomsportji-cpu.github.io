@@ -1,10 +1,11 @@
 (()=>{
   const tracks=[
-    {src:'assets/music/sfandom-rnb-01-smooth-rnb-beat.mp3',title:'Smooth Rnb Beat',artist:'Tunetank',source:'https://pixabay.com/music/beats-smooth-rnb-beat-409348/'},
-    {src:'assets/music/sfandom-rnb-02-modern-rnb.mp3',title:'Modern R&B',artist:'-SunSet-',source:'https://pixabay.com/music/beats-modern-rampb-550856/'},
-    {src:'assets/music/sfandom-rnb-03-private-thoughts.mp3',title:'Private Thoughts',artist:'JayStacksBeats',source:'https://pixabay.com/music/funk-private-thoughts-chill-late-night-trapsoul-instrumental-462717/'},
-    {src:'assets/music/sfandom-rnb-04-low-glow.mp3',title:'Low Glow',artist:'OpenUseMusic',source:'https://pixabay.com/music/rnb-low-glow-warm-rampb-chill-for-relaxed-focus-460279/'}
-  ];
+  {src:'assets/music/sfandom-energy-01-danceable-funky-indie-pop.mp3',title:'Danceable Funky Indie Pop',artist:'Sound_For_You',source:'https://pixabay.com/music/funk-upbeat-danceable-funky-indie-pop-energetic-dance-funky-catchy-473869/'},
+  {src:'assets/music/sfandom-energy-02-indie-pop-rock-funky-guitar.mp3',title:'Indie Pop Rock Funky Guitar',artist:'Sound_For_You',source:'https://pixabay.com/music/rock-indie-pop-rock-funky-guitar-fun-happy-youthful-catchy-indie-rock-475294/'},
+  {src:'assets/music/sfandom-energy-03-uplifting-fun-indie-pop-rock.mp3',title:'Uplifting Fun Indie Pop Rock',artist:'Sound_For_You',source:'https://pixabay.com/music/acoustic-group-uplifting-fun-indie-pop-rock-funky-guitar-riff-fun-youthful-vibe-484929/'},
+  {src:'assets/music/sfandom-energy-04-upbeat-party-pop.mp3',title:'Upbeat Party Pop',artist:'Sound_For_You',source:'https://pixabay.com/music/electronic-upbeat-party-pop-energetic-indie-pop-with-catchy-guitars-487926/'},
+  {src:'assets/music/sfandom-energy-05-happy-indie-pop.mp3',title:'Happy Indie Pop',artist:'Sound_For_You',source:'https://pixabay.com/music/acoustic-group-happy-indie-pop-energetic-upbeat-uplifting-catchy-indie-pop-487485/'}
+];
 
   const footerLinks=document.querySelector('.footer-links');
   if(footerLinks){
@@ -19,7 +20,7 @@
     }
   }
 
-  const K={index:'sfandomMusicIndexV3',time:'sfandomMusicTimeV3'};
+  const K={index:'sfandomMusicIndexV4',time:'sfandomMusicTimeV4'};
   const get=(k,f)=>{try{const v=localStorage.getItem(k);return v===null?f:v}catch{return f}};
   const set=(k,v)=>{try{localStorage.setItem(k,String(v))}catch{}};
   let index=Math.max(0,Math.min(tracks.length-1,parseInt(get(K.index,'0'),10)||0));
@@ -40,7 +41,7 @@
     <div class="sf-music-main">
       <button type="button" class="sf-music-now" data-list aria-expanded="false" aria-label="Choose a track">
         <span class="sf-music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span class="sf-music-copy"><b>SFANDOM RADIO</b><small id="sfMusicTitle">R&B</small></span>
+        <span class="sf-music-copy"><b>SFANDOM RADIO</b><small id="sfMusicTitle">FUNK POP</small></span>
         <span class="sf-music-chevron" aria-hidden="true">⌃</span>
       </button>
       <div class="sf-music-actions">
