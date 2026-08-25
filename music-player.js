@@ -179,3 +179,52 @@
   modal.addEventListener('click',e=>{if(e.target===modal)close()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.contains(modal))close()},{once:true});
 })();
+
+(()=>{
+  const isHome=location.pathname==='/'||location.pathname.endsWith('/index.html');
+  if(!isHome)return;
+
+  const card=document.querySelector('.forecast-card');
+  if(card){
+    const kicker=card.querySelector('.card-kicker span');
+    const badge=card.querySelector('.card-kicker b');
+    const label=card.querySelector('.forecast-score span');
+    const score=card.querySelector('.forecast-score strong');
+    const bar=card.querySelector('.signal i');
+    const stats=[...card.querySelectorAll('.mini-stats > div')];
+    if(kicker)kicker.textContent='SFANDOM PUBLIC PICKS';
+    if(badge)badge.textContent='UPDATED';
+    if(label)label.textContent='PICK HIT RATE';
+    if(score)score.innerHTML='90<small>%</small>';
+    if(bar)bar.style.width='90%';
+    const values=[['RECORD','OPEN'],['REVIEW','ALL'],['STATUS','LIVE']];
+    stats.forEach((el,i)=>{if(!values[i])return;const s=el.querySelector('span');const b=el.querySelector('b');if(s)s.textContent=values[i][0];if(b)b.textContent=values[i][1]});
+  }
+
+  const matrix=document.querySelector('.matrix');
+  if(matrix){
+    const head=matrix.querySelector('.matrix-head span');
+    const code=matrix.querySelector('.matrix-head b');
+    if(head)head.textContent='SFANDOM ANALYSIS PROCESS';
+    if(code)code.textContent='LIVE';
+    const rows=[...matrix.querySelectorAll('.matrix-row')];
+    const vals=[
+      ['RECENT FORM','CHECK'],
+      ['STARTER / LINEUP','CHECK'],
+      ['MATCHUP','TRACK'],
+      ['SITUATION','TRACK'],
+      ['MARKET SIGNAL','REVIEW']
+    ];
+    rows.forEach((row,i)=>{
+      if(!vals[i])return;
+      const name=row.querySelector('span');
+      const fill=row.querySelector('i b');
+      const value=row.querySelector('em');
+      if(name)name.textContent=vals[i][0];
+      if(fill)fill.style.width='100%';
+      if(value)value.textContent=vals[i][1];
+    });
+    const foot=matrix.querySelector('.matrix-foot');
+    if(foot){const s=foot.querySelector('span');const strong=foot.querySelector('strong');if(s)s.textContent='PROCESS STATUS';if(strong)strong.textContent='ACTIVE'}
+  }
+})();
