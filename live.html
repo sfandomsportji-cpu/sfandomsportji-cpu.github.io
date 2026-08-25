@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SFANDOM LIVE — 스포츠 팬들과 실시간으로 이야기하는 통합 채팅." />
+  <meta name="theme-color" content="#050505" />
+  <meta name="sfandom-chat-endpoint" content="" />
+  <title>SFANDOM LIVE | Sports Chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260825-0208" />
+  <link rel="stylesheet" href="live-chat.css?v=20260825-1500" />
+</head>
+<body class="live-page">
+  <header class="site-header live-site-header">
+    <a class="brand" href="index.html" aria-label="SFANDOM home"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="analysis.html">분석</a>
+      <a href="content.html">콘텐츠</a>
+      <a class="is-live" href="live.html"><i></i>LIVE</a>
+      <a href="archive/">기록보관소</a>
+      <a href="about.html">소개</a>
+    </nav>
+    <a class="header-cta live-header-cta" href="#chatComposer">채팅 참여 ↗</a>
+  </header>
+
+  <main class="live-main">
+    <section class="live-intro">
+      <div>
+        <p class="live-eyebrow"><i></i> SFANDOM COMMUNITY · OPEN BETA</p>
+        <h1>경기는 함께 보면<br><span>더 재미있으니까.</span></h1>
+      </div>
+      <div class="live-intro-copy">
+        <p>회원가입 없이 닉네임 하나로 들어오는 SFANDOM 통합 스포츠 채팅입니다. MLB·KBO·NBA·FOOTBALL 이야기를 한 공간에서 나눕니다.</p>
+        <div class="live-status-row">
+          <span id="connectionBadge" class="connection-badge"><i></i><b>TEST MODE</b></span>
+          <span id="memberBadge" class="member-badge">GUEST</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="live-shell" aria-label="SFANDOM LIVE 통합 채팅">
+      <aside class="live-sidebar">
+        <div class="sidebar-block">
+          <small>CHANNEL</small>
+          <strong><i class="pulse-dot"></i> 전체 LIVE</strong>
+          <p>모든 종목을 한 방에서 이야기합니다.</p>
+        </div>
+        <div class="sidebar-block">
+          <small>TOPIC TAGS</small>
+          <div class="topic-list" id="topicList">
+            <button type="button" class="active" data-topic="ALL">ALL</button>
+            <button type="button" data-topic="MLB">MLB</button>
+            <button type="button" data-topic="KBO">KBO</button>
+            <button type="button" data-topic="NBA">NBA</button>
+            <button type="button" data-topic="FOOTBALL">FOOTBALL</button>
+          </div>
+        </div>
+        <div class="sidebar-block sidebar-rules">
+          <small>ROOM RULES</small>
+          <p>경기 의견은 자유롭게. 반복 도배, 욕설·모욕, 개인정보 노출, 광고성 링크는 제한합니다.</p>
+          <a href="community-policy.html">커뮤니티 운영정책 →</a>
+        </div>
+      </aside>
+
+      <div class="chat-panel">
+        <div class="chat-head">
+          <div>
+            <small>SFANDOM LIVE</small>
+            <strong># 전체 스포츠</strong>
+          </div>
+          <div class="chat-head-actions">
+            <span id="modeNote">브라우저 테스트 모드</span>
+            <button id="changeNickname" type="button">닉네임 변경</button>
+          </div>
+        </div>
+
+        <div class="chat-notice">
+          <b>KAIRO NOTE</b>
+          <span>첫 버전은 가볍게 시작합니다. 텍스트 채팅부터 열고 실제 사용 흐름을 본 뒤 필요한 기능만 추가합니다.</span>
+        </div>
+
+        <div id="messageList" class="message-list" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+        <form id="chatComposer" class="chat-composer" autocomplete="off">
+          <div class="composer-top">
+            <label for="topicSelect">TAG</label>
+            <select id="topicSelect" aria-label="메시지 종목 태그">
+              <option value="GENERAL">GENERAL</option>
+              <option value="MLB">MLB</option>
+              <option value="KBO">KBO</option>
+              <option value="NBA">NBA</option>
+              <option value="FOOTBALL">FOOTBALL</option>
+            </select>
+            <span id="composerIdentity">GUEST</span>
+          </div>
+          <div class="composer-body">
+            <textarea id="messageInput" rows="1" maxlength="300" placeholder="경기 이야기를 남겨보세요…" aria-label="채팅 메시지"></textarea>
+            <button id="sendButton" type="submit">SEND <b>↗</b></button>
+          </div>
+          <div class="composer-foot">
+            <span>Enter 전송 · Shift+Enter 줄바꿈</span>
+            <span id="charCount">0 / 300</span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="live-footnote">
+      <span>SFANDOM LIVE · v0.1</span>
+      <p>현재는 회원가입 전 공개 테스트 단계입니다. 이용 흐름을 확인한 뒤 계정·프로필·회원 전용 기능을 순차적으로 연결합니다.</p>
+    </section>
+  </main>
+
+  <div id="nicknameModal" class="nickname-modal" hidden>
+    <div class="nickname-card" role="dialog" aria-modal="true" aria-labelledby="nicknameTitle">
+      <span>SFANDOM LIVE</span>
+      <h2 id="nicknameTitle">닉네임만 정하고<br>바로 들어오세요.</h2>
+      <p>이메일이나 회원가입은 필요 없습니다. 공개 채팅에 표시할 이름만 사용합니다.</p>
+      <label for="nicknameInput">NICKNAME</label>
+      <input id="nicknameInput" maxlength="18" autocomplete="nickname" />
+      <button id="nicknameStart" type="button">LIVE CHAT 입장 <b>→</b></button>
+      <small>2–18자 · 한글/영문/숫자/공백/._- 사용 가능</small>
+    </div>
+  </div>
+
+  <footer class="footer-v2 live-footer"><div><a class="brand" href="index.html"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a><p>SPORTS DATA · ANALYSIS · FORECAST</p></div><div class="footer-links"><a href="analysis.html">분석</a><a href="content.html">콘텐츠</a><a href="live.html">LIVE</a><a href="about.html">소개</a><a href="terms.html">이용약관</a><a href="privacy.html">개인정보 처리방침</a></div><small>© 2026 SFANDOM. ALL RIGHTS RESERVED.</small></footer>
+
+  <script src="live-chat.js?v=20260825-1500"></script>
+</body>
+</html>
