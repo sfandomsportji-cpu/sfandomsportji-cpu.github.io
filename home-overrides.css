@@ -1,14 +1,17 @@
 @import url('./home-overrides-base.css?v=20260825-0610');
 
-/* 2026-08-25 mobile cleanup: vivid mascot + compact archive spacing */
+/* 2026-08-25 mascot hierarchy: bear = primary face, fox = special-event sub character. */
 .home-kairo-art{
   background-color:#050505!important;
-  background-image:url('assets/ji-kairo-duo-vivid-420.avif?v=20260825-0616')!important;
+  background-image:url('assets/ji-bear-main.svg?v=20260825-1227')!important;
   background-repeat:no-repeat!important;
   background-position:center!important;
-  background-size:min(390px,86%) auto!important;
+  background-size:min(320px,72%) auto!important;
 }
 .home-kairo-art img{display:none!important}
+
+/* Keep the home experience restrained: only the primary bear appears here.
+   The fox remains available in the original duo assets for special/event moments only. */
 
 /* Pick archive shortcut: keep only one branded entry. */
 section[aria-labelledby="pick-result-title"] > div:last-child > span,
@@ -35,7 +38,7 @@ section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::af
   color:#fff;
   font-size:.72rem;
   font-weight:900;
-  letter-spacing:.08em;
+  letter-spacing:.08em!important;
 }
 
 @media (max-width:900px){
@@ -57,9 +60,9 @@ section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::af
   .daily-read{padding-bottom:26px!important}
   .daily-read + .section{padding-top:30px!important}
 
-  /* Show the sharper mascot close to its native size. */
+  /* Primary mascot stays compact on mobile; no duo crowding. */
   .home-kairo{padding-top:34px!important;padding-bottom:48px!important;gap:26px!important}
-  .home-kairo-art{height:370px!important;min-height:0!important;background-size:min(350px,88vw) auto!important}
+  .home-kairo-art{height:370px!important;min-height:0!important;background-size:min(285px,76vw) auto!important}
   .home-kairo-art span{z-index:2!important;color:#a6a6aa!important}
 
   /* Improve legibility of muted mobile labels without changing the dark theme. */
