@@ -38,18 +38,6 @@ section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::af
   letter-spacing:.08em;
 }
 
-/* Public-facing indexed counter. 100,000 is the declared baseline, not raw traffic. */
-body.home-v2 .footer-v2>small::before{
-  content:"SFANDOM VIEW INDEX · 100,000 · BASE 100,000";
-  display:block;
-  margin-bottom:6px;
-  color:#a8a8ad;
-  font-size:.62rem;
-  font-weight:900;
-  letter-spacing:.12em;
-  white-space:nowrap;
-}
-
 @media (max-width:900px){
   .hero-v2{padding-bottom:8px!important}
   .hero-visual{padding-bottom:18px!important;gap:8px!important}
