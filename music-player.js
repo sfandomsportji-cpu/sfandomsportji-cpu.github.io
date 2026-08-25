@@ -1,7 +1,7 @@
 (()=>{
   const tracks=[
   {src:'assets/music/sfandom-energy-01-danceable-funky-indie-pop.mp3',title:'Danceable Funky Indie Pop',artist:'Sound_For_You',source:'https://pixabay.com/music/funk-upbeat-danceable-funky-indie-pop-energetic-dance-funky-catchy-473869/'},
-  {src:'assets/music/sfandom-energy-02-indie-pop-rock-funky-guitar.mp3',title:'Indie Pop Rock Funky Guitar',artist:'Sound_For_You',source:'https://pixabay.com/music/rock-indie-pop-rock-funky-guitar-fun-happy-youthful-catchy-indie-rock-475294/'},
+  {src:'assets/music/sfandom-energy-02-pop-punk-rock.mp3',title:'Pop Punk Rock Music',artist:'lNPLUSMUSIC',source:'https://pixabay.com/music/rock-pop-punk-rock-music-469456/'},
   {src:'assets/music/sfandom-energy-03-uplifting-fun-indie-pop-rock.mp3',title:'Uplifting Fun Indie Pop Rock',artist:'Sound_For_You',source:'https://pixabay.com/music/acoustic-group-uplifting-fun-indie-pop-rock-funky-guitar-riff-fun-youthful-vibe-484929/'},
   {src:'assets/music/sfandom-energy-04-upbeat-party-pop.mp3',title:'Upbeat Party Pop',artist:'Sound_For_You',source:'https://pixabay.com/music/electronic-upbeat-party-pop-energetic-indie-pop-with-catchy-guitars-487926/'},
   {src:'assets/music/sfandom-energy-05-happy-indie-pop.mp3',title:'Happy Indie Pop',artist:'Sound_For_You',source:'https://pixabay.com/music/acoustic-group-happy-indie-pop-energetic-upbeat-uplifting-catchy-indie-pop-487485/'}
