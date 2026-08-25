@@ -233,3 +233,56 @@ body.home-v2 .footer-v2>small::before{
   body.home-v2 .footer-v2 small{display:block!important;width:100%!important;margin:0!important;text-align:center!important;font-size:.61rem!important;line-height:1.5!important}
   body.home-v2 .footer-v2>small::before{white-space:normal;line-height:1.5}
 }
+
+/* Desktop social dock: pin Instagram / Threads to the far-right edge of the hero video. */
+@media (min-width:901px){
+  body.home-v2 .hero-visual .hero-social{
+    position:absolute!important;
+    right:-24px!important;
+    top:50%!important;
+    transform:translateY(-50%)!important;
+    z-index:8!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    gap:9px!important;
+    margin:0!important;
+    padding:11px 8px!important;
+    border:1px solid rgba(255,255,255,.11)!important;
+    background:rgba(6,6,6,.72)!important;
+    backdrop-filter:blur(10px)!important;
+  }
+  body.home-v2 .hero-visual .hero-social>span{
+    margin:0 0 3px!important;
+    writing-mode:vertical-rl!important;
+    transform:rotate(180deg)!important;
+    color:#777!important;
+    font-size:.52rem!important;
+    font-weight:900!important;
+    letter-spacing:.16em!important;
+  }
+  body.home-v2 .hero-visual .hero-social a{
+    display:grid!important;
+    place-items:center!important;
+    width:34px!important;
+    height:34px!important;
+    margin:0!important;
+    border:1px solid #303035!important;
+    background:rgba(9,9,10,.86)!important;
+    color:#f2f2f3!important;
+    transition:border-color .18s ease,background .18s ease,transform .18s ease!important;
+  }
+  body.home-v2 .hero-visual .hero-social a:hover{
+    border-color:#ef2d2d!important;
+    background:#17090b!important;
+    transform:translateX(-2px)!important;
+  }
+  body.home-v2 .hero-visual .hero-social svg{
+    width:17px!important;
+    height:17px!important;
+    fill:none!important;
+    stroke:currentColor!important;
+    stroke-width:1.7!important;
+  }
+}
