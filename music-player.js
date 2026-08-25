@@ -8,6 +8,9 @@
 
   const footerLinks=document.querySelector('.footer-links');
   if(footerLinks){
+    if(!footerLinks.querySelector('a[href="legal.html"],a[href="/legal.html"]')){
+      const legal=document.createElement('a');legal.href='/legal.html';legal.textContent='운영·법률';footerLinks.appendChild(legal);
+    }
     if(!footerLinks.querySelector('a[href="terms.html"]')){
       const terms=document.createElement('a');terms.href='terms.html';terms.textContent='이용약관';footerLinks.appendChild(terms);
     }
