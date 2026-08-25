@@ -149,3 +149,28 @@ body.home-v2 .hero-v2::after{color:#8f8f94}
     background:rgba(7,7,7,.84);
   }
 }
+
+/* Mobile readability fix: keep the view counter in normal document flow so it never overlaps the live chip or headline. */
+@media (max-width:620px){
+  body.home-v2 .hero-v2::after{content:none!important;display:none!important}
+  body.home-v2 .hero-copy::before{
+    content:"VIEW INDEX\A 84,512";
+    white-space:pre;
+    display:block;
+    width:max-content;
+    min-width:104px;
+    box-sizing:border-box;
+    margin:0 auto 14px 0!important;
+    padding:8px 10px 7px;
+    border:1px solid rgba(255,255,255,.16);
+    border-left:2px solid #e2232a;
+    background:rgba(7,7,7,.84);
+    color:#8f8f94;
+    text-align:left!important;
+    font-size:.5rem;
+    font-weight:900;
+    line-height:1.2;
+    letter-spacing:.12em;
+    box-shadow:0 10px 28px rgba(0,0,0,.28);
+  }
+}
