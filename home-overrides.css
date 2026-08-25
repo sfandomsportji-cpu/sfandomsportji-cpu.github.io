@@ -47,8 +47,34 @@ section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::af
 }
 
 @media (max-width:620px){
+  /* Full-bleed phone layout: use the real viewport instead of a narrow desktop-style column. */
+  html,body.home-v2{width:100%;max-width:100%;overflow-x:hidden}
+  body.home-v2 main{width:100%;max-width:100%;min-width:0;overflow:hidden}
+  body.home-v2 .hero-v2{
+    box-sizing:border-box!important;
+    width:100vw!important;
+    max-width:100vw!important;
+    min-width:0!important;
+    margin-left:calc(50% - 50vw)!important;
+    margin-right:calc(50% - 50vw)!important;
+    padding-left:14px!important;
+    padding-right:14px!important;
+    padding-bottom:0!important;
+  }
+  body.home-v2 .hero-reel-wrap{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+  body.home-v2 .hero-copy{width:100%!important;max-width:none!important;min-width:0!important}
+  body.home-v2 .hero-text{max-width:none!important;width:100%!important}
+  body.home-v2 .hero-actions{display:grid!important;grid-template-columns:minmax(0,1.15fr) minmax(0,.9fr)!important;width:100%!important;gap:10px!important}
+  body.home-v2 .hero-actions .btn{min-width:0!important;width:100%!important;padding:14px 10px!important;gap:9px!important;white-space:nowrap!important}
+
+  /* Header should fill the phone too, without forcing the page wider than the viewport. */
+  body.home-v2 .site-header{width:100%;max-width:100%;min-width:0;padding-left:12px!important;padding-right:12px!important;gap:10px!important}
+  body.home-v2 .site-header .brand{flex:0 0 auto}
+  body.home-v2 .site-header .nav{flex:1 1 auto;min-width:0;gap:12px!important;overflow-x:auto;overflow-y:hidden;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  body.home-v2 .site-header .nav::-webkit-scrollbar{display:none}
+  body.home-v2 .site-header .nav a{flex:0 0 auto}
+
   /* Remove the oversized dead space under FOLLOW on phones. */
-  .hero-v2{padding-bottom:0!important}
   .hero-visual{padding:26px 0 14px!important;gap:8px!important}
   .hero-social{margin-top:0!important}
   .ticker-track{padding-top:14px!important;padding-bottom:14px!important}
