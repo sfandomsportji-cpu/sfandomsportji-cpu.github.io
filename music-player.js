@@ -129,13 +129,34 @@
 })();
 
 (()=>{
-  const nav=document.querySelector('.site-header .nav');
+  const header=document.querySelector('.site-header');
+  const nav=header?.querySelector('.nav');
   if(nav&&!nav.querySelector('a[href="/preamble.html"],a[href="preamble.html"]')){
     const link=document.createElement('a');
     link.href='/preamble.html';
-    link.textContent='전문';
-    const about=[...nav.querySelectorAll('a')].find(a=>a.textContent.trim()==='소개');
+    link.textContent='PREAMBLE';
+    const about=[...nav.querySelectorAll('a')].find(a=>/about\.html(?:$|[?#])/.test(a.getAttribute('href')||''));
     if(about)nav.insertBefore(link,about);else nav.appendChild(link);
+  }
+  if(nav){
+    [...nav.querySelectorAll('a')].forEach(a=>{
+      const href=a.getAttribute('href')||'';
+      if(/analysis\.html(?:$|[?#])/.test(href))a.textContent='ANALYSIS';
+      else if(/content\.html(?:$|[?#])/.test(href))a.textContent='CONTENT';
+      else if(/(?:^|\/)archive\/?(?:$|[?#])/.test(href)||href==='archive/')a.textContent='ARCHIVE';
+      else if(/preamble\.html(?:$|[?#])/.test(href))a.textContent='PREAMBLE';
+      else if(/about\.html(?:$|[?#])/.test(href))a.textContent='ABOUT';
+    });
+  }
+  if(header){
+    let cta=header.querySelector('.header-cta');
+    if(!cta){
+      cta=document.createElement('a');
+      cta.className='header-cta';
+      cta.href='/analysis.html';
+      header.appendChild(cta);
+    }
+    cta.textContent='ENTER LAB ↗';
   }
 
   const footer=document.querySelector('.footer-links');
