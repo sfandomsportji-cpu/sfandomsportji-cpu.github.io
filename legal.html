@@ -9,68 +9,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260825-legal-center" />
-  <link rel="stylesheet" href="music-player.css?v=20260826-no-music1" />
+  <link rel="stylesheet" href="styles.css?v=20260827-clean1" />
   <style>
-    .legal-center{width:min(1160px,calc(100% - 40px));margin:0 auto;padding:92px 0 120px}
-    .legal-center-head{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end;padding:52px 0 48px;border-bottom:1px solid #28282c}
-    .legal-center .kicker{margin:0 0 14px;color:#ef2d2d;font:900 .68rem/1 Inter,sans-serif;letter-spacing:.18em}
-    .legal-center h1{margin:0;font:900 clamp(3.4rem,7vw,6.8rem)/.88 Inter,'Noto Sans KR',sans-serif;letter-spacing:-.065em}
-    .legal-center h1 span{color:#6f7077}
-    .legal-center-intro{margin:0;color:#a9aab1;font-size:.94rem;line-height:1.9;word-break:keep-all}
-    .legal-status{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.legal-status span{padding:8px 10px;border:1px solid #313238;background:#0a0a0c;color:#a5a6ad;font-size:.62rem;font-weight:900;letter-spacing:.1em}
-    .legal-principle{margin:30px 0 0;padding:20px 22px;border-left:3px solid #ef2d2d;background:#100809;color:#c4c5ca;line-height:1.8;font-size:.84rem}
-    .legal-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:48px}
-    .legal-card{position:relative;display:block;min-height:265px;padding:28px;border:1px solid #2b2c31;background:linear-gradient(145deg,#0d0d10,#070708 72%);text-decoration:none;color:#fff;overflow:hidden}
-    .legal-card:after{content:'';position:absolute;right:-80px;bottom:-100px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(239,45,45,.12),transparent 67%)}
-    .legal-card .no{position:relative;z-index:1;color:#ef2d2d;font-size:.62rem;font-weight:900;letter-spacing:.16em}
-    .legal-card h2{position:relative;z-index:1;margin:34px 0 10px;font-size:clamp(1.8rem,3vw,3rem);letter-spacing:-.05em}
-    .legal-card p{position:relative;z-index:1;margin:0;max-width:470px;color:#9c9da4;line-height:1.75;font-size:.82rem;word-break:keep-all}
-    .legal-card b{position:absolute;left:28px;bottom:26px;z-index:1;color:#d7d8dc;font-size:.66rem;letter-spacing:.09em}
-    .legal-map{margin-top:54px;padding-top:35px;border-top:1px solid #28282c}
-    .legal-map h3{margin:0 0 20px;font-size:1rem;letter-spacing:.02em}.legal-map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .legal-map-grid div{padding:16px;border:1px solid #25262b;background:#09090b}.legal-map-grid small{display:block;color:#ef2d2d;font-size:.56rem;font-weight:900;letter-spacing:.13em}.legal-map-grid strong{display:block;margin-top:8px;color:#e7e7e9;font-size:.8rem}.legal-map-grid span{display:block;margin-top:5px;color:#74757c;font-size:.66rem;line-height:1.5}
-    .legal-note{margin-top:35px;color:#73747b;font-size:.7rem;line-height:1.8}.legal-note strong{color:#aaa}
-    @media(max-width:800px){.legal-center{width:min(100% - 30px,1160px);padding-top:56px}.legal-center-head{grid-template-columns:1fr;gap:25px}.legal-cards{grid-template-columns:1fr}.legal-map-grid{grid-template-columns:1fr}.legal-card{min-height:240px}}
+    .legal-center{width:min(1160px,calc(100% - 40px));margin:0 auto;padding:92px 0 120px}.legal-center-head{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end;padding:52px 0 48px;border-bottom:1px solid #28282c}.legal-center .kicker{margin:0 0 14px;color:#ef2d2d;font:900 .68rem/1 Inter,sans-serif;letter-spacing:.18em}.legal-center h1{margin:0;font:900 clamp(3.4rem,7vw,6.8rem)/.88 Inter,'Noto Sans KR',sans-serif;letter-spacing:-.065em}.legal-center h1 span{color:#6f7077}.legal-center-intro{margin:0;color:#a9aab1;font-size:.94rem;line-height:1.9;word-break:keep-all}.legal-status{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.legal-status span{padding:8px 10px;border:1px solid #313238;background:#0a0a0c;color:#a5a6ad;font-size:.62rem;font-weight:900;letter-spacing:.1em}.legal-principle{margin:30px 0 0;padding:20px 22px;border-left:3px solid #ef2d2d;background:#100809;color:#c4c5ca;line-height:1.8;font-size:.84rem}.legal-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:48px}.legal-card{position:relative;display:block;min-height:265px;padding:28px;border:1px solid #2b2c31;background:linear-gradient(145deg,#0d0d10,#070708 72%);text-decoration:none;color:#fff;overflow:hidden}.legal-card:after{content:'';position:absolute;right:-80px;bottom:-100px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(239,45,45,.12),transparent 67%)}.legal-card .no{position:relative;z-index:1;color:#ef2d2d;font-size:.62rem;font-weight:900;letter-spacing:.16em}.legal-card h2{position:relative;z-index:1;margin:34px 0 10px;font-size:clamp(1.8rem,3vw,3rem);letter-spacing:-.05em}.legal-card p{position:relative;z-index:1;margin:0;max-width:470px;color:#9c9da4;line-height:1.75;font-size:.82rem;word-break:keep-all}.legal-card b{position:absolute;left:28px;bottom:26px;z-index:1;color:#d7d8dc;font-size:.66rem;letter-spacing:.09em}.legal-map{margin-top:54px;padding-top:35px;border-top:1px solid #28282c}.legal-map h3{margin:0 0 20px;font-size:1rem;letter-spacing:.02em}.legal-map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.legal-map-grid div{padding:16px;border:1px solid #25262b;background:#09090b}.legal-map-grid small{display:block;color:#ef2d2d;font-size:.56rem;font-weight:900;letter-spacing:.13em}.legal-map-grid strong{display:block;margin-top:8px;color:#e7e7e9;font-size:.8rem}.legal-map-grid span{display:block;margin-top:5px;color:#74757c;font-size:.66rem;line-height:1.5}.legal-note{margin-top:35px;color:#73747b;font-size:.7rem;line-height:1.8}.legal-note strong{color:#aaa}@media(max-width:800px){.legal-center{width:min(100% - 30px,1160px);padding-top:56px}.legal-center-head{grid-template-columns:1fr;gap:25px}.legal-cards{grid-template-columns:1fr}.legal-map-grid{grid-template-columns:1fr}.legal-card{min-height:240px}}
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="SFANDOM home"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a>
-    <nav class="nav" aria-label="Primary navigation"><a href="analysis.html">분석</a><a href="content.html">콘텐츠</a><a href="archive/">기록보관소</a><a href="preamble.html">전문</a><a href="about.html">소개</a></nav>
-  </header>
+  <header class="site-header"><a class="brand" href="index.html" aria-label="SFANDOM home"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a><nav class="nav" aria-label="Primary navigation"><a href="analysis.html">분석</a><a href="content.html">콘텐츠</a><a href="archive/">기록보관소</a><a href="preamble.html">전문</a><a href="about.html">소개</a></nav></header>
 
   <main class="legal-center">
-    <section class="legal-center-head">
-      <div><p class="kicker">SFANDOM · GOVERNANCE & LEGAL</p><h1>운영과 원칙을<br><span>공개합니다.</span></h1></div>
-      <div><p class="legal-center-intro">SFANDOM은 스포츠 데이터·통계·분석 콘텐츠를 운영하면서 적용하는 기준과 이용자 보호 원칙을 공개합니다. 결과만 보여주는 플랫폼보다, 어떤 기준으로 운영되고 어떤 책임범위를 두는지 확인할 수 있는 플랫폼을 지향합니다.</p><div class="legal-status"><span>EST. 2026.08</span><span>KOREA · KST</span><span>PUBLIC POLICIES</span></div></div>
-    </section>
-
+    <section class="legal-center-head"><div><p class="kicker">SFANDOM · GOVERNANCE & LEGAL</p><h1>운영과 원칙을<br><span>공개합니다.</span></h1></div><div><p class="legal-center-intro">SFANDOM은 스포츠 데이터·통계·분석 콘텐츠를 운영하면서 적용하는 기준과 이용자 보호 원칙을 공개합니다. 결과만 보여주는 플랫폼보다, 어떤 기준으로 운영되고 어떤 책임범위를 두는지 확인할 수 있는 플랫폼을 지향합니다.</p><div class="legal-status"><span>EST. 2026.08</span><span>KOREA · KST</span><span>PUBLIC POLICIES</span></div></div></section>
     <div class="legal-principle"><strong>운영 원칙</strong> · 경기 전 판단과 경기 후 결과를 구분하고, 오류·미적중·수정이 발생한 경우 이를 숨기지 않는 것을 기본 원칙으로 합니다. 법률·정책 문서는 서비스 확장과 관계 법령 변화에 따라 보완될 수 있습니다.</div>
-
-    <section class="legal-cards" aria-label="SFANDOM 운영 및 법률 문서">
-      <a class="legal-card" href="preamble.html"><span class="no">01 · PREAMBLE</span><h2>전문 · 前文</h2><p>SFANDOM이 왜 존재하고 어떤 방식으로 스포츠 데이터를 해석하며 기록하는지 밝히는 기본 선언입니다.</p><b>브랜드·운영 철학 보기 →</b></a>
-      <a class="legal-card" href="terms.html"><span class="no">02 · TERMS OF USE</span><h2>서비스 이용약관</h2><p>서비스의 성격, 스포츠 분석 및 PICK 운영원칙, 책임범위, 금지행위, 콘텐츠 이용기준 등을 20개 조항으로 정리했습니다.</p><b>20개 조항 전체 보기 →</b></a>
-      <a class="legal-card" href="privacy.html"><span class="no">03 · PRIVACY</span><h2>개인정보 처리방침</h2><p>현재 서비스 단계에서 처리되는 최소한의 정보와 저장 방식, 향후 회원 기능 도입 시 적용할 개인정보 보호 원칙을 공개합니다.</p><b>개인정보 기준 보기 →</b></a>
-      <a class="legal-card" href="community-policy.html"><span class="no">04 · COMMUNITY</span><h2>커뮤니티 운영정책</h2><p>향후 회원·게시판 운영을 위한 표현의 책임, 명예와 권리 보호, 금지행위, 게시물 관리 및 이용제한 기준을 정리합니다.</p><b>커뮤니티 기준 보기 →</b></a>
-    </section>
-
-    <section class="legal-map">
-      <h3>앞으로 이곳에 함께 관리할 세부 기준</h3>
-      <div class="legal-map-grid">
-        <div><small>05</small><strong>분석·PICK 공개 기준</strong><span>게시시각, 변경이력, PASS 및 결과 기록 기준</span></div>
-        <div><small>06</small><strong>콘텐츠·저작권 기준</strong><span>사진·영상·데이터 출처 및 인용·재사용 원칙</span></div>
-        <div><small>07</small><strong>명예·권리 보호 기준</strong><span>모욕·명예훼손·허위정보 및 신고 처리 원칙</span></div>
-        <div><small>08</small><strong>회원 운영 기준</strong><span>가입, 계정, 닉네임, 이용제한 및 탈퇴 기준</span></div>
-        <div><small>09</small><strong>데이터 정정 기준</strong><span>공식 기록 변경·오류 발견 시 정정 표시 원칙</span></div>
-        <div><small>10+</small><strong>서비스 확장 정책</strong><span>회원·커뮤니티·유료기능 도입 시 필요한 문서 추가</span></div>
-      </div>
-    </section>
-
+    <section class="legal-cards" aria-label="SFANDOM 운영 및 법률 문서"><a class="legal-card" href="preamble.html"><span class="no">01 · PREAMBLE</span><h2>전문 · 前文</h2><p>SFANDOM이 왜 존재하고 어떤 방식으로 스포츠 데이터를 해석하며 기록하는지 밝히는 기본 선언입니다.</p><b>브랜드·운영 철학 보기 →</b></a><a class="legal-card" href="terms.html"><span class="no">02 · TERMS OF USE</span><h2>서비스 이용약관</h2><p>서비스의 성격, 스포츠 분석 및 PICK 운영원칙, 책임범위, 금지행위, 콘텐츠 이용기준 등을 20개 조항으로 정리했습니다.</p><b>20개 조항 전체 보기 →</b></a><a class="legal-card" href="privacy.html"><span class="no">03 · PRIVACY</span><h2>개인정보 처리방침</h2><p>현재 서비스 단계에서 처리되는 최소한의 정보와 저장 방식, 향후 회원 기능 도입 시 적용할 개인정보 보호 원칙을 공개합니다.</p><b>개인정보 기준 보기 →</b></a><a class="legal-card" href="community-policy.html"><span class="no">04 · COMMUNITY</span><h2>커뮤니티 운영정책</h2><p>향후 회원·게시판 운영을 위한 표현의 책임, 명예와 권리 보호, 금지행위, 게시물 관리 및 이용제한 기준을 정리합니다.</p><b>커뮤니티 기준 보기 →</b></a></section>
+    <section class="legal-map"><h3>앞으로 이곳에 함께 관리할 세부 기준</h3><div class="legal-map-grid"><div><small>05</small><strong>분석·PICK 공개 기준</strong><span>게시시각, 변경이력, PASS 및 결과 기록 기준</span></div><div><small>06</small><strong>콘텐츠·저작권 기준</strong><span>사진·영상·데이터 출처 및 인용·재사용 원칙</span></div><div><small>07</small><strong>명예·권리 보호 기준</strong><span>모욕·명예훼손·허위정보 및 신고 처리 원칙</span></div><div><small>08</small><strong>회원 운영 기준</strong><span>가입, 계정, 닉네임, 이용제한 및 탈퇴 기준</span></div><div><small>09</small><strong>데이터 정정 기준</strong><span>공식 기록 변경·오류 발견 시 정정 표시 원칙</span></div><div><small>10+</small><strong>서비스 확장 정책</strong><span>회원·커뮤니티·유료기능 도입 시 필요한 문서 추가</span></div></div></section>
     <p class="legal-note"><strong>안내</strong> · 본 페이지는 SFANDOM의 공개 운영정책을 한곳에서 확인하기 위한 안내 페이지입니다. 개별 문서의 구체적인 내용이 우선 적용됩니다.</p>
   </main>
 
-  <footer class="footer-v2"><div><a class="brand" href="index.html"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a><p>SPORTS DATA · ANALYSIS · FORECAST</p></div><div class="footer-links"><a href="analysis.html">분석</a><a href="content.html">콘텐츠</a><a href="preamble.html">전문</a><a href="legal.html">운영·법률</a><a href="terms.html">이용약관</a><a href="privacy.html">개인정보 처리방침</a></div><small>© 2026 SFANDOM. ALL RIGHTS RESERVED.</small></footer>
-  <script src="music-player.js?v=20260826-no-music1"></script>
+  <footer class="footer-v2"><div><a class="brand" href="index.html"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a><p>SPORTS DATA · ANALYSIS · FORECAST</p></div><div class="footer-links"><a href="analysis.html">분석</a><a href="content.html">콘텐츠</a><a href="preamble.html">전문</a><a href="legal.html">운영·법률</a><a href="terms.html">이용약관</a><a href="privacy.html">개인정보 처리방침</a><a href="community-policy.html">커뮤니티 운영정책</a><a href="legal-notice.html">법률고지</a></div><small>© 2026 SFANDOM. ALL RIGHTS RESERVED.</small></footer>
 </body>
 </html>
