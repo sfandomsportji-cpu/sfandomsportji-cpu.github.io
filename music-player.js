@@ -61,3 +61,43 @@
 
   document.head.appendChild(script);
 })();
+
+/* 2026-08-26: restore the pre-Manchester local hero reel (Tottenham) and remove the extra hero logo. */
+(()=>{
+  const restoreHeroReel=()=>{
+    const wrap=document.querySelector('.hero-reel-wrap');
+    if(!wrap) return;
+
+    wrap.querySelectorAll('.hero-reel-safe-logo').forEach(el=>el.remove());
+
+    const current=wrap.querySelector('.hero-reel');
+    const isRestored=current && current.tagName==='VIDEO' && (current.currentSrc||current.getAttribute('src')||'').includes('sfandom-hero-reel.mp4');
+    if(isRestored){
+      current.muted=true;
+      current.loop=true;
+      current.autoplay=true;
+      current.playsInline=true;
+      current.play().catch(()=>{});
+      return;
+    }
+
+    const video=document.createElement('video');
+    video.className='hero-reel';
+    video.autoplay=true;
+    video.muted=true;
+    video.loop=true;
+    video.playsInline=true;
+    video.preload='auto';
+    video.setAttribute('aria-hidden','true');
+    video.src='assets/sfandom-hero-reel.mp4?v=20260822-0451';
+
+    if(current) current.replaceWith(video);
+    else wrap.prepend(video);
+
+    video.play().catch(()=>{});
+  };
+
+  restoreHeroReel();
+  requestAnimationFrame(restoreHeroReel);
+  setTimeout(restoreHeroReel,250);
+})();
