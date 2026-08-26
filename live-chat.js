@@ -345,6 +345,10 @@
   });
 
   els.input.addEventListener('keydown', (event) => {
+    if (event.key === ' ' || event.code === 'Space') {
+      event.stopPropagation();
+      return;
+    }
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
       submitMessage();
