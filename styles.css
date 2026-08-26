@@ -15,7 +15,10 @@ a{color:inherit}
 .section,.page-hero,.footer-v2,footer{max-width:var(--max);margin:0 auto;padding-left:24px;padding-right:24px}
 .section{padding-top:125px;padding-bottom:125px}
 .eyebrow{font-size:.72rem;letter-spacing:.2em;font-weight:800;color:var(--accent);margin:0 0 17px}
+.page-hero{padding-top:150px;padding-bottom:110px;border-bottom:1px solid var(--line)}
 .page-hero h1,.section h2{font-size:clamp(3rem,7vw,6.5rem);line-height:.9;letter-spacing:-.06em;margin:0}
+.page-hero h1{max-width:1000px}
+.page-hero h1 span{color:#777}
 .page-hero>p:last-child{max-width:650px;color:#aaa;font-size:1rem;margin:24px 0 30px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:24px;padding:13px 18px;text-decoration:none;font-weight:800;font-size:.82rem;letter-spacing:.02em}
 .primary{background:var(--accent);color:white;transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
@@ -26,42 +29,19 @@ a{color:inherit}
 .section-label p{margin:0;font-size:.68rem;font-weight:800;letter-spacing:.2em;color:#858580}
 .section-head{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:48px}
 .text-link{display:inline-block;margin-top:22px;text-decoration:none;font-weight:800;font-size:.82rem}
-.page-hero{padding-top:150px;padding-bottom:110px;border-bottom:1px solid var(--line)}
-.page-hero h1{max-width:1000px}
-.page-hero h1 span{color:#777}
-.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card,.metric-card{min-height:260px;background:var(--panel);border:1px solid var(--line);border-radius:0;padding:28px}
-.card span,.metric-card span{color:var(--accent);font-weight:800;font-size:.8rem}
-.card h3{margin:52px 0 12px;font-size:1.25rem}
-.card p,.feature p,.about p,.metric-card p,.wide-copy,.about-copy p{color:var(--muted)}
 .split{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;border-top:1px solid var(--line)}
-.method-list>div{display:grid;grid-template-columns:60px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid var(--line)}
-.method-list b{color:var(--accent)}
-.method-list p{margin:0;color:#aaa}
-.method-list strong{color:#fff}
-.feature,.feature-band{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.feature p,.wide-copy{max-width:700px;font-size:1.08rem;margin-top:28px}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end}
-.analysis-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.metric-card h3{font-size:1.35rem;margin:52px 0 10px}
-.content-list{border-top:1px solid var(--line)}
-.content-list article{display:grid;grid-template-columns:70px 1fr auto;gap:26px;align-items:center;padding:34px 0;border-bottom:1px solid var(--line)}
-.content-list h3{margin:0 0 8px;font-size:1.45rem}
-.content-list p{margin:0;color:var(--muted)}
+.feature-band{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .footer-v2{padding-top:46px;padding-bottom:55px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto auto;gap:35px;align-items:end}
 .footer-v2>div:first-child p{font-size:.62rem;letter-spacing:.14em;color:#777}
 .footer-links{display:flex;gap:22px}
 .footer-links a{text-decoration:none;font-size:.68rem;font-weight:800;color:#aaa}
 .footer-v2 small{color:#666;font-size:.62rem}
 footer:not(.footer-v2){padding-top:38px;padding-bottom:50px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto auto;gap:20px;align-items:center;color:#85857f;font-size:.76rem}
-.analysis-page .page-hero h1{font-size:clamp(3.2rem,6.2vw,5.7rem);line-height:1.02;word-break:keep-all}
-.analysis-page .page-hero h1 span{color:#9a9a96}
-.analysis-page .page-hero>p:last-child{max-width:780px;word-break:keep-all;line-height:1.85}
 @media(max-width:900px){
   .header-cta{display:none}
   .footer-v2{grid-template-columns:1fr}
   .nav{gap:15px}
-  .split,.about{grid-template-columns:1fr}
+  .split{grid-template-columns:1fr}
 }
 @media(max-width:620px){
   .site-header{padding:12px 18px}
@@ -73,8 +53,5 @@ footer:not(.footer-v2){padding-top:38px;padding-bottom:50px;border-top:1px solid
   .section-head{align-items:flex-start;flex-direction:column}
   .footer-links{flex-wrap:wrap;align-items:center}
   .page-hero{padding-top:100px;padding-bottom:76px}
-  .card-grid,.analysis-grid,.split,.about{grid-template-columns:1fr}
-  .content-list article{grid-template-columns:42px 1fr}
-  .content-list article>b{display:none}
-  .analysis-page .page-hero h1{font-size:clamp(2.75rem,13vw,4.2rem)}
+  .split{grid-template-columns:1fr}
 }
