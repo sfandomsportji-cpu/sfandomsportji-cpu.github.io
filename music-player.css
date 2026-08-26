@@ -1,2 +1,34 @@
-/* Music UI removed. This file only keeps the persistent header geometry guard used across SFANDOM pages. */
+/* Music UI removed. This file now contains only stable layout guards. */
 .site-header{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:28px;min-height:73px}.site-header .brand{display:inline-flex;align-items:center;gap:10px;flex:0 0 auto;text-decoration:none}.site-header .brand img{display:block!important;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;max-width:40px!important;max-height:40px!important;object-fit:contain!important;border-radius:0!important}.site-header .nav{display:flex;align-items:center;margin-left:auto}.site-header .nav a{white-space:nowrap}html.sf-route-loading .site-header .brand img{transform:none!important;filter:none!important;animation:none!important;transition:none!important}@media(max-width:620px){.site-header{min-height:64px}.site-header .brand img{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;max-width:40px!important;max-height:40px!important}}
+
+/* Recovery: the retired current-pick block stays out of the live homepage until a new pick is published. */
+body.home-v2 section[aria-labelledby="pick-result-title"]{display:none!important}
+body.home-v2 .hero-reel-safe-logo{display:none!important}
+
+/* Approved mobile NEXT MATCH proportions: large portraits, no ID-photo look, no dead space. */
+@media (max-width:700px){
+  body.home-v2 .daily-read{padding-top:30px!important;padding-bottom:40px!important}
+  body.home-v2 .daily-feature-head{padding:16px 16px 15px!important;gap:10px!important}
+  body.home-v2 .daily-feature-head .eyebrow{margin:0 0 6px!important;font-size:.58rem!important;letter-spacing:.16em!important}
+  body.home-v2 .daily-feature-head h2:before{font-size:1.78rem!important;line-height:1!important;letter-spacing:-.05em!important;white-space:nowrap!important}
+  body.home-v2 .daily-feature-head h2:after{font-size:1.38rem!important;line-height:1.08!important;letter-spacing:-.055em!important;white-space:nowrap!important;word-break:keep-all!important}
+  body.home-v2 .daily-feature-meta{margin-top:2px!important;font-size:.58rem!important;line-height:1.5!important;letter-spacing:.075em!important}
+  body.home-v2 .daily-matchup-stage{height:318px!important;min-height:318px!important}
+  body.home-v2 .daily-photo{inset:0!important;align-items:center!important;justify-content:center!important}
+  body.home-v2 .daily-photo img{width:190%!important;max-width:none!important;height:100%!important;object-fit:cover!important;object-position:center 38%!important;transform:none!important;filter:saturate(.88) contrast(1.05) brightness(.88)!important;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.96) 15%,#000 30%,#000 70%,rgba(0,0,0,.96) 85%,transparent 100%)!important;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.96) 15%,#000 30%,#000 70%,rgba(0,0,0,.96) 85%,transparent 100%)!important}
+  body.home-v2 .daily-photo:after{background:linear-gradient(90deg,rgba(6,6,6,.36) 0%,transparent 18%,transparent 82%,rgba(6,6,6,.36) 100%),linear-gradient(180deg,rgba(5,5,5,.03) 0%,rgba(5,5,5,.03) 47%,rgba(5,5,5,.48) 66%,rgba(5,5,5,.9) 84%,#070707 100%)!important}
+  body.home-v2 .daily-player-info{padding:11px 10px 12px!important;background:linear-gradient(180deg,rgba(7,7,7,0),rgba(7,7,7,.56) 18%,#070707 68%)!important}
+  body.home-v2 .daily-team-label{max-width:130px!important;margin-bottom:4px!important;font-size:.47rem!important;letter-spacing:.08em!important}
+  body.home-v2 .daily-player-info h3{margin:0 0 7px!important;font-size:1.02rem!important;line-height:.94!important;letter-spacing:-.045em!important}
+  body.home-v2 .daily-stat-row{gap:4px!important;flex-wrap:nowrap!important}
+  body.home-v2 .daily-stat-row span{min-width:0!important;flex:1 1 0!important;padding:5px 5px!important;font-size:.42rem!important}
+  body.home-v2 .daily-stat-row strong{font-size:.7rem!important}
+  body.home-v2 .daily-stat-row span:nth-child(3){display:none!important}
+  body.home-v2 .daily-matchup-center{top:50%!important;width:54px!important;height:54px!important;border-color:#3a3a3a!important}
+  body.home-v2 .daily-matchup-center strong{font-size:.66rem!important}
+  body.home-v2 .daily-matchup-center span{margin:2px 0!important;font-size:.4rem!important}
+  body.home-v2 .daily-verdict-wide{padding:15px 16px 16px!important}
+  body.home-v2 .daily-verdict-wide small{margin-bottom:5px!important;font-size:.52rem!important}
+  body.home-v2 .daily-verdict-wide p:after{font-size:.72rem!important;line-height:1.58!important}
+  body.home-v2 .daily-source{padding:9px 16px!important;font-size:.5rem!important}
+}
