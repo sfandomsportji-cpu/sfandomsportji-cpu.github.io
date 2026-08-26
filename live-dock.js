@@ -1,6 +1,6 @@
 (()=>{
-  const isHome=location.pathname==='/'||location.pathname.endsWith('/index.html');
-  if(!isHome||document.getElementById('sfLiveDock'))return;
+  const dock=document.getElementById('sfLiveDock');
+  if(!dock)return;
 
   const MSG_KEY='sfandom_live_messages_v01';
   const NICK_KEY='sfandom_live_nickname_v01';
@@ -8,13 +8,6 @@
   let channel=null,lastSent=0;
   let clientId=localStorage.getItem(CLIENT_KEY)||'';
   if(!clientId){clientId=crypto.randomUUID();localStorage.setItem(CLIENT_KEY,clientId)}
-
-  const dock=document.createElement('aside');
-  dock.id='sfLiveDock';
-  dock.className='sf-live-dock';
-  dock.setAttribute('aria-label','SFANDOM LIVE 미니 채팅');
-  dock.innerHTML=`<div class="sf-live-dock-head"><div class="sf-live-dock-title"><i></i><strong>SFANDOM LIVE</strong><span>OPEN BETA</span></div><div class="sf-live-dock-actions"><a href="live.html" aria-label="전체 채팅 열기">↗</a><button type="button" data-collapse aria-label="채팅창 접기">—</button></div></div><div class="sf-live-dock-body"><div class="sf-live-dock-feed" data-feed></div><div class="sf-live-dock-identity" data-identity hidden><input type="text" maxlength="18" placeholder="닉네임을 먼저 정해주세요"></div><form class="sf-live-dock-form"><input type="text" maxlength="300" placeholder="경기 이야기를 남겨보세요…" aria-label="채팅 메시지"><button type="submit">SEND</button></form><div class="sf-live-dock-foot"><span>GUEST CHAT · TEST MODE</span><a href="live.html">전체 채팅 보기 →</a></div></div>`;
-  document.body.appendChild(dock);
 
   const feed=dock.querySelector('[data-feed]');
   const form=dock.querySelector('form');
