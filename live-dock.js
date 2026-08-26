@@ -5,6 +5,8 @@
   const MSG_KEY='sfandom_live_messages_v01';
   const NICK_KEY='sfandom_live_nickname_v01';
   const CLIENT_KEY='sfandom_live_client_v01';
+  const MAX_MESSAGES=100;
+  const DOCK_MESSAGES=3;
   let channel=null,lastSent=0;
   let clientId=localStorage.getItem(CLIENT_KEY)||'';
   if(!clientId){clientId=crypto.randomUUID();localStorage.setItem(CLIENT_KEY,clientId)}
@@ -17,9 +19,10 @@
   const collapse=dock.querySelector('[data-collapse]');
 
   function cleanNick(v){return String(v||'').replace(/[^0-9A-Za-z가-힣ㄱ-ㅎㅏ-ㅣ ._-]/g,'').replace(/\s+/g,' ').trim().slice(0,18)}
-  function getMessages(){try{const x=JSON.parse(localStorage.getItem(MSG_KEY)||'[]');return Array.isArray(x)?x.slice(-3):[]}catch{return[]}}
+  function getStoredMessages(){try{const x=JSON.parse(localStorage.getItem(MSG_KEY)||'[]');return Array.isArray(x)?x.slice(-MAX_MESSAGES):[]}catch{return[]}}
+  function saveMessages(messages){localStorage.setItem(MSG_KEY,JSON.stringify(messages.slice(-MAX_MESSAGES)))}
   function render(){
-    const list=getMessages();
+    const list=getStoredMessages().slice(-DOCK_MESSAGES);
     feed.replaceChildren();
     if(!list.length){
       const e=document.createElement('div');
@@ -66,10 +69,10 @@
     if(!text)return;
     const now=Date.now();
     if(now-lastSent<2500)return;
-    const list=getMessages();
+    const list=getStoredMessages();
     const msg={id:crypto.randomUUID(),nickname:nick,clientId,topic:'GENERAL',text:text.slice(0,300),createdAt:now};
     list.push(msg);
-    localStorage.setItem(MSG_KEY,JSON.stringify(list.slice(-100)));
+    saveMessages(list);
     channel?.postMessage({type:'message',message:msg});
     lastSent=now;
     input.value='';
@@ -84,10 +87,10 @@
     channel=new BroadcastChannel('sfandom-live-v01');
     channel.addEventListener('message',e=>{
       if(e.data?.type==='message'){
-        const list=getMessages();
+        const list=getStoredMessages();
         if(!list.some(x=>x.id===e.data.message.id)){
           list.push(e.data.message);
-          localStorage.setItem(MSG_KEY,JSON.stringify(list.slice(-100)));
+          saveMessages(list);
         }
         render();
       }
