@@ -3,10 +3,8 @@
 .daily-feature-shell:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 16% 24%,rgba(190,24,46,.11),transparent 30%),radial-gradient(circle at 84% 24%,rgba(0,102,110,.10),transparent 30%)}
 .daily-feature-head{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:24px 28px;border-bottom:1px solid #242424}
 .daily-feature-head .eyebrow{margin:0 0 7px}
-.daily-feature-head h2{margin:0;font-size:0;line-height:1;letter-spacing:-.05em}
-.daily-feature-head h2:before{content:"Cole과 Wesneski,";display:block;color:#fff;font-size:clamp(1.9rem,3.7vw,3.9rem);line-height:.96}
-.daily-feature-head h2:after{content:"선발에서 시작되는 승부.";display:block;color:#ef2d2d;font-size:clamp(1.9rem,3.7vw,3.9rem);line-height:.96}
-.daily-feature-head h2 span{display:none}
+.daily-feature-head h2{margin:0;font-size:clamp(1.9rem,3.7vw,3.9rem);line-height:.96;letter-spacing:-.05em}
+.daily-feature-head h2 span{color:#ef2d2d}
 .daily-feature-meta{text-align:right;color:#8d8d8d;font-size:.68rem;font-weight:800;letter-spacing:.1em;line-height:1.7}
 .daily-matchup-stage{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;height:clamp(480px,45vw,560px);border-bottom:1px solid #242424;background:#060606}
 .daily-player-card{position:relative;min-width:0;overflow:hidden}
@@ -29,18 +27,17 @@
 .daily-matchup-center strong{font-size:1rem;line-height:1;font-weight:900;letter-spacing:-.02em}
 .daily-matchup-center span{margin:4px 0;color:#ef2d2d;font-size:.52rem;font-weight:900;letter-spacing:.16em}
 .daily-story-grid{position:relative;z-index:2;display:block}
-.daily-story:not(.daily-verdict-wide){display:none}
 .daily-verdict-wide{padding:22px 28px;background:linear-gradient(90deg,#0f0f0f 0%,#0b0b0b 65%,#13090b 100%);border-bottom:1px solid #242424}
 .daily-verdict-wide small{display:block;margin-bottom:7px;color:#ef2d2d;font-size:.61rem;font-weight:900;letter-spacing:.13em}
-.daily-verdict-wide p{max-width:1000px;margin:0;color:#e7e7e7;font-size:0;font-weight:650;line-height:1.65}
-.daily-verdict-wide p:after{content:"수치상 선발 매치업은 Cole이 앞섭니다. SFANDOM은 7–6, 3.11 ERA의 Cole과 3–1, 4.23 ERA의 Wesneski를 시작점으로 보고, 당일 라인업과 시장 움직임까지 확인해 최종 방향을 판단합니다.";display:block;color:#e7e7e7;font-size:.9rem;font-weight:650;line-height:1.65}
-.daily-verdict-wide b{display:none}
+.daily-verdict-wide p{max-width:1000px;margin:0;color:#e7e7e7;font-size:.9rem;font-weight:650;line-height:1.65}
 .daily-source{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:12px 28px;color:#5f5f5f;font-size:.59rem;letter-spacing:.07em}
 .daily-source-links{display:flex;gap:14px;flex-wrap:wrap}
 .daily-source a{color:#858585;text-decoration:none}
 .daily-source a:hover{color:#fff}
-.daily-read [aria-label="미디어 기록 바로가기"] a[href="archive/media/#media-001"]{display:none}
-.daily-read [aria-label="미디어 기록 바로가기"] a[href="archive/media/"]{margin-left:0}
+.daily-library-link{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid #222}
+.daily-library-link>span{color:#777;font-size:.62rem;font-weight:900;letter-spacing:.14em}
+.daily-library-link a{color:#aaa;text-decoration:none;font-size:.66rem;font-weight:800;letter-spacing:.08em}
+.daily-library-link a:hover{color:#fff}
 
 @media (min-width:901px){
   body.home-v2 .ticker-v2{position:relative;background:linear-gradient(90deg,#060606,#090909 50%,#060606);border-top-color:rgba(255,255,255,.075);border-bottom-color:rgba(255,255,255,.085);box-shadow:0 -12px 32px rgba(0,0,0,.16),0 14px 36px rgba(0,0,0,.18)}
@@ -52,7 +49,7 @@
 @media (max-width:820px){
   .daily-feature-head{align-items:flex-start;flex-direction:column;padding:20px}
   .daily-feature-meta{text-align:left}
-  .daily-feature-head h2:before,.daily-feature-head h2:after{font-size:2.25rem}
+  .daily-feature-head h2{font-size:2.25rem}
   .daily-source{padding:11px 20px;align-items:flex-start;flex-direction:column;gap:6px}
   .daily-source-links{gap:10px}
 }
@@ -61,8 +58,8 @@
   body.home-v2 .daily-read{padding-top:30px;padding-bottom:40px}
   body.home-v2 .daily-feature-head{padding:16px 16px 15px;gap:10px}
   body.home-v2 .daily-feature-head .eyebrow{margin:0 0 6px;font-size:.58rem;letter-spacing:.16em}
-  body.home-v2 .daily-feature-head h2:before{font-size:1.78rem;line-height:1;letter-spacing:-.05em;white-space:nowrap}
-  body.home-v2 .daily-feature-head h2:after{font-size:1.38rem;line-height:1.08;letter-spacing:-.055em;white-space:nowrap;word-break:keep-all}
+  body.home-v2 .daily-feature-head h2{font-size:1.78rem;line-height:1;letter-spacing:-.05em;white-space:nowrap}
+  body.home-v2 .daily-feature-head h2 span{display:block;margin-top:3px;font-size:1.38rem;line-height:1.08;letter-spacing:-.055em;white-space:nowrap;word-break:keep-all}
   body.home-v2 .daily-feature-meta{margin-top:2px;font-size:.58rem;line-height:1.5;letter-spacing:.075em}
   body.home-v2 .daily-matchup-stage{height:318px;min-height:318px}
   body.home-v2 .daily-photo{align-items:center;justify-content:center}
@@ -80,6 +77,7 @@
   body.home-v2 .daily-matchup-center span{margin:2px 0;font-size:.4rem}
   body.home-v2 .daily-verdict-wide{padding:15px 16px 16px}
   body.home-v2 .daily-verdict-wide small{margin-bottom:5px;font-size:.52rem}
-  body.home-v2 .daily-verdict-wide p:after{font-size:.72rem;line-height:1.58}
+  body.home-v2 .daily-verdict-wide p{font-size:.72rem;line-height:1.58}
   body.home-v2 .daily-source{padding:9px 16px;font-size:.5rem}
+  body.home-v2 .daily-library-link{gap:10px;margin-top:14px;padding-top:13px}
 }
