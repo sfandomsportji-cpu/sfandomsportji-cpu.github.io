@@ -2,15 +2,6 @@
   const isHome=location.pathname==='/'||location.pathname.endsWith('/index.html');
   if(!isHome||document.getElementById('sfLiveDock'))return;
 
-  const styleHref='live-dock.css?v=20260827-clean1';
-  if(!document.querySelector('link[data-sf-live-dock-style]')){
-    const link=document.createElement('link');
-    link.rel='stylesheet';
-    link.href=styleHref;
-    link.dataset.sfLiveDockStyle='true';
-    document.head.appendChild(link);
-  }
-
   const MSG_KEY='sfandom_live_messages_v01';
   const NICK_KEY='sfandom_live_nickname_v01';
   const CLIENT_KEY='sfandom_live_client_v01';
