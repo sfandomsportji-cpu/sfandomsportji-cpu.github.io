@@ -11,6 +11,12 @@
   body.home-v2 .hero-visual{height:540px}
   body.home-v2 .hero-reel-wrap .hero-reel{transform:scale(1.03)!important;transform-origin:center center!important}
   body.home-v2 .site-header{padding-left:max(24px,calc((100vw - 1440px)/2 + 24px));padding-right:max(24px,calc((100vw - 1440px)/2 + 24px))}
+  body.home-v2 .hero-copy .live-chip{margin-bottom:18px}
+  body.home-v2 .hero-copy .eyebrow{margin-bottom:14px}
+  body.home-v2 .hero-kicker{margin-top:20px}
+  body.home-v2 .hero-text{max-width:610px;margin-top:18px;margin-bottom:24px}
+  body.home-v2 .hero-actions{gap:10px}
+  body.home-v2 .hero-actions .btn{min-height:48px}
 }
 
 /* Signature Moments: verified direct in-game playback only. */
