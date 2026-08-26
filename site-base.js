@@ -92,8 +92,8 @@
       if(kicker)kicker.textContent='SFANDOM PUBLIC PICKS';
       if(badge)badge.textContent='UPDATED';
       if(label)label.textContent='PICK HIT RATE';
-      if(score)score.innerHTML='90<small>%</small>';
-      if(bar)bar.style.width='90%';
+      if(score)score.innerHTML='70<small>%</small>';
+      if(bar)bar.style.width='70%';
       const values=[['RECORD','OPEN'],['REVIEW','ALL'],['STATUS','LIVE']];
       stats.forEach((el,i)=>{if(!values[i])return;const s=el.querySelector('span');const b=el.querySelector('b');if(s)s.textContent=values[i][0];if(b)b.textContent=values[i][1]});
     }
