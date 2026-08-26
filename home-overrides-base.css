@@ -8,6 +8,7 @@
 /* Desktop home hero: use more of the available canvas without changing the chat widget. */
 @media (min-width:901px){
   body.home-v2 .hero-v2{max-width:1440px}
+  body.home-v2 .hero-reel-wrap .hero-reel{transform:scale(1.03)!important;transform-origin:center center!important}
 }
 
 /* Signature Moments: verified direct in-game playback only. */
