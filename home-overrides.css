@@ -351,3 +351,21 @@ body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2) >
     padding-right:20px!important;
   }
 }
+
+/* 2026-08-26 rollback: show the restored local hero reel again and remove the extra logo. */
+.hero-reel-safe-logo{display:none!important}
+@media (max-width:620px){
+  body.home-v2 .hero-v2 .hero-reel-wrap{
+    background:#050505!important;
+    background-image:none!important;
+  }
+  body.home-v2 .hero-v2 .hero-reel-wrap .hero-reel{
+    display:block!important;
+    opacity:1!important;
+    visibility:visible!important;
+  }
+  body.home-v2 .hero-v2 .hero-reel-wrap::after{
+    content:none!important;
+    display:none!important;
+  }
+}
