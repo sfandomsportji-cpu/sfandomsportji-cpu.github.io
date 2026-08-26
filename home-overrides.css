@@ -274,3 +274,12 @@ section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::af
     stroke-width:1.7!important;
   }
 }
+
+/* 2026-08-26 immediate pick board hotfix. The runtime still renders the old
+   two text cards, so hide that grid and force the new team-logo board. */
+body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(3){display:none!important}
+body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2){
+  aspect-ratio:1600/1040!important;
+  background:#07090d url('/assets/picks/sfandom-best2-20260826-fixed.svg?v=20260826-1819') center/100% 100% no-repeat!important;
+}
+body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2) > img{opacity:0!important;visibility:hidden!important}
