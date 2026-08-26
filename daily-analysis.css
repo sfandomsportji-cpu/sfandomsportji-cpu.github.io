@@ -15,3 +15,23 @@
     background:linear-gradient(90deg,rgba(6,6,6,.42) 0%,rgba(6,6,6,.08) 10%,transparent 23%,transparent 77%,rgba(6,6,6,.08) 90%,rgba(6,6,6,.42) 100%),linear-gradient(180deg,transparent 0%,transparent 55%,rgba(5,5,5,.46) 76%,#070707 100%)!important;
   }
 }
+
+/* 2026-08-26 desktop final polish: bridge hero ticker into the lead analysis card. */
+@media (min-width:901px){
+  body.home-v2 .ticker-v2{
+    position:relative;
+    background:linear-gradient(90deg,#060606 0%,#090909 50%,#060606 100%);
+    border-top-color:rgba(255,255,255,.075);
+    border-bottom-color:rgba(255,255,255,.085);
+    box-shadow:0 -12px 32px rgba(0,0,0,.16),0 14px 36px rgba(0,0,0,.18);
+  }
+  body.home-v2 .ticker-track{gap:46px;padding-top:15px;padding-bottom:15px}
+  body.home-v2 .ticker-track span{color:#9b9b96}
+  body.home-v2 .daily-read{
+    padding-top:64px;
+    background:linear-gradient(180deg,rgba(255,255,255,.012) 0%,transparent 150px);
+  }
+  body.home-v2 .daily-feature-shell{
+    box-shadow:0 26px 82px rgba(0,0,0,.24);
+  }
+}
