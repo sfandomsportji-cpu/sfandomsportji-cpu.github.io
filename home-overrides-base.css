@@ -15,8 +15,12 @@
   body.home-v2 .hero-copy h1{text-shadow:0 3px 24px rgba(0,0,0,.48)}
   body.home-v2 .hero-kicker{color:#f0f0ed;text-shadow:0 2px 16px rgba(0,0,0,.44)}
   body.home-v2 .hero-text{color:#b7b7b3;text-shadow:0 2px 14px rgba(0,0,0,.42)}
-  body.home-v2 .site-header{padding-left:max(24px,calc((100vw - 1440px)/2 + 24px));padding-right:max(24px,calc((100vw - 1440px)/2 + 24px))}
-  body.home-v2 .hero-copy .live-chip{margin-bottom:18px}
+  body.home-v2 .site-header{padding-left:max(24px,calc((100vw - 1440px)/2 + 24px));padding-right:max(24px,calc((100vw - 1440px)/2 + 24px));background:rgba(6,6,6,.9);border-bottom-color:rgba(255,255,255,.075);box-shadow:0 12px 36px rgba(0,0,0,.18);backdrop-filter:blur(20px)}
+  body.home-v2 .site-header .brand{min-height:40px}
+  body.home-v2 .site-header .nav a{color:#b1b1ad}
+  body.home-v2 .site-header .nav a:hover{color:#fff}
+  body.home-v2 .site-header .header-cta{border-color:#3a3a3d;background:rgba(14,14,15,.72)}
+  body.home-v2 .hero-copy .live-chip{margin-bottom:18px;border-color:#353538;background:rgba(8,8,9,.32);backdrop-filter:blur(8px)}
   body.home-v2 .hero-copy .eyebrow{margin-bottom:14px}
   body.home-v2 .hero-kicker{margin-top:20px}
   body.home-v2 .hero-text{max-width:610px;margin-top:18px;margin-bottom:24px}
