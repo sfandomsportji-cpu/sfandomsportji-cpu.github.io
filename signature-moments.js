@@ -3,7 +3,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
 (()=>{
   const player=document.getElementById('signaturePlayer');
-  if(!player) return;
+  if(!player)return;
   const counter=document.getElementById('signatureCounter');
   const title=document.getElementById('signatureTitle');
   const sub=document.getElementById('signatureSub');
@@ -21,10 +21,15 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   const cache=new Map();
   let current=0,timer=null,endTimer=null,loadToken=0;
   const norm=s=>(s||'').trim().toLowerCase().replace(/[’‘]/g,"'").replace(/[–—]/g,'-').replace(/\s+/g,' ');
-  if(end){end.classList.remove('show');end.style.transition='opacity 1.35s ease'}
+
+  if(end)end.classList.remove('show');
   if(footLabel)footLabel.textContent=moments.length+' VERIFIED MOMENTS · AUTO PLAY';
-  if(dots)dots.innerHTML='';
-  moments.forEach((_,i)=>{const d=document.createElement('i');d.className='signature-dot'+(i===0?' active':'');dots.appendChild(d)});
+  if(dots)dots.replaceChildren();
+  moments.forEach((_,i)=>{
+    const d=document.createElement('i');
+    d.className='signature-dot'+(i===0?' active':'');
+    dots.appendChild(d);
+  });
 
   function tags(item){return (item.keywordsAll||[]).map(x=>norm(x.displayName||x.value||x.name)).join(' | ')}
   function choosePlayback(item){
@@ -69,7 +74,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   function setMeta(i){
     const m=moments[i];
     counter.textContent='MOMENT '+String(i+1).padStart(2,'0')+' / '+String(moments.length).padStart(2,'0');
-    title.innerHTML=m.a+'<br>'+m.b;
+    title.textContent=m.a+'\n'+m.b;
     sub.textContent=m.sub;
     progress.style.width=(((i+1)/moments.length)*100)+'%';
     [...dots.children].forEach((d,n)=>d.classList.toggle('active',n===i));
