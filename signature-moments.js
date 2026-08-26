@@ -74,7 +74,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   function setMeta(i){
     const m=moments[i];
     counter.textContent='MOMENT '+String(i+1).padStart(2,'0')+' / '+String(moments.length).padStart(2,'0');
-    title.textContent=m.a+'\n'+m.b;
+    title.replaceChildren(document.createTextNode(m.a),document.createElement('br'),document.createTextNode(m.b));
     sub.textContent=m.sub;
     progress.style.width=(((i+1)/moments.length)*100)+'%';
     [...dots.children].forEach((d,n)=>d.classList.toggle('active',n===i));
