@@ -73,10 +73,14 @@
     const current=wrap.querySelector('.hero-reel');
     const isRestored=current && current.tagName==='VIDEO' && (current.currentSrc||current.getAttribute('src')||'').includes('sfandom-hero-reel.mp4');
     if(isRestored){
+      current.defaultMuted=true;
       current.muted=true;
+      try{current.volume=0;}catch(e){}
+      current.setAttribute('muted','');
       current.loop=true;
       current.autoplay=true;
       current.playsInline=true;
+      current.setAttribute('playsinline','');
       current.play().catch(()=>{});
       return;
     }
@@ -84,9 +88,13 @@
     const video=document.createElement('video');
     video.className='hero-reel';
     video.autoplay=true;
+    video.defaultMuted=true;
     video.muted=true;
+    try{video.volume=0;}catch(e){}
+    video.setAttribute('muted','');
     video.loop=true;
     video.playsInline=true;
+    video.setAttribute('playsinline','');
     video.preload='auto';
     video.setAttribute('aria-hidden','true');
     video.src='assets/sfandom-hero-reel.mp4?v=20260822-0451';
@@ -203,4 +211,41 @@
 }
 `;
   document.head.appendChild(style);
+})();
+
+/* 2026-08-26 mobile hard mute: homepage video stays visual-only; no site audio. */
+(()=>{
+  if(!window.matchMedia('(max-width:900px)').matches) return;
+
+  const silenceMedia=()=>{
+    document.querySelectorAll('audio').forEach(audio=>{
+      try{audio.pause();}catch(e){}
+      audio.autoplay=false;
+      audio.removeAttribute('autoplay');
+      audio.defaultMuted=true;
+      audio.muted=true;
+      try{audio.volume=0;}catch(e){}
+    });
+
+    document.querySelectorAll('video').forEach(video=>{
+      video.defaultMuted=true;
+      video.muted=true;
+      try{video.volume=0;}catch(e){}
+      video.setAttribute('muted','');
+      video.setAttribute('playsinline','');
+    });
+  };
+
+  silenceMedia();
+
+  const mediaObserver=new MutationObserver(silenceMedia);
+  mediaObserver.observe(document.documentElement,{childList:true,subtree:true});
+
+  document.addEventListener('volumechange',event=>{
+    const media=event.target;
+    if(!(media instanceof HTMLMediaElement)) return;
+    media.defaultMuted=true;
+    media.muted=true;
+    try{media.volume=0;}catch(e){}
+  },true);
 })();
