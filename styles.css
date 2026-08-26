@@ -21,9 +21,9 @@ a{color:inherit}
 .page-hero h1 span{color:#777}
 .page-hero>p:last-child{max-width:650px;color:#aaa;font-size:1rem;margin:24px 0 30px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:24px;padding:13px 18px;text-decoration:none;font-weight:800;font-size:.82rem;letter-spacing:.02em}
-.primary{background:var(--accent);color:white;transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
-.primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(226,35,42,.24)}
-.ghost{border:1px solid #333;color:var(--text)}
+.btn-primary{background:var(--accent);color:white;transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(226,35,42,.24)}
+.btn-ghost{border:1px solid #333;color:var(--text)}
 .section-label{display:flex;align-items:center;gap:16px;margin-bottom:50px}
 .section-label span{color:var(--accent);font-size:.72rem;font-weight:800}
 .section-label p{margin:0;font-size:.68rem;font-weight:800;letter-spacing:.2em;color:#858580}
