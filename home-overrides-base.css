@@ -11,6 +11,10 @@
   body.home-v2 .hero-visual{height:540px;padding:24px 52px 24px 24px}
   body.home-v2 .forecast-card{width:min(372px,100%)}
   body.home-v2 .hero-reel-wrap .hero-reel{transform:scale(1.03)!important;transform-origin:center center!important}
+  body.home-v2 .hero-reel-wrap:before{background:linear-gradient(90deg,rgba(6,6,6,.95) 0%,rgba(6,6,6,.79) 34%,rgba(6,6,6,.38) 60%,rgba(6,6,6,.10) 82%,rgba(6,6,6,.03) 100%),linear-gradient(180deg,rgba(5,5,5,.08) 0%,transparent 42%,rgba(5,5,5,.12) 100%)}
+  body.home-v2 .hero-copy h1{text-shadow:0 3px 24px rgba(0,0,0,.48)}
+  body.home-v2 .hero-kicker{color:#f0f0ed;text-shadow:0 2px 16px rgba(0,0,0,.44)}
+  body.home-v2 .hero-text{color:#b7b7b3;text-shadow:0 2px 14px rgba(0,0,0,.42)}
   body.home-v2 .site-header{padding-left:max(24px,calc((100vw - 1440px)/2 + 24px));padding-right:max(24px,calc((100vw - 1440px)/2 + 24px))}
   body.home-v2 .hero-copy .live-chip{margin-bottom:18px}
   body.home-v2 .hero-copy .eyebrow{margin-bottom:14px}
