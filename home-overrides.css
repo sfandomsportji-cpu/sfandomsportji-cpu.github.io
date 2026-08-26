@@ -275,14 +275,24 @@ section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::af
   }
 }
 
-/* 2026-08-26 immediate pick board hotfix. The runtime still renders the old
-   two text cards, so hide that grid and force the new team-logo board. */
-body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(3){display:none!important}
+/* 2026-08-27 pick board stabilization. Keep the board as the only visible
+   visual in the archive slot and leave the operational note below intact. */
 body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2){
+  display:block!important;
+  width:100%!important;
   aspect-ratio:1600/1040!important;
-  background:#07090d url('/assets/picks/sfandom-best2-20260826-fixed.svg?v=20260826-1819') center/100% 100% no-repeat!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  border:1px solid #252a32!important;
+  background:#07090d url('/assets/picks/sfandom-best2-20260826-fixed.svg?v=20260827-0045') center/contain no-repeat!important;
 }
-body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2) > img{opacity:0!important;visibility:hidden!important}
+body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2) > a,
+body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2) > img{
+  display:none!important;
+  opacity:0!important;
+  visibility:hidden!important;
+}
+body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(3){display:block!important}
 
 /* 2026-08-26 mobile first-view polish: clean media frame + centered CTAs. */
 @media (max-width:620px){
