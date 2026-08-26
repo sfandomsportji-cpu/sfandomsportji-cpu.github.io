@@ -283,3 +283,71 @@ body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2){
   background:#07090d url('/assets/picks/sfandom-best2-20260826-fixed.svg?v=20260826-1819') center/100% 100% no-repeat!important;
 }
 body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2) > img{opacity:0!important;visibility:hidden!important}
+
+/* 2026-08-26 mobile first-view polish: clean media frame + centered CTAs. */
+@media (max-width:620px){
+  /* YouTube iframe chrome cannot be fully suppressed on mobile. Use a clean
+     still from the same hero source instead so no YouTube UI/branding appears. */
+  body.home-v2 .hero-reel-wrap{
+    background-image:linear-gradient(180deg,rgba(5,5,5,.04) 0%,rgba(5,5,5,.18) 68%,rgba(5,5,5,.54) 100%),url('https://i.ytimg.com/vi/hDuIUajjsnI/maxresdefault.jpg')!important;
+    background-position:center 48%!important;
+    background-size:cover!important;
+    background-repeat:no-repeat!important;
+  }
+  body.home-v2 .hero-reel-wrap .hero-reel{display:none!important}
+  body.home-v2 .hero-reel-wrap::after{
+    content:""!important;
+    position:absolute!important;
+    inset:0!important;
+    z-index:1!important;
+    width:auto!important;
+    height:auto!important;
+    background:linear-gradient(90deg,rgba(5,5,5,.1),transparent 28%,transparent 72%,rgba(5,5,5,.16))!important;
+    pointer-events:none!important;
+  }
+  body.home-v2 .hero-reel-safe-logo{
+    right:10px!important;
+    top:10px!important;
+    width:46px!important;
+    height:46px!important;
+    padding:6px!important;
+    background:rgba(5,5,5,.7)!important;
+  }
+
+  /* Keep the primary red action on the visual centerline instead of the
+     left half of a two-column button row. */
+  body.home-v2 .hero-actions{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:100%!important;
+    max-width:300px!important;
+    margin:26px auto 0!important;
+    gap:8px!important;
+  }
+  body.home-v2 .hero-actions .btn.primary{
+    width:100%!important;
+    min-height:54px!important;
+    padding:14px 18px!important;
+  }
+  body.home-v2 .hero-actions .btn.ghost{
+    width:auto!important;
+    min-height:0!important;
+    padding:7px 10px!important;
+    border:0!important;
+    color:#9b9b9f!important;
+    font-size:.72rem!important;
+  }
+
+  /* Manifesto CTA: center it under the centered copy and avoid the left-heavy block. */
+  body.home-v2 .manifesto>div{align-items:center!important}
+  body.home-v2 .manifesto .btn{
+    align-self:center!important;
+    width:min(280px,82vw)!important;
+    min-height:56px!important;
+    margin:2px auto 0!important;
+    padding-left:20px!important;
+    padding-right:20px!important;
+  }
+}
