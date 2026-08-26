@@ -49,9 +49,37 @@
     }
   }
 
+  function replaceNextMatchFocus(){
+    const shell=document.querySelector('.daily-feature-shell');
+    if(!shell||shell.querySelector('.sf-next-match-art'))return;
+    const head=shell.querySelector('.daily-feature-head');
+    const stage=shell.querySelector('.daily-matchup-stage');
+    if(!head||!stage)return;
+
+    const wrap=document.createElement('div');
+    wrap.className='sf-next-match-art';
+    wrap.innerHTML=`<h2 id="daily-read-title" class="sf-next-match-sr">NEXT MATCH FOCUS · MLB</h2><img src="/assets/next-match-focus-hou-nyy-20260828.avif?v=20260826-0933" alt="Houston Astros Hayden Wesneski and New York Yankees Gerrit Cole next match focus" loading="eager" decoding="async">`;
+    head.replaceWith(wrap);
+    stage.remove();
+
+    if(!document.getElementById('sfNextMatchArtStyle')){
+      const style=document.createElement('style');
+      style.id='sfNextMatchArtStyle';
+      style.textContent=`
+        .sf-next-match-art{width:100%;margin:0 0 22px;background:#050505;border:1px solid #242428;overflow:hidden}
+        .sf-next-match-art img{display:block;width:100%;height:auto;object-fit:contain;background:#050505}
+        .sf-next-match-sr{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+        @media(max-width:760px){.sf-next-match-art{margin-bottom:16px}.sf-next-match-art img{width:100%;height:auto}}
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
   function enhanceHome(){
     const isHome=location.pathname==='/'||location.pathname.endsWith('/index.html');
     if(!isHome)return;
+
+    replaceNextMatchFocus();
 
     const card=document.querySelector('.forecast-card');
     if(card){
