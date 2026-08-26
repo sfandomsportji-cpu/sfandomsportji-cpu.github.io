@@ -1,20 +1,8 @@
-/* SFANDOM recovery guard · 2026-08-27
-   Music UI is retired. Keep homepage behavior static and predictable:
-   - no prototype monkey-patching
-   - no MutationObserver loops
-   - no runtime site-base injection
-   - restore the approved local hero reel
-   - keep the retired current-pick section hidden until the next pick is published
-*/
+/* SFANDOM stable hero fallback · 2026-08-27
+   Music UI is retired. This file has one job only: keep the approved local
+   hero reel active when the homepage still contains an older embed node. */
 (()=>{
   const init=()=>{
-    if(!document.getElementById('sfRecoveryGuard')){
-      const style=document.createElement('style');
-      style.id='sfRecoveryGuard';
-      style.textContent='section[aria-labelledby="pick-result-title"]{display:none!important}.hero-reel-safe-logo{display:none!important}';
-      document.head.appendChild(style);
-    }
-
     const wrap=document.querySelector('.hero-reel-wrap');
     if(!wrap) return;
 
@@ -25,7 +13,7 @@
       const current=wrap.querySelector('.hero-reel');
       video=document.createElement('video');
       video.className='hero-reel';
-      video.src='assets/sfandom-hero-reel.mp4?v=20260822-0451';
+      video.src='assets/sfandom-hero-reel.mp4?v=20260827-stable1';
       video.autoplay=true;
       video.defaultMuted=true;
       video.muted=true;
@@ -45,13 +33,9 @@
       video.setAttribute('muted','');
       video.setAttribute('playsinline','');
     }
-
     video.play().catch(()=>{});
   };
 
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',init,{once:true});
-  }else{
-    init();
-  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init,{once:true});
+  else init();
 })();
