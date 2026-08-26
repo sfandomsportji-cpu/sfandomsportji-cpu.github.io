@@ -8,7 +8,8 @@
 /* Desktop home hero: use more of the available canvas without changing the chat widget. */
 @media (min-width:901px){
   body.home-v2 .hero-v2{max-width:1440px;min-height:740px;padding-top:72px;padding-bottom:58px}
-  body.home-v2 .hero-visual{height:540px}
+  body.home-v2 .hero-visual{height:540px;padding:24px 52px 24px 24px}
+  body.home-v2 .forecast-card{width:min(372px,100%)}
   body.home-v2 .hero-reel-wrap .hero-reel{transform:scale(1.03)!important;transform-origin:center center!important}
   body.home-v2 .site-header{padding-left:max(24px,calc((100vw - 1440px)/2 + 24px));padding-right:max(24px,calc((100vw - 1440px)/2 + 24px))}
   body.home-v2 .hero-copy .live-chip{margin-bottom:18px}
