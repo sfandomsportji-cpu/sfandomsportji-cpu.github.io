@@ -40,9 +40,6 @@
 .daily-library-link a:hover{color:#fff}
 
 @media (min-width:901px){
-  body.home-v2 .ticker-v2{position:relative;background:linear-gradient(90deg,#060606,#090909 50%,#060606);border-top-color:rgba(255,255,255,.075);border-bottom-color:rgba(255,255,255,.085);box-shadow:0 -12px 32px rgba(0,0,0,.16),0 14px 36px rgba(0,0,0,.18)}
-  body.home-v2 .ticker-track{gap:46px;padding-top:15px;padding-bottom:15px}
-  body.home-v2 .ticker-track span{color:#9b9b96}
   body.home-v2 .daily-read{padding-top:64px;background:linear-gradient(180deg,rgba(255,255,255,.012),transparent 150px)}
 }
 
