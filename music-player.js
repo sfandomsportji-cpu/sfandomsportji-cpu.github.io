@@ -101,3 +101,57 @@
   requestAnimationFrame(restoreHeroReel);
   setTimeout(restoreHeroReel,250);
 })();
+
+/* 2026-08-26 mobile rescue: compact headline, full-size portraits, cleaner matchup card. */
+(()=>{
+  if(document.getElementById('sfMobileMatchupRescue')) return;
+  const style=document.createElement('style');
+  style.id='sfMobileMatchupRescue';
+  style.textContent=`
+@media (max-width:520px){
+  body.home-v2 .daily-read{padding-top:34px!important;padding-bottom:42px!important}
+  body.home-v2 .daily-feature-head{padding:18px 16px 16px!important;gap:12px!important}
+  body.home-v2 .daily-feature-head .eyebrow{margin-bottom:6px!important;font-size:.62rem!important}
+  body.home-v2 .daily-feature-head h2:before,
+  body.home-v2 .daily-feature-head h2:after{
+    font-size:1.7rem!important;
+    line-height:1.02!important;
+    letter-spacing:-.045em!important;
+    word-break:keep-all!important;
+  }
+  body.home-v2 .daily-feature-head h2:after{white-space:nowrap!important}
+  body.home-v2 .daily-feature-meta{font-size:.6rem!important;line-height:1.55!important;letter-spacing:.08em!important}
+
+  body.home-v2 .daily-matchup-stage{height:360px!important}
+  body.home-v2 .daily-photo{align-items:flex-end!important}
+  body.home-v2 .daily-photo img{
+    width:auto!important;
+    max-width:none!important;
+    height:90%!important;
+    object-fit:contain!important;
+    object-position:center bottom!important;
+    transform:none!important;
+    -webkit-mask-image:radial-gradient(ellipse 66% 92% at 50% 48%,#000 0%,#000 58%,rgba(0,0,0,.9) 72%,rgba(0,0,0,.45) 86%,transparent 100%)!important;
+    mask-image:radial-gradient(ellipse 66% 92% at 50% 48%,#000 0%,#000 58%,rgba(0,0,0,.9) 72%,rgba(0,0,0,.45) 86%,transparent 100%)!important;
+  }
+  body.home-v2 .daily-photo:after{
+    background:linear-gradient(180deg,rgba(5,5,5,.04) 0%,rgba(5,5,5,.02) 42%,rgba(5,5,5,.34) 62%,rgba(5,5,5,.92) 84%,#070707 100%)!important;
+  }
+  body.home-v2 .daily-player-info{padding:14px 12px 15px!important}
+  body.home-v2 .daily-team-label{max-width:135px!important;margin-bottom:5px!important;font-size:.5rem!important;letter-spacing:.1em!important}
+  body.home-v2 .daily-player-info h3{margin-bottom:9px!important;font-size:1.13rem!important;line-height:.95!important;letter-spacing:-.04em!important}
+  body.home-v2 .daily-stat-row{gap:5px!important}
+  body.home-v2 .daily-stat-row span{padding:6px 7px!important;font-size:.45rem!important}
+  body.home-v2 .daily-stat-row strong{font-size:.76rem!important}
+  body.home-v2 .daily-matchup-center{top:53%!important;width:58px!important;height:58px!important}
+  body.home-v2 .daily-matchup-center strong{font-size:.7rem!important}
+  body.home-v2 .daily-matchup-center span{margin:3px 0!important;font-size:.42rem!important}
+
+  body.home-v2 .daily-verdict-wide{padding:17px 16px 18px!important}
+  body.home-v2 .daily-verdict-wide small{margin-bottom:6px!important;font-size:.55rem!important}
+  body.home-v2 .daily-verdict-wide p:after{font-size:.78rem!important;line-height:1.6!important}
+  body.home-v2 .daily-source{padding:10px 16px!important;font-size:.53rem!important}
+}
+`;
+  document.head.appendChild(style);
+})();
