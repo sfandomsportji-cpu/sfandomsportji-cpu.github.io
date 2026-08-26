@@ -1,83 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-labelledby="title desc">
-  <title id="title">SFANDOM Best 2 Picks - 2026-08-26 KST</title>
-  <desc id="desc">LG vs NC over 8.5 and FC Anyang vs Incheon United both teams to score yes.</desc>
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#05070b"/><stop offset="0.5" stop-color="#090d14"/><stop offset="1" stop-color="#040506"/></linearGradient>
-    <linearGradient id="redGlow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ef2d2d"/><stop offset="1" stop-color="#9f161f"/></linearGradient>
-    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#111720"/><stop offset="1" stop-color="#080b10"/></linearGradient>
-    <linearGradient id="card2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#13111e"/><stop offset="1" stop-color="#090a0e"/></linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.55"/></filter>
-    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#ffffff" stroke-opacity="0.025" stroke-width="1"/></pattern>
-  </defs>
-  <rect width="1600" height="1040" fill="url(#bg)"/>
-  <rect width="1600" height="1040" fill="url(#grid)"/>
-  <circle cx="1470" cy="90" r="260" fill="#ef2d2d" opacity="0.055"/>
-  <circle cx="150" cy="970" r="320" fill="#285fa8" opacity="0.04"/>
-  <g transform="translate(70 52)">
-    <text x="0" y="58" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="56" font-weight="900" letter-spacing="-2">SFANDOM</text>
-    <rect x="0" y="76" width="148" height="6" fill="#ef2d2d"/>
-    <text x="330" y="58" fill="#8f97a3" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="2">SPORTS DATA · ANALYSIS · PREDICTION</text>
-    <text x="1460" y="30" text-anchor="end" fill="#f0f2f5" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="800">2026.08.26 KST</text>
-    <text x="1460" y="60" text-anchor="end" fill="#707884" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700">TODAY'S SELECTED TWO</text>
-  </g>
-  <g transform="translate(70 170)">
-    <text x="0" y="38" fill="#8b929d" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800" letter-spacing="3">TODAY'S BEST 2</text>
-    <text x="0" y="112" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="82" font-weight="900" letter-spacing="-4">TWO PICKS. <tspan fill="#ef2d2d">NO FILLERS.</tspan></text>
-    <text x="0" y="153" fill="#a7adb7" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="600">Whole slate compared · counter-case checked · market selected</text>
-  </g>
-  <g transform="translate(70 375)" filter="url(#shadow)">
-    <rect width="1460" height="260" rx="22" fill="url(#card)" stroke="#303845" stroke-width="1.5"/>
-    <rect width="14" height="260" rx="7" fill="url(#redGlow)"/>
-    <rect x="34" y="28" width="120" height="38" rx="19" fill="#ef2d2d"/>
-    <text x="94" y="54" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="900">01 · KBO</text>
-    <g transform="translate(42 92)">
-      <circle cx="58" cy="64" r="54" fill="#1a2432" stroke="#4b596c" stroke-width="2"/>
-      <path d="M38 32c24 14 39 38 42 67M78 30c-22 16-36 42-37 70" fill="none" stroke="#f3f5f7" stroke-width="4" stroke-linecap="round" opacity=".8"/>
-      <path d="M45 47l10 8m18 8l10 8M42 79l11 8m17 7l10 7" stroke="#ef2d2d" stroke-width="3" stroke-linecap="round"/>
-      <text x="142" y="50" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="44" font-weight="900">LG</text>
-      <text x="210" y="50" fill="#6f7783" font-family="Inter,Arial,sans-serif" font-size="31" font-weight="800">vs</text>
-      <text x="260" y="50" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="44" font-weight="900">NC</text>
-      <text x="142" y="88" fill="#929aa5" font-family="Inter,Arial,sans-serif" font-size="19" font-weight="700">18:30 · JAMSIL · KST</text>
-    </g>
-    <line x1="575" y1="42" x2="575" y2="218" stroke="#303845"/>
-    <text x="620" y="78" fill="#ef2d2d" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="900" letter-spacing="1">OVERSEAS TOTAL LINE</text>
-    <text x="620" y="150" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="62" font-weight="900">OVER <tspan fill="#ef2d2d">8.5</tspan></text>
-    <text x="620" y="190" fill="#9da4ae" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700">5–4 in extras yesterday · late scoring swing</text>
-    <rect x="1168" y="36" width="246" height="188" rx="15" fill="#070a0f" stroke="#29313b"/>
-    <text x="1196" y="72" fill="#8d95a1" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="800" letter-spacing="1.4">SFANDOM READ</text>
-    <text x="1196" y="112" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="900">TOTALS MARKET</text>
-    <text x="1196" y="145" fill="#c4c8cf" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600">Avoid side risk</text>
-    <text x="1196" y="175" fill="#c4c8cf" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600">Focus on scoring flow</text>
-    <text x="1196" y="206" fill="#ef2d2d" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="900">PICK · O8.5</text>
-  </g>
-  <g transform="translate(70 662)" filter="url(#shadow)">
-    <rect width="1460" height="260" rx="22" fill="url(#card2)" stroke="#34303e" stroke-width="1.5"/>
-    <rect width="14" height="260" rx="7" fill="#8a2be2" opacity=".78"/>
-    <rect x="34" y="28" width="166" height="38" rx="19" fill="#202636" stroke="#4b5365"/>
-    <text x="117" y="54" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="900">02 · K LEAGUE 1</text>
-    <g transform="translate(42 92)">
-      <circle cx="58" cy="64" r="54" fill="#1b1830" stroke="#5f557f" stroke-width="2"/>
-      <circle cx="58" cy="64" r="27" fill="none" stroke="#e4e7ec" stroke-width="4"/>
-      <path d="M58 37l11 8-4 13 11 8-7 12H47l-7-12 11-8-4-13z" fill="none" stroke="#e4e7ec" stroke-width="3"/>
-      <text x="142" y="50" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="27" font-weight="900">FC ANYANG</text>
-      <text x="350" y="50" fill="#6f7783" font-family="Inter,Arial,sans-serif" font-size="31" font-weight="800">vs</text>
-      <text x="405" y="50" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="900">INCHEON UTD</text>
-      <text x="142" y="88" fill="#929aa5" font-family="Inter,Arial,sans-serif" font-size="19" font-weight="700">19:30 · KST</text>
-    </g>
-    <line x1="575" y1="42" x2="575" y2="218" stroke="#34303e"/>
-    <text x="620" y="78" fill="#b49cff" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="900" letter-spacing="1">MARKET · BOTH TEAMS TO SCORE</text>
-    <text x="620" y="150" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="60" font-weight="900">BTTS <tspan fill="#ef2d2d">YES</tspan></text>
-    <text x="620" y="190" fill="#9da4ae" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700">Avoid 1X2 · prefer both-team scoring route</text>
-    <rect x="1168" y="36" width="246" height="188" rx="15" fill="#080910" stroke="#302b3c"/>
-    <text x="1196" y="72" fill="#8d95a1" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="800" letter-spacing="1.4">SFANDOM READ</text>
-    <text x="1196" y="112" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="900">MARKET SWITCH</text>
-    <text x="1196" y="145" fill="#c4c8cf" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600">Avoid 1X2</text>
-    <text x="1196" y="175" fill="#c4c8cf" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600">Prefer BTTS route</text>
-    <text x="1196" y="206" fill="#ef2d2d" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="900">PICK · YES</text>
-  </g>
-  <g transform="translate(70 974)">
-    <line x1="0" y1="0" x2="1460" y2="0" stroke="#252b33"/>
-    <text x="0" y="34" fill="#737b86" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="600">Analysis content only · no guaranteed result · final call may change on lineup or market shock</text>
-    <text x="1460" y="34" text-anchor="end" fill="#ef2d2d" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="900" letter-spacing="2">SFANDOM · KAIRO</text>
-  </g>
+<title id="title">SFANDOM Best 2 Picks - 2026-08-26 KST</title>
+<desc id="desc">LG Twins vs NC Dinos over 8.5 and FC Anyang vs Incheon United both teams to score yes.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#05070b"/><stop offset=".55" stop-color="#090d14"/><stop offset="1" stop-color="#040506"/></linearGradient>
+  <linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#111720"/><stop offset="1" stop-color="#080b10"/></linearGradient>
+  <linearGradient id="card2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#13111e"/><stop offset="1" stop-color="#090a0e"/></linearGradient>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity=".55"/></filter>
+  <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#fff" stroke-opacity=".025"/></pattern>
+</defs>
+<rect width="1600" height="1040" fill="url(#bg)"/><rect width="1600" height="1040" fill="url(#grid)"/>
+<circle cx="1470" cy="90" r="260" fill="#ef2d2d" opacity=".055"/><circle cx="150" cy="970" r="320" fill="#285fa8" opacity=".04"/>
+<g transform="translate(70 52)">
+  <text x="0" y="58" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="56" font-weight="900" letter-spacing="-2">SFANDOM</text>
+  <rect x="0" y="76" width="148" height="6" fill="#ef2d2d"/>
+  <text x="330" y="58" fill="#8f97a3" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700" letter-spacing="2">SPORTS DATA · ANALYSIS · PREDICTION</text>
+  <text x="1460" y="30" text-anchor="end" fill="#f0f2f5" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="800">2026.08.26 KST</text>
+  <text x="1460" y="60" text-anchor="end" fill="#707884" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="700">TODAY'S SELECTED TWO</text>
+</g>
+<g transform="translate(70 170)">
+  <text x="0" y="38" fill="#8b929d" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="800" letter-spacing="3">TODAY'S BEST 2</text>
+  <text x="0" y="112" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="82" font-weight="900" letter-spacing="-4">TWO PICKS. <tspan fill="#ef2d2d">NO FILLERS.</tspan></text>
+  <text x="0" y="153" fill="#a7adb7" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="600">Whole slate compared · counter-case checked · market selected</text>
+</g>
+<g transform="translate(70 375)" filter="url(#shadow)">
+  <rect width="1460" height="260" rx="22" fill="url(#card)" stroke="#303845" stroke-width="1.5"/><rect width="14" height="260" rx="7" fill="#ef2d2d"/>
+  <rect x="34" y="28" width="120" height="38" rx="19" fill="#ef2d2d"/><text x="94" y="54" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="900">01 · KBO</text>
+  <g transform="translate(44 91)"><circle cx="60" cy="65" r="56" fill="#11151c" stroke="#dfe4ea" stroke-width="3"/><circle cx="60" cy="65" r="48" fill="#d71920" opacity=".13"/><text x="60" y="55" text-anchor="middle" fill="#f4f5f7" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="900">LG</text><text x="60" y="79" text-anchor="middle" fill="#ef2d2d" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="900">TWINS</text><text x="60" y="95" text-anchor="middle" fill="#989fa8" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="800" letter-spacing="2">SEOUL</text></g>
+  <text x="180" y="137" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="900">LG</text><text x="248" y="137" fill="#6f7783" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="800">vs</text><text x="300" y="137" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="900">NC</text><text x="180" y="174" fill="#929aa5" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700">18:30 · JAMSIL · KST</text>
+  <g transform="translate(395 91)"><circle cx="60" cy="65" r="56" fill="#071e35" stroke="#c7a96a" stroke-width="3"/><circle cx="60" cy="65" r="47" fill="none" stroke="#44779f" stroke-width="2"/><text x="60" y="57" text-anchor="middle" fill="#f4e4bb" font-family="Inter,Arial,sans-serif" font-size="27" font-weight="900">NC</text><text x="60" y="81" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="900">DINOS</text><text x="60" y="98" text-anchor="middle" fill="#9ab1c3" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="800" letter-spacing="1.5">CHANGWON</text></g>
+  <line x1="575" y1="42" x2="575" y2="218" stroke="#303845"/><text x="620" y="78" fill="#ef2d2d" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="900" letter-spacing="1">OVERSEAS TOTAL LINE</text><text x="620" y="150" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="62" font-weight="900">OVER <tspan fill="#ef2d2d">8.5</tspan></text><text x="620" y="190" fill="#9da4ae" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700">5–4 in extras yesterday · late scoring swing</text>
+  <rect x="1168" y="36" width="246" height="188" rx="15" fill="#070a0f" stroke="#29313b"/><text x="1196" y="72" fill="#8d95a1" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="800" letter-spacing="1.4">SFANDOM READ</text><text x="1196" y="112" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="900">TOTALS MARKET</text><text x="1196" y="145" fill="#c4c8cf" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600">Avoid side risk</text><text x="1196" y="175" fill="#c4c8cf" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600">Focus on scoring flow</text><text x="1196" y="206" fill="#ef2d2d" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="900">PICK · O8.5</text>
+</g>
+<g transform="translate(70 662)" filter="url(#shadow)">
+  <rect width="1460" height="260" rx="22" fill="url(#card2)" stroke="#34303e" stroke-width="1.5"/><rect width="14" height="260" rx="7" fill="#8a2be2" opacity=".78"/><rect x="34" y="28" width="166" height="38" rx="19" fill="#202636" stroke="#4b5365"/><text x="117" y="54" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="900">02 · K LEAGUE 1</text>
+  <g transform="translate(44 88)"><path d="M60 8 L106 25 L100 79 Q92 112 60 129 Q28 112 20 79 L14 25 Z" fill="#39246c" stroke="#d2ad54" stroke-width="3"/><circle cx="60" cy="56" r="24" fill="none" stroke="#d2ad54" stroke-width="3"/><path d="M38 56h44M60 32v48M43 41c11 9 23 19 34 30M77 41C66 50 54 60 43 71" stroke="#d2ad54" stroke-width="2" opacity=".9"/><text x="60" y="102" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="900">FC ANYANG</text></g>
+  <text x="180" y="137" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="26" font-weight="900">FC ANYANG</text><text x="360" y="137" fill="#6f7783" font-family="Inter,Arial,sans-serif" font-size="27" font-weight="800">vs</text><text x="410" y="137" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="900">INCHEON UTD</text><text x="180" y="174" fill="#929aa5" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="700">19:30 · KST</text>
+  <g transform="translate(470 88)"><ellipse cx="60" cy="65" rx="52" ry="58" fill="#17234a" stroke="#e3c23b" stroke-width="3"/><path d="M31 52 Q60 28 89 52 L79 62 Q60 47 41 62 Z" fill="#f0d34a"/><path d="M60 47v45M44 76h32M50 90q10 16 20 0" fill="none" stroke="#f0d34a" stroke-width="3" stroke-linecap="round"/><text x="60" y="30" text-anchor="middle" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="12" font-weight="900">IUFC</text><text x="60" y="116" text-anchor="middle" fill="#f0d34a" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="900">2003</text></g>
+  <line x1="575" y1="42" x2="575" y2="218" stroke="#34303e"/><text x="620" y="78" fill="#b49cff" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="900" letter-spacing="1">MARKET · BOTH TEAMS TO SCORE</text><text x="620" y="150" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="60" font-weight="900">BTTS <tspan fill="#ef2d2d">YES</tspan></text><text x="620" y="190" fill="#9da4ae" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700">Avoid 1X2 · prefer both-team scoring route</text>
+  <rect x="1168" y="36" width="246" height="188" rx="15" fill="#080910" stroke="#302b3c"/><text x="1196" y="72" fill="#8d95a1" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="800" letter-spacing="1.4">SFANDOM READ</text><text x="1196" y="112" fill="#fff" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="900">MARKET SWITCH</text><text x="1196" y="145" fill="#c4c8cf" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600">Avoid 1X2</text><text x="1196" y="175" fill="#c4c8cf" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600">Prefer BTTS route</text><text x="1196" y="206" fill="#ef2d2d" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="900">PICK · YES</text>
+</g>
+<g transform="translate(70 974)"><line x1="0" y1="0" x2="1460" y2="0" stroke="#252b33"/><text x="0" y="34" fill="#737b86" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="600">Analysis content only · no guaranteed result · final call may change on lineup or market shock</text><text x="1460" y="34" text-anchor="end" fill="#ef2d2d" font-family="Inter,Arial,sans-serif" font-size="16" font-weight="900" letter-spacing="2">SFANDOM · KAIRO</text></g>
 </svg>
