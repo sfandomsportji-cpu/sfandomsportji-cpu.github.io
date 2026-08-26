@@ -222,11 +222,11 @@ section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::af
   body.home-v2 .footer-v2>small::before{white-space:normal;line-height:1.5}
 }
 
-/* Desktop social dock: pin Instagram / Threads to the far-right edge of the hero video. */
+/* Desktop social dock: align it cleanly to the hero's right rail. */
 @media (min-width:901px){
   body.home-v2 .hero-visual .hero-social{
     position:absolute!important;
-    right:-24px!important;
+    right:0!important;
     top:50%!important;
     transform:translateY(-50%)!important;
     z-index:8!important;
@@ -234,21 +234,21 @@ section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::af
     flex-direction:column!important;
     align-items:center!important;
     justify-content:center!important;
-    gap:9px!important;
+    gap:8px!important;
     margin:0!important;
-    padding:11px 8px!important;
-    border:1px solid rgba(255,255,255,.11)!important;
-    background:rgba(6,6,6,.72)!important;
+    padding:10px 7px!important;
+    border:1px solid rgba(255,255,255,.08)!important;
+    background:rgba(6,6,6,.58)!important;
     backdrop-filter:blur(10px)!important;
   }
   body.home-v2 .hero-visual .hero-social>span{
-    margin:0 0 3px!important;
+    margin:0 0 2px!important;
     writing-mode:vertical-rl!important;
     transform:rotate(180deg)!important;
-    color:#777!important;
-    font-size:.52rem!important;
+    color:#737379!important;
+    font-size:.5rem!important;
     font-weight:900!important;
-    letter-spacing:.16em!important;
+    letter-spacing:.17em!important;
   }
   body.home-v2 .hero-visual .hero-social a{
     display:grid!important;
@@ -257,7 +257,7 @@ section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::af
     height:34px!important;
     margin:0!important;
     border:1px solid #303035!important;
-    background:rgba(9,9,10,.86)!important;
+    background:rgba(9,9,10,.82)!important;
     color:#f2f2f3!important;
     transition:border-color .18s ease,background .18s ease,transform .18s ease!important;
   }
