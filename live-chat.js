@@ -24,6 +24,7 @@
     changeNickname: document.getElementById('changeNickname'),
     toast: document.getElementById('liveToast')
   };
+  if (Object.values(els).some((el) => !el)) return;
 
   let nickname = localStorage.getItem(NICK_KEY) || '';
   let clientId = localStorage.getItem(CLIENT_KEY) || '';
@@ -88,7 +89,6 @@
 
   function toast(text) {
     const el = els.toast;
-    if (!el) return;
     el.textContent = text;
     el.classList.add('show');
     clearTimeout(el._timer);
