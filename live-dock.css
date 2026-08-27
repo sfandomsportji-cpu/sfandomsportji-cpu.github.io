@@ -1,5 +1,4 @@
 .sf-live-dock{position:fixed;right:22px;top:86px;z-index:7200;width:342px;border:1px solid #34343a;background:rgba(8,8,10,.96);box-shadow:0 24px 70px rgba(0,0,0,.48);backdrop-filter:blur(16px);font-family:Inter,'Noto Sans KR',sans-serif;color:#fff;overflow:hidden}
-.sf-live-dock *{box-sizing:border-box}
 .sf-live-dock-head{height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 14px 0 16px;border-bottom:1px solid #242429;background:linear-gradient(90deg,#120809,#09090b)}
 .sf-live-dock-title{display:flex;align-items:center;gap:9px}
 .sf-live-dock-title i{width:8px;height:8px;border-radius:50%;background:#ef2d2d;box-shadow:0 0 0 5px rgba(239,45,45,.12);animation:sfLivePulse 1.8s infinite}
