@@ -10,34 +10,6 @@
 }
 .home-kairo-art img{display:none!important}
 
-/* Pick archive shortcut: keep only one branded entry. */
-section[aria-labelledby="pick-result-title"] > div:last-child > span,
-section[aria-labelledby="pick-result-title"] > div:last-child > a:not(:last-child){display:none!important}
-section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child{
-  display:inline-flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  width:auto!important;
-  height:40px!important;
-  min-width:178px!important;
-  margin-left:0!important;
-  padding:0 16px!important;
-  border:1px solid #393939!important;
-  background:#0b0b0c!important;
-  color:transparent!important;
-  font-size:0!important;
-  font-weight:900!important;
-  letter-spacing:.08em!important;
-  text-decoration:none!important;
-}
-section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::after{
-  content:"SFANDOM&KAIRO픽";
-  color:#fff;
-  font-size:.72rem;
-  font-weight:900;
-  letter-spacing:.08em;
-}
-
 @media (max-width:900px){
   .hero-v2{padding-bottom:8px!important}
   .hero-visual{padding-bottom:18px!important;gap:8px!important}
@@ -274,25 +246,6 @@ section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::af
     stroke-width:1.7!important;
   }
 }
-
-/* 2026-08-27 pick board stabilization. Keep the board as the only visible
-   visual in the archive slot and leave the operational note below intact. */
-body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2){
-  display:block!important;
-  width:100%!important;
-  aspect-ratio:1600/1040!important;
-  min-height:0!important;
-  overflow:hidden!important;
-  border:1px solid #252a32!important;
-  background:#07090d url('/assets/picks/sfandom-best2-20260826-fixed.svg?v=20260827-0045') center/contain no-repeat!important;
-}
-body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2) > a,
-body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(2) > img{
-  display:none!important;
-  opacity:0!important;
-  visibility:hidden!important;
-}
-body.home-v2 section[aria-labelledby="pick-result-title"] > div:nth-of-type(3){display:block!important}
 
 /* 2026-08-26 mobile first-view polish: clean media frame + centered CTAs. */
 @media (max-width:620px){

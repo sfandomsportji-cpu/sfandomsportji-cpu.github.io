@@ -120,51 +120,6 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 })();
 
 (()=>{
-  const signature=document.getElementById('signature-moments');
-  const pickSection=document.querySelector('section[aria-labelledby="pick-result-title"]');
-  if(signature&&pickSection){
-    signature.insertAdjacentElement('afterend',pickSection);
-    pickSection.style.paddingTop='58px';
-    pickSection.style.paddingBottom='58px';
-    pickSection.innerHTML=`
-      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:28px;">
-        <div><p class="eyebrow">SFANDOM & KAIRO PICK RESULT · 2026.08.26 KST</p><h2 id="pick-result-title" style="margin:8px 0 0;font-size:clamp(2rem,4vw,4.2rem);line-height:.96;letter-spacing:-.05em;">오늘의 두 픽,<br><span style="color:#ef2d2d;">실패까지 기록합니다.</span></h2></div>
-        <p style="max-width:480px;margin:0;color:#a7a7a7;line-height:1.75;">오늘 공개한 두 선택은 모두 MISS 처리했습니다. 실패한 픽도 삭제하지 않고 전체 픽 보관함으로 이동해 그대로 남깁니다.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;">
-        <a href="archive/picks/#pick-004" aria-label="오늘 첫 번째 실패 픽 기록" style="display:block;padding:28px;border:1px solid #56353a;background:linear-gradient(145deg,#180a0d,#080809 72%);text-decoration:none;color:#fff;">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;"><span style="padding:7px 9px;border:1px solid #683b43;color:#ff7a80;font-size:.62rem;font-weight:900;letter-spacing:.12em;">RESULT 01 · MLB</span><b style="color:#ff7a80;font-size:.72rem;letter-spacing:.1em;">MISS</b></div>
-          <p style="margin:26px 0 7px;color:#777b84;font-size:.68rem;font-weight:900;letter-spacing:.1em;">ARCHIVED · 2026.08.26 KST</p>
-          <h3 style="margin:0;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.055em;">PICK #004</h3>
-          <div style="display:flex;justify-content:space-between;gap:18px;margin:20px 0;padding:18px 0;border-top:1px solid #3b2c2f;border-bottom:1px solid #3b2c2f;"><span style="color:#999da5;">STATUS</span><strong style="font-size:1.55rem;color:#ff777c;">MISS</strong></div>
-          <p style="margin:0;color:#b5b7bd;line-height:1.75;">다저스 승리 선택을 <b style="color:#fff;">미적중 기록</b>으로 이동했습니다.</p>
-        </a>
-        <a href="archive/picks/#pick-005" aria-label="오늘 두 번째 실패 픽 기록" style="display:block;padding:28px;border:1px solid #56353a;background:linear-gradient(145deg,#180a0d,#080809 72%);text-decoration:none;color:#fff;">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;"><span style="padding:7px 9px;border:1px solid #683b43;color:#ff7a80;font-size:.62rem;font-weight:900;letter-spacing:.12em;">RESULT 02 · MLB</span><b style="color:#ff7a80;font-size:.72rem;letter-spacing:.1em;">MISS</b></div>
-          <p style="margin:26px 0 7px;color:#777b84;font-size:.68rem;font-weight:900;letter-spacing:.1em;">ARCHIVED · 2026.08.26 KST</p>
-          <h3 style="margin:0;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.055em;">PICK #005</h3>
-          <div style="display:flex;justify-content:space-between;gap:18px;margin:20px 0;padding:18px 0;border-top:1px solid #3b2c2f;border-bottom:1px solid #3b2c2f;"><span style="color:#999da5;">STATUS</span><strong style="font-size:1.55rem;color:#ff777c;">MISS</strong></div>
-          <p style="margin:0;color:#b5b7bd;line-height:1.75;">워싱턴 승리 선택도 <b style="color:#fff;">미적중 기록</b>으로 이동했습니다.</p>
-        </a>
-        <a href="archive/picks/" aria-label="현재 픽 적중률과 전체 기록" style="display:block;padding:28px;border:1px solid #695b27;background:linear-gradient(145deg,#171305,#080809 72%);text-decoration:none;color:#fff;">
-          <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;"><span style="padding:7px 9px;border:1px solid #6b5b22;color:#f0cf57;font-size:.62rem;font-weight:900;letter-spacing:.12em;">PUBLIC RECORD</span><b style="color:#f0cf57;font-size:.72rem;letter-spacing:.1em;">UPDATED</b></div>
-          <p style="margin:26px 0 7px;color:#777b84;font-size:.68rem;font-weight:900;letter-spacing:.1em;">5 PICKS · 2 HIT · 3 MISS</p>
-          <h3 style="margin:0;font-size:clamp(2.4rem,5vw,4rem);letter-spacing:-.055em;color:#f0cf57;">40%</h3>
-          <div style="display:flex;justify-content:space-between;gap:18px;margin:20px 0;padding:18px 0;border-top:1px solid #3f3920;border-bottom:1px solid #3f3920;"><span style="color:#999da5;">CURRENT HIT RATE</span><strong style="font-size:1.25rem;">2 / 5</strong></div>
-          <p style="margin:0;color:#b5b7bd;line-height:1.75;">현재 보관함에 남아 있는 공개 기록만 기준으로 다시 계산했습니다.</p>
-        </a>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid #222;"><a href="archive/picks/" aria-label="SFANDOM and KAIRO all picks archive" style="display:inline-flex;align-items:center;justify-content:center;min-width:190px;height:40px;padding:0 16px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.72rem;font-weight:900;letter-spacing:.08em;">전체 픽 보관함 →</a></div>`;
-  }
-
-  const mediaRow=document.querySelector('[aria-label="미디어 기록 바로가기"]');
-  if(mediaRow){
-    const numbered=[...mediaRow.querySelectorAll('a[href*="archive/media/#media-"]')];
-    numbered.slice(3).forEach(a=>a.remove());
-  }
-})();
-
-(()=>{
   const isHome=location.pathname==='/'||location.pathname.endsWith('/index.html');
   if(!isHome||document.getElementById('sfLiveDock'))return;
 
