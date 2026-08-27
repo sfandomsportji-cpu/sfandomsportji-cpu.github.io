@@ -12,11 +12,11 @@
 .method-list b{color:var(--accent)}
 .method-list p{margin:0;color:#aaa}
 .method-list strong{color:#fff}
-.feature-band>div:first-child{min-width:0}
-.feature-band h2{font-size:clamp(2.6rem,4.6vw,4.8rem);line-height:.96;letter-spacing:-.055em;white-space:nowrap;word-break:keep-all;overflow-wrap:normal}
+.analysis-page .feature-band>div:first-child{min-width:0}
+.analysis-page .feature-band h2{font-size:clamp(2.6rem,4.6vw,4.8rem);line-height:.96;letter-spacing:-.055em;white-space:nowrap;word-break:keep-all;overflow-wrap:normal}
 @media(max-width:620px){
   .analysis-page .page-hero h1{font-size:clamp(2.75rem,13vw,4.2rem)}
   .analysis-stack .section-head h2{font-size:clamp(2.3rem,11vw,3.1rem)}
-  .feature-band h2{font-size:clamp(2.25rem,11.5vw,3rem)}
+  .analysis-page .feature-band h2{font-size:clamp(2.25rem,11.5vw,3rem)}
   .analysis-grid{grid-template-columns:1fr}
 }
