@@ -1,15 +1,20 @@
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const revealNodes=[...document.querySelectorAll('.reveal')];
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+  revealNodes.forEach(el=>io.observe(el));
+}else{
+  revealNodes.forEach(el=>el.classList.add('show'));
+}
 
 (()=>{
   const player=document.getElementById('signaturePlayer');
-  if(!player)return;
   const counter=document.getElementById('signatureCounter');
   const title=document.getElementById('signatureTitle');
   const sub=document.getElementById('signatureSub');
   const progress=document.getElementById('signatureProgress');
   const end=document.getElementById('signatureEnd');
   const dots=document.getElementById('signatureDots');
+  if(!player||!counter||!title||!sub||!progress||!end||!dots)return;
   const footLabel=document.querySelector('#signature-moments .signature-foot b');
   const MOMENT_MS=12000,END_MS=3200;
   const moments=[
@@ -22,9 +27,9 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   let current=0,timer=null,endTimer=null,loadToken=0;
   const norm=s=>(s||'').trim().toLowerCase().replace(/[’‘]/g,"'").replace(/[–—]/g,'-').replace(/\s+/g,' ');
 
-  if(end)end.classList.remove('show');
+  end.classList.remove('show');
   if(footLabel)footLabel.textContent=moments.length+' VERIFIED MOMENTS · AUTO PLAY';
-  if(dots)dots.replaceChildren();
+  dots.replaceChildren();
   moments.forEach((_,i)=>{
     const d=document.createElement('i');
     d.className='signature-dot'+(i===0?' active':'');
@@ -83,7 +88,7 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   function scheduleNext(){clearTimeout(timer);timer=setTimeout(next,moments[current].ms||MOMENT_MS)}
   async function render(){
     clearTimeout(timer);clearTimeout(endTimer);
-    if(end)end.classList.remove('show');
+    end.classList.remove('show');
     const token=++loadToken;
     setMeta(current);
     clearPlayer();
@@ -110,9 +115,9 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     clearTimeout(timer);
     if(current===moments.length-1){
       clearPlayer();
-      if(end)end.classList.add('show');
+      end.classList.add('show');
       endTimer=setTimeout(()=>{
-        if(end)end.classList.remove('show');
+        end.classList.remove('show');
         current=0;
         render();
       },END_MS);
