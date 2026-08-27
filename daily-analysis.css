@@ -24,7 +24,6 @@
 .daily-matchup-center{position:absolute;z-index:6;left:50%;top:50%;transform:translate(-50%,-50%);width:92px;height:92px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid #333;border-radius:50%;background:rgba(4,4,4,.94);box-shadow:0 12px 36px rgba(0,0,0,.4)}
 .daily-matchup-center strong{font-size:1rem;line-height:1;font-weight:900;letter-spacing:-.02em}
 .daily-matchup-center span{margin:4px 0;color:#ef2d2d;font-size:.52rem;font-weight:900;letter-spacing:.16em}
-.daily-story-grid{position:relative;z-index:2;display:block}
 .daily-verdict-wide{padding:22px 28px;background:linear-gradient(90deg,#0f0f0f 0%,#0b0b0b 65%,#13090b 100%);border-bottom:1px solid #242424}
 .daily-verdict-wide small{display:block;margin-bottom:7px;color:#ef2d2d;font-size:.61rem;font-weight:900;letter-spacing:.13em}
 .daily-verdict-wide p{max-width:1000px;margin:0;color:#e7e7e7;font-size:.9rem;font-weight:650;line-height:1.65}
