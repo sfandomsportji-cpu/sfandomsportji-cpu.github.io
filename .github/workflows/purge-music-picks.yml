@@ -1,0 +1,126 @@
+name: Purge retired music and pick code
+
+on:
+  push:
+    paths:
+      - '.github/workflows/purge-music-picks.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove music and pick code permanently from current tree
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          import shutil
+
+          root = Path('.')
+
+          # 1) Dedicated retired/runtime files: remove completely.
+          for rel in [
+              'music-player.js',
+              'music-player.css',
+              'anonymous-note.js',
+              'site-base.js',
+              'archive/picks/index.html',
+              'assets/2026-08-22-padres-pick.avif',
+              'assets/2026-08-22-padres-hit.avif',
+          ]:
+              p = root / rel
+              if p.exists():
+                  p.unlink()
+
+          # Remove all local files/directories whose purpose is explicitly picks.
+          for rel in ['assets/picks', 'archive/picks']:
+              p = root / rel
+              if p.exists():
+                  shutil.rmtree(p)
+          for p in list(root.rglob('*')):
+              if p.is_file() and 'pick' in p.name.lower() and '.git' not in p.parts:
+                  # Keep source code files; those are scrubbed below instead of blindly deleting.
+                  if p.suffix.lower() not in {'.html','.js','.css','.md','.yml','.yaml'}:
+                      p.unlink()
+
+          # 2) Remove loader references from every HTML page.
+          for p in root.rglob('*.html'):
+              if '.git' in p.parts:
+                  continue
+              s = p.read_text(encoding='utf-8')
+              old = s
+              s = re.sub(r'\s*<link\b[^>]*href=["\'][^"\']*music-player\.css[^"\']*["\'][^>]*>\s*', '\n', s, flags=re.I)
+              s = re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*(?:music-player|anonymous-note|site-base)\.js[^"\']*["\'][^>]*>\s*</script>\s*', '\n', s, flags=re.I)
+              # Remove the complete homepage pick/result section, not just hide it.
+              s = re.sub(r'\n\s*<section\b[^>]*aria-labelledby=["\']pick-result-title["\'][^>]*>.*?</section>\s*', '\n', s, flags=re.I|re.S)
+              # Remove links into the retired pick archive.
+              s = re.sub(r'\s*<a\b[^>]*href=["\'][^"\']*archive/picks/?[^"\']*["\'][^>]*>.*?</a>\s*', ' ', s, flags=re.I|re.S)
+              if s != old:
+                  p.write_text(s, encoding='utf-8')
+
+          # 3) Remove the pick-rebuild IIFE from Signature Moments while keeping moments + LIVE chat.
+          p = root / 'signature-moments.js'
+          if p.exists():
+              s = p.read_text(encoding='utf-8')
+              s = re.sub(
+                  r"\n\(\(\)=>\{\n\s*const signature=document\.getElementById\('signature-moments'\);\n\s*const pickSection=.*?\n\}\)\(\);\n\n(?=\(\(\)=>\{\n\s*const isHome=)",
+                  '\n', s, flags=re.S
+              )
+              # Defensive removal of any surviving direct pick selectors/references.
+              s = re.sub(r"^.*(?:pick-result-title|archive/picks|sf-real-pick-board|sf-today-board|data-sf-current-picks).*$\n?", '', s, flags=re.M|re.I)
+              p.write_text(s, encoding='utf-8')
+
+          # 4) Remove pick-only override CSS blocks; keep unrelated layout rules intact.
+          p = root / 'home-overrides.css'
+          if p.exists():
+              s = p.read_text(encoding='utf-8')
+              s = re.sub(r'/\* Pick archive shortcut: keep only one branded entry\. \*/.*?(?=@media \(max-width:900px\))', '', s, flags=re.S)
+              s = re.sub(r'/\* 2026-08-27 pick board stabilization\..*?(?=/\* 2026-08-26 mobile first-view polish)', '', s, flags=re.S)
+              # Strip any residual pick-specific selector rules left in this file.
+              s = re.sub(r'[^{}]*(?:pick-result-title|sf-real-pick-board|sf-today-board|data-sf-current-picks)[^{}]*\{[^{}]*\}\s*', '', s, flags=re.I)
+              p.write_text(s, encoding='utf-8')
+
+          # 5) Remove any surviving direct music/pick-cache references from text sources.
+          text_ext = {'.html','.js','.css','.md'}
+          for p in root.rglob('*'):
+              if not p.is_file() or p.suffix.lower() not in text_ext or '.git' in p.parts:
+                  continue
+              s = p.read_text(encoding='utf-8')
+              old = s
+              # Deleted resources must never be requested again.
+              s = re.sub(r'^.*(?:music-player\.(?:js|css)|assets/music/|sfandomMusic(?:Index|Time)|sfandom-best2-20260826|archive/picks/).*$\n?', '', s, flags=re.M|re.I)
+              if s != old:
+                  p.write_text(s, encoding='utf-8')
+
+          # 6) The purge workflow is one-shot; remove itself from the resulting tree.
+          wf = root / '.github/workflows/purge-music-picks.yml'
+          if wf.exists():
+              wf.unlink()
+          PY
+
+          echo '--- residual music/pick runtime references ---'
+          grep -RInE --exclude-dir=.git --exclude='*.svg' --exclude='*.avif' --exclude='*.webp' --exclude='*.png' \
+            'music-player\.(js|css)|assets/music/|sfandomMusic(Index|Time)|pick-result-title|sf-real-pick-board|sf-today-board|data-sf-current-picks|sfandom-best2-20260826|archive/picks/' . || true
+
+          git status --short
+
+      - name: Commit purge
+        shell: bash
+        run: |
+          git config user.name 'SFANDOM cleanup'
+          git config user.email 'sfandomsportji@gmail.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'Nothing to purge.'
+            exit 0
+          fi
+          git commit -m 'Permanently remove retired music and pick runtime'
+          git push
