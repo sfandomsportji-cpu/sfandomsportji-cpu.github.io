@@ -87,19 +87,9 @@ jobs:
       - name: Stage 5 - verify dedicated LIVE page is the only chat implementation
         shell: bash
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          for p in Path('.').rglob('*'):
-              if not p.is_file() or p.suffix.lower() not in {'.html','.js','.css'} or '.git' in p.parts: continue
-              s=p.read_text(encoding='utf-8')
-              if p.name!='live-chat.js':
-                  s=s.replace('sfLiveDock','sfLiveDock_REMOVED_SENTINEL') if False else s
-              p.write_text(s,encoding='utf-8')
-          PY
-          if grep -RIn --exclude-dir=.git --exclude='live-chat.js' 'sfLiveDock\|sf-live-dock' .; then
+          if grep -RIn --exclude-dir=.git --exclude-dir=.github --exclude='live-chat.js' 'sfLiveDock\|sf-live-dock' .; then
             echo 'Unexpected duplicate homepage LIVE implementation remains'; exit 1
           fi
-          git add -A
           git diff --cached --quiet || git commit -m 'Stage 5: isolate LIVE chat implementation'
 
       - name: Stage 6 - remove homepage header ownership from hero stylesheet
@@ -144,12 +134,12 @@ jobs:
           from pathlib import Path
           import re
           for p in Path('.').rglob('*.html'):
-              if '.git' in p.parts: continue
+              if '.git' in p.parts or '.github' in p.parts: continue
               s=p.read_text(encoding='utf-8')
               s=re.sub(r'((?:href|src)=["\'][^"\']+\.(?:css|js))\?v=[^"\']+(["\'])', r'\1?v=20260827-clean1\2', s)
               p.write_text(s,encoding='utf-8')
           PY
-          git add '*.html' archive || true
+          git add -A
           git diff --cached --quiet || git commit -m 'Stage 8: normalize cleaned asset cache versions'
 
       - name: Stage 9 - delete obsolete signature test pages
@@ -170,14 +160,14 @@ jobs:
             'Document.prototype.querySelector','sf-route-loading','history.pushState('
           ]
           for p in Path('.').rglob('*'):
-              if not p.is_file() or p.suffix.lower() not in {'.html','.js','.css','.md'} or '.git' in p.parts: continue
+              if not p.is_file() or p.suffix.lower() not in {'.html','.js','.css','.md'} or '.git' in p.parts or '.github' in p.parts: continue
               s=p.read_text(encoding='utf-8')
               old=s
               s=re.sub(r'^.*sf-route-loading.*$\n?','',s,flags=re.M)
               if s!=old: p.write_text(s,encoding='utf-8')
           leftovers=[]
           for p in Path('.').rglob('*'):
-              if not p.is_file() or p.suffix.lower() not in {'.html','.js','.css','.md'} or '.git' in p.parts: continue
+              if not p.is_file() or p.suffix.lower() not in {'.html','.js','.css','.md'} or '.git' in p.parts or '.github' in p.parts: continue
               s=p.read_text(encoding='utf-8')
               for token in forbidden:
                   if token in s: leftovers.append(f'{p}: {token}')
