@@ -1,0 +1,23 @@
+name: Cleanup Preview Artifact
+
+on:
+  push:
+    branches:
+      - fix/site-source-cleanup-20260827
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cleanup branch
+        uses: actions/checkout@v4
+      - name: Build preview archive
+        run: zip -r site-preview.zip . -x '.git/*' 'site-preview.zip'
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfandom-cleanup-preview
+          path: site-preview.zip
+          if-no-files-found: error
+          retention-days: 1
