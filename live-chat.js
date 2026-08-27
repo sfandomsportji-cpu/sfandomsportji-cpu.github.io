@@ -21,7 +21,8 @@
     modal: document.getElementById('nicknameModal'),
     nicknameInput: document.getElementById('nicknameInput'),
     nicknameStart: document.getElementById('nicknameStart'),
-    changeNickname: document.getElementById('changeNickname')
+    changeNickname: document.getElementById('changeNickname'),
+    toast: document.getElementById('liveToast')
   };
 
   let nickname = localStorage.getItem(NICK_KEY) || '';
@@ -86,12 +87,8 @@
   }
 
   function toast(text) {
-    let el = document.querySelector('.toast');
-    if (!el) {
-      el = document.createElement('div');
-      el.className = 'toast';
-      document.body.appendChild(el);
-    }
+    const el = els.toast;
+    if (!el) return;
     el.textContent = text;
     el.classList.add('show');
     clearTimeout(el._timer);
@@ -107,7 +104,13 @@
     if (!filtered.length) {
       const empty = document.createElement('div');
       empty.className = 'chat-empty';
-      empty.innerHTML = '<div><strong>아직 이 태그의 메시지가 없습니다.</strong><span>첫 이야기를 남겨보세요.</span></div>';
+      const inner = document.createElement('div');
+      const title = document.createElement('strong');
+      title.textContent = '아직 이 태그의 메시지가 없습니다.';
+      const copy = document.createElement('span');
+      copy.textContent = '첫 이야기를 남겨보세요.';
+      inner.append(title, copy);
+      empty.appendChild(inner);
       list.appendChild(empty);
       return;
     }
