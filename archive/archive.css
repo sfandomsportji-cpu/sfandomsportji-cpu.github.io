@@ -60,7 +60,6 @@
 .result-strip span{padding:8px 10px;border:1px solid #34343a;background:#0d0d10;color:#aeb0b7;font-size:.62rem;font-weight:900;letter-spacing:.08em}
 .result-strip .miss{border-color:#674146;background:#1a0c0e;color:#ff777c}
 .result-strip .rate{border-color:#6b5b22;background:#171305;color:#f0cf57}
-.result-strip .live{border-color:#31475f;background:#091019;color:#77bfff}
 .result-strip .hit{border-color:#31523d;background:#08160d;color:#72e79a}
 .starter-card{position:relative;min-height:430px;background:#0b0d10}
 .starter-card img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;filter:saturate(.88) contrast(1.04)}
