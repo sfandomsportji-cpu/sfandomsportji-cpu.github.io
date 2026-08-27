@@ -13,10 +13,12 @@
 
   const feed=dock.querySelector('[data-feed]');
   const form=dock.querySelector('form');
-  const input=form.querySelector('input');
   const identity=dock.querySelector('[data-identity]');
-  const nickInput=identity.querySelector('input');
   const collapse=dock.querySelector('[data-collapse]');
+  if(!feed||!form||!identity||!collapse)return;
+  const input=form.querySelector('input');
+  const nickInput=identity.querySelector('input');
+  if(!input||!nickInput)return;
 
   function cleanNick(v){return String(v||'').replace(/[^0-9A-Za-z가-힣ㄱ-ㅎㅏ-ㅣ ._-]/g,'').replace(/\s+/g,' ').trim().slice(0,18)}
   function getStoredMessages(){try{const x=JSON.parse(localStorage.getItem(MSG_KEY)||'[]');return Array.isArray(x)?x.slice(-MAX_MESSAGES):[]}catch{return[]}}
