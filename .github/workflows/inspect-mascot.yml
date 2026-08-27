@@ -12,39 +12,32 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Inspect mascot assets across design branches
+      - name: Inspect all historical mascot blobs
         run: |
           python -m pip install --quiet pillow
           python - <<'PY'
           import subprocess, io
           from PIL import Image
-          refs=[
-            'origin/design/final-ji-kairo-duo',
-            'origin/design/ji-bear-kairo-duo',
-            'origin/design/ji-kairo-duo',
-            'origin/design/kairo-home-mobile-section',
-            'origin/design/kairo-official-mascot',
-            'origin/design/korean-kairo-refresh',
-            'origin/design/single-kairo-appearance',
-            'origin/layout/kairo-inline-introduction',
-          ]
-          for ref in refs:
-            print(f'### {ref}')
+          rows=[]
+          out=subprocess.check_output(['git','rev-list','--objects','--all'], text=True, errors='ignore').splitlines()
+          seen=set()
+          for line in out:
+            parts=line.split(' ',1)
+            if len(parts)!=2: continue
+            sha,path=parts
+            low=path.lower()
+            if not path.startswith('assets/'): continue
+            if not any(k in low for k in ['kairo','ji-','bear','mascot','duo','vivid']): continue
+            if not low.endswith(('.webp','.png','.jpg','.jpeg','.avif')): continue
+            key=(sha,path)
+            if key in seen: continue
+            seen.add(key)
             try:
-              names=subprocess.check_output(['git','ls-tree','-r','--name-only',ref], text=True).splitlines()
-            except Exception as e:
-              print('REF ERROR',e); continue
-            names=[n for n in names if n.startswith('assets/') and any(k in n.lower() for k in ['kairo','ji-','bear','mascot']) and n.lower().endswith(('.webp','.png','.jpg','.jpeg','.avif'))]
-            if not names:
-              print('NO MATCHING RASTER ASSETS')
-            for f in names:
-              try:
-                data=subprocess.check_output(['git','show',f'{ref}:{f}'])
-                try:
-                  im=Image.open(io.BytesIO(data))
-                  print(f'{f} | {im.width}x{im.height} | {len(data)} bytes | {im.mode}')
-                except Exception:
-                  print(f'{f} | DIMENSION-UNREADABLE | {len(data)} bytes')
-              except Exception as e:
-                print(f'{f} | ERROR | {e}')
+              data=subprocess.check_output(['git','cat-file','blob',sha])
+              im=Image.open(io.BytesIO(data))
+              rows.append((im.width*im.height,im.width,im.height,len(data),sha,path,im.mode))
+            except Exception:
+              pass
+          for _,w,h,size,sha,path,mode in sorted(rows, reverse=True):
+            print(f'{w}x{h} | {size} bytes | {sha} | {path} | {mode}')
           PY
