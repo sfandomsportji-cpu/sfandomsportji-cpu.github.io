@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Inspect all historical mascot blobs
+      - name: Inspect all historical raster assets over 500px
         run: |
           python -m pip install --quiet pillow
           python - <<'PY'
@@ -27,15 +27,14 @@ jobs:
             sha,path=parts
             low=path.lower()
             if not path.startswith('assets/'): continue
-            if not any(k in low for k in ['kairo','ji-','bear','mascot','duo','vivid']): continue
             if not low.endswith(('.webp','.png','.jpg','.jpeg','.avif')): continue
-            key=(sha,path)
-            if key in seen: continue
-            seen.add(key)
+            if sha in seen: continue
+            seen.add(sha)
             try:
               data=subprocess.check_output(['git','cat-file','blob',sha])
               im=Image.open(io.BytesIO(data))
-              rows.append((im.width*im.height,im.width,im.height,len(data),sha,path,im.mode))
+              if max(im.width,im.height) >= 500:
+                rows.append((im.width*im.height,im.width,im.height,len(data),sha,path,im.mode))
             except Exception:
               pass
           for _,w,h,size,sha,path,mode in sorted(rows, reverse=True):
