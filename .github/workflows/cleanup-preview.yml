@@ -21,3 +21,5 @@ jobs:
           path: site-preview.zip
           if-no-files-found: error
           retention-days: 1
+
+# preview refresh: render the complete branch without local overlays
