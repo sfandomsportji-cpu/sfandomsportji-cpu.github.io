@@ -1,11 +1,4 @@
 (() => {
-  const exitCta = document.querySelector('.live-header-cta');
-  if (exitCta) {
-    exitCta.href = 'index.html';
-    exitCta.textContent = '나가기 ↗';
-    exitCta.setAttribute('aria-label', 'SFANDOM LIVE 나가기');
-  }
-
   const STORAGE_KEY = 'sfandom_live_messages_v01';
   const NICK_KEY = 'sfandom_live_nickname_v01';
   const CLIENT_KEY = 'sfandom_live_client_v01';
@@ -18,7 +11,6 @@
     messageList: document.getElementById('messageList'),
     composer: document.getElementById('chatComposer'),
     input: document.getElementById('messageInput'),
-    send: document.getElementById('sendButton'),
     topic: document.getElementById('topicSelect'),
     topicList: document.getElementById('topicList'),
     charCount: document.getElementById('charCount'),
@@ -29,8 +21,10 @@
     modal: document.getElementById('nicknameModal'),
     nicknameInput: document.getElementById('nicknameInput'),
     nicknameStart: document.getElementById('nicknameStart'),
-    changeNickname: document.getElementById('changeNickname')
+    changeNickname: document.getElementById('changeNickname'),
+    toast: document.getElementById('liveToast')
   };
+  if (Object.values(els).some((el) => !el)) return;
 
   let nickname = localStorage.getItem(NICK_KEY) || '';
   let clientId = localStorage.getItem(CLIENT_KEY) || '';
@@ -94,12 +88,7 @@
   }
 
   function toast(text) {
-    let el = document.querySelector('.toast');
-    if (!el) {
-      el = document.createElement('div');
-      el.className = 'toast';
-      document.body.appendChild(el);
-    }
+    const el = els.toast;
     el.textContent = text;
     el.classList.add('show');
     clearTimeout(el._timer);
@@ -115,7 +104,13 @@
     if (!filtered.length) {
       const empty = document.createElement('div');
       empty.className = 'chat-empty';
-      empty.innerHTML = '<div><strong>아직 이 태그의 메시지가 없습니다.</strong><span>첫 이야기를 남겨보세요.</span></div>';
+      const inner = document.createElement('div');
+      const title = document.createElement('strong');
+      title.textContent = '아직 이 태그의 메시지가 없습니다.';
+      const copy = document.createElement('span');
+      copy.textContent = '첫 이야기를 남겨보세요.';
+      inner.append(title, copy);
+      empty.appendChild(inner);
       list.appendChild(empty);
       return;
     }
