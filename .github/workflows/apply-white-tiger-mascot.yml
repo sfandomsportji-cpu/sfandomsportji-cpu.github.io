@@ -1,0 +1,61 @@
+name: Apply White Tiger Mascot
+
+on:
+  push:
+    branches:
+      - update/home-english-mascot-hq-20260828
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace mascot source structure
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          html = index.read_text(encoding='utf-8')
+          old_section = '''    <section class="section home-kairo reveal"><div class="home-kairo-art"><span>JI · KAIRO · ANALYSIS TEAM</span></div><div class="home-kairo-copy"><p class="eyebrow">KAIRO'S NOTE</p><h2>Built Together by<br>Ji &amp; KAIRO.</h2><p>SFANDOM은 스포츠 분석가 Ji와 AI 분석 파트너 KAIRO가 함께 운영합니다. Ji의 분석 경험과 판단에 KAIRO의 데이터 정리·비교 분석·복기가 더해져, 경기 전후의 핵심 근거를 빠르고 이해하기 쉽게 전달합니다.</p></div></section>'''
+          new_section = '''    <section class="section home-kairo reveal"><div class="home-kairo-art"><img class="home-kairo-visual" src="assets/kairo-white-tiger-analysis-20260828.webp" alt="KAIRO 흰색 호랑이 마스코트가 스포츠 데이터를 분석하는 모습"><div class="home-kairo-brand" aria-label="SFANDOM"><img src="assets/sfandom-logo-official.png" alt="" aria-hidden="true"><strong>SFANDOM</strong></div><span>JI · KAIRO · ANALYSIS TEAM</span></div><div class="home-kairo-copy"><p class="eyebrow">KAIRO'S NOTE</p><h2>Built Together by<br>Ji &amp; KAIRO.</h2><p>SFANDOM은 스포츠 분석가 Ji와 AI 분석 파트너 KAIRO가 함께 운영합니다. Ji의 분석 경험과 판단에 KAIRO의 데이터 정리·비교 분석·복기가 더해져, 경기 전후의 핵심 근거를 빠르고 이해하기 쉽게 전달합니다.</p></div></section>'''
+          if html.count(old_section) != 1:
+              raise SystemExit(f'Expected one old mascot section, found {html.count(old_section)}')
+          html = html.replace(old_section, new_section)
+          old_cache = 'home.css?v=20260828-english-hq1'
+          new_cache = 'home.css?v=20260828-white-tiger1'
+          if html.count(old_cache) != 1:
+              raise SystemExit(f'Expected one old home cache ref, found {html.count(old_cache)}')
+          index.write_text(html.replace(old_cache, new_cache), encoding='utf-8')
+
+          css = Path('home.css')
+          text = css.read_text(encoding='utf-8')
+          old_css = ".home-kairo{display:grid;grid-template-columns:.82fr 1.18fr;gap:78px;align-items:center;border-top:1px solid var(--line);background:linear-gradient(115deg,rgba(226,35,42,.075),transparent 45%)}.home-kairo-art{position:relative;min-height:500px;display:flex;align-items:flex-end;justify-content:center;border:1px solid #252525;background:#050505 url('assets/ji-kairo-duo-vivid-hq.png') center/min(390px,86%) auto no-repeat;overflow:hidden}.home-kairo-art:after{content:\"\";position:absolute;left:8%;right:8%;bottom:-20px;height:100px;background:rgba(226,35,42,.2);filter:blur(46px)}.home-kairo-art>span{position:absolute;z-index:2;top:18px;left:20px;font-size:.58rem;font-weight:800;letter-spacing:.16em;color:#777}.home-kairo-copy h2{font-size:clamp(3rem,5vw,5.4rem);line-height:1.02;word-break:keep-all}.home-kairo-copy>p:not(.eyebrow){max-width:620px;margin:30px 0 0;color:var(--muted);word-break:keep-all}"
+          new_css = ".home-kairo{display:grid;grid-template-columns:.92fr 1.08fr;gap:72px;align-items:center;border-top:1px solid var(--line);background:linear-gradient(115deg,rgba(226,35,42,.075),transparent 45%)}.home-kairo-art{position:relative;min-height:560px;border:1px solid #252525;background:#050505;overflow:hidden}.home-kairo-visual{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:47% center}.home-kairo-art:before{content:\"\";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(5,5,5,.02) 0%,rgba(5,5,5,.02) 56%,rgba(5,5,5,.78) 100%)}.home-kairo-art:after{content:\"\";position:absolute;z-index:1;left:8%;right:8%;bottom:-20px;height:100px;background:rgba(226,35,42,.2);filter:blur(46px)}.home-kairo-art>span{position:absolute;z-index:3;top:18px;left:20px;font-size:.58rem;font-weight:800;letter-spacing:.16em;color:#c4c4c7}.home-kairo-brand{position:absolute;z-index:3;left:20px;bottom:18px;display:flex;align-items:center;gap:9px;padding:9px 11px;border:1px solid rgba(255,255,255,.15);background:rgba(5,5,5,.76);backdrop-filter:blur(8px)}.home-kairo-brand img{display:block;width:30px;height:30px;object-fit:contain}.home-kairo-brand strong{font-size:.83rem;font-weight:900;letter-spacing:.12em;color:#fff}.home-kairo-copy h2{font-size:clamp(3rem,5vw,5.4rem);line-height:1.02;word-break:keep-all}.home-kairo-copy>p:not(.eyebrow){max-width:620px;margin:30px 0 0;color:var(--muted);word-break:keep-all}"
+          if text.count(old_css) != 1:
+              raise SystemExit(f'Expected one old mascot CSS block, found {text.count(old_css)}')
+          text = text.replace(old_css, new_css)
+          old_mobile = "  .home-kairo{padding-top:34px;padding-bottom:48px;gap:26px}.home-kairo-art{height:370px;min-height:0;background-size:min(350px,88vw) auto}.home-kairo-art span{z-index:2;color:#a6a6aa}"
+          new_mobile = "  .home-kairo{padding-top:34px;padding-bottom:48px;gap:26px}.home-kairo-art{height:400px;min-height:0}.home-kairo-visual{object-position:45% center}.home-kairo-art>span{top:14px;left:14px;color:#d0d0d3}.home-kairo-brand{left:14px;bottom:14px;padding:7px 9px}.home-kairo-brand img{width:26px;height:26px}.home-kairo-brand strong{font-size:.72rem}"
+          if text.count(old_mobile) != 1:
+              raise SystemExit(f'Expected one old mobile mascot rule, found {text.count(old_mobile)}')
+          css.write_text(text.replace(old_mobile, new_mobile), encoding='utf-8')
+
+          Path('.github/workflows/apply-white-tiger-mascot.yml').unlink()
+          PY
+
+          test ! -e assets/ji-kairo-duo-vivid-hq.png
+          grep -q 'assets/kairo-white-tiger-analysis-20260828.webp' index.html
+          grep -q 'assets/sfandom-logo-official.png' index.html
+          grep -q '<strong>SFANDOM</strong>' index.html
+          ! grep -q 'ji-kairo-duo-vivid-hq.png' home.css
+          ! grep -q 'home.css?v=20260828-english-hq1' index.html
+
+          git config user.name 'sfandomsportji-cpu'
+          git config user.email 'sfandomsportji@gmail.com'
+          git add -A
+          git commit -m 'Replace homepage mascot with white tiger analysis art'
+          git push origin HEAD
