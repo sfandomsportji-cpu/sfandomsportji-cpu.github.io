@@ -20,6 +20,9 @@
   const nickInput=identity.querySelector('input');
   if(!input||!nickInput)return;
 
+  dock.classList.add('is-collapsed');
+  collapse.textContent='+';
+
   function cleanNick(v){return String(v||'').replace(/[^0-9A-Za-z가-힣ㄱ-ㅎㅏ-ㅣ ._-]/g,'').replace(/\s+/g,' ').trim().slice(0,18)}
   function getStoredMessages(){try{const x=JSON.parse(localStorage.getItem(MSG_KEY)||'[]');return Array.isArray(x)?x.slice(-MAX_MESSAGES):[]}catch{return[]}}
   function saveMessages(messages){localStorage.setItem(MSG_KEY,JSON.stringify(messages.slice(-MAX_MESSAGES)))}
