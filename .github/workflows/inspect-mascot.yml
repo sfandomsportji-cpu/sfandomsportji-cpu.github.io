@@ -1,0 +1,36 @@
+name: Inspect Mascot Sources
+
+on:
+  push:
+    branches:
+      - update/home-english-mascot-hq-20260828
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Inspect historical mascot candidates
+        run: |
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          import subprocess, io
+          from PIL import Image
+          ref='c4de154d046862e433d30c4d6f087b457ae42a80'
+          files=[
+            'assets/ji-kairo-duo-approved-final.webp',
+            'assets/ji-kairo-duo-approved-20260825.webp',
+            'assets/ji-kairo-duo-approved-240.webp',
+            'assets/ji-kairo-duo-final.webp',
+            'assets/ji-kairo-duo.webp',
+          ]
+          for f in files:
+            try:
+              data=subprocess.check_output(['git','show',f'{ref}:{f}'])
+              im=Image.open(io.BytesIO(data))
+              print(f'{f} | {im.width}x{im.height} | {len(data)} bytes | {im.mode}')
+            except Exception as e:
+              print(f'{f} | ERROR | {e}')
+          PY
