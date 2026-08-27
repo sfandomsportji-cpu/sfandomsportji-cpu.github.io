@@ -6,14 +6,60 @@ on:
       - fix/site-source-cleanup-20260827
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   package:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout cleanup branch
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove retired NEXT MATCH wrapper
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          css = Path('daily-analysis.css')
+
+          html = index.read_text(encoding='utf-8')
+          old = '''        <div class="daily-story-grid">\n          <article class="daily-verdict-wide"><small>SFANDOM READ</small><p>수치상 선발 매치업은 Cole이 앞섭니다. SFANDOM은 7–6, 3.11 ERA의 Cole과 3–1, 4.23 ERA의 Wesneski를 시작점으로 보고, 당일 라인업과 시장 움직임까지 확인해 최종 방향을 판단합니다.</p></article>\n        </div>'''
+          new = '''        <article class="daily-verdict-wide"><small>SFANDOM READ</small><p>수치상 선발 매치업은 Cole이 앞섭니다. SFANDOM은 7–6, 3.11 ERA의 Cole과 3–1, 4.23 ERA의 Wesneski를 시작점으로 보고, 당일 라인업과 시장 움직임까지 확인해 최종 방향을 판단합니다.</p></article>'''
+          if old not in html:
+              raise SystemExit('retired daily-story-grid wrapper was not found exactly')
+          index.write_text(html.replace(old, new, 1), encoding='utf-8')
+
+          styles = css.read_text(encoding='utf-8')
+          dead_rule = '.daily-story-grid{position:relative;z-index:2;display:block}\n'
+          if dead_rule not in styles:
+              raise SystemExit('retired daily-story-grid CSS rule was not found exactly')
+          css.write_text(styles.replace(dead_rule, '', 1), encoding='utf-8')
+
+          if 'daily-story-grid' in index.read_text(encoding='utf-8') or 'daily-story-grid' in css.read_text(encoding='utf-8'):
+              raise SystemExit('daily-story-grid residue remains')
+          PY
+
+      - name: Commit source cleanup
+        shell: bash
+        run: |
+          if git diff --quiet -- index.html daily-analysis.css; then
+            echo 'No source cleanup changes to commit.'
+          else
+            git config user.name 'sfandomsportji-cpu'
+            git config user.email 'sfandomsportji@gmail.com'
+            git add index.html daily-analysis.css
+            git commit -m 'Remove retired NEXT MATCH story wrapper [skip ci]'
+            git push origin HEAD:fix/site-source-cleanup-20260827
+          fi
+
       - name: Build preview archive
         run: zip -r site-preview.zip . -x '.git/*' 'site-preview.zip'
+
       - name: Upload preview artifact
         uses: actions/upload-artifact@v4
         with:
@@ -21,5 +67,3 @@ jobs:
           path: site-preview.zip
           if-no-files-found: error
           retention-days: 1
-
-# preview refresh: render the complete branch without local overlays
