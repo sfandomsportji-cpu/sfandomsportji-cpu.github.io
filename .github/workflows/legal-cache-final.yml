@@ -1,0 +1,39 @@
+name: Legal Cache Final
+
+on:
+  push:
+    branches:
+      - fix/site-source-cleanup-20260827
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/site-source-cleanup-20260827
+          fetch-depth: 0
+      - name: Normalize legal cache references only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files=['terms.html','privacy.html','community-policy.html','legal-notice.html']
+          for name in files:
+              p=Path(name)
+              s=p.read_text()
+              s=s.replace('styles.css?v=20260827-clean2','styles.css?v=20260827-clean5')
+              s=s.replace('legal.css?v=20260827-clean1','legal.css?v=20260827-clean5')
+              p.write_text(s)
+          PY
+      - name: Commit cache-only normalization
+        run: |
+          git config user.name sfandom-cleanup-bot
+          git config user.email actions@users.noreply.github.com
+          git add terms.html privacy.html community-policy.html legal-notice.html
+          git diff --cached --quiet && exit 0
+          git commit -m "Normalize legal page cache references [skip ci]"
+          git push origin HEAD:fix/site-source-cleanup-20260827
