@@ -1,0 +1,191 @@
+name: Ten-stage SFANDOM collision cleanup
+
+on:
+  push:
+    paths:
+      - '.github/workflows/ten-stage-cleanup.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name 'SFANDOM cleanup'
+          git config user.email 'sfandomsportji@gmail.com'
+
+      - name: Stage 1 - remove homepage runtime live injector
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('signature-moments.js')
+          s=p.read_text(encoding='utf-8')
+          marker="\n(()=>{\n  const isHome=location.pathname==='/'||location.pathname.endsWith('/index.html');"
+          if marker in s:
+              s=s.split(marker,1)[0].rstrip()+"\n"
+              p.write_text(s,encoding='utf-8')
+          PY
+          git add signature-moments.js
+          git diff --cached --quiet || git commit -m 'Stage 1: remove homepage runtime live injector'
+
+      - name: Stage 2 - collapse hero to one direct local video
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html'); s=p.read_text(encoding='utf-8')
+          s=re.sub(r'<iframe class="hero-reel".*?</iframe>\s*<div class="hero-reel-safe-logo".*?</div>', '<video class="hero-reel" src="assets/sfandom-hero-reel.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>', s, count=1, flags=re.S)
+          p.write_text(s,encoding='utf-8')
+          p=Path('home-overrides-base.css'); s=p.read_text(encoding='utf-8')
+          s=re.sub(r'\.hero-reel-safe-logo\{[^{}]*\}\s*','',s)
+          s=re.sub(r'\.hero-reel-safe-logo img\{[^{}]*\}\s*','',s)
+          p.write_text(s,encoding='utf-8')
+          PY
+          git add index.html home-overrides-base.css
+          git diff --cached --quiet || git commit -m 'Stage 2: keep one direct hero video implementation'
+
+      - name: Stage 3 - remove stacked homepage override layer
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html'); s=p.read_text(encoding='utf-8')
+          s=re.sub(r'href="home-overrides\.css\?v=[^"]+"', 'href="home-overrides-base.css?v=20260827-clean1"', s)
+          p.write_text(s,encoding='utf-8')
+          q=Path('home-overrides.css')
+          if q.exists(): q.unlink()
+          PY
+          git add -A
+          git diff --cached --quiet || git commit -m 'Stage 3: remove stacked homepage override stylesheet'
+
+      - name: Stage 4 - remove CSS-generated match content masking
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('daily-analysis.css'); s=p.read_text(encoding='utf-8')
+          s=re.sub(r'\.daily-feature-head h2\{margin:0;font-size:0;line-height:1;letter-spacing:-\.05em\}\.daily-feature-head h2:before\{.*?\}\.daily-feature-head h2:after\{.*?\}\.daily-feature-head h2 span\{display:none\}', '.daily-feature-head h2{margin:0;font-size:clamp(1.9rem,3.7vw,3.9rem);line-height:.96;letter-spacing:-.05em}.daily-feature-head h2 span{color:#ef2d2d}', s, flags=re.S)
+          s=re.sub(r'\.daily-verdict-wide p\{max-width:1000px;margin:0;color:#e7e7e7;font-size:0;font-weight:650;line-height:1\.65\}\.daily-verdict-wide p:after\{.*?\}\.daily-verdict-wide b\{display:none\}', '.daily-verdict-wide p{max-width:1000px;margin:0;color:#e7e7e7;font-size:.9rem;font-weight:650;line-height:1.65}.daily-verdict-wide b{display:inline;color:#fff}', s, flags=re.S)
+          s=s.replace('.daily-feature-head h2:before,.daily-feature-head h2:after{font-size:2.25rem}', '.daily-feature-head h2{font-size:2.25rem}')
+          s=s.replace('.daily-verdict-wide p:after{font-size:.84rem}', '.daily-verdict-wide p{font-size:.84rem}')
+          p.write_text(s,encoding='utf-8')
+          PY
+          git add daily-analysis.css
+          git diff --cached --quiet || git commit -m 'Stage 4: restore NEXT MATCH source content as truth'
+
+      - name: Stage 5 - verify dedicated LIVE page is the only chat implementation
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for p in Path('.').rglob('*'):
+              if not p.is_file() or p.suffix.lower() not in {'.html','.js','.css'} or '.git' in p.parts: continue
+              s=p.read_text(encoding='utf-8')
+              if p.name!='live-chat.js':
+                  s=s.replace('sfLiveDock','sfLiveDock_REMOVED_SENTINEL') if False else s
+              p.write_text(s,encoding='utf-8')
+          PY
+          if grep -RIn --exclude-dir=.git --exclude='live-chat.js' 'sfLiveDock\|sf-live-dock' .; then
+            echo 'Unexpected duplicate homepage LIVE implementation remains'; exit 1
+          fi
+          git add -A
+          git diff --cached --quiet || git commit -m 'Stage 5: isolate LIVE chat implementation'
+
+      - name: Stage 6 - remove homepage header ownership from hero stylesheet
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('home-overrides-base.css'); s=p.read_text(encoding='utf-8')
+          patterns=[
+            r'\n\s*body\.home-v2 \.site-header\{[^{}]*\}',
+            r'\n\s*body\.home-v2 \.site-header \.brand\{[^{}]*\}',
+            r'\n\s*body\.home-v2 \.site-header \.nav a\{[^{}]*\}',
+            r'\n\s*body\.home-v2 \.site-header \.nav a:hover\{[^{}]*\}',
+            r'\n\s*body\.home-v2 \.site-header \.header-cta\{[^{}]*\}'
+          ]
+          for pat in patterns: s=re.sub(pat,'',s)
+          p.write_text(s,encoding='utf-8')
+          PY
+          git add home-overrides-base.css
+          git diff --cached --quiet || git commit -m 'Stage 6: keep header styling under one owner'
+
+      - name: Stage 7 - remove broken retired pick archive entry
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('archive/index.html'); s=p.read_text(encoding='utf-8')
+          s=s.replace('매일 공개한 픽과 미디어 콘텐츠를 지우지 않고 폴더별로 보관합니다. 최신 자료부터 지난 기록까지 직접 열어볼 수 있습니다.','공개한 미디어 콘텐츠를 폴더별로 보관합니다. 최신 자료부터 지난 기록까지 직접 열어볼 수 있습니다.')
+          s=re.sub(r'<a class="folder" href="picks/">.*?</a>\s*','',s,count=1,flags=re.S)
+          s=s.replace('grid-template-columns:repeat(2,minmax(0,1fr))','grid-template-columns:minmax(0,1fr)')
+          p.write_text(s,encoding='utf-8')
+          PY
+          git add archive/index.html
+          git diff --cached --quiet || git commit -m 'Stage 7: remove broken retired pick archive route'
+
+      - name: Stage 8 - normalize cache versions after cleanup
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          for p in Path('.').rglob('*.html'):
+              if '.git' in p.parts: continue
+              s=p.read_text(encoding='utf-8')
+              s=re.sub(r'((?:href|src)=["\'][^"\']+\.(?:css|js))\?v=[^"\']+(["\'])', r'\1?v=20260827-clean1\2', s)
+              p.write_text(s,encoding='utf-8')
+          PY
+          git add '*.html' archive || true
+          git diff --cached --quiet || git commit -m 'Stage 8: normalize cleaned asset cache versions'
+
+      - name: Stage 9 - delete obsolete signature test pages
+        shell: bash
+        run: |
+          rm -f signature-direct-10.html signature-direct-test.html signature-direct-test-02.html signature-direct-test-03.html signature-moments-preview.html
+          git add -A
+          git diff --cached --quiet || git commit -m 'Stage 9: delete obsolete signature test pages'
+
+      - name: Stage 10 - remove residual collision markers and self-delete
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          forbidden=[
+            'music-player.js','music-player.css','pick-result-title','archive/picks/','sfLiveDock','sf-live-dock',
+            'Document.prototype.querySelector','sf-route-loading','history.pushState('
+          ]
+          for p in Path('.').rglob('*'):
+              if not p.is_file() or p.suffix.lower() not in {'.html','.js','.css','.md'} or '.git' in p.parts: continue
+              s=p.read_text(encoding='utf-8')
+              old=s
+              s=re.sub(r'^.*sf-route-loading.*$\n?','',s,flags=re.M)
+              if s!=old: p.write_text(s,encoding='utf-8')
+          leftovers=[]
+          for p in Path('.').rglob('*'):
+              if not p.is_file() or p.suffix.lower() not in {'.html','.js','.css','.md'} or '.git' in p.parts: continue
+              s=p.read_text(encoding='utf-8')
+              for token in forbidden:
+                  if token in s: leftovers.append(f'{p}: {token}')
+          if leftovers:
+              raise SystemExit('Residual forbidden references:\n'+'\n'.join(leftovers))
+          wf=Path('.github/workflows/ten-stage-cleanup.yml')
+          if wf.exists(): wf.unlink()
+          PY
+          git add -A
+          git diff --cached --quiet || git commit -m 'Stage 10: finish collision cleanup and remove one-shot workflow'
+          git push origin HEAD:main
