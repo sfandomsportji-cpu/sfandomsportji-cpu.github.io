@@ -1,4 +1,4 @@
-/* News-card data artwork only. Arizona matchup and pick styles were removed with their HTML. */
+/* News-card data artwork only. */
 .news-data-poster{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 25% 20%,rgba(239,45,45,.18),transparent 30%),linear-gradient(145deg,#15171d,#08090b 72%)}
 .news-data-poster:before{content:attr(data-mark);font-size:clamp(5rem,11vw,10rem);font-weight:900;letter-spacing:-.08em;color:rgba(255,255,255,.065)}
 .news-data-poster:after{content:"SFANDOM · VERIFIED STORY";position:absolute;top:20px;right:20px;color:#646871;font-size:.54rem;font-weight:900;letter-spacing:.13em}
