@@ -1,5 +1,5 @@
-/* News-card data artwork only. */
-.news-data-poster{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 25% 20%,rgba(239,45,45,.18),transparent 30%),linear-gradient(145deg,#15171d,#08090b 72%)}
-.news-data-poster:before{content:attr(data-mark);font-size:clamp(5rem,11vw,10rem);font-weight:900;letter-spacing:-.08em;color:rgba(255,255,255,.065)}
+/* News-card data artwork only. Keep this file isolated from NEXT MATCH / PICK layout. */
+.news-data-poster{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 25% 20%,rgba(239,45,45,.14),transparent 30%),linear-gradient(145deg,#15171d,#08090b 72%)}
+.news-data-poster:before{content:"SFANDOM";font-size:clamp(4rem,9vw,8rem);font-weight:900;letter-spacing:-.07em;color:rgba(255,255,255,.035)}
 .news-data-poster:after{content:"SFANDOM · VERIFIED STORY";position:absolute;top:20px;right:20px;color:#646871;font-size:.54rem;font-weight:900;letter-spacing:.13em}
-@media(max-width:700px){.news-data-poster:after{top:12px;right:12px;font-size:.45rem}}
+@media(max-width:700px){.news-data-poster:before{font-size:18vw}.news-data-poster:after{top:12px;right:12px;font-size:.45rem}}
