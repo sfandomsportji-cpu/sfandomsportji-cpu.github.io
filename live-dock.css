@@ -28,6 +28,7 @@
 .sf-live-dock-foot{display:flex;justify-content:space-between;gap:10px;margin-top:8px;color:#6f727a;font-size:.54rem;font-weight:800;letter-spacing:.04em}
 .sf-live-dock-foot a{color:#9c9fa7;text-decoration:none}
 .sf-live-dock-foot a:hover{color:#fff}
+.sf-mobile-live-link{display:none}
 @keyframes sfLivePulse{0%,100%{opacity:1}50%{opacity:.45}}
 @media(max-width:820px){
   .sf-live-dock{top:72px;right:10px;width:min(310px,calc(100vw - 20px))}
@@ -37,27 +38,10 @@
   .sf-live-dock-title span{display:none}
 }
 @media(max-width:520px){
-  .sf-live-dock{top:70px;right:8px;bottom:auto;left:auto;width:44px;max-width:calc(100vw - 16px);border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,.34);backdrop-filter:blur(12px)}
-  .sf-live-dock.is-collapsed{width:44px;height:44px}
-  .sf-live-dock.is-collapsed .sf-live-dock-head{height:44px;border-bottom:0;justify-content:center;padding:0}
-  .sf-live-dock.is-collapsed .sf-live-dock-title{display:none}
-  .sf-live-dock.is-collapsed .sf-live-dock-actions{width:100%;height:100%}
-  .sf-live-dock.is-collapsed .sf-live-dock-actions a{display:none}
-  .sf-live-dock.is-collapsed .sf-live-dock-actions button{width:100%;height:100%;border:0;background:linear-gradient(145deg,#17171b,#0b0b0e);color:#fff;font-size:.48rem;font-weight:900;letter-spacing:.08em;border-radius:11px}
-  .sf-live-dock.is-collapsed .sf-live-dock-actions button:before{content:"";width:6px;height:6px;margin-bottom:2px;border-radius:50%;background:#ef2d2d;box-shadow:0 0 0 4px rgba(239,45,45,.12)}
-  .sf-live-dock:not(.is-collapsed){top:auto;right:8px;bottom:calc(8px + env(safe-area-inset-bottom));left:8px;width:auto;max-width:none;max-height:min(68dvh,520px);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.62)}
-  .sf-live-dock:not(.is-collapsed) .sf-live-dock-head{height:48px;padding:0 10px 0 13px}
-  .sf-live-dock:not(.is-collapsed) .sf-live-dock-body{max-height:calc(68dvh - 48px);overflow:auto;padding:10px}
-  .sf-live-dock:not(.is-collapsed) .sf-live-dock-feed{min-height:84px;max-height:22dvh}
-  .sf-live-dock-title strong{font-size:.68rem}
-  .sf-live-dock-actions a,.sf-live-dock-actions button{width:32px;height:32px}
-  .sf-live-dock-form{grid-template-columns:minmax(0,1fr) 48px;gap:6px}
-  .sf-live-dock-foot{gap:6px;font-size:.48rem}
+  .sf-live-dock{display:none!important}
+  .sf-mobile-live-link{position:fixed;top:70px;right:8px;z-index:7200;display:flex;align-items:center;justify-content:center;gap:6px;width:52px;height:38px;border:1px solid #34343a;border-radius:10px;background:rgba(10,10,12,.94);box-shadow:0 8px 24px rgba(0,0,0,.32);backdrop-filter:blur(12px);color:#fff;text-decoration:none;font:900 .58rem/1 Inter,'Noto Sans KR',sans-serif;letter-spacing:.08em}
+  .sf-mobile-live-link:before{content:"";width:6px;height:6px;border-radius:50%;background:#ef2d2d;box-shadow:0 0 0 4px rgba(239,45,45,.12)}
 }
 @media(max-width:390px){
-  .sf-live-dock{top:66px;right:6px}
-  .sf-live-dock:not(.is-collapsed){right:6px;left:6px;bottom:calc(6px + env(safe-area-inset-bottom))}
-  .sf-live-dock:not(.is-collapsed) .sf-live-dock-body{padding:9px}
-  .sf-live-dock-form{grid-template-columns:minmax(0,1fr) 46px}
-  .sf-live-dock-form input{padding:0 9px;font-size:.66rem}
+  .sf-mobile-live-link{top:66px;right:6px;width:50px;height:36px}
 }
