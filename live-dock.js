@@ -20,8 +20,16 @@
   const nickInput=identity.querySelector('input');
   if(!input||!nickInput)return;
 
+  const mobileQuery=window.matchMedia('(max-width:520px)');
+  function syncCollapseUi(){
+    const closed=dock.classList.contains('is-collapsed');
+    collapse.textContent=closed?(mobileQuery.matches?'LIVE':'+'):'—';
+    collapse.setAttribute('aria-label',closed?'채팅 열기':'채팅창 접기');
+    dock.setAttribute('aria-expanded',String(!closed));
+  }
+
   dock.classList.add('is-collapsed');
-  collapse.textContent='+';
+  syncCollapseUi();
 
   function cleanNick(v){return String(v||'').replace(/[^0-9A-Za-z가-힣ㄱ-ㅎㅏ-ㅣ ._-]/g,'').replace(/\s+/g,' ').trim().slice(0,18)}
   function getStoredMessages(){try{const x=JSON.parse(localStorage.getItem(MSG_KEY)||'[]');return Array.isArray(x)?x.slice(-MAX_MESSAGES):[]}catch{return[]}}
@@ -86,7 +94,10 @@
 
   form.addEventListener('submit',e=>{e.preventDefault();send()});
   nickInput.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();const n=saveNick();if(n)input.focus()}});
-  collapse.addEventListener('click',()=>{dock.classList.toggle('is-collapsed');collapse.textContent=dock.classList.contains('is-collapsed')?'+':'—'});
+  collapse.addEventListener('click',()=>{dock.classList.toggle('is-collapsed');syncCollapseUi()});
+  const handleMobileChange=()=>{if(mobileQuery.matches)dock.classList.add('is-collapsed');syncCollapseUi()};
+  if(mobileQuery.addEventListener)mobileQuery.addEventListener('change',handleMobileChange);else mobileQuery.addListener(handleMobileChange);
+  window.addEventListener('orientationchange',()=>{if(mobileQuery.matches){dock.classList.add('is-collapsed');syncCollapseUi()}});
   window.addEventListener('storage',e=>{if(e.key===MSG_KEY)render()});
   if('BroadcastChannel'in window){
     channel=new BroadcastChannel('sfandom-live-v01');
