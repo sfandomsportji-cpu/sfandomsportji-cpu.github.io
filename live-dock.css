@@ -39,9 +39,9 @@
 @media(max-width:520px){
   .sf-live-dock,.sf-live-dock.is-collapsed,.sf-live-dock:not(.is-collapsed){top:70px;right:8px;bottom:auto;left:auto;width:56px;height:38px;min-width:0;max-width:none;max-height:none;border:1px solid #34343a;border-radius:10px;background:rgba(10,10,12,.94);box-shadow:0 8px 24px rgba(0,0,0,.32);backdrop-filter:blur(12px);overflow:hidden}
   .sf-live-dock-head,.sf-live-dock.is-collapsed .sf-live-dock-head,.sf-live-dock:not(.is-collapsed) .sf-live-dock-head{height:38px;padding:0;border:0;background:transparent}
-  .sf-live-dock-title,.sf-live-dock-body,.sf-live-dock-actions button{display:none!important}
+  .sf-live-dock-title,.sf-live-dock-body,.sf-live-dock-actions button{display:none}
   .sf-live-dock-actions{display:block;width:100%;height:100%;gap:0}
-  .sf-live-dock-actions a,.sf-live-dock.is-collapsed .sf-live-dock-actions a{display:flex!important;align-items:center;justify-content:center;gap:6px;width:100%;height:100%;border:0;border-radius:9px;background:linear-gradient(145deg,#17171b,#0b0b0e);color:#fff;font-size:0;text-decoration:none}
+  .sf-live-dock-actions a,.sf-live-dock.is-collapsed .sf-live-dock-actions a{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;height:100%;border:0;border-radius:9px;background:linear-gradient(145deg,#17171b,#0b0b0e);color:#fff;font-size:0;text-decoration:none}
   .sf-live-dock-actions a:before{content:"";width:6px;height:6px;border-radius:50%;background:#ef2d2d;box-shadow:0 0 0 4px rgba(239,45,45,.12)}
   .sf-live-dock-actions a:after{content:"LIVE";font:900 .58rem/1 Inter,'Noto Sans KR',sans-serif;letter-spacing:.08em;color:#fff}
 }
