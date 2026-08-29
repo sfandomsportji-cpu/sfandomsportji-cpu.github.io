@@ -25,19 +25,19 @@ jobs:
           mkdir -p assets/morning-20260830
           curl -L --fail --retry 3 -A 'SFANDOM content publisher' 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Pete_Crow-Armstrong_%2853107452312%29_%28cropped%29.jpg' -o assets/morning-20260830/pete-crow-armstrong.jpg
           curl -L --fail --retry 3 -A 'SFANDOM content publisher' 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Tottenham_Hotspur_Stadium.jpg' -o assets/morning-20260830/tottenham-hotspur-stadium.jpg
-          curl -L --fail --retry 3 -A 'SFANDOM content publisher' 'https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_1200,q_auto:best/v1/people/650911/headshot/67/current' -o assets/morning-20260830/cristopher-sanchez.png
-          curl -L --fail --retry 3 -A 'SFANDOM content publisher' 'https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_1200,q_auto:best/v1/people/696270/headshot/67/current' -o assets/morning-20260830/ryan-johnson.png
-          file assets/morning-20260830/*
-          python3 - <<'PY'
-          from PIL import Image
-          from pathlib import Path
-          for p in sorted(Path('assets/morning-20260830').iterdir()):
-              with Image.open(p) as im:
-                  w,h=im.size
-                  if w <= 0 or h <= 0:
-                      raise SystemExit(f'bad dimensions: {p}')
-                  print(f'{p}: {w}x{h} {im.format}')
-          PY
+          curl -L --fail --retry 3 -A 'SFANDOM content publisher' 'https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_1200,q_auto:best/v1/people/650911/headshot/67/current' -o assets/morning-20260830/cristopher-sanchez.jpg
+          curl -L --fail --retry 3 -A 'SFANDOM content publisher' 'https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_1200,q_auto:best/v1/people/696270/headshot/67/current' -o assets/morning-20260830/ryan-johnson.jpg
+          for p in assets/morning-20260830/*; do
+            info="$(file "$p")"
+            echo "$info"
+            echo "$info" | grep -q 'JPEG image data'
+            dims="$(echo "$info" | grep -Eo '[0-9]{2,5}x[0-9]{2,5}' | head -n1)"
+            test -n "$dims"
+            width="${dims%x*}"
+            height="${dims#*x}"
+            test "$width" -gt 0
+            test "$height" -gt 0
+          done
       - name: Commit fetched assets
         shell: bash
         run: |
