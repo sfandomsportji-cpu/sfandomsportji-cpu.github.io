@@ -18,6 +18,9 @@
 .archive-media .intro{max-width:680px;color:#96969d;line-height:1.8}
 .library{display:grid;gap:18px;margin-top:52px}
 .slot{border:1px solid #2a2a2e;background:#09090b;min-height:220px}
+.publication-snapshot{overflow:hidden}
+.publication-snapshot-body>.section{max-width:none;padding:72px 28px}
+.publication-snapshot-body>.section+section{border-top:1px solid #242429}
 .slot-head{display:flex;justify-content:space-between;align-items:center;padding:15px 17px;border-bottom:1px solid #242429}
 .slot-head b{font-size:.78rem;letter-spacing:.1em}
 .slot-head span{color:#ef2d2d;font-size:.62rem;font-weight:900;letter-spacing:.12em}
