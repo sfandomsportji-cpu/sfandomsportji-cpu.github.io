@@ -1,0 +1,49 @@
+name: Fetch approved morning assets
+
+on:
+  push:
+    branches:
+      - content/morning-20260830-approved
+    paths:
+      - .github/workflows/fetch-morning-assets.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-assets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout approved content branch
+        uses: actions/checkout@v4
+        with:
+          ref: content/morning-20260830-approved
+      - name: Fetch verified public/official images
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/morning-20260830
+          curl -L --fail --retry 3 -A 'SFANDOM content publisher' 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Pete_Crow-Armstrong_%2853107452312%29_%28cropped%29.jpg' -o assets/morning-20260830/pete-crow-armstrong.jpg
+          curl -L --fail --retry 3 -A 'SFANDOM content publisher' 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Tottenham_Hotspur_Stadium.jpg' -o assets/morning-20260830/tottenham-hotspur-stadium.jpg
+          curl -L --fail --retry 3 -A 'SFANDOM content publisher' 'https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_1200,q_auto:best/v1/people/650911/headshot/67/current' -o assets/morning-20260830/cristopher-sanchez.png
+          curl -L --fail --retry 3 -A 'SFANDOM content publisher' 'https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_1200,q_auto:best/v1/people/696270/headshot/67/current' -o assets/morning-20260830/ryan-johnson.png
+          file assets/morning-20260830/*
+          python3 - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          for p in sorted(Path('assets/morning-20260830').iterdir()):
+              with Image.open(p) as im:
+                  w,h=im.size
+                  if w <= 0 or h <= 0:
+                      raise SystemExit(f'bad dimensions: {p}')
+                  print(f'{p}: {w}x{h} {im.format}')
+          PY
+      - name: Commit fetched assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/morning-20260830
+          git commit -m 'Add verified Aug 30 morning content images'
+          git push origin HEAD:content/morning-20260830-approved
