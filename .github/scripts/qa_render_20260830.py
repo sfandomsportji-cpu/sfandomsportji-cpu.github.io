@@ -24,7 +24,8 @@ try:
         driver.get('http://127.0.0.1:8000/index.html')
         WebDriverWait(driver, 20).until(lambda d: d.execute_script("return document.readyState === 'complete'"))
         WebDriverWait(driver, 20).until(lambda d: d.execute_script("return Array.from(document.images).every(i => i.complete)"))
-        time.sleep(1)
+        driver.execute_script("document.querySelectorAll('video').forEach(v=>v.pause())")
+        time.sleep(0.5)
         data = driver.execute_script('''
           const imgs = Array.from(document.images).map(i => ({
             src: i.getAttribute('src'),
@@ -64,10 +65,16 @@ try:
         ]:
             el = driver.find_element('id', sec_id)
             driver.execute_script("arguments[0].scrollIntoView({block:'start'});", el)
-            time.sleep(0.3)
-            el.screenshot(str(out / f'{width}-{label}.png'))
+            time.sleep(0.25)
+            driver.save_screenshot(str(out / f'{width}-{label}-top.png'))
+            sec_height = data['sections'][sec_id]['height']
+            if sec_height > height:
+                driver.execute_script("window.scrollBy(0, Math.min(arguments[0], arguments[1] * 0.72));", sec_height - height, height)
+                time.sleep(0.2)
+                driver.save_screenshot(str(out / f'{width}-{label}-mid.png'))
 
         results.append(data)
+        Path('qa-render/results.json').write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding='utf-8')
         if data['overflow'] != 0:
             raise SystemExit(f'Horizontal overflow at {width}px: {data["overflow"]}')
         if data['brokenImages']:
@@ -80,5 +87,4 @@ try:
 finally:
     driver.quit()
 
-Path('qa-render/results.json').write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding='utf-8')
 print(json.dumps(results, ensure_ascii=False, indent=2))
