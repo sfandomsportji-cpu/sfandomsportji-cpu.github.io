@@ -34,8 +34,13 @@ try:
             renderedWidth: Math.round(i.getBoundingClientRect().width),
             renderedHeight: Math.round(i.getBoundingClientRect().height)
           }));
-          const content = document.querySelector('#daily-news-slot');
-          const pick = document.querySelector('#pick-slot');
+          const ids = ['daily-news-slot','kairo-feature-slot','next-match-slot','pick-slot'];
+          const sections = Object.fromEntries(ids.map(id => {
+            const e = document.getElementById(id);
+            if (!e) return [id, null];
+            const r = e.getBoundingClientRect();
+            return [id, {width: Math.round(r.width), height: Math.round(r.height), left: Math.round(r.left), right: Math.round(r.right)}];
+          }));
           return {
             innerWidth: window.innerWidth,
             docScrollWidth: document.documentElement.scrollWidth,
@@ -43,16 +48,25 @@ try:
             overflow: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth) - window.innerWidth,
             brokenImages: imgs.filter(i => !i.complete || i.naturalWidth === 0 || i.naturalHeight === 0),
             images: imgs,
-            contentTop: content ? Math.round(content.getBoundingClientRect().top + scrollY) : null,
-            pickBottom: pick ? Math.round(pick.getBoundingClientRect().bottom + scrollY) : null
+            sections
           };
         ''')
         logs = driver.get_log('browser')
-        severe = [x for x in logs if x.get('level') == 'SEVERE']
+        severe = [x for x in logs if x.get('level') == 'SEVERE' and 'favicon.ico' not in x.get('message','')]
         data['browserSevere'] = severe
         data['viewportRequested'] = [width, height]
-        data['screenshot'] = f'qa-render/{width}.png'
-        driver.save_screenshot(data['screenshot'])
+
+        for sec_id, label in [
+            ('daily-news-slot','daily'),
+            ('kairo-feature-slot','kairo'),
+            ('next-match-slot','next'),
+            ('pick-slot','pick'),
+        ]:
+            el = driver.find_element('id', sec_id)
+            driver.execute_script("arguments[0].scrollIntoView({block:'start'});", el)
+            time.sleep(0.3)
+            el.screenshot(str(out / f'{width}-{label}.png'))
+
         results.append(data)
         if data['overflow'] != 0:
             raise SystemExit(f'Horizontal overflow at {width}px: {data["overflow"]}')
@@ -60,6 +74,9 @@ try:
             raise SystemExit(f'Broken images at {width}px: {data["brokenImages"]}')
         if severe:
             raise SystemExit(f'Browser severe errors at {width}px: {severe}')
+        for sec_id, rect in data['sections'].items():
+            if rect is None or rect['left'] < 0 or rect['right'] > data['innerWidth'] + 1:
+                raise SystemExit(f'Section outside viewport at {width}px: {sec_id}={rect}')
 finally:
     driver.quit()
 
