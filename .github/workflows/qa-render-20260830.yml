@@ -1,6 +1,6 @@
 name: QA Aug 30 exact-width render
 
-# retry after filtering favicon-only 404
+# retry with viewport screenshots
 on:
   push:
     branches:
