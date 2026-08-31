@@ -1,0 +1,180 @@
+name: TEMP SFANDOM MLB Highlight 2026-08-31
+on:
+  push:
+    branches:
+      - temp/mlb-highlight-20260831
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install render tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-cjk
+          python -m pip install -q pillow requests
+      - name: Build 45-second MLB reel
+        shell: bash
+        run: |
+          cat > /tmp/build_mlb.py <<'PY'
+          import os, re, json, subprocess, sys
+          from pathlib import Path
+          import requests
+          from PIL import Image, ImageDraw, ImageFont
+
+          OUT=Path('_deliverables'); OUT.mkdir(exist_ok=True)
+          W,H=1080,1920; VID_Y=410; VID_H=608; CLIP_DUR=7.5
+          UA={'User-Agent':'Mozilla/5.0 SFANDOM/1.0'}
+
+          def get_json(url):
+              r=requests.get(url,headers=UA,timeout=30); r.raise_for_status(); return r.json()
+
+          schedule=get_json('https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=2026-08-30&hydrate=team')
+          games=schedule['dates'][0]['games']
+          specs=[
+            dict(key='wells', away='Red Sox', home='Yankees', terms=['austin wells','second home run'], game='RED SOX @ YANKEES', score='NYY 16 — 1 BOS', ko='웰스, 8회 한 이닝 두 번째 투런포', en='AUSTIN WELLS · SECOND 2-RUN HR OF THE 8TH'),
+            dict(key='scherzer', away='Mariners', home='Blue Jays', terms=['max scherzer','10th strikeout'], game='MARINERS @ BLUE JAYS', score='TOR 7 — 0 SEA', ko='슈어저, 7이닝 무실점 · 10K · 통산 3,535K', en='MAX SCHERZER · 7 IP · 0 R · 10 K · 3,535 CAREER K'),
+            dict(key='mateo', away='Padres', home='Rays', terms=['jorge mateo','walk-off single'], game='PADRES @ RAYS', score='TB 5 — 4 SD', ko='11회, 호르헤 마테오가 경기를 끝냅니다', en='JORGE MATEO · WALK-OFF SINGLE IN THE 11TH'),
+            dict(key='glasnow', away='Dodgers', home='Tigers', terms=['tyler glasnow','seven','one-run'], game='DODGERS @ TIGERS', score='LAD 6 — 1 DET', ko='글래스나우, 7이닝 1실점 · 6K', en='TYLER GLASNOW · 7 IP · 1 ER · 6 K'),
+            dict(key='henderson', away='Orioles', home='Athletics', terms=['gunnar henderson','second','homer'], game='ORIOLES @ ATHLETICS', score='BAL 8 — 5 ATH', ko='헨더슨, 2홈런 · 4안타 · 5타점', en='GUNNAR HENDERSON · 2 HR · 4 H · 5 RBI'),
+          ]
+
+          def find_game(sp):
+              for g in games:
+                  a=g['teams']['away']['team']['name']; h=g['teams']['home']['team']['name']
+                  if sp['away'].lower() in a.lower() and sp['home'].lower() in h.lower(): return g
+              raise RuntimeError(f"game not found: {sp['away']} @ {sp['home']}")
+
+          def pick_item(items, sp):
+              best=None; bestscore=-1
+              for it in items:
+                  text=' '.join(str(it.get(k,'')) for k in ('title','description','blurb')).lower()
+                  score=sum(4 if t in text else 0 for t in sp['terms'])
+                  # player surname is a strong anchor
+                  surname=sp['terms'][0].split()[-1]
+                  if surname in text: score += 3
+                  if 'highlight' in ' '.join(it.get('keywords',[]) if isinstance(it.get('keywords'),list) else [] ).lower(): score += 1
+                  if score>bestscore: bestscore=score; best=it
+              if best is None or bestscore < 7:
+                  print('AVAILABLE TITLES:', [x.get('title') for x in items])
+                  raise RuntimeError(f"highlight not confidently found for {sp['key']} score={bestscore}")
+              print(sp['key'], '=>', best.get('title'), best.get('duration'))
+              return best
+
+          def playback_url(item):
+              candidates=[]
+              for p in item.get('playbacks',[]):
+                  u=p.get('url','')
+                  if '.mp4' not in u.lower(): continue
+                  q=0
+                  m=re.search(r'_(\d+)K\.mp4',u,re.I)
+                  if m: q=int(m.group(1))
+                  if '1280x720' in u: q+=100000
+                  if '1920x1080' in u: q+=200000
+                  candidates.append((q,u,p.get('name','')))
+              if not candidates: raise RuntimeError('No MP4 playback in selected MLB highlight')
+              candidates.sort(reverse=True)
+              print('playback', candidates[0][2], candidates[0][0], candidates[0][1])
+              return candidates[0][1]
+
+          for sp in specs:
+              g=find_game(sp); sp['gamePk']=g['gamePk']
+              content=get_json(f"https://statsapi.mlb.com/api/v1/game/{g['gamePk']}/content")
+              items=content.get('highlights',{}).get('highlights',{}).get('items',[])
+              it=pick_item(items,sp); sp['title']=it.get('title',''); sp['url']=playback_url(it)
+              r=requests.get(sp['url'],headers=UA,timeout=60,stream=True); r.raise_for_status()
+              p=Path(f"/tmp/{sp['key']}.mp4")
+              with p.open('wb') as f:
+                  for ch in r.iter_content(1024*1024):
+                      if ch: f.write(ch)
+              sp['file']=str(p)
+              print(sp['key'], p.stat().st_size)
+
+          logo_url='https://raw.githubusercontent.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/main/assets/sfandom-logo-official.png'
+          lr=requests.get(logo_url,headers=UA,timeout=30); lr.raise_for_status(); Path('/tmp/logo.png').write_bytes(lr.content)
+
+          fonts=list(Path('/usr/share/fonts').rglob('NotoSansCJK*'))
+          if not fonts: raise RuntimeError('Noto CJK font missing')
+          regular=next((x for x in fonts if 'Regular' in x.name),fonts[0])
+          bold=next((x for x in fonts if 'Bold' in x.name),regular)
+          def F(sz,b=False): return ImageFont.truetype(str(bold if b else regular),sz)
+
+          logo=Image.open('/tmp/logo.png').convert('RGBA')
+          def fit_logo(maxw,maxh):
+              im=logo.copy(); s=min(maxw/im.width,maxh/im.height); return im.resize((max(1,int(im.width*s)),max(1,int(im.height*s))),Image.Resampling.LANCZOS)
+
+          BG=(5,8,13); WHITE=(245,247,250); MUTED=(145,154,168); RED=(232,38,55); LINE=(49,58,70)
+          def base_frame(sp=None, kind='clip'):
+              im=Image.new('RGB',(W,H),BG); d=ImageDraw.Draw(im)
+              d.rectangle((0,50,W,55),fill=RED)
+              if kind=='clip':
+                  lg=fit_logo(300,115); im.paste(lg,(65,92),lg)
+                  d.text((755,105),'DAILY MLB',font=F(31,True),fill=WHITE)
+                  d.text((756,151),'AUG 31 · KST',font=F(25),fill=MUTED)
+                  d.rectangle((0,VID_Y-3,W,VID_Y),fill=LINE); d.rectangle((0,VID_Y+VID_H,W,VID_Y+VID_H+3),fill=LINE)
+                  d.rectangle((66,1080,142,1086),fill=RED)
+                  d.text((66,1110),sp['game'],font=F(43,True),fill=WHITE)
+                  d.text((66,1182),sp['score'],font=F(61,True),fill=RED)
+                  d.text((66,1288),sp['ko'],font=F(45,True),fill=WHITE)
+                  d.text((66,1365),sp['en'],font=F(30,True),fill=(214,219,227))
+                  d.text((66,1482),'SOURCE · MLB FILM ROOM · 2026.08.30',font=F(24),fill=MUTED)
+                  d.text((66,1530),'SFANDOM · SPORTS INTELLIGENCE',font=F(24,True),fill=WHITE)
+              elif kind=='intro':
+                  lg=fit_logo(650,280); im.paste(lg,((W-lg.width)//2,590),lg)
+                  d.rectangle((340,930,740,936),fill=RED)
+                  d.text((W//2,1010),'8월 31일 MLB 하이라이트',anchor='mm',font=F(52,True),fill=WHITE)
+                  d.text((W//2,1095),'MLB HIGHLIGHTS · AUG 31 KST',anchor='mm',font=F(35,True),fill=MUTED)
+                  d.text((W//2,1240),'REAL GAME FOOTAGE · 45 SECONDS',anchor='mm',font=F(26),fill=(190,197,207))
+              else:
+                  lg=fit_logo(700,300); im.paste(lg,((W-lg.width)//2,600),lg)
+                  d.rectangle((360,955,720,961),fill=RED)
+                  d.text((W//2,1040),'오늘의 메이저리그, 45초로 끝.',anchor='mm',font=F(45,True),fill=WHITE)
+                  d.text((W//2,1122),"TODAY'S MLB. 45 SECONDS.",anchor='mm',font=F(34,True),fill=MUTED)
+                  d.text((W//2,1265),'SPORTS INTELLIGENCE · SEOUL',anchor='mm',font=F(26),fill=(190,197,207))
+              return im
+
+          base_frame(kind='intro').save('/tmp/intro.png')
+          base_frame(kind='outro').save('/tmp/outro.png')
+          for sp in specs: base_frame(sp).save(f"/tmp/frame_{sp['key']}.png")
+
+          def run(cmd):
+              print('RUN', ' '.join(cmd)); subprocess.run(cmd,check=True)
+          def make_static(img,out,dur):
+              run(['ffmpeg','-y','-loglevel','error','-loop','1','-framerate','30','-i',img,'-f','lavfi','-i','anullsrc=channel_layout=stereo:sample_rate=48000','-t',str(dur),'-c:v','libx264','-preset','veryfast','-crf','20','-pix_fmt','yuv420p','-r','30','-c:a','aac','-b:a','160k','-ar','48000','-ac','2',out])
+          def has_audio(p):
+              z=subprocess.run(['ffprobe','-v','error','-select_streams','a','-show_entries','stream=index','-of','csv=p=0',p],capture_output=True,text=True)
+              return bool(z.stdout.strip())
+          def make_clip(sp,out):
+              frame=f"/tmp/frame_{sp['key']}.png"; src=sp['file']
+              common=['ffmpeg','-y','-loglevel','error','-loop','1','-framerate','30','-i',frame,'-ss','0.20','-i',src]
+              vf='[1:v]scale=1080:608:force_original_aspect_ratio=decrease,pad=1080:608:(ow-iw)/2:(oh-ih)/2:black,fps=30,setsar=1[v];[0:v]fps=30,setsar=1[bg];[bg][v]overlay=0:410:shortest=1[outv]'
+              if has_audio(src):
+                  cmd=common+['-filter_complex',vf,'-map','[outv]','-map','1:a:0','-t',str(CLIP_DUR),'-c:v','libx264','-preset','veryfast','-crf','20','-pix_fmt','yuv420p','-r','30','-c:a','aac','-b:a','160k','-ar','48000','-ac','2',out]
+              else:
+                  cmd=common+['-f','lavfi','-i','anullsrc=channel_layout=stereo:sample_rate=48000','-filter_complex',vf,'-map','[outv]','-map','2:a:0','-t',str(CLIP_DUR),'-c:v','libx264','-preset','veryfast','-crf','20','-pix_fmt','yuv420p','-r','30','-c:a','aac','-b:a','160k','-ar','48000','-ac','2',out]
+              run(cmd)
+
+          parts=[]
+          make_static('/tmp/intro.png','/tmp/part_intro.mp4',2.5); parts.append('/tmp/part_intro.mp4')
+          for sp in specs:
+              p=f"/tmp/part_{sp['key']}.mp4"; make_clip(sp,p); parts.append(p)
+          make_static('/tmp/outro.png','/tmp/part_outro.mp4',5.0); parts.append('/tmp/part_outro.mp4')
+          Path('/tmp/list.txt').write_text('\n'.join("file '"+p+"'" for p in parts))
+          final=OUT/'SFANDOM_MLB_2026-08-31_45s.mp4'
+          run(['ffmpeg','-y','-loglevel','error','-f','concat','-safe','0','-i','/tmp/list.txt','-c','copy','-movflags','+faststart',str(final)])
+          dur=float(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration','-of','default=nw=1:nk=1',str(final)],text=True).strip())
+          print('FINAL',final,final.stat().st_size,'duration',dur)
+          if not (44.8 <= dur <= 45.2): raise RuntimeError(f'Unexpected duration {dur}')
+          Path(OUT/'source_manifest_2026-08-31.json').write_text(json.dumps([{k:s.get(k) for k in ('key','gamePk','title','url')} for s in specs],ensure_ascii=False,indent=2))
+          PY
+          python /tmp/build_mlb.py
+      - name: Commit deliverable on temporary branch
+        run: |
+          git config user.name "sfandom-video-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add _deliverables/SFANDOM_MLB_2026-08-31_45s.mp4 _deliverables/source_manifest_2026-08-31.json
+          git commit -m "Render SFANDOM MLB 45s highlight" || true
+          git push origin HEAD:"${GITHUB_REF_NAME}"
