@@ -1,7 +1,8 @@
 # SFANDOM PORTFOLIO ARCHIVE WORKFLOW
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Start date:** 2026-09-01 KST  
+**Record #1 timestamp:** 2026-09-01 08:41 KST  
 **Purpose:** SFANDOM이 실제로 발행한 콘텐츠를 사이트 런타임과 분리해 GitHub 문서 영역에 날짜별·항목별로 축적한다.
 
 ---
@@ -47,9 +48,37 @@ docs/
 
 ---
 
-## 4. Daily record format
+## 4. Mandatory save rule
+
+콘텐츠를 실제로 업데이트하거나 발행할 때마다 포트폴리오 저장을 **반드시 같은 작업의 후속 단계로 수행한다.**
+
+누락 금지 항목:
+- DAILY NEWS
+- KAIRO FEATURE
+- NEXT MATCH
+- SFANDOM PICK
+- VIDEO / REELS / SPECIAL CONTENT
+- SITE / BRAND MILESTONE
+
+해당 항목이 없으면 생략하지 말고 **None / Not published**로 명시한다.
+
+각 실제 발행 건은 날짜 안에서도 순번을 부여한다.
+
+예:
+- Portfolio #1 — 2026-09-01 08:41 KST
+- Portfolio #2 — 같은 날 추가 콘텐츠 발행
+- Portfolio #3 — 같은 날 영상/특집 추가 발행
+
+즉, **하루 1회 저장이 아니라 실제 콘텐츠 업데이트 1회마다 저장**한다.
+
+---
+
+## 5. Daily record format
 
 각 날짜 파일에는 최소 다음을 기록한다.
+
+- Portfolio 순번 (#N)
+- 기록 시각(KST)
 
 - 발행 날짜(KST)
 - 발행 상태
@@ -65,7 +94,7 @@ docs/
 
 ---
 
-## 5. Index rule
+## 6. Index rule
 
 `docs/portfolio/PORTFOLIO_INDEX.md`에서 날짜별 기록을 역순으로 색인한다.
 
@@ -80,7 +109,7 @@ docs/
 
 ---
 
-## 6. Runtime isolation
+## 7. Runtime isolation
 
 포트폴리오 저장 작업에서는 다음을 수정하지 않는다.
 
@@ -95,7 +124,7 @@ docs/
 
 ---
 
-## 7. Asset policy
+## 8. Asset policy
 
 포트폴리오 문서에서는 원본 이미지를 중복 복사하지 않는다.
 
@@ -106,7 +135,7 @@ docs/
 
 ---
 
-## 8. Preservation rule
+## 9. Preservation rule
 
 - 과거 날짜 파일을 덮어쓰지 않는다.
 - 사실관계 정정이 필요하면 수정 이유와 날짜를 기록한다.
@@ -116,24 +145,25 @@ docs/
 
 ---
 
-## 9. Publication workflow integration
+## 10. Publication workflow integration
 
 콘텐츠 발행 작업이 끝나면 다음 순서로 포트폴리오를 기록한다.
 
 1. 실제 main 반영 여부 확인
 2. 최종 commit SHA 확인
-3. 실제 발행 항목만 추출
-4. 날짜 파일 작성
-5. Portfolio Index 업데이트
-6. docs-only PR 생성
-7. 변경 파일이 Portfolio 문서뿐인지 확인
-8. Merge
+3. 실제 발행 항목을 DAILY NEWS / KAIRO FEATURE / NEXT MATCH / PICK / VIDEO·SPECIAL / MILESTONE로 분류
+4. 해당 업데이트의 Portfolio 순번과 KST 기록 시각 부여
+5. 날짜 파일 작성 또는 같은 날짜 파일에 새 순번 섹션 추가
+6. Portfolio Index 업데이트
+7. docs-only PR 생성
+8. 변경 파일이 Portfolio 문서뿐인지 확인
+9. Merge
 
 오류가 1건이라도 발생하면 SFANDOM Operations Manual v2.2의 ERROR STOP & NORMALIZATION 절차를 적용한다.
 
 ---
 
-## 10. Goal
+## 11. Goal
 
 이 기록은 단순 백업이 아니다.
 

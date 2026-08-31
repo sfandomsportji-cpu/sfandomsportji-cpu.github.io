@@ -2,9 +2,9 @@
 
 SFANDOM 실제 발행 콘텐츠의 날짜별 포트폴리오 색인.
 
-| Date (KST) | Daily News | Kairo Feature | Next Match | Pick | Main Commit | Record |
-|---|---|---|---|---|---|---|
-| 2026-09-01 | Yankees 16–1 Red Sox / Shohei Ohtani pitching-return update | Pete Crow-Armstrong · 38 HR / September race | MIL @ CHC · Kyle Harrison vs Clay Holmes | None | `285e7f416ea75a8abd708cc346408d9e72b25767` | [2026-09-01](2026/09/2026-09-01.md) |
+| # | Recorded (KST) | Daily News | Kairo Feature | Next Match | Pick | Main Commit | Record |
+|---|---|---|---|---|---|---|---|
+| #1 | 2026-09-01 08:41 | Yankees 16–1 Red Sox / Shohei Ohtani pitching-return update | Pete Crow-Armstrong · 38 HR / September race | MIL @ CHC · Kyle Harrison vs Clay Holmes | None | `285e7f416ea75a8abd708cc346408d9e72b25767` | [2026-09-01 #1](2026/09/2026-09-01.md) |
 
 ## Category key
 
@@ -16,4 +16,4 @@ SFANDOM 실제 발행 콘텐츠의 날짜별 포트폴리오 색인.
 
 ## Rule
 
-과거 기록을 덮어쓰지 않고 날짜별로 누적한다. 최신 날짜를 표 상단에 추가한다.
+과거 기록을 덮어쓰지 않고 **콘텐츠 업데이트 단위로 순번을 부여해 누적**한다. 같은 날짜에 여러 번 업데이트하면 #2, #3처럼 계속 추가한다. 최신 기록을 표 상단에 추가한다.
