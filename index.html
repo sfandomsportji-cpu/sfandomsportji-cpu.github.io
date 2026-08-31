@@ -12,8 +12,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260822-0451" />
+  <link rel="stylesheet" href="styles.css?v=20260825-0208" />
   <link rel="stylesheet" href="home-overrides.css?v=20260823-1605" />
+  <link rel="stylesheet" href="daily-analysis.css?v=20260824-1747" />
+  <link rel="stylesheet" href="music-player.css?v=20260825-0208" />
 </head>
 <body class="home-v2">
   <header class="site-header">
@@ -21,6 +23,7 @@
     <nav class="nav" aria-label="Primary navigation">
       <a href="analysis.html">분석</a>
       <a href="content.html">콘텐츠</a>
+      <a href="archive/">기록보관소</a>
       <a href="about.html">소개</a>
     </nav>
     <a class="header-cta" href="analysis.html">분석실 입장 ↗</a>
@@ -66,26 +69,203 @@
 
     <section class="ticker ticker-v2" aria-label="Sports categories"><div class="ticker-track"><span>MLB</span><i>◆</i><span>NBA</span><i>◆</i><span>KBO</span><i>◆</i><span>KBL</span><i>◆</i><span>VOLLEYBALL</span><i>◆</i><span>FOOTBALL</span><i>◆</i><span>DATA FORECAST</span><i>◆</i><span>MATCH FOCUS</span></div></section>
 
-    <section class="section reveal" aria-labelledby="pick-result-title" style="padding-top:88px;padding-bottom:96px;">
+    <section class="section daily-read reveal" aria-labelledby="daily-read-title">
+      <div class="daily-feature-shell">
+        <div class="daily-feature-head">
+          <div>
+            <p class="eyebrow">NEXT MATCH FOCUS · MLB</p>
+            <h2 id="daily-read-title">데이터로 읽고,<br><span>흐름으로 판단합니다.</span></h2>
+          </div>
+          <div class="daily-feature-meta">2026.08.25 KST · 10:40<br>PHILADELPHIA @ SEATTLE</div>
+        </div>
+
+        <div class="daily-matchup-stage">
+          <article class="daily-player-card phi" aria-label="Philadelphia Phillies starter Zack Wheeler">
+            <div class="daily-photo">
+              <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_700,q_auto:best/v1/people/554430/headshot/67/current" alt="Philadelphia Phillies pitcher Zack Wheeler" loading="lazy" decoding="async">
+            </div>
+            <div class="daily-player-info">
+              <span class="daily-team-label">PHILADELPHIA PHILLIES · RHP</span>
+              <h3>ZACK <b>WHEELER</b></h3>
+              <div class="daily-stat-row">
+                <span><strong>10–4</strong>RECORD</span>
+                <span><strong>2.92</strong>ERA</span>
+                <span><strong>144</strong>SO</span>
+              </div>
+              <p>시즌 전체 숫자는 강합니다. 다만 최근 5경기 ERA 6.64의 흔들림을 오늘 다시 끌어올릴 수 있는지가 핵심입니다.</p>
+            </div>
+          </article>
+
+          <div class="daily-matchup-center" aria-label="Philadelphia Phillies at Seattle Mariners">
+            <small>MLB · T-MOBILE PARK</small>
+            <strong>PHI</strong>
+            <span>AT</span>
+            <strong>SEA</strong>
+            <p>73–58 · 62–69<br>10:40 KST</p>
+          </div>
+
+          <article class="daily-player-card sea" aria-label="Seattle Mariners starter Logan Gilbert">
+            <div class="daily-photo">
+              <img src="https://img.mlbstatic.com/mlb-photos/image/upload/w_700,q_auto:best/v1/people/669302/headshot/67/current" alt="Seattle Mariners pitcher Logan Gilbert" loading="lazy" decoding="async">
+            </div>
+            <div class="daily-player-info">
+              <span class="daily-team-label">SEATTLE MARINERS · RHP</span>
+              <h3>LOGAN <b>GILBERT</b></h3>
+              <div class="daily-stat-row">
+                <span><strong>10–7</strong>RECORD</span>
+                <span><strong>3.35</strong>ERA</span>
+                <span><strong>157</strong>SO</span>
+              </div>
+              <p>홈에서 6경기 연속 퀄리티스타트. 시애틀은 Gilbert가 중반 이닝까지 만들어주는 안정적인 경기 구조가 강점입니다.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="daily-story-grid">
+          <article class="daily-story">
+            <small>01 · COMEBACK POINT</small>
+            <h4>Wheeler, 시즌 성적보다 최근 흐름을 먼저 본다.</h4>
+            <p>10승과 2점대 ERA만 보면 충분히 강합니다. 그러나 최근 5경기 실점 흐름이 달라진 만큼, 초반 구위와 이닝당 출루 억제가 첫 체크포인트입니다.</p>
+          </article>
+          <article class="daily-story">
+            <small>02 · HOME RHYTHM</small>
+            <h4>Gilbert, 홈 6연속 QS가 만드는 안정감.</h4>
+            <p>단순 홈 이점보다 중요한 건 반복된 이닝 소화입니다. 경기 초반을 넘긴 뒤에도 같은 템포를 유지하는지가 시애틀 쪽 핵심입니다.</p>
+          </article>
+          <article class="daily-story daily-verdict-wide">
+            <small>SFANDOM READ</small>
+            <p><b>100회 이상 시뮬레이션</b>으로 산출한 데이터를 기반으로, 당일 선발·라인업·부상·최근 경기 흐름·시장 움직임 등 주요 변수를 종합적으로 검토해 <b>최종 픽을 선정합니다.</b></p>
+          </article>
+        </div>
+
+        <div class="daily-source">
+          <span>DATA CHECK · MLB OFFICIAL · 2026.08.24 US DATE</span>
+          <div class="daily-source-links">
+            <a href="https://www.mlb.com/stories/game-preview/823097" target="_blank" rel="noopener noreferrer">GAME PREVIEW · MLB ↗</a>
+            <a href="https://www.mlb.com/phillies/roster/probable-pitchers" target="_blank" rel="noopener noreferrer">PITCHERS · MLB ↗</a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid #222;" aria-label="미디어 기록 바로가기"><span style="margin-right:8px;color:#777;font-size:.62rem;font-weight:900;letter-spacing:.14em;">MEDIA LIBRARY</span><a href="archive/media/#media-001" style="display:grid;place-items:center;width:36px;height:36px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.68rem;font-weight:900;">01</a><a href="archive/media/#media-002" style="display:grid;place-items:center;width:36px;height:36px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.68rem;font-weight:900;">02</a><a href="archive/media/#media-003" style="display:grid;place-items:center;width:36px;height:36px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.68rem;font-weight:900;">03</a><a href="archive/media/#media-004" style="display:grid;place-items:center;width:36px;height:36px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.68rem;font-weight:900;">04</a><a href="archive/media/#media-005" style="display:grid;place-items:center;width:36px;height:36px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.68rem;font-weight:900;">05</a><a href="archive/media/#media-006" style="display:grid;place-items:center;width:36px;height:36px;border:1px solid #393939;background:#0b0b0c;color:#fff;text-decoration:none;font-size:.68rem;font-weight:900;">06</a><a href="archive/media/" style="margin-left:5px;color:#aaa;text-decoration:none;font-size:.66rem;font-weight:800;letter-spacing:.08em;">전체 미디어 열기 →</a></div>
+    </section>
+
+    <section class="section morning-news reveal" aria-labelledby="morning-news-title">
+      <div class="morning-news-head">
+        <div>
+          <p class="eyebrow">YESTERDAY'S BIGGEST STORIES · 2026.08.24 KST</p>
+          <h2 id="morning-news-title">어제의 스포츠를<br><span>오늘의 데이터로.</span></h2>
+        </div>
+        <p>순간 검색어가 아니라 하루 전체의 화제성, 경기 영향도, 기록의 의미를 기준으로 고른 두 장면입니다.</p>
+      </div>
+
+      <div class="morning-news-grid">
+        <article class="morning-news-card phillies">
+          <div class="morning-news-photo">
+            <img src="assets/news-schwarber-20260825.webp" alt="필라델피아 필리스 카일 슈와버 자료 사진" loading="lazy" decoding="async">
+            <span>01 · COMEBACK OF THE DAY</span>
+            <b>PHI 6–4 STL</b>
+          </div>
+          <div class="morning-news-copy">
+            <div class="morning-news-meta"><span>2026.08.24 · 02:35 KST</span><span>MLB · PHILADELPHIA</span></div>
+            <h3>아웃 하나면 끝.<br>필라델피아는 거기서 6점을 냈다.</h3>
+            <p>필리스는 9회말 2아웃까지 0–4로 뒤졌지만 에드문도 소사의 3타점 2루타와 브라이언 데라크루즈의 동점타로 경기를 원점에 돌렸습니다. 마지막은 카일 슈와버의 시즌 39호, 459피트 끝내기 투런이었습니다.</p>
+            <div class="morning-news-stats"><span><strong>6</strong>9회 득점</span><span><strong>459 FT</strong>비거리</span><span><strong>108.5</strong>타구 속도 MPH</span><span><strong>9</strong>연승</span></div>
+            <div class="morning-news-read"><small>SFANDOM READ</small><p>한 번의 홈런보다 중요한 건 그 타석을 만든 과정입니다. 2아웃 이후 네 번의 2스트라이크 안타가 이어졌고, 필리스는 NL 동부 선두 애틀랜타와의 격차를 3경기까지 줄였습니다.</p></div>
+            <p class="morning-news-en"><b>EN</b> Down 4–0 with two outs in the ninth, Philadelphia scored six. Kyle Schwarber finished the comeback with a 459-foot, two-run walk-off homer—his MLB-leading 39th of the season.</p>
+            <div class="morning-news-links"><a href="https://www.mlb.com/news/phillies-score-six-runs-in-ninth-inning-to-walk-off-cardinals" target="_blank" rel="noopener noreferrer">MLB OFFICIAL STORY ↗</a><a href="https://www.reuters.com/sports/baseball/kyle-schwarber-blast-caps-wild-phillies-comeback-against-cardinals--flm-2026-08-23/" target="_blank" rel="noopener noreferrer">REUTERS CHECK ↗</a></div>
+            <p class="morning-news-credit">PHOTO · Ken Lund · CC BY-SA 2.0 · Wikimedia Commons · 2025 file photo · cropped for layout</p>
+          </div>
+        </article>
+
+        <article class="morning-news-card padres">
+          <div class="morning-news-photo">
+            <img src="assets/news-tatis-20260825.webp" alt="샌디에이고 파드리스 페르난도 타티스 주니어 자료 사진" loading="lazy" decoding="async">
+            <span>02 · PLAYER OF THE DAY</span>
+            <b>SD 8–1 MIN</b>
+          </div>
+          <div class="morning-news-copy">
+            <div class="morning-news-meta"><span>2026.08.24 · 05:10 KST</span><span>MLB · SAN DIEGO</span></div>
+            <h3>4안타, 2홈런, 4타점.<br>타티스의 파워는 완전히 돌아왔다.</h3>
+            <p>페르난도 타티스 주니어는 미네소타전에서 5타수 4안타, 홈런 2개와 4타점을 기록하며 샌디에이고의 8–1 승리와 3연전 스윕을 이끌었습니다. 네 번의 강한 타구가 모두 시속 105마일을 넘었습니다.</p>
+            <div class="morning-news-stats"><span><strong>4–5</strong>안타</span><span><strong>2 HR</strong>홈런</span><span><strong>4 RBI</strong>타점</span><span><strong>15</strong>커리어 멀티홈런</span></div>
+            <div class="morning-news-read"><small>SFANDOM READ</small><p>단발성 폭발이 아닙니다. 타티스는 올스타 휴식기 이후 12홈런으로 메이저리그 공동 선두에 올랐고, 파드리스는 최근 28경기에서 21승을 거두며 시즌 최고 흐름을 만들었습니다.</p></div>
+            <p class="morning-news-en"><b>EN</b> Fernando Tatis Jr. went 4-for-5 with two homers and four RBIs as San Diego beat Minnesota 8–1 to complete the sweep. He is tied for the MLB lead with 12 second-half home runs.</p>
+            <div class="morning-news-links"><a href="https://www.mlb.com/news/fernando-tatis-jr-homers-twice-in-padres-win-over-twins" target="_blank" rel="noopener noreferrer">MLB OFFICIAL STORY ↗</a><a href="https://www.reuters.com/sports/baseball/fernando-tatis-jr-hits-two-hrs-padres-complete-sweep-twins--flm-2026-08-23/" target="_blank" rel="noopener noreferrer">REUTERS CHECK ↗</a></div>
+            <p class="morning-news-credit">PHOTO · Keith Allison · CC BY-SA 2.0 · Wikimedia Commons · 2019 file photo · cropped for layout</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="pick-result-title" style="padding-top:64px;padding-bottom:42px;">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;margin-bottom:28px;">
         <div>
-          <p class="eyebrow">PICK → RESULT</p>
-          <h2 id="pick-result-title" style="margin:8px 0 0;font-size:clamp(2rem,4vw,4.2rem);line-height:.96;letter-spacing:-.05em;">분석은 기록으로,<br><span style="color:#ef2d2d;">결과는 투명하게.</span></h2>
+          <p class="eyebrow">KAIRO PICK ARCHIVE · 2026.08.25 KST</p>
+          <h2 id="pick-result-title" style="margin:8px 0 0;font-size:clamp(2rem,4vw,4.2rem);line-height:.96;letter-spacing:-.05em;">픽은 짧고 선명하게,<br><span style="color:#ef2d2d;">기록은 계속 쌓이게.</span></h2>
         </div>
-        <p style="max-width:430px;margin:0;color:#a7a7a7;line-height:1.75;">경기 전 공개한 픽과 경기 후 적중 결과를 함께 남깁니다. 결과만 보여주는 것이 아니라, 어떤 판단을 했는지 기록합니다.</p>
+        <p style="max-width:430px;margin:0;color:#a7a7a7;line-height:1.75;">경기 이미지와 핵심 픽, 짧은 코멘트를 번호별로 기록합니다. 최신 픽이 먼저 보이고 지난 기록은 번호 그대로 남습니다.</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;">
-        <a href="analysis.html" aria-label="2026년 8월 22일 샌디에이고 파드리스 경기 전 픽" style="position:relative;display:block;overflow:hidden;border:1px solid #292929;background:#090909;padding:12px;text-decoration:none;color:#fff;">
-          <span style="position:absolute;top:24px;left:24px;z-index:2;padding:8px 10px;background:#050505;border:1px solid #3a3a3a;font-size:.7rem;font-weight:800;letter-spacing:.14em;">PRE-GAME PICK</span>
-          <img src="assets/2026-08-22-padres-pick.avif?v=20260823-2" alt="2026년 8월 22일 SFANDOM 샌디에이고 파드리스 MLB 픽" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#050505;">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 4px 4px;"><b style="font-size:.78rem;letter-spacing:.13em;">PADRES ML · PICK</b><span style="font-size:.78rem;color:#8e8e8e;">2026.08.22 KST</span></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+        <a href="archive/picks/#pick-002" aria-label="카이로 픽 002 볼로냐 라치오 2.5 언더" style="position:relative;display:block;overflow:hidden;min-height:720px;border:1px solid #34343a;background:#07080a;text-decoration:none;color:#fff;">
+          <div style="position:absolute;inset:0 0 310px;display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+            <div style="position:relative;overflow:hidden;background:#25141a;">
+              <img src="https://t1.daumcdn.net/media/img-section/sports13/player/14/779586.jpg" alt="볼로냐 리카르도 오르솔리니" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;object-position:50% 18%;">
+              <img src="https://img1.pnghut.com/4/23/14/L6zPnfc5q2/football-team-symbol-crest-sports-bologna-fc-1909.jpg" alt="볼로냐 FC 로고" loading="lazy" referrerpolicy="no-referrer" style="position:absolute;left:13px;bottom:13px;width:54px;height:54px;object-fit:contain;background:#fff;border-radius:50%;padding:5px;">
+            </div>
+            <div style="position:relative;overflow:hidden;background:#102638;">
+              <img src="https://resources.koha.net/images/2023/April/20/zaccagni1681982333.jpg?h=550&q=90&r=fill&w=860" alt="라치오 마티아 자카니" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;object-position:50% 18%;">
+              <img src="https://i.pinimg.com/originals/c0/8f/bd/c08fbd2ac0aa373b0be4e61ac562396c.png" alt="SS 라치오 로고" loading="lazy" referrerpolicy="no-referrer" style="position:absolute;right:13px;bottom:13px;width:64px;height:54px;object-fit:contain;background:#fff;border-radius:8px;padding:5px;">
+            </div>
+          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 36%,rgba(5,5,5,.2) 55%,#050505 70%);"></div>
+          <div style="position:absolute;top:22px;left:22px;right:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+            <span style="padding:8px 10px;background:rgba(5,5,5,.88);border:1px solid #454852;font-size:.65rem;font-weight:900;letter-spacing:.14em;">SERIE A</span>
+            <b style="color:#ff4b51;font-size:.74rem;letter-spacing:.14em;">KAIRO CURRENT 01</b>
+          </div>
+          <div style="position:absolute;left:24px;right:24px;bottom:22px;">
+            <div style="display:flex;justify-content:space-between;gap:14px;color:#898c94;font-size:.62rem;font-weight:800;letter-spacing:.08em;"><span>ORSOLINI · ZACCAGNI</span><span>08.25 · 01:30 KST</span></div>
+            <h3 style="margin:10px 0 4px;font-size:clamp(1.55rem,3vw,2.35rem);letter-spacing:-.045em;">BOLOGNA · LAZIO</h3>
+            <p style="margin:0 0 15px;color:#858892;font-size:.72rem;">STADIO RENATO DALL'ARA · 2.5 GOAL LINE</p>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:15px 0;border-top:1px solid #303138;border-bottom:1px solid #303138;">
+              <div><small style="display:block;margin-bottom:6px;color:#7c7f87;font-size:.56rem;font-weight:900;letter-spacing:.13em;">카이로 픽 · KAIRO PICK</small><strong style="font-size:clamp(2.25rem,5vw,3.8rem);line-height:.88;letter-spacing:-.06em;">UNDER 2.5</strong></div>
+              <b style="padding:7px 9px;border:1px solid #31526c;background:#071927;color:#6bc1ff;font-size:.6rem;">MEDIUM</b>
+            </div>
+            <p style="margin:12px 0 0;color:#b3b5bc;font-size:.74rem;line-height:1.55;"><b style="color:#fff;">KAIRO COMMENT</b> · 오버 쏠림 속에서도 언더 가격이 유지됩니다. 첫 경기의 보수적 운영과 저득점 구조에 무게를 둡니다.</p>
+          </div>
         </a>
-        <a href="analysis.html" aria-label="2026년 8월 22일 샌디에이고 파드리스 픽 적중 결과" style="position:relative;display:block;overflow:hidden;border:1px solid #6d5414;background:#090909;padding:12px;text-decoration:none;color:#fff;">
-          <span style="position:absolute;top:24px;left:24px;z-index:2;padding:8px 10px;background:#050505;border:1px solid #80630e;color:#f4c84a;font-size:.7rem;font-weight:800;letter-spacing:.14em;">HIT RESULT</span>
-          <img src="assets/2026-08-22-padres-hit.avif?v=20260823-2" alt="2026년 8월 22일 SFANDOM 샌디에이고 파드리스 MLB 픽 적중" loading="lazy" style="display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#050505;">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:15px 4px 4px;"><b style="font-size:.78rem;letter-spacing:.13em;color:#f2c94c;">PADRES ML · HIT ✓</b><span style="font-size:.78rem;color:#8e8e8e;">RESULT VERIFIED</span></div>
+
+        <a href="archive/picks/#pick-003" aria-label="카이로 픽 003 말라가 데포르티보 2.5 오버" style="position:relative;display:block;overflow:hidden;min-height:720px;border:1px solid #4a3437;background:#07080a;text-decoration:none;color:#fff;">
+          <div style="position:absolute;inset:0 0 310px;display:grid;grid-template-columns:1fr 1fr;gap:3px;">
+            <div style="position:relative;overflow:hidden;background:#102638;">
+              <img src="https://statics-maker.llt-services.com/mga/images/2025/07/22/original/2976795c-e9b8-4712-ae29-97553ded1064-795.png" alt="말라가 다비드 라루비아" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;object-position:50% 8%;">
+              <img src="https://www.pngplay.com/wp-content/uploads/13/Malaga-CF-PNG-HD-Quality.png" alt="말라가 CF 로고" loading="lazy" referrerpolicy="no-referrer" style="position:absolute;left:13px;bottom:13px;width:54px;height:54px;object-fit:contain;background:#fff;border-radius:8px;padding:5px;">
+            </div>
+            <div style="position:relative;overflow:hidden;background:#14284a;">
+              <img src="https://assets.directvsports.com/__export/1785258400097/sites/dsports/img/2026/07/28/hoqfjjxwqaajphl_version1785258397797.jpg_170304256.jpg" alt="데포르티보 피에르 에메릭 오바메양" loading="lazy" referrerpolicy="no-referrer" style="width:100%;height:100%;object-fit:cover;object-position:50% 16%;">
+              <img src="https://seeklogo.com/images/R/rc-deportivo-la-coruna-1950-s-logo-C8C226FE67-seeklogo.com.png" alt="데포르티보 라코루냐 로고" loading="lazy" referrerpolicy="no-referrer" style="position:absolute;right:13px;bottom:13px;width:58px;height:58px;object-fit:contain;background:#fff;border-radius:8px;padding:5px;">
+            </div>
+          </div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 36%,rgba(5,5,5,.2) 55%,#050505 70%);"></div>
+          <div style="position:absolute;top:22px;left:22px;right:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+            <span style="padding:8px 10px;background:rgba(5,5,5,.88);border:1px solid #554246;font-size:.65rem;font-weight:900;letter-spacing:.14em;">LA LIGA</span>
+            <b style="color:#ff4b51;font-size:.74rem;letter-spacing:.14em;">KAIRO CURRENT 02</b>
+          </div>
+          <div style="position:absolute;left:24px;right:24px;bottom:22px;">
+            <div style="display:flex;justify-content:space-between;gap:14px;color:#898c94;font-size:.62rem;font-weight:800;letter-spacing:.08em;"><span>LARRUBIA · AUBAMEYANG</span><span>08.25 · 04:30 KST</span></div>
+            <h3 style="margin:10px 0 4px;font-size:clamp(1.55rem,3vw,2.35rem);letter-spacing:-.045em;">MÁLAGA · DEPORTIVO</h3>
+            <p style="margin:0 0 15px;color:#858892;font-size:.72rem;">LA ROSALEDA · 2.5 GOAL LINE</p>
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:15px 0;border-top:1px solid #303138;border-bottom:1px solid #303138;">
+              <div><small style="display:block;margin-bottom:6px;color:#7c7f87;font-size:.56rem;font-weight:900;letter-spacing:.13em;">카이로 픽 · KAIRO PICK</small><strong style="font-size:clamp(2.25rem,5vw,3.8rem);line-height:.88;letter-spacing:-.06em;">OVER 2.5</strong></div>
+              <b style="padding:7px 9px;border:1px solid #653036;background:#200a0d;color:#ff666d;font-size:.6rem;">HIGH</b>
+            </div>
+            <p style="margin:12px 0 0;color:#b3b5bc;font-size:.74rem;line-height:1.55;"><b style="color:#fff;">KAIRO COMMENT</b> · 두 승격팀의 시즌 초 변동성과 말라가 수비 결장을 봅니다. 언더 정배 속 오버 배당 하락을 역방향 신호로 잡았습니다.</p>
+          </div>
         </a>
       </div>
+      <div style="margin-top:17px;padding:13px 16px;border-left:2px solid #ef2d2d;background:#09090a;color:#85878e;font-size:.7rem;line-height:1.65;">경기 직전 선발 명단과 급격한 시장 변동이 확인되면 PASS 또는 방향 변경을 우선합니다. 지난 픽은 번호를 유지해 기록으로 보존합니다.</div>
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid #222;" aria-label="이전 픽 바로가기"><span style="margin-right:8px;color:#777;font-size:.62rem;font-weight:900;letter-spacing:.14em;">PREVIOUS PICKS</span><a href="archive/picks/#pick-001" style="display:grid;place-items:center;width:40px;height:40px;border:1px solid #ef2d2d;background:#17090b;color:#fff;text-decoration:none;font-size:.72rem;font-weight:900;">01</a><a href="archive/picks/" style="margin-left:5px;color:#aaa;text-decoration:none;font-size:.66rem;font-weight:800;letter-spacing:.08em;">이전 픽 보관함 →</a></div>
+      
     </section>
 
     <section id="signature-moments" class="section reveal" aria-label="SFANDOM Signature Moments" style="padding-top:24px;padding-bottom:88px;">
@@ -161,7 +341,8 @@
     </section>
   </main>
 
-  <footer class="footer-v2"><div><a class="brand" href="index.html"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a><p>SPORTS DATA · ANALYSIS · FORECAST</p></div><div class="footer-links"><a href="analysis.html">분석</a><a href="content.html">콘텐츠</a><a href="about.html">소개</a></div><small>© 2026 SFANDOM. ALL RIGHTS RESERVED.</small></footer>
+  <footer class="footer-v2"><div><a class="brand" href="index.html"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a><p>SPORTS DATA · ANALYSIS · FORECAST</p></div><div class="footer-links"><a href="analysis.html">분석</a><a href="content.html">콘텐츠</a><a href="about.html">소개</a><a href="terms.html">이용약관</a><a href="privacy.html">개인정보 처리방침</a></div><small>© 2026 SFANDOM. ALL RIGHTS RESERVED.</small></footer>
   <script src="signature-moments.js?v=20260823-2112"></script>
+  <script src="music-player.js?v=20260825-1400"></script>
 </body>
 </html>

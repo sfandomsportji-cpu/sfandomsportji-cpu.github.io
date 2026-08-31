@@ -1,75 +1,67 @@
-/* Hero reel: never crop the source frame on desktop or mobile. */
-.hero-reel-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;background:#050505;display:flex;align-items:center;justify-content:flex-end}
-.hero-reel-wrap .hero-reel{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;opacity:.62;filter:saturate(.9) contrast(1.08);background:#050505}
-.hero-reel-wrap:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(6,6,6,.96) 0%,rgba(6,6,6,.82) 37%,rgba(6,6,6,.44) 62%,rgba(6,6,6,.12) 100%)}
-.hero-reel-safe-logo{display:none}
-.hero-copy,.hero-visual{position:relative;z-index:2}
+@import url('./home-overrides-base.css?v=20260825-0610');
 
-/* Signature Moments: verified direct in-game playback only. */
-.signature-shell{width:min(1180px,100%);margin:0 auto;background:#050505;border:1px solid #27272a;box-shadow:0 24px 90px rgba(0,0,0,.42);overflow:hidden}
-.signature-top{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:20px 22px 16px}
-.signature-brand{display:flex;align-items:center;gap:10px;font-size:.76rem;font-weight:900;letter-spacing:.18em}
-.signature-brand img{display:block;width:30px;height:30px;object-fit:contain}
-.signature-identity{font-size:.66rem;font-weight:800;letter-spacing:.13em;color:#a6a6ac;text-align:right}
-.signature-identity b{color:#ef2d35}
-.signature-screen{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden;border-top:1px solid #242428;border-bottom:1px solid #242428}
-.signature-player{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000;pointer-events:none;object-fit:contain}
-.signature-shade{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 48%,rgba(0,0,0,.2) 100%),linear-gradient(0deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,0) 43%)}
-.signature-counter{position:absolute;z-index:4;left:20px;top:18px;padding:7px 9px;background:rgba(5,5,5,.72);border:1px solid rgba(255,255,255,.14);font-size:.62rem;font-weight:900;letter-spacing:.17em;color:#ef2d35;backdrop-filter:blur(8px)}
-.signature-copy{position:absolute;z-index:4;left:22px;bottom:24px;max-width:72%;pointer-events:none}
-.signature-copy h2{margin:0;color:#fff;font-size:clamp(2.2rem,6vw,5.2rem);line-height:.84;letter-spacing:-.065em;font-weight:900;text-transform:uppercase;text-shadow:0 4px 28px rgba(0,0,0,.74)}
-.signature-copy p{display:inline-block;margin:14px 0 0;padding:7px 9px;background:rgba(5,5,5,.7);color:#c7c7cb;font-size:.68rem;font-weight:700;letter-spacing:.05em}
-.signature-watermark{position:absolute;z-index:4;right:16px;bottom:16px;width:54px;height:54px;padding:7px;background:rgba(5,5,5,.72);border:1px solid rgba(255,255,255,.14);pointer-events:none}
-.signature-watermark img{display:block;width:100%;height:100%;object-fit:contain}
-.signature-progress{position:absolute;z-index:8;left:0;right:0;bottom:0;height:3px;background:#18181b}
-.signature-progress i{display:block;height:100%;width:50%;background:#ef2d35;transition:width .35s ease}
-.signature-end{position:absolute;z-index:10;inset:0;display:flex;align-items:center;justify-content:center;background:#050505;text-align:center;opacity:0;pointer-events:none;transition:opacity 1s ease}
-.signature-end.show{opacity:1}
-.signature-end img{width:min(112px,24vw);height:auto;margin-bottom:16px}
-.signature-end strong{display:block;font-size:clamp(2.5rem,7vw,5.2rem);line-height:.9;letter-spacing:-.055em}
-.signature-end strong em{font-style:normal;color:#ef2d35}
-.signature-end span{display:block;margin-top:14px;color:#f1f1f2;font-size:clamp(.62rem,1.3vw,.82rem);font-weight:800;letter-spacing:.17em}
-.signature-end i{display:block;width:0;height:1px;margin:20px auto 0;background:#ef2d35;transition:width .9s ease .15s}
-.signature-end.show i{width:92px}
-.signature-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 22px 16px;color:#77777d;font-size:.62rem;letter-spacing:.1em}
-.signature-foot b{color:#bdbdc1}
-.signature-dots{display:flex;gap:6px}
-.signature-dot{display:block;width:25px;height:3px;background:#303034}
-.signature-dot.active{background:#ef2d35}
+/* 2026-08-25 mobile cleanup: vivid mascot + compact archive spacing */
+.home-kairo-art{
+  background-color:#050505!important;
+  background-image:url('assets/ji-kairo-duo-vivid-420.avif?v=20260825-0616')!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:min(390px,86%) auto!important;
+}
+.home-kairo-art img{display:none!important}
+
+/* Pick archive shortcut: keep only one branded entry. */
+section[aria-labelledby="pick-result-title"] > div:last-child > span,
+section[aria-labelledby="pick-result-title"] > div:last-child > a:not(:last-child){display:none!important}
+section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:auto!important;
+  height:40px!important;
+  min-width:178px!important;
+  margin-left:0!important;
+  padding:0 16px!important;
+  border:1px solid #393939!important;
+  background:#0b0b0c!important;
+  color:transparent!important;
+  font-size:0!important;
+  font-weight:900!important;
+  letter-spacing:.08em!important;
+  text-decoration:none!important;
+}
+section[aria-labelledby="pick-result-title"] > div:last-child > a:last-child::after{
+  content:"SFANDOM&KAIRO픽";
+  color:#fff;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.08em;
+}
 
 @media (max-width:900px){
-  .hero-v2{overflow:visible!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;padding-top:0!important;gap:0!important}
-  .hero-reel-wrap{position:relative!important;inset:auto!important;z-index:3!important;width:100%!important;height:auto!important;aspect-ratio:16/9!important;margin:0 auto 34px!important;border:1px solid #242424!important;overflow:hidden!important;background:#050505!important;display:block!important}
-  .hero-reel-wrap .hero-reel{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;opacity:1!important;filter:saturate(1) contrast(1.03) brightness(.9)!important;background:#050505!important}
-  .hero-reel-wrap:before{display:none!important}
-  .hero-reel-wrap:after{content:"";position:absolute;z-index:1;top:0;right:0;width:38%;height:100%;pointer-events:none;background:linear-gradient(90deg,transparent 0%,rgba(5,5,5,.34) 42%,rgba(5,5,5,.92) 88%,#050505 100%)}
-  .hero-reel-safe-logo{display:flex;position:absolute;z-index:2;right:14px;top:14px;align-items:center;justify-content:center;width:58px;height:58px;padding:7px;background:rgba(5,5,5,.76);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px)}
-  .hero-reel-safe-logo img{display:block;width:100%;height:100%;object-fit:contain}
-  .hero-copy{width:100%!important;position:relative!important;z-index:4!important}
-  .hero-visual{position:relative!important;z-index:4!important;height:auto!important;min-height:0!important;padding:44px 0 64px!important;gap:14px!important;overflow:visible!important}
-  .forecast-card{position:relative!important;left:auto!important;bottom:auto!important;width:min(330px,100%)!important;margin:0 auto!important}
-  .hero-social{position:static!important;align-self:center!important;margin-top:12px!important}
+  /* Keep the mobile hero visually connected to the sports ticker. */
+  .hero-v2{padding-bottom:8px!important}
+  .hero-visual{padding-bottom:18px!important;gap:8px!important}
+  .hero-social{margin-top:0!important}
+  .hero-v2 + .ticker-v2{margin-top:0!important}
 }
+
 @media (max-width:620px){
-  .hero-reel-wrap{width:100%!important;margin:0 auto 28px!important;aspect-ratio:16/9!important}
-  .hero-reel-safe-logo{right:10px;top:10px;width:50px;height:50px;padding:6px}
-  .hero-visual{padding:34px 0 56px!important}
-  .forecast-card{width:min(320px,100%)!important;padding:22px!important}
-  .forecast-score strong{font-size:3rem!important}
-  .signature-top{padding:15px 14px 12px}
-  .signature-brand{font-size:.66rem}.signature-brand img{width:25px;height:25px}
-  .signature-identity{max-width:62%;font-size:.52rem;line-height:1.45}
-  .signature-counter{left:10px;top:10px;font-size:.52rem;padding:6px 7px}
-  .signature-copy{left:12px;bottom:16px;max-width:76%}
-  .signature-copy h2{font-size:clamp(1.65rem,9.2vw,3rem)}
-  .signature-copy p{margin-top:9px;font-size:.52rem;padding:5px 6px}
-  .signature-watermark{right:9px;bottom:10px;width:40px;height:40px;padding:5px}
-  .signature-foot{padding:11px 14px 13px;align-items:flex-start;flex-direction:column;gap:10px}
-  .signature-dots{width:100%;justify-content:space-between}.signature-dot{flex:1;max-width:28px}
-  #signature-moments{padding-bottom:20px!important}
-  .promise{padding-top:34px!important}
-}
-@media (min-width:621px) and (max-width:900px){
-  #signature-moments{padding-bottom:32px!important}
-  .promise{padding-top:48px!important}
+  /* Remove the oversized dead space under FOLLOW on phones. */
+  .hero-v2{padding-bottom:0!important}
+  .hero-visual{padding:26px 0 14px!important;gap:8px!important}
+  .hero-social{margin-top:0!important}
+  .ticker-track{padding-top:14px!important;padding-bottom:14px!important}
+
+  /* Remove the oversized dead space between MEDIA LIBRARY and KAIRO PICK ARCHIVE. */
+  .daily-read{padding-bottom:26px!important}
+  .daily-read + .section{padding-top:30px!important}
+
+  /* Show the sharper mascot close to its native size. */
+  .home-kairo{padding-top:34px!important;padding-bottom:48px!important;gap:26px!important}
+  .home-kairo-art{height:370px!important;min-height:0!important;background-size:min(350px,88vw) auto!important}
+  .home-kairo-art span{z-index:2!important;color:#a6a6aa!important}
+
+  /* Improve legibility of muted mobile labels without changing the dark theme. */
+  .daily-source,.daily-source span,.daily-source a{color:#8f9095!important}
 }
