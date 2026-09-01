@@ -1,0 +1,98 @@
+name: Fix Brand Film as Static Top Block
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-brand-film-static-top.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Move brand film to isolated top block and restore hero
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          s = index.read_text(encoding='utf-8')
+
+          current = '''<div class="home-brand-film" aria-label="SFANDOM brand film">
+          <div class="home-brand-film-top"><span>SFANDOM BRAND FILM</span><b>01:00</b></div>
+          <video class="home-brand-film-player" controls playsinline preload="metadata">
+            <source src="assets/sfandom-brand-film-20260901.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <div class="home-brand-film-foot"><strong>THE LAST SIGNAL</strong><span>A COMPANY THAT READS SPORTS.</span></div>
+        </div>'''
+
+          original_card = '''<article class="glass-card forecast-card">
+          <div class="card-kicker"><span>SFANDOM MODEL</span><b>LIVE</b></div>
+          <div class="forecast-score"><span>EDGE SCORE</span><strong>82<small>/100</small></strong></div>
+          <div class="signal"><i class="model-edge-82"></i></div>
+          <div class="mini-stats"><div><span>FORM</span><b>8.4</b></div><div><span>MATCHUP</span><b>7.9</b></div><div><span>SIGNAL</span><b>HIGH</b></div></div>
+        </article>'''
+
+          if current in s:
+              s = s.replace(current, original_card, 1)
+
+          top_block = '''    <section class="brand-film-static-band" aria-label="SFANDOM brand film">
+      <div class="brand-film-static-shell">
+        <div class="brand-film-static-head"><span>SFANDOM BRAND FILM</span><b>01:00</b></div>
+        <video class="brand-film-static-player" controls playsinline preload="metadata">
+          <source src="assets/sfandom-brand-film-20260901.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="brand-film-static-foot"><strong>THE LAST SIGNAL</strong><span>A COMPANY THAT READS SPORTS.</span></div>
+      </div>
+    </section>
+
+'''
+
+          marker = '  <main>\n'
+          if 'class="brand-film-static-band"' not in s:
+              if marker not in s:
+                  raise SystemExit('main marker not found')
+              s = s.replace(marker, marker + top_block, 1)
+
+          s = s.replace('home.css?v=20260902-brandfilm1', 'home.css?v=20260902-brandfilm-static1')
+          index.write_text(s, encoding='utf-8')
+
+          css = Path('home.css')
+          c = css.read_text(encoding='utf-8')
+          old_marker = '/* 2026-09-02 · home hero brand film */'
+          if old_marker in c:
+              c = c.split(old_marker, 1)[0].rstrip() + '\n'
+
+          block = r'''
+
+/* 2026-09-02 · isolated static brand film block */
+.brand-film-static-band{position:relative;width:min(1440px,100%);margin:0 auto;padding:26px 24px 10px;background:#050505}
+.brand-film-static-shell{width:min(1180px,100%);margin:0 auto;overflow:hidden;border:1px solid #29292d;background:#050505;box-shadow:0 24px 70px rgba(0,0,0,.34)}
+.brand-film-static-head,.brand-film-static-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:11px 14px;background:#080809;color:#85858b;font-size:.6rem;font-weight:900;letter-spacing:.13em}
+.brand-film-static-head{border-bottom:1px solid #202024}.brand-film-static-head b{color:var(--accent);font-size:.58rem}
+.brand-film-static-player{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#000}
+.brand-film-static-foot{padding:13px 14px 14px;border-top:1px solid #202024}.brand-film-static-foot strong{color:#fff;font-size:.78rem;letter-spacing:.08em}.brand-film-static-foot span{color:#77777d;font-size:.54rem;text-align:right}
+@media(max-width:900px){.brand-film-static-band{padding:18px 14px 6px}.brand-film-static-foot{align-items:flex-start;flex-direction:column;gap:5px}.brand-film-static-foot span{text-align:left}}
+'''
+          c += block
+          css.write_text(c, encoding='utf-8')
+          PY
+
+      - name: Commit stable layout and remove one-time workflow
+        run: |
+          rm .github/workflows/fix-brand-film-static-top.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html home.css .github/workflows/fix-brand-film-static-top.yml
+          git commit -m "Isolate SFANDOM brand film as static top homepage block"
+          git push
