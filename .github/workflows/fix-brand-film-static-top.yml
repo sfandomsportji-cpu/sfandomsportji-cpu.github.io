@@ -96,3 +96,5 @@ jobs:
           git add index.html home.css .github/workflows/fix-brand-film-static-top.yml
           git commit -m "Isolate SFANDOM brand film as static top homepage block"
           git push
+
+# trigger refresh
