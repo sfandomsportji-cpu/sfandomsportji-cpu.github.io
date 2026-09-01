@@ -1,0 +1,73 @@
+name: Place Brand Film on Home Hero
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/place-brand-film-home.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch-home:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Put brand film in first-screen hero
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          marker = '<article class="glass-card forecast-card">'
+          start = s.find(marker)
+          if start < 0:
+              raise SystemExit('forecast card marker not found')
+          end = s.find('</article>', start)
+          if end < 0:
+              raise SystemExit('forecast card closing tag not found')
+          end += len('</article>')
+          replacement = '''<div class="home-brand-film" aria-label="SFANDOM brand film">
+          <div class="home-brand-film-top"><span>SFANDOM BRAND FILM</span><b>01:00</b></div>
+          <video class="home-brand-film-player" controls playsinline preload="metadata">
+            <source src="assets/sfandom-brand-film-20260901.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <div class="home-brand-film-foot"><strong>THE LAST SIGNAL</strong><span>A COMPANY THAT READS SPORTS.</span></div>
+        </div>'''
+          s = s[:start] + replacement + s[end:]
+          s = s.replace('home.css?v=20260829-mobile1', 'home.css?v=20260902-brandfilm1')
+          p.write_text(s, encoding='utf-8')
+
+          css = Path('home.css')
+          c = css.read_text(encoding='utf-8')
+          block = '''
+
+/* 2026-09-02 · home hero brand film */
+.home-brand-film{width:min(660px,100%);background:#050505;border:1px solid rgba(255,255,255,.14);box-shadow:0 28px 80px rgba(0,0,0,.52);overflow:hidden}
+.home-brand-film-top,.home-brand-film-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 14px;background:rgba(7,7,7,.96);font-size:.6rem;font-weight:900;letter-spacing:.13em;color:#8c8c91}
+.home-brand-film-top b{color:var(--accent);font-size:.58rem}
+.home-brand-film-player{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#000}
+.home-brand-film-foot{align-items:flex-end;padding:13px 14px 14px;border-top:1px solid #202024}
+.home-brand-film-foot strong{color:#fff;font-size:.78rem;letter-spacing:.08em}
+.home-brand-film-foot span{color:#77777d;font-size:.54rem;text-align:right}
+@media(max-width:900px){.home-brand-film{width:100%;max-width:720px}.hero-visual{height:auto;min-height:0;padding:22px 0 58px}.home-brand-film-foot{align-items:flex-start;flex-direction:column;gap:5px}.home-brand-film-foot span{text-align:left}}
+'''
+          if '/* 2026-09-02 · home hero brand film */' not in c:
+              c += block
+          css.write_text(c, encoding='utf-8')
+          PY
+
+      - name: Commit home hero update and remove one-time workflow
+        run: |
+          rm .github/workflows/place-brand-film-home.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html home.css .github/workflows/place-brand-film-home.yml
+          git commit -m "Place SFANDOM brand film on homepage hero"
+          git push
