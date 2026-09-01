@@ -99,3 +99,14 @@
 }
 
 @media(min-width:621px) and (max-width:900px){#signature-moments{padding-bottom:32px}.promise{padding-top:48px}}
+
+
+/* 2026-09-02 · home hero brand film */
+.home-brand-film{width:min(660px,100%);background:#050505;border:1px solid rgba(255,255,255,.14);box-shadow:0 28px 80px rgba(0,0,0,.52);overflow:hidden}
+.home-brand-film-top,.home-brand-film-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 14px;background:rgba(7,7,7,.96);font-size:.6rem;font-weight:900;letter-spacing:.13em;color:#8c8c91}
+.home-brand-film-top b{color:var(--accent);font-size:.58rem}
+.home-brand-film-player{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#000}
+.home-brand-film-foot{align-items:flex-end;padding:13px 14px 14px;border-top:1px solid #202024}
+.home-brand-film-foot strong{color:#fff;font-size:.78rem;letter-spacing:.08em}
+.home-brand-film-foot span{color:#77777d;font-size:.54rem;text-align:right}
+@media(max-width:900px){.home-brand-film{width:100%;max-width:720px}.hero-visual{height:auto;min-height:0;padding:22px 0 58px}.home-brand-film-foot{align-items:flex-start;flex-direction:column;gap:5px}.home-brand-film-foot span{text-align:left}}
