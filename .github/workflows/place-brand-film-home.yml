@@ -18,52 +18,34 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Put brand film in first-screen hero
+      - name: Patch homepage hero
         run: |
           python - <<'PY'
           from pathlib import Path
-          p = Path('index.html')
-          s = p.read_text(encoding='utf-8')
-          marker = '<article class="glass-card forecast-card">'
-          start = s.find(marker)
+          import base64
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          marker='<article class="glass-card forecast-card">'
+          start=s.find(marker)
           if start < 0:
               raise SystemExit('forecast card marker not found')
-          end = s.find('</article>', start)
+          end=s.find('</article>',start)
           if end < 0:
               raise SystemExit('forecast card closing tag not found')
           end += len('</article>')
-          replacement = '''<div class="home-brand-film" aria-label="SFANDOM brand film">
-          <div class="home-brand-film-top"><span>SFANDOM BRAND FILM</span><b>01:00</b></div>
-          <video class="home-brand-film-player" controls playsinline preload="metadata">
-            <source src="assets/sfandom-brand-film-20260901.mp4" type="video/mp4">
-            Your browser does not support HTML5 video.
-          </video>
-          <div class="home-brand-film-foot"><strong>THE LAST SIGNAL</strong><span>A COMPANY THAT READS SPORTS.</span></div>
-        </div>'''
-          s = s[:start] + replacement + s[end:]
-          s = s.replace('home.css?v=20260829-mobile1', 'home.css?v=20260902-brandfilm1')
-          p.write_text(s, encoding='utf-8')
-
-          css = Path('home.css')
-          c = css.read_text(encoding='utf-8')
-          block = '''
-
-/* 2026-09-02 · home hero brand film */
-.home-brand-film{width:min(660px,100%);background:#050505;border:1px solid rgba(255,255,255,.14);box-shadow:0 28px 80px rgba(0,0,0,.52);overflow:hidden}
-.home-brand-film-top,.home-brand-film-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 14px;background:rgba(7,7,7,.96);font-size:.6rem;font-weight:900;letter-spacing:.13em;color:#8c8c91}
-.home-brand-film-top b{color:var(--accent);font-size:.58rem}
-.home-brand-film-player{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#000}
-.home-brand-film-foot{align-items:flex-end;padding:13px 14px 14px;border-top:1px solid #202024}
-.home-brand-film-foot strong{color:#fff;font-size:.78rem;letter-spacing:.08em}
-.home-brand-film-foot span{color:#77777d;font-size:.54rem;text-align:right}
-@media(max-width:900px){.home-brand-film{width:100%;max-width:720px}.hero-visual{height:auto;min-height:0;padding:22px 0 58px}.home-brand-film-foot{align-items:flex-start;flex-direction:column;gap:5px}.home-brand-film-foot span{text-align:left}}
-'''
+          replacement=base64.b64decode('PGRpdiBjbGFzcz0iaG9tZS1icmFuZC1maWxtIiBhcmlhLWxhYmVsPSJTRkFORE9NIGJyYW5kIGZpbG0iPgogICAgICAgICAgPGRpdiBjbGFzcz0iaG9tZS1icmFuZC1maWxtLXRvcCI+PHNwYW4+U0ZBTkRPTSBCUkFORCBGSUxNPC9zcGFuPjxiPjAxOjAwPC9iPjwvZGl2PgogICAgICAgICAgPHZpZGVvIGNsYXNzPSJob21lLWJyYW5kLWZpbG0tcGxheWVyIiBjb250cm9scyBwbGF5c2lubGluZSBwcmVsb2FkPSJtZXRhZGF0YSI+CiAgICAgICAgICAgIDxzb3VyY2Ugc3JjPSJhc3NldHMvc2ZhbmRvbS1icmFuZC1maWxtLTIwMjYwOTAxLm1wNCIgdHlwZT0idmlkZW8vbXA0Ij4KICAgICAgICAgICAgWW91ciBicm93c2VyIGRvZXMgbm90IHN1cHBvcnQgSFRNTDUgdmlkZW8uCiAgICAgICAgICA8L3ZpZGVvPgogICAgICAgICAgPGRpdiBjbGFzcz0iaG9tZS1icmFuZC1maWxtLWZvb3QiPjxzdHJvbmc+VEhFIExBU1QgU0lHTkFMPC9zdHJvbmc+PHNwYW4+QSBDT01QQU5ZIFRIQVQgUkVBRFMgU1BPUlRTLjwvc3Bhbj48L2Rpdj4KICAgICAgICA8L2Rpdj4=').decode('utf-8')
+          s=s[:start]+replacement+s[end:]
+          s=s.replace('home.css?v=20260829-mobile1','home.css?v=20260902-brandfilm1')
+          p.write_text(s,encoding='utf-8')
+          css=Path('home.css')
+          c=css.read_text(encoding='utf-8')
+          cssblock=base64.b64decode('CgovKiAyMDI2LTA5LTAyIMK3IGhvbWUgaGVybyBicmFuZCBmaWxtICovCi5ob21lLWJyYW5kLWZpbG17d2lkdGg6bWluKDY2MHB4LDEwMCUpO2JhY2tncm91bmQ6IzA1MDUwNTtib3JkZXI6MXB4IHNvbGlkIHJnYmEoMjU1LDI1NSwyNTUsLjE0KTtib3gtc2hhZG93OjAgMjhweCA4MHB4IHJnYmEoMCwwLDAsLjUyKTtvdmVyZmxvdzpoaWRkZW59Ci5ob21lLWJyYW5kLWZpbG0tdG9wLC5ob21lLWJyYW5kLWZpbG0tZm9vdHtkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2p1c3RpZnktY29udGVudDpzcGFjZS1iZXR3ZWVuO2dhcDoxNnB4O3BhZGRpbmc6MTFweCAxNHB4O2JhY2tncm91bmQ6cmdiYSg3LDcsNywuOTYpO2ZvbnQtc2l6ZTouNnJlbTtmb250LXdlaWdodDo5MDA7bGV0dGVyLXNwYWNpbmc6LjEzZW07Y29sb3I6IzhjOGM5MX0KLmhvbWUtYnJhbmQtZmlsbS10b3AgYntjb2xvcjp2YXIoLS1hY2NlbnQpO2ZvbnQtc2l6ZTouNThyZW19Ci5ob21lLWJyYW5kLWZpbG0tcGxheWVye2Rpc3BsYXk6YmxvY2s7d2lkdGg6MTAwJTthc3BlY3QtcmF0aW86MTYvOTtvYmplY3QtZml0OmNvbnRhaW47YmFja2dyb3VuZDojMDAwfQouaG9tZS1icmFuZC1maWxtLWZvb3R7YWxpZ24taXRlbXM6ZmxleC1lbmQ7cGFkZGluZzoxM3B4IDE0cHggMTRweDtib3JkZXItdG9wOjFweCBzb2xpZCAjMjAyMDI0fQouaG9tZS1icmFuZC1maWxtLWZvb3Qgc3Ryb25ne2NvbG9yOiNmZmY7Zm9udC1zaXplOi43OHJlbTtsZXR0ZXItc3BhY2luZzouMDhlbX0KLmhvbWUtYnJhbmQtZmlsbS1mb290IHNwYW57Y29sb3I6Izc3Nzc3ZDtmb250LXNpemU6LjU0cmVtO3RleHQtYWxpZ246cmlnaHR9CkBtZWRpYShtYXgtd2lkdGg6OTAwcHgpey5ob21lLWJyYW5kLWZpbG17d2lkdGg6MTAwJTttYXgtd2lkdGg6NzIwcHh9Lmhlcm8tdmlzdWFse2hlaWdodDphdXRvO21pbi1oZWlnaHQ6MDtwYWRkaW5nOjIycHggMCA1OHB4fS5ob21lLWJyYW5kLWZpbG0tZm9vdHthbGlnbi1pdGVtczpmbGV4LXN0YXJ0O2ZsZXgtZGlyZWN0aW9uOmNvbHVtbjtnYXA6NXB4fS5ob21lLWJyYW5kLWZpbG0tZm9vdCBzcGFue3RleHQtYWxpZ246bGVmdH19Cg==').decode('utf-8')
           if '/* 2026-09-02 · home hero brand film */' not in c:
-              c += block
-          css.write_text(c, encoding='utf-8')
+              c += cssblock
+          css.write_text(c,encoding='utf-8')
           PY
 
-      - name: Commit home hero update and remove one-time workflow
+      - name: Commit changes and remove one-time workflow
         run: |
           rm .github/workflows/place-brand-film-home.yml
           git config user.name "github-actions[bot]"
