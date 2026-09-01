@@ -100,11 +100,12 @@
 
 @media(min-width:621px) and (max-width:900px){#signature-moments{padding-bottom:32px}.promise{padding-top:48px}}
 
-/* 2026-09-02 · isolated static brand film block */
-.brand-film-static-band{position:relative;width:min(1440px,100%);margin:0 auto;padding:26px 24px 10px;background:#050505}
-.brand-film-static-shell{width:min(1180px,100%);margin:0 auto;overflow:hidden;border:1px solid #29292d;background:#050505;box-shadow:0 24px 70px rgba(0,0,0,.34)}
-.brand-film-static-head,.brand-film-static-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:11px 14px;background:#080809;color:#85858b;font-size:.6rem;font-weight:900;letter-spacing:.13em}
-.brand-film-static-head{border-bottom:1px solid #202024}.brand-film-static-head b{color:var(--accent);font-size:.58rem}
-.brand-film-static-player{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#000}
-.brand-film-static-foot{padding:13px 14px 14px;border-top:1px solid #202024}.brand-film-static-foot strong{color:#fff;font-size:.78rem;letter-spacing:.08em}.brand-film-static-foot span{color:#77777d;font-size:.54rem;text-align:right}
-@media(max-width:900px){.brand-film-static-band{padding:18px 14px 6px}.brand-film-static-foot{align-items:flex-start;flex-direction:column;gap:5px}.brand-film-static-foot span{text-align:left}}
+/* 2026-09-02 · hero-side brand film; isolated from daily content */
+.home-brand-film{width:min(660px,100%);background:#050505;border:1px solid rgba(255,255,255,.14);box-shadow:0 28px 80px rgba(0,0,0,.52);overflow:hidden}
+.home-brand-film-top,.home-brand-film-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:11px 14px;background:rgba(7,7,7,.96);font-size:.6rem;font-weight:900;letter-spacing:.13em;color:#8c8c91}
+.home-brand-film-top b{color:var(--accent);font-size:.58rem}
+.home-brand-film-player{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#000}
+.home-brand-film-foot{align-items:flex-end;padding:13px 14px 14px;border-top:1px solid #202024}
+.home-brand-film-foot strong{color:#fff;font-size:.78rem;letter-spacing:.08em}
+.home-brand-film-foot span{color:#77777d;font-size:.54rem;text-align:right}
+@media(max-width:900px){.home-brand-film{width:100%;max-width:720px}.hero-visual{height:auto;min-height:0;padding:22px 0 58px}.home-brand-film-foot{align-items:flex-start;flex-direction:column;gap:5px}.home-brand-film-foot span{text-align:left}}
