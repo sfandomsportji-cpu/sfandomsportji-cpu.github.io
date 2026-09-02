@@ -12,9 +12,9 @@
 .morning-pick-single{grid-template-columns:1fr}
 .pick-hero-photo{position:relative;height:460px;margin:-28px -28px 28px;overflow:hidden;background:#070708;border-bottom:1px solid #303034}
 .pick-hero-photo:after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(transparent,#0d0d0f);pointer-events:none}
-.pick-hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 14%}
+.pick-hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 31%}
 .pick-hero-photo span{position:absolute;z-index:2;left:20px;bottom:18px;padding:8px 10px;background:rgba(5,5,5,.82);border:1px solid rgba(255,255,255,.14);color:#fff;font-size:.6rem;font-weight:900;letter-spacing:.12em}
-@media(max-width:620px){.pick-hero-photo{height:380px;margin:-20px -20px 24px}.pick-hero-photo img{object-position:center 10%}}
+@media(max-width:620px){.pick-hero-photo{height:380px;margin:-20px -20px 24px}.pick-hero-photo img{object-position:center 27%}}
 
 /* 2026-09-02 · single-pick responsive type safety */
 .morning-pick-head h2{font-size:clamp(2.75rem,4.8vw,5rem);line-height:.98}
