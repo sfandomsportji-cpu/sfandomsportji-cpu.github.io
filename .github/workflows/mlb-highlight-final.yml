@@ -1,0 +1,160 @@
+name: MLB official highlight final
+
+on:
+  push:
+    branches: [mlb-highlight-final-2026-09-03]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      MLB_DATE: '2026-09-02'
+      MAX_CLIPS: '7'
+      SEGMENT_SECONDS: '6'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: |
+          python -m pip install --quiet requests
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core
+      - name: Fetch MLB official footage and render MP4
+        shell: bash
+        run: |
+          cat > /tmp/render.py <<'PY'
+          import json, os, re, subprocess, time
+          from pathlib import Path
+          import requests
+
+          DATE=os.environ['MLB_DATE']
+          MAX=int(os.environ['MAX_CLIPS'])
+          DUR=float(os.environ['SEGMENT_SECONDS'])
+          W=Path('/tmp/mlb'); RAW=W/'raw'; SEG=W/'seg'; TXT=W/'txt'; OUT=Path('dist')/f'sfandom_mlb_highlights_{DATE}.mp4'
+          for p in (RAW,SEG,TXT,OUT.parent): p.mkdir(parents=True,exist_ok=True)
+          S=requests.Session(); S.headers.update({'User-Agent':'SFANDOM-MLB-Highlight-Renderer/1.0','Referer':'https://www.mlb.com/'})
+          FONT='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
+          FONT2='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
+
+          def get(url,**params):
+              r=S.get(url,params=params or None,timeout=30); r.raise_for_status(); return r.json()
+          def secs(v):
+              if v is None:return None
+              if isinstance(v,(int,float)):return float(v)
+              try:
+                  a=[float(x) for x in str(v).split(':')]
+                  return a[-1]+(a[-2]*60 if len(a)>1 else 0)+(a[-3]*3600 if len(a)>2 else 0)
+              except:return None
+          def walk(x):
+              if isinstance(x,dict):
+                  if x.get('title') and isinstance(x.get('playbacks'),list): yield x
+                  for v in x.values(): yield from walk(v)
+              elif isinstance(x,list):
+                  for v in x: yield from walk(v)
+          def best_playback(item):
+              arr=[p for p in item.get('playbacks',[]) if '.mp4' in str(p.get('url','')).lower()]
+              def quality(p):
+                  m=re.search(r'(\d{3,4})x(\d{3,4})',str(p.get('name','')))
+                  return int(m.group(1)) if m else 0
+              return max(arr,key=quality) if arr else None
+          def score(item):
+              t=(str(item.get('title',''))+' '+str(item.get('blurb',''))).lower(); s=0
+              for k,v in {'200th':30,'milestone':25,'walk-off':24,'go-ahead':22,'grand slam':21,'first big league':18,'home run':16,'homer':16,'game-tying':15,'no-hitter':15,'shutout':12,'strikes out':9,'diving catch':9,'rbi double':8}.items():
+                  if k in t:s+=v
+              for k,v in {'condensed game':-80,'game recap':-60,'recap':-50,'interview':-50,'talks':-35,'preview':-40}.items():
+                  if k in t:s+=v
+              d=secs(item.get('duration'))
+              if d and 8<=d<=55:s+=8
+              elif d and d>90:s-=20
+              return s
+          def has_audio(path):
+              p=subprocess.run(['ffprobe','-v','error','-select_streams','a:0','-show_entries','stream=codec_type','-of','csv=p=0',str(path)],capture_output=True,text=True)
+              return bool(p.stdout.strip())
+          def run(cmd):
+              subprocess.run([str(x) for x in cmd],check=True)
+
+          sched=get('https://statsapi.mlb.com/api/v1/schedule',sportId=1,date=DATE,hydrate='team,linescore')
+          games=[g for d in sched.get('dates',[]) for g in d.get('games',[]) if (g.get('status',{}).get('abstractGameState') or '').lower()=='final']
+          picks=[]
+          for g in games:
+              try: content=get(f"https://statsapi.mlb.com/api/v1/game/{g['gamePk']}/content")
+              except Exception as e:
+                  print('content skip',g.get('gamePk'),e); continue
+              candidates=[]; seen=set()
+              for item in walk(content):
+                  p=best_playback(item)
+                  if not p: continue
+                  key=p.get('url')
+                  if key in seen: continue
+                  seen.add(key)
+                  sc=score(item)
+                  if sc>-10: candidates.append((sc,secs(item.get('duration')),item,p))
+              if not candidates: continue
+              candidates.sort(key=lambda x:x[0],reverse=True)
+              sc,du,item,p=candidates[0]
+              away=g['teams']['away']['team']['name']; home=g['teams']['home']['team']['name']
+              a=g['teams']['away'].get('score',''); h=g['teams']['home'].get('score','')
+              picks.append({'score':sc,'duration':du,'title':re.sub(r'\s+',' ',item.get('title','')).strip()[:84], 'matchup':f'{away} @ {home}  {a}-{h}','url':p['url']})
+              time.sleep(.05)
+          picks=sorted(picks,key=lambda x:x['score'],reverse=True)[:MAX]
+          if not picks: raise SystemExit('No official MLB MP4 playbacks found')
+          print('SELECTED OFFICIAL MLB CLIPS')
+          print(json.dumps(picks,indent=2,ensure_ascii=False))
+          (OUT.parent/f'manifest_{DATE}.json').write_text(json.dumps(picks,indent=2,ensure_ascii=False),encoding='utf-8')
+
+          rendered=[]
+          for i,c in enumerate(picks,1):
+              raw=RAW/f'{i:02d}.mp4'; seg=SEG/f'{i:02d}.mp4'
+              titlefile=TXT/f'title_{i:02d}.txt'; matchfile=TXT/f'match_{i:02d}.txt'
+              titlefile.write_text(c['title'].upper(),encoding='utf-8')
+              matchfile.write_text(c['matchup'],encoding='utf-8')
+              with S.get(c['url'],stream=True,timeout=90) as r:
+                  r.raise_for_status()
+                  with open(raw,'wb') as f:
+                      for b in r.iter_content(524288):
+                          if b:f.write(b)
+              d=min(DUR,max(2.0,float(c['duration'] or DUR)))
+              vf=(
+                f"[0:v]trim=start=0.35:duration={d},setpts=PTS-STARTPTS,split=2[bg0][fg0];"
+                f"[bg0]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=24:3,eq=brightness=-0.38:saturation=0.70[bg];"
+                f"[fg0]scale=1080:608:force_original_aspect_ratio=decrease,pad=1080:608:(ow-iw)/2:(oh-ih)/2:black,setsar=1[fg];"
+                f"[bg][fg]overlay=0:656:shortest=1,"
+                f"drawbox=x=0:y=0:w=1080:h=12:color=0xE23B3B:t=fill,"
+                f"drawbox=x=36:y=70:w=1008:h=470:color=black@0.48:t=fill,"
+                f"drawbox=x=36:y=1375:w=1008:h=300:color=black@0.42:t=fill,"
+                f"drawtext=fontfile={FONT}:text='SFANDOM  |  MLB':fontcolor=white:fontsize=44:x=64:y=102,"
+                f"drawtext=fontfile={FONT}:textfile={titlefile}:expansion=none:fontcolor=white:fontsize=42:x=64:y=250:line_spacing=8,"
+                f"drawtext=fontfile={FONT2}:textfile={matchfile}:expansion=none:fontcolor=white:fontsize=29:x=64:y=505,"
+                f"drawtext=fontfile={FONT2}:text='OFFICIAL MLB FOOTAGE  |  {DATE}':fontcolor=white:fontsize=27:x=64:y=1450[outv]"
+              )
+              if has_audio(raw):
+                  filt=vf+f";[0:a]atrim=start=0.35:duration={d},asetpts=PTS-STARTPTS,aresample=48000[a]"
+                  cmd=['ffmpeg','-y','-i',raw,'-filter_complex',filt,'-map','[outv]','-map','[a]','-r','30','-c:v','libx264','-preset','medium','-crf','19','-c:a','aac','-b:a','160k','-ar','48000','-ac','2','-pix_fmt','yuv420p','-movflags','+faststart',seg]
+              else:
+                  cmd=['ffmpeg','-y','-i',raw,'-f','lavfi','-t',str(d),'-i','anullsrc=channel_layout=stereo:sample_rate=48000','-filter_complex',vf,'-map','[outv]','-map','1:a:0','-r','30','-c:v','libx264','-preset','medium','-crf','19','-c:a','aac','-b:a','160k','-ar','48000','-ac','2','-pix_fmt','yuv420p','-movflags','+faststart',seg]
+              run(cmd); rendered.append(seg)
+
+          concat=W/'concat.txt'
+          concat.write_text(''.join(f"file '{p}'\n" for p in rendered),encoding='utf-8')
+          joined=W/'joined.mp4'
+          run(['ffmpeg','-y','-f','concat','-safe','0','-i',concat,'-c','copy',joined])
+          run(['ffmpeg','-y','-i',joined,'-t','45','-c','copy','-movflags','+faststart',OUT])
+          run(['ffprobe','-v','error','-show_entries','format=duration:stream=index,codec_name,width,height,r_frame_rate','-of','json',OUT])
+          print('OUTPUT',OUT)
+          PY
+          python /tmp/render.py
+      - name: Upload final MP4
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfandom-mlb-official-highlights-2026-09-02
+          path: |
+            dist/sfandom_mlb_highlights_2026-09-02.mp4
+            dist/manifest_2026-09-02.json
+          if-no-files-found: error
