@@ -128,3 +128,5 @@ if('IntersectionObserver' in window){
   }
   render();
 })();
+
+import('./brand-film-touch.js?v=20260903-one-tap1').catch(()=>{});
