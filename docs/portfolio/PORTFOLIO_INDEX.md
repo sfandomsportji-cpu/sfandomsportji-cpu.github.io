@@ -4,6 +4,7 @@ SFANDOM 실제 발행 콘텐츠의 날짜별 포트폴리오 색인.
 
 | # | Recorded (KST) | Daily News | Kairo Feature | Next Match | Pick | Main Commit | Record |
 |---|---|---|---|---|---|---|---|
+| #2 | 2026-09-03 22:34 | Ronald Acuña Jr. 200 HR / 200 SB · MLB rookie debut-HR record | Andrew Painter · 7 scoreless innings | TOR @ CLE · José Soriano vs Tanner Bibee | None | `a44c76e543a0eb50c1a0bd2558fc9af726492647` | [2026-09-03 #2](2026/09/2026-09-03.md) |
 | #1 | 2026-09-01 08:41 | Yankees 16–1 Red Sox / Shohei Ohtani pitching-return update | Pete Crow-Armstrong · 38 HR / September race | MIL @ CHC · Kyle Harrison vs Clay Holmes | None | `285e7f416ea75a8abd708cc346408d9e72b25767` | [2026-09-01 #1](2026/09/2026-09-01.md) |
 
 ## Category key
