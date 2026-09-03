@@ -65,3 +65,14 @@
   .player-spotlight-copy h3{font-size:clamp(2rem,10vw,2.8rem)}
   .player-spotlight-data{grid-template-columns:repeat(2,1fr)}
 }
+
+
+/* 2026-09-03 · portrait-safe mobile face protection */
+@media(max-width:620px){
+  .morning-story-photo:has(img.portrait-safe){height:auto;min-height:320px}
+  .morning-story-photo img.portrait-safe{width:100%;height:auto;min-height:320px;object-fit:contain;object-position:center top;background:#070708}
+  .kairo-feature-photo:has(img.portrait-safe){height:auto;min-height:420px}
+  .kairo-feature-photo img.portrait-safe{width:100%;height:auto;min-height:420px;object-fit:contain;object-position:center top;background:#070708}
+  .starter-card{min-height:540px}
+  .starter-photo img.portrait-safe{width:100%;height:100%;object-fit:contain;object-position:center top;background:#070708}
+}
