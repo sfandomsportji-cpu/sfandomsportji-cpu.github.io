@@ -4,10 +4,20 @@
   const mobileLike = window.matchMedia('(max-width: 900px), (pointer: coarse)').matches;
   if (!mobileLike) return;
 
+  function ensureStyles() {
+    if (document.querySelector('link[data-brand-film-touch-css]')) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'brand-film-touch.css?v=20260903-one-tap1';
+    link.dataset.brandFilmTouchCss = '1';
+    document.head.appendChild(link);
+  }
+
   function init() {
     const video = document.querySelector('.home-brand-film-player');
     if (!video || video.dataset.oneTapReady === '1') return;
 
+    ensureStyles();
     video.dataset.oneTapReady = '1';
 
     const stage = document.createElement('div');
