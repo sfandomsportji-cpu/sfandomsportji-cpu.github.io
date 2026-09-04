@@ -130,3 +130,4 @@ if('IntersectionObserver' in window){
 })();
 
 import('./brand-film-touch.js?v=20260903-one-tap1').catch(()=>{});
+import('./visitor-counter-bootstrap.js?v=20260904-1').catch(()=>{});
