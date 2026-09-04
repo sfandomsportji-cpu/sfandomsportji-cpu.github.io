@@ -1,0 +1,26 @@
+name = "sfandom-visitor-counter"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+# Production custom-domain binding. This keeps the counter backend isolated
+# from the GitHub Pages site while making the endpoint resolvable at
+# https://counter.sfandom.com.
+routes = [
+  { pattern = "counter.sfandom.com", custom_domain = true }
+]
+
+[[durable_objects.bindings]]
+name = "COUNTER"
+class_name = "VisitorCounter"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["VisitorCounter"]
+
+[vars]
+ALLOWED_ORIGINS = "https://sfandom.com,https://www.sfandom.com"
+DISPLAY_BASELINE = "0"
+
+# Keep VISITOR_HASH_SECRET out of Git.
+# Configure it with Cloudflare's secret manager before deployment:
+#   npx wrangler secret put VISITOR_HASH_SECRET
