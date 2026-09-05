@@ -21,8 +21,7 @@ jobs:
         shell: bash
         run: |
           python3 - <<'PY'
-          import json, os, re, subprocess, urllib.request, pathlib, sys
-          from urllib.parse import urlparse
+          import json, re, subprocess, urllib.request, pathlib
 
           DATE='2026-09-04'
           OUT=pathlib.Path('mlb_render')
@@ -57,11 +56,38 @@ jobs:
                   for n,k in enumerate(priorities):
                       if k in text: score += 100-n
                   if 'in-game highlight' in text: score += 15
-                  dur=str(it.get('duration',''))
                   scored.append((score,idx,it))
               if not scored: return None
               scored.sort(key=lambda x:(x[0],x[1]), reverse=True)
               return scored[0][2]
+
+          def recursive_media(obj, path='root'):
+              found=[]
+              if isinstance(obj, dict):
+                  if obj.get('playbacks'):
+                      found.append((path,obj))
+                  for k,v in obj.items():
+                      found.extend(recursive_media(v, path+'/'+str(k)))
+              elif isinstance(obj, list):
+                  for i,v in enumerate(obj):
+                      found.extend(recursive_media(v, path+f'/{i}'))
+              return found
+
+          def pick_fallback(content):
+              cand=[]
+              for path,it in recursive_media(content):
+                  text=' '.join([path,str(it.get('title','')),str(it.get('blurb','')),str(it.get('keywordsAll','')),str(it.get('type',''))]).lower()
+                  score=0
+                  if 'condensed' in text: score += 500
+                  if 'recap' in text: score += 450
+                  if 'game highlights' in text or 'game highlight' in text: score += 400
+                  if 'highlight' in text: score += 250
+                  if 'epg' in path.lower(): score += 150
+                  if 'preview' in text or 'odds' in text: score -= 500
+                  cand.append((score,path,it))
+              if not cand: return None
+              cand.sort(key=lambda x:x[0], reverse=True)
+              return cand[0][2]
 
           def pick_playback(pbs):
               def rank(pb):
@@ -70,7 +96,7 @@ jobs:
                   s=0
                   if '.mp4' in url: s+=100
                   if '1280x720' in name or '720' in name: s+=30
-                  if '1200k' in name or '2500k' in name: s+=20
+                  if '2500k' in name or '1200k' in name: s+=20
                   if 'mp4' in name: s+=10
                   return s
               return max(pbs,key=rank)
@@ -81,24 +107,25 @@ jobs:
               pk=g['gamePk']
               away=g['teams']['away']['team']['name']
               home=g['teams']['home']['team']['name']
-              aabbr=away
-              habbr=home
               ascore=g['teams']['away'].get('score','')
               hscore=g['teams']['home'].get('score','')
               content=get_json(f'https://statsapi.mlb.com/api/v1/game/{pk}/content')
               items=((content.get('highlights') or {}).get('highlights') or {}).get('items') or []
               item=pick_item(items)
+              source='highlights'
               if not item:
+                  item=pick_fallback(content)
+                  source='media-fallback'
+              if not item or not item.get('playbacks'):
                   print(f'NO PLAYBACK {pk} {away}@{home}', flush=True)
                   manifest.append({'gamePk':pk,'away':away,'home':home,'score':f'{ascore}-{hscore}','status':'no-playback'})
                   continue
               pb=pick_playback(item.get('playbacks') or [])
               url=pb.get('url')
-              title=item.get('title','MLB Highlight')
-              print(f'[{i}/{len(games)}] {pk} {away}@{home} -> {title} -> {pb.get("name")}', flush=True)
-              safe_title=re.sub(r"[^A-Za-z0-9 ._-]","",title)[:80]
+              title=item.get('title') or item.get('headline') or 'MLB Official Game Video'
+              print(f'[{i}/{len(games)}] {pk} {away}@{home} [{source}] -> {title} -> {pb.get("name")}', flush=True)
+              safe_title=re.sub(r"[^A-Za-z0-9 ._-]","",str(title))[:80]
               out=OUT/f'clip_{i:02d}.mp4'
-              # Preserve full official frame over a blurred vertical background. No AI imagery.
               filt=(
                   '[0:v]split=2[bg][fg];'
                   '[bg]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=28[bg2];'
@@ -106,18 +133,16 @@ jobs:
                   '[bg2][fg2]overlay=(W-w)/2:(H-h)/2,'
                   'drawbox=x=0:y=0:w=iw:h=210:color=black@0.68:t=fill,'
                   'drawbox=x=0:y=1710:w=iw:h=210:color=black@0.68:t=fill,'
-                  f"drawtext=fontfile={BOLD}:text='{i:02d}/{len(games):02d}  {away} {ascore} - {hscore} {home}':fontcolor=white:fontsize=42:x=54:y=78," 
-                  f"drawtext=fontfile={FONT}:text='{safe_title.replace(':','\\:').replace("'",'')}':fontcolor=white:fontsize=34:x=54:y=1755"
+                  f"drawtext=fontfile={BOLD}:text='{i:02d}/{len(games):02d}  {away} {ascore} - {hscore} {home}':fontcolor=white:fontsize=42:x=54:y=78,"
+                  f"drawtext=fontfile={FONT}:text='{safe_title.replace(':','\\:')}':fontcolor=white:fontsize=34:x=54:y=1755"
               )
-              cmd=['ffmpeg','-y','-ss','1.0','-i',url,'-t','4.2','-an','-vf',filt,'-r','30','-c:v','libx264','-preset','veryfast','-crf','20','-pix_fmt','yuv420p',str(out)]
-              subprocess.run(cmd,check=True)
+              subprocess.run(['ffmpeg','-y','-ss','1.0','-i',url,'-t','4.2','-an','-vf',filt,'-r','30','-c:v','libx264','-preset','veryfast','-crf','20','-pix_fmt','yuv420p',str(out)],check=True)
               clip_paths.append(out)
-              manifest.append({'gamePk':pk,'away':away,'home':home,'score':f'{ascore}-{hscore}','status':'video','title':title,'playbackName':pb.get('name'),'playbackUrl':url})
+              manifest.append({'gamePk':pk,'away':away,'home':home,'score':f'{ascore}-{hscore}','status':'video','source':source,'title':title,'playbackName':pb.get('name'),'playbackUrl':url})
 
           if not clip_paths:
               raise SystemExit('No official MLB playbacks could be rendered')
 
-          # Intro card
           intro=OUT/'intro.mp4'
           intro_f=(
               f"drawtext=fontfile={BOLD}:text='SFANDOM MLB':fontcolor=white:fontsize=86:x=(w-text_w)/2:y=640,"
@@ -145,7 +170,7 @@ jobs:
       - name: Upload preview package
         uses: actions/upload-artifact@v4
         with:
-          name: sfandom-mlb-official-preview-20260904
+          name: sfandom-mlb-official-preview-20260904-v2
           path: mlb_render/
           if-no-files-found: error
           retention-days: 3
