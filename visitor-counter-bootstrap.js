@@ -49,7 +49,7 @@
   function boot() {
     ensureStyles();
     if (!ensureCounterRoot()) return;
-    import('./visitor-counter.js?v=20260904-1').catch(() => {});
+    import('./visitor-counter.js?v=20260906-fallback1').catch(() => {});
   }
 
   if (document.readyState === 'loading') {
