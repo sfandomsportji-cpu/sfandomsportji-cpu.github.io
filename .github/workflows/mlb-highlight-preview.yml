@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'tools/mlb_official_highlight_builder.py'
+      - 'tools/mlb_official_highlight_builder_fast.py'
       - '.github/workflows/mlb-highlight-preview.yml'
   workflow_dispatch:
 
@@ -13,7 +14,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -30,7 +31,7 @@ jobs:
 
       - name: Build official MLB highlight preview
         run: |
-          python tools/mlb_official_highlight_builder.py --date 2026-09-04 --out output
+          python tools/mlb_official_highlight_builder_fast.py --date 2026-09-04 --out output
 
       - name: List output
         if: always()
