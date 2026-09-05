@@ -1,0 +1,151 @@
+name: Temporary MLB Official Highlight Render
+
+on:
+  push:
+    branches:
+      - tmp/mlb-render-20260904
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install FFmpeg and fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-cjk
+
+      - name: Build official MLB highlight reel
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess, urllib.request, pathlib, sys
+          from urllib.parse import urlparse
+
+          DATE='2026-09-04'
+          OUT=pathlib.Path('mlb_render')
+          OUT.mkdir(exist_ok=True)
+          FONT='/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'
+          BOLD='/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc'
+
+          def get_json(url):
+              req=urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0 SFANDOM/1.0'})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  return json.load(r)
+
+          sched=get_json(f'https://statsapi.mlb.com/api/v1/schedule?sportId=1&date={DATE}')
+          games=[]
+          for d in sched.get('dates',[]):
+              for g in d.get('games',[]):
+                  st=g.get('status',{})
+                  if st.get('abstractGameState')=='Final' or st.get('detailedState')=='Final':
+                      games.append(g)
+          if not games:
+              raise SystemExit('No Final MLB games found')
+
+          priorities=['walk-off','walkoff','grand slam','go-ahead','home run','homer','rbi double','rbi triple','two-run','three-run','game-winning','catch','save','final out']
+
+          def pick_item(items):
+              scored=[]
+              for idx,it in enumerate(items):
+                  pbs=it.get('playbacks') or []
+                  if not pbs: continue
+                  text=' '.join([str(it.get('title','')),str(it.get('blurb','')),str(it.get('keywordsAll',''))]).lower()
+                  score=0
+                  for n,k in enumerate(priorities):
+                      if k in text: score += 100-n
+                  if 'in-game highlight' in text: score += 15
+                  dur=str(it.get('duration',''))
+                  scored.append((score,idx,it))
+              if not scored: return None
+              scored.sort(key=lambda x:(x[0],x[1]), reverse=True)
+              return scored[0][2]
+
+          def pick_playback(pbs):
+              def rank(pb):
+                  name=str(pb.get('name','')).lower()
+                  url=str(pb.get('url','')).lower()
+                  s=0
+                  if '.mp4' in url: s+=100
+                  if '1280x720' in name or '720' in name: s+=30
+                  if '1200k' in name or '2500k' in name: s+=20
+                  if 'mp4' in name: s+=10
+                  return s
+              return max(pbs,key=rank)
+
+          manifest=[]
+          clip_paths=[]
+          for i,g in enumerate(games,1):
+              pk=g['gamePk']
+              away=g['teams']['away']['team']['name']
+              home=g['teams']['home']['team']['name']
+              aabbr=away
+              habbr=home
+              ascore=g['teams']['away'].get('score','')
+              hscore=g['teams']['home'].get('score','')
+              content=get_json(f'https://statsapi.mlb.com/api/v1/game/{pk}/content')
+              items=((content.get('highlights') or {}).get('highlights') or {}).get('items') or []
+              item=pick_item(items)
+              if not item:
+                  print(f'NO PLAYBACK {pk} {away}@{home}', flush=True)
+                  manifest.append({'gamePk':pk,'away':away,'home':home,'score':f'{ascore}-{hscore}','status':'no-playback'})
+                  continue
+              pb=pick_playback(item.get('playbacks') or [])
+              url=pb.get('url')
+              title=item.get('title','MLB Highlight')
+              print(f'[{i}/{len(games)}] {pk} {away}@{home} -> {title} -> {pb.get("name")}', flush=True)
+              safe_title=re.sub(r"[^A-Za-z0-9 ._-]","",title)[:80]
+              out=OUT/f'clip_{i:02d}.mp4'
+              # Preserve full official frame over a blurred vertical background. No AI imagery.
+              filt=(
+                  '[0:v]split=2[bg][fg];'
+                  '[bg]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,gblur=sigma=28[bg2];'
+                  '[fg]scale=1080:-2[fg2];'
+                  '[bg2][fg2]overlay=(W-w)/2:(H-h)/2,'
+                  'drawbox=x=0:y=0:w=iw:h=210:color=black@0.68:t=fill,'
+                  'drawbox=x=0:y=1710:w=iw:h=210:color=black@0.68:t=fill,'
+                  f"drawtext=fontfile={BOLD}:text='{i:02d}/{len(games):02d}  {away} {ascore} - {hscore} {home}':fontcolor=white:fontsize=42:x=54:y=78," 
+                  f"drawtext=fontfile={FONT}:text='{safe_title.replace(':','\\:').replace("'",'')}':fontcolor=white:fontsize=34:x=54:y=1755"
+              )
+              cmd=['ffmpeg','-y','-ss','1.0','-i',url,'-t','4.2','-an','-vf',filt,'-r','30','-c:v','libx264','-preset','veryfast','-crf','20','-pix_fmt','yuv420p',str(out)]
+              subprocess.run(cmd,check=True)
+              clip_paths.append(out)
+              manifest.append({'gamePk':pk,'away':away,'home':home,'score':f'{ascore}-{hscore}','status':'video','title':title,'playbackName':pb.get('name'),'playbackUrl':url})
+
+          if not clip_paths:
+              raise SystemExit('No official MLB playbacks could be rendered')
+
+          # Intro card
+          intro=OUT/'intro.mp4'
+          intro_f=(
+              f"drawtext=fontfile={BOLD}:text='SFANDOM MLB':fontcolor=white:fontsize=86:x=(w-text_w)/2:y=640,"
+              f"drawtext=fontfile={BOLD}:text='오늘의 MLB, 결정적 순간만.':fontcolor=white:fontsize=48:x=(w-text_w)/2:y=790,"
+              f"drawtext=fontfile={FONT}:text='Today’s MLB. Only the moments that mattered.':fontcolor=white:fontsize=34:x=(w-text_w)/2:y=880"
+          )
+          subprocess.run(['ffmpeg','-y','-f','lavfi','-i','color=c=0x08080a:s=1080x1920:r=30:d=2.0','-vf',intro_f,'-an','-c:v','libx264','-preset','veryfast','-crf','20','-pix_fmt','yuv420p',str(intro)],check=True)
+
+          concat=OUT/'concat.txt'
+          with concat.open('w') as f:
+              f.write(f"file '{intro.resolve()}'\n")
+              for p in clip_paths:
+                  f.write(f"file '{p.resolve()}'\n")
+          silent=OUT/'video_noaudio.mp4'
+          subprocess.run(['ffmpeg','-y','-f','concat','-safe','0','-i',str(concat),'-c','copy',str(silent)],check=True)
+          final=OUT/f'SFANDOM_MLB_{DATE}_OFFICIAL_HIGHLIGHTS_PREVIEW_1080x1920.mp4'
+          subprocess.run(['ffmpeg','-y','-i',str(silent),'-f','lavfi','-i','anullsrc=channel_layout=stereo:sample_rate=48000','-shortest','-c:v','copy','-c:a','aac','-b:a','128k','-movflags','+faststart',str(final)],check=True)
+          thumb=OUT/f'SFANDOM_MLB_{DATE}_thumbnail.jpg'
+          subprocess.run(['ffmpeg','-y','-ss','3.0','-i',str(final),'-frames:v','1','-q:v','2',str(thumb)],check=True)
+          (OUT/'caption.txt').write_text('오늘 종료된 MLB 전체 경기의 결정적 순간을 공식 MLB 영상으로 빠르게 정리했습니다.\nToday’s MLB. Only the moments that mattered.\n\n#MLB #MLBHighlights #메이저리그 #야구하이라이트 #SFANDOM\n',encoding='utf-8')
+          (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf-8')
+          print(f'RENDERED {len(clip_paths)}/{len(games)} Final games', flush=True)
+          PY
+
+      - name: Upload preview package
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfandom-mlb-official-preview-20260904
+          path: mlb_render/
+          if-no-files-found: error
+          retention-days: 3
