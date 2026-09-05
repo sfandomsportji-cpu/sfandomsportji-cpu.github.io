@@ -6,7 +6,7 @@ if('IntersectionObserver' in window){
   revealNodes.forEach(el=>el.classList.add('show'));
 }
 
-(()=>{
+const startSignatureMoments=()=>{
   const player=document.getElementById('signaturePlayer');
   const counter=document.getElementById('signatureCounter');
   const title=document.getElementById('signatureTitle');
@@ -127,7 +127,24 @@ if('IntersectionObserver' in window){
     }
   }
   render();
-})();
+};
 
-import('./brand-film-touch.js?v=20260903-one-tap1').catch(()=>{});
-import('./visitor-counter-bootstrap.js?v=20260904-1').catch(()=>{});
+const signatureSection=document.getElementById('signature-moments');
+if(signatureSection&&'IntersectionObserver'in window){
+  const signatureIo=new IntersectionObserver(entries=>{
+    if(entries.some(entry=>entry.isIntersecting)){
+      signatureIo.disconnect();
+      startSignatureMoments();
+    }
+  },{rootMargin:'500px 0px',threshold:0});
+  signatureIo.observe(signatureSection);
+}else{
+  startSignatureMoments();
+}
+
+const loadSecondary=()=>{
+  import('./brand-film-touch.js?v=20260903-one-tap1').catch(()=>{});
+  import('./visitor-counter-bootstrap.js?v=20260904-1').catch(()=>{});
+};
+if('requestIdleCallback'in window){requestIdleCallback(loadSecondary,{timeout:1200})}
+else{setTimeout(loadSecondary,350)}
