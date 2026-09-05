@@ -144,7 +144,7 @@ if(signatureSection&&'IntersectionObserver'in window){
 
 const loadSecondary=()=>{
   import('./brand-film-touch.js?v=20260903-one-tap1').catch(()=>{});
-  import('./visitor-counter-bootstrap.js?v=20260904-1').catch(()=>{});
+  import('./visitor-counter-bootstrap.js?v=20260906-fallback1').catch(()=>{});
 };
 if('requestIdleCallback'in window){requestIdleCallback(loadSecondary,{timeout:1200})}
 else{setTimeout(loadSecondary,350)}
