@@ -5,7 +5,7 @@
 .sf-visitor-counter {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   flex: 0 0 auto;
   min-height: 32px;
   padding: 7px 11px;
@@ -18,27 +18,8 @@
   white-space: nowrap;
 }
 
-.sf-visitor-counter::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  flex: 0 0 6px;
-  border-radius: 50%;
-  background: var(--accent, #e2232a);
-}
-
-.sf-visitor-counter__live {
-  opacity: 0.88;
-}
-
-.sf-visitor-counter__divider {
-  width: 1px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.18);
-}
-
 .sf-visitor-counter__label {
-  opacity: 0.55;
+  opacity: 0.58;
 }
 
 .sf-visitor-counter__value {
@@ -54,41 +35,46 @@
 @media (max-width: 900px) {
   .sf-visitor-counter {
     min-height: 30px;
-    padding: 6px 9px;
+    padding: 6px 10px;
   }
 }
 
 @media (max-width: 720px) {
   .sf-visitor-counter {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 10px);
     right: 18px;
-    min-height: 28px;
-    padding: 6px 9px;
-    background: rgba(6, 6, 6, 0.9);
+    z-index: 2;
+    min-height: 32px;
+    padding: 7px 11px;
+    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(6, 6, 6, 0.94);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
   }
 
+  .sf-visitor-counter__label {
+    opacity: 0.68;
+  }
+
   .sf-visitor-counter__value {
-    min-width: 54px;
-    font-size: 13px;
+    min-width: 56px;
+    font-size: 14px;
   }
 }
 
 @media (max-width: 430px) {
   .sf-visitor-counter {
-    gap: 6px;
     right: 14px;
-    padding: 5px 8px;
+    gap: 8px;
+    min-height: 30px;
+    padding: 6px 10px;
     font-size: 9px;
   }
 
-  .sf-visitor-counter__divider {
-    height: 10px;
-  }
-
-  .sf-visitor-counter__label {
-    display: none;
+  .sf-visitor-counter__value {
+    min-width: 54px;
+    font-size: 13px;
   }
 }
