@@ -3,9 +3,9 @@
 
   const ROOT_SELECTOR = '[data-sf-visitor-counter]';
   const VALUE_SELECTOR = '[data-sf-visitor-value]';
-  const CACHE_KEY = 'sfandom:visitor-counter:last-good:v1';
+  const CACHE_KEY = 'sfandom:visitor-counter:last-good:v2';
   const CACHE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
-  const REQUEST_TIMEOUT_MS = 2500;
+  const REQUEST_TIMEOUT_MS = 3500;
 
   const formatter = new Intl.NumberFormat('en-US');
 
@@ -55,18 +55,18 @@
 
     try {
       const response = await fetch(endpoint, {
-        method: 'POST',
+        method: 'GET',
         mode: 'cors',
         credentials: 'omit',
         cache: 'no-store',
         headers: { Accept: 'application/json' },
-        keepalive: true,
         signal: controller.signal
       });
 
       if (!response.ok) throw new Error(`counter-http-${response.status}`);
       const payload = await response.json();
-      const value = Number(payload && payload.displayVisitors);
+      const rawValue = payload && (payload.displayVisitors ?? payload.value);
+      const value = Number(rawValue);
       if (!isValidCount(value)) throw new Error('counter-invalid-payload');
       return value;
     } finally {
