@@ -3,9 +3,9 @@
 
   const ROOT_SELECTOR = '[data-sf-visitor-counter]';
   const VALUE_SELECTOR = '[data-sf-visitor-value]';
-  const CACHE_KEY = 'sfandom:visitor-counter:last-good:v2';
+  const CACHE_KEY = 'sfandom:visitor-counter:last-good:v3';
   const CACHE_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
-  const REQUEST_TIMEOUT_MS = 3500;
+  const REQUEST_TIMEOUT_MS = 5000;
 
   const formatter = new Intl.NumberFormat('en-US');
 
@@ -49,29 +49,62 @@
     if (!target || !target.textContent.trim()) root.hidden = true;
   }
 
-  async function fetchCount(endpoint) {
-    const controller = new AbortController();
-    const timer = window.setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  function fetchCount(endpoint) {
+    return new Promise((resolve, reject) => {
+      const callbackName = `sfandomCounterCallback${Date.now()}${Math.floor(Math.random() * 100000)}`;
+      const script = document.createElement('script');
+      let settled = false;
 
-    try {
-      const response = await fetch(endpoint, {
-        method: 'GET',
-        mode: 'cors',
-        credentials: 'omit',
-        cache: 'no-store',
-        headers: { Accept: 'application/json' },
-        signal: controller.signal
-      });
+      const cleanup = () => {
+        window.clearTimeout(timer);
+        script.remove();
+        try {
+          delete window[callbackName];
+        } catch (_) {
+          window[callbackName] = undefined;
+        }
+      };
 
-      if (!response.ok) throw new Error(`counter-http-${response.status}`);
-      const payload = await response.json();
-      const rawValue = payload && (payload.displayVisitors ?? payload.value);
-      const value = Number(rawValue);
-      if (!isValidCount(value)) throw new Error('counter-invalid-payload');
-      return value;
-    } finally {
-      window.clearTimeout(timer);
-    }
+      const finish = (error, value) => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        if (error) reject(error);
+        else resolve(value);
+      };
+
+      window[callbackName] = (payload) => {
+        const rawValue = payload && (payload.displayVisitors ?? payload.value);
+        const value = Number(rawValue);
+        if (!isValidCount(value)) {
+          finish(new Error('counter-invalid-payload'));
+          return;
+        }
+        finish(null, value);
+      };
+
+      let url;
+      try {
+        url = new URL(endpoint, window.location.href);
+      } catch (_) {
+        finish(new Error('counter-invalid-endpoint'));
+        return;
+      }
+
+      url.searchParams.set('callback', callbackName);
+      url.searchParams.set('_', String(Date.now()));
+
+      script.src = url.toString();
+      script.async = true;
+      script.referrerPolicy = 'no-referrer-when-downgrade';
+      script.onerror = () => finish(new Error('counter-script-error'));
+
+      const timer = window.setTimeout(() => {
+        finish(new Error('counter-timeout'));
+      }, REQUEST_TIMEOUT_MS);
+
+      document.head.appendChild(script);
+    });
   }
 
   async function init(root) {
