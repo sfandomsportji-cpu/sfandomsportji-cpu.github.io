@@ -1,0 +1,36 @@
+name: TEMP MLB 2026-09-06 7 Game Render V2
+
+on:
+  push:
+    branches:
+      - temp/mlb-video-20260906
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install ffmpeg and fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-cjk
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests pillow
+      - name: Apply isolated playback-sort fix
+        run: sed -i 's/candidates.sort(reverse=True)/candidates.sort(key=lambda x: x[:5], reverse=True)/' tools/temp_mlb_20260906_build.py
+      - name: Render with original MLB game audio
+        run: python tools/temp_mlb_20260906_build.py
+      - name: Upload final package
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfandom-mlb-20260906-7games-v2
+          path: mlb_20260906_output/
+          if-no-files-found: error
+          retention-days: 3
