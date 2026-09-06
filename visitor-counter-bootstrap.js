@@ -2,7 +2,7 @@
   'use strict';
 
   const COUNTER_SELECTOR = '[data-sf-visitor-counter]';
-  const ENDPOINT = 'https://counter.sfandom.com/v1/visit';
+  const ENDPOINT = 'https://counterapi.com/api/sfandom.com/view/sfandom-global?unique=true';
   const CSS_HREF = 'visitor-counter.css?v=20260904-1';
 
   function ensureStyles() {
@@ -49,7 +49,7 @@
   function boot() {
     ensureStyles();
     if (!ensureCounterRoot()) return;
-    import('./visitor-counter.js?v=20260906-fallback1').catch(() => {});
+    import('./visitor-counter.js?v=20260906-public1').catch(() => {});
   }
 
   if (document.readyState === 'loading') {
