@@ -54,9 +54,10 @@
       const callbackName = `sfandomCounterCallback${Date.now()}${Math.floor(Math.random() * 100000)}`;
       const script = document.createElement('script');
       let settled = false;
+      let timer = null;
 
       const cleanup = () => {
-        window.clearTimeout(timer);
+        if (timer !== null) window.clearTimeout(timer);
         script.remove();
         try {
           delete window[callbackName];
@@ -99,7 +100,7 @@
       script.referrerPolicy = 'no-referrer-when-downgrade';
       script.onerror = () => finish(new Error('counter-script-error'));
 
-      const timer = window.setTimeout(() => {
+      timer = window.setTimeout(() => {
         finish(new Error('counter-timeout'));
       }, REQUEST_TIMEOUT_MS);
 
