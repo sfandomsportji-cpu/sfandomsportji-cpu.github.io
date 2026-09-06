@@ -49,7 +49,7 @@
   function boot() {
     ensureStyles();
     if (!ensureCounterRoot()) return;
-    import('./visitor-counter.js?v=20260906-public1').catch(() => {});
+    import('./visitor-counter.js?v=20260906-jsonp1').catch(() => {});
   }
 
   if (document.readyState === 'loading') {
