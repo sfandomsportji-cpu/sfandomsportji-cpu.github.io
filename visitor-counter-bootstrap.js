@@ -3,7 +3,7 @@
 
   const COUNTER_SELECTOR = '[data-sf-visitor-counter]';
   const SCRIPT_SELECTOR = 'script[data-sf-counterapi-script]';
-  const CSS_HREF = 'visitor-counter.css?v=20260906-header1';
+  const CSS_HREF = 'visitor-counter.css?v=20260906-header2';
   const COUNTERAPI_SRC = 'https://counterapi.com/c.js?ns=sfandom.com';
 
   function ensureStyles() {
@@ -46,17 +46,9 @@
     const root = document.createElement('div');
     root.className = 'sf-visitor-counter';
     root.dataset.sfVisitorCounter = '';
-    root.setAttribute('aria-label', 'SFANDOM live visitors');
+    root.setAttribute('aria-label', 'SFANDOM visitors');
     root.setAttribute('aria-live', 'polite');
     root.hidden = true;
-
-    const live = document.createElement('span');
-    live.className = 'sf-visitor-counter__live';
-    live.textContent = 'LIVE';
-
-    const divider = document.createElement('span');
-    divider.className = 'sf-visitor-counter__divider';
-    divider.setAttribute('aria-hidden', 'true');
 
     const label = document.createElement('span');
     label.className = 'sf-visitor-counter__label';
@@ -72,7 +64,7 @@
     value.setAttribute('noLink', 'true');
     value.setAttribute('noAnim', 'true');
 
-    root.append(live, divider, label, value);
+    root.append(label, value);
 
     const cta = header.querySelector('.header-cta');
     if (cta) header.insertBefore(root, cta);
