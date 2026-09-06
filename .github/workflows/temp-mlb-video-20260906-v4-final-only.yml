@@ -1,0 +1,51 @@
+name: TEMP MLB 2026-09-06 FINAL ONLY
+
+on:
+  push:
+    branches:
+      - temp/mlb-video-20260906
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout temp branch
+        uses: actions/checkout@v4
+
+      - name: Install ffmpeg and fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-cjk
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: pip install requests pillow
+
+      - name: Render 7-game reel with original MLB game audio
+        run: python tools/temp_mlb_20260906_runner.py
+
+      - name: Collect Instagram-ready files only
+        run: |
+          mkdir -p final_delivery
+          cp mlb_20260906_output/SFANDOM_MLB_2026-09-06_7GAMES_FINAL_1080x1920.mp4 final_delivery/SFANDOM_MLB_2026-09-06_7GAMES_INSTAGRAM_FINAL.mp4
+          cp mlb_20260906_output/SFANDOM_MLB_2026-09-06_7GAMES_thumbnail.jpg final_delivery/
+          cp mlb_20260906_output/caption.txt final_delivery/SFANDOM_MLB_2026-09-06_Instagram_caption.txt
+          cp mlb_20260906_output/QA.txt final_delivery/
+          cp mlb_20260906_output/source_manifest.json final_delivery/
+
+      - name: Upload small final package
+        uses: actions/upload-artifact@v4
+        with:
+          name: sfandom-mlb-20260906-instagram-final
+          path: final_delivery/
+          if-no-files-found: error
+          retention-days: 3
