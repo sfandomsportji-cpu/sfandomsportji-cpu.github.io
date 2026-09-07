@@ -58,7 +58,6 @@
     value.className = 'counterapi sf-visitor-counter__value';
     value.setAttribute('key', 'sfandom-global');
     value.setAttribute('action', 'view');
-    value.setAttribute('unique', 'false');
     value.setAttribute('noIcon', 'true');
     value.setAttribute('noCss', 'true');
     value.setAttribute('noLink', 'true');
