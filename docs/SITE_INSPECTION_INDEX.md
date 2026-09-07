@@ -6,6 +6,7 @@ SFANDOM 사이트 점검 기록 색인.
 
 | Date (KST) | Inspection | Status | Summary | File |
 |---|---|---|---|---|
+| 2026-09-08 | #1 | PASS | Visitor counter / CounterAPI 안정성 점검. 중복 로드 방지, 장애 격리, CSS/JS 충돌 위험, `unique=false` 의미 확인. 현 상태 유지 결정. | [2026-09-08-check-01.md](inspections/2026-09-08-check-01.md) |
 | 2026-08-31 | #1 | Recorded | 전체 오류 점검. SEV-1/2 없음. 캐시 버전 불일치, Content 최신성, 외부 의존성 위험 확인. | [2026-08-31-check-01.md](inspections/2026-08-31-check-01.md) |
 
 ## Naming rule
