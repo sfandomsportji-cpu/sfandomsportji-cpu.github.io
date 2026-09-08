@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="SFANDOM 운영팀에 비공개 의견과 문의를 전달합니다." />
+  <meta name="theme-color" content="#050505" />
+  <title>Message | SFANDOM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260827-clean3" />
+  <link rel="stylesheet" href="message.css?v=20260908-draft1" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="SFANDOM home"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a>
+    <nav class="nav" aria-label="Primary navigation"><a href="analysis.html">ANALYSIS</a><a href="content.html">CONTENT</a><a href="archive/">ARCHIVE</a><a href="about.html">ABOUT</a></nav>
+  </header>
+
+  <main class="message-page">
+    <section class="message-intro">
+      <p class="message-kicker">MESSAGE TO SFANDOM</p>
+      <h1>당신의 의견을<br><span>직접 듣겠습니다.</span></h1>
+      <p>서비스 의견, 콘텐츠 제안과 오류 제보를 운영팀에 비공개로 전달해 주세요. 작성 내용은 공개 게시판에 노출되지 않습니다.</p>
+    </section>
+
+    <section class="message-panel" aria-labelledby="message-form-title">
+      <div class="message-panel-head"><p>PRIVATE MESSAGE</p><h2 id="message-form-title">운영팀에 보내기</h2><span>답변이 필요한 경우에만 이메일을 남겨주세요.</span></div>
+      <form id="sfMessageForm" action="__SFANDOM_MESSAGE_WEB_APP_URL__" method="post" target="sfMessageSink" novalidate>
+        <input type="hidden" name="source" value="https://sfandom.com/message.html">
+        <input type="hidden" name="clientToken" id="messageClientToken" value="">
+        <div class="message-trap" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+        <label class="message-field"><span>분류</span><select name="category" required><option value="">선택</option><option>의견</option><option>문의</option><option>제안</option><option>오류신고</option><option>기타</option></select></label>
+        <label class="message-field"><span>닉네임 <small>선택</small></span><input name="nickname" maxlength="30" autocomplete="nickname"></label>
+        <label class="message-field"><span>회신 이메일 <small>선택</small></span><input type="email" name="replyEmail" maxlength="120" autocomplete="email" inputmode="email"></label>
+        <label class="message-field message-field-wide"><span>메시지</span><textarea name="message" minlength="10" maxlength="1500" required placeholder="10자 이상 1,500자 이하로 작성해 주세요."></textarea><small id="messageLength">0 / 1500</small></label>
+        <label class="message-consent"><input type="checkbox" name="consent" value="yes" required><span>접수와 답변을 위한 메시지 및 선택 입력정보 처리에 동의합니다.</span></label>
+        <div class="message-actions"><button type="submit" id="messageSubmit">SEND MESSAGE →</button><p id="messageStatus" role="status" aria-live="polite">접수 기능 연결 전입니다.</p></div>
+      </form>
+      <iframe name="sfMessageSink" title="Message submission result" hidden></iframe>
+    </section>
+  </main>
+
+  <footer class="footer-v2"><div><a class="brand" href="index.html"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a><p>SPORTS DATA · ANALYSIS · FORECAST</p></div><div class="footer-links"><a href="analysis.html">ANALYSIS</a><a href="content.html">CONTENT</a><a href="about.html">ABOUT</a><a href="privacy.html">PRIVACY</a></div><small>© 2026 SFANDOM. ALL RIGHTS RESERVED.</small></footer>
+  <script src="message.js?v=20260908-draft1" defer></script>
+</body>
+</html>
