@@ -3,11 +3,24 @@
 
   const COUNTER_SELECTOR = '[data-sf-visitor-counter]';
   const SCRIPT_SELECTOR = 'script[data-sf-counterapi-script]';
+  const CSS_SELECTOR = 'link[data-sf-visitor-counter-css]';
   const CSS_HREF = 'visitor-counter.css?v=20260906-header2';
   const COUNTERAPI_SRC = 'https://counterapi.com/c.js?ns=sfandom.com';
 
+  function keepFirstOnly(selector) {
+    const nodes = [...document.querySelectorAll(selector)];
+    nodes.slice(1).forEach((node) => node.remove());
+    return nodes[0] || null;
+  }
+
+  function cleanupResidue() {
+    keepFirstOnly(COUNTER_SELECTOR);
+    keepFirstOnly(SCRIPT_SELECTOR);
+    keepFirstOnly(CSS_SELECTOR);
+  }
+
   function ensureStyles() {
-    if (document.querySelector('link[data-sf-visitor-counter-css]')) return;
+    if (document.querySelector(CSS_SELECTOR)) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = CSS_HREF;
@@ -38,7 +51,11 @@
 
   function ensureCounterRoot() {
     const existing = document.querySelector(COUNTER_SELECTOR);
-    if (existing) return existing;
+    if (existing) {
+      const existingValue = existing.querySelector('.sf-visitor-counter__value');
+      if (existingValue) revealWhenReady(existing, existingValue);
+      return existing;
+    }
 
     const header = document.querySelector('.site-header.home-header');
     if (!header) return null;
@@ -83,6 +100,7 @@
   }
 
   function boot() {
+    cleanupResidue();
     ensureStyles();
     if (!ensureCounterRoot()) return;
     ensureCounterApiScript();
