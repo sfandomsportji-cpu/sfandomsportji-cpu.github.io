@@ -40,7 +40,12 @@ const startSignatureMoments=()=>{
   function choosePlayback(item){
     const mp4=(item.playbacks||[]).filter(p=>{
       if(!p?.url||!/\.mp4(?:\?|$)/i.test(p.url))return false;
-      try{return new URL(p.url).protocol==='https:'}catch{return false}
+      try{
+        const u=new URL(p.url);
+        const host=u.hostname.toLowerCase();
+        const trustedHost=host==='mlb.com'||host.endsWith('.mlb.com')||host==='mlbstatic.com'||host.endsWith('.mlbstatic.com');
+        return u.protocol==='https:'&&trustedHost;
+      }catch{return false}
     });
     mp4.sort((a,b)=>((b.width||0)*(b.height||0))-((a.width||0)*(a.height||0)));
     return mp4[0];
@@ -72,7 +77,7 @@ const startSignatureMoments=()=>{
     const t=norm(item.title);
     if(t.includes('field view')||t.includes('radio call')||t.includes('all calls')||t.includes('curtain call'))throw new Error('banned highlight title');
     const playback=choosePlayback(item);
-    if(!playback?.url)throw new Error('safe mp4 playback not found');
+    if(!playback?.url)throw new Error('safe MLB mp4 playback not found');
     const out={url:playback.url,start:m.start||0};
     cache.set(i,out);
     return out;
