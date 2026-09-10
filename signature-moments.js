@@ -160,9 +160,11 @@ if(signatureSection&&'IntersectionObserver'in window){
   startSignatureMoments();
 }
 
+// Header counter is above the fold: initialize immediately to avoid late layout shift.
+import('./visitor-counter-bootstrap.js?v=20260911-header3').catch(()=>{});
+
 const loadSecondary=()=>{
   import('./brand-film-touch.js?v=20260903-one-tap1').catch(()=>{});
-  import('./visitor-counter-bootstrap.js?v=20260906-header2').catch(()=>{});
 };
 if('requestIdleCallback' in window){requestIdleCallback(loadSecondary,{timeout:1200})}
 else{setTimeout(loadSecondary,350)}
