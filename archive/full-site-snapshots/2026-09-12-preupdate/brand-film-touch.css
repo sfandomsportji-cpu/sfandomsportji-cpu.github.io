@@ -1,0 +1,58 @@
+.home-brand-film-stage {
+  position: relative;
+  width: 100%;
+  background: #000;
+  line-height: 0;
+}
+
+.home-brand-film-stage .home-brand-film-player {
+  position: relative;
+  z-index: 1;
+}
+
+.home-brand-film-tap-play {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  background: rgba(0, 0, 0, 0.28);
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.home-brand-film-tap-play[hidden] {
+  display: none !important;
+}
+
+.home-brand-film-tap-play span {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 50%;
+  padding-left: 3px;
+  font-size: 18px;
+  line-height: 1;
+  background: rgba(5, 5, 5, 0.72);
+}
+
+.home-brand-film-tap-play strong {
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+}
+
+@media (min-width: 901px) and (pointer: fine) {
+  .home-brand-film-tap-play {
+    display: none !important;
+  }
+}
