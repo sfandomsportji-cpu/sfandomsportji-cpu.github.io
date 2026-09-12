@@ -30,10 +30,10 @@
 
   function revealWhenReady(root, value) {
     const showIfReady = () => {
-      const match = (value.textContent || '').match(/\d+/);
-      if (!match) return false;
+      const digits = (value.textContent || '').replace(/\D/g, '');
+      if (!digits) return false;
 
-      const formatted = match[0].padStart(6, '0');
+      const formatted = digits.padStart(6, '0');
       if ((value.textContent || '').trim() !== formatted) value.textContent = formatted;
       root.hidden = false;
       return true;
@@ -79,6 +79,7 @@
     value.setAttribute('noCss', 'true');
     value.setAttribute('noLink', 'true');
     value.setAttribute('noAnim', 'true');
+    value.setAttribute('noFormatting', 'true');
 
     root.append(label, value);
 
