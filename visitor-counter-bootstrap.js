@@ -6,6 +6,19 @@
   const CSS_SELECTOR = 'link[data-sf-visitor-counter-css]';
   const CSS_HREF = 'visitor-counter.css?v=20260906-header2';
   const COUNTERAPI_SRC = 'https://counterapi.com/c.js?ns=sfandom.com';
+  const COUNTER_CONFIG = Object.freeze({
+    key: 'sfandom-global',
+    action: 'view',
+    behavior: 'view',
+    unique: 'false',
+    timeline: 'total',
+    readOnly: 'false',
+    noIcon: 'true',
+    noCss: 'true',
+    noLink: 'true',
+    noAnim: 'true',
+    noFormatting: 'true'
+  });
 
   function keepFirstOnly(selector) {
     const nodes = [...document.querySelectorAll(selector)];
@@ -26,6 +39,12 @@
     link.href = CSS_HREF;
     link.dataset.sfVisitorCounterCss = '1';
     document.head.appendChild(link);
+  }
+
+  function applyCounterConfig(value) {
+    Object.entries(COUNTER_CONFIG).forEach(([name, setting]) => {
+      value.setAttribute(name, setting);
+    });
   }
 
   function revealWhenReady(root, value) {
@@ -53,7 +72,10 @@
     const existing = document.querySelector(COUNTER_SELECTOR);
     if (existing) {
       const existingValue = existing.querySelector('.sf-visitor-counter__value');
-      if (existingValue) revealWhenReady(existing, existingValue);
+      if (existingValue) {
+        applyCounterConfig(existingValue);
+        revealWhenReady(existing, existingValue);
+      }
       return existing;
     }
 
@@ -73,13 +95,7 @@
 
     const value = document.createElement('span');
     value.className = 'counterapi sf-visitor-counter__value';
-    value.setAttribute('key', 'sfandom-global');
-    value.setAttribute('action', 'view');
-    value.setAttribute('noIcon', 'true');
-    value.setAttribute('noCss', 'true');
-    value.setAttribute('noLink', 'true');
-    value.setAttribute('noAnim', 'true');
-    value.setAttribute('noFormatting', 'true');
+    applyCounterConfig(value);
 
     root.append(label, value);
 
