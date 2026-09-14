@@ -35,6 +35,7 @@ MAX_BODY_HTML = 200_000
 DEFAULT_REQUIRED_LABEL = "SFANDOM-SYNC"
 ALLOWED_SCHEMES = {"http", "https"}
 
+BLOCK_RE = re.compile(r"<(?:script|style|iframe|object|embed)\b[^>]*>.*?</(?:script|style|iframe|object|embed)>", re.I | re.S)
 TAG_RE = re.compile(r"<[^>]+>")
 SPACE_RE = re.compile(r"\s+")
 IMG_RE = re.compile(r"<img\b[^>]*\bsrc=[\"']([^\"']+)[\"']", re.I)
@@ -57,6 +58,7 @@ def clean_text(value: str | None, limit: int) -> str:
     if not value:
         return ""
     value = html.unescape(value)
+    value = BLOCK_RE.sub(" ", value)
     value = TAG_RE.sub(" ", value)
     value = SPACE_RE.sub(" ", value).strip()
     return value[:limit]
