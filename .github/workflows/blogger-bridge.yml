@@ -1,6 +1,10 @@
 name: Blogger Bridge
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/blogger-bridge.yml'
   schedule:
     - cron: '17 * * * *'
 permissions:
@@ -21,7 +25,7 @@ jobs:
       - name: Sync Blogger feed
         env:
           SFANDOM_BLOGGER_FEED: ${{ vars.SFANDOM_BLOGGER_FEED || 'https://sfandomji.blogspot.com/feeds/posts/default' }}
-          SFANDOM_REQUIRED_LABEL: ${{ vars.SFANDOM_REQUIRED_LABEL || 'SFANDOM-SYNC' }}
+          SFANDOM_REQUIRED_LABEL: ''
         run: python bridge/sync_blogger.py
       - name: Render static pages
         run: python bridge/render_static.py
