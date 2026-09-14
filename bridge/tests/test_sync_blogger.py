@@ -9,7 +9,7 @@ VALID_RSS=b'''<?xml version="1.0"?><rss version="2.0"><channel><item><guid>rss-1
 class BridgeSafetyTests(unittest.TestCase):
     def test_atom_sanitizes_active_content(self):
         posts=bridge.parse_feed(VALID_ATOM); posts=bridge.filter_required_label(posts,'SFANDOM-SYNC'); bridge.validate(posts)
-        body=posts[0]['body_html'].lower(); self.assertIn('<h2>hello</h2>',body); self.assertNotIn('<script',body); self.assertNotIn('onclick',body); self.assertNotIn('onerror',body); self.assertIn('loading="lazy"',body)
+        body=posts[0]['body_html'].lower(); self.assertIn('<h2>hello</h2>',body); self.assertNotIn('<script',body); self.assertNotIn('onclick',body); self.assertNotIn('onerror',body); self.assertIn('loading="lazy"',body); self.assertNotIn('bad()',posts[0]['summary'])
     def test_valid_rss(self):
         posts=bridge.filter_required_label(bridge.parse_feed(VALID_RSS),'SFANDOM-SYNC'); bridge.validate(posts); self.assertEqual(posts[0]['summary'],'Safe text')
     def test_malformed_xml_rejected(self):
