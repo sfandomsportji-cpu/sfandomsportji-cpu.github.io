@@ -1,32 +1,37 @@
-# SFANDOM Blogger Bridge — Sandbox
+# SFANDOM Blogger Bridge — Static v2
 
-Status: ISOLATED / NOT CONNECTED TO PRODUCTION
+Status: production candidate / isolated static route.
 
-This directory is an experimental bridge sandbox. Nothing here is referenced by `index.html`, `content.html`, or any production page.
+## Runtime principle
 
-## Safety rules
+Blogger is used only at build time. Visitors never wait for Blogger, GitHub API, Raw GitHub, or a JSON fetch. The published `/blog/` pages contain the article HTML in the first response.
 
-1. `main` is never modified by the bridge test.
-2. Feed fetch failure means **no publish**.
-3. Parse/validation failure means **no publish**.
-4. Empty feed means **no publish**.
-5. Oversized feed means **no publish**.
-6. Existing `current.json` is never deleted before a replacement passes validation.
-7. First-stage output contains text/meta only; remote HTML is not injected into SFANDOM.
-8. Production pages must never depend on Blogger being online at request time.
+## Pipeline
 
-## Intended flow
+1. Fetch the public Blogger Atom/RSS feed over HTTPS.
+2. Require the `SFANDOM-SYNC` label by default.
+3. Reject malformed, empty, oversized, duplicate, or unsafe feed data.
+4. Sanitize Blogger HTML with an allow-list. Scripts, styles, iframes, inline event handlers, and unsafe URLs are removed.
+5. Atomically replace `bridge/data/current.json` only after validation passes.
+6. Render static `/blog/YYYY/MM/slug/index.html` pages plus `/blog/index.html`.
+7. Validate generated HTML and reject runtime fetch/API dependencies.
+8. Commit only the validated generated data/pages.
 
-Blogger public feed -> isolated fetch -> validation -> temporary JSON -> atomic replacement -> later, after approval, SFANDOM reads only the validated static JSON.
+## Failure behavior
 
-## Phase 1 acceptance criteria
+- Missing feed configuration: safe no-op.
+- Network/timeout/XML/validation error: build stops; no publish.
+- Blogger deletion does not automatically delete old static article pages.
+- Existing SFANDOM home/content/analysis pages are not rewritten by the bridge.
 
-- 3 consecutive valid syncs
-- malformed XML rejected
-- empty feed rejected
-- timeout/network failure leaves existing data untouched
-- oversized response rejected
-- no `<script>`, `<style>`, inline event handler, or remote HTML is passed to the site
-- no production file changes
+## GitHub configuration
 
-Only after the above passes should a limited production integration be proposed.
+Repository variable required for live sync:
+
+- `SFANDOM_BLOGGER_FEED` — public HTTPS Atom/RSS feed URL.
+
+Optional:
+
+- `SFANDOM_REQUIRED_LABEL` — defaults to `SFANDOM-SYNC`.
+
+The scheduled workflow runs hourly at minute 17. Until the feed variable is configured, it exits without changing the site.
