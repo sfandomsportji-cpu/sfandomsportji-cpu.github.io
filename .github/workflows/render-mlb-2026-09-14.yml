@@ -1,0 +1,76 @@
+name: Render MLB Sep 14 KST
+
+on:
+  push:
+    branches:
+      - render/mlb-2026-09-14-kst
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-dejavu-core
+
+      - name: Download official MLB clips
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p clips out cards
+          curl -L --fail --retry 3 --retry-delay 2 -o clips/01_mia.mp4 'https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/13/f0814b1d-068b0c18-61e4d2de-csvm-diamondgcp-asset_1280x720_59_4000K.mp4'
+          curl -L --fail --retry 3 --retry-delay 2 -o clips/02_bos.mp4 'https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/13/c402e256-b6a81e71-007fa842-csvm-diamondgcp-asset_1280x720_59_4000K.mp4'
+          curl -L --fail --retry 3 --retry-delay 2 -o clips/03_nyy.mp4 'https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/13/a6716096-487bf0d8-45b1b449-csvm-diamondgcp-asset_1280x720_59_4000K.mp4'
+          curl -L --fail --retry 3 --retry-delay 2 -o clips/04_cle.mp4 'https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/13/70745e56-d82262df-37da5319-csvm-diamondgcp-asset_1280x720_59_4000K.mp4'
+          curl -L --fail --retry 3 --retry-delay 2 -o clips/05_cin.mp4 'https://mlb-cuts-diamond.mlb.com/FORGE/2026/2026-09/13/dbc67359-8f3bd941-d70aaa18-csvm-diamondgcp-asset_1280x720_59_4000K.mp4'
+          for f in clips/*.mp4; do ffprobe -v error -show_entries format=duration -of default=nw=1 "$f"; done
+
+      - name: Render portrait cards with original game audio only
+        shell: bash
+        run: |
+          set -euo pipefail
+          FONT='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
+          REG='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
+
+          render_card() {
+            in="$1"; start="$2"; dur="$3"; score="$4"; title="$5"; sub="$6"; out="$7"
+            printf '%s\n' 'SFANDOM  |  MLB' > /tmp/header.txt
+            printf '%s\n' "$score" > /tmp/score.txt
+            printf '%s\n' "$title" > /tmp/title.txt
+            printf '%s\n' "$sub" > /tmp/sub.txt
+            printf '%s\n' 'SOURCE  MLB FILM ROOM  |  SEP 14 KST' > /tmp/source.txt
+
+            ffmpeg -hide_banner -loglevel warning -y -ss "$start" -i "$in" -t "$dur" \
+              -filter_complex "color=c=black:s=1080x1920:r=30:d=${dur}[bg];[0:v]scale=1080:608:force_original_aspect_ratio=decrease,pad=1080:608:(ow-iw)/2:(oh-ih)/2:black,fps=30,setsar=1[v];[bg][v]overlay=0:535:shortest=1,drawtext=fontfile=${FONT}:textfile=/tmp/header.txt:fontcolor=white:fontsize=38:x=80:y=110,drawtext=fontfile=${FONT}:textfile=/tmp/score.txt:fontcolor=white:fontsize=64:x=80:y=225,drawtext=fontfile=${FONT}:textfile=/tmp/title.txt:fontcolor=white:fontsize=46:x=80:y=330,drawtext=fontfile=${REG}:textfile=/tmp/sub.txt:fontcolor=0xB8B8B8:fontsize=26:x=80:y=410,drawtext=fontfile=${REG}:textfile=/tmp/source.txt:fontcolor=0xA0A0A0:fontsize=22:x=80:y=1215[outv]" \
+              -map '[outv]' -map 0:a:0 \
+              -c:v libx264 -preset veryfast -crf 19 -pix_fmt yuv420p -r 30 \
+              -c:a aac -b:a 192k -ar 48000 -ac 2 -shortest -movflags +faststart "$out"
+          }
+
+          render_card clips/01_mia.mp4 0 8.5 'MIA 6 - 4 LAD' 'RAMIREZ WALKS IT OFF' 'Bottom 9  |  two-run walk-off home run' cards/01.mp4
+          render_card clips/02_bos.mp4 68 9.0 'BOS 4 - 1 KC' 'TOLLE  |  IMMACULATE INNING' 'Nine pitches  |  three strikeouts' cards/02.mp4
+          render_card clips/03_nyy.mp4 0 7.5 'NYY 2 - 0 NYM' 'RICE  |  LEADOFF HR #38' 'Bottom 1  |  Yankees strike first' cards/03.mp4
+          render_card clips/04_cle.mp4 0 7.5 'CLE 9 - 2 MIN' 'BAZZANA  |  TWO-RUN HR #12' 'Top 6  |  Cleveland breaks it open' cards/04.mp4
+          render_card clips/05_cin.mp4 0 8.0 'CIN 4 - 3 MIL' 'SUAREZ  |  THREE-RUN HR #24' 'Top 6  |  Reds flip the game' cards/05.mp4
+
+          printf "file '%s'\n" "$PWD/cards/01.mp4" "$PWD/cards/02.mp4" "$PWD/cards/03.mp4" "$PWD/cards/04.mp4" "$PWD/cards/05.mp4" > concat.txt
+          ffmpeg -hide_banner -loglevel warning -y -f concat -safe 0 -i concat.txt -c copy -movflags +faststart out/SFANDOM_MLB_2026-09-14_FINAL_GAME_AUDIO_FIXED_ACTUAL.mp4
+
+      - name: Verify final render
+        run: |
+          ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,codec_name -of default=nw=1 out/SFANDOM_MLB_2026-09-14_FINAL_GAME_AUDIO_FIXED_ACTUAL.mp4
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of default=nw=1 out/SFANDOM_MLB_2026-09-14_FINAL_GAME_AUDIO_FIXED_ACTUAL.mp4
+          ffprobe -v error -show_entries format=duration,size -of default=nw=1 out/SFANDOM_MLB_2026-09-14_FINAL_GAME_AUDIO_FIXED_ACTUAL.mp4
+
+      - name: Upload rendered MP4
+        uses: actions/upload-artifact@v4
+        with:
+          name: SFANDOM_MLB_2026-09-14_ACTUAL
+          path: out/SFANDOM_MLB_2026-09-14_FINAL_GAME_AUDIO_FIXED_ACTUAL.mp4
+          retention-days: 7
+          compression-level: 0
