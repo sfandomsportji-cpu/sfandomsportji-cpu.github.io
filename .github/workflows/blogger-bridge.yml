@@ -20,7 +20,7 @@ jobs:
         run: python -m unittest discover -s bridge/tests -v
       - name: Sync Blogger feed
         env:
-          SFANDOM_BLOGGER_FEED: ${{ vars.SFANDOM_BLOGGER_FEED }}
+          SFANDOM_BLOGGER_FEED: ${{ vars.SFANDOM_BLOGGER_FEED || 'https://sfandomji.blogspot.com/feeds/posts/default' }}
           SFANDOM_REQUIRED_LABEL: ${{ vars.SFANDOM_REQUIRED_LABEL || 'SFANDOM-SYNC' }}
         run: python bridge/sync_blogger.py
       - name: Render static pages
