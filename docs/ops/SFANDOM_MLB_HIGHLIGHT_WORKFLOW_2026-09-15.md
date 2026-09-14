@@ -88,6 +88,14 @@ Correct-date source set used for the successful rebuild:
 - Cleveland — Travis Bazzana 2-run HR sequence used after source verification
 - Cincinnati — Eugenio Suárez 3-run HR #24
 
+## Ending / logo outro rule
+- At the very end, the final game footage must **fade down gradually** instead of cutting abruptly.
+- Transition into a **full black screen**.
+- On black, show the **white SFANDOM company logo** cleanly and centered.
+- No extra copy, no sponsor-like clutter, no BGM; keep only the visual logo close.
+- Default feel: restrained, premium, magazine-like ending.
+- Unless Ji requests otherwise, treat this fade-to-black + white SFANDOM logo as the **standard ending for future MLB highlight videos**.
+
 ## Communication rule
 - Do not bluff progress.
 - Do not say “완성 / 검수 완료 / 오늘 영상 맞다” until verified.
