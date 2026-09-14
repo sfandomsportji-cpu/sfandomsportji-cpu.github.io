@@ -1,0 +1,41 @@
+name: Blogger Bridge
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: blogger-bridge
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run bridge tests
+        run: python -m unittest discover -s bridge/tests -v
+      - name: Sync Blogger feed
+        env:
+          SFANDOM_BLOGGER_FEED: ${{ vars.SFANDOM_BLOGGER_FEED }}
+          SFANDOM_REQUIRED_LABEL: ${{ vars.SFANDOM_REQUIRED_LABEL || 'SFANDOM-SYNC' }}
+        run: python bridge/sync_blogger.py
+      - name: Render static pages
+        run: python bridge/render_static.py
+      - name: Validate static pages
+        run: |
+          if [ -d blog ]; then python bridge/validate_static.py; else echo 'No blog output yet; safe no-op.'; fi
+      - name: Commit validated changes
+        run: |
+          if git diff --quiet -- bridge/data/current.json bridge/state.json blog; then
+            echo 'No content changes.'
+            exit 0
+          fi
+          git config user.name 'sfandom-blogger-bridge[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add bridge/data/current.json bridge/state.json blog
+          git commit -m 'chore(blog): sync Blogger static content'
+          git push
