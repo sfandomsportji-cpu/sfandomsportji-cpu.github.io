@@ -4,12 +4,12 @@
   const rail = document.querySelector('.content-zone .content-rail');
   if (!rail || rail.dataset.editorialEnhanced === '1') return;
 
-  const STYLE_ID = 'sf-home-editorial-preview-css';
+  const STYLE_ID = 'sf-home-editorial-css';
   if (!document.getElementById(STYLE_ID)) {
     const link = document.createElement('link');
     link.id = STYLE_ID;
     link.rel = 'stylesheet';
-    link.href = 'home-editorial-preview.css?v=20260915-2';
+    link.href = 'home-editorial.css?v=20260915-1';
     document.head.appendChild(link);
   }
 
