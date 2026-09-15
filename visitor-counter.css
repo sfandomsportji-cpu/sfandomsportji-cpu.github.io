@@ -32,6 +32,15 @@
   font-feature-settings: 'tnum' 1;
 }
 
+@media (min-width: 901px) {
+  .sf-visitor-counter {
+    height: 40px;
+    min-height: 40px;
+    padding: 0 15px;
+    border-radius: 0;
+  }
+}
+
 @media (max-width: 900px) {
   .sf-visitor-counter {
     min-height: 30px;

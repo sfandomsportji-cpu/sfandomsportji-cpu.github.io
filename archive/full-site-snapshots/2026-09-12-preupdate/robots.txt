@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /message-backend/
-
-Sitemap: https://sfandom.com/sitemap.xml
