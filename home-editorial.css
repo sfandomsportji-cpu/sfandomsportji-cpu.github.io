@@ -10,11 +10,12 @@
 
 .content-card-copy{
   margin:0;
-  color:#c9c9c4;
-  font-size:.92rem;
+  color:#d4d4d0;
+  font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  font-size:17px;
   font-weight:500;
-  line-height:1.72;
-  letter-spacing:-.012em;
+  line-height:1.76;
+  letter-spacing:-.005em;
   word-break:keep-all;
 }
 
@@ -34,12 +35,12 @@
   padding:6px 9px;
   border:1px solid #343434;
   background:rgba(255,255,255,.025);
-  color:#b8b8b3;
+  color:#c3c3bf;
   font-style:normal;
-  font-size:.58rem;
+  font-size:12px;
   font-weight:800;
   line-height:1;
-  letter-spacing:.1em;
+  letter-spacing:.08em;
   white-space:nowrap;
 }
 
@@ -50,12 +51,12 @@
 
 @media(max-width:900px){
   .content-rail a{min-height:465px}
-  .content-card-copy{font-size:.92rem;line-height:1.72}
+  .content-card-copy{font-size:17px;line-height:1.76}
 }
 
 @media(max-width:620px){
   .content-rail a{min-height:0;padding:24px;gap:14px}
   .content-rail b{margin:10px 0 2px;font-size:2rem}
-  .content-card-copy{font-size:.94rem;line-height:1.76;color:#d0d0cb}
+  .content-card-copy{font-size:16px;line-height:1.76;color:#ddddda}
   .content-card-data{margin-top:6px;padding-top:16px}
 }

@@ -9,7 +9,7 @@
     const link = document.createElement('link');
     link.id = STYLE_ID;
     link.rel = 'stylesheet';
-    link.href = 'home-editorial.css?v=20260915-1';
+    link.href = 'home-editorial.css?v=20260916-v1';
     document.head.appendChild(link);
   }
 
