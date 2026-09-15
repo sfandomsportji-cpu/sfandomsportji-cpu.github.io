@@ -1,0 +1,36 @@
+name: MLB Parallel Official Preview
+
+on:
+  pull_request:
+    paths:
+      - 'tools/mlb_parallel_render_pinned.py'
+      - 'tools/mlb_2026-09-04_playbacks.json'
+      - '.github/workflows/mlb-parallel-preview.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-cjk
+          python -m pip install requests pillow
+      - name: Render pinned 16-game official MLB clips
+        run: python tools/mlb_parallel_render_pinned.py
+      - name: Upload final package
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlb-official-16game-preview-2026-09-04
+          path: |
+            pinned_output/SFANDOM_MLB_2026-09-04_OFFICIAL_16GAME_HIGHLIGHTS_9x16.mp4
+            pinned_output/SFANDOM_MLB_2026-09-04_thumbnail.jpg
+            pinned_output/SFANDOM_MLB_2026-09-04_caption.txt
+            pinned_output/manifest.json
+          if-no-files-found: error
+          retention-days: 3
