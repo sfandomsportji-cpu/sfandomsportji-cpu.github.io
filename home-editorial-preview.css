@@ -1,0 +1,59 @@
+/* SFANDOM homepage editorial card enhancement · isolated override */
+.content-rail a{
+  min-height:430px;
+  gap:16px;
+}
+
+.content-rail b{
+  margin:16px 0 0;
+}
+
+.content-card-copy{
+  margin:0;
+  color:#a9a9a4;
+  font-size:.82rem;
+  line-height:1.78;
+  letter-spacing:-.012em;
+  word-break:keep-all;
+}
+
+.content-card-data{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:auto;
+  padding-top:18px;
+  border-top:1px solid #242424;
+}
+
+.content-card-data em{
+  display:inline-flex;
+  align-items:center;
+  min-height:25px;
+  padding:5px 8px;
+  border:1px solid #2b2b2b;
+  background:rgba(255,255,255,.018);
+  color:#8f8f8a;
+  font-style:normal;
+  font-size:.55rem;
+  font-weight:800;
+  line-height:1;
+  letter-spacing:.11em;
+  white-space:nowrap;
+}
+
+.content-card-type{
+  margin-top:0;
+}
+
+@media(max-width:900px){
+  .content-rail a{min-height:390px}
+  .content-card-copy{font-size:.8rem;line-height:1.72}
+}
+
+@media(max-width:620px){
+  .content-rail a{min-height:0;padding:24px;gap:14px}
+  .content-rail b{margin:10px 0 2px;font-size:2rem}
+  .content-card-copy{font-size:.84rem;line-height:1.76}
+  .content-card-data{margin-top:4px;padding-top:15px}
+}
