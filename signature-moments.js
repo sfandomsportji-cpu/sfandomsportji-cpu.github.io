@@ -1,3 +1,6 @@
+const redundantBrandFilmPanel=document.querySelector('.home-brand-film');
+if(redundantBrandFilmPanel)redundantBrandFilmPanel.remove();
+
 const revealNodes=[...document.querySelectorAll('.reveal')];
 if('IntersectionObserver' in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
