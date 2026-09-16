@@ -1,0 +1,58 @@
+name: oneoff-remove-youtube-hero
+
+on:
+  push:
+    branches:
+      - fix/remove-youtube-hero-20260917
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Replace external YouTube hero with owned SFANDOM MP4
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          index = Path('index.html')
+          text = index.read_text(encoding='utf-8')
+          old = '        <iframe class="hero-reel" src="https://www.youtube-nocookie.com/embed/9V2guLT3S14?autoplay=1&mute=1&controls=0&loop=1&playlist=9V2guLT3S14&playsinline=1&rel=0" title="FC Barcelona 3–2 Real Madrid · 2026 Spanish Super Cup El Clásico highlights" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe>'
+          new = '''        <video class="hero-reel" autoplay muted loop playsinline preload="metadata" aria-label="SFANDOM original brand film background">
+          <source src="assets/sfandom-brand-film-20260901.mp4" type="video/mp4">
+        </video>'''
+          if old not in text:
+              raise SystemExit('STOP: expected YouTube hero iframe not found')
+          text = text.replace(old, new, 1)
+          text = text.replace('home.css?v=20260916-v1', 'home.css?v=20260917-v2', 1)
+          index.write_text(text, encoding='utf-8')
+
+          css = Path('home.css')
+          css_text = css.read_text(encoding='utf-8')
+          old_css = '.hero-reel-wrap .hero-reel{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:.58;filter:saturate(.9) contrast(1.08);background:#050505;pointer-events:none}'
+          new_css = '.hero-reel-wrap .hero-reel{position:absolute;inset:0;width:100%;height:100%;border:0;opacity:.58;filter:saturate(.9) contrast(1.08);background:#050505;pointer-events:none;object-fit:cover}'
+          if old_css not in css_text:
+              raise SystemExit('STOP: expected hero-reel CSS rule not found')
+          css.write_text(css_text.replace(old_css, new_css, 1), encoding='utf-8')
+
+          wf = Path('.github/workflows/oneoff-remove-youtube-hero.yml')
+          if wf.exists():
+              wf.unlink()
+          PY
+      - name: Verify no YouTube hero reference remains
+        run: |
+          ! grep -q '9V2guLT3S14' index.html
+          grep -q 'assets/sfandom-brand-film-20260901.mp4' index.html
+          test ! -e .github/workflows/oneoff-remove-youtube-hero.yml
+      - name: Commit clean patch
+        run: |
+          git config user.name "SFANDOM Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add index.html home.css .github/workflows/oneoff-remove-youtube-hero.yml
+          git commit -m "fix: replace external YouTube hero with owned brand film"
+          git push origin HEAD:fix/remove-youtube-hero-20260917
