@@ -47,7 +47,7 @@
   .hero-copy .live-chip{margin-bottom:18px;border-color:#353538;background:rgba(8,8,9,.32);backdrop-filter:blur(8px)}
   .hero-copy .eyebrow{margin-bottom:14px}
   .hero-actions{gap:10px}.hero-actions .btn{min-height:48px}
-  .hero-visual .hero-social{right:0;top:50%;bottom:auto;transform:translateY(-50%);flex-direction:column;align-items:center;justify-content:center;gap:8px;height:auto;margin:0;padding:10px 7px;border:1px solid rgba(255,255,255,.08);background:rgba(6,6,6,.58);backdrop-filter:blur(10px)}
+  .hero-visual .hero-social{right:0;bottom:0;top:auto;transform:none;flex-direction:column;align-items:center;justify-content:center;gap:8px;height:auto;margin:0;padding:10px 7px;border:1px solid rgba(255,255,255,.08);background:rgba(6,6,6,.58);backdrop-filter:blur(10px)}
   .hero-visual .hero-social>span{margin:0 0 2px;padding:0;writing-mode:vertical-rl;transform:rotate(180deg);color:#737379;font-size:.5rem}
   .hero-visual .hero-social a{width:34px;height:34px;margin:0;border:1px solid #303035;background:rgba(9,9,10,.82)}
   .hero-visual .hero-social a:hover{border-color:#ef2d2d;background:#17090b;transform:translateX(-2px)}
