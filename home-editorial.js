@@ -60,3 +60,41 @@
 
   rail.dataset.editorialEnhanced = '1';
 })();
+
+(() => {
+  'use strict';
+
+  const header = document.querySelector('.site-header.home-header');
+  const brand = header?.querySelector('.brand');
+  if (!header || !brand) return;
+
+  const root = document.createElement('div');
+  root.className = 'sf-basic-counter';
+  root.setAttribute('aria-label', 'SFANDOM visitors');
+
+  const label = document.createElement('span');
+  label.textContent = 'VISITORS';
+
+  const value = document.createElement('b');
+  const key = 'sfandom-basic-counter';
+  let count = 1;
+
+  try {
+    count = Number(localStorage.getItem(key) || 0) + 1;
+    localStorage.setItem(key, String(count));
+  } catch (_) {}
+
+  value.textContent = String(count).padStart(6, '0');
+  root.append(label, value);
+  brand.insertAdjacentElement('afterend', root);
+
+  const style = document.createElement('style');
+  style.textContent = `
+    .sf-basic-counter{display:inline-flex;align-items:center;gap:7px;flex:0 0 auto;height:30px;margin-left:8px;padding:0 10px;border:1px solid rgba(255,255,255,.11);border-radius:2px;background:rgba(255,255,255,.018);color:#e7e7e3;font:700 12px/1 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;letter-spacing:.08em;white-space:nowrap}
+    .sf-basic-counter span{opacity:.52}
+    .sf-basic-counter b{min-width:52px;font-size:14px;font-weight:800;letter-spacing:.06em;text-align:right;font-variant-numeric:tabular-nums}
+    @media(max-width:900px){.sf-basic-counter{height:28px;padding:0 9px}}
+    @media(max-width:720px){.sf-basic-counter{position:absolute;top:calc(100% + 8px);right:18px;z-index:2;margin-left:0;background:rgba(6,6,6,.92)}}
+  `;
+  document.head.appendChild(style);
+})();
