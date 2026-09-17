@@ -9,16 +9,13 @@
   const COUNTER_CONFIG = Object.freeze({
     key: 'sfandom-global',
     action: 'view',
-    behavior: 'view',
-    unique: 'false',
-    timeline: 'total',
-    readOnly: 'false',
     noIcon: 'true',
     noCss: 'true',
     noLink: 'true',
     noAnim: 'true',
     noFormatting: 'true'
   });
+  const LEGACY_COUNT_OPTIONS = Object.freeze(['behavior', 'unique', 'timeline', 'readOnly']);
 
   function keepFirstOnly(selector) {
     const nodes = [...document.querySelectorAll(selector)];
@@ -42,6 +39,7 @@
   }
 
   function applyCounterConfig(value) {
+    LEGACY_COUNT_OPTIONS.forEach((name) => value.removeAttribute(name));
     Object.entries(COUNTER_CONFIG).forEach(([name, setting]) => {
       value.setAttribute(name, setting);
     });
