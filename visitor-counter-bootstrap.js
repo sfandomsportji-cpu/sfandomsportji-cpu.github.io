@@ -3,7 +3,7 @@
 
   const COUNTER_SELECTOR = '[data-sf-visitor-counter]';
   const CSS_SELECTOR = 'link[data-sf-visitor-counter-css]';
-  const CSS_HREF = 'visitor-counter.css?v=20260917-contain1';
+  const CSS_HREF = 'visitor-counter.css?v=20260917-position3';
   const COUNTER_ENDPOINT = 'https://counterapi.com/api/sfandom.com/view/sfandom-global';
 
   function keepFirstOnly(selector) {
