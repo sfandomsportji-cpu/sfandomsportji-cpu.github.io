@@ -61,8 +61,12 @@
   rail.dataset.editorialEnhanced = '1';
 })();
 
+
 (() => {
   'use strict';
+
+  if (window.__SFANDOM_GLOBAL_COUNTER_V2__) return;
+  window.__SFANDOM_GLOBAL_COUNTER_V2__ = true;
 
   const header = document.querySelector('.site-header.home-header');
   const brand = header?.querySelector('.brand');
@@ -76,17 +80,40 @@
   label.textContent = 'VISITORS';
 
   const value = document.createElement('b');
-  const key = 'sfandom-basic-counter';
-  let count = 1;
+  const FALLBACK_BASELINE = 200;
+  const FALLBACK_KEY = 'sfandom-global-counter-v2-last';
+  const COUNTER_ENDPOINT = 'https://counterapi.com/api/sfandom.com/view/sfandom-home-global-v2?startNumber=200';
 
+  let fallback = FALLBACK_BASELINE;
   try {
-    count = Number(localStorage.getItem(key) || 0) + 1;
-    localStorage.setItem(key, String(count));
+    const saved = Number(localStorage.getItem(FALLBACK_KEY));
+    if (Number.isFinite(saved) && saved >= FALLBACK_BASELINE) fallback = Math.trunc(saved);
   } catch (_) {}
 
-  value.textContent = String(count).padStart(6, '0');
+  value.textContent = String(fallback).padStart(6, '0');
   root.append(label, value);
   brand.insertAdjacentElement('afterend', root);
+
+  fetch(COUNTER_ENDPOINT, {
+    method: 'GET',
+    mode: 'cors',
+    cache: 'no-store',
+    credentials: 'omit'
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error('counter ' + response.status);
+      return response.json();
+    })
+    .then((data) => {
+      const numeric = Number(data && data.value);
+      if (!Number.isFinite(numeric)) throw new Error('invalid counter value');
+      const count = Math.max(FALLBACK_BASELINE, Math.trunc(numeric));
+      value.textContent = String(count).padStart(6, '0');
+      try { localStorage.setItem(FALLBACK_KEY, String(count)); } catch (_) {}
+    })
+    .catch(() => {
+      value.textContent = String(fallback).padStart(6, '0');
+    });
 
   const style = document.createElement('style');
   style.textContent = `
