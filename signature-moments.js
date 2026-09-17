@@ -164,7 +164,7 @@ if(signatureSection&&'IntersectionObserver'in window){
 }
 
 const loadSecondary=()=>{
-  import('./visitor-counter-bootstrap.js?v=20260918-countertest2').catch(()=>{});
+  import('./visitor-counter-bootstrap.js?v=20260918-counterclean1').catch(()=>{});
   import('./home-editorial.js?v=20260916-v1').catch(()=>{});
 };
 if('requestIdleCallback'in window){requestIdleCallback(loadSecondary,{timeout:1200})}
