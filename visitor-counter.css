@@ -5,10 +5,17 @@
 .sf-visitor-counter {
   display: inline-flex;
   align-items: center;
+  justify-content: space-between;
   gap: 7px;
-  flex: 0 0 auto;
+  flex: 0 0 132px;
+  width: 132px;
+  max-width: 132px;
+  min-width: 132px;
+  height: 30px;
   min-height: 30px;
   padding: 0 10px;
+  overflow: hidden;
+  box-sizing: border-box;
   border: 1px solid rgba(255, 255, 255, 0.11);
   border-radius: 2px;
   background: rgba(255, 255, 255, 0.018);
@@ -19,10 +26,12 @@
 }
 
 .sf-visitor-counter__label {
+  flex: 0 0 auto;
   opacity: 0.52;
 }
 
 .sf-visitor-counter__value {
+  flex: 0 0 auto;
   min-width: 52px;
   font-size: 14px;
   font-weight: 800;
@@ -33,17 +42,28 @@
 }
 
 @media (min-width: 901px) {
+  .home-header {
+    justify-content: flex-start;
+  }
+
+  .home-header .nav {
+    margin-left: auto;
+  }
+
   .sf-visitor-counter {
-    height: 30px;
-    min-height: 30px;
-    padding: 0 10px;
     margin-left: 8px;
     margin-right: 0;
+    align-self: center;
   }
 }
 
 @media (max-width: 900px) {
   .sf-visitor-counter {
+    flex-basis: 124px;
+    width: 124px;
+    min-width: 124px;
+    max-width: 124px;
+    height: 28px;
     min-height: 28px;
     padding: 0 9px;
   }
@@ -55,6 +75,11 @@
     top: calc(100% + 8px);
     right: 18px;
     z-index: 2;
+    flex-basis: 122px;
+    width: 122px;
+    min-width: 122px;
+    max-width: 122px;
+    height: 28px;
     min-height: 28px;
     padding: 0 9px;
     border-color: rgba(255, 255, 255, 0.16);
@@ -77,8 +102,11 @@
 @media (max-width: 430px) {
   .sf-visitor-counter {
     right: 14px;
+    flex-basis: 118px;
+    width: 118px;
+    min-width: 118px;
+    max-width: 118px;
     gap: 6px;
-    min-height: 28px;
     padding: 0 8px;
     font-size: 12px;
   }
