@@ -2,20 +2,9 @@
   'use strict';
 
   const COUNTER_SELECTOR = '[data-sf-visitor-counter]';
-  const SCRIPT_SELECTOR = 'script[data-sf-counterapi-script]';
   const CSS_SELECTOR = 'link[data-sf-visitor-counter-css]';
   const CSS_HREF = 'visitor-counter.css?v=20260917-position2';
-  const COUNTERAPI_SRC = 'https://counterapi.com/c.js?ns=sfandom.com';
-  const COUNTER_CONFIG = Object.freeze({
-    key: 'sfandom-global',
-    action: 'view',
-    noIcon: 'true',
-    noCss: 'true',
-    noLink: 'true',
-    noAnim: 'true',
-    noFormatting: 'true'
-  });
-  const LEGACY_COUNT_OPTIONS = Object.freeze(['behavior', 'unique', 'timeline', 'readOnly']);
+  const COUNTER_ENDPOINT = 'https://counterapi.com/api/sfandom.com/view/sfandom-global';
 
   function keepFirstOnly(selector) {
     const nodes = [...document.querySelectorAll(selector)];
@@ -25,8 +14,8 @@
 
   function cleanupResidue() {
     keepFirstOnly(COUNTER_SELECTOR);
-    keepFirstOnly(SCRIPT_SELECTOR);
     keepFirstOnly(CSS_SELECTOR);
+    document.querySelectorAll('script[data-sf-counterapi-script]').forEach((node) => node.remove());
   }
 
   function ensureStyles() {
@@ -38,43 +27,48 @@
     document.head.appendChild(link);
   }
 
-  function applyCounterConfig(value) {
-    LEGACY_COUNT_OPTIONS.forEach((name) => value.removeAttribute(name));
-    Object.entries(COUNTER_CONFIG).forEach(([name, setting]) => {
-      value.setAttribute(name, setting);
-    });
+  function showCounter(root, value, count) {
+    const numeric = Number(count);
+    if (!Number.isFinite(numeric)) return false;
+    value.textContent = String(Math.trunc(numeric)).padStart(6, '0');
+    root.hidden = false;
+    return true;
   }
 
-  function revealWhenReady(root, value) {
-    const showIfReady = () => {
-      const digits = (value.textContent || '').replace(/\D/g, '');
-      if (!digits) return false;
-
-      const formatted = digits.padStart(6, '0');
-      if ((value.textContent || '').trim() !== formatted) value.textContent = formatted;
-      root.hidden = false;
-      return true;
-    };
-
-    if (showIfReady()) return;
-
-    const observer = new MutationObserver(() => {
-      if (showIfReady()) observer.disconnect();
-    });
-    observer.observe(value, { childList: true, subtree: true, characterData: true });
-
-    window.setTimeout(() => observer.disconnect(), 10000);
+  async function incrementCounter(root, value) {
+    try {
+      const response = await fetch(COUNTER_ENDPOINT, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store',
+        credentials: 'omit'
+      });
+      if (!response.ok) throw new Error(`CounterAPI ${response.status}`);
+      const data = await response.json();
+      if (!showCounter(root, value, data && data.value)) throw new Error('CounterAPI invalid value');
+    } catch (error) {
+      console.warn('[SFANDOM] visitor counter unavailable', error);
+    }
   }
 
   function ensureCounterRoot() {
     const existing = document.querySelector(COUNTER_SELECTOR);
     if (existing) {
-      const existingValue = existing.querySelector('.sf-visitor-counter__value');
-      if (existingValue) {
-        applyCounterConfig(existingValue);
-        revealWhenReady(existing, existingValue);
+      let existingValue = existing.querySelector('.sf-visitor-counter__value');
+      if (!existingValue) {
+        existingValue = document.createElement('span');
+        existingValue.className = 'sf-visitor-counter__value';
+        existing.appendChild(existingValue);
       }
-      return existing;
+      existingValue.classList.remove('counterapi');
+      existingValue.removeAttribute('key');
+      existingValue.removeAttribute('action');
+      existingValue.removeAttribute('behavior');
+      existingValue.removeAttribute('unique');
+      existingValue.removeAttribute('timeline');
+      existingValue.removeAttribute('readOnly');
+      existing.hidden = true;
+      return { root: existing, value: existingValue };
     }
 
     const header = document.querySelector('.site-header.home-header');
@@ -92,8 +86,7 @@
     label.textContent = 'VISITORS';
 
     const value = document.createElement('span');
-    value.className = 'counterapi sf-visitor-counter__value';
-    applyCounterConfig(value);
+    value.className = 'sf-visitor-counter__value';
 
     root.append(label, value);
 
@@ -101,24 +94,15 @@
     if (brand) brand.insertAdjacentElement('afterend', root);
     else header.prepend(root);
 
-    revealWhenReady(root, value);
-    return root;
-  }
-
-  function ensureCounterApiScript() {
-    if (document.querySelector(SCRIPT_SELECTOR)) return;
-    const script = document.createElement('script');
-    script.src = COUNTERAPI_SRC;
-    script.async = true;
-    script.dataset.sfCounterapiScript = '1';
-    document.head.appendChild(script);
+    return { root, value };
   }
 
   function boot() {
     cleanupResidue();
     ensureStyles();
-    if (!ensureCounterRoot()) return;
-    ensureCounterApiScript();
+    const counter = ensureCounterRoot();
+    if (!counter) return;
+    incrementCounter(counter.root, counter.value);
   }
 
   if (document.readyState === 'loading') {
