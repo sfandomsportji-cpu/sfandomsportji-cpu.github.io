@@ -2,7 +2,7 @@ const redundantBrandFilmPanel=document.querySelector('.home-brand-film');
 if(redundantBrandFilmPanel)redundantBrandFilmPanel.remove();
 
 const revealNodes=[...document.querySelectorAll('.reveal')];
-if('IntersectionObserver' in window){
+if('IntersectionObserver'in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
   revealNodes.forEach(el=>io.observe(el));
 }else{
@@ -164,8 +164,8 @@ if(signatureSection&&'IntersectionObserver'in window){
 }
 
 const loadSecondary=()=>{
-  import('./visitor-counter-bootstrap.js?v=20260917-counterrepair4').catch(()=>{});
+  import('./visitor-counter-bootstrap.js?v=20260918-countertest1').catch(()=>{});
   import('./home-editorial.js?v=20260916-v1').catch(()=>{});
 };
-if('requestIdleCallback' in window){requestIdleCallback(loadSecondary,{timeout:1200})}
+if('requestIdleCallback'in window){requestIdleCallback(loadSecondary,{timeout:1200})}
 else{setTimeout(loadSecondary,350)}
