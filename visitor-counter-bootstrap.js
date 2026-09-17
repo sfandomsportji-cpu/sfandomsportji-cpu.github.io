@@ -4,7 +4,7 @@
   const COUNTER_SELECTOR = '[data-sf-visitor-counter]';
   const SCRIPT_SELECTOR = 'script[data-sf-counterapi-script]';
   const CSS_SELECTOR = 'link[data-sf-visitor-counter-css]';
-  const CSS_HREF = 'visitor-counter.css?v=20260917-v2';
+  const CSS_HREF = 'visitor-counter.css?v=20260916-v1';
   const COUNTERAPI_SRC = 'https://counterapi.com/c.js?ns=sfandom.com';
   const COUNTER_CONFIG = Object.freeze({
     key: 'sfandom-global',
@@ -33,11 +33,7 @@
   }
 
   function ensureStyles() {
-    const existing = document.querySelector(CSS_SELECTOR);
-    if (existing) {
-      if (existing.getAttribute('href') !== CSS_HREF) existing.setAttribute('href', CSS_HREF);
-      return;
-    }
+    if (document.querySelector(CSS_SELECTOR)) return;
     const link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = CSS_HREF;
@@ -72,19 +68,9 @@
     window.setTimeout(() => observer.disconnect(), 10000);
   }
 
-  function counterMount() {
-    const footer = document.querySelector('.footer-v2.home-footer');
-    if (!footer) return null;
-    return footer.querySelector(':scope > div:first-child') || footer;
-  }
-
   function ensureCounterRoot() {
-    const mount = counterMount();
-    if (!mount) return null;
-
     const existing = document.querySelector(COUNTER_SELECTOR);
     if (existing) {
-      if (existing.parentElement !== mount) mount.appendChild(existing);
       const existingValue = existing.querySelector('.sf-visitor-counter__value');
       if (existingValue) {
         applyCounterConfig(existingValue);
@@ -92,6 +78,9 @@
       }
       return existing;
     }
+
+    const header = document.querySelector('.site-header.home-header');
+    if (!header) return null;
 
     const root = document.createElement('div');
     root.className = 'sf-visitor-counter';
@@ -109,7 +98,10 @@
     applyCounterConfig(value);
 
     root.append(label, value);
-    mount.appendChild(root);
+
+    const cta = header.querySelector('.header-cta');
+    if (cta) header.insertBefore(root, cta);
+    else header.appendChild(root);
 
     revealWhenReady(root, value);
     return root;
