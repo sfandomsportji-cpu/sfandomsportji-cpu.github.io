@@ -6,25 +6,25 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  flex: 0 0 auto;
-  min-height: 30px;
-  padding: 0 10px;
-  border: none;
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.018);
+  margin-top: 12px;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0;
+  background: transparent;
   color: #e7e7e3;
-  font: 700 12px/1 system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  font: 700 11px/1 system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
   letter-spacing: 0.08em;
   white-space: nowrap;
+  box-shadow: none;
 }
 
 .sf-visitor-counter__label {
-  opacity: 0.52;
+  opacity: 0.48;
 }
 
 .sf-visitor-counter__value {
-  min-width: 52px;
-  font-size: 14px;
+  min-width: 48px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-align: right;
@@ -32,57 +32,27 @@
   font-feature-settings: 'tnum' 1;
 }
 
-@media (min-width: 901px) {
-  .sf-visitor-counter {
-    height: 30px;
-    min-height: 30px;
-    padding: 0 10px;
-    margin-left: auto;
-  }
-}
-
 @media (max-width: 900px) {
   .sf-visitor-counter {
-    min-height: 28px;
-    padding: 0 9px;
+    margin-top: 10px;
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 620px) {
   .sf-visitor-counter {
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 18px;
-    z-index: 2;
-    min-height: 28px;
-    padding: 0 9px;
-    background: rgba(6, 6, 6, 0.92);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-
-  .sf-visitor-counter__label {
-    opacity: 0.6;
+    display: inline-flex;
+    position: static;
+    margin-top: 9px;
+    padding: 0;
+    border: 0 !important;
+    background: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .sf-visitor-counter__value {
-    min-width: 50px;
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 430px) {
-  .sf-visitor-counter {
-    right: 14px;
-    gap: 6px;
-    min-height: 28px;
-    padding: 0 8px;
+    min-width: 46px;
     font-size: 12px;
-  }
-
-  .sf-visitor-counter__value {
-    min-width: 48px;
-    font-size: 13px;
   }
 }
