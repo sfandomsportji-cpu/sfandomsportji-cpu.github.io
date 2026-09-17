@@ -1,10 +1,15 @@
 (() => {
   'use strict';
 
+  if (window.__SFANDOM_VISITOR_COUNTER_BOOTED__) return;
+  window.__SFANDOM_VISITOR_COUNTER_BOOTED__ = true;
+
   const COUNTER_SELECTOR = '[data-sf-visitor-counter]';
   const CSS_SELECTOR = 'link[data-sf-visitor-counter-css]';
   const CSS_HREF = 'visitor-counter.css?v=20260917-position3';
   const COUNTER_ENDPOINT = 'https://counterapi.com/api/sfandom.com/view/sfandom-global';
+  const READ_ONLY_ENDPOINT = `${COUNTER_ENDPOINT}?readOnly=true`;
+  const STORAGE_KEY = 'sfandom:visitor-counted:kst-day:v1';
 
   function keepFirstOnly(selector) {
     const nodes = [...document.querySelectorAll(selector)];
@@ -27,6 +32,49 @@
     document.head.appendChild(link);
   }
 
+  function kstDayKey() {
+    try {
+      return new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Seoul',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).format(new Date());
+    } catch {
+      return new Date().toISOString().slice(0, 10);
+    }
+  }
+
+  function reserveDailyIncrement() {
+    const today = kstDayKey();
+    try {
+      if (localStorage.getItem(STORAGE_KEY) === today) {
+        return { increment: false, today, storage: localStorage };
+      }
+      localStorage.setItem(STORAGE_KEY, today);
+      return { increment: true, today, storage: localStorage };
+    } catch {
+      try {
+        if (sessionStorage.getItem(STORAGE_KEY) === today) {
+          return { increment: false, today, storage: sessionStorage };
+        }
+        sessionStorage.setItem(STORAGE_KEY, today);
+        return { increment: true, today, storage: sessionStorage };
+      } catch {
+        return { increment: true, today, storage: null };
+      }
+    }
+  }
+
+  function releaseReservation(reservation) {
+    if (!reservation.increment || !reservation.storage) return;
+    try {
+      if (reservation.storage.getItem(STORAGE_KEY) === reservation.today) {
+        reservation.storage.removeItem(STORAGE_KEY);
+      }
+    } catch {}
+  }
+
   function showCounter(root, value, count) {
     const numeric = Number(count);
     if (!Number.isFinite(numeric)) return false;
@@ -35,9 +83,12 @@
     return true;
   }
 
-  async function incrementCounter(root, value) {
+  async function loadCounter(root, value) {
+    const reservation = reserveDailyIncrement();
+    const endpoint = reservation.increment ? COUNTER_ENDPOINT : READ_ONLY_ENDPOINT;
+
     try {
-      const response = await fetch(COUNTER_ENDPOINT, {
+      const response = await fetch(endpoint, {
         method: 'GET',
         mode: 'cors',
         cache: 'no-store',
@@ -47,6 +98,7 @@
       const data = await response.json();
       if (!showCounter(root, value, data && data.value)) throw new Error('CounterAPI invalid value');
     } catch (error) {
+      releaseReservation(reservation);
       console.warn('[SFANDOM] visitor counter unavailable', error);
     }
   }
@@ -61,12 +113,7 @@
         existing.appendChild(existingValue);
       }
       existingValue.classList.remove('counterapi');
-      existingValue.removeAttribute('key');
-      existingValue.removeAttribute('action');
-      existingValue.removeAttribute('behavior');
-      existingValue.removeAttribute('unique');
-      existingValue.removeAttribute('timeline');
-      existingValue.removeAttribute('readOnly');
+      ['key','action','behavior','unique','timeline','readOnly'].forEach((name) => existingValue.removeAttribute(name));
       existing.hidden = true;
       return { root: existing, value: existingValue };
     }
@@ -102,7 +149,7 @@
     ensureStyles();
     const counter = ensureCounterRoot();
     if (!counter) return;
-    incrementCounter(counter.root, counter.value);
+    loadCounter(counter.root, counter.value);
   }
 
   if (document.readyState === 'loading') {
