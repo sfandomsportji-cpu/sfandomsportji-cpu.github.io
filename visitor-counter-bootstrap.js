@@ -6,18 +6,6 @@
   const CSS_HREF = 'visitor-counter.css?v=20260917-position3';
   const COUNTER_ENDPOINT = 'https://counterapi.com/api/sfandom.com/view/sfandom-global';
 
-  function keepFirstOnly(selector) {
-    const nodes = [...document.querySelectorAll(selector)];
-    nodes.slice(1).forEach((node) => node.remove());
-    return nodes[0] || null;
-  }
-
-  function cleanupResidue() {
-    keepFirstOnly(COUNTER_SELECTOR);
-    keepFirstOnly(CSS_SELECTOR);
-    document.querySelectorAll('script[data-sf-counterapi-script]').forEach((node) => node.remove());
-  }
-
   function ensureStyles() {
     if (document.querySelector(CSS_SELECTOR)) return;
     const link = document.createElement('link');
@@ -53,19 +41,17 @@
     }
   }
 
-  function ensureCounterRoot() {
+  function getCounterRoot() {
     const existing = document.querySelector(COUNTER_SELECTOR);
     if (existing) {
-      let existingValue = existing.querySelector('.sf-visitor-counter__value');
-      if (!existingValue) {
-        existingValue = document.createElement('span');
-        existingValue.className = 'sf-visitor-counter__value';
-        existing.appendChild(existingValue);
+      let value = existing.querySelector('.sf-visitor-counter__value');
+      if (!value) {
+        value = document.createElement('span');
+        value.className = 'sf-visitor-counter__value';
+        existing.appendChild(value);
       }
-      existingValue.classList.remove('counterapi');
-      ['key','action','behavior','unique','timeline','readOnly'].forEach((name) => existingValue.removeAttribute(name));
       existing.hidden = true;
-      return { root: existing, value: existingValue };
+      return { root: existing, value };
     }
 
     const header = document.querySelector('.site-header.home-header');
@@ -95,15 +81,14 @@
   }
 
   function boot() {
-    cleanupResidue();
     ensureStyles();
-    const counter = ensureCounterRoot();
+    const counter = getCounterRoot();
     if (!counter) return;
     loadCounter(counter.root, counter.value);
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot, { once: true });
+    document.addEventListener('DOMContentLoaded', boot);
   } else {
     boot();
   }
