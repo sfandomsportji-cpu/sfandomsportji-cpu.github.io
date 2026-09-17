@@ -1,13 +1,6 @@
 const redundantBrandFilmPanel=document.querySelector('.home-brand-film');
 if(redundantBrandFilmPanel)redundantBrandFilmPanel.remove();
 
-const heroSocial=document.querySelector('.hero-social');
-const heroLiveChip=document.querySelector('.hero-copy .live-chip');
-if(heroSocial&&heroLiveChip){
-  heroLiveChip.insertAdjacentElement('afterend',heroSocial);
-  Object.assign(heroSocial.style,{position:'relative',right:'auto',bottom:'auto',top:'auto',transform:'none',display:'inline-flex',margin:'0 0 18px 0'});
-}
-
 const revealNodes=[...document.querySelectorAll('.reveal')];
 if('IntersectionObserver' in window){
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
