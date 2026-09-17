@@ -4,7 +4,7 @@
   const COUNTER_SELECTOR = '[data-sf-visitor-counter]';
   const SCRIPT_SELECTOR = 'script[data-sf-counterapi-script]';
   const CSS_SELECTOR = 'link[data-sf-visitor-counter-css]';
-  const CSS_HREF = 'visitor-counter.css?v=20260916-v1';
+  const CSS_HREF = 'visitor-counter.css?v=20260917-position2';
   const COUNTERAPI_SRC = 'https://counterapi.com/c.js?ns=sfandom.com';
   const COUNTER_CONFIG = Object.freeze({
     key: 'sfandom-global',
@@ -99,9 +99,9 @@
 
     root.append(label, value);
 
-    const cta = header.querySelector('.header-cta');
-    if (cta) header.insertBefore(root, cta);
-    else header.appendChild(root);
+    const brand = header.querySelector('.brand');
+    if (brand) brand.insertAdjacentElement('afterend', root);
+    else header.prepend(root);
 
     revealWhenReady(root, value);
     return root;
