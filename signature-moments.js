@@ -164,7 +164,7 @@ if(signatureSection&&'IntersectionObserver'in window){
 }
 
 const loadSecondary=()=>{
-  import('./home-editorial.js?v=20260918-counterv2').catch(()=>{});
+  import('./home-editorial.js?v=20260918-counterv3').catch(()=>{});
 };
 if('requestIdleCallback'in window){requestIdleCallback(loadSecondary,{timeout:1200})}
 else{setTimeout(loadSecondary,350)}
