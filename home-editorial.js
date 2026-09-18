@@ -121,15 +121,8 @@
     });
 
   requestJson(API + '/hit/' + KEY)
-    .then(async (data) => {
-      let serverCount = parseCount(data && data.value);
-
-      if (last !== null && serverCount < last) {
-        const repaired = last + 1n;
-        const repairData = await requestJson(API + '/set/' + KEY + '?value=' + repaired.toString());
-        serverCount = parseCount(repairData && repairData.value);
-      }
-
+    .then((data) => {
+      const serverCount = parseCount(data && data.value);
       saveAndShow(serverCount);
     })
     .catch(() => {
