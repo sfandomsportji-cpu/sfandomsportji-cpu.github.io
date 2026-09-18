@@ -3,22 +3,25 @@
 This directory is the open development area for the SFANDOM community renewal.
 
 ## Phase 1
-- Turn the current bottom slogan section into a community lobby.
-- Keep the existing global navigation, visitor counter, analysis area, and current production layout untouched.
-- Prepare community data structures before connecting live features.
+- Replace the current bottom slogan area with a compact fan board.
+- Show **10 posts per page** with numbered pagination.
+- Keep the existing global navigation, visitor counter, analysis area, and production layout untouched.
+- Keep copy short and put the board before decorative features.
+- Do **not** include a video lounge or video upload flow in Phase 1.
+- Use local preview data only until a protected persistence layer is reviewed.
 
-## Public repository rule
-- Source code and database schema may be public.
-- Never commit production credentials, API keys, access tokens, session secrets, private user data, raw message contents, IP addresses, or moderation evidence.
-- Runtime secrets belong in the deployment environment only.
+## Safety gate
+- No production credentials, API keys, access tokens, session secrets, private user data, raw moderation evidence, or IP addresses in GitHub.
+- No anonymous public write endpoint is connected from the production page in Phase 1.
+- Cloud persistence must be reviewed separately for abuse controls, moderation, authentication/rate limiting, and rollback before activation.
+- Production merge requires review of the Draft PR and explicit user approval.
 
-## Initial community modules
+## Initial board modules
 - HOT TALK
 - MATCH CHAT
 - FAN PICKS
-- VIDEO LOUNGE
 
 ## Data model
 See `db/schema.sql`.
 
-This branch is a preparation branch only. Production changes should be reviewed through a pull request before merge.
+Phase 1 is intentionally board-first. Video and media features remain deferred.
