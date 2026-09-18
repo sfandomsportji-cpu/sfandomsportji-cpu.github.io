@@ -27,7 +27,6 @@ create table if not exists community_posts (
   author_id bigint references community_users(id),
   title varchar(180) not null,
   body text not null,
-  media_url text,
   status varchar(24) not null default 'published',
   is_pinned boolean not null default false,
   view_count bigint not null default 0,
@@ -99,6 +98,5 @@ insert into community_channels (slug, name, description, sort_order)
 values
   ('hot-talk', 'HOT TALK', 'Trending fan conversations', 10),
   ('match-chat', 'MATCH CHAT', 'Live and post-match discussion', 20),
-  ('fan-picks', 'FAN PICKS', 'Fan selections and predictions', 30),
-  ('video-lounge', 'VIDEO LOUNGE', 'Short-form sports video lounge', 40)
+  ('fan-picks', 'FAN PICKS', 'Fan selections and predictions', 30)
 on conflict (slug) do nothing;
