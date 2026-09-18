@@ -62,11 +62,12 @@
 })();
 
 
+
 (() => {
   'use strict';
 
-  if (window.__SFANDOM_GLOBAL_COUNTER_V2__) return;
-  window.__SFANDOM_GLOBAL_COUNTER_V2__ = true;
+  if (window.__SFANDOM_GLOBAL_COUNTER_V3__) return;
+  window.__SFANDOM_GLOBAL_COUNTER_V3__ = true;
 
   const header = document.querySelector('.site-header.home-header');
   const brand = header?.querySelector('.brand');
@@ -80,21 +81,22 @@
   label.textContent = 'VISITORS';
 
   const value = document.createElement('b');
-  const FALLBACK_BASELINE = 200;
-  const FALLBACK_KEY = 'sfandom-global-counter-v2-last';
-  const COUNTER_ENDPOINT = 'https://counterapi.com/api/sfandom.com/view/sfandom-home-global-v2?startNumber=200';
 
-  let fallback = FALLBACK_BASELINE;
+  const BASELINE = 200;
+  const CACHE_KEY = 'sfandom-global-counter-v3-last';
+  const HIT_ENDPOINT = 'https://countapi.mileshilliard.com/api/v1/hit/sfandom-home-global-20260918';
+
+  let last = BASELINE;
   try {
-    const saved = Number(localStorage.getItem(FALLBACK_KEY));
-    if (Number.isFinite(saved) && saved >= FALLBACK_BASELINE) fallback = Math.trunc(saved);
+    const saved = Number(localStorage.getItem(CACHE_KEY));
+    if (Number.isFinite(saved) && saved >= BASELINE) last = Math.trunc(saved);
   } catch (_) {}
 
-  value.textContent = String(fallback).padStart(6, '0');
+  value.textContent = String(last).padStart(6, '0');
   root.append(label, value);
   brand.insertAdjacentElement('afterend', root);
 
-  fetch(COUNTER_ENDPOINT, {
+  fetch(HIT_ENDPOINT, {
     method: 'GET',
     mode: 'cors',
     cache: 'no-store',
@@ -105,14 +107,17 @@
       return response.json();
     })
     .then((data) => {
-      const numeric = Number(data && data.value);
-      if (!Number.isFinite(numeric)) throw new Error('invalid counter value');
-      const count = Math.max(FALLBACK_BASELINE, Math.trunc(numeric));
-      value.textContent = String(count).padStart(6, '0');
-      try { localStorage.setItem(FALLBACK_KEY, String(count)); } catch (_) {}
+      const hits = Number(data && data.value);
+      if (!Number.isFinite(hits)) throw new Error('invalid counter value');
+
+      const storedTotal = BASELINE + Math.max(0, Math.trunc(hits));
+      const total = Math.max(last, storedTotal);
+
+      value.textContent = String(total).padStart(6, '0');
+      try { localStorage.setItem(CACHE_KEY, String(total)); } catch (_) {}
     })
     .catch(() => {
-      value.textContent = String(fallback).padStart(6, '0');
+      value.textContent = String(last).padStart(6, '0');
     });
 
   const style = document.createElement('style');
