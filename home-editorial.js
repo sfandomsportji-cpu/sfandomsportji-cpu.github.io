@@ -121,8 +121,18 @@
     });
 
   requestJson(API + '/hit/' + KEY)
-    .then((data) => {
-      const serverCount = parseCount(data && data.value);
+    .then(async (data) => {
+      let serverCount = parseCount(data && data.value);
+
+      if (serverCount <= 1n) {
+        const recovered = await requestJson(API + '/set/' + KEY + '?value=200');
+        serverCount = parseCount(recovered && recovered.value);
+      } else if (last !== null && serverCount < last) {
+        const repaired = last + 1n;
+        const recovered = await requestJson(API + '/set/' + KEY + '?value=' + repaired.toString());
+        serverCount = parseCount(recovered && recovered.value);
+      }
+
       saveAndShow(serverCount);
     })
     .catch(() => {
