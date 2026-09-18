@@ -63,11 +63,12 @@
 
 
 
+
 (() => {
   'use strict';
 
-  if (window.__SFANDOM_GLOBAL_COUNTER_V3__) return;
-  window.__SFANDOM_GLOBAL_COUNTER_V3__ = true;
+  if (window.__SFANDOM_GLOBAL_COUNTER_V4__) return;
+  window.__SFANDOM_GLOBAL_COUNTER_V4__ = true;
 
   const header = document.querySelector('.site-header.home-header');
   const brand = header?.querySelector('.brand');
@@ -82,42 +83,59 @@
 
   const value = document.createElement('b');
 
-  const BASELINE = 200;
   const CACHE_KEY = 'sfandom-global-counter-v3-last';
-  const HIT_ENDPOINT = 'https://countapi.mileshilliard.com/api/v1/hit/sfandom-home-global-20260918';
+  const KEY = 'sfandom-home-global-20260918';
+  const API = 'https://countapi.mileshilliard.com/api/v1';
 
-  let last = BASELINE;
+  const parseCount = (raw) => {
+    const text = String(raw ?? '').trim();
+    if (!/^\d+$/.test(text)) throw new Error('invalid counter value');
+    return BigInt(text);
+  };
+
+  let last = null;
   try {
-    const saved = Number(localStorage.getItem(CACHE_KEY));
-    if (Number.isFinite(saved) && saved >= BASELINE) last = Math.trunc(saved);
+    const saved = localStorage.getItem(CACHE_KEY);
+    if (saved !== null) last = parseCount(saved);
   } catch (_) {}
 
-  value.textContent = String(last).padStart(6, '0');
+  value.textContent = last === null ? '------' : String(last).padStart(6, '0');
   root.append(label, value);
   brand.insertAdjacentElement('afterend', root);
 
-  fetch(HIT_ENDPOINT, {
-    method: 'GET',
-    mode: 'cors',
-    cache: 'no-store',
-    credentials: 'omit'
-  })
-    .then((response) => {
+  const saveAndShow = (count) => {
+    last = count;
+    value.textContent = String(count).padStart(6, '0');
+    try { localStorage.setItem(CACHE_KEY, String(count)); } catch (_) {}
+  };
+
+  const requestJson = (url) =>
+    fetch(url, {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'no-store',
+      credentials: 'omit'
+    }).then((response) => {
       if (!response.ok) throw new Error('counter ' + response.status);
       return response.json();
-    })
-    .then((data) => {
-      const hits = Number(data && data.value);
-      if (!Number.isFinite(hits)) throw new Error('invalid counter value');
+    });
 
-      const storedTotal = BASELINE + Math.max(0, Math.trunc(hits));
-      const total = Math.max(last, storedTotal);
+  requestJson(API + '/hit/' + KEY)
+    .then(async (data) => {
+      let serverCount = parseCount(data && data.value);
 
-      value.textContent = String(total).padStart(6, '0');
-      try { localStorage.setItem(CACHE_KEY, String(total)); } catch (_) {}
+      if (last !== null && serverCount < last) {
+        const repaired = last + 1n;
+        const repairData = await requestJson(API + '/set/' + KEY + '?value=' + repaired.toString());
+        serverCount = parseCount(repairData && repairData.value);
+      }
+
+      saveAndShow(serverCount);
     })
     .catch(() => {
-      value.textContent = String(last).padStart(6, '0');
+      if (last !== null) {
+        value.textContent = String(last).padStart(6, '0');
+      }
     });
 
   const style = document.createElement('style');
