@@ -7,7 +7,7 @@ This directory is the open development area for the SFANDOM community renewal.
 - Show **10 posts per page** with numbered pagination.
 - Keep the existing global navigation, visitor counter, analysis area, and production layout untouched.
 - Keep copy short and put the board before decorative features.
-- Do **not** include a video lounge or video upload flow in Phase 1.
+- Defer all media modules and upload flows until after the board is stable.
 - Use local preview data only until a protected persistence layer is reviewed.
 
 ## Safety gate
