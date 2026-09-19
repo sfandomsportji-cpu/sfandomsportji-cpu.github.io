@@ -58,6 +58,7 @@
   <link rel="stylesheet" href="styles.css?v=20260827-clean3" />
   <link rel="stylesheet" href="home.css?v=20260918-v4" />
   <link rel="stylesheet" href="morning-content.css?v=20260916-v1" />
+  <link rel="stylesheet" href="community-board.css?v=20260919-test1" />
 </head>
 <body>
   <header class="site-header home-header">
@@ -209,10 +210,37 @@
 
     <section class="section content-zone reveal"><div class="section-head"><div><p class="eyebrow">SPORTS CONTENT</p><h2>Fast on the Essentials.<br>Deep on the Analysis.</h2></div><a class="text-link" href="content.html">전체 콘텐츠 보기 →</a></div><div class="content-rail"><a href="content.html"><small>10:00</small><b>DATA<br>FORECAST</b><span>PRE-GAME</span></a><a href="content.html"><small>14:00</small><b>HOT<br>ISSUE</b><span>NEWS</span></a><a href="content.html"><small>18:00</small><b>MATCH<br>FOCUS</b><span>FOCUS</span></a><a href="content.html"><small>22:00</small><b>GAME<br>REVIEW</b><span>RECAP</span></a></div></section>
 
-    <section class="section manifesto reveal"><p class="eyebrow">SFANDOM MANIFESTO</p><h2>Sports Are Full of Variables.<br><span>Data Creates the Standard for Decisions.</span></h2><div><p>우리는 예측을 포장하지 않습니다.<br>우리는 판단의 근거를 설계합니다.</p><a class="btn primary" href="about.html">SFANDOM 소개 →</a></div></section>
+    <section id="sfCommunityLobby" class="section community-lobby reveal">
+      <div class="community-lobby-head">
+        <div>
+          <p class="eyebrow">SFANDOM COMMUNITY</p>
+          <h2>FAN BOARD.<br><span>TALK SPORTS.</span></h2>
+        </div>
+        <p>경기 얘기는 여기서. 최신 글은 10개씩 보여줍니다.</p>
+      </div>
+      <div class="community-lobby-bar">
+        <div class="community-lobby-tags"><span>HOT TALK</span><span>MATCH CHAT</span><span>FAN PICKS</span></div>
+        <small>10 POSTS / PAGE</small>
+      </div>
+      <div id="sfCommunityList" class="community-board" aria-live="polite"></div>
+      <nav id="sfCommunityPagination" class="community-pagination" aria-label="Community pages"></nav>
+      <form id="sfCommunityTester" class="community-tester">
+        <input name="nickname" maxlength="30" placeholder="닉네임">
+        <input name="title" maxlength="120" required placeholder="제목">
+        <textarea name="body" maxlength="2000" required placeholder="내용"></textarea>
+        <input class="community-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit">POST →</button>
+        <p id="sfCommunityTesterStatus" class="community-tester-status">프리뷰 모드 · 입력한 글은 현재 브라우저에서만 테스트됩니다.</p>
+      </form>
+      <div class="community-lobby-foot">
+        <p>게시판 기능부터 먼저 검증합니다.</p>
+        <a href="community-policy.html">COMMUNITY RULES →</a>
+      </div>
+    </section>
   </main>
 
   <footer class="footer-v2 home-footer"><div><a class="brand" href="index.html"><img src="assets/sfandom-logo-official.png" alt=""><span>SFANDOM</span></a><p>SPORTS DATA · ANALYSIS · FORECAST</p></div><div class="footer-links"><a href="analysis.html">ANALYSIS</a><a href="content.html">CONTENT</a><a href="about.html">ABOUT</a><a href="terms.html">TERMS</a><a href="privacy.html">PRIVACY</a><a href="community-policy.html">COMMUNITY POLICY</a><a href="legal-notice.html">LEGAL NOTICE</a></div><small>© 2026 SFANDOM. ALL RIGHTS RESERVED.</small></footer>
   <script src="signature-moments.js?v=20260918-counterv6"></script>
+  <script src="community-board.js?v=20260919-test1" defer></script>
 </body>
 </html>
