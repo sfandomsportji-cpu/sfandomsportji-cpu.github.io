@@ -1,26 +1,29 @@
 # SFANDOM Daily Content Workflow
 
-Last updated: 2026-09-17 KST
+Last updated: 2026-09-19 KST
 
 ## Daily outputs are independent
-The SFANDOM main site, Naver Blog, and Instagram Reels are three independent daily outputs. A delay or failure in one must not cause either of the other two to be skipped.
+The SFANDOM main site and Naver Blog are independent daily outputs. A delay or failure in one must not cause the other to be skipped.
 
 ## Naver Blog — mandatory daily output
 - Target: https://blog.naver.com/sfandomsport
 - This is Naver Blog, not Google Blogger.
-- Select one topic from the previous day's sports matches or major sports stories.
+- Prepare **2 text-only Naver Blog contents every day**.
+- Instagram/Naver Reels are removed from the daily mandatory workflow. The replacement is the second Naver Blog text content.
+- Each Naver Blog content should be approximately **300 Korean characters** in the body, with enough substance to stand alone as a useful post.
+- **No images are required.** Do not spend the daily workflow on image selection, representative images, or photo layout unless explicitly requested for a specific post.
+- Choose two distinct topics so the two daily posts do not duplicate each other.
+- Prefer current sports matches, major sports stories, player/team features, previews, reviews, or data-driven short analysis.
 - Verify current facts before drafting.
-- Prepare a complete publish-ready package: title, full article, core search terms, representative-image candidate, and sources.
-- Do not merely rewrite the final score. Structure the article around context → key moment/data → meaning → what to watch next.
-- Prepare the Naver Blog article even if the SFANDOM website publication is waiting for approval.
+- Prepare each post in publish-ready form with a clear title and complete body text.
+- Do not merely rewrite the final score. Even within the short format, include useful context, a key point or data point, and why it matters.
+- Prepare both Naver Blog posts even if the SFANDOM website publication is waiting for approval.
+- Daily completion requires both Naver Blog contents to be present. One post alone is not complete.
 
-## Instagram Reels — mandatory daily output
-- Select one previous-day sports subject regardless of sport.
-- Target duration: about 10 seconds.
-- Format: vertical 9:16 MP4.
-- Change the topic and creative treatment every day. Rotate among emotional highlight, high-tension moment, comeback/decisive play, one-line data insight, player spotlight, short sports storytelling, and other suitable Instagram-native formats.
-- Do not use Runway.
-- Use only source footage that SFANDOM owns or is clearly permitted to reuse. If a lawful source cannot be secured, do not substitute unclear-rights footage; report the hold and the source needed.
+## Reels — removed from daily mandatory output
+- Reels are no longer a required daily SFANDOM Work output as of 2026-09-19.
+- Do not replace a missing Naver Blog post with a Reel.
+- Produce a Reel only when JI explicitly requests one for a specific day or topic.
 
 ## Homepage video rule
 - Keep the approved SFANDOM ORIGINAL BRAND FILM as the HERO background.
@@ -30,7 +33,7 @@ The SFANDOM main site, Naver Blog, and Instagram Reels are three independent dai
 ## Daily report
 Report each output separately:
 1. SFANDOM site — approval/application status, changed files, commit/PR, live verification.
-2. Naver Blog — topic, article completion status, image/source readiness.
-3. Reels — topic, MP4 completion status, duration/resolution/codec, source and rights status.
+2. Naver Blog Content 1 — topic and completion status.
+3. Naver Blog Content 2 — topic and completion status.
 
 Never label an unfinished item as complete.
