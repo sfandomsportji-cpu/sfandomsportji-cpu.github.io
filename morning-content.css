@@ -475,3 +475,17 @@
   .starter-copy em strong{font-size:1.02rem}
   .player-spotlight-copy h3{font-size:clamp(2rem,9.5vw,2.7rem)}
 }
+
+
+/* MOBILE IMAGE DELIVERY · 2026-09-19
+   Responsive source selection is handled by srcset/sizes in the HTML.
+   These rules keep portrait media bounded and remove desktop sticky/min-height cost on phones. */
+img.portrait-safe{display:block;max-width:100%;height:100%;object-fit:cover}
+@media(max-width:620px){
+  .morning-story-photo,.kairo-feature-photo,.starter-photo,.player-spotlight-photo{
+    position:relative;top:auto;min-height:0;height:auto;aspect-ratio:4/5;overflow:hidden
+  }
+  .morning-story-photo img.portrait-safe,.kairo-feature-photo img.portrait-safe,.starter-photo img.portrait-safe,.player-spotlight-photo img.portrait-safe{
+    width:100%;height:100%;object-fit:cover;object-position:center 14%
+  }
+}
