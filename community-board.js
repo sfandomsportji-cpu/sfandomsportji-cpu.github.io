@@ -6,8 +6,8 @@
 
   const list = document.getElementById('sfCommunityList');
   const pager = document.getElementById('sfCommunityPagination');
-  const form = document.getElementById('sfCommunityTester');
-  const status = document.getElementById('sfCommunityTesterStatus');
+  const form = document.getElementById('sfCommunityForm');
+  const status = document.getElementById('sfCommunityStatus');
 
   const PAGE_SIZE = 10;
   const API_URL = 'https://yyjjgxzbqvlpatccbpxm.supabase.co';
@@ -178,7 +178,7 @@
 
       renderRows(rows);
       renderPager(totalPosts);
-      if (status) status.textContent = '실시간 커뮤니티 DB 연결됨 · 10 POSTS / PAGE';
+      if (status) status.textContent = '최신 게시글 · 10 POSTS / PAGE';
     } catch (_) {
       showBoardError();
     } finally {
