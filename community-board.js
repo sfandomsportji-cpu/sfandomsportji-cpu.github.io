@@ -17,10 +17,17 @@
   const demoTitles = [
     '애틀랜타, 포스트시즌에서 가장 먼저 점검할 데이터는?',
     '다저스 8회 4홈런, 타선 흐름은 얼마나 달라졌을까?',
-    '홈스 vs 웨스네스키, 선발 매치업의 핵심 지표는?'
+    '선발 매치업에서 경기 초반 가장 먼저 볼 지표는?',
+    '불펜 교체 타이밍, 승부 흐름을 바꾼 결정적 기준은?',
+    '1점 차 승부에서 득점권 타석의 가치가 더 커지는 이유',
+    '경기 후반 수비 포지셔닝이 실점 기대값에 미치는 영향',
+    '장타보다 출루가 중요한 이닝은 언제일까?',
+    '홈과 원정 타격 지표, 실제 경기력 차이는 얼마나 날까?',
+    '선발 투수 구속 변화에서 가장 먼저 확인할 신호는?',
+    '오늘 경기에서 팬들이 가장 오래 기억할 장면은 무엇일까?'
   ];
 
-  const demo = Array.from({ length: 23 }, (_, i) => ({
+  const demo = Array.from({ length: 10 }, (_, i) => ({
     post_id: 'DEMO-' + String(23 - i).padStart(3, '0'),
     created_at_kst:
       '2026-09-' +
@@ -31,7 +38,7 @@
       String((i * 7) % 60).padStart(2, '0'),
     channel: channels[i % channels.length],
     nickname: ['KAIRO', 'TESTER', 'SFANDOM'][i % 3],
-    title: demoTitles[i % demoTitles.length] + ' · ' + (i + 1),
+    title: demoTitles[i],
     comment_count: (i * 3) % 19
   }));
 
