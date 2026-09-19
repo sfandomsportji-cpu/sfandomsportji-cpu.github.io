@@ -15,9 +15,9 @@
 
   const channels = ['HOT TALK', 'MATCH CHAT', 'FAN PICKS'];
   const demoTitles = [
-    '오늘 경기에서 제일 먼저 볼 포인트',
-    '라인업 뜨면 여기서 같이 보자',
-    '후반 흐름을 바꾼 장면은 이거였다'
+    '애틀랜타, 포스트시즌에서 가장 먼저 점검할 데이터는?',
+    '다저스 8회 4홈런, 타선 흐름은 얼마나 달라졌을까?',
+    '홈스 vs 웨스네스키, 선발 매치업의 핵심 지표는?'
   ];
 
   const demo = Array.from({ length: 23 }, (_, i) => ({
