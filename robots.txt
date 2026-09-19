@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
 Disallow: /message-backend/
+Disallow: /community-db/
+Disallow: /docs/
+Disallow: /archive/community-preview-
+Disallow: /README.md
 
 Sitemap: https://sfandom.com/sitemap.xml
