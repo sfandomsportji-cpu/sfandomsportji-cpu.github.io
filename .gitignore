@@ -1,0 +1,16 @@
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.temp
+*.cache
+*.swp
+*~
+.cache/
+.jekyll-cache/
+_site/
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
