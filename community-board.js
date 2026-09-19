@@ -8,39 +8,23 @@
   const pager = document.getElementById('sfCommunityPagination');
   const form = document.getElementById('sfCommunityTester');
   const status = document.getElementById('sfCommunityTesterStatus');
+
   const PAGE_SIZE = 10;
+  const API_URL = 'https://yyjjgxzbqvlpatccbpxm.supabase.co';
+  const PUBLISHABLE_KEY = 'sb_publishable_ABoOVvaUzGuVPBryIpY02w_tTcdt-Q4';
+  const REQUEST_TIMEOUT_MS = 8000;
+  const POST_COOLDOWN_MS = 10000;
 
   let page = 1;
-  let localPosts = [];
+  let totalPosts = 0;
+  let loading = false;
 
-  const channels = ['HOT TALK', 'MATCH CHAT', 'FAN PICKS'];
-  const demoTitles = [
-    '애틀랜타, 포스트시즌에서 가장 먼저 점검할 데이터는?',
-    '다저스 8회 4홈런, 타선 흐름은 얼마나 달라졌을까?',
-    '선발 매치업에서 경기 초반 가장 먼저 볼 지표는?',
-    '불펜 교체 타이밍, 승부 흐름을 바꾼 결정적 기준은?',
-    '1점 차 승부에서 득점권 타석의 가치가 더 커지는 이유',
-    '경기 후반 수비 포지셔닝이 실점 기대값에 미치는 영향',
-    '장타보다 출루가 중요한 이닝은 언제일까?',
-    '홈과 원정 타격 지표, 실제 경기력 차이는 얼마나 날까?',
-    '선발 투수 구속 변화에서 가장 먼저 확인할 신호는?',
-    '오늘 경기에서 팬들이 가장 오래 기억할 장면은 무엇일까?'
-  ];
-
-  const demo = Array.from({ length: 10 }, (_, i) => ({
-    post_id: 'DEMO-' + String(23 - i).padStart(3, '0'),
-    created_at_kst:
-      '2026-09-' +
-      String(19 - Math.floor(i / 8)).padStart(2, '0') +
-      ' ' +
-      String(2 + (i % 8)).padStart(2, '0') +
-      ':' +
-      String((i * 7) % 60).padStart(2, '0'),
-    channel: channels[i % channels.length],
-    nickname: ['KAIRO', 'TESTER', 'SFANDOM'][i % 3],
-    title: demoTitles[i],
-    comment_count: (i * 3) % 19
-  }));
+  const channelLabel = {
+    nba: 'NBA',
+    football: 'FOOTBALL',
+    baseball: 'BASEBALL',
+    lounge: 'HOT TALK'
+  };
 
   const text = (tag, value, className) => {
     const el = document.createElement(tag);
@@ -50,27 +34,67 @@
   };
 
   const formatTime = raw => {
-    const value = String(raw || '');
-    return value.length >= 16 ? value.slice(5, 16) : value;
+    if (!raw) return '';
+    const date = new Date(raw);
+    if (Number.isNaN(date.getTime())) return '';
+    return new Intl.DateTimeFormat('ko-KR', {
+      timeZone: 'Asia/Seoul',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    }).format(date);
   };
 
-  const sourcePosts = () => (localPosts.length ? localPosts : demo);
+  const setBusy = busy => {
+    loading = busy;
+    if (!form) return;
+    const button = form.querySelector('button[type="submit"]');
+    if (button) button.disabled = busy;
+  };
+
+  const request = async (path, options = {}) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
+    try {
+      const response = await fetch(API_URL + path, {
+        ...options,
+        signal: controller.signal,
+        cache: 'no-store',
+        credentials: 'omit',
+        headers: {
+          apikey: PUBLISHABLE_KEY,
+          Accept: 'application/json',
+          ...(options.headers || {})
+        }
+      });
+
+      if (!response.ok) throw new Error('community ' + response.status);
+      return response;
+    } finally {
+      clearTimeout(timer);
+    }
+  };
 
   const renderRows = rows => {
     list.replaceChildren();
 
     if (!rows.length) {
-      list.append(text('div', '아직 게시글이 없습니다.', 'community-empty'));
+      list.append(text('div', '아직 게시글이 없습니다. 첫 글을 남겨보세요.', 'community-empty'));
       return;
     }
 
-    rows.forEach(post => {
+    rows.forEach((post, index) => {
       const row = document.createElement('article');
       row.className = 'community-row';
 
+      const displayNo = Math.max(1, totalPosts - ((page - 1) * PAGE_SIZE + index));
+
       row.append(
-        text('span', post.post_id.replace(/^.*-/, ''), 'community-row-num'),
-        text('span', post.channel || 'HOT TALK', 'community-row-channel')
+        text('span', String(displayNo), 'community-row-num'),
+        text('span', channelLabel[post.category] || 'HOT TALK', 'community-row-channel')
       );
 
       const main = document.createElement('div');
@@ -82,8 +106,8 @@
 
       row.append(
         main,
-        text('time', formatTime(post.created_at_kst), 'community-row-time'),
-        text('span', String(post.comment_count || 0), 'community-row-comments')
+        text('time', formatTime(post.created_at), 'community-row-time'),
+        text('span', '0', 'community-row-comments')
       );
 
       list.append(row);
@@ -100,17 +124,21 @@
       button.type = 'button';
       button.disabled = disabled;
       if (current) button.setAttribute('aria-current', 'page');
+
       button.addEventListener('click', () => {
+        if (loading || target === page) return;
         page = target;
-        render();
+        loadPosts();
       });
+
       pager.append(button);
     };
 
     make('‹', Math.max(1, page - 1), page === 1);
 
-    const start = Math.max(1, Math.min(page - 2, pages - 4));
+    const start = Math.max(1, Math.min(page - 2, Math.max(1, pages - 4)));
     const end = Math.min(pages, start + 4);
+
     for (let p = start; p <= end; p += 1) {
       make(String(p), p, false, p === page);
     }
@@ -118,20 +146,69 @@
     make('›', Math.min(pages, page + 1), page === pages);
   };
 
-  const render = () => {
-    const posts = sourcePosts();
-    const start = (page - 1) * PAGE_SIZE;
-    renderRows(posts.slice(start, start + PAGE_SIZE));
-    renderPager(posts.length);
+  const showBoardError = () => {
+    list.replaceChildren(
+      text('div', '게시판 연결이 잠시 원활하지 않습니다. 잠시 후 다시 시도해 주세요.', 'community-empty')
+    );
+    pager.replaceChildren();
+    if (status) status.textContent = '커뮤니티 연결 지연 · 사이트의 다른 기능은 정상 이용할 수 있습니다.';
   };
 
-  form?.addEventListener('submit', event => {
+  const loadPosts = async () => {
+    setBusy(true);
+
+    const offset = (page - 1) * PAGE_SIZE;
+    const end = offset + PAGE_SIZE - 1;
+    const query = '/rest/v1/posts?select=id,category,title,nickname,created_at&status=eq.published&order=created_at.desc';
+
+    try {
+      const response = await request(query, {
+        method: 'GET',
+        headers: {
+          Prefer: 'count=exact',
+          'Range-Unit': 'items',
+          Range: offset + '-' + end
+        }
+      });
+
+      const rows = await response.json();
+      const contentRange = response.headers.get('content-range') || '';
+      const match = contentRange.match(/\/(\d+)$/);
+      totalPosts = match ? Number(match[1]) : rows.length;
+
+      renderRows(rows);
+      renderPager(totalPosts);
+      if (status) status.textContent = '실시간 커뮤니티 DB 연결됨 · 10 POSTS / PAGE';
+    } catch (_) {
+      showBoardError();
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const recentPostBlocked = () => {
+    try {
+      const last = Number(localStorage.getItem('sfandom_community_last_post_at') || 0);
+      return Date.now() - last < POST_COOLDOWN_MS;
+    } catch (_) {
+      return false;
+    }
+  };
+
+  const markPosted = () => {
+    try {
+      localStorage.setItem('sfandom_community_last_post_at', String(Date.now()));
+    } catch (_) {}
+  };
+
+  form?.addEventListener('submit', async event => {
     event.preventDefault();
+    if (loading) return;
 
     const formData = new FormData(form);
     if (String(formData.get('website') || '').trim()) return;
 
-    const nickname = String(formData.get('nickname') || '').trim().slice(0, 30);
+    const nickname = String(formData.get('nickname') || '').trim().slice(0, 30) || 'ANON';
     const title = String(formData.get('title') || '').trim().slice(0, 120);
     const body = String(formData.get('body') || '').trim().slice(0, 2000);
 
@@ -140,27 +217,41 @@
       return;
     }
 
-    if (!localPosts.length) localPosts = [...demo];
+    if (recentPostBlocked()) {
+      status.textContent = '연속 등록 방지를 위해 잠시 후 다시 작성해 주세요.';
+      return;
+    }
 
-    localPosts.unshift({
-      post_id: 'LOCAL-' + Date.now(),
-      created_at_kst: new Intl.DateTimeFormat('sv-SE', {
-        timeZone: 'Asia/Seoul',
-        dateStyle: 'short',
-        timeStyle: 'short'
-      }).format(new Date()),
-      channel: 'HOT TALK',
-      nickname: nickname || 'ANON',
-      title,
-      body,
-      comment_count: 0
-    });
+    setBusy(true);
+    status.textContent = '게시 중입니다…';
 
-    form.reset();
-    page = 1;
-    render();
-    status.textContent = '프리뷰 글이 추가되었습니다. 새로고침하면 초기화됩니다.';
+    try {
+      await request('/rest/v1/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Prefer: 'return=minimal'
+        },
+        body: JSON.stringify({
+          category: 'lounge',
+          nickname,
+          title,
+          body,
+          status: 'published'
+        })
+      });
+
+      markPosted();
+      form.reset();
+      page = 1;
+      status.textContent = '게시되었습니다.';
+      await loadPosts();
+    } catch (_) {
+      status.textContent = '게시하지 못했습니다. 잠시 후 다시 시도해 주세요.';
+    } finally {
+      setBusy(false);
+    }
   });
 
-  render();
+  loadPosts();
 })();
