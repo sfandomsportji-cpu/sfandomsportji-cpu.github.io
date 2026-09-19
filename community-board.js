@@ -7,7 +7,7 @@
   const list = document.getElementById('sfCommunityList');
   const pager = document.getElementById('sfCommunityPagination');
   const form = document.getElementById('sfCommunityForm');
-  const status = document.getElementById('sfCommunityFormStatus');
+  const status = document.getElementById('sfCommunityStatus');
 
   const PAGE_SIZE = 10;
   const API_URL = 'https://yyjjgxzbqvlpatccbpxm.supabase.co';
