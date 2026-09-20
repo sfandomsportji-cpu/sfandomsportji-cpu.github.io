@@ -17,14 +17,14 @@ SFANDOM 기본 조합:
 
 | 인물 | 핵심 장점 | SFANDOM 적용 요소 |
 |---|---|---|
-| Cody Brown Bets | 첫눈에 관심을 잡는 후킹 | 제목·썸네일·첫 3문장 |
+| Cody Brown | 첫눈에 관심을 잡는 후킹 | 제목·썸네일·첫 3문장 |
 | Warren Sharp | 데이터를 이야기로 바꾸는 능력 | 통계 → 의미 → 경기 변화 |
 | Alex Caruso | 복잡한 내용을 간단하게 전달 | 핵심 결론 선제시 |
 | Kelly Stewart | 개인 캐릭터와 전문성 결합 | 분석가 자체를 브랜드화 |
 | Adam Levitan | 긴 분석도 읽기 쉬운 구조 | 장문 글 리듬·문단 설계 |
 | Ken Pomeroy | 독자적 지표와 데이터 신뢰도 | SFANDOM 고유 지표 개발 |
 | Lauren Cowling | 팬과 가까운 언어 | 딱딱하지 않은 스포츠 문장 |
-| Todd Fuhrman | 시장·배당·경기 흐름 연결 | 시장 변화의 이유 설명 |
+| Todd Fuhrman | 시장·공개 지표·경기 흐름 연결 | 시장 변화의 이유 설명 |
 | Chris Fallica | 데이터와 실제 경기 맥락 결합 | 숫자만 보지 않는 판단 구조 |
 | Prop Bomb | 영상·경기 장면과 데이터 연결 | Data + Film 방식 |
 
