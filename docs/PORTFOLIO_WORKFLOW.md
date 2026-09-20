@@ -23,7 +23,7 @@
 1. DAILY NEWS
 2. KAIRO FEATURE
 3. NEXT MATCH
-4. SFANDOM PICK
+4. SFANDOM MATCH OUTLOOK
 5. VIDEO / REELS / SPECIAL CONTENT
 6. SITE / BRAND MILESTONE
 
@@ -56,7 +56,7 @@ docs/
 - DAILY NEWS
 - KAIRO FEATURE
 - NEXT MATCH
-- SFANDOM PICK
+- SFANDOM MATCH OUTLOOK
 - VIDEO / REELS / SPECIAL CONTENT
 - SITE / BRAND MILESTONE
 
@@ -87,7 +87,7 @@ docs/
 - DAILY NEWS 제목과 핵심 사실
 - KAIRO FEATURE 제목과 핵심 포인트
 - NEXT MATCH 경기·KST·선발
-- PICK 발행 여부와 결과
+- MATCH OUTLOOK 발행 여부와 결과
 - 사용 이미지/출처 메모
 - 영상/특집 여부
 - 운영 메모
@@ -103,7 +103,7 @@ docs/
 - Daily News
 - Kairo Feature
 - Next Match
-- Pick
+- Match Outlook
 - Commit
 - Record link
 
@@ -151,7 +151,7 @@ docs/
 
 1. 실제 main 반영 여부 확인
 2. 최종 commit SHA 확인
-3. 실제 발행 항목을 DAILY NEWS / KAIRO FEATURE / NEXT MATCH / PICK / VIDEO·SPECIAL / MILESTONE로 분류
+3. 실제 발행 항목을 DAILY NEWS / KAIRO FEATURE / NEXT MATCH / MATCH OUTLOOK / VIDEO·SPECIAL / MILESTONE로 분류
 4. 해당 업데이트의 Portfolio 순번과 KST 기록 시각 부여
 5. 날짜 파일 작성 또는 같은 날짜 파일에 새 순번 섹션 추가
 6. Portfolio Index 업데이트

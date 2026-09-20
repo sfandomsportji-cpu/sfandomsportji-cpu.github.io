@@ -56,7 +56,7 @@ CONTENT는 일상적으로 교체되는 영역이다.
 - DAILY NEWS
 - KAIRO FEATURE
 - NEXT MATCH
-- SFANDOM PICK
+- SFANDOM MATCH OUTLOOK
 - 경기 분석
 - 경기 결과
 - 기사 링크
@@ -83,7 +83,7 @@ MODULE은 사이트 본체와 분리하여 관리한다.
 ## LEVEL 1 — 콘텐츠 관리자
 
 가능:
-- 뉴스/분석/PICK/NEXT MATCH 교체
+- 뉴스/분석/MATCH OUTLOOK/NEXT MATCH 교체
 - 이미지 교체
 - 날짜/시간/기록/링크 수정
 - Archive 작성
@@ -231,7 +231,7 @@ CORE 구조 변경은 대표 관리자 승인 필요.
 - DAILY NEWS: `id="daily-news-slot"`
 - KAIRO FEATURE: `id="kairo-feature-slot"`
 - NEXT MATCH: `id="next-match-slot"`
-- PICK: 현재 PICK 전용 슬롯
+- MATCH OUTLOOK: 현재 MATCH OUTLOOK 전용 슬롯
 
 페이지 전체를 다시 작성하지 않고 슬롯 내부만 교체한다.
 
@@ -279,7 +279,7 @@ Archive는 “숨겨진 백업 코드”가 아니라 사용자가 과거 기록
 
 - DAILY NEWS
 - KAIRO FEATURE
-- PICK
+- MATCH OUTLOOK
 - 경기 분석/결과
 - 주요 기사/미디어
 
@@ -298,8 +298,8 @@ Archive 대상이 아닌 것:
 메인 일일 스냅샷:
 `archive/snapshots/`
 
-PICK:
-`archive/picks/`
+MATCH OUTLOOK:
+`archive/analysis-records/`
 
 기사/미디어:
 `archive/media/`
@@ -310,7 +310,7 @@ PICK:
 
 좋은 예:
 - `2026-08-31-main-fragment.html`
-- `2026-08-31-picks.html`
+- `2026-08-31-analysis-records.html`
 - `2026-08-31-feature.html`
 
 금지:
@@ -795,7 +795,7 @@ SEV-1/2는 복구 우선, 원인 분석은 서비스 정상화 후 별도 Branch
 
 ## DAILY
 - 메인 정상
-- 이미지/PICK/날짜 정상
+- 이미지/MATCH OUTLOOK/날짜 정상
 - LIVE 접근
 - Counter
 - 404/Broken Link
