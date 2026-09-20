@@ -10,29 +10,29 @@
 - **Version:** `v1.0`
 - **Effective date:** `2026-08-29 (KST)`
 - **Status:** ACTIVE / CANONICAL
-- **Scope:** SFANDOM daily sports analysis, Work analysis, pick selection and publication review
+- **Scope:** SFANDOM daily sports analysis, Work analysis, match outlook selection and publication review
 
 ## Mandatory Input Set
 
 Analysis must use the following four source groups as the base input set, in this fixed order:
 
-1. 배당분석표
-2. 해외 픽스터 픽
+1. 시장 지표 분석표
+2. 외부 분석가 전망
 3. 구매율
-4. 배당변동표(배변표)
+4. 시장 지표 변동표
 
 If any required source is missing, do not replace it by assumption. The missing source must be identified before the full analysis is treated as complete.
 
 ## Core Analysis Sequence
 
-1. 배당판 통합 및 경기 압축
+1. 시장 지표판 통합 및 경기 압축
 2. H2H / sample review in the order **100 → 50 → 20**
 3. 방향 일치 여부 우선 확인
 4. 통계 신뢰 후보 선별
 5. 승패·언더/오버·BTTS 등 시장 확장 검토
-6. 선발/라인업, 홈·원정, 최근 경기 내용, 배당 변동 원인 교차검증
+6. 선발/라인업, 홈·원정, 최근 경기 내용, 시장 지표 변동 원인 교차검증
 7. 예상 승리팀 자체 승률은 **마지막 검증 단계**에서 확인
-8. 컷 미달 시 **NO PICK / PASS**
+8. 컷 미달 시 **NO CALL / PASS**
 
 ## Statistical Rules
 
@@ -41,7 +41,7 @@ If any required source is missing, do not replace it by assumption. The missing 
 - 표본 표기는 `50경기`, `100경기`처럼 실제 기준을 명확히 표시한다.
 - 축구 O/U 기본 기준선은 **2.5**로 둔다.
 - 이변 가능성은 장기 표본의 이변 횟수와 비율을 함께 본다.
-- 우선순위는 **통계 신뢰도 → 배당 메리트 → H2H 보조 판단**으로 둔다.
+- 우선순위는 **통계 신뢰도 → 지표상 메리트 → H2H 보조 판단**으로 둔다.
 
 ## Purchase-rate / Market Signals
 
@@ -49,16 +49,16 @@ If any required source is missing, do not replace it by assumption. The missing 
 - 구매율 **85–90%:** 경계 구간
 - 구매율 **90% 이상:** 과열 가능성으로 회피 우선 검토
 - 국내·해외 환산 확률 편차가 **3%p 미만**이면 중립 신호로 본다.
-- 급격한 배당 변동은 결과 예측 자체가 아니라 원인 확인이 필요한 시장 신호로 취급한다.
+- 급격한 시장 지표 변동은 결과 예측 자체가 아니라 원인 확인이 필요한 시장 신호로 취급한다.
 
-## Fixed Pick Card Structure
+## Fixed Match Outlook Card Structure
 
 1. 경기 / KST 시작시간
 2. 선발 또는 핵심 라인업
 3. 핵심 근거 3–4개
-4. 배당 / 변동
+4. 공개 지표 / 변동
 5. AI 한줄 판단
-6. SFANDOM PICK
+6. SFANDOM MATCH OUTLOOK
 7. 리스크 / PASS 조건
 
 ## Publication Verification
@@ -69,9 +69,9 @@ Before publication, verify at minimum:
 - 경기 일자 및 시작시간
 - 팀명 / 상대팀
 - 선수명 및 선발 여부
-- 배당 및 변동 수치
+- 공개 지표 및 변동 수치
 
-Critical publication data should be cross-checked repeatedly before release. Historical picks and news must be preserved rather than silently overwritten.
+Critical publication data should be cross-checked repeatedly before release. Historical match outlooks and news must be preserved rather than silently overwritten.
 
 ## Governance
 
