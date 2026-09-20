@@ -77,7 +77,7 @@
 
   const style = document.createElement('style');
   style.textContent = `
-    .sf-basic-counter{display:inline-flex;align-items:center;gap:7px;flex:0 0 auto;height:30px;margin-left:8px;padding:0 10px;border:1px solid rgba(255,255,255,.11);border-radius:2px;background:rgba(255,255,255,.018);color:#e7e7e3;font:700 12px/1 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;letter-spacing:.08em;white-space:nowrap}
+    .sf-basic-counter{pointer-events:none;user-select:none;display:inline-flex;align-items:center;gap:7px;flex:0 0 auto;height:30px;margin-left:8px;padding:0 10px;border:1px solid rgba(255,255,255,.11);border-radius:2px;background:rgba(255,255,255,.018);color:#e7e7e3;font:700 12px/1 system-ui,-apple-system,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;letter-spacing:.08em;white-space:nowrap}
     .sf-basic-counter span{opacity:.52}
     .sf-basic-counter b{min-width:52px;font-size:14px;font-weight:800;letter-spacing:.06em;text-align:right;font-variant-numeric:tabular-nums}
     @media(max-width:900px){.sf-basic-counter{height:28px;padding:0 9px}}
