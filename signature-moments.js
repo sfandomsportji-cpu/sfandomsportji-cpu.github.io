@@ -1,14 +1,3 @@
-const redundantBrandFilmPanel=document.querySelector('.home-brand-film');
-if(redundantBrandFilmPanel)redundantBrandFilmPanel.remove();
-
-const revealNodes=[...document.querySelectorAll('.reveal')];
-if('IntersectionObserver'in window){
-  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
-  revealNodes.forEach(el=>io.observe(el));
-}else{
-  revealNodes.forEach(el=>el.classList.add('show'));
-}
-
 const startSignatureMoments=()=>{
   const player=document.getElementById('signaturePlayer');
   const counter=document.getElementById('signatureCounter');
