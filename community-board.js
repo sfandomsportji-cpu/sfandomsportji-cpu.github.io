@@ -106,8 +106,7 @@
 
       row.append(
         main,
-        text('time', formatTime(post.created_at), 'community-row-time'),
-        text('span', '0', 'community-row-comments')
+        text('time', formatTime(post.created_at), 'community-row-time')
       );
 
       list.append(row);
@@ -236,8 +235,7 @@
           category: 'lounge',
           nickname,
           title,
-          body,
-          status: 'published'
+          body
         })
       });
 
