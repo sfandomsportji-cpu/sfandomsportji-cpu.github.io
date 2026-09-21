@@ -19,13 +19,6 @@
   let totalPosts = 0;
   let loading = false;
 
-  const channelLabel = {
-    nba: 'NBA',
-    football: 'FOOTBALL',
-    baseball: 'BASEBALL',
-    lounge: 'HOT TALK'
-  };
-
   const text = (tag, value, className) => {
     const el = document.createElement(tag);
     if (className) el.className = className;
@@ -94,13 +87,14 @@
 
       row.append(
         text('span', String(displayNo), 'community-row-num'),
-        text('span', channelLabel[post.category] || 'HOT TALK', 'community-row-channel')
+        text('span', 'HOT TALK', 'community-row-channel')
       );
 
       const main = document.createElement('div');
       main.className = 'community-row-main';
       main.append(
         text('strong', post.title || '(제목 없음)', 'community-row-title'),
+        text('p', post.body || '', 'community-row-body'),
         text('small', post.nickname || 'ANON', 'community-row-meta')
       );
 
@@ -158,7 +152,7 @@
 
     const offset = (page - 1) * PAGE_SIZE;
     const end = offset + PAGE_SIZE - 1;
-    const query = '/rest/v1/posts?select=id,category,title,nickname,created_at&status=eq.published&order=created_at.desc';
+    const query = '/rest/v1/posts?select=id,title,body,nickname,created_at&status=eq.published&order=created_at.desc';
 
     try {
       const response = await request(query, {
@@ -232,7 +226,6 @@
           Prefer: 'return=minimal'
         },
         body: JSON.stringify({
-          category: 'lounge',
           nickname,
           title,
           body
