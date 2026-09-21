@@ -163,8 +163,3 @@ if(signatureSection&&'IntersectionObserver'in window){
   startSignatureMoments();
 }
 
-const loadSecondary=()=>{
-  import('./home-editorial.js?v=20260919-counter-restore1').catch(()=>{});
-};
-if('requestIdleCallback'in window){requestIdleCallback(loadSecondary,{timeout:1200})}
-else{setTimeout(loadSecondary,350)}
