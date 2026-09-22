@@ -216,7 +216,7 @@
     }
 
     setBusy(true);
-    status.textContent = '검토 요청 중입니다…';
+    status.textContent = '게시 중입니다…';
 
     try {
       await request('/rest/v1/posts', {
@@ -235,7 +235,7 @@
       markPosted();
       form.reset();
       page = 1;
-      status.textContent = '검토 요청이 접수되었습니다. 운영 승인 후 공개됩니다.';
+      status.textContent = '게시되었습니다.';
       await loadPosts();
     } catch (_) {
       status.textContent = '게시하지 못했습니다. 잠시 후 다시 시도해 주세요.';
