@@ -13,7 +13,7 @@
   const API_URL = 'https://yyjjgxzbqvlpatccbpxm.supabase.co';
   const PUBLISHABLE_KEY = 'sb_publishable_ABoOVvaUzGuVPBryIpY02w_tTcdt-Q4';
   const REQUEST_TIMEOUT_MS = 8000;
-  const POST_COOLDOWN_MS = 10000;
+  const POST_COOLDOWN_MS = 15000;
 
   let page = 1;
   let totalPosts = 0;
@@ -64,7 +64,11 @@
         }
       });
 
-      if (!response.ok) throw new Error('community ' + response.status);
+      if (!response.ok) {
+        const error = new Error('community ' + response.status);
+        error.status = response.status;
+        throw error;
+      }
       return response;
     } finally {
       clearTimeout(timer);
@@ -219,11 +223,10 @@
     status.textContent = '게시 중입니다…';
 
     try {
-      await request('/rest/v1/posts', {
+      await request('/functions/v1/community-post', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          Prefer: 'return=minimal'
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           nickname,
@@ -237,8 +240,10 @@
       page = 1;
       status.textContent = '게시되었습니다.';
       await loadPosts();
-    } catch (_) {
-      status.textContent = '게시하지 못했습니다. 잠시 후 다시 시도해 주세요.';
+    } catch (error) {
+      status.textContent = error?.status === 429
+        ? '연속 등록 방지를 위해 잠시 후 다시 작성해 주세요.'
+        : '게시하지 못했습니다. 잠시 후 다시 시도해 주세요.';
     } finally {
       setBusy(false);
     }
