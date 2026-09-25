@@ -1,3 +1,10 @@
+# 🚨 CRITICAL OPERATING RULE
+
+**이미지 추출은 SFANDOM Instagram·Blog 핵심 업무입니다.**  
+작업 전 반드시 [00_CRITICAL_IMAGE_WORKFLOW.md](./00_CRITICAL_IMAGE_WORKFLOW.md)를 확인합니다.
+
+---
+
 # SFANDOM Official Website
 
 SFANDOM 스포츠 데이터·분석·콘텐츠 사이트 운영 저장소입니다.
