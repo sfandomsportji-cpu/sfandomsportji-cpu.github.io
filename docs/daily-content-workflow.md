@@ -6,7 +6,7 @@
 ## 0. Source-of-truth order
 When rules conflict, use this order:
 1. Ji's latest explicit instruction in the current work
-2. Currently enabled ChatGPT Work / automation instruction
+2. Currently enabled Claude automation instruction (`scripts/edition_prompt.md`, `.github/workflows/daily-edition.yml`)
 3. This document
 4. Older GitHub history, archived docs, or past commits
 
