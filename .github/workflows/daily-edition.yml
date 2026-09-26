@@ -1,93 +1,83 @@
-name: Daily Morning Edition
+name: Daily Morning Edition (승인 요청)
 
 on:
-  workflow_dispatch:
   schedule:
-    # 08:00 KST every day (23:00 UTC on the previous date)
-    - cron: "0 23 * * *"
+    - cron: "0 23 * * *"   # 매일 08:00 KST (UTC 23:00) — 필요하면 시간 조정
+  workflow_dispatch:        # Actions 탭에서 수동 실행 가능
 
 permissions:
   contents: write
   pull-requests: write
 
-concurrency:
-  group: daily-morning-edition
-  cancel-in-progress: false
+concurrency: daily-edition
 
 jobs:
-  generate:
+  draft:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
-
-    env:
-      TZ: Asia/Seoul
-      OPENAI_MODEL: gpt-5.6-terra
-
+    timeout-minutes: 40
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Install generator dependency
-        run: python -m pip install --upgrade openai
+      - name: Install
+        run: pip install anthropic
 
-      - name: Verify OpenAI secret
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: |
-          if [ -z "$OPENAI_API_KEY" ]; then
-            echo "::error::Repository secret OPENAI_API_KEY is missing."
-            exit 1
-          fi
+      - name: 날짜
+        id: d
+        run: echo "date=$(TZ=Asia/Seoul date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
 
-      - name: Generate morning edition proposal
+      # 홈 4개 슬롯 초안 작성 + 이전 에디션 archive/morning/ 보존
+      - name: 오늘 에디션 초안 작성
+        id: gen
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python scripts/generate_edition.py
 
-      - name: Check generated diff
-        id: diff
-        shell: bash
-        run: |
-          if git diff --quiet -- index.html archive/morning; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No content changes to propose."
-          else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          fi
+      # 승인 요청 = Pull Request (GitHub 이메일/앱 알림 자동 발송)
+      - name: 승인 요청 보내기
+        id: cpr
+        if: steps.gen.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: content/${{ steps.d.outputs.date }}-morning
+          add-paths: |
+            index.html
+            archive/morning/*.html
+          commit-message: "content: ${{ steps.d.outputs.date }} morning edition draft"
+          title: "📰 [승인 요청] ${{ steps.d.outputs.date }} 모닝 에디션"
+          body-path: ${{ runner.temp }}/pr_body.md
+          labels: edition, needs-approval
+          assignees: sfandomsportji-cpu
+          delete-branch: true
 
-      - name: Commit proposal branch
-        if: steps.diff.outputs.changed == 'true'
-        id: commit
-        shell: bash
-        run: |
-          DATE_KST="$(TZ=Asia/Seoul date +%Y-%m-%d)"
-          BRANCH="automation/daily-morning-edition-${GITHUB_RUN_ID}"
-          git config user.name "SFANDOM Automation"
-          git config user.email "actions@users.noreply.github.com"
-          git checkout -b "$BRANCH"
-          git add index.html archive/morning
-          git commit -m "content: daily morning edition ${DATE_KST}"
-          git push origin "$BRANCH"
-          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
-          echo "date_kst=$DATE_KST" >> "$GITHUB_OUTPUT"
-
-      - name: Open approval PR
-        if: steps.diff.outputs.changed == 'true'
+      # 텔레그램 알림 (시크릿 등록 시에만 동작, 미등록이면 건너뜀)
+      - name: 텔레그램 승인 알림
+        if: steps.cpr.outputs.pull-request-url != ''
         env:
-          GH_TOKEN: ${{ github.token }}
-          BRANCH: ${{ steps.commit.outputs.branch }}
-          DATE_KST: ${{ steps.commit.outputs.date_kst }}
-        shell: bash
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
+          PR_URL: ${{ steps.cpr.outputs.pull-request-url }}
+          DATE: ${{ steps.d.outputs.date }}
         run: |
-          gh pr create \
-            --base main \
-            --head "$BRANCH" \
-            --title "Morning Edition · ${DATE_KST} KST" \
-            --body "Automated SFANDOM morning-edition proposal.\n\nGenerated sections: Daily News (2), KAIRO Feature, Next Match, Player Spotlight.\n\nPrevious production slots are preserved under archive/morning/. Review facts, links, images, and layout before merge.\n\nThis workflow does not merge or publish automatically."
+          if [ -z "$TG_TOKEN" ] || [ -z "$TG_CHAT" ]; then echo "텔레그램 미설정 - 건너뜀"; exit 0; fi
+          curl -sS -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TG_CHAT}" \
+            --data-urlencode "text=📰 SFANDOM ${DATE} 모닝 에디션 초안이 준비됐어요.
+          확인 후 Merge = 게시 / Close = 폐기
+          ${PR_URL}"
+
+      - name: 실패 알림
+        if: failure()
+        env:
+          TG_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TG_CHAT: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$TG_TOKEN" ] || [ -z "$TG_CHAT" ]; then exit 0; fi
+          curl -sS -X POST "https://api.telegram.org/bot${TG_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${TG_CHAT}" \
+            --data-urlencode "text=⚠️ SFANDOM 에디션 생성 실패. 사이트는 기존 에디션 유지 중.
+          ${RUN_URL}"
