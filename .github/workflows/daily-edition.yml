@@ -1,0 +1,93 @@
+name: Daily Morning Edition
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 08:00 KST every day (23:00 UTC on the previous date)
+    - cron: "0 23 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: daily-morning-edition
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    env:
+      TZ: Asia/Seoul
+      OPENAI_MODEL: gpt-5.6-terra
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install generator dependency
+        run: python -m pip install --upgrade openai
+
+      - name: Verify OpenAI secret
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "::error::Repository secret OPENAI_API_KEY is missing."
+            exit 1
+          fi
+
+      - name: Generate morning edition proposal
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: python scripts/generate_edition.py
+
+      - name: Check generated diff
+        id: diff
+        shell: bash
+        run: |
+          if git diff --quiet -- index.html archive/morning; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No content changes to propose."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit proposal branch
+        if: steps.diff.outputs.changed == 'true'
+        id: commit
+        shell: bash
+        run: |
+          DATE_KST="$(TZ=Asia/Seoul date +%Y-%m-%d)"
+          BRANCH="automation/daily-morning-edition-${GITHUB_RUN_ID}"
+          git config user.name "SFANDOM Automation"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add index.html archive/morning
+          git commit -m "content: daily morning edition ${DATE_KST}"
+          git push origin "$BRANCH"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+          echo "date_kst=$DATE_KST" >> "$GITHUB_OUTPUT"
+
+      - name: Open approval PR
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.commit.outputs.branch }}
+          DATE_KST: ${{ steps.commit.outputs.date_kst }}
+        shell: bash
+        run: |
+          gh pr create \
+            --base main \
+            --head "$BRANCH" \
+            --title "Morning Edition · ${DATE_KST} KST" \
+            --body "Automated SFANDOM morning-edition proposal.\n\nGenerated sections: Daily News (2), KAIRO Feature, Next Match, Player Spotlight.\n\nPrevious production slots are preserved under archive/morning/. Review facts, links, images, and layout before merge.\n\nThis workflow does not merge or publish automatically."
