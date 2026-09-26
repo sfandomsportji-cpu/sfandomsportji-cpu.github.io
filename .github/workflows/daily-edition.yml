@@ -1,8 +1,9 @@
 name: Daily Morning Edition (승인 요청)
 
 on:
-  schedule:
-    - cron: "0 23 * * *"   # 매일 08:00 KST (UTC 23:00) — 필요하면 시간 조정
+  # 매일 자동 실행은 꺼둠 (ANTHROPIC_API_KEY 미등록). 키 등록 후 아래 두 줄 주석 해제
+  # schedule:
+  #   - cron: "0 23 * * *"   # 매일 08:00 KST (UTC 23:00)
   workflow_dispatch:        # Actions 탭에서 수동 실행 가능
 
 permissions:
