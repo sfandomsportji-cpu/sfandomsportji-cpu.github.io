@@ -187,7 +187,11 @@ def main() -> None:
     ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
     snap = ARCHIVE_DIR / f"{prev_date}.html"
     if not snap.exists():
-        snap.write_text(html.replace("<head>", '<head>\n<base href="/">', 1), encoding="utf-8")
+        snap_html = html.replace("<head>", '<head>\n<base href="/">', 1)
+        # Archive 사본은 검색 노출 금지 (홈과 중복 방지)
+        snap_html = re.sub(r'<meta name="robots" content="[^"]*"\s*/?>',
+                           '<meta name="robots" content="noindex,follow" />', snap_html, count=1)
+        snap.write_text(snap_html, encoding="utf-8")
     # Archive 저장 확인 전에는 원본을 교체하지 않음 (운영 매뉴얼 6.5)
     if "daily-news-slot" not in snap.read_text(encoding="utf-8"):
         fail(f"Archive 스냅샷 {snap.name} 확인 실패 — 교체를 중단합니다.")
