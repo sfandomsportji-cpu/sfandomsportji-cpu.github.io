@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /README.md
-
 Disallow: /archive/README.md
 Sitemap: https://sfandom.com/sitemap.xml
