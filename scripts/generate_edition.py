@@ -37,6 +37,15 @@ FORBIDDEN = {
     r"\son[a-z]+\s*=": "인라인 이벤트(onclick 등)",
     r"!important": "!important",
     r"javascript:": "javascript: 링크",
+    # 작은따옴표·따옴표 없는 src/href/srcset은 아래 출처 검사를 우회하므로 금지
+    r"\s(?:src|href|srcset)\s*=\s*(?![\s\"])": "큰따옴표 없는 src/href/srcset",
+}
+# 현재 게시본·Archive 슬롯이 쓰는 태그 + 기본 서식 태그만 허용
+# (object/embed/form/meta/base/link/svg/video 등은 차단)
+ALLOWED_TAGS = {
+    "a", "article", "b", "blockquote", "br", "div", "em", "figcaption", "figure",
+    "h2", "h3", "h4", "header", "i", "img", "li", "ol", "p", "section", "small",
+    "span", "strong", "time", "ul",
 }
 
 
@@ -72,6 +81,9 @@ def validate(sections: dict, today_dot: str) -> None:
     for pat, name in FORBIDDEN.items():
         if re.search(pat, joined, re.I):
             fail(f"금지 요소 포함: {name}")
+    for tag in sorted({t.lower() for t in re.findall(r"<\s*/?\s*([a-zA-Z][a-zA-Z0-9-]*)", joined)}):
+        if tag not in ALLOWED_TAGS:
+            fail(f"허용되지 않은 태그: <{tag}>")
     for tag in re.findall(r"<img\b[^>]*>", joined):
         srcs = re.findall(r'\ssrc="([^"]+)"', tag)
         # MLB 이미지 URL 자체에 쉼표(w_900,q_auto)가 있으므로 "쉼표+공백"으로만 후보를 나눔
@@ -187,7 +199,11 @@ def main() -> None:
     ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
     snap = ARCHIVE_DIR / f"{prev_date}.html"
     if not snap.exists():
-        snap.write_text(html.replace("<head>", '<head>\n<base href="/">', 1), encoding="utf-8")
+        snap_html = html.replace("<head>", '<head>\n<base href="/">', 1)
+        # Archive 사본은 검색 노출 금지 (홈과 중복 방지)
+        snap_html = re.sub(r'<meta name="robots" content="[^"]*"\s*/?>',
+                           '<meta name="robots" content="noindex,follow" />', snap_html, count=1)
+        snap.write_text(snap_html, encoding="utf-8")
     # Archive 저장 확인 전에는 원본을 교체하지 않음 (운영 매뉴얼 6.5)
     if "daily-news-slot" not in snap.read_text(encoding="utf-8"):
         fail(f"Archive 스냅샷 {snap.name} 확인 실패 — 교체를 중단합니다.")
