@@ -123,6 +123,7 @@
   flex-wrap:wrap;
 }
 .footer-community-actions .btn{min-height:48px}
+.footer-ad-slot{width:100%;min-height:90px}
 .footer-main{
   max-width:1220px;
   margin:0 auto;
