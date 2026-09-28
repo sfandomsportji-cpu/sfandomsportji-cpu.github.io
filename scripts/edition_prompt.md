@@ -32,6 +32,8 @@
 - <script>, <style>, <iframe>, 인라인 style 속성, onclick 등 이벤트 속성, !important 금지.
 - 새 class를 만들지 않습니다(CSS가 없어 깨집니다).
 - 이미지는 공식 이미지만:
+  - **이 이미지 규칙은 4개 슬롯(Daily News, KAIRO Feature, Next Match, Player Spotlight)
+    전체에 예외 없이 동일하게 적용됩니다. KAIRO Feature도 매일 새로 씁니다.**
   - **우선순위: 기사에 특정 선수가 한 명이라도 등장하면 반드시 그 선수의 실제 사진(선수 사진)을 씁니다.**
     팀 로고는 특정 선수 없이 팀 대 팀 비교만 다룰 때, 즉 선수 사진을 쓸 수 없는 경우에만
     최후의 수단으로 씁니다. 같은 기사에서 이미 팀 로고를 썼더라도 언급된 선수가 있으면
@@ -42,8 +44,12 @@
   - 모든 img에 class="portrait-safe", width/height, loading="lazy", decoding="async", alt 작성
   - AI 생성 이미지, 언론사·방송사 워터마크 이미지, 출처 불명 이미지 사용 금지
   - 선수 ID는 mlb.com 선수 페이지 주소에서 확인한 것만 사용합니다.
+  - **로컬 assets/ 이미지 파일은 자동화에서 새로 만들 수 없으므로 절대 쓰지 않습니다.**
+    (예: assets/2026-09-26-kairo-feature-rays-pitcher.webp 같은 날짜 박힌 정적 파일은
+    자동화가 아니라 사람이 수동으로 넣은 예외였고, 이후로는 쓰지 않습니다.)
   - (선수 헤드샷이 아닌 실제 경기 현장 액션샷 URL은 아직 검증되지 않아 이 규칙에 없습니다.
-    검증되면 이 섹션에 추가될 예정입니다.)
+    검증되면 이 섹션에 추가될 예정입니다. 그 전까지 KAIRO Feature도 위 선수 사진/팀 로고
+    규칙만 따릅니다.)
 - 외부 링크는 https만, target="_blank" rel="noopener noreferrer" 포함.
 - 이전 에디션의 헤드라인과 문장을 재사용하지 않습니다.
 - Daily News 상단 eyebrow의 "MORNING EDITION · ... · YYYY.MM.DD KST" 형식을 그대로 유지합니다
