@@ -1,0 +1,32 @@
+/* Approved daily edition and mobile layout · 2026-10-02 */
+.approved-edition {padding-top:72px;padding-bottom:72px;}
+.approved-edition header {max-width:900px;margin-bottom:48px;}
+.approved-edition header :is(h1,h2) {font-size:clamp(2rem,4vw,3.7rem);line-height:1.25;letter-spacing:-.035em;word-break:keep-all;overflow-wrap:anywhere;}
+.approved-edition header>p:last-child,.edition-article>p {font-size:17px;line-height:1.85;color:#d4d4d7;word-break:keep-all;overflow-wrap:anywhere;}
+.edition-article {max-width:900px;border-top:1px solid #333;padding:36px 0;scroll-margin-top:100px;min-width:0;}
+.edition-article h3 {font-size:clamp(1.6rem,3vw,2.5rem);line-height:1.4;letter-spacing:-.03em;word-break:keep-all;overflow-wrap:anywhere;margin:0 0 24px;}
+.edition-article p.eyebrow {font-size:12px;color:#ff5860;letter-spacing:.12em;}
+.edition-source a {display:inline-flex;align-items:center;min-height:44px;color:#eee;text-underline-offset:4px;}
+.edition-table {max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;border:1px solid #444;border-radius:8px;}
+.edition-table table {border-collapse:collapse;width:100%;min-width:620px;font-size:15px;line-height:1.65;}
+.edition-table caption {text-align:left;padding:16px;font-weight:700;}
+.edition-table th,.edition-table td {padding:14px;text-align:left;border-top:1px solid #333;}
+.edition-table th {background:#161616;color:#fff;}
+.edition-table td:first-child {white-space:nowrap;font-variant-numeric:tabular-nums;}
+.edition-table:focus-visible,.nav a:focus-visible {outline:2px solid #ff5860;outline-offset:3px;}
+@media(max-width:620px){
+ .site-header.home-header {padding:10px 16px;gap:8px;flex-wrap:wrap;}
+ .home-header .nav {gap:4px;margin-left:auto;flex-wrap:wrap;}
+ .home-header .nav a {display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 7px;font-size:11px;letter-spacing:.04em;}
+ .approved-edition {padding:48px 18px;}
+ .approved-edition header {margin-bottom:28px;}
+ .approved-edition header :is(h1,h2) {font-size:clamp(1.85rem,7.8vw,2.65rem);line-height:1.35;}
+ .approved-edition header>p:last-child,.edition-article>p {font-size:16px;line-height:1.85;}
+ .edition-article {padding:28px 0;}
+ .edition-article h3 {font-size:clamp(1.5rem,6.4vw,2rem);line-height:1.45;}
+ .hero-actions {flex-wrap:wrap;}
+ .community-highlight-frame {margin-left:0;width:100%;}
+ .community-form input,.community-form textarea {font-size:16px;max-width:100%;}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker-track{animation:none}.reveal{opacity:1;transform:none;transition:none}}
+.content-page .approved-edition{padding-left:0;padding-right:0;}
