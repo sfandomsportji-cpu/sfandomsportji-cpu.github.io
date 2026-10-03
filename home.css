@@ -368,3 +368,13 @@
 @media(min-width:621px) and (max-width:900px){
 #signature-moments{padding-bottom:32px}
 }
+
+/* Video-only homepage hero; legacy hero styles remain for archived editions. */
+.hero-film{position:relative;width:100%;height:clamp(560px,calc(100svh - 72px),980px);overflow:hidden;background:#050505}
+.hero-film .hero-reel{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#050505}
+.hero-film-social{display:flex;align-items:center;justify-content:flex-end;gap:10px;max-width:1760px;margin:0 auto;padding:12px 32px}
+.hero-film-social a{display:grid;place-items:center;width:44px;height:44px;border:1px solid #303035;border-radius:50%;color:#d8d8d5;text-decoration:none;transition:color .2s,border-color .2s}
+.hero-film-social a:hover,.hero-film-social a:focus-visible{color:#fff;border-color:var(--accent)}
+.hero-film-social svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hero-film-social .social-dot{fill:currentColor;stroke:none}
+@media(max-width:900px){.hero-film{height:auto;aspect-ratio:16/9}.hero-film-social{padding:10px 20px}}
