@@ -58,7 +58,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20260926-long2" />
-  <link rel="stylesheet" href="home.css?v=20261003-open-hero" />
+  <link rel="stylesheet" href="home.css?v=20261003-video-only" />
   <link rel="stylesheet" href="morning-content.css?v=20261003-no-top-line" />
   <link rel="stylesheet" href="community-board.css?v=20260926-long2" />
 </head>
@@ -75,31 +75,13 @@
   </header>
 
   <main>
-    <section class="hero-v2 reveal">
-      <div class="hero-reel-wrap">
-        <video class="hero-reel" muted loop playsinline preload="none" aria-label="SFANDOM original brand film background" data-src="assets/sfandom-brand-film-20260901.mp4"></video>
-      </div>
-      <div class="hero-noise"></div>
-      <div class="hero-copy">
-        <div class="live-chip"><i></i> SPORTS INTELLIGENCE · SEOUL</div>
-        <p class="eyebrow">기록에서 근거까지</p>
-        <h1>경기를 읽는<br><span>정확한 근거</span></h1>
-        <p class="hero-kicker">모든 경기에는 패턴이 있고,<br>모든 판단에는 근거가 있습니다.</p>
-        <p class="hero-text">SFANDOM은 기록·상대 전적·최근 경기력·공개 지표를 종합해, 경기 흐름을 더 명확하게 설명하는 스포츠 분석을 제공합니다.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="analysis.html">오늘의 분석 보기 <b>→</b></a>
-          <a class="btn ghost" href="about.html">분석 원칙 보기</a>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-social" aria-label="SFANDOM social media">
-          <span>FOLLOW</span>
-          <a href="https://www.instagram.com/sportsfandom/" target="_blank" rel="noopener noreferrer" aria-label="SFANDOM Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1"></circle></svg></a>
-          <a href="https://www.threads.com/@sportsfandom" target="_blank" rel="noopener noreferrer" aria-label="SFANDOM Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 10.1c-.2-3.7-2.4-5.9-5.8-5.9-3.7 0-6.1 2.7-6.1 7.8 0 5.2 2.4 7.8 6.2 7.8 3.2 0 5.6-1.9 5.6-4.7 0-2.5-1.8-4.2-4.7-4.2-2.5 0-4.2 1.2-4.2 3 0 1.7 1.3 2.8 3.3 2.8 2.6 0 4.5-1.8 4.5-4.8 0-2.9-1.6-4.7-4.3-4.7-1.9 0-3.2.8-4 2.1"></path></svg></a>
-        </div>
-      </div>
+    <section class="hero-film" aria-label="SFANDOM 브랜드 영상">
+      <video class="hero-reel" muted loop playsinline preload="none" aria-label="SFANDOM original brand film" data-src="assets/sfandom-brand-film-20260901.mp4"></video>
     </section>
+    <nav class="hero-film-social" aria-label="SFANDOM social media">
+      <a href="https://www.instagram.com/sportsfandom/" target="_blank" rel="noopener noreferrer" aria-label="SFANDOM Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1"></circle></svg></a>
+      <a href="https://www.threads.com/@sportsfandom" target="_blank" rel="noopener noreferrer" aria-label="SFANDOM Threads"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.8 10.1c-.2-3.7-2.4-5.9-5.8-5.9-3.7 0-6.1 2.7-6.1 7.8 0 5.2 2.4 7.8 6.2 7.8 3.2 0 5.6-1.9 5.6-4.7 0-2.5-1.8-4.2-4.7-4.2-2.5 0-4.2 1.2-4.2 3 0 1.7 1.3 2.8 3.3 2.8 2.6 0 4.5-1.8 4.5-4.8 0-2.9-1.6-4.7-4.3-4.7-1.9 0-3.2.8-4 2.1"></path></svg></a>
+    </nav>
 
 
 <section id="daily-news-slot" class="section morning-edition reveal" aria-labelledby="daily-news-title">
