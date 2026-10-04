@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /search/
+Disallow: /README.md
+
+Sitemap: https://sfandom.com/sitemap.xml

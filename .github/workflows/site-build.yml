@@ -1,0 +1,38 @@
+name: Site build (블로그 새 글 · 팀 로고 반영)
+
+# 구글·네이버 블로그 새 글을 받아 홈·사이트맵에 반영합니다. API 비용 없음.
+on:
+  schedule:
+    - cron: "17 * * * *"   # 매시간 (구글 글은 방문 시 실시간, 네이버 글은 매시간 반영)
+  push:
+    branches: [main]
+    paths: ["src/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: site-build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Team logos (없는 것만 받아 저장소에 보관)
+        run: python3 src/tools/fetch_logos.py
+      - name: Build
+        run: python3 src/build.py
+      - name: Commit if changed
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "sfandom-bot"
+            git config user.email "sfandom-bot@users.noreply.github.com"
+            git add -A
+            git commit -m "build: 블로그 새 글 반영 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
+            git push
+          fi
