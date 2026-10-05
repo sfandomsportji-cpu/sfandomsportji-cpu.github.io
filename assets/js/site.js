@@ -1,4 +1,4 @@
-/* SFANDOM site script — 메뉴 · 광고 슬롯 · 팬 보드 · 방문자 카운터 · 검색 */
+/* SFANDOM site script — 메뉴 · 광고 슬롯 · 릴스 · 쪽지 · 팀 로고 · 블로그 · 팬 보드 · 검색 */
 (() => {
   'use strict';
   const CFG = window.SFANDOM || {};
@@ -81,6 +81,26 @@
     heroVideo.play().catch(() => {});
   }
 
+  /* ── FAN ZONE 릴스: 인스타그램 화면이 뜨지 않으면 사이트의 브랜드 영상으로 그 자리를 채움 ──
+     인스타그램 임베드는 뜨는 즉시 부모 창에 메시지를 보냅니다. 화면에 들어온 뒤 8초 동안 메시지가 없으면 실패로 봅니다. */
+  const reel = $('[data-reel]');
+  if (reel) {
+    const frame = $('iframe', reel), fb = $('.reel-fallback', reel);
+    let alive = false, timer = null;
+    window.addEventListener('message', e => { if (/^https:\/\/([a-z0-9-]+\.)*instagram\.com$/.test(e.origin || '')) { alive = true; clearTimeout(timer); } });
+    const fail = () => {
+      if (alive || !fb) return;
+      reel.classList.add('failed'); fb.hidden = false;
+      if (!fb.getAttribute('src')) fb.src = fb.dataset.src;
+      fb.play().catch(() => {});
+    };
+    if (frame && fb && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { io.disconnect(); timer = setTimeout(fail, 8000); } }, { rootMargin: '200px' });
+      io.observe(reel);
+      frame.addEventListener('error', fail, { once: true });
+    }
+  }
+
   /* ── 문의(쪽지) 양식: 메일 주소를 노출하지 않고 사이트 안에서 접수 → 드라이브 "SFANDOM 쪽지함" 시트에 저장 ──
      받는 쪽(Apps Script 웹 앱)은 nick · email · message · page · website 값을 받고, message는 1000자까지 저장합니다. */
   const cf = $('[data-contact]');
@@ -121,7 +141,7 @@
   const blogUrl = grids[0]?.dataset.blogger;
   if (grids.length && blogUrl) {
     const cb = '__sfBlogger' + Date.now();
-    const bigImg = u => (u || '').replace(/\/s\d+(-c)?\//, '/w640/').replace(/=s\d+(-c)?$/, '=w640');
+    const bigImg = u => (u || '').replace(/\/s\d+(-w\d+)?(-h\d+)?(-c)?\//, '/w800/').replace(/=s\d+(-w\d+)?(-h\d+)?(-c)?$/, '=w800');
     const strip = h => { const d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); };
     window[cb] = data => {
       const entries = data?.feed?.entry || [];
@@ -184,21 +204,38 @@
     return new Intl.DateTimeFormat('ko-KR', { timeZone: 'Asia/Seoul', month: '2-digit', day: '2-digit' }).format(d);
   };
 
-  /* ── 팬 보드 ── */
+  /* ── 팬 보드 ──
+     채널·경기 스레드·한 줄 평은 글 제목 앞의 [머리말]로 구분합니다. 예) "[NBA] 제목", "[PHI@NYK] 제목", "[한줄] 내용"
+     게시판 저장소(posts 표)는 그대로 쓰고, 목록을 불러올 때 제목 머리말로 걸러 냅니다. */
+  const QUICK = '한줄';
+  const splitTag = title => { const m = /^\[([^\]]{1,20})\]\s*(.*)$/.exec(title || ''); return m ? [m[1], m[2]] : ['자유', title || '']; };
+  const likeTag = t => 'like.' + encodeURIComponent('[' + t + ']') + '*';
+  const throttled = () => { let last = 0; try { last = Number(localStorage.getItem('sfandom_community_last_post_at') || 0); } catch (_) {} return Date.now() - last < 15000; };
+  const stamp = () => { try { localStorage.setItem('sfandom_community_last_post_at', String(Date.now())); } catch (_) {} };
+  const sendPost = (nickname, title, body) => request('/functions/v1/community-post', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nickname, title, body }) });
+  const postError = err => err && err.status === 429 ? '연속 등록 방지를 위해 잠시 후 다시 작성해 주세요.' : '게시하지 못했습니다. 잠시 후 다시 시도해 주세요.';
+
   const renderPosts = (list, rows, total, page, size) => {
     list.replaceChildren();
     if (!rows.length) { list.append(el('div', 'empty', '아직 글이 없습니다. 첫 글을 남겨보세요.')); return; }
     rows.forEach((p, i) => {
+      const [tag, title] = splitTag(p.title);
       const a = el('article', 'post');
       a.append(el('span', 'post-no', String(Math.max(1, total - ((page - 1) * size + i)))));
       const b = el('div', 'post-body');
       const meta = el('span', 'post-meta');
-      meta.append(el('b', null, '#자유'), document.createTextNode(` · ${p.nickname || 'ANON'} · ${fmtTime(p.created_at)}`));
-      b.append(meta, el('strong', null, p.title || '(제목 없음)'), el('p', null, p.body || ''));
+      meta.append(el('b', null, '#' + tag), document.createTextNode(` · ${p.nickname || 'ANON'} · ${fmtTime(p.created_at)}`));
+      b.append(meta, el('strong', null, title || '(제목 없음)'), el('p', null, p.body || ''));
       a.append(b);
       list.append(a);
     });
   };
+
+  const params = new URLSearchParams(location.search);
+  const channel = (params.get('ch') || '').slice(0, 20), thread = (params.get('thread') || '').slice(0, 20);
+  const onBoardPage = !!$('[data-board-form]');
+  $$('[data-chips] a').forEach(a => { if (onBoardPage && !thread && a.dataset.ch === channel) a.setAttribute('aria-current', 'page'); });
 
   const board = $('[data-board]');
   if (board && SB.url) {
@@ -207,7 +244,14 @@
     const pager = $('[data-board-pager]', board);
     const form = $('[data-board-form]');
     const status = $('[data-board-status]');
+    const scope = onBoardPage ? (thread || channel) : '';
     let page = 1, total = 0, busy = false;
+
+    const head = $('[data-thread-head]', board);
+    if (head && thread) { head.hidden = false; $('[data-thread-name]', head).textContent = thread.replace('@', ' @ '); }
+    const sel = form && form.querySelector('[name="channel"]');
+    if (sel && thread) { const o = el('option', null, thread.replace('@', ' @ ') + ' 경기 스레드'); o.value = thread; sel.append(o); sel.value = thread; }
+    else if (sel && channel && [...sel.options].some(o => o.value === channel)) sel.value = channel;
 
     const renderPager = () => {
       if (!pager) return;
@@ -229,8 +273,11 @@
     const load = async () => {
       busy = true;
       const from = (page - 1) * size;
+      // 한 줄 평은 QUICK TALK에만 보이게 일반 목록에서 뺍니다. '자유'는 머리말이 없는 글도 포함합니다.
+      const filter = scope === '자유' ? '&title=not.like.' + encodeURIComponent('[') + '*'
+        : scope ? '&title=' + likeTag(scope) : '&title=not.' + likeTag(QUICK);
       try {
-        const res = await request('/rest/v1/posts?select=id,title,body,nickname,created_at&status=eq.published&order=created_at.desc', {
+        const res = await request('/rest/v1/posts?select=id,title,body,nickname,created_at&status=eq.published&order=created_at.desc' + filter, {
           headers: { Prefer: 'count=exact', 'Range-Unit': 'items', Range: `${from}-${from + size - 1}` }
         });
         const rows = await res.json();
@@ -250,32 +297,94 @@
       const fd = new FormData(form);
       if (String(fd.get('website') || '').trim()) return;
       const nickname = String(fd.get('nickname') || '').trim().slice(0, 30) || 'ANON';
-      const title = String(fd.get('title') || '').trim().slice(0, 120);
+      const ch = String(fd.get('channel') || '자유').trim().slice(0, 20);
+      const raw = String(fd.get('title') || '').trim().replace(/^\[[^\]]*\]\s*/, '').slice(0, 100);
       const body = String(fd.get('body') || '').trim().slice(0, 2000);
-      if (title.length < 2 || body.length < 2) { status.textContent = '제목과 내용을 2자 이상 입력해 주세요.'; return; }
-      let last = 0;
-      try { last = Number(localStorage.getItem('sfandom_community_last_post_at') || 0); } catch (_) {}
-      if (Date.now() - last < 15000) { status.textContent = '연속 등록 방지를 위해 잠시 후 다시 작성해 주세요.'; return; }
+      if (raw.length < 2 || body.length < 2) { status.textContent = '제목과 내용을 2자 이상 입력해 주세요.'; return; }
+      if (throttled()) { status.textContent = '연속 등록 방지를 위해 잠시 후 다시 작성해 주세요.'; return; }
+      const title = (ch === '자유' ? raw : `[${ch}] ${raw}`).slice(0, 120);
       busy = true; status.textContent = '게시 중입니다…';
       const btn = form.querySelector('button[type="submit"]'); if (btn) btn.disabled = true;
       try {
-        await request('/functions/v1/community-post', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nickname, title, body })
-        });
-        try { localStorage.setItem('sfandom_community_last_post_at', String(Date.now())); } catch (_) {}
-        form.reset(); page = 1; status.textContent = '게시되었습니다.';
+        await sendPost(nickname, title, body);
+        stamp();
+        const keep = sel ? sel.value : '';
+        form.reset(); if (sel && keep) sel.value = keep;
+        page = 1; status.textContent = '게시되었습니다.';
         busy = false; await load();
       } catch (err) {
-        status.textContent = err && err.status === 429 ? '연속 등록 방지를 위해 잠시 후 다시 작성해 주세요.' : '게시하지 못했습니다. 잠시 후 다시 시도해 주세요.';
+        status.textContent = postError(err);
       } finally { busy = false; if (btn) btn.disabled = false; }
     });
 
-    const pre = new URLSearchParams(location.search).get('topic');
+    // 글의 "토론하기"에서 넘어오면 제목을 미리 채웁니다. "[NBA] …"처럼 채널 머리말이 있으면 채널도 맞춥니다.
+    const pre = params.get('topic');
     if (pre && form) {
+      const [tag, rest] = splitTag(pre);
       const t = form.querySelector('[name="title"]');
-      if (t && !t.value) t.value = pre.slice(0, 110);
+      if (sel && [...sel.options].some(o => o.value === tag)) { sel.value = tag; if (t && !t.value) t.value = rest.slice(0, 100); }
+      else if (t && !t.value) t.value = pre.slice(0, 100);
     }
     load();
+  }
+
+  /* ── QUICK TALK: 한 줄 평 ── */
+  const quick = $('[data-quick]');
+  if (quick && SB.url) {
+    const qList = $('[data-quick-list]', quick), qForm = $('[data-quick-form]', quick), qStatus = $('[data-quick-status]', quick);
+    const qSize = Number(quick.dataset.size || 4);
+    let qBusy = false;
+    const qLoad = async () => {
+      try {
+        const res = await request('/rest/v1/posts?select=id,title,nickname,created_at&status=eq.published&order=created_at.desc&title=' + likeTag(QUICK), {
+          headers: { 'Range-Unit': 'items', Range: `0-${qSize - 1}` } });
+        const rows = await res.json();
+        qList.replaceChildren();
+        if (!rows.length) { qList.append(el('div', 'empty', '첫 한 줄 평을 남겨보세요.')); return; }
+        rows.forEach(p => {
+          const row = el('div', 'quick-row');
+          row.append(el('span', 'quick-text', splitTag(p.title)[1]), el('span', 'quick-meta', `${p.nickname || 'ANON'} · ${fmtTime(p.created_at)}`));
+          qList.append(row);
+        });
+      } catch (_) { qList.replaceChildren(el('div', 'empty', '한 줄 평을 불러오지 못했습니다.')); }
+    };
+    qForm?.addEventListener('submit', async e => {
+      e.preventDefault();
+      if (qBusy) return;
+      const fd = new FormData(qForm);
+      if (String(fd.get('website') || '').trim()) return;
+      const text = String(fd.get('text') || '').trim().replace(/\s+/g, ' ').slice(0, 60);
+      if (text.length < 2) { qStatus.textContent = '2자 이상 적어 주세요.'; return; }
+      if (throttled()) { qStatus.textContent = '연속 등록 방지를 위해 잠시 후 다시 작성해 주세요.'; return; }
+      qBusy = true; qStatus.textContent = '등록 중입니다…';
+      const btn = qForm.querySelector('button'); if (btn) btn.disabled = true;
+      try { await sendPost('ANON', `[${QUICK}] ${text}`, text); stamp(); qForm.reset(); qStatus.textContent = '등록되었습니다.'; await qLoad(); }
+      catch (err) { qStatus.textContent = postError(err); }
+      finally { qBusy = false; if (btn) btn.disabled = false; }
+    });
+    qLoad();
+  }
+
+  /* ── 홈의 "SFANDOM과 대화하기" 쪽지 칸: 문의 페이지와 같은 쪽지함으로 전송 ── */
+  const mf = $('[data-message]');
+  if (mf && mf.dataset.endpoint) {
+    const mStatus = $('[data-message-status]', mf), mBtn = $('button[type=submit]', mf), mOpened = Date.now();
+    const mSay = (t, bad) => { mStatus.textContent = t; mStatus.style.color = bad ? 'var(--red)' : ''; };
+    mf.addEventListener('submit', async e => {
+      e.preventDefault();
+      const fd = new FormData(mf), v = k => String(fd.get(k) || '').trim();
+      if (v('website')) return;
+      if (Date.now() - mOpened < 4000) return mSay('잠시 뒤에 다시 눌러 주세요.', true);
+      if (v('body').length < 5) return mSay('내용을 조금 더 적어 주세요.', true);
+      if (v('reply') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('reply'))) return mSay('이메일 주소 형식을 확인해 주세요.', true);
+      mBtn.disabled = true; mSay('보내는 중입니다…');
+      try {
+        await fetch(mf.dataset.endpoint, { method: 'POST', mode: 'no-cors',
+          body: new URLSearchParams({ nick: v('name').slice(0, 40), email: v('reply').slice(0, 120), message: ('[홈 쪽지] ' + v('body')).slice(0, 1000), website: '', page: location.pathname }) });
+        mf.reset(); mSay('쪽지가 전달됐습니다. 확인 후 필요한 경우 회신드리겠습니다.');
+      } catch (err) { mSay('전송하지 못했습니다. 잠시 뒤 다시 시도해 주세요.', true); }
+      finally { mBtn.disabled = false; }
+    });
   }
 
   /* ── 검색 ── */
