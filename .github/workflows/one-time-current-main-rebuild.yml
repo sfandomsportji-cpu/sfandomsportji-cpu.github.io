@@ -1,0 +1,34 @@
+name: One-time current-main rebuild
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/one-time-current-main-rebuild.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+      - name: Rebuild latest main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git pull --ff-only origin main
+          python3 src/tools/fetch_logos.py
+          python3 src/build.py
+          rm -f .github/workflows/one-time-current-main-rebuild.yml
+          git config user.name "sfandom-bot"
+          git config user.email "sfandom-bot@users.noreply.github.com"
+          git add -A
+          git commit -m "build: 최신 main 재생성"
+          git push origin HEAD:main
