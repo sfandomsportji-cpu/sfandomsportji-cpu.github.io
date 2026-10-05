@@ -156,8 +156,8 @@ def fetch_blog(key: str, conf: dict) -> list[dict]:
         p['source'] = key
         p['link'] = re.sub(r'\?fromRss=.*$', '', p['link'])                      # 네이버 추적 파라미터 제거
         img = p.get('image') or ''
-        img = re.sub(r'/s\d+(-c)?/', '/w640/', img)                                # 블로거 72px 썸네일 → 640px
-        img = re.sub(r'=s\d+(-c)?$', '=w640', img)
+        img = re.sub(r'/s\d+(-w\d+)?(-h\d+)?(-c)?/', '/w800/', img)                                # 블로거 72px 썸네일 → 640px
+        img = re.sub(r'=s\d+(-w\d+)?(-h\d+)?(-c)?$', '=w800', img)
         p['image'] = re.sub(r'type=w\d+', 'type=w773', img)                        # 네이버 작은 썸네일 → 큰 것
         try:
             d = dt.datetime.strptime(p['date'][:25], '%a, %d %b %Y %H:%M:%S') if ',' in p['date'] else dt.datetime.fromisoformat(p['date'][:19])
@@ -291,6 +291,72 @@ def badge(abbr: str, color: str, size: str = '', league: str = 'mlb') -> str:
             f'<img class="tlogo" src="{src}" alt="{esc(abbr)}" width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>')
 
 
+def team_color(abbr: str, league: str) -> str:
+    if league.lower() == 'nba':
+        return NBA['colors'].get(abbr, '#444')
+    for d in PS['division']:
+        if d['home'] == abbr:
+            return d['home_color']
+        if d['away'] == abbr:
+            return d['away_color']
+    return '#444'
+
+
+def team_badge(a: Article, i: int, size: str = 'lg') -> str:
+    """분석 글 머리말의 teams(원정, 홈 약자)로 팀 로고를 만듭니다. 없으면 빈 문자열."""
+    teams = getattr(a, 'teams', None) or []
+    if len(teams) != 2:
+        return ''
+    lg = a.league.lower()
+    return badge(teams[i], team_color(teams[i], lg), size, league=lg if lg in LOGO_SOURCES else 'mlb')
+
+
+def split_teams(a: Article) -> tuple[str, str]:
+    t = re.split(r'\s+(?:at|vs\.?|@)\s+', a.title.rstrip('.'), maxsplit=1, flags=re.I)
+    return (t[0], t[1]) if len(t) > 1 else (a.title.rstrip('.'), '')
+
+
+def matchup_strip(a: Article) -> str:
+    """분석 글 상단의 대진 표시 (팀 로고 + 팀 이름)."""
+    if not getattr(a, 'teams', None):
+        return ''
+    left, right = split_teams(a)
+    return (f'<div class="mc-stage in-article"><div class="mc-team">{team_badge(a, 0)}<small>AWAY</small><span class="display">{esc(left.upper())}</span></div>'
+            f'<span class="mc-vs">VS</span><div class="mc-team r">{team_badge(a, 1)}<small>HOME</small><span class="display">{esc(right.upper())}</span></div></div>')
+
+
+TODAY_PICKS: set = set()
+BRIEF_CELLS = [('lineup', '선발/라인업'), ('form', '최근 흐름'), ('key', '핵심 변수'), ('view', 'KAIRO VIEW')]
+
+
+def today_card(a: Article) -> str:
+    left, right = split_teams(a)
+    b = a.brief
+    cells = ''.join(f'<div class="ta-cell{" kairo" if k == "view" else ""}"><b>{label}</b><p>{esc(b.get(k, ""))}</p></div>' for k, label in BRIEF_CELLS if b.get(k))
+    when = re.match(r'[\d.]+ [\d:]+ KST', a.meta or '')
+    return (f'<a class="ta-card lift" href="{a.url}"><div class="ta-top"><span class="tag red">{esc(a.kicker or a.league)} · {esc(a.league)}</span><span class="tag">{esc(when.group(0) if when else a.date_dot)}</span></div>'
+            f'<div class="ta-vs"><span class="ta-team">{team_badge(a, 0)}<span class="display">{esc(left.upper())}</span></span><i>VS</i>'
+            f'<span class="ta-team r"><span class="display">{esc(right.upper())}</span>{team_badge(a, 1)}</span></div>'
+            f'<strong class="ta-sub">{esc(a.subtitle)}</strong><div class="ta-cells">{cells}</div><span class="ta-more">분석 전문 읽기 →</span></a>')
+
+
+def today_analysis() -> str:
+    """HERO 바로 아래 TODAY'S ANALYSIS: 네 칸 요약(brief)이 있는 최신 분석 3경기."""
+    # 경기 시각(meta 맨 앞 "2026.10.21 04:00 KST")이 빠른 순서로 세 경기
+    when = lambda a: (re.match(r'[\d.]+ [\d:]+', a.meta or '') or re.match('', '')).group(0) or '9999'
+    global TODAY_PICKS
+    picks = sorted([a for a in ARTICLES if a.kind == 'analysis' and getattr(a, 'brief', None)], key=when)[:3]
+    TODAY_PICKS = {a.url for a in picks}
+    if not picks:
+        return ''
+    ed_latest = max(EDITIONS)
+    return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
+            f'<div class="sec-head"><h2 class="sec-title" id="taTitle">TODAY\'S <span class="outline">ANALYSIS</span> <span class="kr">스팬덤이 먼저 본 3경기</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>'
+            f'<div class="ta-grid">{"".join(today_card(a) for a in picks)}</div>'
+            f'<div class="ta-foot"><a class="review-link" href="/analysis/review/"><span class="display" style="font-size:24px">REVIEW <span class="accent">/</span> 복기 리포트</span><span class="muted" style="font-size:14px">결과가 아니라 판단 과정을 다시 봅니다</span></a>'
+            f'<a class="review-link" href="/news/morning/{ed_latest}/"><span class="display" style="font-size:24px">MORNING EDITION</span><span class="muted" style="font-size:14px">최신호 {ed_latest.replace("-", ".")} 읽기 →</span></a></div></section>')
+
+
 def talk_icon() -> str:
     return ('<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
             'stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>')
@@ -340,8 +406,8 @@ def header(active: str) -> str:
 <header class="site-header">
   <div class="wrap header-in">
     <a class="logo" href="/" aria-label="SFANDOM 홈"><img src="/assets/brand/sfandom-logo.svg" alt="SFANDOM" width="183" height="46"></a>
-    <span class="mini-social"><a href="https://www.instagram.com/sportsfandom/" target="_blank" rel="noopener" aria-label="인스타그램 @sportsfandom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.threads.com/@sportsfandom" target="_blank" rel="noopener" aria-label="스레드 @sportsfandom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg></a></span>
     <span class="motto">{esc(SITE['motto'])}</span>
+    <span class="mini-social"><a href="https://www.instagram.com/sportsfandom/" target="_blank" rel="noopener" aria-label="인스타그램 @sportsfandom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.threads.com/@sportsfandom" target="_blank" rel="noopener" aria-label="스레드 @sportsfandom"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg></a></span>
     <nav class="nav" aria-label="주 메뉴">{nav}</nav>
     <span class="spacer"></span>
     <button type="button" class="icon-btn" id="searchBtn" aria-label="검색" aria-controls="searchBar" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button>
@@ -447,6 +513,56 @@ def org_ld() -> dict:
          'potentialAction': {'@type': 'SearchAction', 'target': f'{BASE}/search/?q={{q}}', 'query-input': 'required name=q'}}]}
 
 
+# ───────────────────────── 팬 보드 공통 조각 ─────────────────────────
+CHANNELS = ['NBA', 'MLB', '분석 토론', '직관 후기', '자유']   # 글 제목 앞 [채널] 머리말로 구분 (게시판 저장소는 그대로)
+QUICK_TAG = '한줄'
+
+
+def channel_chips() -> str:
+    chips = '<a href="/community/" data-ch="">전체</a>' + ''.join(f'<a href="/community/?ch={quote(c)}" data-ch="{esc(c)}">{esc(c)}</a>' for c in CHANNELS)
+    return f'<nav class="chips" aria-label="채널" data-chips>{chips}</nav>'
+
+
+def game_threads(limit: int = 7) -> str:
+    """경기 스레드: NBA 개막일 경기 + 진행 중인 MLB 디비전시리즈. 누르면 그 경기 글만 모아 보여 줍니다."""
+    rows = []
+    for g in NBA['games'][:3]:
+        tag = f'{g["away"]}@{g["home"]}'
+        rows.append((f'NBA · {g["day"]}', badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba") + '<i>@</i>' + badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba"), tag, g['kst']))
+    for d in PS['division']:
+        nxt = ds_next(d)
+        if not nxt:
+            continue
+        tag = f'{d["away"]}@{d["home"]}'
+        rows.append((f'{d["league"]}DS', badge(d["away"], d["away_color"]) + '<i>@</i>' + badge(d["home"], d["home_color"]), tag, '디비전시리즈'))
+    out = ''.join(f'<a class="gt" href="/community/?thread={quote(tag)}"><span><small>{esc(k)} · {esc(when)}</small><b class="vsline">{logos}</b></span><span class="gt-in"><span class="gt-dot"></span>입장</span></a>' for k, logos, tag, when in rows[:limit])
+    return f'<div class="box"><span class="box-title">GAME THREADS · 경기 스레드</span>{out}</div>'
+
+
+def quick_box(size: int = 4) -> str:
+    return (f'<div class="box quick" data-quick data-size="{size}"><div class="quick-head"><span class="display" style="font-size:26px">QUICK TALK</span><span class="muted" style="font-size:12px">한 줄로 가볍게</span></div>'
+            f'<form class="quick-form" data-quick-form novalidate><label class="sr-only" for="qt">지금 경기 한 줄 평 (최대 60자)</label>'
+            f'<input id="qt" name="text" type="text" maxlength="60" placeholder="예: 1쿼터부터 분위기 좋네요" autocomplete="off">'
+            f'<label class="hp" aria-hidden="true">website<input name="website" tabindex="-1" autocomplete="off"></label><button class="pill" type="submit">등록</button></form>'
+            f'<p class="status" data-quick-status role="status"></p><div class="quick-list" data-quick-list><div class="empty">한 줄 평을 불러오는 중…</div></div></div>')
+
+
+def message_box() -> str:
+    """홈의 'SFANDOM과 대화하기' 쪽지 칸. 문의 페이지와 같은 쪽지함(드라이브 시트)으로 들어갑니다."""
+    ep = (SITE.get('contact') or {}).get('endpoint', '')
+    if not ep:
+        return ''
+    return (f'<section class="wrap sec" id="message" aria-labelledby="msgTitle"><form class="composer msg-box" data-message data-endpoint="{esc(ep)}" novalidate>'
+            f'<div class="msg-head"><h2 class="display" id="msgTitle">MESSAGE</h2><span class="kr">SFANDOM과 대화하기</span></div>'
+            f'<p class="muted" style="margin:0">제보, 제안, 문의 모두 좋아요. 운영자에게 바로 전달됩니다.</p>'
+            f'<div class="msg-row"><div><label class="sr-only" for="msgNick">닉네임</label><input id="msgNick" name="name" type="text" maxlength="40" placeholder="닉네임 (선택)"></div>'
+            f'<div><label class="sr-only" for="msgMail">답장 받을 이메일</label><input id="msgMail" name="reply" type="email" maxlength="120" placeholder="답장 받을 이메일 (선택)" autocomplete="email"></div></div>'
+            f'<label class="sr-only" for="msgBody">쪽지 내용</label><textarea id="msgBody" name="body" maxlength="1000" required placeholder="하고 싶은 이야기를 적어주세요 (최대 1,000자)"></textarea>'
+            f'<label class="hp" aria-hidden="true">website<input name="website" tabindex="-1" autocomplete="off"></label>'
+            f'<div class="composer-foot"><span class="status" data-message-status role="status" aria-live="polite">보낸 내용은 운영자만 볼 수 있습니다. 이메일은 답장이 필요할 때만 적어주세요. <a href="/privacy/" class="accent">개인정보처리방침</a></span>'
+            f'<button class="pill" type="submit">쪽지 보내기</button></div></form></section>')
+
+
 # ───────────────────────── 홈 ─────────────────────────
 def build_home():
     news = [a for a in ARTICLES if a.kind == 'news']
@@ -458,16 +574,15 @@ def build_home():
     if hero.get('use_latest_google_post') and g:
         hero_title, hero_text, hero_link = esc(g[0]['title']), g[0]['summary'], g[0]['link']
     cv = SITE.get('community_video') or {}
-    if cv.get('src'):
-        nba_media = (f'<video class="nba-video" muted loop playsinline autoplay preload="metadata"'
-                     f'{(" poster=" + chr(34) + esc(cv["poster"]) + chr(34)) if cv.get("poster") else ""} src="{esc(cv["src"])}"></video>')
-    elif cv.get('instagram_reel'):
+    if cv.get('instagram_reel'):
         r = cv['instagram_reel']
-        nba_media = (f'<div class="nba-video reel-embed"><iframe src="https://www.instagram.com/reel/{esc(r)}/embed/" title="SFANDOM 인스타그램 릴스" '
-                         f'loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"></iframe></div>')
+        fb = (f'<video class="reel-fallback" muted loop playsinline preload="none" hidden data-src="{esc(cv["fallback_video"])}"'
+              f'{(" poster=" + chr(34) + esc(cv["fallback_poster"]) + chr(34)) if cv.get("fallback_poster") else ""}></video>') if cv.get('fallback_video') else ''
+        nba_media = (f'<div class="reel-fill" data-reel style="aspect-ratio:{esc(cv.get("reel_ratio", "9/16"))}"><iframe src="https://www.instagram.com/reel/{esc(r)}/embed/" title="SFANDOM 인스타그램 릴스" '
+                     f'loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"></iframe>{fb}</div>')
     else:
         nba_media = ''
-    nba_band = (f'<div class="nba-band">{nba_media}'
+    nba_band = (f'<div class="nba-band{" fill" if "reel-fill" in nba_media else ""}">{nba_media}'
                 f'<div class="nba-copy"><span class="tag red">{esc(cv.get("eyebrow", ""))}</span><h3 class="display">{esc(cv.get("title", ""))}<br><span class="outline">{esc(cv.get("title2", ""))}</span></h3>'
                 f'<p>{esc(cv.get("text", ""))}</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill" href="/community/#write">팬 보드에서 얘기하기</a></div></div></div>') if nba_media else ''
     v = hero.get('video') or {}
@@ -486,11 +601,11 @@ def build_home():
     lead, rest = news[0], news[1:5]
     nl = ''.join(f'<a class="nl" href="{a.url}">{thumb(a)}<span class="t"><span class="tag">{esc(a.league)} · {a.date_dot}</span><strong>{esc(a.headline)}</strong></span><span class="talk">{talk_icon()}토론</span></a>' for a in rest)
     ds_cards = ''.join(ds_card(d) for d in PS['division'])
-    sched = ''.join(f'<div class="sched nba-g"><span><small>{g["day"]} · {g["tv"]}</small><b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i>@</i>{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b></span><time>{esc(g["kst"])}</time></div>' for g in NBA['games'][:4])
-    an = analysis[0]
-    teams = re.split(r'\s+(?:at|vs\.?|@)\s+', an.title.rstrip('.'), maxsplit=1, flags=re.I)
-    left, right = (teams + [''])[:2] if len(teams) > 1 else (an.title.rstrip('.'), '')
-    minis = ''.join(f'<a class="mini lift" href="{a.url}"><span class="tag">{esc(a.league)} · {a.date_dot}</span><span class="display">{esc(a.title.rstrip(".,"))}</span><strong>{esc(a.subtitle)}</strong></a>' for a in analysis[1:4])
+    ta_html = today_analysis()
+    shown = TODAY_PICKS
+    gt = lambda a: (re.match(r'[\d.]+ [\d:]+', a.meta or '') or re.match('', '')).group(0) or '9999'
+    upcoming = sorted([x for x in analysis if getattr(x, 'brief', None) and x.url not in shown], key=gt)
+    minis = ''.join(f'<a class="mini lift" href="{a.url}"><span class="tag">{esc(a.league)} · {a.date_dot}</span><span class="display">{esc(a.title.rstrip(".,"))}</span><strong>{esc(a.subtitle)}</strong></a>' for a in (upcoming or [x for x in analysis if x.url not in shown])[:3])
     ed_latest = max(EDITIONS)
     body = f'''
 {ad_band('SF-HOME-TOP')}
@@ -507,6 +622,8 @@ def build_home():
   <aside class="top-stories" aria-label="NBA 개막 주간"><h2>TIP-OFF <span class="nba-dday">{nba_dday()}</span></h2>{tip}</aside>
 </section>
 
+{ta_html}
+
 {nba_section()}
 
 <section class="wrap sec" aria-labelledby="newsTitle">
@@ -520,17 +637,19 @@ def build_home():
 <section class="wrap sec" aria-labelledby="fanTitle">
   <div class="sec-head"><h2 class="sec-title" id="fanTitle">FAN ZONE<span class="accent">.</span> <span class="kr">먼저 놀고</span></h2><a class="pill" href="/community/#write">+ 글쓰기</a></div>
   {nba_band}
+  {channel_chips()}
   <div class="fan-grid">
     <aside class="fan-side">
-      <div class="box"><span class="box-title">FAN BOARD</span><p style="margin:0;color:var(--text-3);font-size:15px">경기 얘기, 직관 후기, 반론 모두 환영. 가입 없이 닉네임만으로 글을 쓸 수 있어요.</p><a class="pill" href="/community/">팬 보드 입장</a></div>
+      {quick_box(4)}
       <div class="box"><span class="box-title">HOUSE RULES</span><ul class="rules"><li>욕설 · 비하 금지</li><li>도배 · 광고 링크 금지</li><li>불법 도박 사이트 홍보 금지</li><li>개인정보 올리지 않기</li></ul><a class="more" href="/rules/">커뮤니티 규칙 →</a></div>
     </aside>
     <div class="fan-main" data-board data-size="5">
       <div class="sec-head" style="margin:0"><span class="box-title">NEW POSTS · 최신 글</span><a class="more accent" href="/community/">전체 글 보기 →</a></div>
       <div data-board-list><div class="empty">팬 보드 글을 불러오는 중…</div></div>
+      <a class="fan-write" href="/community/#write"><span class="fan-write-ph">오늘 경기, 무슨 얘기 하고 싶어요?</span><span class="pill">글쓰기</span></a>
     </div>
     <aside class="fan-side">
-      <div class="box nba-box"><div class="nba-head"><span class="nba-ball" aria-hidden="true"></span><span class="box-title">NBA TIP-OFF</span><b class="nba-dday">{nba_dday()}</b></div>{sched}<a class="more" href="/nba/">개막 주간 전체 →</a></div>
+      {game_threads()}
     </aside>
   </div>
 </section>
@@ -542,17 +661,9 @@ def build_home():
 
 <section class="wrap sec split-8-4" aria-labelledby="anTitle">
   <div class="main">
-    <div class="sec-head" style="margin:0"><h2 class="sec-title" id="anTitle">ANALYSIS<span class="accent">.</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>
-    <article class="match-center">
-      <div class="mc-bar"><span>MATCH CENTER · {esc(an.league)}</span><span class="chip"><span class="dot"></span>{an.date_dot} 프리뷰</span></div>
-      <div class="mc-stage"><div class="mc-team"><small>AWAY</small><span class="display">{esc(left.upper())}</span></div><span class="mc-vs">VS</span><div class="mc-team r"><small>HOME</small><span class="display">{esc(right.upper())}</span></div></div>
-      <div class="mc-body"><span class="tag">{esc(an.meta)}</span><h3>{esc(an.subtitle or an.title)}</h3><p>{esc(an.excerpt)}</p>
-        <div class="mc-foot"><span class="muted" style="font-size:14px">숫자로 보고, 팬들과 같이 떠드는 분석.</span><a class="pill" href="{an.url}">분석 읽고 토론하기 →</a></div></div>
-    </article>
-    {ad('SF-HOME-FEED')}
-    <span class="display" style="font-size:30px">MORE ANALYSIS <span class="muted" style="font-size:20px">지난 경기 프리뷰</span></span>
+    <div class="sec-head" style="margin:0"><h2 class="sec-title" id="anTitle">MORE ANALYSIS<span class="accent">.</span> <span class="kr">이어지는 경기 프리뷰</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>
     <div class="grid-3">{minis}</div>
-    <a class="review-link" href="/analysis/review/"><span class="display" style="font-size:24px">REVIEW <span class="accent">/</span> 복기 리포트</span><span class="muted" style="font-size:14px">결과가 아니라 판단 과정을 다시 봅니다</span></a>
+    {ad('SF-HOME-FEED')}
   </div>
   <aside class="side">
     <div class="sticky-rail">{ad('SF-HOME-RAIL')}</div>
@@ -567,6 +678,8 @@ def build_home():
   {blog_grid(6)}
 </section>
 
+
+{message_box()}
 
 <section class="wrap"><div class="edition-band"><div><h2>MORNING EDITION</h2><p>어제 경기 요약과 오늘의 분석 경기를 매일 아침 SFANDOM에서.</p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill" href="/news/morning/">지난 에디션</a><a class="pill ghost" href="{SITE['socials'][0]['url']}" target="_blank" rel="noopener">인스타그램 팔로우</a></div></div></section>
 {ad_band('SF-HOME-BTM')}
@@ -610,6 +723,7 @@ def build_article(a: Article):
   </header>
   <div class="article-grid">
     <article>
+      {matchup_strip(a) if a.kind == 'analysis' else ''}
       {fig}
       <div class="prose">{render_body(a)}</div>
       {src_html}{credit}
@@ -896,21 +1010,26 @@ def build_sitemap():
 
 def build_community():
     body = (page_head('FAN BOARD<span class="accent">.</span> <span class="kr">먼저 놀고</span>', '가입 없이 닉네임만으로 쓰는 팬 게시판. 경기 얘기, 직관 후기, 반론 모두 환영합니다.', [('FAN BOARD', '')])
-            + f'''<div class="wrap sec board-grid" style="padding-top:32px">
+            + f'''<div class="wrap" style="padding-top:28px">{channel_chips()}</div>
+<div class="wrap sec board-grid" style="padding-top:24px">
   <div data-board data-size="10">
+    <div class="thread-head" data-thread-head hidden><span class="box-title">GAME THREAD</span><strong data-thread-name></strong><a class="more" href="/community/">전체 글로 돌아가기 →</a></div>
     <div data-board-list><div class="empty">팬 보드 글을 불러오는 중…</div></div>
     <div class="pager" data-board-pager></div>
     <form class="composer" id="write" data-board-form style="margin-top:32px" novalidate>
       <span class="box-title">WRITE · 글쓰기</span>
-      <div class="row"><div><label for="nick">닉네임</label><input id="nick" name="nickname" maxlength="30" placeholder="ANON" autocomplete="nickname"></div>
-      <div><label for="ttl">제목</label><input id="ttl" name="title" maxlength="120" required placeholder="오늘 경기, 무슨 얘기 하고 싶어요?"></div></div>
+      <div class="row3"><div><label for="chn">채널</label><select id="chn" name="channel">{"".join(f'<option value="{esc(c)}"{" selected" if c == "자유" else ""}>{esc(c)}</option>' for c in CHANNELS)}</select></div>
+      <div><label for="nick">닉네임</label><input id="nick" name="nickname" maxlength="30" placeholder="ANON" autocomplete="nickname"></div>
+      <div><label for="ttl">제목</label><input id="ttl" name="title" maxlength="100" required placeholder="오늘 경기, 무슨 얘기 하고 싶어요?"></div></div>
       <div><label for="bdy">내용</label><textarea id="bdy" name="body" maxlength="2000" required></textarea></div>
       <label class="hp" aria-hidden="true">website<input name="website" tabindex="-1" autocomplete="off"></label>
       <div class="composer-foot"><p class="status" data-board-status role="status">작성한 글은 바로 공개됩니다. 게시 전 <a href="/rules/" class="accent">커뮤니티 규칙</a>을 확인해 주세요.</p><button class="pill" type="submit">게시하기</button></div>
     </form>
   </div>
   <aside style="display:flex;flex-direction:column;gap:20px">
-    <div class="box"><span class="box-title">HOUSE RULES</span><ul class="rules"><li>욕설 · 비하 · 혐오 표현 금지</li><li>도배 · 광고 링크 · 사칭 금지</li><li>불법 도박 사이트 홍보 · 가입코드 금지</li><li>개인정보 · 사생활 노출 금지</li><li>스포일러는 제목에 표시</li></ul><a class="more" href="/rules/">전체 규칙 →</a></div>
+    {quick_box(6)}
+    {game_threads()}
+    <div class="box"><span class="box-title">HOUSE RULES</span><ul class="rules"><li>욕설 · 비하 · 혐오 표현 금지</li><li>도배 · 광고 링크 · 사칭 금지</li><li>불법 도박 사이트 홍보 · 가입코드 금지</li><li>개인정보 · 사생활 노출 금지</li><li>스포일러는 경기 스레드에서</li></ul><a class="more" href="/rules/">전체 규칙 →</a></div>
   </aside>
 </div>''')
     write('/community/', layout('FAN BOARD · 팬 게시판', body, path='/community/', description='SFANDOM 팬 보드 — 가입 없이 쓰는 스포츠 팬 게시판', active='/community/'))

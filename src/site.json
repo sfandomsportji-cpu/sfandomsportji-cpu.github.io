@@ -132,13 +132,14 @@
   }
  },
  "community_video": {
-  "src": "",
-  "poster": "",
   "eyebrow": "SFANDOM REELS · @sportsfandom",
   "title": "FAN ZONE.",
   "title2": "PLAY FIRST.",
   "text": "스팬덤 인스타그램 릴스. 보고, 바로 팬 보드에서 떠들어요.",
-  "instagram_reel": "DdejDQDyYxv"
+  "instagram_reel": "DdejDQDyYxv",
+  "reel_ratio": "16/9",
+  "fallback_video": "/assets/sfandom-brand-film-20260901.mp4",
+  "fallback_poster": "/assets/sfandom-hero-poster.jpg"
  },
  "contact": {
   "endpoint": "https://script.google.com/macros/s/AKfycbwQSvOdKSFbRoVn3D1dR6q1qnsI-0vSjRjwIMixzTKr1W5nU5bIBOf6jaCUS2s9JMEk-A/exec",
