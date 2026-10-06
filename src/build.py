@@ -133,6 +133,24 @@ def _clip(t: str, n: int = 320) -> str:
     return t if len(t) <= n else t[:n - 1].rstrip() + '…'
 
 
+def blog_img(u: str) -> str:
+    """블로그 썸네일 주소를 카드에 맞는 크기로. 블로거는 가로 800px JPEG(-rj)로 받아 용량을 줄인다."""
+    u = re.sub(r'/[sw]\d+(?:-[a-z]+\d*)*/', '/w800-rj/', u) if 'googleusercontent.com' in u or 'blogspot.com' in u else u
+    u = re.sub(r'=[sw]\d+(?:-[a-z]+\d*)*$', '=w800-rj', u)
+    return re.sub(r'type=w\d+', 'type=w773', u)                                     # 네이버 작은 썸네일 → 큰 것
+
+
+# 홈 MAGAZINE에 올릴 글: NBA·MLB 글만 (다른 종목 글은 매거진 페이지에서 모두 보입니다)
+CORE_RE = (r'NBA|MLB|NLDS|ALDS|NLCS|ALCS|World Series|Postseason|월드시리즈|포스트시즌|와일드카드|디비전시리즈|메이저리그|농구|야구'
+           r'|Dodgers|Yankees|Padres|Brewers|Braves|Phillies|Cubs|Mets|Astros|Red Sox|White Sox|Blue Jays|Mariners|Guardians|Tigers|Rays|Orioles'
+           r'|Lakers|Celtics|Knicks|Warriors|Thunder|Spurs|76ers|Nuggets|Bucks|Heat|Mavericks|Timberwolves|Cavaliers|Pistons|Rockets'
+           r'|다저스|양키스|파드리스|브루어스|브레이브스|필리스|컵스|화이트삭스|레이커스|셀틱스|닉스|워리어스|썬더|스퍼스')
+
+
+def is_core(p: dict) -> bool:
+    return bool(re.search(CORE_RE, f"{p.get('title', '')} {p.get('summary', '')}", re.I))
+
+
 def fetch_blog(key: str, conf: dict) -> list[dict]:
     """RSS/Atom 피드를 읽어 최신 글 목록을 돌려준다. 실패하면 예외."""
     req = urllib.request.Request(conf['feed'], headers={'User-Agent': 'Mozilla/5.0 SFANDOM-build'})
@@ -155,10 +173,7 @@ def fetch_blog(key: str, conf: dict) -> list[dict]:
     for p in posts:
         p['source'] = key
         p['link'] = re.sub(r'\?fromRss=.*$', '', p['link'])                      # 네이버 추적 파라미터 제거
-        img = p.get('image') or ''
-        img = re.sub(r'/s\d+(-w\d+)?(-h\d+)?(-c)?/', '/w800/', img)                                # 블로거 72px 썸네일 → 640px
-        img = re.sub(r'=s\d+(-w\d+)?(-h\d+)?(-c)?$', '=w800', img)
-        p['image'] = re.sub(r'type=w\d+', 'type=w773', img)                        # 네이버 작은 썸네일 → 큰 것
+        p['image'] = blog_img(p.get('image') or '')
         try:
             d = dt.datetime.strptime(p['date'][:25], '%a, %d %b %Y %H:%M:%S') if ',' in p['date'] else dt.datetime.fromisoformat(p['date'][:19])
             p['date'] = d.strftime('%Y-%m-%d')
@@ -184,24 +199,25 @@ def load_blogs() -> dict:
 BLOGS = load_blogs()
 
 
-def blog_posts(limit: int = 6) -> list[dict]:
-    allp = [p for v in BLOGS.values() for p in v]
+def blog_posts(limit: int = 6, core: bool = False) -> list[dict]:
+    allp = [p for v in BLOGS.values() for p in v if not core or is_core(p)]
     return sorted(allp, key=lambda p: p.get('date', ''), reverse=True)[:limit]
 
 
 def blog_card(p: dict) -> str:
     label = SITE['blogs'][p['source']]['label']
-    img = f'<div class="thumb"><img src="{esc(p["image"])}" alt="" loading="lazy" referrerpolicy="no-referrer"></div>' if p.get('image') else '<div class="thumb blog-thumb" aria-hidden="true"><span>' + ('G' if p['source'] == 'google' else 'N') + '</span></div>'
+    img = f'<div class="thumb"><img src="{esc(blog_img(p["image"]))}" alt="" loading="lazy" referrerpolicy="no-referrer"></div>' if p.get('image') else '<div class="thumb blog-thumb" aria-hidden="true"><span>' + ('G' if p['source'] == 'google' else 'N') + '</span></div>'
     return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener">{img}<div class="body">'
             f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3><p>{esc(p.get("summary", ""))}</p>'
             f'<span class="tag">{p.get("date", "").replace("-", ".")} · 블로그에서 읽기 ↗</span></div></a>')
 
 
-def blog_grid(limit: int) -> str:
+def blog_grid(limit: int, home: bool = False) -> str:
     """블로그 카드 격자. 빌드 때 받은 글(네이버·구글)을 먼저 그리고, 브라우저에서 구글 블로그 최신 글을 한 번 더 받아 합칩니다."""
     g = SITE['blogs'].get('google', {})
-    cards = ''.join(blog_card(p) for p in blog_posts(limit))
-    return (f'<div class="card-grid blog-grid" data-blog-grid data-limit="{limit}" data-blogger="{esc(g.get("url", ""))}" '
+    cards = ''.join(blog_card(p) for p in blog_posts(limit, core=home))
+    core = f' data-core="{esc(CORE_RE)}"' if home else ''
+    return (f'<div class="card-grid blog-grid{" home" if home else ""}" data-blog-grid data-limit="{limit}"{core} data-blogger="{esc(g.get("url", ""))}" '
             f'data-label="{esc(g.get("label", "GOOGLE BLOG"))}">{cards}</div>'
             f'<p class="muted blog-empty" style="font-size:14px"{" hidden" if cards else ""}>블로그 글을 불러오는 중…</p>')
 
@@ -334,10 +350,13 @@ def today_card(a: Article) -> str:
     b = a.brief
     cells = ''.join(f'<div class="ta-cell{" kairo" if k == "view" else ""}"><b>{label}</b><p>{esc(b.get(k, ""))}</p></div>' for k, label in BRIEF_CELLS if b.get(k))
     when = re.match(r'[\d.]+ [\d:]+ KST', a.meta or '')
-    return (f'<a class="ta-card lift" href="{a.url}"><div class="ta-top"><span class="tag red">{esc(a.kicker or a.league)} · {esc(a.league)}</span><span class="tag">{esc(when.group(0) if when else a.date_dot)}</span></div>'
+    # 카드 전체가 글로 가는 링크(.ta-more::after)이고, 휴대폰에서만 보이는 펼치기 단추가 그 위에 놓입니다
+    return (f'<article class="ta-card lift"><div class="ta-top"><span class="tag red">{esc(a.kicker or a.league)} · {esc(a.league)}</span><span class="tag">{esc(when.group(0) if when else a.date_dot)}</span></div>'
             f'<div class="ta-vs"><span class="ta-team">{team_badge(a, 0)}<span class="display">{esc(left.upper())}</span></span><i>VS</i>'
             f'<span class="ta-team r"><span class="display">{esc(right.upper())}</span>{team_badge(a, 1)}</span></div>'
-            f'<strong class="ta-sub">{esc(a.subtitle)}</strong><div class="ta-cells">{cells}</div><span class="ta-more">분석 전문 읽기 →</span></a>')
+            f'<strong class="ta-sub">{esc(a.subtitle)}</strong><div class="ta-cells">{cells}</div>'
+            f'<button type="button" class="ta-toggle" data-ta-toggle aria-expanded="false">선발 · 흐름 · 변수 펼치기</button>'
+            f'<a class="ta-more" href="{a.url}">분석 전문 읽기 →</a></article>')
 
 
 def today_analysis() -> str:
@@ -675,7 +694,7 @@ def build_home():
 
 <section class="wrap sec" aria-labelledby="magTitle">
   <div class="sec-head"><h2 class="sec-title" id="magTitle">MAGAZINE<span class="accent">.</span></h2><a class="more" href="/magazine/">매거진 전체 →</a></div>
-  {blog_grid(6)}
+  {blog_grid(3, home=True)}
 </section>
 
 

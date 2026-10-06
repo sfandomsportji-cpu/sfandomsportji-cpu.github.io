@@ -135,13 +135,20 @@
     if (im.complete && im.naturalWidth === 0 && im.currentSrc) fail(); else im.addEventListener('error', fail, { once: true });
   });
 
+  /* ── 오늘의 분석 카드: 휴대폰에서 세 칸 펼치기 ── */
+  $$('[data-ta-toggle]').forEach(btn => btn.addEventListener('click', () => {
+    const open = btn.closest('.ta-card').classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    btn.textContent = open ? '접기' : '선발 · 흐름 · 변수 펼치기';
+  }));
+
   /* ── 매거진: 구글 블로그(Blogger) 최신 글을 브라우저에서 바로 받아 합치기 ──
      네이버 글은 빌드 때 받아 HTML에 들어 있고, 구글 글은 여기서 JSONP로 최신 상태를 가져옵니다. */
   const grids = $$('[data-blog-grid]');
   const blogUrl = grids[0]?.dataset.blogger;
   if (grids.length && blogUrl) {
     const cb = '__sfBlogger' + Date.now();
-    const bigImg = u => (u || '').replace(/\/s\d+(-w\d+)?(-h\d+)?(-c)?\//, '/w800/').replace(/=s\d+(-w\d+)?(-h\d+)?(-c)?$/, '=w800');
+    const bigImg = u => (u || '').replace(/\/[sw]\d+(?:-[a-z]+\d*)*\//, '/w800-rj/').replace(/=[sw]\d+(?:-[a-z]+\d*)*$/, '=w800-rj');
     const strip = h => { const d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); };
     window[cb] = data => {
       const entries = data?.feed?.entry || [];
@@ -154,8 +161,9 @@
       }).filter(p => p.link);
       grids.forEach(grid => {
         const have = new Set($$('a[href]', grid).map(a => a.href));
+        const core = grid.dataset.core ? new RegExp(grid.dataset.core, 'i') : null;   // 홈: NBA·MLB 글만
         posts.forEach(p => {
-          if (have.has(p.link)) return;
+          if (have.has(p.link) || (core && !core.test(p.title + ' ' + p.summary))) return;
           const a = el('a', 'mag lift'); a.href = p.link; a.target = '_blank'; a.rel = 'noopener';
           a.dataset.date = p.date; a.dataset.src = 'google';
           const th = el('div', 'thumb' + (p.img ? '' : ' blog-thumb'));
