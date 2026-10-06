@@ -134,10 +134,39 @@ def _clip(t: str, n: int = 320) -> str:
 
 
 def blog_img(u: str) -> str:
-    """블로그 썸네일 주소를 카드에 맞는 크기로. 블로거는 가로 800px JPEG(-rj)로 받아 용량을 줄인다."""
-    u = re.sub(r'/[sw]\d+(?:-[a-z]+\d*)*/', '/w800-rj/', u) if 'googleusercontent.com' in u or 'blogspot.com' in u else u
-    u = re.sub(r'=[sw]\d+(?:-[a-z]+\d*)*$', '=w800-rj', u)
-    return re.sub(r'type=w\d+', 'type=w773', u)                                     # 네이버 작은 썸네일 → 큰 것
+    """블로그 썸네일 주소를 카드에 맞는 크기로. 서버마다 받아 주는 크기가 달라 주소별로 나눠 처리한다."""
+    if 'googleusercontent.com' in u or 'blogspot.com' in u:                          # 블로거: 가로 800px JPEG(-rj)
+        u = re.sub(r'/[sw]\d+(?:-[a-z]+\d*)*/', '/w800-rj/', u)
+        return re.sub(r'=[sw]\d+(?:-[a-z]+\d*)*$', '=w800-rj', u)
+    if 'blogthumb.pstatic.net' in u:                                                 # 네이버 글 썸네일: 이 서버는 w2(가로 604px)까지만 준다
+        return re.sub(r'type=[\w-]+', 'type=w2', u)
+    if 'pstatic.net/image.nmv/' in u:                                                # 네이버 영상 장면: 16:9 가로 800px
+        return re.sub(r'type=[\w-]+', 'type=w800', u)
+    return re.sub(r'type=w\d+(?:-[a-z]+\d*)*', 'type=w773', u)                       # 그 밖의 네이버 이미지
+
+
+def _img_bytes(u: str) -> int:
+    req = urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0 SFANDOM-build'})
+    return len(urllib.request.urlopen(req, timeout=8).read())
+
+
+def video_frame(u: str) -> str:
+    """네이버 영상 썸네일의 첫 장면(_01)이 검은 화면이면 뒤 장면으로 바꾼다.
+    검은 화면 JPEG는 2KB 안팎, 실제 장면은 30KB 이상이라 파일 크기로 가린다. 확인하지 못하면 그대로 둔다."""
+    m = re.search(r'(pstatic\.net/image\.nmv/.+_)01(\.jpg)', u)
+    if not m:
+        return u
+    small = lambda x: re.sub(r'type=[\w-]+', 'type=f480x480', x)
+    try:
+        if _img_bytes(small(u)) >= 6000:
+            return u
+        for n in ('03', '05', '02'):
+            cand = u.replace(m.group(0), f'{m.group(1)}{n}{m.group(2)}')
+            if _img_bytes(small(cand)) >= 6000:
+                return cand
+    except Exception:
+        pass
+    return u
 
 
 # 홈 MAGAZINE에 올릴 글: NBA·MLB 글만 (다른 종목 글은 매거진 페이지에서 모두 보입니다)
@@ -173,7 +202,7 @@ def fetch_blog(key: str, conf: dict) -> list[dict]:
     for p in posts:
         p['source'] = key
         p['link'] = re.sub(r'\?fromRss=.*$', '', p['link'])                      # 네이버 추적 파라미터 제거
-        p['image'] = blog_img(p.get('image') or '')
+        p['image'] = video_frame(blog_img(p.get('image') or ''))
         try:
             d = dt.datetime.strptime(p['date'][:25], '%a, %d %b %Y %H:%M:%S') if ',' in p['date'] else dt.datetime.fromisoformat(p['date'][:19])
             p['date'] = d.strftime('%Y-%m-%d')
