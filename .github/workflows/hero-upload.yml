@@ -16,26 +16,32 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Inspect Descript share media
+      - name: Inspect browser media requests
         run: |
-          curl -Ls "https://share.descript.com/view/ZS2FxEldzM8" -o /tmp/share.html
+          python -m pip install --quiet playwright
+          python -m playwright install --with-deps chromium
           python - <<'PY'
-          import re, html
-          t=html.unescape(open('/tmp/share.html',encoding='utf-8',errors='ignore').read())
-          pats=[
-              r'https?[^"\' ]+?\.m3u8[^"\' <]*',
-              r'https?[^"\' ]+?\.mp4[^"\' <]*',
-              r'https?[^"\' ]+?descriptusercontent[^"\' <]*'
-          ]
-          seen=[]
-          for p in pats:
-              for m in re.findall(p,t):
-                  if m not in seen:
-                      seen.append(m)
-          for m in seen[:40]:
-              print(m)
-          if not seen:
-              print("NO_MEDIA_URL_FOUND")
+          import asyncio
+          from playwright.async_api import async_playwright
+
+          async def main():
+              async with async_playwright() as p:
+                  browser = await p.chromium.launch(headless=True)
+                  page = await browser.new_page()
+                  hits = []
+                  def on_response(resp):
+                      u = resp.url
+                      lu = u.lower()
+                      if any(x in lu for x in ['m3u8','mp4','descriptusercontent','published_projects','media']):
+                          if u not in hits:
+                              hits.append(u)
+                  page.on('response', on_response)
+                  await page.goto('https://share.descript.com/view/ZS2FxEldzM8', wait_until='networkidle', timeout=120000)
+                  await page.wait_for_timeout(8000)
+                  for u in hits[:80]:
+                      print(u)
+                  await browser.close()
+          asyncio.run(main())
           PY
           exit 1
 
