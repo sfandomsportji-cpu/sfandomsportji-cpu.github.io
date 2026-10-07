@@ -89,6 +89,34 @@
     heroVideo.preload = 'auto';
     heroVideo.volume = 0.65;
 
+    const muteToggle = document.createElement('button');
+    muteToggle.type = 'button';
+    muteToggle.className = 'hero-mute-toggle';
+    muteToggle.setAttribute('aria-label', '음악 음소거');
+    muteToggle.setAttribute('aria-pressed', 'false');
+    muteToggle.innerHTML = '<span aria-hidden="true">🔊</span>';
+    muteToggle.style.cssText = 'position:absolute;right:18px;bottom:18px;z-index:12;width:44px;height:44px;border:1px solid rgba(255,255,255,.42);border-radius:50%;background:rgba(11,11,15,.68);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)';
+    heroVideo.closest('.hero')?.append(muteToggle);
+
+    const syncMuteToggle = () => {
+      const isMuted = heroVideo.muted;
+      muteToggle.innerHTML = isMuted ? '<span aria-hidden="true">🔇</span>' : '<span aria-hidden="true">🔊</span>';
+      muteToggle.setAttribute('aria-label', isMuted ? '음악 켜기' : '음악 음소거');
+      muteToggle.setAttribute('aria-pressed', String(isMuted));
+    };
+
+    muteToggle.addEventListener('click', async () => {
+      heroVideo.muted = !heroVideo.muted;
+      if (!heroVideo.muted) {
+        heroVideo.volume = 0.65;
+        try { await heroVideo.play(); } catch (_) {}
+      }
+      syncMuteToggle();
+    });
+
+    heroVideo.addEventListener('volumechange', syncMuteToggle);
+    syncMuteToggle();
+
     const tryAudiblePlay = async () => {
       heroVideo.muted = false;
       try {
