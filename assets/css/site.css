@@ -577,3 +577,19 @@ main{display:block}
   .top-stories{right:0;width:360px;padding:30px 28px;background:rgba(11,11,15,.9);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
   .hero-credit{right:calc(var(--side) + var(--gut) + 372px)}
 }
+
+/* Keep game threads below the board so their count cannot stretch its columns. */
+section[aria-labelledby="fanTitle"] .fan-grid>.fan-main{grid-column:span 9}
+section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child{grid-column:1/-1;display:block}
+section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;padding:20px}
+section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .box-title{grid-column:1/-1}
+section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt{min-width:0;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:12px;padding:14px 10px;border:1px solid var(--line);border-radius:8px}
+section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt small{font-size:12px;line-height:1.5}
+section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-self:flex-end}
+@media(max-width:1180px){
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-main{grid-column:1/-1}
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{grid-template-columns:repeat(2,minmax(0,1fr));padding:16px;gap:10px}
+}
