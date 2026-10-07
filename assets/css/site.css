@@ -593,3 +593,15 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
 @media(max-width:760px){
   section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{grid-template-columns:repeat(2,minmax(0,1fr));padding:16px;gap:10px}
 }
+
+/* HERO mute control: mobile safe-area placement */
+@media (max-width:760px){
+  .hero-mute-toggle{
+    top:calc(env(safe-area-inset-top, 0px) + 72px)!important;
+    right:14px!important;
+    bottom:auto!important;
+    width:42px!important;
+    height:42px!important;
+    z-index:20!important;
+  }
+}
