@@ -651,7 +651,7 @@ def build_home():
     home_status = 'NOW' if home_preseason else nba_dday()
     home_cta = '프리시즌 일정' if home_preseason else '개막 주간 일정'
     home_aria = 'NBA 프리시즌' if home_preseason else 'NBA 개막 주간'
-    tip = ''.join(f'<a class="ts tip" href="/nba/"><span><span class="tag">{g["day"]} · {esc(g["kst"])}</span><b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i>@</i>{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>{("<em class=\\"nba-tag\\">" + esc(g["tag"]) + "</em>") if g.get("tag") else ""}</span></a>' for g in home_games[:5])
+    tip = ''.join(nba_home_story(g) for g in home_games[:5])
     lead, rest = news[0], news[1:5]
     nl = ''.join(f'<a class="nl" href="{a.url}">{thumb(a)}<span class="t"><span class="tag">{esc(a.league)} · {a.date_dot}</span><strong>{esc(a.headline)}</strong></span><span class="talk">{talk_icon()}토론</span></a>' for a in rest)
     ds_cards = ''.join(ds_card(d) for d in PS['division'])
@@ -999,6 +999,13 @@ def nba_cards(games: list) -> str:
                 f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i>@</i>{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>'
                 f'<time>{esc(g["kst"])}</time>{tag}</div>')
     return out
+
+
+def nba_home_story(g: dict) -> str:
+    tag = f'<em class="nba-tag">{esc(g["tag"])}</em>' if g.get('tag') else ''
+    return (f'<a class="ts tip" href="/nba/"><span><span class="tag">{esc(g.get("day", "PRESEASON"))} · {esc(g["kst"])}</span>'
+            f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i>@</i>'
+            f'{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>{tag}</span></a>')
 
 
 def nba_dday() -> str:
