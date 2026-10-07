@@ -1,0 +1,60 @@
+name: Import Jordan hero asset
+
+on:
+  push:
+    paths:
+      - ".github/workflows/hero-upload.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  import-hero:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download final hero video
+        run: |
+          python -m pip install --quiet yt-dlp
+          mkdir -p assets
+          yt-dlp --no-playlist -f "best[ext=mp4]/best"             -o "assets/sfandom-hero-jordan-20261007-web.%(ext)s"             "https://share.descript.com/view/ZS2FxEldzM8"
+          test -s assets/sfandom-hero-jordan-20261007-web.mp4
+
+      - name: Create poster frame
+        run: |
+          ffmpeg -y -ss 00:00:01.000             -i assets/sfandom-hero-jordan-20261007-web.mp4             -frames:v 1 -q:v 2             assets/sfandom-hero-jordan-20261007-poster.jpg
+
+      - name: Point homepage hero to Jordan film
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path("src/site.json")
+          data = json.loads(p.read_text(encoding="utf-8"))
+          data["hero"]["video"] = {
+              "src": "/assets/sfandom-hero-jordan-20261007-web.mp4",
+              "poster": "/assets/sfandom-hero-jordan-20261007-poster.jpg",
+              "label": "SFANDOM Michael Jordan HERO film"
+          }
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+          cssp = Path("assets/css/site.css")
+          css = cssp.read_text(encoding="utf-8")
+          old = '.top-stories{right:calc(var(--side) + var(--gut));width:360px;padding:30px 28px;background:rgba(11,11,15,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}'
+          new = '.top-stories{right:0;width:360px;padding:30px 28px;background:rgba(11,11,15,.9);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}'
+          if old not in css:
+              raise SystemExit("Expected top-stories wide rule not found")
+          cssp.write_text(css.replace(old, new, 1), encoding="utf-8")
+          PY
+
+      - name: Commit hero assets and layout update
+        run: |
+          git config user.name "sfandom-actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/sfandom-hero-jordan-20261007-web.mp4                   assets/sfandom-hero-jordan-20261007-poster.jpg                   src/site.json assets/css/site.css
+          git commit -m "feat: launch Michael Jordan hero" || exit 0
+          git push origin HEAD:main
