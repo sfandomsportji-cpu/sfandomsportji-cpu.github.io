@@ -60,57 +60,69 @@
     try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (_) {}
   });
 
-  /* ── 첫 화면 배경 영상: 저장소의 SFANDOM 편집본 그대로 ── */
+  /* ── 첫 화면 배경 영상: 자동재생 + 자동 사운드 복구 ── */
   const heroVideo = $('.hero-video');
-  if (heroVideo && heroVideo.dataset.src) {
-    const musicButton = document.createElement('button');
-    musicButton.type = 'button';
-    musicButton.className = 'hero-music-toggle';
-    musicButton.textContent = '음악 켜기';
-    musicButton.setAttribute('aria-pressed', 'false');
-    musicButton.style.cssText = 'position:absolute;left:24px;bottom:24px;z-index:10;padding:10px 16px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(11,11,15,.82);color:#fff;font:600 16px/1.3 sans-serif;cursor:pointer';
-    heroVideo.closest('.hero').append(musicButton);
-    const syncMusic = () => {
-      const audible = !heroVideo.muted && !heroVideo.paused;
-      musicButton.textContent = audible ? '음악 끄기' : '음악 켜기';
-      musicButton.setAttribute('aria-pressed', String(audible));
-    };
-    musicButton.addEventListener('click', async () => {
-      if (!heroVideo.muted && !heroVideo.paused) {
-        heroVideo.muted = true;
-      } else {
-        if (!heroVideo.getAttribute('src')) heroVideo.src = heroVideo.dataset.src;
-        heroVideo.volume = 0.65;
-        heroVideo.muted = false;
-        try {
-          await heroVideo.play();
-          heroVideo.classList.add('on');
-          heroVideo.parentElement.classList.add('playing');
-        } catch (_) {
-          heroVideo.muted = true;
-        }
-      }
-      syncMusic();
-    });
-    ['volumechange', 'play', 'pause'].forEach(event => heroVideo.addEventListener(event, syncMusic));
-  }
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const saveData = navigator.connection && navigator.connection.saveData;
+
   if (heroVideo && heroVideo.dataset.src && !reduce && !saveData) {
-    heroVideo.addEventListener('playing', () => { heroVideo.classList.add('on'); heroVideo.parentElement.classList.add('playing'); }, { once: true });
-    // 버퍼링으로 멈칫하면 부드럽게 어둡게 → 다시 재생되면 서서히 복귀
+    heroVideo.addEventListener('playing', () => {
+      heroVideo.classList.add('on');
+      heroVideo.parentElement.classList.add('playing');
+    }, { once: true });
+
     let dimTimer = null;
-    const dim = () => { if (!heroVideo.classList.contains('on')) return; clearTimeout(dimTimer); dimTimer = setTimeout(() => heroVideo.classList.add('dim'), 250); };
-    const undim = () => { clearTimeout(dimTimer); heroVideo.classList.remove('dim'); };
+    const dim = () => {
+      if (!heroVideo.classList.contains('on')) return;
+      clearTimeout(dimTimer);
+      dimTimer = setTimeout(() => heroVideo.classList.add('dim'), 250);
+    };
+    const undim = () => {
+      clearTimeout(dimTimer);
+      heroVideo.classList.remove('dim');
+    };
     heroVideo.addEventListener('waiting', dim);
     heroVideo.addEventListener('stalled', dim);
     heroVideo.addEventListener('playing', undim);
-    // 탭을 다시 보면 이어서 재생
-    document.addEventListener('visibilitychange', () => { if (!document.hidden && heroVideo.paused && heroVideo.src) heroVideo.play().catch(() => {}); });
+
     if (!heroVideo.getAttribute('src')) heroVideo.src = heroVideo.dataset.src;
     heroVideo.preload = 'auto';
-    heroVideo.muted = true;
-    heroVideo.play().catch(() => {});
+    heroVideo.volume = 0.65;
+
+    const tryAudiblePlay = async () => {
+      heroVideo.muted = false;
+      try {
+        await heroVideo.play();
+        return true;
+      } catch (_) {
+        heroVideo.muted = true;
+        try { await heroVideo.play(); } catch (_) {}
+        return false;
+      }
+    };
+
+    const unlockAudio = async () => {
+      heroVideo.muted = false;
+      heroVideo.volume = 0.65;
+      try {
+        await heroVideo.play();
+        ['pointerdown','touchstart','click','keydown','scroll'].forEach(evt =>
+          window.removeEventListener(evt, unlockAudio, true)
+        );
+      } catch (_) {}
+    };
+
+    tryAudiblePlay().then(ok => {
+      if (!ok) {
+        ['pointerdown','touchstart','click','keydown','scroll'].forEach(evt =>
+          window.addEventListener(evt, unlockAudio, { once: false, passive: true, capture: true })
+        );
+      }
+    });
+
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && heroVideo.paused && heroVideo.src) heroVideo.play().catch(() => {});
+    });
   }
 
   /* ── FAN ZONE 릴스: 인스타그램 화면이 뜨지 않으면 사이트의 브랜드 영상으로 그 자리를 채움 ──
