@@ -84,7 +84,15 @@
   "LAL": "#552583",
   "CLE": "#860038",
   "DEN": "#FEC524",
-  "HOU": "#CE1141"
+  "HOU": "#CE1141",
+  "IND": "#002D62",
+  "ORL": "#0077C0",
+  "MEM": "#5D76A9",
+  "MIL": "#00471B",
+  "POR": "#E03A3E",
+  "BKN": "#000000",
+  "PHX": "#1D1160",
+  "CHI": "#CE1141"
  },
  "storylines": [
   {
@@ -166,5 +174,47 @@
    "2027.4.12 (월)",
    "정규시즌 종료"
   ]
+ ],
+ "home_mode": "preseason",
+ "preseason_note": "2026.10.07 KST 기준 · 시간은 한국시간(KST). 출처: NBA 공식 일정",
+ "preseason_games": [
+  {
+   "day": "FINAL",
+   "away": "LAL",
+   "home": "GSW",
+   "kst": "10.7 (수) 11:00",
+   "tv": "NBA TV",
+   "tag": "GSW 124–98 LAL",
+   "result": "LAL 98–124 GSW"
+  },
+  {
+   "day": "PRESEASON",
+   "away": "MIN",
+   "home": "IND",
+   "kst": "10.8 (목) 08:00",
+   "tv": "LEAGUE PASS"
+  },
+  {
+   "day": "PRESEASON",
+   "away": "ORL",
+   "home": "MEM",
+   "kst": "10.8 (목) 09:00",
+   "tv": "LEAGUE PASS"
+  },
+  {
+   "day": "PRESEASON",
+   "away": "MIL",
+   "home": "OKC",
+   "kst": "10.8 (목) 09:00",
+   "tv": "LEAGUE PASS"
+  },
+  {
+   "day": "PRESEASON",
+   "away": "GSW",
+   "home": "POR",
+   "kst": "10.8 (목) 11:00",
+   "tv": "NBA TV",
+   "tag": "커리 휴식 예정"
+  }
  ]
 }
