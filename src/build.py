@@ -645,7 +645,7 @@ def build_home():
     else:
         media = art
     credit = f'<span class="hero-credit">{esc(hero["credit"])}</span>' if hero.get('credit') else ''
-    home_preseason = NBA.get('home_mode') == 'preseason' and bool(NBA.get('preseason_games'))
+    home_preseason = nba_home_preseason()
     home_games = nba_home_games()
     home_heading = 'PRESEASON' if home_preseason else 'TIP-OFF'
     home_status = 'NOW' if home_preseason else nba_dday()
@@ -1013,16 +1013,20 @@ def nba_dday() -> str:
     return f'D-{days}' if days > 0 else ('D-DAY' if days == 0 else 'NOW')
 
 
+def nba_home_preseason() -> bool:
+    opening = dt.datetime.fromisoformat(NBA['opening_kst']).date()
+    today = dt.date.fromisoformat(TODAY)
+    return NBA.get('home_mode') == 'preseason' and bool(NBA.get('preseason_games')) and today < opening
+
+
 def nba_home_games() -> list:
     """홈 화면은 개막 전 프리시즌, 개막 이후 정규시즌 주요 일정을 보여 줍니다."""
-    if NBA.get('home_mode') == 'preseason' and NBA.get('preseason_games'):
-        return NBA['preseason_games']
-    return NBA['games']
+    return NBA['preseason_games'] if nba_home_preseason() else NBA['games']
 
 
 def nba_section() -> str:
     """NBA 현재 구간 띠 (홈 화면 전체 폭)."""
-    preseason = NBA.get('home_mode') == 'preseason' and bool(NBA.get('preseason_games'))
+    preseason = nba_home_preseason()
     games = nba_home_games()
     cards = nba_cards(games)
     dday = 'NOW' if preseason else nba_dday()
