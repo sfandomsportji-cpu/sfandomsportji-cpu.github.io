@@ -574,7 +574,7 @@ def channel_chips() -> str:
 def game_threads(limit: int = 7) -> str:
     """경기 스레드: NBA 개막일 경기 + 진행 중인 MLB 디비전시리즈. 누르면 그 경기 글만 모아 보여 줍니다."""
     rows = []
-    for g in nba_home_games()[:3]:
+    for g in [x for x in nba_home_games() if not x.get('result')][:3]:
         tag = f'{g["away"]}@{g["home"]}'
         rows.append((f'NBA · {g["day"]}', badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba") + '<i>@</i>' + badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba"), tag, g['kst']))
     for d in PS['division']:
