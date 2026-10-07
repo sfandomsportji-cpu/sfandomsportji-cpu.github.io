@@ -399,7 +399,7 @@ def today_analysis() -> str:
         return ''
     ed_latest = max(EDITIONS)
     return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
-            f'<div class="sec-head"><h2 class="sec-title" id="taTitle">TODAY\'S <span class="outline">ANALYSIS</span> <span class="kr">스팬덤이 먼저 본 3경기</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>'
+            f'<div class="sec-head"><h2 class="sec-title" id="taTitle">SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> <span class="kr">스팬덤이 먼저 본 3경기</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>'
             f'<div class="ta-grid">{"".join(today_card(a) for a in picks)}</div>'
             f'<div class="ta-foot"><a class="review-link" href="/analysis/review/"><span class="display" style="font-size:24px">REVIEW <span class="accent">/</span> 복기 리포트</span><span class="muted" style="font-size:14px">결과가 아니라 판단 과정을 다시 봅니다</span></a>'
             f'<a class="review-link" href="/news/morning/{ed_latest}/"><span class="display" style="font-size:24px">MORNING EDITION</span><span class="muted" style="font-size:14px">최신호 {ed_latest.replace("-", ".")} 읽기 →</span></a></div></section>')
@@ -528,7 +528,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {body}
 </main>
 {footer()}
-<script src="/assets/js/site.js?v={VER}" defer></script>
+<script src="/assets/js/site.js?v={VER}-music" defer></script>
 </body>
 </html>
 '''

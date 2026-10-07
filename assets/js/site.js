@@ -62,6 +62,38 @@
 
   /* ── 첫 화면 배경 영상: 저장소의 SFANDOM 편집본 그대로 ── */
   const heroVideo = $('.hero-video');
+  if (heroVideo && heroVideo.dataset.src) {
+    const musicButton = document.createElement('button');
+    musicButton.type = 'button';
+    musicButton.className = 'hero-music-toggle';
+    musicButton.textContent = '음악 켜기';
+    musicButton.setAttribute('aria-pressed', 'false');
+    musicButton.style.cssText = 'position:absolute;left:24px;bottom:24px;z-index:10;padding:10px 16px;border:1px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(11,11,15,.82);color:#fff;font:600 16px/1.3 sans-serif;cursor:pointer';
+    heroVideo.closest('.hero').append(musicButton);
+    const syncMusic = () => {
+      const audible = !heroVideo.muted && !heroVideo.paused;
+      musicButton.textContent = audible ? '음악 끄기' : '음악 켜기';
+      musicButton.setAttribute('aria-pressed', String(audible));
+    };
+    musicButton.addEventListener('click', async () => {
+      if (!heroVideo.muted && !heroVideo.paused) {
+        heroVideo.muted = true;
+      } else {
+        if (!heroVideo.getAttribute('src')) heroVideo.src = heroVideo.dataset.src;
+        heroVideo.volume = 0.65;
+        heroVideo.muted = false;
+        try {
+          await heroVideo.play();
+          heroVideo.classList.add('on');
+          heroVideo.parentElement.classList.add('playing');
+        } catch (_) {
+          heroVideo.muted = true;
+        }
+      }
+      syncMusic();
+    });
+    ['volumechange', 'play', 'pause'].forEach(event => heroVideo.addEventListener(event, syncMusic));
+  }
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const saveData = navigator.connection && navigator.connection.saveData;
   if (heroVideo && heroVideo.dataset.src && !reduce && !saveData) {
