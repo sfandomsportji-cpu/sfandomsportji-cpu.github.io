@@ -760,3 +760,16 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
 .news-list .nl .art-thumb{background:linear-gradient(120deg,#17253e,#343047);display:flex;align-items:center;justify-content:center}
 .news-list .nl .art-thumb .w{color:#fff;opacity:1;font-weight:800;font-size:22px;letter-spacing:1px;text-shadow:0 2px 5px #06080e}
 @media(max-width:700px){.figure.logo.dodgers-feature{min-height:230px}.figure.logo.dodgers-feature img{height:165px;width:min(270px,80%)}}
+
+/* 2026-10-09 final acceptance repair */
+.hero-media{background-color:#080a0f!important;background-image:none!important}
+.hero-media .hero-art{background:#090b10!important}
+.hero-media:not(.playing) .hero-video{visibility:hidden!important}
+.hero-media.playing .hero-video{visibility:visible}
+.figure.dodgers-feature{min-height:345px!important;display:flex!important;flex-direction:column;justify-content:center;align-items:center;gap:6px;background:repeating-linear-gradient(135deg,transparent 0 27px,rgba(255,255,255,.025) 27px 54px),linear-gradient(115deg,#0a172e 0%,#162640 47%,#4e1830 100%)!important}
+.figure.dodgers-feature img{display:block!important;opacity:1!important;visibility:visible!important;width:min(420px,80%)!important;height:220px!important;max-height:220px!important;padding:4px!important;object-fit:contain!important;filter:brightness(1.3) contrast(1.1) drop-shadow(0 7px 20px #0009)!important}
+.figure.dodgers-feature .feature-fallback{display:block!important;font-size:clamp(25px,4vw,44px)!important;font-family:var(--display);line-height:1.15;text-align:center;color:#fff;opacity:1;letter-spacing:2px}
+.figure.dodgers-feature figcaption{align-self:stretch;color:#e6edf8!important;font-size:14px!important;text-align:center!important}
+.news-list .nl .art-thumb{background:linear-gradient(120deg,#112643,#282238)!important}
+.news-list .nl .art-thumb .w{font-size:clamp(15px,2vw,24px)!important;color:#fff!important;opacity:1!important}
+@media(max-width:700px){.figure.dodgers-feature{min-height:250px!important}.figure.dodgers-feature img{width:75%!important;height:150px!important}}
