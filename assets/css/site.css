@@ -742,3 +742,10 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
 @media(max-width:760px){
   .hero-mute-toggle{top:calc(500px - 74px)!important;right:16px!important}
 }
+
+/* 2026-10-09 approved visual repair: additive, no layout rebuild */
+.logo img{height:62px;max-width:min(45vw,235px);object-fit:contain;filter:contrast(1.22) saturate(1.18) drop-shadow(0 1px 1px rgba(0,0,0,.65))}
+.tlogo{filter:contrast(1.25) saturate(1.25) drop-shadow(0 2px 3px rgba(0,0,0,.5))}
+.news-lead .thumb img{object-fit:contain;max-height:100%;padding:20px;background:radial-gradient(circle at center,#17396f,#10141e 75%)}
+.thumb img{display:block;max-width:100%}
+@media(max-width:700px){.logo img{height:48px;max-width:53vw}.news-lead .thumb img{padding:12px}}
