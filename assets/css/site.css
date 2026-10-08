@@ -608,3 +608,6 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
     z-index:20!important;
   }
 }
+
+/* MLB headline art: locally cached team mark, no external photo dependency */
+.news-lead .thumb img[src$=".svg"]{object-fit:contain;object-position:center;padding:30px 27%;background:radial-gradient(circle at 80% 15%,rgba(200,16,46,.42),transparent 65%),repeating-linear-gradient(135deg,#111827 0 25px,#1c2537 25px 50px)}
