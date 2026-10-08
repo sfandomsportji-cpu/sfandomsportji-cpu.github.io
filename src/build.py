@@ -517,7 +517,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-premiumhero1">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-premiumhero2">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE['ads']['client']}" crossorigin="anonymous"></script>
 <script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
@@ -913,11 +913,14 @@ def build_hubs():
     story = ''.join(f'<div class="nba-story"><b>{x["k"]}</b><h3>{esc(x["t"])}</h3><p>{esc(x["x"])}</p></div>' for x in NBA['storylines'])
     kd = ''.join(f'<div class="round"><span class="display">{esc(d)}</span><span>{esc(t)}</span></div>' for d, t in NBA['key_dates'])
     nba_arts = [a for a in ARTICLES if a.league == 'NBA']
+    preseason_rows = nba_cards(NBA.get('preseason_games', []), preseason_anchors=True)
+    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">GAME CENTER</span></h2><span class="muted">프리시즌 경기별 일정과 현재 기록된 상태 · 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div></div></section>') if preseason_rows else ''
     nsec = lambda kind, title, kr, anchor: (f'<section id="{anchor}" class="sec"><div class="sec-head"><h2 class="sec-title">{title} <span class="kr">{kr}</span></h2></div>'
                                             + '<div class="card-grid">' + ''.join(mag_card(a) for a in nba_arts if a.kind == kind) + '</div></section>') if any(a.kind == kind for a in nba_arts) else ''
-    nba_tabs = tabs([('개막 주간', '#tipoff'), ('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('주요 날짜', '#dates')], '')
+    nba_tabs = tabs([('프리시즌', '#preseason'), ('개막 주간', '#tipoff'), ('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('주요 날짜', '#dates')], '')
     nba_body = (page_head('NBA <span class="accent">2026-27</span>', '새 시즌 개막까지 ' + nba_dday() + '. 개막 주간 일정과 여름 이적 시장, 개막전 프리뷰, 시즌 달력을 한곳에 모았습니다. 시간은 모두 한국시간입니다.', [('NBA', '')], nba_tabs)
                 + f'''<div class="wrap">
+{preseason_block}
 <section class="sec" id="tipoff" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title">TIP-OFF <span class="outline">WEEK</span></h2><span class="muted">개막 주간 · 시간은 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail">{nba_cards(NBA["games"])}</div></div></section>
 <section class="sec" id="stories"><div class="sec-head"><h2 class="sec-title">STORYLINES <span class="kr">개막 주간 볼거리</span></h2></div><div class="grid-4">{story}</div></section>
 {nsec('news', 'NEWS', 'NBA 뉴스', 'news')}
@@ -990,12 +993,13 @@ def wc_result(w: dict) -> str:
             f'<div class="ds-log">{games}</div><span class="when">{esc(w["winner"])} 디비전시리즈 진출</span></div>')
 
 
-def nba_cards(games: list) -> str:
+def nba_cards(games: list, preseason_anchors: bool = False) -> str:
     out = ''
     for g in games:
         tag = '<em class="nba-tag">' + esc(g['tag']) + '</em>' if g.get('tag') else ''
         head = (g['day'] + ' · ' + g['tv']) if g.get('day') else 'CHRISTMAS DAY'
-        out += (f'<div class="nba-card"><small>{head}</small>'
+        id_attr = f' id="preseason-{g["away"].lower()}-{g["home"].lower()}"' if preseason_anchors else ''
+        out += (f'<div class="nba-card"{id_attr}><small>{esc(head)}</small>'
                 f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i>@</i>{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>'
                 f'<time>{esc(g["kst"])}</time>{tag}</div>')
     return out
@@ -1003,7 +1007,9 @@ def nba_cards(games: list) -> str:
 
 def nba_home_story(g: dict) -> str:
     tag = f'<em class="nba-tag">{esc(g["tag"])}</em>' if g.get('tag') else ''
-    return (f'<a class="ts tip" href="/nba/"><span><span class="tag">{esc(g.get("day", "PRESEASON"))} · {esc(g["kst"])}</span>'
+    destination = f'/nba/#preseason-{g["away"].lower()}-{g["home"].lower()}' if g in NBA.get('preseason_games', []) else '/nba/#tipoff'
+    label = esc(f'{g["away"]} - {g["home"]} 경기 일정 확인')
+    return (f'<a class="ts tip" href="{destination}" aria-label="{label}"><span><span class="tag">{esc(g.get("day", "PRESEASON"))} · {esc(g["kst"])}</span>'
             f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i>@</i>'
             f'{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>{tag}</span></a>')
 
