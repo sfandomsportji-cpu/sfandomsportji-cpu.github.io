@@ -314,9 +314,10 @@ def thumb(a: Article, cls: str = '') -> str:
         word = re.sub(r'[^A-Z0-9 ]', '', word.upper()).strip() or a.league
         word = {'BAY': 'RAYS', 'MILWAUKEE': 'BREWERS', 'NEWS': a.league, 'ANALYSIS': a.league}.get(word, word)
         return f'<div class="thumb art-thumb {cls}" aria-hidden="true"><span class="k">{esc(a.league)} · {a.date_dot}</span><span class="w">{esc(word)}</span></div>'
+    fallback_attr = ' onerror="this.onerror=null;this.src=\'/assets/teams/mlb/lad.svg\'"' if a.slug == 'dodgers-clinch-nlcs' else ''
     portrait = 'portrait' if 'headshot' in a.image else ''
     return (f'<div class="thumb {portrait} {cls}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" '
-            f'loading="lazy" decoding="async"></div>')
+            f'loading="lazy" decoding="async"{fallback_attr}></div>')
 
 
 
@@ -759,8 +760,9 @@ def build_article(a: Article):
         logo = 'logo' if a.image.endswith('.svg') or 'logo' in a.image else ''
         cap = f'<figcaption>{esc(a.credit)}</figcaption>' if a.credit.startswith('PHOTO') else f'<figcaption>{esc(a.image_alt)}</figcaption>'
         feature = ' dodgers-feature' if a.slug == 'dodgers-clinch-nlcs' else ''
+        fallback_attr = ' onerror="this.onerror=null;this.src=\'/assets/teams/mlb/lad.svg\'"' if feature else ''
         fallback = '<div class="feature-fallback">DODGERS · NLCS</div>' if feature else ''
-        fig = f'<figure class="figure {logo}{feature}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" fetchpriority="high">{fallback}{cap}</figure>'
+        fig = f'<figure class="figure {logo}{feature}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" fetchpriority="high"{fallback_attr if a.slug == "dodgers-clinch-nlcs" else ""}>{fallback}{cap}</figure>'
     srcs = ''.join(f'<span>{esc(s["label"])}</span>' for s in a.sources if s.get('label'))
     src_html = f'<div class="sources"><strong>출처</strong>{srcs}</div>' if srcs else ''
     credit = f'<p class="credit">{esc(a.credit)}</p>' if a.credit and not a.credit.startswith('PHOTO') else ''
