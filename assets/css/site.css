@@ -749,3 +749,14 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
 .news-lead .thumb img{object-fit:contain;max-height:100%;padding:20px;background:radial-gradient(circle at center,#17396f,#10141e 75%)}
 .thumb img{display:block;max-width:100%}
 @media(max-width:700px){.logo img{height:48px;max-width:53vw}.news-lead .thumb img{padding:12px}}
+
+/* 2026-10-09 approved repair 2: first-frame and article editorial fallback */
+.hero-media .hero-art{background:#0b0b0f url('/assets/sfandom-hero-poster.jpg') center 30%/cover no-repeat}
+.hero-media:not(.playing) .hero-video{opacity:0}
+.figure.logo.dodgers-feature{min-height:320px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(125deg,#0b192f 0%,#162e50 45%,#4b172c 100%);border:1px solid rgba(255,255,255,.09)}
+.figure.logo.dodgers-feature img{display:block;width:min(390px,75%);height:230px;max-height:none;padding:14px;object-fit:contain;filter:brightness(1.2) contrast(1.15) drop-shadow(0 10px 20px rgba(0,0,0,.45))}
+.figure.logo.dodgers-feature .feature-fallback{font-family:var(--display);font-size:clamp(24px,4vw,48px);font-weight:800;color:white;letter-spacing:2px;text-align:center}
+.figure.logo.dodgers-feature figcaption{align-self:stretch;text-align:center;background:rgba(0,0,0,.25);color:#e5eaf2}
+.news-list .nl .art-thumb{background:linear-gradient(120deg,#17253e,#343047);display:flex;align-items:center;justify-content:center}
+.news-list .nl .art-thumb .w{color:#fff;opacity:1;font-weight:800;font-size:22px;letter-spacing:1px;text-shadow:0 2px 5px #06080e}
+@media(max-width:700px){.figure.logo.dodgers-feature{min-height:230px}.figure.logo.dodgers-feature img{height:165px;width:min(270px,80%)}}
