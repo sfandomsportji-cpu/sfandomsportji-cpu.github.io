@@ -634,3 +634,54 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
   .composer .row,.composer .row3{grid-template-columns:minmax(0,1fr)}
   .composer input,.composer select,.composer textarea{max-width:100%;min-width:0}
 }
+
+/* PRESEASON PREMIUM PANEL v20261008 */
+/* Keep the SFANDOM video as the hero, elevate the game rail to a coherent broadcast score panel. */
+@media (min-width:1181px){
+  .hero{height:900px;min-height:900px}
+  .hero-media,.hero-shade{inset:0 430px 0 0}
+  .hero-copy{width:min(820px,calc(100% - 550px));z-index:3}
+  .top-stories{position:absolute;inset:0 0 0 auto;display:flex;flex-direction:column;width:430px;height:100%;overflow-y:auto;overflow-x:hidden;padding:30px 26px;background:linear-gradient(155deg,#11141b 0%,#090b11 55%,#111117 100%);border-left:1px solid rgba(255,255,255,.12);scrollbar-width:thin}
+}
+.top-stories h2{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 10px;padding:0 0 18px;border-bottom:2px solid #e33346;font-size:42px;line-height:1;letter-spacing:1px;color:#f5f5f7}
+.top-stories h2 .nba-dday{font-size:36px;line-height:1;color:#ff9042}
+.top-stories .ts.tip{display:block;flex:0 0 auto;padding:17px 16px;margin:5px 0 6px;border:1px solid rgba(255,255,255,.13);border-radius:12px;background:linear-gradient(115deg,rgba(255,255,255,.055),rgba(255,255,255,.014));box-shadow:inset 0 1px 0 rgba(255,255,255,.035);transition:background .2s ease,border-color .2s ease}
+.top-stories .ts.tip:hover{background:rgba(255,255,255,.08);border-color:rgba(255,144,66,.45)}
+.top-stories .ts.tip>span{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0;width:100%}
+.top-stories .ts.tip .tag{font-size:12px;font-weight:750;line-height:1.3;letter-spacing:.035em;color:#c5cad4}
+.top-stories .ts.tip .vsline{display:flex;align-items:center;justify-content:flex-start;gap:14px;margin:0;min-width:0;max-width:100%}
+.top-stories .ts.tip .vsline .tlogo-wrap{width:62px;height:62px;min-width:62px;min-height:62px;padding:6px;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.03));box-shadow:inset 0 0 0 1px rgba(255,255,255,.15),0 2px 10px rgba(0,0,0,.18)}
+.top-stories .ts.tip .vsline .tlogo{filter:brightness(1.1) contrast(1.09) saturate(1.1) drop-shadow(0 2px 2px rgba(0,0,0,.35))}
+.top-stories .ts.tip .vsline i{font-size:17px;line-height:1;color:#b8c0ce;font-family:var(--display);font-weight:700}
+.top-stories .ts.tip .nba-tag{display:block;margin:0;color:#ffac6c;font-size:13px;font-style:normal;font-weight:700;line-height:1.4;letter-spacing:.01em;white-space:normal;overflow-wrap:anywhere}
+@media(min-width:1181px){
+  .hero-mute-toggle{right:450px!important;top:20px!important;bottom:auto!important}
+}
+@media (min-width:1500px){
+  .hero-media,.hero-shade{inset:0 430px 0 0}
+  .top-stories{width:430px;padding:30px 26px}
+  .hero-copy{width:min(820px,calc(100% - 660px))}
+}
+@media (max-width:1180px){
+  .hero{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(510px,auto) auto;height:auto;min-height:0;overflow:visible;background:#0b0b0f}
+  .hero-media,.hero-shade{position:absolute;inset:0 0 auto 0;width:100%;height:510px;overflow:hidden}
+  .hero-copy{grid-column:1;grid-row:1;position:relative;inset:auto;align-self:end;margin:90px 32px 32px;width:auto;max-width:730px;z-index:3}
+  .top-stories{display:grid;grid-column:1;grid-row:2;position:relative;inset:auto;width:100%;height:auto;max-height:none;overflow:visible;padding:28px 32px 32px;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;background:linear-gradient(160deg,#11141b,#0b0d14)}
+  .top-stories h2{grid-column:1/-1}
+  .top-stories .ts.tip{min-width:0;min-height:150px;margin:0}
+  .hero-mute-toggle{right:20px!important;top:18px!important;bottom:auto!important}
+}
+@media (max-width:760px){
+  .hero{grid-template-rows:minmax(500px,auto) auto}
+  .hero-media,.hero-shade{height:500px}
+  .hero-copy{margin:92px 16px 24px;max-width:none}
+  .hero-copy h1{font-size:clamp(34px,9vw,43px);line-height:1.14}
+  .top-stories{grid-template-columns:minmax(0,1fr);gap:9px;padding:24px 16px 30px}
+  .top-stories h2{font-size:39px;margin-bottom:9px;padding-bottom:16px}
+  .top-stories h2 .nba-dday{font-size:35px}
+  .top-stories .ts.tip{min-height:0;padding:16px 18px}
+  .top-stories .ts.tip .tag{font-size:13px}
+  .top-stories .ts.tip .vsline .tlogo-wrap{width:66px;height:66px;min-width:66px;min-height:66px}
+  .top-stories .ts.tip .nba-tag{font-size:14px}
+  .hero-mute-toggle{right:16px!important;top:18px!important;bottom:auto!important}
+}
