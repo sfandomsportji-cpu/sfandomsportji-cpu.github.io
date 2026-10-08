@@ -1,403 +1,397 @@
 {
- "title": "2026 MLB 포스트시즌",
- "updated": "2026-10-07",
- "source": [
-  {
-   "label": "MLB POSTSEASON SCHEDULE"
-  },
-  {
-   "label": "CBS SPORTS BRACKET"
-  }
- ],
- "leagues": [
-  {
-   "name": "AMERICAN LEAGUE",
-   "seeds": [
+  "title": "2026 MLB 포스트시즌",
+  "updated": "2026-10-08",
+  "source": [
     {
-     "seed": 1,
-     "team": "탬파베이 레이스",
-     "en": "RAYS",
-     "record": "98–64",
-     "note": "동부지구 우승 · DS 직행",
-     "abbr": "TB",
-     "color": "#092C5C"
-    },
-    {
-     "seed": 2,
-     "team": "클리블랜드 가디언스",
-     "en": "GUARDIANS",
-     "record": "85–77",
-     "note": "중부지구 우승 · DS 직행",
-     "abbr": "CLE",
-     "color": "#00385D"
-    },
-    {
-     "seed": 3,
-     "team": "휴스턴 애스트로스",
-     "en": "ASTROS",
-     "record": "81–81",
-     "note": "서부지구 우승",
-     "abbr": "HOU",
-     "color": "#EB6E1F"
-    },
-    {
-     "seed": 4,
-     "team": "뉴욕 양키스",
-     "en": "YANKEES",
-     "record": "93–68",
-     "note": "와일드카드",
-     "abbr": "NYY",
-     "color": "#0C2340"
-    },
-    {
-     "seed": 5,
-     "team": "보스턴 레드삭스",
-     "en": "RED SOX",
-     "record": "87–75",
-     "note": "와일드카드",
-     "abbr": "BOS",
-     "color": "#BD3039"
-    },
-    {
-     "seed": 6,
-     "team": "시카고 화이트삭스",
-     "en": "WHITE SOX",
-     "record": "84–78",
-     "note": "와일드카드",
-     "abbr": "CWS",
-     "color": "#27251F"
+      "label": "MLB 공식 2026 포스트시즌 일정·결과 (2026.10.08 KST 확인)"
     }
-   ]
-  },
-  {
-   "name": "NATIONAL LEAGUE",
-   "seeds": [
+  ],
+  "leagues": [
     {
-     "seed": 1,
-     "team": "밀워키 브루어스",
-     "en": "BREWERS",
-     "record": "103–59",
-     "note": "중부지구 우승 · DS 직행",
-     "abbr": "MIL",
-     "color": "#12284B"
+      "name": "AMERICAN LEAGUE",
+      "seeds": [
+        {
+          "seed": 1,
+          "team": "탬파베이 레이스",
+          "en": "RAYS",
+          "record": "98–64",
+          "note": "동부지구 우승 · DS 직행",
+          "abbr": "TB",
+          "color": "#092C5C"
+        },
+        {
+          "seed": 2,
+          "team": "클리블랜드 가디언스",
+          "en": "GUARDIANS",
+          "record": "85–77",
+          "note": "중부지구 우승 · DS 직행",
+          "abbr": "CLE",
+          "color": "#00385D"
+        },
+        {
+          "seed": 3,
+          "team": "휴스턴 애스트로스",
+          "en": "ASTROS",
+          "record": "81–81",
+          "note": "서부지구 우승",
+          "abbr": "HOU",
+          "color": "#EB6E1F"
+        },
+        {
+          "seed": 4,
+          "team": "뉴욕 양키스",
+          "en": "YANKEES",
+          "record": "93–68",
+          "note": "와일드카드",
+          "abbr": "NYY",
+          "color": "#0C2340"
+        },
+        {
+          "seed": 5,
+          "team": "보스턴 레드삭스",
+          "en": "RED SOX",
+          "record": "87–75",
+          "note": "와일드카드",
+          "abbr": "BOS",
+          "color": "#BD3039"
+        },
+        {
+          "seed": 6,
+          "team": "시카고 화이트삭스",
+          "en": "WHITE SOX",
+          "record": "84–78",
+          "note": "와일드카드",
+          "abbr": "CWS",
+          "color": "#27251F"
+        }
+      ]
     },
     {
-     "seed": 2,
-     "team": "LA 다저스",
-     "en": "DODGERS",
-     "record": "100–62",
-     "note": "서부지구 우승 · DS 직행",
-     "abbr": "LAD",
-     "color": "#005A9C"
-    },
-    {
-     "seed": 3,
-     "team": "애틀랜타 브레이브스",
-     "en": "BRAVES",
-     "record": "94–68",
-     "note": "동부지구 우승",
-     "abbr": "ATL",
-     "color": "#CE1141"
-    },
-    {
-     "seed": 4,
-     "team": "샌디에이고 파드리스",
-     "en": "PADRES",
-     "record": "91–71",
-     "note": "와일드카드",
-     "abbr": "SD",
-     "color": "#2F241D"
-    },
-    {
-     "seed": 5,
-     "team": "시카고 컵스",
-     "en": "CUBS",
-     "record": "89–73",
-     "note": "와일드카드",
-     "abbr": "CHC",
-     "color": "#0E3386"
-    },
-    {
-     "seed": 6,
-     "team": "필라델피아 필리스",
-     "en": "PHILLIES",
-     "record": "88–74",
-     "note": "와일드카드",
-     "abbr": "PHI",
-     "color": "#E81828"
+      "name": "NATIONAL LEAGUE",
+      "seeds": [
+        {
+          "seed": 1,
+          "team": "밀워키 브루어스",
+          "en": "BREWERS",
+          "record": "103–59",
+          "note": "중부지구 우승 · DS 직행",
+          "abbr": "MIL",
+          "color": "#12284B"
+        },
+        {
+          "seed": 2,
+          "team": "LA 다저스",
+          "en": "DODGERS",
+          "record": "100–62",
+          "note": "서부지구 우승 · DS 직행",
+          "abbr": "LAD",
+          "color": "#005A9C"
+        },
+        {
+          "seed": 3,
+          "team": "애틀랜타 브레이브스",
+          "en": "BRAVES",
+          "record": "94–68",
+          "note": "동부지구 우승",
+          "abbr": "ATL",
+          "color": "#CE1141"
+        },
+        {
+          "seed": 4,
+          "team": "샌디에이고 파드리스",
+          "en": "PADRES",
+          "record": "91–71",
+          "note": "와일드카드",
+          "abbr": "SD",
+          "color": "#2F241D"
+        },
+        {
+          "seed": 5,
+          "team": "시카고 컵스",
+          "en": "CUBS",
+          "record": "89–73",
+          "note": "와일드카드",
+          "abbr": "CHC",
+          "color": "#0E3386"
+        },
+        {
+          "seed": 6,
+          "team": "필라델피아 필리스",
+          "en": "PHILLIES",
+          "record": "88–74",
+          "note": "와일드카드",
+          "abbr": "PHI",
+          "color": "#E81828"
+        }
+      ]
     }
-   ]
-  }
- ],
- "wildcard": [
-  {
-   "league": "NL",
-   "home": "애틀랜타",
-   "home_en": "BRAVES",
-   "hs": 3,
-   "hr": "94–68",
-   "away": "필라델피아",
-   "away_en": "PHILLIES",
-   "as": 6,
-   "ar": "88–74",
-   "g1_kst": "9.30 (수) 03:00",
-   "home_abbr": "ATL",
-   "home_color": "#CE1141",
-   "away_abbr": "PHI",
-   "away_color": "#E81828",
-   "winner": "ATL",
-   "series": "2–1",
-   "games": [
-    "ATL 5–3 PHI",
-    "PHI 4–3 ATL (연장 10회)",
-    "ATL 6–2 PHI"
-   ]
-  },
-  {
-   "league": "AL",
-   "home": "휴스턴",
-   "home_en": "ASTROS",
-   "hs": 3,
-   "hr": "81–81",
-   "away": "화이트삭스",
-   "away_en": "WHITE SOX",
-   "as": 6,
-   "ar": "84–78",
-   "g1_kst": "9.30 (수) 06:00",
-   "home_abbr": "HOU",
-   "home_color": "#EB6E1F",
-   "away_abbr": "CWS",
-   "away_color": "#27251F",
-   "winner": "CWS",
-   "series": "2–0",
-   "games": [
-    "CWS 6–3 HOU",
-    "CWS 7–3 HOU"
-   ]
-  },
-  {
-   "league": "AL",
-   "home": "양키스",
-   "home_en": "YANKEES",
-   "hs": 4,
-   "hr": "93–68",
-   "away": "보스턴",
-   "away_en": "RED SOX",
-   "as": 5,
-   "ar": "87–75",
-   "g1_kst": "9.30 (수) 09:00",
-   "home_abbr": "NYY",
-   "home_color": "#0C2340",
-   "away_abbr": "BOS",
-   "away_color": "#BD3039",
-   "winner": "NYY",
-   "series": "2–0",
-   "games": [
-    "NYY 9–0 BOS",
-    "NYY 9–2 BOS"
-   ]
-  },
-  {
-   "league": "NL",
-   "home": "파드리스",
-   "home_en": "PADRES",
-   "hs": 4,
-   "hr": "91–71",
-   "away": "컵스",
-   "away_en": "CUBS",
-   "as": 5,
-   "ar": "89–73",
-   "g1_kst": "9.30 (수) 11:00",
-   "home_abbr": "SD",
-   "home_color": "#2F241D",
-   "away_abbr": "CHC",
-   "away_color": "#0E3386",
-   "winner": "SD",
-   "series": "2–0",
-   "games": [
-    "SD 8–0 CHC",
-    "SD 4–1 CHC"
-   ]
-  }
- ],
- "rounds": [
-  {
-   "name": "WILD CARD",
-   "kr": "와일드카드 시리즈 · 3전 2선승",
-   "dates": "종료 · 현지 9.29 – 10.1"
-  },
-  {
-   "name": "DIVISION SERIES",
-   "kr": "디비전시리즈 · 5전 3선승",
-   "dates": "진행 중 · 현지 10.3 – 10.10"
-  },
-  {
-   "name": "LCS",
-   "kr": "리그 챔피언십 · 7전 4선승",
-   "dates": "현지 10.11 –"
-  },
-  {
-   "name": "WORLD SERIES",
-   "kr": "월드시리즈 · 7전 4선승",
-   "dates": "현지 10.23 –"
-  }
- ],
- "division": [
-  {
-   "league": "AL",
-   "home": "TB",
-   "away": "NYY",
-   "home_kr": "탬파베이",
-   "away_kr": "뉴욕 양키스",
-   "hs": 1,
-   "as": 4,
-   "home_color": "#092C5C",
-   "away_color": "#0C2340",
-   "hw": 2,
-   "aw": 0,
-   "games": [
+  ],
+  "wildcard": [
     {
-     "g": 1,
-     "kst": "10.4 (일) 07:30",
-     "result": "TB 1–0 NYY"
+      "league": "NL",
+      "home": "애틀랜타",
+      "home_en": "BRAVES",
+      "hs": 3,
+      "hr": "94–68",
+      "away": "필라델피아",
+      "away_en": "PHILLIES",
+      "as": 6,
+      "ar": "88–74",
+      "g1_kst": "9.30 (수) 03:00",
+      "home_abbr": "ATL",
+      "home_color": "#CE1141",
+      "away_abbr": "PHI",
+      "away_color": "#E81828",
+      "winner": "ATL",
+      "series": "2–1",
+      "games": [
+        "ATL 5–3 PHI",
+        "PHI 4–3 ATL (연장 10회)",
+        "ATL 6–2 PHI"
+      ]
     },
     {
-     "g": 2,
-     "kst": "10.6 (화) 09:00",
-     "result": "TB 5–2 NYY"
+      "league": "AL",
+      "home": "휴스턴",
+      "home_en": "ASTROS",
+      "hs": 3,
+      "hr": "81–81",
+      "away": "화이트삭스",
+      "away_en": "WHITE SOX",
+      "as": 6,
+      "ar": "84–78",
+      "g1_kst": "9.30 (수) 06:00",
+      "home_abbr": "HOU",
+      "home_color": "#EB6E1F",
+      "away_abbr": "CWS",
+      "away_color": "#27251F",
+      "winner": "CWS",
+      "series": "2–0",
+      "games": [
+        "CWS 6–3 HOU",
+        "CWS 7–3 HOU"
+      ]
     },
     {
-     "g": 3,
-     "kst": "10.8 (목) 09:00"
+      "league": "AL",
+      "home": "양키스",
+      "home_en": "YANKEES",
+      "hs": 4,
+      "hr": "93–68",
+      "away": "보스턴",
+      "away_en": "RED SOX",
+      "as": 5,
+      "ar": "87–75",
+      "g1_kst": "9.30 (수) 09:00",
+      "home_abbr": "NYY",
+      "home_color": "#0C2340",
+      "away_abbr": "BOS",
+      "away_color": "#BD3039",
+      "winner": "NYY",
+      "series": "2–0",
+      "games": [
+        "NYY 9–0 BOS",
+        "NYY 9–2 BOS"
+      ]
     },
     {
-     "g": 4,
-     "kst": "10.9 (금) 09:00",
-     "if": true
-    },
-    {
-     "g": 5,
-     "kst": "10.11 (일) 09:00",
-     "if": true
+      "league": "NL",
+      "home": "파드리스",
+      "home_en": "PADRES",
+      "hs": 4,
+      "hr": "91–71",
+      "away": "컵스",
+      "away_en": "CUBS",
+      "as": 5,
+      "ar": "89–73",
+      "g1_kst": "9.30 (수) 11:00",
+      "home_abbr": "SD",
+      "home_color": "#2F241D",
+      "away_abbr": "CHC",
+      "away_color": "#0E3386",
+      "winner": "SD",
+      "series": "2–0",
+      "games": [
+        "SD 8–0 CHC",
+        "SD 4–1 CHC"
+      ]
     }
-   ]
-  },
-  {
-   "league": "AL",
-   "home": "CLE",
-   "away": "CWS",
-   "home_kr": "클리블랜드",
-   "away_kr": "시카고 화이트삭스",
-   "hs": 2,
-   "as": 6,
-   "home_color": "#00385D",
-   "away_color": "#27251F",
-   "hw": 0,
-   "aw": 2,
-   "games": [
+  ],
+  "rounds": [
     {
-     "g": 1,
-     "kst": "10.4 (일)",
-     "result": "CWS 3–0 CLE"
+      "name": "WILD CARD",
+      "kr": "와일드카드 시리즈 · 3전 2선승",
+      "dates": "종료 · 현지 9.29 – 10.1"
     },
     {
-     "g": 2,
-     "kst": "10.6 (화) 06:00",
-     "result": "CWS 4–3 CLE"
+      "name": "DIVISION SERIES",
+      "kr": "디비전시리즈 · 5전 3선승",
+      "dates": "진행 중 · 현지 10.3 – 10.10"
     },
     {
-     "g": 3,
-     "kst": "10.8 (목) 05:00"
+      "name": "LCS",
+      "kr": "리그 챔피언십 · 7전 4선승",
+      "dates": "현지 10.11 –"
     },
     {
-     "g": 4,
-     "kst": "10.9 (금) 06:00",
-     "if": true
-    },
-    {
-     "g": 5,
-     "kst": "10.11 (일) 06:00",
-     "if": true
+      "name": "WORLD SERIES",
+      "kr": "월드시리즈 · 7전 4선승",
+      "dates": "현지 10.23 –"
     }
-   ]
-  },
-  {
-   "league": "NL",
-   "home": "MIL",
-   "away": "SD",
-   "home_kr": "밀워키",
-   "away_kr": "샌디에이고",
-   "hs": 1,
-   "as": 4,
-   "home_color": "#12284B",
-   "away_color": "#2F241D",
-   "hw": 2,
-   "aw": 1,
-   "games": [
+  ],
+  "division": [
     {
-     "g": 1,
-     "kst": "10.4 (일) 09:30",
-     "result": "MIL 3–2 SD"
+      "league": "AL",
+      "home": "TB",
+      "away": "NYY",
+      "home_kr": "탬파베이",
+      "away_kr": "뉴욕 양키스",
+      "hs": 1,
+      "as": 4,
+      "home_color": "#092C5C",
+      "away_color": "#0C2340",
+      "hw": 2,
+      "aw": 0,
+      "games": [
+        {
+          "g": 1,
+          "kst": "10.4 (일) 07:30",
+          "result": "TB 1–0 NYY"
+        },
+        {
+          "g": 2,
+          "kst": "10.6 (화) 09:00",
+          "result": "TB 5–2 NYY"
+        },
+        {
+          "g": 3,
+          "kst": "10.8 (목) 09:00 · 진행 중"
+        },
+        {
+          "g": 4,
+          "kst": "10.9 (금) 09:00",
+          "if": true
+        },
+        {
+          "g": 5,
+          "kst": "10.11 (일) 09:00",
+          "if": true
+        }
+      ]
     },
     {
-     "g": 2,
-     "kst": "10.5 (월) 05:00",
-     "result": "MIL 4–3 SD"
+      "league": "AL",
+      "home": "CLE",
+      "away": "CWS",
+      "home_kr": "클리블랜드",
+      "away_kr": "시카고 화이트삭스",
+      "hs": 2,
+      "as": 6,
+      "home_color": "#00385D",
+      "away_color": "#27251F",
+      "hw": 1,
+      "aw": 2,
+      "games": [
+        {
+          "g": 1,
+          "kst": "10.4 (일)",
+          "result": "CWS 3–0 CLE"
+        },
+        {
+          "g": 2,
+          "kst": "10.6 (화) 06:00",
+          "result": "CWS 4–3 CLE"
+        },
+        {
+          "g": 3,
+          "kst": "10.8 (목) 05:00",
+          "result": "CLE 9–3 CWS"
+        },
+        {
+          "g": 4,
+          "kst": "10.9 (금) 06:00",
+          "if": false
+        },
+        {
+          "g": 5,
+          "kst": "10.11 (일) 06:00",
+          "if": true
+        }
+      ]
     },
     {
-     "g": 3,
-     "kst": "10.7 (수) 10:30",
-     "result": "SD 4–3 MIL"
+      "league": "NL",
+      "home": "MIL",
+      "away": "SD",
+      "home_kr": "밀워키",
+      "away_kr": "샌디에이고",
+      "hs": 1,
+      "as": 4,
+      "home_color": "#12284B",
+      "away_color": "#2F241D",
+      "hw": 2,
+      "aw": 1,
+      "games": [
+        {
+          "g": 1,
+          "kst": "10.4 (일) 09:30",
+          "result": "MIL 3–2 SD"
+        },
+        {
+          "g": 2,
+          "kst": "10.5 (월) 05:00",
+          "result": "MIL 4–3 SD"
+        },
+        {
+          "g": 3,
+          "kst": "10.7 (수) 10:30",
+          "result": "SD 4–3 MIL"
+        },
+        {
+          "g": 4,
+          "kst": "10.8 (목) 11:00"
+        },
+        {
+          "g": 5,
+          "kst": "10.10 (토) 05:30",
+          "if": true
+        }
+      ]
     },
     {
-     "g": 4,
-     "kst": "10.8 (목) 11:00"
-    },
-    {
-     "g": 5,
-     "kst": "10.10 (토) 05:30",
-     "if": true
+      "league": "NL",
+      "home": "LAD",
+      "away": "ATL",
+      "home_kr": "LA 다저스",
+      "away_kr": "애틀랜타",
+      "hs": 2,
+      "as": 3,
+      "home_color": "#005A9C",
+      "away_color": "#CE1141",
+      "hw": 3,
+      "aw": 1,
+      "games": [
+        {
+          "g": 1,
+          "kst": "10.4 (일) 05:00",
+          "result": "LAD 5–3 ATL"
+        },
+        {
+          "g": 2,
+          "kst": "10.5 (월) 09:00",
+          "result": "ATL 3–2 LAD"
+        },
+        {
+          "g": 3,
+          "kst": "10.7 (수) 07:00",
+          "result": "LAD 3–1 ATL"
+        },
+        {
+          "g": 4,
+          "kst": "10.8 (목) 07:00",
+          "result": "LAD 4–1 ATL"
+        }
+      ]
     }
-   ]
-  },
-  {
-   "league": "NL",
-   "home": "LAD",
-   "away": "ATL",
-   "home_kr": "LA 다저스",
-   "away_kr": "애틀랜타",
-   "hs": 2,
-   "as": 3,
-   "home_color": "#005A9C",
-   "away_color": "#CE1141",
-   "hw": 2,
-   "aw": 1,
-   "games": [
-    {
-     "g": 1,
-     "kst": "10.4 (일) 05:00",
-     "result": "LAD 5–3 ATL"
-    },
-    {
-     "g": 2,
-     "kst": "10.5 (월) 09:00",
-     "result": "ATL 3–2 LAD"
-    },
-    {
-     "g": 3,
-     "kst": "10.7 (수) 07:00",
-     "result": "LAD 3–1 ATL"
-    },
-    {
-     "g": 4,
-     "kst": "10.8 (목) 07:00"
-    },
-    {
-     "g": 5,
-     "kst": "10.10 (토) 09:00",
-     "if": true
-    }
-   ]
-  }
- ]
+  ]
 }
