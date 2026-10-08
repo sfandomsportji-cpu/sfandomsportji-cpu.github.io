@@ -528,7 +528,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {body}
 </main>
 {footer()}
-<script src="/assets/js/site.js?v={VER}-stability2" defer></script>
+<script src="/assets/js/site.js?v={VER}-recover1" defer></script>
 </body>
 </html>
 '''
