@@ -27,7 +27,7 @@
   document.addEventListener('error', e => {
     if (e.target?.tagName === 'IMG') fallbackImage(e.target);
   }, true);
-  $('img').forEach(img => {
+  $$('img').forEach(img => {
     if (img.complete && img.naturalWidth === 0) fallbackImage(img);
   });
 
