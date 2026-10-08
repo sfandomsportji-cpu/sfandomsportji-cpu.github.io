@@ -312,7 +312,7 @@ def thumb(a: Article, cls: str = '') -> str:
             m = re.match(r"\s*(?:\d{4}\.\d\d\.\d\d KST · [\d:]+ )?([A-Z][A-Z .'-]*?)(?=\s*(?:\d|·|@|$))", a.meta or '')
             word = m.group(1).split()[-1] if m and m.group(1).split() else a.section
         word = re.sub(r'[^A-Z0-9 ]', '', word.upper()).strip() or a.league
-        word = {'BAY': 'RAYS', 'MILWAUKEE': 'BREWERS'}.get(word, word)
+        word = {'BAY': 'RAYS', 'MILWAUKEE': 'BREWERS', 'NEWS': a.league, 'ANALYSIS': a.league}.get(word, word)
         return f'<div class="thumb art-thumb {cls}" aria-hidden="true"><span class="k">{esc(a.league)} · {a.date_dot}</span><span class="w">{esc(word)}</span></div>'
     portrait = 'portrait' if 'headshot' in a.image else ''
     return (f'<div class="thumb {portrait} {cls}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" '
@@ -517,7 +517,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-premiumhero3">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-approved-repair2">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE['ads']['client']}" crossorigin="anonymous"></script>
 <script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
@@ -758,7 +758,9 @@ def build_article(a: Article):
     if a.image:
         logo = 'logo' if a.image.endswith('.svg') or 'logo' in a.image else ''
         cap = f'<figcaption>{esc(a.credit)}</figcaption>' if a.credit.startswith('PHOTO') else f'<figcaption>{esc(a.image_alt)}</figcaption>'
-        fig = f'<figure class="figure {logo}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" fetchpriority="high">{cap}</figure>'
+        feature = ' dodgers-feature' if a.slug == 'dodgers-clinch-nlcs' else ''
+        fallback = '<div class="feature-fallback">DODGERS · NLCS</div>' if feature else ''
+        fig = f'<figure class="figure {logo}{feature}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" fetchpriority="high">{fallback}{cap}</figure>'
     srcs = ''.join(f'<span>{esc(s["label"])}</span>' for s in a.sources if s.get('label'))
     src_html = f'<div class="sources"><strong>출처</strong>{srcs}</div>' if srcs else ''
     credit = f'<p class="credit">{esc(a.credit)}</p>' if a.credit and not a.credit.startswith('PHOTO') else ''
