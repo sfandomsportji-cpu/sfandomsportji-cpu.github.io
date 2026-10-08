@@ -117,36 +117,33 @@
     heroVideo.addEventListener('volumechange', syncMuteToggle);
     syncMuteToggle();
 
-    const tryAudiblePlay = async () => {
-      heroVideo.muted = false;
-      try {
-        await heroVideo.play();
-        return true;
-      } catch (_) {
-        heroVideo.muted = true;
-        try { await heroVideo.play(); } catch (_) {}
-        return false;
+    // 안정화: 소리는 사용자가 음소거 버튼을 직접 누를 때만 켭니다.
+    // 외부 동영상 로딩 실패 시 저장소의 로컬 영상으로 전환합니다.
+    const backupHeroVideo = '/assets/sfandom-hero-loop.mp4';
+    let backupActive = false;
+    const onVideoFailure = () => {
+      heroVideo.classList.remove('on', 'dim');
+      heroVideo.parentElement?.classList.remove('playing');
+      if (!backupActive) {
+        backupActive = true;
+        heroVideo.src = backupHeroVideo;
+        heroVideo.load();
+        heroVideo.play().catch(() => {});
+      } else {
+        heroVideo.pause();
+        heroVideo.removeAttribute('src');
+        heroVideo.load();
+        muteToggle.hidden = true;
       }
     };
-
-    const unlockAudio = async () => {
-      heroVideo.muted = false;
-      heroVideo.volume = 0.65;
-      try {
-        await heroVideo.play();
-        ['pointerdown','touchstart','click','keydown','scroll'].forEach(evt =>
-          window.removeEventListener(evt, unlockAudio, true)
-        );
-      } catch (_) {}
-    };
-
-    tryAudiblePlay().then(ok => {
-      if (!ok) {
-        ['pointerdown','touchstart','click','keydown','scroll'].forEach(evt =>
-          window.addEventListener(evt, unlockAudio, { once: false, passive: true, capture: true })
-        );
-      }
-    });
+    heroVideo.addEventListener('error', onVideoFailure);
+    const firstFrameTimer = setTimeout(() => {
+      if (!backupActive && heroVideo.readyState < 2) onVideoFailure();
+    }, 8500);
+    heroVideo.addEventListener('playing', () => clearTimeout(firstFrameTimer), { once: true });
+    heroVideo.muted = true;
+    syncMuteToggle();
+    heroVideo.play().catch(() => {});
 
     document.addEventListener('visibilitychange', () => {
       if (!document.hidden && heroVideo.paused && heroVideo.src) heroVideo.play().catch(() => {});
