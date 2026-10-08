@@ -712,3 +712,33 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
   .nba-stage .nba-rail.preseason-list{display:grid;grid-template-columns:minmax(0,1fr);margin:0;padding:0;overflow:visible}
   .preseason-list .nba-card{width:auto;flex:auto}
 }
+
+/* Hero sound visibility/accessibility finishing patch */
+.hero-mute-toggle{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:48px!important;
+  height:48px!important;
+  border-radius:14px!important;
+  border:1px solid rgba(255,255,255,.48)!important;
+  color:#fff!important;
+  background:rgba(7,11,18,.83)!important;
+  box-shadow:0 6px 22px rgba(0,0,0,.45),inset 0 1px rgba(255,255,255,.09)!important;
+  cursor:pointer!important;
+  pointer-events:auto!important;
+}
+.hero-mute-toggle:hover,.hero-mute-toggle:focus-visible{
+  outline:2px solid #ff914d!important;
+  outline-offset:3px;
+  background:rgba(22,29,43,.96)!important;
+}
+@media(min-width:1181px){
+  .hero-mute-toggle{top:136px!important;bottom:auto!important;right:calc(430px + 20px)!important}
+}
+@media(max-width:1180px){
+  .hero-mute-toggle{top:calc(510px - 74px)!important;bottom:auto!important;right:18px!important}
+}
+@media(max-width:760px){
+  .hero-mute-toggle{top:calc(500px - 74px)!important;right:16px!important}
+}

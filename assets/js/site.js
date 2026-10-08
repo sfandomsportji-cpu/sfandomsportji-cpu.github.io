@@ -114,14 +114,17 @@
     muteToggle.className = 'hero-mute-toggle';
     muteToggle.setAttribute('aria-label', '음악 음소거');
     muteToggle.setAttribute('aria-pressed', 'false');
-    muteToggle.innerHTML = '<span aria-hidden="true">🔊</span>';
+    muteToggle.innerHTML = '';
     muteToggle.style.cssText = 'position:absolute;right:18px;bottom:18px;z-index:12;width:44px;height:44px;border:1px solid rgba(255,255,255,.42);border-radius:50%;background:rgba(11,11,15,.68);color:#fff;font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)';
     heroVideo.closest('.hero')?.append(muteToggle);
 
+    const volumeMutedIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="m23 9-6 6"/><path d="m17 9 6 6"/></svg>';
+    const volumeOnIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>';
     const syncMuteToggle = () => {
       const isMuted = heroVideo.muted;
-      muteToggle.innerHTML = isMuted ? '<span aria-hidden="true">🔇</span>' : '<span aria-hidden="true">🔊</span>';
-      muteToggle.setAttribute('aria-label', isMuted ? '음악 켜기' : '음악 음소거');
+      muteToggle.innerHTML = isMuted ? volumeMutedIcon : volumeOnIcon;
+      muteToggle.setAttribute('aria-label', isMuted ? '영상 소리 켜기' : '영상 소리 끄기');
+      muteToggle.setAttribute('title', isMuted ? '영상 소리 켜기' : '영상 소리 끄기');
       muteToggle.setAttribute('aria-pressed', String(isMuted));
     };
 
