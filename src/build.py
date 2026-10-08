@@ -517,7 +517,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-fan">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-stability1">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE['ads']['client']}" crossorigin="anonymous"></script>
 <script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
@@ -528,7 +528,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {body}
 </main>
 {footer()}
-<script src="/assets/js/site.js?v={VER}-music" defer></script>
+<script src="/assets/js/site.js?v={VER}-stability1" defer></script>
 </body>
 </html>
 '''
