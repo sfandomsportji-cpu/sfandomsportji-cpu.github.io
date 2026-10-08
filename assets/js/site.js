@@ -11,6 +11,26 @@
     return n;
   };
 
+  /* 외부 이미지 서버가 차단되어도 콘텐츠 카드가 빈 화면이 되지 않도록 안전하게 표시 */
+  const fallbackImage = img => {
+    if (!img || img.dataset.fallbackApplied) return;
+    const thumb = img.closest('.thumb');
+    if (!thumb) return;
+    img.dataset.fallbackApplied = '1';
+    img.remove();
+    thumb.classList.add('thumb-fallback');
+    if (!thumb.querySelector('.thumb-fallback-text')) {
+      const label = img.closest('.portrait') ? 'NBA' : 'SFANDOM';
+      thumb.append(el('span', 'thumb-fallback-text', label));
+    }
+  };
+  document.addEventListener('error', e => {
+    if (e.target?.tagName === 'IMG') fallbackImage(e.target);
+  }, true);
+  $('img').forEach(img => {
+    if (img.complete && img.naturalWidth === 0) fallbackImage(img);
+  });
+
   /* ── 전체 메뉴 · 검색 ── */
   const toggle = (btn, panel, focusSel) => {
     if (!btn || !panel) return;
@@ -216,6 +236,8 @@
   const grids = $$('[data-blog-grid]');
   const blogUrl = grids[0]?.dataset.blogger;
   if (grids.length && blogUrl) {
+    // 정적 글이 이미 있는 경우 외부 API 실패와 무관하게 대기 문구를 즉시 숨깁니다.
+    grids.forEach(g => { const e = g.nextElementSibling; if (e?.classList.contains('blog-empty') && $('a.mag', g).length) e.hidden = true; });
     const cb = '__sfBlogger' + Date.now();
     const bigImg = u => (u || '').replace(/\/[sw]\d+(?:-[a-z]+\d*)*\//, '/w800-rj/').replace(/=[sw]\d+(?:-[a-z]+\d*)*$/, '=w800-rj');
     const strip = h => { const d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); };
