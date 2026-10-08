@@ -176,7 +176,7 @@
     ]
   ],
   "home_mode": "preseason",
-  "preseason_note": "2026.10.08 10:30 KST 기준 · 출처: NBA 공식 일정 · 경기 결과는 확정 후 반영",
+  "preseason_note": "2026.10.09 KST · 완료 경기 공식 최종 결과 확인 전에는 점수 미표기",
   "preseason_games": [
     {
       "day": "FINAL",
@@ -188,36 +188,36 @@
       "result": "LAL 98–124 GSW"
     },
     {
-      "day": "LIVE",
+      "day": "RESULT PENDING",
       "away": "MIN",
       "home": "IND",
       "kst": "10.8 (목) 08:00",
       "tv": "LEAGUE PASS",
-      "tag": "진행 중 · 최종 기록 확인 전"
+      "tag": "경기 종료 · 공식 결과 확인 중"
     },
     {
-      "day": "LIVE",
+      "day": "RESULT PENDING",
       "away": "ORL",
       "home": "MEM",
       "kst": "10.8 (목) 09:00",
       "tv": "LEAGUE PASS",
-      "tag": "진행 중 · 최종 기록 확인 전"
+      "tag": "경기 종료 · 공식 결과 확인 중"
     },
     {
-      "day": "LIVE",
+      "day": "RESULT PENDING",
       "away": "MIL",
       "home": "OKC",
       "kst": "10.8 (목) 09:00",
       "tv": "LEAGUE PASS",
-      "tag": "진행 중 · 최종 기록 확인 전"
+      "tag": "경기 종료 · 공식 결과 확인 중"
     },
     {
-      "day": "UP NEXT",
+      "day": "RESULT PENDING",
       "away": "GSW",
       "home": "POR",
       "kst": "10.8 (목) 11:00",
       "tv": "NBA TV",
-      "tag": "커리 휴식 예정"
+      "tag": "경기 종료 · 공식 결과 확인 중"
     }
   ]
 }
