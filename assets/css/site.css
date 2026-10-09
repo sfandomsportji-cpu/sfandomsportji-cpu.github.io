@@ -773,3 +773,74 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
 .news-list .nl .art-thumb{background:linear-gradient(120deg,#112643,#282238)!important}
 .news-list .nl .art-thumb .w{font-size:clamp(15px,2vw,24px)!important;color:#fff!important;opacity:1!important}
 @media(max-width:700px){.figure.dodgers-feature{min-height:250px!important}.figure.dodgers-feature img{width:75%!important;height:150px!important}}
+
+/* SFANDOM x KAIRO 2026-10-09 | logo-only approval
+   Official MLB/NBA SVGs; no changes to hero, content, scores, or page layout. */
+.tlogo-wrap:not(.nologo){
+  box-sizing:border-box;
+  background:transparent;
+  box-shadow:none;
+  border:0;
+  border-radius:0;
+  padding:2px;
+  width:52px;
+  height:52px;
+}
+.tlogo-wrap.lg:not(.nologo){width:70px;height:70px}
+.tlogo{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  object-fit:contain;
+  object-position:center;
+  opacity:1;
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.42));
+}
+.matchup .row .tlogo-wrap.lg:not(.nologo){width:70px;height:70px}
+.mc-team .tlogo-wrap.lg:not(.nologo){width:78px;height:78px}
+.nba-card .tlogo-wrap:not(.nologo){width:54px;height:54px}
+.top-stories .ts.tip .vsline .tlogo-wrap:not(.nologo){
+  width:68px;height:68px;min-width:68px;min-height:68px;
+  padding:2px;background:transparent;box-shadow:none;border-radius:0;
+}
+.ta-vs{align-items:start}
+.ta-team,.ta-team.r{
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+  gap:9px;
+  text-align:center;
+}
+.ta-team.r .tlogo-wrap,.ta-team.r .tchip{order:-1}
+.ta-team .tlogo-wrap.lg:not(.nologo){width:76px;height:76px}
+.ta-team .display{
+  display:block;
+  min-height:60px;
+  font-size:clamp(22px,2.1vw,30px);
+  line-height:1.04;
+  text-align:center;
+  overflow-wrap:anywhere;
+  text-wrap:balance;
+}
+.ta-vs i{align-self:start;margin-top:92px;padding:0}
+@media(max-width:760px){
+  .tlogo-wrap:not(.nologo){width:48px;height:48px}
+  .tlogo-wrap.lg:not(.nologo){width:60px;height:60px}
+  .matchup .row .tlogo-wrap.lg:not(.nologo){width:60px;height:60px}
+  .mc-team .tlogo-wrap.lg:not(.nologo){width:68px;height:68px}
+  .nba-card .tlogo-wrap:not(.nologo){width:50px;height:50px}
+  .top-stories .ts.tip .vsline .tlogo-wrap:not(.nologo){
+    width:62px;height:62px;min-width:62px;min-height:62px;
+  }
+  .ta-team .tlogo-wrap.lg:not(.nologo){width:62px;height:62px}
+  .ta-team .display{min-height:50px;font-size:clamp(20px,5.6vw,26px)}
+  .ta-vs i{margin-top:76px}
+}
+@media(max-width:390px){
+  .ta-team .tlogo-wrap.lg:not(.nologo){width:56px;height:56px}
+  .ta-team .display{font-size:20px}
+  .ta-vs i{margin-top:69px}
+}
+/* SFANDOM logo-only patch end */
