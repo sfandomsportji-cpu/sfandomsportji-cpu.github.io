@@ -520,8 +520,8 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     # 광고 스크립트는 본문이 충분한 글 상세 페이지에만 싣는다. 목록·허브·검색·404·안내·커뮤니티 화면에는 싣지 않는다.
     ad_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE["ads"]["client"]}" crossorigin="anonymous"></script>\n'
                  if ads and not noindex else '')
-    thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v1">' if path == '/community/' else '')
-    thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v1" defer></script>' if path == '/community/' else '')
+    thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v2">' if path == '/community/' else '')
+    thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v2" defer></script>' if path == '/community/' else '')
     return f'''<!doctype html>
 <html lang="ko">
 <head>
