@@ -518,7 +518,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-all-60-logos-20261009">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-vs-large-20261009">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE['ads']['client']}" crossorigin="anonymous"></script>
 <script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
@@ -1021,18 +1021,20 @@ def nba_cards(games: list, preseason_anchors: bool = False) -> str:
         tag = '<em class="nba-tag">' + esc(g['tag']) + '</em>' if g.get('tag') else ''
         head = (g['day'] + ' · ' + g['tv']) if g.get('day') else 'CHRISTMAS DAY'
         id_attr = f' id="preseason-{g["away"].lower()}-{g["home"].lower()}"' if preseason_anchors else ''
+        separator = 'VS' if (g.get('result') or str(g.get('day', '')).upper().startswith(('FINAL', 'LIVE'))) else '@'
         out += (f'<div class="nba-card"{id_attr}><small>{esc(head)}</small>'
-                f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i>@</i>{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>'
+                f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i class="match-separator">{separator}</i>{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>'
                 f'<time>{esc(g["kst"])}</time>{tag}</div>')
     return out
 
 
 def nba_home_story(g: dict) -> str:
+    separator = 'VS' if (g.get('result') or str(g.get('day', '')).upper().startswith(('FINAL', 'LIVE'))) else '@'
     tag = f'<em class="nba-tag">{esc(g["tag"])}</em>' if g.get('tag') else ''
     destination = f'/nba/#preseason-{g["away"].lower()}-{g["home"].lower()}' if g in NBA.get('preseason_games', []) else '/nba/#tipoff'
     label = esc(f'{g["away"]} - {g["home"]} 경기 일정 확인')
     return (f'<a class="ts tip" href="{destination}" aria-label="{label}"><span><span class="tag">{esc(g.get("day", "PRESEASON"))} · {esc(g["kst"])}</span>'
-            f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i>@</i>'
+            f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i class="match-separator">{separator}</i>'
             f'{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>{tag}</span></a>')
 
 
