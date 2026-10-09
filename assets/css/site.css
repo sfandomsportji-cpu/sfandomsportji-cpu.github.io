@@ -895,3 +895,27 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
   .top-stories .ts.tip .vsline .tlogo-wrap:not(.nologo){width:60px;height:60px;min-width:60px;min-height:60px}
 }
 /* SFANDOM team-mark-v3 end */
+
+/* Final/preseason center mark: editorial-size VS, scheduled @ remains subtle */
+.nba-card .vsline .match-separator,
+.top-stories .ts.tip .vsline .match-separator{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  min-width:38px;
+  font-family:var(--display);
+  font-size:28px;
+  font-weight:800;
+  line-height:1;
+  color:#f04459;
+  letter-spacing:.01em;
+  font-style:normal;
+  text-shadow:0 2px 7px rgba(0,0,0,.4);
+}
+.nba-card .vsline .match-separator{font-size:26px;min-width:34px}
+@media(max-width:760px){
+  .nba-card .vsline .match-separator{font-size:26px}
+  .top-stories .ts.tip .vsline .match-separator{font-size:29px;min-width:40px}
+}
+/* SFANDOM enlarged game-mark end */
