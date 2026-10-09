@@ -324,6 +324,7 @@
     rows.forEach((p, i) => {
       const [tag, title] = splitTag(p.title);
       const a = el('article', 'post');
+      a.dataset.postId = p.id;
       a.append(el('span', 'post-no', String(Math.max(1, total - ((page - 1) * size + i)))));
       const b = el('div', 'post-body');
       const meta = el('span', 'post-meta');

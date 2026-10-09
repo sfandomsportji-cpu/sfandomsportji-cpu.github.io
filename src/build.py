@@ -520,6 +520,8 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     # 광고 스크립트는 본문이 충분한 글 상세 페이지에만 싣는다. 목록·허브·검색·404·안내·커뮤니티 화면에는 싣지 않는다.
     ad_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE["ads"]["client"]}" crossorigin="anonymous"></script>\n'
                  if ads and not noindex else '')
+    thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v1">' if path == '/community/' else '')
+    thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v1" defer></script>' if path == '/community/' else '')
     return f'''<!doctype html>
 <html lang="ko">
 <head>
@@ -545,6 +547,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v={VER}-dedup-20261010">
+{thread_css}
 {ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
 </head>
@@ -555,6 +558,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 </main>
 {footer()}
 <script src="/assets/js/site.js?v={VER}-sound3" defer></script>
+{thread_js}
 </body>
 </html>
 '''
