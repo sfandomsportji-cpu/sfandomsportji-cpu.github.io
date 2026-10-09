@@ -67,23 +67,25 @@
     if (!postBody) return;
     card.dataset.ctReady = "1";
     const BATCH = 40;
-    let rows = [], cursor = null, hasMore = true, busy = false, open = false, loadEpoch = 0;
+    let rows = [], total = 0, page = 1, busy = false, open = true, loaded = false;
     const actions = el("div", "ct-actions");
-    const show = button("댓글 보기 · 답글 쓰기", "ct-open");
-    show.setAttribute("aria-expanded", "false");
+    const show = button("대화 접기", "ct-open");
+    show.setAttribute("aria-expanded", "true");
     const reportPost = button("신고", "ct-small");
     const reportSlot = el("span", "ct-report-slot");
     const panel = el("section", "ct-panel");
-    panel.hidden = true; panel.setAttribute("aria-label", "댓글 대화");
+    panel.hidden = false; panel.id = "comments-" + id; panel.setAttribute("aria-label", "댓글 대화");
+    show.setAttribute("aria-controls", panel.id);
     const notice = el("p", "ct-status"); notice.setAttribute("role","status"); 
     const comments = el("div", "ct-comments");
     const composer = el("div", "ct-top-composer");
-    const more = button("이전 댓글 더 보기", "ct-more");
-    more.hidden = true;
-    panel.append(notice, comments, composer, more);
+    const pagination = el("nav", "ct-pagination");
+    pagination.setAttribute("aria-label", "댓글 페이지 이동");
+    panel.append(notice, comments, pagination, composer);
     actions.append(show, reportPost, reportSlot);
-    // Keep discussion inside the existing vertical post body; the article is a horizontal flex row.
-    postBody.append(actions, panel);
+    // Controls stay with the post; the thread spans the full post card beneath it.
+    postBody.append(actions);
+    card.append(panel);
     const say = text => { notice.textContent = text; };
 
     function writeForm(target, nickname, mount) {
@@ -113,8 +115,8 @@
           await send({ action:"comment", post_id:id, parent_id:target || null,
             nickname:nick.value.trim() || "ANON", body:text });
           say("댓글이 등록되었습니다.");
-          rows=[]; cursor=null; hasMore=true;
-          await load(true);
+          loaded=false;
+          await load(1);
           writeForm(null,"",composer);
         } catch(err) {say(errorText(err));}
         finally {submit.disabled=false;}
@@ -137,13 +139,16 @@
         visited.add(r.id);
         const node=el("div","ct-comment");
         // CSS caps the horizontal indent further on narrow screens, without losing reply depth.
-        node.style.setProperty("--ct-indent", (Math.min(cur.depth,5)*14) + "px");
+        node.style.setProperty("--ct-indent", (Math.min(cur.depth,3)*8) + "px");
         node.id="comment-"+r.id;
         const meta=el("div","ct-meta");
         const who=el("strong",null,r.nickname || "ANON");
         const when=el("span",null,r.created_at ? new Date(r.created_at).toLocaleString("ko-KR",{timeZone:"Asia/Seoul",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : "");
         meta.append(who,when);
-        if(r.parent_id && !byId.has(r.parent_id)) meta.append(el("span","ct-parent-note","↳ 이전 댓글에 대한 답글"));
+        if(r.parent_id) {
+          const parent = byId.get(r.parent_id);
+          meta.append(el("span","ct-parent-note",parent ? "↳ " + (parent.nickname || "ANON") + "님에게" : "↳ 이전 댓글에 대한 답글"));
+        }
         const content=el("p","ct-message",r.body || "");
         const bar=el("div","ct-comment-actions");
         const reply=button("답글","ct-small");
@@ -163,43 +168,84 @@
       comments.replaceChildren(fragment);
     }
 
-    async function load(reset=false){
-      if(busy) return;
-      if(!reset && !hasMore) return;
-      busy=true; more.disabled=true;
+    function renderPagination() {
+      pagination.replaceChildren();
+      const pages = Math.max(1, Math.ceil(total / BATCH));
+      if (pages <= 1) return;
+      const add = (label, target, disabled=false, current=false) => {
+        const b = button(label, "ct-page");
+        b.disabled = disabled;
+        if (current) b.setAttribute("aria-current", "page");
+        b.addEventListener("click", () => { if (!busy && target !== page) load(target); });
+        pagination.append(b);
+      };
+      add("‹", Math.max(1, page-1), page===1);
+      const first = Math.max(1, Math.min(page-2, Math.max(1, pages-4)));
+      if (first>1) {
+        add("1",1);
+        if (first>2) pagination.append(el("span", "ct-page-gap", "…"));
+      }
+      for (let n=first; n<=Math.min(pages,first+4); n++) add(String(n),n,false,n===page);
+      if (first+4<pages) {
+        if (first+5<pages) pagination.append(el("span", "ct-page-gap", "…"));
+        add(String(pages),pages);
+      }
+      add("›", Math.min(pages,page+1),page===pages);
+    }
+
+    async function load(target=1) {
+      if (busy) return;
+      busy=true;
       say("댓글을 불러오는 중…");
-      const epoch=++loadEpoch;
-      const before = reset ? null : cursor;
+      const from=(target-1)*BATCH;
       try {
         const query = new URLSearchParams({
           select:"id,post_id,parent_id,nickname,body,created_at",
           post_id:"eq."+id, status:"eq.published",
-          order:"created_at.desc,id.desc", limit:String(BATCH)
+          order:"created_at.desc,id.desc",
+          limit:String(BATCH), offset:String(from)
         });
-        // Keyset pagination is stable if new comments arrive while an older page is requested.
-        if(before) query.set("or", "(created_at.lt."+before.created_at+
-          ",and(created_at.eq."+before.created_at+",id.lt."+before.id+"))");
-        const res=await request("/rest/v1/comments?"+query.toString());
+        const res=await request("/rest/v1/comments?"+query.toString(),
+          { headers:{Prefer:"count=exact"} });
         const batch=await res.json();
-        if(epoch!==loadEpoch) return;
-        if(reset){rows=[];cursor=null;}
-        const known = new Set(rows.map(r=>r.id));
-        for(const row of batch) if(!known.has(row.id)){rows.push(row);known.add(row.id);}
-        if(batch.length) cursor = { created_at:batch[batch.length-1].created_at, id:batch[batch.length-1].id };
-        hasMore=batch.length===BATCH;
+        if (!Array.isArray(batch)) throw Error("invalid_comments_response");
+        const range=res.headers.get("content-range") || "";
+        const count=Number(range.split("/").pop());
+        total=Number.isFinite(count) ? count : from+batch.length+(batch.length===BATCH ? 1 : 0);
+        if (target>1 && !batch.length && total<=from) {
+          busy=false; return load(1);
+        }
+        page=target;
+        rows=batch;
+        loaded=true;
         draw();
-        say(rows.length + "개 댓글 · 댓글에 다시 답글을 달 수 있어요.");
-      }catch(err){say(errorText(err));}
-      finally{busy=false;more.disabled=false;more.hidden=!hasMore;}
+        renderPagination();
+        say(total ? total+"개 댓글 · "+page+" / "+Math.max(1,Math.ceil(total/BATCH))+"페이지" : "아직 댓글이 없습니다. 첫 댓글을 남겨보세요.");
+      } catch(err) {
+        say(errorText(err));
+      } finally { busy=false; }
     }
     show.addEventListener("click",()=>{
-      open=!open; panel.hidden=!open;
+      open=!open;
+      panel.hidden=!open;
       show.setAttribute("aria-expanded",String(open));
       show.textContent=open?"대화 접기":"댓글 보기 · 답글 쓰기";
-      if(open && rows.length===0){writeForm(null,"",composer);load(true);}
+      if (open && !loaded) load(1);
     });
     reportPost.addEventListener("click",()=>makeReport("post",id,reportSlot,say));
-    more.addEventListener("click",()=>load(false));
+    writeForm(null, "", composer);
+    // Threads are open by default. Fetch only as each post nears the viewport.
+    if ("IntersectionObserver" in window) {
+      const observer=new IntersectionObserver(entries=>{
+        if (entries.some(e=>e.isIntersecting)) {
+          observer.disconnect();
+          if (open && !loaded) load(1);
+        }
+      },{rootMargin:"300px 0px"});
+      observer.observe(card);
+    } else {
+      load(1);
+    }
   }
 
   const decorate=()=>list.querySelectorAll("article.post[data-post-id]").forEach(attach);
