@@ -248,7 +248,7 @@ def blog_grid(limit: int, home: bool = False) -> str:
     core = f' data-core="{esc(CORE_RE)}"' if home else ''
     return (f'<div class="card-grid blog-grid{" home" if home else ""}" data-blog-grid data-limit="{limit}"{core} data-blogger="{esc(g.get("url", ""))}" '
             f'data-label="{esc(g.get("label", "GOOGLE BLOG"))}">{cards}</div>'
-            f'<p class="muted blog-empty" style="font-size:14px"{" hidden" if cards else ""}>블로그 글을 불러오는 중…</p>')
+            + ('' if cards else '<p class="muted blog-empty" style="font-size:14px">외부 연재 목록을 가져오지 못했습니다. 블로그 채널에서 확인해 주세요.</p>'))
 
 
 def page_fragment(name: str) -> tuple[str, str]:
@@ -700,7 +700,7 @@ def build_home():
     </aside>
     <div class="fan-main" data-board data-size="5">
       <div class="sec-head" style="margin:0"><span class="box-title">NEW POSTS · 최신 글</span><a class="more accent" href="/community/">전체 글 보기 →</a></div>
-      <div data-board-list><div class="empty">팬 보드 글을 불러오는 중…</div></div>
+      <div data-board-list><div class="empty">스포츠 팬들의 경기·선수 토론을 확인할 수 있습니다. <a href="/community/">팬 보드에서 최신 글 보기 →</a></div></div>
       <a class="fan-write" href="/community/#write"><span class="fan-write-ph">오늘 경기, 무슨 얘기 하고 싶어요?</span><span class="pill">글쓰기</span></a>
     </div>
     <aside class="fan-side">
@@ -1119,7 +1119,7 @@ def build_community():
 <div class="wrap sec board-grid" style="padding-top:24px">
   <div data-board data-size="10">
     <div class="thread-head" data-thread-head hidden><span class="box-title">GAME THREAD</span><strong data-thread-name></strong><a class="more" href="/community/">전체 글로 돌아가기 →</a></div>
-    <div data-board-list><div class="empty">팬 보드 글을 불러오는 중…</div></div>
+    <div data-board-list><div class="empty">스포츠 팬들의 경기·선수 토론을 확인할 수 있습니다. <a href="/community/">팬 보드에서 최신 글 보기 →</a></div></div>
     <div class="pager" data-board-pager></div>
     <form class="composer" id="write" data-board-form style="margin-top:32px" novalidate>
       <span class="box-title">WRITE · 글쓰기</span>
