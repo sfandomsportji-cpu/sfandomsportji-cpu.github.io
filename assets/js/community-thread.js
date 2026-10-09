@@ -67,7 +67,7 @@
     if (!postBody) return;
     card.dataset.ctReady = "1";
     const BATCH = 40;
-    let rows = [], nextOffset = 0, hasMore = true, busy = false, open = false, loadEpoch = 0;
+    let rows = [], cursor = null, hasMore = true, busy = false, open = false, loadEpoch = 0;
     const actions = el("div", "ct-actions");
     const show = button("댓글 보기 · 답글 쓰기", "ct-open");
     show.setAttribute("aria-expanded", "false");
@@ -113,7 +113,7 @@
           await send({ action:"comment", post_id:id, parent_id:target || null,
             nickname:nick.value.trim() || "ANON", body:text });
           say("댓글이 등록되었습니다.");
-          rows=[]; nextOffset=0; hasMore=true;
+          rows=[]; cursor=null; hasMore=true;
           await load(true);
           writeForm(null,"",composer);
         } catch(err) {say(errorText(err));}
@@ -169,18 +169,23 @@
       busy=true; more.disabled=true;
       say("댓글을 불러오는 중…");
       const epoch=++loadEpoch;
-      const start=nextOffset;
+      const before = reset ? null : cursor;
       try {
-        const path="/rest/v1/comments?select=id,post_id,parent_id,nickname,body,created_at"
-          +"&post_id=eq."+encodeURIComponent(id)
-          +"&status=eq.published&order=created_at.desc,id.desc&limit="+BATCH+"&offset="+start;
-        const res=await request(path);
+        const query = new URLSearchParams({
+          select:"id,post_id,parent_id,nickname,body,created_at",
+          post_id:"eq."+id, status:"eq.published",
+          order:"created_at.desc,id.desc", limit:String(BATCH)
+        });
+        // Keyset pagination is stable if new comments arrive while an older page is requested.
+        if(before) query.set("or", "(created_at.lt."+before.created_at+
+          ",and(created_at.eq."+before.created_at+",id.lt."+before.id+"))");
+        const res=await request("/rest/v1/comments?"+query.toString());
         const batch=await res.json();
         if(epoch!==loadEpoch) return;
-        if(reset){rows=[];nextOffset=0;}
+        if(reset){rows=[];cursor=null;}
         const known = new Set(rows.map(r=>r.id));
         for(const row of batch) if(!known.has(row.id)){rows.push(row);known.add(row.id);}
-        nextOffset+=batch.length;
+        if(batch.length) cursor = { created_at:batch[batch.length-1].created_at, id:batch[batch.length-1].id };
         hasMore=batch.length===BATCH;
         draw();
         say(rows.length + "개 댓글 · 댓글에 다시 답글을 달 수 있어요.");
@@ -191,7 +196,7 @@
       open=!open; panel.hidden=!open;
       show.setAttribute("aria-expanded",String(open));
       show.textContent=open?"대화 접기":"댓글 보기 · 답글 쓰기";
-      if(open && !nextOffset){writeForm(null,"",composer);load(true);}
+      if(open && rows.length===0){writeForm(null,"",composer);load(true);}
     });
     reportPost.addEventListener("click",()=>makeReport("post",id,reportSlot,say));
     more.addEventListener("click",()=>load(false));
