@@ -237,7 +237,7 @@ def blog_card(p: dict) -> str:
     label = SITE['blogs'][p['source']]['label']
     img = f'<div class="thumb"><img src="{esc(blog_img(p["image"]))}" alt="" loading="lazy" referrerpolicy="no-referrer"></div>' if p.get('image') else '<div class="thumb blog-thumb" aria-hidden="true"><span>' + ('G' if p['source'] == 'google' else 'N') + '</span></div>'
     return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener">{img}<div class="body">'
-            f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3><p>{esc(p.get("summary", ""))}</p>'
+            f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3><p>{esc(_clip(p.get("summary", ""), 180))}</p>'
             f'<span class="tag">{p.get("date", "").replace("-", ".")} · 블로그에서 읽기 ↗</span></div></a>')
 
 
@@ -869,12 +869,30 @@ def build_lists():
           + two_col('<div class="list">' + ''.join(rows) + '</div>', 'SF-HUB-RAIL'), path='/news/morning/',
           description='SFANDOM 모닝 에디션 전체 목록', active='/news/'))
 
-    # 매거진
+    # 매거진: 자체 원문을 먼저 노출하고, 외부 블로그 연재는 별도 섹션으로 구분합니다.
+    # 외부 블로그의 RSS 요약만 가득한 페이지가 되지 않도록 내부 기사 연결을 유지합니다.
+    originals = [a for a in ARTICLES if a.kind == 'magazine']
+    own_cards = ''.join(mag_card(a) for a in originals)
+    original_section = (
+        '<section aria-labelledby="magOriginalTitle">'
+        '<div class="sec-head"><h2 class="sec-title" id="magOriginalTitle">SFANDOM <span class="accent">ORIGINAL</span> '
+        '<span class="kr">자체 심층 기사</span></h2></div>'
+        f'<div class="card-grid">{own_cards}</div></section>'
+    )
+    external_section = (
+        '<section aria-labelledby="magExternalTitle" style="margin-top:44px">'
+        '<div class="sec-head"><h2 class="sec-title" id="magExternalTitle">BLOG <span class="accent">SERIES</span> '
+        '<span class="kr">외부 채널 연재</span></h2></div>'
+        + blog_grid(24) + '</section>'
+    )
     links = ''.join(f'<a class="pill ghost" href="{esc(v["url"])}" target="_blank" rel="noopener">{esc(v["label"])} ↗</a>' for v in SITE['blogs'].values() if v.get('url'))
-    inner = blog_grid(24) + f'<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:28px">{links}</div>'
-    write('/magazine/', layout('MAGAZINE · 매거진', page_head('MAGAZINE<span class="accent">.</span>', '', [('MAGAZINE', '')])
+    inner = original_section + external_section + f'<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:28px">{links}</div>'
+    write('/magazine/', layout('MAGAZINE · 매거진', page_head(
+          'MAGAZINE<span class="accent">.</span>',
+          'SFANDOM 자체 심층 기사와 외부 블로그 연재를 구분해 읽을 수 있습니다.',
+          [('MAGAZINE', '')])
           + f'<div class="wrap sec" style="padding-top:32px">{inner}</div>' + ad_band('SF-LIST-BTM'),
-          path='/magazine/', description='SFANDOM 매거진 · 기획 기사와 선수 스포트라이트', active='/magazine/'))
+          path='/magazine/', description='SFANDOM 자체 스포츠 심층 기사와 블로그 연재 모음', active='/magazine/'))
 
     # 분석
     an = [a for a in ARTICLES if a.kind == 'analysis']
