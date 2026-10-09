@@ -322,6 +322,29 @@ def thumb(a: Article, cls: str = '') -> str:
 
 
 
+def home_news_thumb(a: Article, lead: bool = False) -> str:
+    """Homepage NEWS thumbnails only: use relevant cached team SVGs, not generic league text."""
+    if lead and a.slug == 'dodgers-clinch-nlcs':
+        return ('<div class="thumb news-mark-thumb news-mark-lead" aria-hidden="true">'
+                '<img src="/assets/teams/mlb/lad.svg?v=news-mark-20261010" alt="" loading="lazy" decoding="async">'
+                '</div>')
+    featured_teams = {
+        'guardians-force-game4': ('mlb', ('CLE', 'CWS')),
+        'nba-preseason-watch': ('nba', ('MIN', 'ORL', 'MIL', 'GSW')),
+        'warriors-lakers-preseason-2026': ('nba', ('GSW', 'LAL')),
+        '76ers-knicks-preseason-2026': ('nba', ('PHI', 'NYK')),
+    }
+    item = featured_teams.get(a.slug)
+    if item:
+        league, teams = item
+        style = 'quad' if len(teams) == 4 else 'duo'
+        marks = ''.join(badge(t, team_color(t, league), league=league) for t in teams)
+        return f'<div class="thumb news-mark-thumb news-mark-mini {style}" aria-hidden="true">{marks}</div>'
+    return thumb(a)
+
+
+
+
 def badge(abbr: str, color: str, size: str = '', league: str = 'mlb') -> str:
     """팀 로고를 작게 표시. 저장소에 받아 둔 파일(assets/teams/<리그>/<약자>.svg)이 있으면 그것을, 없으면 리그 공식 주소를 씁니다.
     로고를 못 불러오면 site.js가 팀 색 약자 칩으로 바꿉니다."""
@@ -518,7 +541,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-vs-large-20261009">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-news-art-20261010">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE['ads']['client']}" crossorigin="anonymous"></script>
 <script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
@@ -654,7 +677,7 @@ def build_home():
     home_aria = 'NBA 프리시즌' if home_preseason else 'NBA 개막 주간'
     tip = ''.join(nba_home_story(g) for g in home_games[:5])
     lead, rest = news[0], news[1:5]
-    nl = ''.join(f'<a class="nl" href="{a.url}">{thumb(a)}<span class="t"><span class="tag">{esc(a.league)} · {a.date_dot}</span><strong>{esc(a.headline)}</strong></span><span class="talk">{talk_icon()}토론</span></a>' for a in rest)
+    nl = ''.join(f'<a class="nl" href="{a.url}">{home_news_thumb(a)}<span class="t"><span class="tag">{esc(a.league)} · {a.date_dot}</span><strong>{esc(a.headline)}</strong></span><span class="talk">{talk_icon()}토론</span></a>' for a in rest)
     ds_cards = ''.join(ds_card(d) for d in PS['division'])
     ta_html = today_analysis()
     shown = TODAY_PICKS
@@ -684,7 +707,7 @@ def build_home():
 <section class="wrap sec" aria-labelledby="newsTitle">
   <div class="sec-head"><h2 class="sec-title" id="newsTitle">NEWS<span class="accent">.</span> <span class="kr">읽고, 바로 토론</span></h2><a class="more" href="/news/">뉴스 전체 →</a></div>
   <div class="news-grid">
-    <a class="news-lead lift" href="{lead.url}">{thumb(lead)}<div class="body"><span class="tag red">LEAD · {esc(lead.league)} · {lead.date_dot}</span><h3>{esc(lead.headline)}</h3><p>{esc(lead.excerpt)}</p><span class="talk">{talk_icon()}이 뉴스 토론하기</span></div></a>
+    <a class="news-lead lift" href="{lead.url}">{home_news_thumb(lead, lead=True)}<div class="body"><span class="tag red">LEAD · {esc(lead.league)} · {lead.date_dot}</span><h3>{esc(lead.headline)}</h3><p>{esc(lead.excerpt)}</p><span class="talk">{talk_icon()}이 뉴스 토론하기</span></div></a>
     <div class="news-list">{nl}</div>
   </div>
 </section>
