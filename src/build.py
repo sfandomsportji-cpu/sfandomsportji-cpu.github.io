@@ -689,7 +689,9 @@ def build_home():
     shown = TODAY_PICKS
     gt = lambda a: (re.match(r'[\d.]+ [\d:]+', a.meta or '') or re.match('', '')).group(0) or '9999'
     upcoming = sorted([x for x in analysis if getattr(x, 'brief', None) and x.url not in shown], key=gt)
-    minis = ''.join(f'<a class="mini lift" href="{a.url}"><span class="tag">{esc(a.league)} · {a.date_dot}</span><span class="display">{esc(a.title.rstrip(".,"))}</span><strong>{esc(a.subtitle)}</strong></a>' for a in (upcoming or [x for x in analysis if x.url not in shown])[:3])
+    featured_kbo = [x for x in analysis if x.league == 'KBO' and x.date == TODAY and x.url not in shown][:1]
+    mini_sources = featured_kbo + [x for x in (upcoming or [y for y in analysis if y.url not in shown]) if x not in featured_kbo]
+    minis = ''.join(f'<a class="mini lift" href="{a.url}"><span class="tag">{esc(a.league)} · {a.date_dot}</span><span class="display">{esc(a.title.rstrip(".,"))}</span><strong>{esc(a.subtitle)}</strong></a>' for a in mini_sources[:3])
     ed_latest = max(EDITIONS)
     body = f'''
 {ad_band('SF-HOME-TOP')}
@@ -926,25 +928,31 @@ def build_lists():
     # 분석
     an = [a for a in ARTICLES if a.kind == 'analysis']
     lede, method = page_fragment('method')
-    an_tabs = tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/')
+    an_tabs = tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('KBO', '/analysis/kbo/'), ('복기 리포트', '/analysis/review/')], '/analysis/')
     write('/analysis/', layout('ANALYSIS · 경기 분석', page_head('ANALYSIS<span class="accent">.</span>', lede, [('ANALYSIS', '')], an_tabs)
           + two_col('<h2 class="sec-title" style="font-size:44px">LATEST <span class="kr">최근 경기 프리뷰</span></h2>' + list_with_ads(an, 4)
                     + f'<section id="method" class="sec"><h2 class="sec-title" style="font-size:56px">METHOD <span class="kr">분석은 이렇게 만듭니다</span></h2><div class="prose">{method}</div></section>',
                     'SF-HUB-RAIL', '<div class="aside-box" style="margin-top:24px"><h2>REVIEW</h2><a href="/analysis/review/">경기 전 전망과 실제 결과 기록 보기 →</a></div>'),
           path='/analysis/', description=lede, active='/analysis/'))
     write('/analysis/mlb/', layout('MLB 분석', page_head('MLB <span class="accent">ANALYSIS</span>', '선발 매치업과 순위 경쟁을 중심으로 본 MLB 경기 프리뷰.', [('ANALYSIS', '/analysis/'), ('MLB', '')],
-          tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/mlb/'))
+          tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('KBO', '/analysis/kbo/'), ('복기 리포트', '/analysis/review/')], '/analysis/mlb/'))
           + two_col(list_with_ads([a for a in an if a.league == 'MLB'], 4), 'SF-HUB-RAIL', latest_box('analysis')),
           path='/analysis/mlb/', description='MLB 경기 프리뷰와 분석', active='/analysis/'))
     write('/analysis/nba/', layout('NBA 분석', page_head('NBA <span class="accent">ANALYSIS</span>', '새 시즌 주요 경기를 경기 전 구도 중심으로 정리한 NBA 프리뷰.', [('ANALYSIS', '/analysis/'), ('NBA', '')],
-          tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/nba/'))
+          tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('KBO', '/analysis/kbo/'), ('복기 리포트', '/analysis/review/')], '/analysis/nba/'))
           + two_col(list_with_ads([a for a in an if a.league == 'NBA'], 4), 'SF-HUB-RAIL', latest_box('analysis')),
           path='/analysis/nba/', description='NBA 경기 프리뷰와 분석', active='/analysis/'))
+    write('/analysis/kbo/', layout('KBO 전략분석', page_head('KBO <span class="accent">STRATEGY</span>',
+          'KBO 순위 경쟁과 선발·불펜 운용을 중심으로 읽는 전략 분석.',
+          [('ANALYSIS', '/analysis/'), ('KBO', '')],
+          tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('KBO', '/analysis/kbo/'), ('복기 리포트', '/analysis/review/')], '/analysis/kbo/'))
+          + two_col(list_with_ads([a for a in an if a.league == 'KBO'], 4), 'SF-HUB-RAIL', latest_box('analysis')),
+          path='/analysis/kbo/', description='KBO 선발과 불펜, 순위 시나리오 중심의 전략분석', active='/analysis/'))
     recs = ''.join(f'''<div class="record"><span class="no">{r["no"]}</span><div><span class="tag red">{r["league"]} · {r["date"].replace("-", ".")} · {esc(r["venue"])}</span><h3>{esc(r["match"])}</h3>
 <p>경기 전 · {esc(r["outlook"])} → 결과 · {esc(r["result"])}. {esc(r["detail"])}</p></div><span class="verdict {"ok" if r["matched"] else "no"}">{"MATCHED" if r["matched"] else "NOT MATCHED"}</span></div>''' for r in RECORDS['records'])
     ok = sum(r['matched'] for r in RECORDS['records'])
     write('/analysis/review/', layout('복기 리포트 · 경기 전 전망과 결과', page_head('REVIEW <span class="accent">/</span> <span class="kr">복기 리포트</span>', RECORDS['note'],
-          [('ANALYSIS', '/analysis/'), ('REVIEW', '')], tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/review/'))
+          [('ANALYSIS', '/analysis/'), ('REVIEW', '')], tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('KBO', '/analysis/kbo/'), ('복기 리포트', '/analysis/review/')], '/analysis/review/'))
           + two_col(f'<div class="stats" style="margin:0 0 12px"><div class="stat"><b>{len(RECORDS["records"])}</b><span>RECORDS</span></div><div class="stat"><b>{ok}</b><span>MATCHED</span></div><div class="stat"><b>{len(RECORDS["records"]) - ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{RECORDS["updated"][5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
                     + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다른 결과도 지우지 않습니다. 어떤 전제가 틀렸는지 다음 분석에서 다시 확인합니다.</p>', 'SF-HUB-RAIL'),
           path='/analysis/review/', description=RECORDS['note'], active='/analysis/'))
