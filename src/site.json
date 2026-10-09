@@ -1,148 +1,148 @@
 {
- "name": "SFANDOM",
- "name_kr": "스팬덤",
- "url": "https://sfandom.com",
- "motto": "Play First. Analysis Next.",
- "description": "SFANDOM(스팬덤)은 NBA와 MLB 소식을 읽고 바로 토론하는 스포츠 팬 커뮤니티입니다. 공식 기록을 바탕으로 한 경기 분석과 모닝 에디션을 전합니다.",
- "socials": [
-  {
-   "label": "INSTAGRAM",
-   "url": "https://www.instagram.com/sportsfandom/"
+  "name": "SFANDOM",
+  "name_kr": "스팬덤",
+  "url": "https://sfandom.com",
+  "motto": "Play First. Analysis Next.",
+  "description": "SFANDOM(스팬덤)은 NBA와 MLB 소식을 읽고 바로 토론하는 스포츠 팬 커뮤니티입니다. 공식 기록을 바탕으로 한 경기 분석과 모닝 에디션을 전합니다.",
+  "socials": [
+    {
+      "label": "INSTAGRAM",
+      "url": "https://www.instagram.com/sportsfandom/"
+    },
+    {
+      "label": "THREADS",
+      "url": "https://www.threads.com/@sportsfandom"
+    },
+    {
+      "label": "BLOG",
+      "url": "https://blog.naver.com/sfandomsport"
+    }
+  ],
+  "hero": {
+    "image": "",
+    "alt": "",
+    "credit": "",
+    "badge_en": "PRESEASON NOW",
+    "badge_kr": "NBA 2026-27 프리시즌",
+    "art": "PRESEASON",
+    "title": "지금은 결과보다\n역할이 보이는 시간",
+    "text": "포틀랜드의 123–118 승리, 밀워키의 128–126 접전, 필라델피아의 새로운 공격 구조까지. 프리시즌에서 각 팀의 역할 분담과 변화를 살핍니다.",
+    "link": "/news/morning/2026-10-07/",
+    "use_latest_google_post": false,
+    "video": {
+      "src": "https://cdn.creativeclaw.co/u/c82d83cb/videos/b4fe9ce2-89eb-4918-9b43-86da0425351d.mp4",
+      "poster": "/assets/sfandom-hero-poster.jpg",
+      "label": "SFANDOM 브랜드 필름 (첫 화면 편집본)"
+    }
   },
-  {
-   "label": "THREADS",
-   "url": "https://www.threads.com/@sportsfandom"
+  "ads": {
+    "client": "ca-pub-7606551466588787",
+    "phase": 1,
+    "slots": {
+      "SF-HOME-TOP": {
+        "phase": 2,
+        "unit": "",
+        "size": "leader"
+      },
+      "SF-HOME-RAIL": {
+        "phase": 1,
+        "unit": "",
+        "size": "rail"
+      },
+      "SF-HOME-FEED": {
+        "phase": 1,
+        "unit": "",
+        "size": "feed",
+        "format": "fluid",
+        "layout": "in-article"
+      },
+      "SF-HOME-MID": {
+        "phase": 2,
+        "unit": "",
+        "size": "billboard"
+      },
+      "SF-HOME-BTM": {
+        "phase": 2,
+        "unit": "",
+        "size": "leader"
+      },
+      "SF-HUB-RAIL": {
+        "phase": 1,
+        "unit": "",
+        "size": "rail"
+      },
+      "SF-HUB-FEED": {
+        "phase": 1,
+        "unit": "",
+        "size": "feed",
+        "format": "fluid",
+        "layout": "in-article"
+      },
+      "SF-LIST-FEED": {
+        "phase": 1,
+        "unit": "",
+        "size": "feed",
+        "format": "fluid",
+        "layout": "in-article"
+      },
+      "SF-LIST-BTM": {
+        "phase": 2,
+        "unit": "",
+        "size": "leader"
+      },
+      "SF-ART-TOP": {
+        "phase": 2,
+        "unit": "",
+        "size": "leader"
+      },
+      "SF-ART-IN": {
+        "phase": 1,
+        "unit": "",
+        "size": "inarticle",
+        "format": "fluid",
+        "layout": "in-article"
+      },
+      "SF-ART-RAIL": {
+        "phase": 1,
+        "unit": "",
+        "size": "box"
+      },
+      "SF-ART-MULTI": {
+        "phase": 2,
+        "unit": "",
+        "size": "feed",
+        "format": "autorelaxed"
+      }
+    }
   },
-  {
-   "label": "BLOG",
-   "url": "https://blog.naver.com/sfandomsport"
-  }
- ],
- "hero": {
-  "image": "",
-  "alt": "",
-  "credit": "",
-  "badge_en": "PRESEASON NOW",
-  "badge_kr": "NBA 2026-27 프리시즌",
-  "art": "PRESEASON",
-  "title": "지금은 결과보다\n역할이 보이는 시간",
-  "text": "워리어스의 124–98 승리, 필라델피아의 새 공격 구조, 그리고 내일 아침 이어지는 프리시즌까지. 개막 전 변화가 실제 경기에서 어떻게 나타나는지 따라갑니다.",
-  "link": "/news/morning/2026-10-07/",
-  "use_latest_google_post": false,
-  "video": {
-   "src": "https://cdn.creativeclaw.co/u/c82d83cb/videos/b4fe9ce2-89eb-4918-9b43-86da0425351d.mp4",
-   "poster": "/assets/sfandom-hero-poster.jpg",
-   "label": "SFANDOM 브랜드 필름 (첫 화면 편집본)"
-  }
- },
- "ads": {
-  "client": "ca-pub-7606551466588787",
-  "phase": 1,
-  "slots": {
-   "SF-HOME-TOP": {
-    "phase": 2,
-    "unit": "",
-    "size": "leader"
-   },
-   "SF-HOME-RAIL": {
-    "phase": 1,
-    "unit": "",
-    "size": "rail"
-   },
-   "SF-HOME-FEED": {
-    "phase": 1,
-    "unit": "",
-    "size": "feed",
-    "format": "fluid",
-    "layout": "in-article"
-   },
-   "SF-HOME-MID": {
-    "phase": 2,
-    "unit": "",
-    "size": "billboard"
-   },
-   "SF-HOME-BTM": {
-    "phase": 2,
-    "unit": "",
-    "size": "leader"
-   },
-   "SF-HUB-RAIL": {
-    "phase": 1,
-    "unit": "",
-    "size": "rail"
-   },
-   "SF-HUB-FEED": {
-    "phase": 1,
-    "unit": "",
-    "size": "feed",
-    "format": "fluid",
-    "layout": "in-article"
-   },
-   "SF-LIST-FEED": {
-    "phase": 1,
-    "unit": "",
-    "size": "feed",
-    "format": "fluid",
-    "layout": "in-article"
-   },
-   "SF-LIST-BTM": {
-    "phase": 2,
-    "unit": "",
-    "size": "leader"
-   },
-   "SF-ART-TOP": {
-    "phase": 2,
-    "unit": "",
-    "size": "leader"
-   },
-   "SF-ART-IN": {
-    "phase": 1,
-    "unit": "",
-    "size": "inarticle",
-    "format": "fluid",
-    "layout": "in-article"
-   },
-   "SF-ART-RAIL": {
-    "phase": 1,
-    "unit": "",
-    "size": "box"
-   },
-   "SF-ART-MULTI": {
-    "phase": 2,
-    "unit": "",
-    "size": "feed",
-    "format": "autorelaxed"
-   }
-  }
- },
- "supabase": {
-  "url": "https://yyjjgxzbqvlpatccbpxm.supabase.co",
-  "key": "sb_publishable_ABoOVvaUzGuVPBryIpY02w_tTcdt-Q4"
- },
- "blogs": {
-  "google": {
-   "label": "GOOGLE BLOG",
-   "url": "https://sfandomji.blogspot.com",
-   "feed": "https://sfandomji.blogspot.com/feeds/posts/default?alt=rss&max-results=20"
+  "supabase": {
+    "url": "https://yyjjgxzbqvlpatccbpxm.supabase.co",
+    "key": "sb_publishable_ABoOVvaUzGuVPBryIpY02w_tTcdt-Q4"
   },
-  "naver": {
-   "label": "NAVER BLOG",
-   "url": "https://blog.naver.com/sfandomsport",
-   "feed": "https://rss.blog.naver.com/sfandomsport.xml"
+  "blogs": {
+    "google": {
+      "label": "GOOGLE BLOG",
+      "url": "https://sfandomji.blogspot.com",
+      "feed": "https://sfandomji.blogspot.com/feeds/posts/default?alt=rss&max-results=20"
+    },
+    "naver": {
+      "label": "NAVER BLOG",
+      "url": "https://blog.naver.com/sfandomsport",
+      "feed": "https://rss.blog.naver.com/sfandomsport.xml"
+    }
+  },
+  "community_video": {
+    "eyebrow": "SFANDOM REELS · @sportsfandom",
+    "title": "FAN ZONE.",
+    "title2": "PLAY FIRST.",
+    "text": "스팬덤 인스타그램 릴스. 보고, 바로 팬 보드에서 떠들어요.",
+    "instagram_reel": "DdejDQDyYxv",
+    "reel_ratio": "16/9",
+    "fallback_video": "/assets/sfandom-brand-film-20260901.mp4",
+    "fallback_poster": "/assets/sfandom-hero-poster.jpg"
+  },
+  "contact": {
+    "endpoint": "https://script.google.com/macros/s/AKfycbwQSvOdKSFbRoVn3D1dR6q1qnsI-0vSjRjwIMixzTKr1W5nU5bIBOf6jaCUS2s9JMEk-A/exec",
+    "note": "드라이브 \"SFANDOM 쪽지함\" 시트에 붙인 Apps Script 웹 앱 주소(https://script.google.com/macros/s/.../exec). 비어 있으면 양식은 보이지만 전송되지 않습니다. 설정 방법은 드라이브의 \"SFANDOM 쪽지함 연동 코드 (Apps Script)\" 문서에 있습니다."
   }
- },
- "community_video": {
-  "eyebrow": "SFANDOM REELS · @sportsfandom",
-  "title": "FAN ZONE.",
-  "title2": "PLAY FIRST.",
-  "text": "스팬덤 인스타그램 릴스. 보고, 바로 팬 보드에서 떠들어요.",
-  "instagram_reel": "DdejDQDyYxv",
-  "reel_ratio": "16/9",
-  "fallback_video": "/assets/sfandom-brand-film-20260901.mp4",
-  "fallback_poster": "/assets/sfandom-hero-poster.jpg"
- },
- "contact": {
-  "endpoint": "https://script.google.com/macros/s/AKfycbwQSvOdKSFbRoVn3D1dR6q1qnsI-0vSjRjwIMixzTKr1W5nU5bIBOf6jaCUS2s9JMEk-A/exec",
-  "note": "드라이브 \"SFANDOM 쪽지함\" 시트에 붙인 Apps Script 웹 앱 주소(https://script.google.com/macros/s/.../exec). 비어 있으면 양식은 보이지만 전송되지 않습니다. 설정 방법은 드라이브의 \"SFANDOM 쪽지함 연동 코드 (Apps Script)\" 문서에 있습니다."
- }
 }
