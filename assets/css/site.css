@@ -919,3 +919,80 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
   .top-stories .ts.tip .vsline .match-separator{font-size:29px;min-width:40px}
 }
 /* SFANDOM enlarged game-mark end */
+
+/* SFANDOM NEWS IMAGE REPAIR 20261010 — home NEWS thumbnails only */
+section[aria-labelledby="newsTitle"] .news-mark-thumb{
+  box-sizing:border-box;
+  overflow:hidden;
+  background:radial-gradient(ellipse at 46% 24%,#213453 0%,#122036 55%,#0c1422 100%);
+}
+section[aria-labelledby="newsTitle"] .news-mark-lead{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:radial-gradient(ellipse at 50% 35%,#1b3767 0%,#10203b 55%,#10121c 100%);
+}
+section[aria-labelledby="newsTitle"] .news-lead .news-mark-lead img{
+  display:block;
+  width:min(72%,260px);
+  height:82%;
+  max-height:230px;
+  max-width:100%;
+  object-fit:contain;
+  object-position:center;
+  padding:0;
+  background:none;
+  filter:drop-shadow(0 7px 16px rgba(0,0,0,.48));
+}
+section[aria-labelledby="newsTitle"] .news-mark-mini{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  padding:7px;
+}
+section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo-wrap:not(.nologo){
+  display:inline-flex;
+  flex:0 0 auto;
+  width:44px;
+  height:44px;
+  padding:0;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+}
+section[aria-labelledby="newsTitle"] .news-mark-mini.quad{
+  display:grid;
+  grid-template-columns:repeat(2,36px);
+  grid-template-rows:repeat(2,34px);
+  gap:1px 10px;
+  justify-content:center;
+  align-content:center;
+  padding:3px;
+}
+section[aria-labelledby="newsTitle"] .news-mark-mini.quad .tlogo-wrap:not(.nologo){
+  width:34px;
+  height:34px;
+  justify-self:center;
+}
+section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.5));
+}
+@media(max-width:760px){
+  section[aria-labelledby="newsTitle"] .news-mark-lead{padding:14px}
+  section[aria-labelledby="newsTitle"] .news-lead .news-mark-lead img{width:min(70%,230px);height:82%}
+  section[aria-labelledby="newsTitle"] .news-mark-mini{gap:3px;padding:4px}
+  section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo-wrap:not(.nologo){width:35px;height:35px}
+  section[aria-labelledby="newsTitle"] .news-mark-mini.quad{
+    grid-template-columns:repeat(2,27px);
+    grid-template-rows:repeat(2,27px);
+    gap:0 5px;
+  }
+  section[aria-labelledby="newsTitle"] .news-mark-mini.quad .tlogo-wrap:not(.nologo){width:27px;height:27px}
+}
+/* SFANDOM NEWS IMAGE REPAIR END */
