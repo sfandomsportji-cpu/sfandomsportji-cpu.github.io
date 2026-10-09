@@ -34,3 +34,13 @@ Status: FEATURE BRANCH ONLY. Do not merge to `main` until browser tests pass. Pr
 - Have a verified moderation workflow before opening publicly.
 
 No production cutover without these tests and explicit deployment approval.
+
+## Mobile stability hardening — 2026-10-10
+- Fixed horizontal flex bug: reply panel now mounts INSIDE .post-body, not alongside it in .post.
+- Added bounded 10px indentation at <=359px and 18px indentation at 360–600px. The actual reply hierarchy remains unlimited.
+- Scoped width, wrapping, flex minimum, and form styles to prevent long names/text and iOS input zoom from breaking narrow screens.
+- First expansion fetches only 40 comments; subsequent pages use a stable (created_at, id) cursor, not an offset.
+- Builds each visible comment batch in a DocumentFragment to avoid repeated relayout.
+- Local synthetic layout fixture (reproducing relevant selectors and 40 deep replies): Chromium horizontal-overflow checks passed at 320, 360, 375, 390, 414, 600, 760, 1024, 1280px.
+- Source-level syntax checks: new community script parses, scoped CSS braces balance, GitHub main unchanged.
+- NOT YET VERIFIED ON LIVE SITE: physical phones, interactions with full original CSS, measured latency on low-end phones, real Edge Function comment tests, >100-comment paging, high concurrency, accessibility. These remain release blockers.
