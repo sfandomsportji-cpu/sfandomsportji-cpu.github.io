@@ -996,3 +996,18 @@ section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo{
   section[aria-labelledby="newsTitle"] .news-mark-mini.quad .tlogo-wrap:not(.nologo){width:27px;height:27px}
 }
 /* SFANDOM NEWS IMAGE REPAIR END */
+/* SFANDOM GAME THREADS VS 20261010 — presentation only, thread URLs unchanged */
+.gt .vsline{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;max-width:100%}
+.gt .vsline .thread-vs{
+  display:inline-flex;justify-content:center;align-items:center;
+  flex:0 0 28px;min-width:28px;font-family:var(--display);
+  color:#e54459;font-style:normal;font-size:26px;font-weight:800;
+  letter-spacing:0;line-height:1;text-shadow:0 2px 3px rgba(0,0,0,.45);
+}
+.gt .vsline .tlogo-wrap:not(.nologo){width:48px;height:48px;flex:0 0 48px}
+@media(max-width:760px){
+  .gt .vsline{gap:5px}
+  .gt .vsline .thread-vs{font-size:24px;flex-basis:26px;min-width:26px}
+  .gt .vsline .tlogo-wrap:not(.nologo){width:46px;height:46px;flex-basis:46px}
+}
+/* SFANDOM GAME THREADS VS END */

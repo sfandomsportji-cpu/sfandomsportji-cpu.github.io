@@ -544,7 +544,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-news-art-20261010">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-threads-vs-20261010">
 {ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
 </head>
@@ -602,13 +602,13 @@ def game_threads(limit: int = 7) -> str:
     rows = []
     for g in [x for x in nba_home_games() if not x.get('result')][:3]:
         tag = f'{g["away"]}@{g["home"]}'
-        rows.append((f'NBA · {g["day"]}', badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba") + '<i>@</i>' + badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba"), tag, g['kst']))
+        rows.append((f'NBA · {g["day"]}', badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba") + '<i class="thread-vs">VS</i>' + badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba"), tag, g['kst']))
     for d in PS['division']:
         nxt = ds_next(d)
         if not nxt:
             continue
         tag = f'{d["away"]}@{d["home"]}'
-        rows.append((f'{d["league"]}DS', badge(d["away"], d["away_color"]) + '<i>@</i>' + badge(d["home"], d["home_color"]), tag, '디비전시리즈'))
+        rows.append((f'{d["league"]}DS', badge(d["away"], d["away_color"]) + '<i class="thread-vs">VS</i>' + badge(d["home"], d["home_color"]), tag, '디비전시리즈'))
     out = ''.join(f'<a class="gt" href="/community/?thread={quote(tag)}"><span><small>{esc(k)} · {esc(when)}</small><b class="vsline">{logos}</b></span><span class="gt-in"><span class="gt-dot"></span>입장</span></a>' for k, logos, tag, when in rows[:limit])
     return f'<div class="box"><span class="box-title">GAME THREADS · 경기 스레드</span>{out}</div>'
 
