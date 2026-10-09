@@ -327,9 +327,7 @@ def badge(abbr: str, color: str, size: str = '', league: str = 'mlb') -> str:
     로고를 못 불러오면 site.js가 팀 색 약자 칩으로 바꿉니다."""
     f = ROOT / 'assets' / 'teams' / league / f'{abbr.lower()}.svg'
     if f.exists():
-        src = f'/assets/teams/{league}/{abbr.lower()}.svg'
-        if (league.lower(), abbr.upper()) in {('nba', 'GSW'), ('mlb', 'LAD')}:
-            src += '?v=logo-reference-20261009-2'
+        src = f'/assets/teams/{league}/{abbr.lower()}.svg?v=all-team-marks-20261009'
     else:
         ids, pattern = LOGO_SOURCES[league]
         src = pattern.format(id=ids[abbr]) if abbr in ids else ''
@@ -520,7 +518,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-team-mark-refresh-20261009">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-all-60-logos-20261009">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE['ads']['client']}" crossorigin="anonymous"></script>
 <script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
