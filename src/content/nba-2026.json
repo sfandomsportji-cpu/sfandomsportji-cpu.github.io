@@ -176,7 +176,7 @@
     ]
   ],
   "home_mode": "preseason",
-  "preseason_note": "2026.10.09 KST · 완료 경기 공식 최종 결과 확인 전에는 점수 미표기",
+  "preseason_note": "2026.10.09 KST · 10월 8일 경기 최종 스코어 확인 (NBA 공식 기록·경기 결과)",
   "preseason_games": [
     {
       "day": "FINAL",
@@ -188,36 +188,40 @@
       "result": "LAL 98–124 GSW"
     },
     {
-      "day": "RESULT PENDING",
+      "day": "FINAL",
       "away": "MIN",
       "home": "IND",
       "kst": "10.8 (목) 08:00",
       "tv": "LEAGUE PASS",
-      "tag": "경기 종료 · 공식 결과 확인 중"
+      "tag": "MIN 112–123 IND",
+      "result": "MIN 112–123 IND"
     },
     {
-      "day": "RESULT PENDING",
+      "day": "FINAL",
       "away": "ORL",
       "home": "MEM",
       "kst": "10.8 (목) 09:00",
       "tv": "LEAGUE PASS",
-      "tag": "경기 종료 · 공식 결과 확인 중"
+      "tag": "ORL 122–118 MEM",
+      "result": "ORL 122–118 MEM"
     },
     {
-      "day": "RESULT PENDING",
+      "day": "FINAL",
       "away": "MIL",
       "home": "OKC",
       "kst": "10.8 (목) 09:00",
       "tv": "LEAGUE PASS",
-      "tag": "경기 종료 · 공식 결과 확인 중"
+      "tag": "MIL 128–126 OKC",
+      "result": "MIL 128–126 OKC"
     },
     {
-      "day": "RESULT PENDING",
+      "day": "FINAL",
       "away": "GSW",
       "home": "POR",
       "kst": "10.8 (목) 11:00",
       "tv": "NBA TV",
-      "tag": "경기 종료 · 공식 결과 확인 중"
+      "tag": "GSW 118–123 POR",
+      "result": "GSW 118–123 POR"
     }
   ]
 }
