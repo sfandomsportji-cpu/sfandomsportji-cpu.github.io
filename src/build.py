@@ -383,7 +383,7 @@ def today_card(a: Article) -> str:
     # 카드 전체가 글로 가는 링크(.ta-more::after)이고, 휴대폰에서만 보이는 펼치기 단추가 그 위에 놓입니다
     return (f'<article class="ta-card lift"><div class="ta-top"><span class="tag red">{esc(a.kicker or a.league)} · {esc(a.league)}</span><span class="tag">{esc(when.group(0) if when else a.date_dot)}</span></div>'
             f'<div class="ta-vs"><span class="ta-team">{team_badge(a, 0)}<span class="display">{esc(left.upper())}</span></span><i>VS</i>'
-            f'<span class="ta-team r"><span class="display">{esc(right.upper())}</span>{team_badge(a, 1)}</span></div>'
+            f'<span class="ta-team r">{team_badge(a, 1)}<span class="display">{esc(right.upper())}</span></span></div>'
             f'<strong class="ta-sub">{esc(a.subtitle)}</strong><div class="ta-cells">{cells}</div>'
             f'<button type="button" class="ta-toggle" data-ta-toggle aria-expanded="false">선발 · 흐름 · 변수 펼치기</button>'
             f'<a class="ta-more" href="{a.url}">분석 전문 읽기 →</a></article>')
@@ -518,7 +518,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-logo-only-20261009">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-logo-alignment-v2-20261009">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE['ads']['client']}" crossorigin="anonymous"></script>
 <script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
