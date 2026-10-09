@@ -27,12 +27,31 @@ jobs:
         run: python3 src/tools/fetch_logos.py
       - name: Build
         run: python3 src/build.py
-      - name: Commit if changed
+      - name: Commit if changed (concurrent source updates safe)
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git config user.name "sfandom-bot"
-            git config user.email "sfandom-bot@users.noreply.github.com"
-            git add -A
-            git commit -m "build: 블로그 새 글 반영 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
-            git push
+          git config user.name "sfandom-bot"
+          git config user.email "sfandom-bot@users.noreply.github.com"
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No generated changes."
+            exit 0
           fi
+          git add -A
+          git commit -m "build: 블로그 새 글 반영 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "Generated pages pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Main advanced during build: refreshing generated files (attempt $attempt)."
+            git fetch origin main
+            git reset --hard origin/main
+            python3 src/build.py
+            if [ -z "$(git status --porcelain)" ]; then
+              echo "Latest main already has the generated result."
+              exit 0
+            fi
+            git add -A
+            git commit -m "build: 최신 main 기준 재생성 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
+          done
+          echo "Generated commit could not be pushed after three retries." >&2
+          exit 1
