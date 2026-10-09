@@ -63,7 +63,10 @@
     if (card.dataset.ctReady) return;
     const id = card.dataset.postId;
     if (!validId(id)) return;
+    const postBody = card.querySelector(".post-body");
+    if (!postBody) return;
     card.dataset.ctReady = "1";
+    const BATCH = 40;
     let rows = [], nextOffset = 0, hasMore = true, busy = false, open = false, loadEpoch = 0;
     const actions = el("div", "ct-actions");
     const show = button("댓글 보기 · 답글 쓰기", "ct-open");
@@ -79,7 +82,8 @@
     more.hidden = true;
     panel.append(notice, comments, composer, more);
     actions.append(show, reportPost, reportSlot);
-    card.append(actions, panel);
+    // Keep discussion inside the existing vertical post body; the article is a horizontal flex row.
+    postBody.append(actions, panel);
     const say = text => { notice.textContent = text; };
 
     function writeForm(target, nickname, mount) {
@@ -119,8 +123,8 @@
     }
 
     function draw() {
-      comments.replaceChildren();
-      if(!rows.length){comments.append(el("p","ct-empty","첫 댓글을 남겨보세요."));return;}
+      if(!rows.length){comments.replaceChildren(el("p","ct-empty","첫 댓글을 남겨보세요."));return;}
+      const fragment = document.createDocumentFragment();
       const byId = new Map(rows.map(x=>[x.id,x]));
       const children = new Map();
       const push=(k,x)=>{if(!children.has(k))children.set(k,[]);children.get(k).push(x);};
@@ -132,12 +136,14 @@
         if(visited.has(r.id)) continue;
         visited.add(r.id);
         const node=el("div","ct-comment");
-        node.style.marginLeft = (Math.min(cur.depth,5)*14) + "px";
+        // CSS caps the horizontal indent further on narrow screens, without losing reply depth.
+        node.style.setProperty("--ct-indent", (Math.min(cur.depth,5)*14) + "px");
         node.id="comment-"+r.id;
         const meta=el("div","ct-meta");
         const who=el("strong",null,r.nickname || "ANON");
         const when=el("span",null,r.created_at ? new Date(r.created_at).toLocaleString("ko-KR",{timeZone:"Asia/Seoul",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : "");
         meta.append(who,when);
+        if(r.parent_id && !byId.has(r.parent_id)) meta.append(el("span","ct-parent-note","↳ 이전 댓글에 대한 답글"));
         const content=el("p","ct-message",r.body || "");
         const bar=el("div","ct-comment-actions");
         const reply=button("답글","ct-small");
@@ -148,12 +154,13 @@
         report.addEventListener("click",()=>makeReport("comment",r.id,reportHere,say));
         bar.append(reply,report,reportHere);
         node.append(meta,content,bar,replyHere);
-        comments.append(node);
+        fragment.append(node);
         const kids=children.get(r.id)||[];
         for(let i=kids.length-1;i>=0;i--)stack.push({x:kids[i],depth:cur.depth+1});
       }
       const unmatched=rows.filter(r=>!visited.has(r.id));
-      if(unmatched.length) comments.append(el("p","ct-status","일부 답글의 연결을 확인하지 못했습니다."));
+      if(unmatched.length) fragment.append(el("p","ct-status","일부 답글의 연결을 확인하지 못했습니다."));
+      comments.replaceChildren(fragment);
     }
 
     async function load(reset=false){
@@ -166,14 +173,15 @@
       try {
         const path="/rest/v1/comments?select=id,post_id,parent_id,nickname,body,created_at"
           +"&post_id=eq."+encodeURIComponent(id)
-          +"&status=eq.published&order=created_at.asc,id.asc&limit=100&offset="+start;
+          +"&status=eq.published&order=created_at.desc,id.desc&limit="+BATCH+"&offset="+start;
         const res=await request(path);
         const batch=await res.json();
         if(epoch!==loadEpoch) return;
         if(reset){rows=[];nextOffset=0;}
-        rows.push(...batch);
+        const known = new Set(rows.map(r=>r.id));
+        for(const row of batch) if(!known.has(row.id)){rows.push(row);known.add(row.id);}
         nextOffset+=batch.length;
-        hasMore=batch.length===100;
+        hasMore=batch.length===BATCH;
         draw();
         say(rows.length + "개 댓글 · 댓글에 다시 답글을 달 수 있어요.");
       }catch(err){say(errorText(err));}
