@@ -12,7 +12,7 @@ image_alt: ""
 credit: "PREGAME ANALYSIS · 2026.10.10 오전 기준 · 선발·라인업·부상 및 구원투수 가용 여부는 경기 직전 재확인"
 edition: ""
 slug: "kia-third-place-strategy"
-sources: [{"label":"KBO 공식 2026년 10월 경기 일정","url":"https://www.koreabaseball.com/Schedule/Schedule.aspx?month=10&year=2026"},{"label":"KBO 순위 · 10월 9일 종료 기준","url":"https://yachi.kr/schedule"},{"label":"KIA–SSG 상대전적과 선발 비교","url":"https://beaverstats.com/kbo/lab/gameLab?gameCd=20261010SKHT02026&lang=ko"},{"label":"10월 9일 KIA 7–2 NC 경기 기록","url":"https://www.yagoonara.com/schedule/128013/records"},{"label":"10월 9일 KIA–LG 3위 경쟁 보도","url":"https://www.mt.co.kr/sports/2026/10/10/2026100910533943706"}]
+sources: [{"label":"KBO 공식 2026년 10월 경기 일정","url":"https://www.koreabaseball.com/Schedule/Schedule.aspx?month=10&year=2026"},{"label":"KBO 순위 · 10월 9일 종료 기준","url":"https://yachi.kr/schedule"},{"label":"KIA–SSG 상대전적과 선발 비교","url":"https://beaverstats.com/kbo/lab/gameLab?gameCd=20261010SKHT02026&lang=ko"},{"label":"10월 9일 KIA 7–2 NC 경기 기록","url":"https://www.yagoonara.com/schedule/128013/records"},{"label":"10월 9일 KIA–LG 3위 경쟁 보도","url":"https://www.mt.co.kr/sports/2026/10/10/2026100910533943706"},{"label":"KBO 톨허스트 2026 투구 기록","url":"https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55130"},{"label":"KBO 카라스코 2026 일자별 투구 기록","url":"https://www.koreabaseball.com/Record/Player/PitcherDetail/Daily.aspx?playerId=56103"},{"label":"KBO 올러 2026 투구 기록","url":"https://www.koreabaseball.com/Record/Player/PitcherDetail/Basic.aspx?playerId=55633"},{"label":"KBO 네일 2026 일자별 투구 기록","url":"https://www.koreabaseball.com/Record/Player/PitcherDetail/Daily.aspx?playerId=54640"}]
 ---
 
 **현재 가장 가능성이 높은 시나리오는 KIA의 정규시즌 3위 수성이다.** 2026년 10월 10일 오전 기준 KIA는 77승 62패 2무, LG는 77승 64패 1무다. KIA는 승차 1경기 우위에 있고 최근 10경기 6승 4패, LG는 2승 8패로 흐름도 갈린다. 12일 맞대결 전에 KIA가 SSG·롯데를 연달아 꺾으면 최종전 결과와 무관하게 3위를 지킨다. **KIA 우세라는 결론은 분명하게 제시하되 아직 확정된 순위로 쓰지는 않는다.**
@@ -39,6 +39,19 @@ KBO 공식 일정상 KIA의 남은 상대는 10일 SSG, 11일 롯데, 12일 LG�
 LG 역시 역전의 동기는 분명하지만, 최근 부진과 남은 경기 수는 부담 요인이다. 다만 특정 선수나 감독의 심리 상태를 승패의 확인된 원인으로 단정하지 않는다. 염경엽 감독 체제의 LG는 이미 2023년과 2025년 한국시리즈에서 우승했다. 2025년 11월에는 감독 재계약도 발표됐다. 따라서 이번 순위 경쟁의 결과만으로 경질이 임박했다고 서술하는 것은 근거가 부족하다.
 
 **전략적 해석:** KIA는 '자력 3위 확정'이라는 구체적인 목표를 갖고 있고, LG는 상대 결과까지 살펴야 하는 입장이다. 이 차이는 동기부여에 관한 정성적 변수로 반영하되, 승률 모델의 77.7%에 별도로 더하지 않는다. 선수들의 실제 집중력이나 경기력 향상 효과를 숫자로 측정한 것은 아니기 때문이다.
+
+## 선발진의 현재 가치: LG의 흔들림, KIA의 이닝 확보
+
+이 순위 경쟁에서는 두 팀의 외국인 선발투수 흐름도 중요하다. 특히 **시즌 평균자책점 한 줄보다 최근 등판에서 몇 이닝을 책임지고 어떤 실점을 남겼는가**를 먼저 비교한다.
+
+- **LG 톨허스트:** 9월 24일 롯데전 4⅔이닝 5자책점, 29일 SSG전 3이닝 3자책점, 10월 5일 KIA전 5이닝 2자책점. 최근 세 차례 등판 합계 12⅔이닝 10자책점, 평균자책점 약 7.11이다. 직전 경기에서는 반등했지만 장기 이닝 소화가 안정적이라고 보기는 어렵다.
+- **LG 카라스코:** 10월 3일 KIA전 4⅓이닝 4자책점, 9일 롯데전 5이닝 3자책점. 최근 두 경기 9⅓이닝 7자책점, 평균자책점 6.75다. 선발이 일찍 내려가면 필승조 외 구원투수의 출전까지 고려해야 한다.
+- **KIA 올러:** 시즌 29경기 평균자책점 3.03, 최근 10경기 62⅔이닝 평균자책점 2.44로 긴 구간의 안정성이 돋보인다. 그러나 최근 9월 29일 KT전과 10월 5일 LG전에서는 각각 6이닝 4자책점을 기록했다. **최근 실점 억제는 다소 흔들려도 6이닝을 채우는 능력이 유지되는 상황**으로 구분해야 한다.
+- **KIA 네일:** 10월 3일 LG전 6⅓이닝 4자책점 이후, 9일 NC전에서 7이닝 2자책점으로 승리했다. 특히 마지막 등판의 87구 7이닝은 팀의 불펜 소모를 줄인 중요한 요소다.
+
+이를 합치면 **LG는 최근 선발의 조기 교체 위험을 관리해야 하고, KIA는 올러·네일이 확보해 주는 선발 이닝을 전략적 자산으로 활용할 수 있다**는 차이가 드러난다. 다만 톨허스트도 10월 5일 5이닝 2실점으로 반등했고, 올러 역시 최근 두 경기에서는 실점이 늘었다. 네 선수 모두를 일률적으로 상승·하락이라고 단정하기보다 이닝과 자책점을 함께 봐야 한다.
+
+오늘 10일 SSG전 KIA 선발은 시라카와로 예고돼 있다. 올러·네일의 이닝 소화 능력은 **오늘 직접 등판하는 전력보다 남은 일정과 포스트시즌 준비를 뒷받침하는 요소**다. 오늘 경기에서 가장 먼저 확인할 것은 시라카와의 투구수와 경기 중반 불펜 연결이다.
 
 ## 두 번째 판단: 오늘 SSG전 역시 KIA에 조금 더 무게
 
