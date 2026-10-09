@@ -211,7 +211,7 @@
         if (!Array.isArray(batch)) throw Error("invalid_comments_response");
         const range=res.headers.get("content-range") || "";
         const count=Number(range.split("/").pop());
-        total=Number.isFinite(count) ? count : from+batch.length+(batch.length===BATCH ? 1 : 0);
+        total=range.includes("/") && Number.isFinite(count) ? count : from+batch.length+(batch.length===BATCH ? 1 : 0);
         if (target>1 && !batch.length && total<=from) {
           busy=false; return load(1);
         }
