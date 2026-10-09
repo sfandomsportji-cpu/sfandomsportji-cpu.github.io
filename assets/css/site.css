@@ -813,18 +813,18 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
   gap:9px;
   text-align:center;
 }
-.ta-team.r .tlogo-wrap,.ta-team.r .tchip{order:-1}
-.ta-team .tlogo-wrap.lg:not(.nologo){width:76px;height:76px}
+/* Source HTML renders both home and away logo first; no CSS order inversion. */
+.ta-team .tlogo-wrap.lg:not(.nologo){width:84px;height:84px}
 .ta-team .display{
   display:block;
-  min-height:60px;
+  min-height:66px;
   font-size:clamp(22px,2.1vw,30px);
   line-height:1.04;
   text-align:center;
   overflow-wrap:anywhere;
   text-wrap:balance;
 }
-.ta-vs i{align-self:start;margin-top:92px;padding:0}
+.ta-vs i{align-self:center;margin-top:0;padding:0}
 @media(max-width:760px){
   .tlogo-wrap:not(.nologo){width:48px;height:48px}
   .tlogo-wrap.lg:not(.nologo){width:60px;height:60px}
@@ -834,13 +834,13 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
   .top-stories .ts.tip .vsline .tlogo-wrap:not(.nologo){
     width:62px;height:62px;min-width:62px;min-height:62px;
   }
-  .ta-team .tlogo-wrap.lg:not(.nologo){width:62px;height:62px}
-  .ta-team .display{min-height:50px;font-size:clamp(20px,5.6vw,26px)}
-  .ta-vs i{margin-top:76px}
+  .ta-team .tlogo-wrap.lg:not(.nologo){width:68px;height:68px}
+  .ta-team .display{min-height:56px;font-size:clamp(20px,5.6vw,26px)}
+  .ta-vs i{margin-top:0}
 }
 @media(max-width:390px){
-  .ta-team .tlogo-wrap.lg:not(.nologo){width:56px;height:56px}
+  .ta-team .tlogo-wrap.lg:not(.nologo){width:62px;height:62px}
   .ta-team .display{font-size:20px}
-  .ta-vs i{margin-top:69px}
+  .ta-vs i{margin-top:0}
 }
 /* SFANDOM logo-only patch end */
