@@ -508,7 +508,7 @@ def footer() -> str:
 
 
 def layout(title: str, body: str, *, path: str, description: str = '', image: str = '', ld: list | None = None,
-           noindex: bool = False, active: str = '', og_type: str = 'website') -> str:
+           noindex: bool = False, active: str = '', og_type: str = 'website', ads: bool = False) -> str:
     full_title = title if title.startswith('SFANDOM') else f'{title} | SFANDOM'
     desc = description or SITE['description']
     img = image or f'{BASE}/assets/brand/sfandom-mark-512.png'
@@ -517,6 +517,9 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
         'supabase': SITE['supabase']}
     lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld or []))
     robots = 'noindex,follow' if noindex else 'index,follow,max-image-preview:large'
+    # 광고 스크립트는 본문이 충분한 글 상세 페이지에만 싣는다. 목록·허브·검색·404·안내·커뮤니티 화면에는 싣지 않는다.
+    ad_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE["ads"]["client"]}" crossorigin="anonymous"></script>\n'
+                 if ads and not noindex else '')
     return f'''<!doctype html>
 <html lang="ko">
 <head>
@@ -542,8 +545,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v={VER}-news-art-20261010">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE['ads']['client']}" crossorigin="anonymous"></script>
-<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
+{ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
 </head>
 <body>
@@ -616,7 +618,7 @@ def quick_box(size: int = 4) -> str:
             f'<form class="quick-form" data-quick-form novalidate><label class="sr-only" for="qt">지금 경기 한 줄 평 (최대 60자)</label>'
             f'<input id="qt" name="text" type="text" maxlength="60" placeholder="예: 1쿼터부터 분위기 좋네요" autocomplete="off">'
             f'<label class="hp" aria-hidden="true">website<input name="website" tabindex="-1" autocomplete="off"></label><button class="pill" type="submit">등록</button></form>'
-            f'<p class="status" data-quick-status role="status"></p><div class="quick-list" data-quick-list><div class="empty">한 줄 평을 불러오는 중…</div></div></div>')
+            f'<p class="status" data-quick-status role="status"></p><div class="quick-list" data-quick-list><div class="empty">경기를 보며 떠오른 생각을 한 줄로 남겨 보세요.</div></div></div>')
 
 
 def message_box() -> str:
@@ -827,7 +829,7 @@ def build_article(a: Article):
     if a.image:
         ld['image'] = [a.image]
     write(a.url, layout(a.headline, body, path=a.url, description=a.excerpt, image=a.image, og_type='article',
-                        ld=[ld, breadcrumb_ld(trail)], active=section_url), lastmod=a.date,
+                        ld=[ld, breadcrumb_ld(trail)], active=section_url, ads=True), lastmod=a.date,
           search={'u': a.url, 't': a.headline, 's': a.subtitle, 'k': a.section, 'd': a.date_dot, 'x': a.excerpt})
 
 
@@ -885,7 +887,7 @@ def build_lists():
                  + two_col(f'<h2 class="sec-title" style="font-size:44px;margin-bottom:8px">{esc(e.get("title", ""))} <span class="kr">{esc(e.get("subtitle", ""))}</span></h2>'
                            + list_with_ads(items, 3), 'SF-HUB-RAIL', latest_box()))
         write(f'/news/morning/{d}/', layout(f'모닝 에디션 {d.replace("-", ".")} · {e.get("title", "")}', ebody, path=f'/news/morning/{d}/',
-              description=e.get('intro', ''), active='/news/', ld=[breadcrumb_ld([('NEWS', '/news/'), ('MORNING EDITION', '/news/morning/'), (d, '')])]), lastmod=d)
+              description=e.get('intro', ''), active='/news/', ld=[breadcrumb_ld([('NEWS', '/news/'), ('MORNING EDITION', '/news/morning/'), (d, '')])], ads=True), lastmod=d)
     write('/news/morning/', layout('MORNING EDITION · 모닝 에디션', page_head('MORNING <span class="accent">EDITION</span>',
           '어제 경기에서 오늘까지 남는 것만 골라 매일 아침 정리합니다.', [('NEWS', '/news/'), ('MORNING EDITION', '')],
           tabs([('전체 뉴스', '/news/'), ('모닝 에디션', '/news/morning/')], '/news/morning/'))
