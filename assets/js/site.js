@@ -284,17 +284,33 @@
 
   /* ── Supabase 공통 ── */
   const SB = CFG.supabase || {};
+  // Reads can temporarily time out at PostgREST. Retry only safe GET requests.
+  // Never retry POST automatically: the original write might already have succeeded.
   const request = async (path, options = {}) => {
-    const ctrl = new AbortController();
-    const timer = setTimeout(() => ctrl.abort(), 8000);
-    try {
-      const res = await fetch(SB.url + path, {
-        ...options, signal: ctrl.signal, cache: 'no-store', credentials: 'omit',
-        headers: { apikey: SB.key, Accept: 'application/json', ...(options.headers || {}) }
-      });
-      if (!res.ok) { const err = new Error('http ' + res.status); err.status = res.status; throw err; }
-      return res;
-    } finally { clearTimeout(timer); }
+    const isRead = !options.method || String(options.method).toUpperCase() === 'GET';
+    const attempts = isRead ? 2 : 1;
+    for (let attempt = 0; attempt < attempts; attempt++) {
+      const ctrl = new AbortController();
+      const timer = setTimeout(() => ctrl.abort(), attempt ? 10000 : 8000);
+      try {
+        const res = await fetch(SB.url + path, {
+          ...options, signal: ctrl.signal, cache: 'no-store', credentials: 'omit',
+          headers: { apikey: SB.key, Accept: 'application/json', ...(options.headers || {}) }
+        });
+        if (!res.ok) {
+          const err = new Error('http ' + res.status);
+          err.status = res.status;
+          throw err;
+        }
+        return res;
+      } catch (err) {
+        const retryable = !err.status || err.status === 429 || err.status >= 500;
+        if (!isRead || attempt === attempts - 1 || !retryable) throw err;
+        await new Promise(resolve => setTimeout(resolve, 450));
+      } finally {
+        clearTimeout(timer);
+      }
+    }
   };
   const fmtTime = raw => {
     const d = new Date(raw);
@@ -388,9 +404,19 @@
         total = m ? Number(m[1]) : rows.length;
         renderPosts(list, rows, total, page, size);
         renderPager();
+        return true;
       } catch (_) {
-        list.replaceChildren(el('div', 'empty', '팬 보드 연결이 잠시 원활하지 않습니다. 잠시 후 다시 시도해 주세요.'));
+        // Keep any already visible posts on intermittent read failures.
+        if (!list.querySelector('article.post')) {
+          const warning = el('div', 'empty', '글은 보관되어 있습니다. 목록을 불러오는 중 연결이 끊겼습니다.');
+          const retry = el('button', 'pill', '글 목록 다시 불러오기');
+          retry.type = 'button';
+          retry.addEventListener('click', () => { if (!busy) load(); });
+          list.replaceChildren(warning, retry);
+        }
+        if (status) status.textContent = '글 목록 연결이 지연되고 있습니다. 다시 불러오기를 눌러주세요.';
         if (pager) pager.replaceChildren();
+        return false;
       } finally { busy = false; }
     };
 
@@ -414,7 +440,9 @@
         const keep = sel ? sel.value : '';
         form.reset(); if (sel && keep) sel.value = keep;
         page = 1; status.textContent = '게시되었습니다.';
-        busy = false; await load();
+        busy = false;
+        const visible = await load();
+        if (!visible) status.textContent = '글은 저장되었습니다. 목록 조회가 지연 중입니다. 다시 불러오기를 눌러주세요.';
       } catch (err) {
         status.textContent = postError(err);
       } finally { busy = false; if (btn) btn.disabled = false; }
@@ -449,7 +477,13 @@
           row.append(el('span', 'quick-text', splitTag(p.title)[1]), el('span', 'quick-meta', `${p.nickname || 'ANON'} · ${fmtTime(p.created_at)}`));
           qList.append(row);
         });
-      } catch (_) { qList.replaceChildren(el('div', 'empty', '한 줄 평을 불러오지 못했습니다.')); }
+      } catch (_) {
+        const warning = el('div', 'empty', '한 줄 평 목록 연결이 지연되고 있습니다.');
+        const retry = el('button', 'pill', '다시 불러오기');
+        retry.type = 'button';
+        retry.addEventListener('click', qLoad);
+        if (!qList.querySelector('.quick-row')) qList.replaceChildren(warning, retry);
+      }
     };
     qForm?.addEventListener('submit', async e => {
       e.preventDefault();
