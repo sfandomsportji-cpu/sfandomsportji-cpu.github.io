@@ -1,0 +1,7 @@
+[data-admin-mode]{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:4px 0 14px}
+[data-admin-mode] button{padding:6px 11px;border:1px solid var(--line-2,#363741);border-radius:6px;background:var(--panel,#15151b);color:var(--text,#fff);cursor:pointer}
+[data-admin-mode] [data-admin-panel]{width:100%;box-sizing:border-box;background:var(--panel,#15151b);padding:12px;border:1px solid var(--line-2,#363741);border-radius:8px}
+[data-admin-mode] form{display:flex;gap:8px;flex-wrap:wrap}
+[data-admin-mode] input{padding:8px;border:1px solid var(--line-2,#363741);background:var(--bg,#0b0b0f);color:var(--text,#fff);border-radius:6px;min-width:180px;flex:1}
+[data-admin-mode] [data-admin-status]{font-size:12px;color:var(--muted,#aaa);margin:8px 0 0}
+[data-admin-mode] [hidden],[data-board] .ct-admin-delete[hidden]{display:none!important}
