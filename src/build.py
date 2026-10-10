@@ -514,6 +514,8 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     full_title = title if title.startswith('SFANDOM') else f'{title} | SFANDOM'
     desc = description or SITE['description']
     img = image or f'{BASE}/assets/share/sfandom-social-20261010.png'
+    if img.startswith('/'):
+        img = f'{BASE}{img}'  # SNS crawlers need an absolute image URL.
     social_card = img == f'{BASE}/assets/share/sfandom-social-20261010.png'
     image_hints = (
         '<meta property="og:image:type" content="image/png">\n'
