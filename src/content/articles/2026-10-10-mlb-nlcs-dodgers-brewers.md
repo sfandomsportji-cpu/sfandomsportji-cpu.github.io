@@ -7,12 +7,16 @@ subtitle: "NLCS 1차전: 스쿠벌, 미시오로스키 변수와 7전 4선승 �
 kicker: "KAIRO DEEP ANALYSIS · NLCS"
 meta: "2026.10.10 KST · 10월 12일 09:00 시리즈 개막"
 league: "MLB"
-image: ""
-image_alt: ""
-credit: ""
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/View_of_American_Family_Field_from_behind_home_plate.jpg/1200px-View_of_American_Family_Field_from_behind_home_plate.jpg"
+image_alt: "밀워키 홈구장 다저스–브루어스 경기(2022년 자료사진)"
+credit: "PHOTO · SidewalkMD / Wikimedia Commons · 2022년 자료사진"
 edition: "2026-10-10"
 slug: "dodgers-brewers-nlcs-game1"
 sources: [{"label":"MLB 공식 다저스–밀워키 챔피언십 1차전 정보","url":"https://www.mlb.com/news/dodgers-brewers-nl-championship-series-game-1-starting-lineups-and-pitching-matchup"},{"label":"MLB 공식 포스트시즌 대진","url":"https://www.mlb.com/postseason"}]
+photo_source: "https://commons.wikimedia.org/wiki/File:View_of_American_Family_Field_from_behind_home_plate.jpg"
+photo_license: "CC BY-SA 4.0"
+photo_license_url: "https://creativecommons.org/licenses/by-sa/4.0/"
+photo_fallback: "/assets/teams/mlb/mil.svg"
 ---
 
 LA 다저스와 밀워키 브루어스가 내셔널리그 챔피언십시리즈에서 다시 만난다. 정규시즌 100승과 103승. 이 숫자는 두 팀이 충분히 강했다는 사실을 보여주지만, 이번 7전 4선승의 승패를 대신 설명하지는 않는다. 디비전시리즈를 3승 1패로 마친 양 팀은 선발 로테이션을 재구성하고, 네 경기 동안 사용한 불펜 투구 수를 정리하면서 다음 시리즈를 준비한다.
