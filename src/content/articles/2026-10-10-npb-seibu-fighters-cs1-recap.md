@@ -7,13 +7,14 @@ subtitle: "세이부 3–2 닛폰햄 · 카나리오의 결승포와 양 팀 6�
 kicker: "SFANDOM & KAIRO · NPB CLIMAX SERIES"
 meta: "2026.10.10 저녁 KST · 퍼시픽리그 CS 1차전 종료"
 league: "NPB"
-image: "/assets/brand/sfandom-logo-on-light.png"
-image_alt: "SFANDOM 브랜드 이미지 · NPB 클라이맥스 시리즈 경기 복기"
-credit: "VISUAL · SFANDOM 자체 브랜드 이미지"
+image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E3%80%90%E3%83%91%E3%83%BC%E3%82%BD%E3%83%AB_%E3%83%91%E3%83%BB%E3%83%AA%E3%83%BC%E3%82%B0%E5%85%AC%E5%BC%8F%E6%88%A6%E3%80%91%E5%9F%BC%E7%8E%89%E8%A5%BF%E6%AD%A6%E3%83%A9%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%BA_vs_%E5%8C%97%E6%B5%B7%E9%81%93%E6%97%A5%E6%9C%AC%E3%83%8F%E3%83%A0%E3%83%95%E3%82%A1%E3%82%A4%E3%82%BF%E3%83%BC%E3%82%BA_16%E5%9B%9E%E6%88%A6_%E3%83%99%E3%83%AB%E3%83%BC%E3%83%8A%E3%83%89%E3%83%BC%E3%83%A0_2026%E5%B9%B47%E6%9C%8822%E6%97%A5%E3%81%AE%E5%9F%BC%E7%8E%89%E7%9C%8C_202607221753_DSCN9815.jpg?width=960"
+image_alt: "2026년 7월 벨루나돔 세이부–닛폰햄 맞대결 자료사진(10월 10일 경기 사진 아님)"
+credit: "PHOTO · Wikimedia Commons · 2026년 7월 양 팀 맞대결 자료사진"
 edition: "2026-10-10"
 slug: "npb-seibu-fighters-cs1-recap-20261010"
 sources: [{"label":"10월 10일 세이부–닛폰햄 1차전 공식 집계·득점 이닝","url":"https://baseball.yahoo.co.jp/npb/game/2021039477/top"},{"label":"NPB 공식 클라이맥스 시리즈 경기 일정","url":"https://npb.jp/bis/eng/2026/games/gm20261010.html"}]
-photo_fallback: "/assets/brand/sfandom-mark.svg"
+photo_source: "https://commons.wikimedia.org/wiki/File:%E3%80%90%E3%83%91%E3%83%BC%E3%82%BD%E3%83%AB_%E3%83%91%E3%83%BB%E3%83%AA%E3%83%BC%E3%82%B0%E5%85%AC%E5%BC%8F%E6%88%A6%E3%80%91%E5%9F%BC%E7%8E%89%E8%A5%BF%E6%AD%A6%E3%83%A9%E3%82%A4%E3%82%AA%E3%83%B3%E3%82%BA_vs_%E5%8C%97%E6%B5%B7%E9%81%93%E6%97%A5%E6%9C%AC%E3%83%8F%E3%83%A0%E3%83%95%E3%82%A1%E3%82%A4%E3%82%BF%E3%83%BC%E3%82%BA_16%E5%9B%9E%E6%88%A6_%E3%83%99%E3%83%AB%E3%83%BC%E3%83%8A%E3%83%89%E3%83%BC%E3%83%A0_2026%E5%B9%B47%E6%9C%8822%E6%97%A5%E3%81%AE%E5%9F%BC%E7%8E%89%E7%9C%8C_202607221753_DSCN9815.jpg"
+photo_fallback: "/assets/editorial/20261010-npb-seibu-fighters-result.svg"
 ---
 
 10월 10일 벨루나돔에서 열린 퍼시픽리그 클라이맥스 시리즈 퍼스트 스테이지 1차전은 연장 10회에 끝났다. **세이부 라이온스가 닛폰햄 파이터스를 3–2로 꺾었다.** 카나리오의 10회말 끝내기 솔로 홈런이 결말이었지만, 그 한 장면에 앞서 양 팀은 리드를 주고받고 여섯 명씩 투수를 동원하는 접전을 치렀다. 짧은 시리즈의 첫 승과 다음 경기의 피로도가 동시에 남았다.
