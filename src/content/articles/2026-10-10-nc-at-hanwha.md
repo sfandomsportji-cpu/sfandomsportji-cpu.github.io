@@ -16,7 +16,7 @@ sources: [{"label":"KBO 공식 일정 · 2026년 10월 10일","url":"https://www
 photo_source: "https://commons.wikimedia.org/wiki/File:Daejeon_hanwha_Life_Ballpark_2025.jpg"
 photo_license: "CC BY-SA 4.0"
 photo_license_url: "https://creativecommons.org/licenses/by-sa/4.0/"
-photo_fallback: "/assets/brand/sfandom-mark.svg"
+photo_fallback: "/assets/editorial/20261010-kbo-nc-hanwha-analysis.svg"
 ---
 
 NC 다이노스와 한화 이글스는 10월 10일 오후 5시 대전에서 맞붙는다. NC는 9일 창원에서 KIA에 2–7로 패했다. 한화는 7일 키움전 3–5 패배 이후 10일 일정에 나선다. 두 팀 모두 최근 성적만 단순히 평균내기보다는, 직전 경기에서 드러난 약점이 오늘 어떤 방식으로 수정되는지를 볼 필요가 있다.
