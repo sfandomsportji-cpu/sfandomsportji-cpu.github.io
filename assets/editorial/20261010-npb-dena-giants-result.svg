@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="YOMIURI 1대2 DeNA 경기 결과">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#090d1a"/><stop offset=".53" stop-color="#14233d"/><stop offset="1" stop-color="#10101c"/></linearGradient><linearGradient id="red" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fd5454"/><stop offset="1" stop-color="#b81f37"/></linearGradient></defs>
+<rect width="1200" height="675" fill="url(#bg)"/><circle cx="1040" cy="50" r="300" fill="#4194e8" opacity=".11"/><circle cx="100" cy="620" r="260" fill="#4984c7" opacity=".06"/><rect x="46" y="44" width="1108" height="587" rx="30" fill="none" stroke="#e4eaf9" stroke-opacity=".18" stroke-width="2"/>
+<text x="91" y="120" fill="#e1eaff" font-family="Arial,sans-serif" font-size="28" font-weight="700" letter-spacing="3">NPB CENTRAL · CLIMAX SERIES</text><rect x="92" y="147" width="1015" height="2" fill="#d6e5fa" opacity=".16"/>
+<text x="92" y="211" fill="#8fa4c8" font-family="Arial,sans-serif" font-size="27" letter-spacing="1">2026.10.10  ·  TOKYO DOME  ·  FINAL</text>
+<text x="320" y="345" text-anchor="middle" fill="#f5f7ff" font-family="Arial,sans-serif" font-size="48" font-weight="700">YOMIURI</text>
+<text x="870" y="345" text-anchor="middle" fill="#f5f7ff" font-family="Arial,sans-serif" font-size="48" font-weight="700">DeNA</text>
+<text x="338" y="503" text-anchor="middle" fill="#f7fbff" font-family="Arial,sans-serif" font-size="148" font-weight="700">1</text>
+<text x="600" y="490" text-anchor="middle" fill="#8798b7" font-family="Arial,sans-serif" font-size="90">:</text>
+<text x="860" y="503" text-anchor="middle" fill="#ff6671" font-family="Arial,sans-serif" font-size="148" font-weight="700">2</text>
+<text x="92" y="583" fill="#9facbf" font-family="Arial,sans-serif" font-size="23">9th inning go-ahead home run</text><text x="1102" y="583" text-anchor="end" fill="#c1c9d9" font-family="Arial,sans-serif" font-size="23" letter-spacing="1">SFANDOM × KAIRO</text>
+</svg>
