@@ -513,7 +513,14 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
            noindex: bool = False, active: str = '', og_type: str = 'website', ads: bool = False) -> str:
     full_title = title if title.startswith('SFANDOM') else f'{title} | SFANDOM'
     desc = description or SITE['description']
-    img = image or f'{BASE}/assets/brand/sfandom-mark-512.png'
+    img = image or f'{BASE}/assets/share/sfandom-social-20261010.png'
+    social_card = img == f'{BASE}/assets/share/sfandom-social-20261010.png'
+    image_hints = (
+        '<meta property="og:image:type" content="image/png">\n'
+        '<meta property="og:image:width" content="1200">\n'
+        '<meta property="og:image:height" content="630">\n'
+        if social_card else ''
+    )
     cfg = {'root': '/', 'ads': {k: SITE['ads'][k] for k in ('client', 'phase')} | {
         'slots': {k: {kk: v[kk] for kk in ('phase', 'unit', 'format', 'layout') if kk in v} for k, v in SITE['ads']['slots'].items()}},
         'supabase': SITE['supabase']}
@@ -542,7 +549,12 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{BASE}{path}">
 <meta property="og:image" content="{esc(img)}">
+<meta property="og:image:secure_url" content="{esc(img)}">
+{image_hints}<meta property="og:image:alt" content="{esc('SFANDOM & KAIRO 스포츠 팬 커뮤니티' if social_card else full_title)}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{esc(img)}">
+<meta name="twitter:title" content="{esc(full_title)}">
+<meta name="twitter:description" content="{esc(desc)}">
 <link rel="icon" type="image/svg+xml" href="/assets/brand/sfandom-mark.svg">
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/brand/sfandom-mark-512.png">
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
