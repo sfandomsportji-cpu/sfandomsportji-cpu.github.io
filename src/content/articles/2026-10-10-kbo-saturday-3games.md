@@ -7,7 +7,7 @@ subtitle: "사직 LG–롯데, 광주 SSG–KIA, 대전 NC–한화… 전날 �
 kicker: "SFANDOM & KAIRO · KBO SPECIAL"
 meta: "2026.10.10 오전 · KBO 정규시즌 잔여 일정"
 league: "KBO"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/%EB%A1%AF%EB%8D%B0%EC%9E%90%EC%9D%B4%EC%96%B8%EC%B8%A0%EC%9D%91%EC%9B%90.jpg/1200px-%EB%A1%AF%EB%8D%B0%EC%9E%90%EC%9D%B4%EC%96%B8%EC%B8%A0%EC%9D%91%EC%9B%90.jpg"
+image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/%EB%A1%AF%EB%8D%B0%EC%9E%90%EC%9D%B4%EC%96%B8%EC%B8%A0%EC%9D%91%EC%9B%90.jpg/960px-%EB%A1%AF%EB%8D%B0%EC%9E%90%EC%9D%B4%EC%96%B8%EC%B8%A0%EC%9D%91%EC%9B%90.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org"
 image_alt: "사직구장에서 응원하는 롯데 팬들(2011년 자료사진)"
 credit: "PHOTO · 히히히 / Wikimedia Commons · 2011년 자료사진"
 edition: "2026-10-10"
