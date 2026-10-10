@@ -168,7 +168,21 @@
         const replyHere=el("div","ct-reply-composer");
         reply.addEventListener("click",()=>{writeForm(r.id,r.nickname || "ANON",replyHere);replyHere.querySelector("textarea")?.focus();});
         report.addEventListener("click",()=>makeReport("comment",r.id,reportHere,say));
-        bar.append(reply,report,reportHere);
+        const remove=button("삭제","ct-small ct-admin-delete");
+        remove.dataset.adminDeleteComment=r.id;
+        remove.hidden=!(window.SFANDOM_ADMIN?.canDelete);
+        remove.addEventListener("click",async()=>{
+          if(!window.SFANDOM_ADMIN?.canDelete)return;
+          if(!window.confirm("이 댓글을 삭제 표시할까요? 원본 기록은 보존됩니다."))return;
+          remove.disabled=true;
+          try{
+            await window.SFANDOM_ADMIN.deleteComment(r.id);
+            say("댓글을 삭제 처리했습니다.");
+            loaded=false;
+            await load(page);
+          }catch(_){say("관리자 삭제에 실패했습니다. 로그인 상태를 확인해 주세요.");remove.disabled=false;}
+        });
+        bar.append(reply,report,reportHere,remove);
         node.append(meta,content,bar,replyHere);
         fragment.append(node);
         const kids=children.get(r.id)||[];
@@ -269,6 +283,11 @@
     }
   }
 
+  document.addEventListener("sfandom-admin-state",()=>{
+    list.querySelectorAll("[data-admin-delete-comment]").forEach(b=>{
+      b.hidden=!(window.SFANDOM_ADMIN?.canDelete);
+    });
+  });
   const decorate=()=>list.querySelectorAll("article.post[data-post-id]").forEach(attach);
   new MutationObserver(decorate).observe(list,{childList:true});
   decorate();
