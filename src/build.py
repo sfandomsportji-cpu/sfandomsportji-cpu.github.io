@@ -530,7 +530,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     ad_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE["ads"]["client"]}" crossorigin="anonymous"></script>\n'
                  if ads and not noindex else '')
     thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v2">' if path == '/community/' else '')
-    thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v2" defer></script>' if path == '/community/' else '')
+    thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v3" defer></script>' if path == '/community/' else '')
     return f'''<!doctype html>
 <html lang="ko">
 <head>
@@ -571,7 +571,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {body}
 </main>
 {footer()}
-<script src="/assets/js/site.js?v={VER}-sound3" defer></script>
+<script src="/assets/js/site.js?v={VER}-sound3-board1" defer></script>
 {thread_js}
 </body>
 </html>
