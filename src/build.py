@@ -533,10 +533,10 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
                  if ads and not noindex else '')
     thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v2">'
                   f'<link rel="stylesheet" href="/assets/css/community-admin.css?v={VER}-v1">' if path == '/community/' else '')
-    news_comments_css = (f'<link rel="stylesheet" href="/assets/css/news-comments.css?v={VER}-v1">' if re.fullmatch(r'/news/\\d{4}/\\d{2}/[a-z0-9-]+/', path) else '')
+    news_comments_css = (f'<link rel="stylesheet" href="/assets/css/news-comments.css?v={VER}-v1">' if re.fullmatch(r'/news/\d{4}/\d{2}/[a-z0-9-]+/', path) else '')
     thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v5" defer></script>'
                  f'<script src="/assets/js/community-admin.js?v={VER}-v1" defer></script>' if path == '/community/' else '')
-    news_comments_js = (f'<script src="/assets/js/news-comments.js?v={VER}-v1" defer></script>' if re.fullmatch(r'/news/\\d{4}/\\d{2}/[a-z0-9-]+/', path) else '')
+    news_comments_js = (f'<script src="/assets/js/news-comments.js?v={VER}-v1" defer></script>' if re.fullmatch(r'/news/\d{4}/\d{2}/[a-z0-9-]+/', path) else '')
     return f'''<!doctype html>
 <html lang="ko">
 <head>
