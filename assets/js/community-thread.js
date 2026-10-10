@@ -95,7 +95,7 @@
     actions.append(show, reportPost, reportSlot);
     // Controls stay with the post; the thread spans the full post card beneath it.
     postBody.append(actions);
-    card.append(panel);
+    postBody.append(panel);
     const say = text => { notice.textContent = text; };
 
     function writeForm(target, nickname, mount) {
