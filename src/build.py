@@ -531,8 +531,12 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     # 광고 스크립트는 본문이 충분한 글 상세 페이지에만 싣는다. 목록·허브·검색·404·안내·커뮤니티 화면에는 싣지 않는다.
     ad_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE["ads"]["client"]}" crossorigin="anonymous"></script>\n'
                  if ads and not noindex else '')
-    thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v2">' if path == '/community/' else '')
-    thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v4" defer></script>' if path == '/community/' else '')
+    thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v2">'
+                  f'<link rel="stylesheet" href="/assets/css/community-admin.css?v={VER}-v1">' if path == '/community/' else '')
+    news_comments_css = (f'<link rel="stylesheet" href="/assets/css/news-comments.css?v={VER}-v1">' if re.fullmatch(r'/news/\\d{4}/\\d{2}/[a-z0-9-]+/', path) else '')
+    thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v5" defer></script>'
+                 f'<script src="/assets/js/community-admin.js?v={VER}-v1" defer></script>' if path == '/community/' else '')
+    news_comments_js = (f'<script src="/assets/js/news-comments.js?v={VER}-v1" defer></script>' if re.fullmatch(r'/news/\\d{4}/\\d{2}/[a-z0-9-]+/', path) else '')
     return f'''<!doctype html>
 <html lang="ko">
 <head>
@@ -563,7 +567,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v={VER}-dedup-20261010">
-{thread_css}
+{thread_css}{news_comments_css}
 {ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
 </head>
@@ -574,7 +578,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 </main>
 {footer()}
 <script src="/assets/js/site.js?v={VER}-sound3-board1" defer></script>
-{thread_js}
+{thread_js}{news_comments_js}
 </body>
 </html>
 '''
@@ -608,7 +612,7 @@ def org_ld() -> dict:
 
 
 # ───────────────────────── 팬 보드 공통 조각 ─────────────────────────
-CHANNELS = ['NBA', 'MLB', '분석 토론', '직관 후기', '자유']   # 글 제목 앞 [채널] 머리말로 구분 (게시판 저장소는 그대로)
+CHANNELS = ['NBA', 'MLB', 'NEWS', '분석 토론', '직관 후기', '자유']   # 글 제목 앞 [채널] 머리말로 구분 (게시판 저장소는 그대로)
 QUICK_TAG = '한줄'
 
 
@@ -824,6 +828,21 @@ def build_article(a: Article):
     rel = ''.join(f'<a href="{x.url}"><small>{esc(x.section)} · {x.date_dot}</small>{esc(x.headline)}</a>' for x in related(a))
     ed = f'<a class="more" href="/news/morning/{a.edition}/">{a.edition.replace("-", ".")} 모닝 에디션 전체 →</a>' if a.edition in EDITIONS else ''
     topic = quote(f'[토론] {a.title.rstrip(",.")}')
+    if a.kind == 'news':
+        discussion_html = f'''<section class="news-comment-box" data-news-comments data-article-path="{esc(a.url)}" aria-label="뉴스 의견">
+          <h2>이 뉴스 이야기하기</h2>
+          <p class="nc-intro">이 기사에 남긴 댓글은 FAN BOARD의 전체 이야기에도 함께 표시됩니다.</p>
+          <div data-news-comment-list><p class="news-comment-empty">댓글을 불러오는 중…</p></div>
+          <form data-news-comment-form novalidate>
+            <input name="nickname" maxlength="30" placeholder="닉네임 (선택)" aria-label="닉네임">
+            <textarea name="body" maxlength="2000" required aria-label="댓글 내용" placeholder="이 경기에 대한 생각을 남겨 주세요."></textarea>
+            <label class="hp" aria-hidden="true">website<input name="website" tabindex="-1" autocomplete="off"></label>
+            <div class="nc-actions"><button class="pill" type="submit">댓글 등록</button><a class="more" href="/community/" data-news-comment-link hidden>전체 이야기에서 보기 →</a></div>
+            <p class="nc-status" data-news-comment-status role="status"></p>
+          </form>
+        </section>'''
+    else:
+        discussion_html = f'''<section class="discuss" aria-label="토론"><div><h2>이 글 토론하기</h2><p>생각이 다르면 더 좋습니다. 팬 보드에 한 줄 남겨 주세요.</p></div><a class="pill" href="/community/?topic={topic}#write">{talk_icon()}팬 보드에 글쓰기</a></section>'''
     body = f'''
 {ad_band('SF-ART-TOP')}
 <div class="wrap">
@@ -840,7 +859,7 @@ def build_article(a: Article):
       {fig}
       <div class="prose">{render_body(a)}</div>
       {src_html}{credit}
-      <section class="discuss" aria-label="토론"><div><h2>이 글 토론하기</h2><p>생각이 다르면 더 좋습니다. 팬 보드에 한 줄 남겨 주세요.</p></div><a class="pill" href="/community/?topic={topic}#write">{talk_icon()}팬 보드에 글쓰기</a></section>
+      {discussion_html}
       <div style="margin-top:24px">{ed}</div>
       <div style="margin-top:32px">{ad('SF-ART-MULTI')}</div>
     </article>
@@ -1175,6 +1194,9 @@ def build_community():
             + f'''<div class="wrap" style="padding-top:28px">{channel_chips()}</div>
 <div class="wrap sec board-grid" style="padding-top:24px">
   <div data-board data-size="10">
+    <div data-admin-mode><button type="button" data-admin-open>관리자 로그인</button><button type="button" data-admin-logout hidden>로그아웃</button>
+      <div data-admin-panel hidden><form data-admin-form><input name="email" type="email" placeholder="관리자 이메일" aria-label="관리자 이메일" required><button type="submit">이메일 인증</button></form><p data-admin-status role="status"></p></div>
+    </div>
     <div class="thread-head" data-thread-head hidden><span class="box-title">GAME THREAD</span><strong data-thread-name></strong><a class="more" href="/community/">전체 글로 돌아가기 →</a></div>
     <div data-board-list><div class="empty">스포츠 팬들의 경기·선수 토론을 확인할 수 있습니다. <a href="/community/">팬 보드에서 최신 글 보기 →</a></div></div>
     <div class="pager" data-board-pager></div>
