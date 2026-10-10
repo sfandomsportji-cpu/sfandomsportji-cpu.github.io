@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v=20261010-dedup-20261010">
-<link rel="stylesheet" href="/assets/css/community-thread.css?v=20261010-v2">
+<link rel="stylesheet" href="/assets/css/community-thread.css?v=20261010-v2"><link rel="stylesheet" href="/assets/css/community-admin.css?v=20261010-v1">
 <script>window.SFANDOM={"root": "/", "ads": {"client": "ca-pub-7606551466588787", "phase": 1, "slots": {"SF-HOME-TOP": {"phase": 2, "unit": ""}, "SF-HOME-RAIL": {"phase": 1, "unit": ""}, "SF-HOME-FEED": {"phase": 1, "unit": "", "format": "fluid", "layout": "in-article"}, "SF-HOME-MID": {"phase": 2, "unit": ""}, "SF-HOME-BTM": {"phase": 2, "unit": ""}, "SF-HUB-RAIL": {"phase": 1, "unit": ""}, "SF-HUB-FEED": {"phase": 1, "unit": "", "format": "fluid", "layout": "in-article"}, "SF-LIST-FEED": {"phase": 1, "unit": "", "format": "fluid", "layout": "in-article"}, "SF-LIST-BTM": {"phase": 2, "unit": ""}, "SF-ART-TOP": {"phase": 2, "unit": ""}, "SF-ART-IN": {"phase": 1, "unit": "", "format": "fluid", "layout": "in-article"}, "SF-ART-RAIL": {"phase": 1, "unit": ""}, "SF-ART-MULTI": {"phase": 2, "unit": "", "format": "autorelaxed"}}}, "supabase": {"url": "https://yyjjgxzbqvlpatccbpxm.supabase.co", "key": "sb_publishable_ABoOVvaUzGuVPBryIpY02w_tTcdt-Q4"}};</script>
 
 </head>
@@ -50,15 +50,18 @@
   <div class="search-bar" id="searchBar" data-panel hidden><div class="wrap"><form action="/search/" role="search"><label class="sr-only" for="q">사이트 검색</label><input id="q" name="q" type="search" placeholder="팀, 선수, 경기로 찾기" autocomplete="off"><button class="pill" type="submit">검색</button></form></div></div>
 </header>
 <main id="main">
-<div class="wrap page-head"><nav class="crumbs" aria-label="현재 위치"><a href="/">HOME</a><span aria-hidden="true">/</span><span>FAN BOARD</span></nav><h1>FAN BOARD<span class="accent">.</span> <span class="kr">먼저 놀고</span></h1><p class=lede>가입 없이 닉네임만으로 쓰는 팬 게시판. 경기 얘기, 직관 후기, 반론 모두 환영합니다.</p></div><div class="wrap" style="padding-top:28px"><nav class="chips" aria-label="채널" data-chips><a href="/community/" data-ch="">전체</a><a href="/community/?ch=NBA" data-ch="NBA">NBA</a><a href="/community/?ch=MLB" data-ch="MLB">MLB</a><a href="/community/?ch=%EB%B6%84%EC%84%9D%20%ED%86%A0%EB%A1%A0" data-ch="분석 토론">분석 토론</a><a href="/community/?ch=%EC%A7%81%EA%B4%80%20%ED%9B%84%EA%B8%B0" data-ch="직관 후기">직관 후기</a><a href="/community/?ch=%EC%9E%90%EC%9C%A0" data-ch="자유">자유</a></nav></div>
+<div class="wrap page-head"><nav class="crumbs" aria-label="현재 위치"><a href="/">HOME</a><span aria-hidden="true">/</span><span>FAN BOARD</span></nav><h1>FAN BOARD<span class="accent">.</span> <span class="kr">먼저 놀고</span></h1><p class=lede>가입 없이 닉네임만으로 쓰는 팬 게시판. 경기 얘기, 직관 후기, 반론 모두 환영합니다.</p></div><div class="wrap" style="padding-top:28px"><nav class="chips" aria-label="채널" data-chips><a href="/community/" data-ch="">전체</a><a href="/community/?ch=NBA" data-ch="NBA">NBA</a><a href="/community/?ch=MLB" data-ch="MLB">MLB</a><a href="/community/?ch=NEWS" data-ch="NEWS">NEWS</a><a href="/community/?ch=%EB%B6%84%EC%84%9D%20%ED%86%A0%EB%A1%A0" data-ch="분석 토론">분석 토론</a><a href="/community/?ch=%EC%A7%81%EA%B4%80%20%ED%9B%84%EA%B8%B0" data-ch="직관 후기">직관 후기</a><a href="/community/?ch=%EC%9E%90%EC%9C%A0" data-ch="자유">자유</a></nav></div>
 <div class="wrap sec board-grid" style="padding-top:24px">
   <div data-board data-size="10">
+    <div data-admin-mode><button type="button" data-admin-open>관리자 로그인</button><button type="button" data-admin-logout hidden>로그아웃</button>
+      <div data-admin-panel hidden><form data-admin-form><input name="email" type="email" placeholder="관리자 이메일" aria-label="관리자 이메일" required><button type="submit">이메일 인증</button></form><p data-admin-status role="status"></p></div>
+    </div>
     <div class="thread-head" data-thread-head hidden><span class="box-title">GAME THREAD</span><strong data-thread-name></strong><a class="more" href="/community/">전체 글로 돌아가기 →</a></div>
     <div data-board-list><div class="empty">스포츠 팬들의 경기·선수 토론을 확인할 수 있습니다. <a href="/community/">팬 보드에서 최신 글 보기 →</a></div></div>
     <div class="pager" data-board-pager></div>
     <form class="composer" id="write" data-board-form style="margin-top:32px" novalidate>
       <span class="box-title">WRITE · 글쓰기</span>
-      <div class="row3"><div><label for="chn">채널</label><select id="chn" name="channel"><option value="NBA">NBA</option><option value="MLB">MLB</option><option value="분석 토론">분석 토론</option><option value="직관 후기">직관 후기</option><option value="자유" selected>자유</option></select></div>
+      <div class="row3"><div><label for="chn">채널</label><select id="chn" name="channel"><option value="NBA">NBA</option><option value="MLB">MLB</option><option value="NEWS">NEWS</option><option value="분석 토론">분석 토론</option><option value="직관 후기">직관 후기</option><option value="자유" selected>자유</option></select></div>
       <div><label for="nick">닉네임</label><input id="nick" name="nickname" maxlength="30" placeholder="ANON" autocomplete="nickname"></div>
       <div><label for="ttl">제목</label><input id="ttl" name="title" maxlength="100" required placeholder="오늘 경기, 무슨 얘기 하고 싶어요?"></div></div>
       <div><label for="bdy">내용</label><textarea id="bdy" name="body" maxlength="2000" required></textarea></div>
@@ -88,6 +91,6 @@
   </div>
 </footer>
 <script src="/assets/js/site.js?v=20261010-sound3-board1" defer></script>
-<script src="/assets/js/community-thread.js?v=20261010-v4" defer></script>
+<script src="/assets/js/community-thread.js?v=20261010-v5" defer></script><script src="/assets/js/community-admin.js?v=20261010-v1" defer></script>
 </body>
 </html>
