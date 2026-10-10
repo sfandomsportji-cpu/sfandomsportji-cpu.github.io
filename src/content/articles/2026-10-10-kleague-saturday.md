@@ -2,7 +2,7 @@
 kind: "news"
 date: "2026-10-10"
 priority: 110
-title: "K리그 토요일, 서울–제주와 김천–안양를 읽는 법"
+title: "K리그 토요일, 서울–제주와 김천–안양을 읽는 법"
 subtitle: "14시·16시 30분 두 경기의 수비 전환과 공격 루트"
 kicker: "SFANDOM & KAIRO · K LEAGUE"
 meta: "2026.10.10 KST · K리그1 토요일 프리뷰"
