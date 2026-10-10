@@ -7,12 +7,16 @@ subtitle: "NC의 직전 실점과 한화의 휴식 이후 경기 운영"
 kicker: "KBO SATURDAY · DAEJEON"
 meta: "2026.10.10 17:00 KST · 대전"
 league: "KBO"
-image: ""
-image_alt: ""
-credit: ""
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Daejeon_hanwha_Life_Ballpark_2025.jpg/1200px-Daejeon_hanwha_Life_Ballpark_2025.jpg"
+image_alt: "대전한화생명볼파크 전경(2025년 자료사진)"
+credit: "PHOTO · Seohae1999 / Wikimedia Commons · 2025년 자료사진"
 edition: "2026-10-10"
 slug: "nc-at-hanwha-20261010"
 sources: [{"label":"KBO 공식 일정 · 2026년 10월 10일","url":"https://www.koreabaseball.com/Schedule/Schedule.aspx?month=10&year=2026"},{"label":"2026 KBO 경기 결과 · 10월 9일","url":"https://sportify.tw/ko/kbo/schedule?season=all"},{"label":"KBO 팀 순위 · 10월 9일 기준","url":"https://yachi.kr/schedule"}]
+photo_source: "https://commons.wikimedia.org/wiki/File:Daejeon_hanwha_Life_Ballpark_2025.jpg"
+photo_license: "CC BY-SA 4.0"
+photo_license_url: "https://creativecommons.org/licenses/by-sa/4.0/"
+photo_fallback: "/assets/brand/sfandom-mark.svg"
 ---
 
 NC 다이노스와 한화 이글스는 10월 10일 오후 5시 대전에서 맞붙는다. NC는 9일 창원에서 KIA에 2–7로 패했다. 한화는 7일 키움전 3–5 패배 이후 10일 일정에 나선다. 두 팀 모두 최근 성적만 단순히 평균내기보다는, 직전 경기에서 드러난 약점이 오늘 어떤 방식으로 수정되는지를 볼 필요가 있다.
