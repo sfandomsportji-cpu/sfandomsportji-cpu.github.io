@@ -7,7 +7,7 @@ subtitle: "10월 10일 KBO 세 경기로 읽는 선발·불펜·가을야구의 
 kicker: "KAIRO FEATURE · KBO WEEKEND"
 meta: "2026.10.10 · KBO SPECIAL · 경기 전 심층 해설"
 league: "KBO"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/%EB%B6%80%EC%82%B0%EB%A1%AF%EB%8D%B0.jpg/1200px-%EB%B6%80%EC%82%B0%EB%A1%AF%EB%8D%B0.jpg"
+image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/%EB%B6%80%EC%82%B0%EB%A1%AF%EB%8D%B0.jpg/960px-%EB%B6%80%EC%82%B0%EB%A1%AF%EB%8D%B0.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org"
 image_alt: "KBO 포스트시즌 사직구장 관중석(2011년 자료사진)"
 credit: "PHOTO · 히히히 / Wikimedia Commons · 2011년 자료사진"
 edition: "2026-10-10"
