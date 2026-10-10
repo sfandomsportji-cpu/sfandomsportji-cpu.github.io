@@ -1,7 +1,7 @@
 ---
 kind: "news"
 date: "2026-10-10"
-priority: 116
+priority: 129
 title: "대전 NC–한화, 반등의 출발은 첫 세 이닝"
 subtitle: "NC의 직전 실점과 한화의 휴식 이후 경기 운영"
 kicker: "KBO SATURDAY · DAEJEON"
