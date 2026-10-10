@@ -7,13 +7,14 @@ subtitle: "요미우리 1–2 DeNA · 마키의 선제포, 아즈마의 7이닝,
 kicker: "SFANDOM & KAIRO · NPB CLIMAX SERIES"
 meta: "2026.10.10 저녁 KST · 센트럴리그 CS 1차전 종료"
 league: "NPB"
-image: "/assets/brand/sfandom-mark-1024.png"
-image_alt: "SFANDOM 브랜드 심볼 · NPB 클라이맥스 시리즈 분석"
-credit: "VISUAL · SFANDOM 자체 브랜드 이미지"
+image: "https://commons.wikimedia.org/wiki/Special:Redirect/file/%E3%80%90JERA_%E3%82%BB%E3%83%BB%E3%83%AA%E3%83%BC%E3%82%B0%E5%85%AC%E5%BC%8F%E6%88%A6%E3%80%91%E6%A8%AA%E6%B5%9CDeNA%E3%83%99%E3%82%A4%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%BA_vs_%E8%AA%AD%E5%A3%B2%E3%82%B8%E3%83%A3%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%84_17%E5%9B%9E%E6%88%A6_%E6%A8%AA%E6%B5%9C%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%A2%E3%83%A0_2026%E5%B9%B48%E6%9C%8818%E6%97%A5%E3%81%AE%E6%A8%AA%E6%B5%9C_202608181745_DSCN7114.jpg?width=960"
+image_alt: "2026년 8월 요코하마 DeNA–요미우리 맞대결 자료사진(10월 10일 경기 사진 아님)"
+credit: "PHOTO · Wikimedia Commons · 2026년 8월 양 팀 맞대결 자료사진"
 edition: "2026-10-10"
 slug: "npb-dena-giants-cs1-recap-20261010"
 sources: [{"label":"10월 10일 요미우리–DeNA 1차전 기록·이닝별 득점","url":"https://baseball.yahoo.co.jp/npb/game/2021039474/top"},{"label":"NPB 공식 클라이맥스 시리즈 경기 일정","url":"https://npb.jp/bis/eng/2026/games/gm20261010.html"}]
-photo_fallback: "/assets/brand/sfandom-mark.svg"
+photo_source: "https://commons.wikimedia.org/wiki/File:%E3%80%90JERA_%E3%82%BB%E3%83%BB%E3%83%AA%E3%83%BC%E3%82%B0%E5%85%AC%E5%BC%8F%E6%88%A6%E3%80%91%E6%A8%AA%E6%B5%9CDeNA%E3%83%99%E3%82%A4%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%BA_vs_%E8%AA%AD%E5%A3%B2%E3%82%B8%E3%83%A3%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%84_17%E5%9B%9E%E6%88%A6_%E6%A8%AA%E6%B5%9C%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%A2%E3%83%A0_2026%E5%B9%B48%E6%9C%8818%E6%97%A5%E3%81%AE%E6%A8%AA%E6%B5%9C_202608181745_DSCN7114.jpg"
+photo_fallback: "/assets/editorial/20261010-npb-dena-giants-result.svg"
 ---
 
 일본 프로야구 센트럴리그 클라이맥스 시리즈 퍼스트 스테이지 1차전에서 요코하마 DeNA 베이스타스가 요미우리 자이언츠를 **2–1**로 이겼다. 10월 10일 도쿄돔에서 열린 경기의 흐름은 단순했다. 첫 이닝에 양 팀이 한 점씩 주고받았고, 이후 긴 침묵이 이어졌다. 승부가 갈린 것은 **9회초 와타라이 류키의 결승 솔로 홈런**이었다. DeNA는 2전 선승제 시리즈에서 먼저 1승을 확보했다.
