@@ -316,6 +316,8 @@ def thumb(a: Article, cls: str = '') -> str:
         return f'<div class="thumb art-thumb {cls}" aria-hidden="true"><span class="k">{esc(a.league)} · {a.date_dot}</span><span class="w">{esc(word)}</span></div>'
     fallback_attr = ' onerror="this.onerror=null;this.src=\'/assets/teams/mlb/lad.svg\'"' if a.slug == 'dodgers-clinch-nlcs' else ''
     portrait = 'portrait' if 'headshot' in a.image else ''
+    if getattr(a, 'photo_fallback', ''):
+        fallback_attr = f' onerror="this.onerror=null;this.src=\'{esc(a.photo_fallback)}\'"'
     return (f'<div class="thumb {portrait} {cls}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" '
             f'loading="lazy" decoding="async"{fallback_attr}></div>')
 
@@ -787,11 +789,21 @@ def build_article(a: Article):
     fig = ''
     if a.image:
         logo = 'logo' if a.image.endswith('.svg') or 'logo' in a.image else ''
-        cap = f'<figcaption>{esc(a.credit)}</figcaption>' if a.credit.startswith('PHOTO') else f'<figcaption>{esc(a.image_alt)}</figcaption>'
+        photo_source = getattr(a, 'photo_source', '')
+        photo_license = getattr(a, 'photo_license', '')
+        photo_license_url = getattr(a, 'photo_license_url', '')
+        cap_txt = esc(a.credit) if a.credit.startswith('PHOTO') else esc(a.image_alt)
+        if photo_source:
+            cap_txt += f' · <a href="{esc(photo_source)}" target="_blank" rel="noopener noreferrer">원본 사진</a>'
+        if photo_license and photo_license_url:
+            cap_txt += f' · <a href="{esc(photo_license_url)}" target="_blank" rel="noopener noreferrer">{esc(photo_license)}</a>'
+        cap = f'<figcaption>{cap_txt}</figcaption>'
         feature = ' dodgers-feature' if a.slug == 'dodgers-clinch-nlcs' else ''
         fallback_attr = ' onerror="this.onerror=null;this.src=\'/assets/teams/mlb/lad.svg\'"' if feature else ''
+        if getattr(a, 'photo_fallback', ''):
+            fallback_attr = f' onerror="this.onerror=null;this.src=\'{esc(a.photo_fallback)}\'"'
         fallback = '<div class="feature-fallback">DODGERS · NLCS</div>' if feature else ''
-        fig = f'<figure class="figure {logo}{feature}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" fetchpriority="high"{fallback_attr if a.slug == "dodgers-clinch-nlcs" else ""}>{fallback}{cap}</figure>'
+        fig = f'<figure class="figure {logo}{feature}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" fetchpriority="high"{fallback_attr}>{fallback}{cap}</figure>'
     srcs = ''.join(f'<span>{esc(s["label"])}</span>' for s in a.sources if s.get('label'))
     src_html = f'<div class="sources"><strong>출처</strong>{srcs}</div>' if srcs else ''
     credit = f'<p class="credit">{esc(a.credit)}</p>' if a.credit and not a.credit.startswith('PHOTO') else ''
