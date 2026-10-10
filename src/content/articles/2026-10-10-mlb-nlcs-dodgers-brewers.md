@@ -7,7 +7,7 @@ subtitle: "NLCS 1차전: 스쿠벌, 미시오로스키 변수와 7전 4선승 �
 kicker: "KAIRO DEEP ANALYSIS · NLCS"
 meta: "2026.10.10 KST · 10월 12일 09:00 시리즈 개막"
 league: "MLB"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/View_of_American_Family_Field_from_behind_home_plate.jpg/1200px-View_of_American_Family_Field_from_behind_home_plate.jpg"
+image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/View_of_American_Family_Field_from_behind_home_plate.jpg/960px-View_of_American_Family_Field_from_behind_home_plate.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org"
 image_alt: "밀워키 홈구장 다저스–브루어스 경기(2022년 자료사진)"
 credit: "PHOTO · SidewalkMD / Wikimedia Commons · 2022년 자료사진"
 edition: "2026-10-10"
