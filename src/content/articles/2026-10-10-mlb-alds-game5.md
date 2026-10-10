@@ -7,7 +7,7 @@ subtitle: "화이트삭스–가디언스 ALDS 5차전, 선발과 불펜의 다�
 kicker: "SFANDOM & KAIRO · MLB POSTSEASON"
 meta: "2026.10.10 KST · 10월 11일 09:00 경기 프리뷰"
 league: "MLB"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Progressive_Field_Panorama.jpg/1200px-Progressive_Field_Panorama.jpg"
+image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/36/Progressive_Field_Panorama.jpg/960px-Progressive_Field_Panorama.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org"
 image_alt: "클리블랜드 프로그레시브 필드 전경(2008년 자료사진)"
 credit: "PHOTO · Chris Metcalf / Wikimedia Commons · 2008년 자료사진"
 edition: "2026-10-10"
