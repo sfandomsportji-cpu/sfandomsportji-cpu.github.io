@@ -7,7 +7,7 @@ subtitle: "필라델피아–보스턴, 킹스–워리어스, 샌안토니오�
 kicker: "SFANDOM & KAIRO · NBA PRESEASON"
 meta: "2026.10.10 KST · 경기일 10월 11일 오전"
 league: "NBA"
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Basketball_Game_TD_Garden.jpg/1200px-Basketball_Game_TD_Garden.jpg"
+image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Basketball_Game_TD_Garden.jpg/960px-Basketball_Game_TD_Garden.jpg?utm_campaign=index&utm_content=thumbnail&utm_source=commons.wikimedia.org"
 image_alt: "보스턴 TD가든 농구 경기장 내부(2009년 자료사진)"
 credit: "PHOTO · EgorovaSvetlana / Wikimedia Commons · 2009년 자료사진"
 edition: "2026-10-10"
