@@ -7,12 +7,16 @@ subtitle: "사직 LG–롯데, 광주 SSG–KIA, 대전 NC–한화… 전날 �
 kicker: "SFANDOM & KAIRO · KBO SPECIAL"
 meta: "2026.10.10 오전 · KBO 정규시즌 잔여 일정"
 league: "KBO"
-image: ""
-image_alt: ""
-credit: ""
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/%EB%A1%AF%EB%8D%B0%EC%9E%90%EC%9D%B4%EC%96%B8%EC%B8%A0%EC%9D%91%EC%9B%90.jpg/1200px-%EB%A1%AF%EB%8D%B0%EC%9E%90%EC%9D%B4%EC%96%B8%EC%B8%A0%EC%9D%91%EC%9B%90.jpg"
+image_alt: "사직구장에서 응원하는 롯데 팬들(2011년 자료사진)"
+credit: "PHOTO · 히히히 / Wikimedia Commons · 2011년 자료사진"
 edition: "2026-10-10"
 slug: "kbo-saturday-3games-20261010"
 sources: [{"label":"KBO 공식 일정 · 2026년 10월 10일","url":"https://www.koreabaseball.com/Schedule/Schedule.aspx?month=10&year=2026"},{"label":"KBO · 포스트시즌 10월 14일 개막","url":"https://www.koreabaseball.com/MediaNews/Notice/View.aspx?bdSe=12183"},{"label":"2026 KBO 경기 결과 · 10월 9일","url":"https://sportify.tw/ko/kbo/schedule?season=all"},{"label":"KBO 팀 순위 · 10월 9일 기준","url":"https://yachi.kr/schedule"}]
+photo_source: "https://commons.wikimedia.org/wiki/File:%EB%A1%AF%EB%8D%B0%EC%9E%90%EC%9D%B4%EC%96%B8%EC%B8%A0%EC%9D%91%EC%9B%90.jpg"
+photo_license: "CC BY-SA 3.0"
+photo_license_url: "https://creativecommons.org/licenses/by-sa/3.0/"
+photo_fallback: "/assets/brand/sfandom-mark.svg"
 ---
 
 토요일 KBO 무대에는 세 경기가 예정돼 있다. 사직에서는 오후 2시 LG 트윈스와 롯데 자이언츠가 다시 만나고, 오후 5시에는 광주에서 SSG 랜더스와 KIA 타이거즈, 대전에서 NC 다이노스와 한화 이글스가 맞선다. 10월 14일 시작되는 와일드카드 결정전을 앞두고, 지금은 매 경기 결과만큼 남은 선수 기용과 다음 일정의 부담을 함께 볼 시기다.
