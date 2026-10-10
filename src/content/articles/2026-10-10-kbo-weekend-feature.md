@@ -7,12 +7,16 @@ subtitle: "10월 10일 KBO 세 경기로 읽는 선발·불펜·가을야구의 
 kicker: "KAIRO FEATURE · KBO WEEKEND"
 meta: "2026.10.10 · KBO SPECIAL · 경기 전 심층 해설"
 league: "KBO"
-image: ""
-image_alt: ""
-credit: ""
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/%EB%B6%80%EC%82%B0%EB%A1%AF%EB%8D%B0.jpg/1200px-%EB%B6%80%EC%82%B0%EB%A1%AF%EB%8D%B0.jpg"
+image_alt: "KBO 포스트시즌 사직구장 관중석(2011년 자료사진)"
+credit: "PHOTO · 히히히 / Wikimedia Commons · 2011년 자료사진"
 edition: "2026-10-10"
 slug: "kbo-final-weekend-20261010"
 sources: [{"label":"KBO 공식 일정 · 2026년 10월 10일","url":"https://www.koreabaseball.com/Schedule/Schedule.aspx?month=10&year=2026"},{"label":"KBO · 포스트시즌 10월 14일 개막","url":"https://www.koreabaseball.com/MediaNews/Notice/View.aspx?bdSe=12183"},{"label":"2026 KBO 경기 결과 · 10월 9일","url":"https://sportify.tw/ko/kbo/schedule?season=all"},{"label":"KBO 팀 순위 · 10월 9일 기준","url":"https://yachi.kr/schedule"}]
+photo_source: "https://commons.wikimedia.org/wiki/File:%EB%B6%80%EC%82%B0%EB%A1%AF%EB%8D%B0.jpg"
+photo_license: "CC BY-SA 3.0"
+photo_license_url: "https://creativecommons.org/licenses/by-sa/3.0/"
+photo_fallback: "/assets/brand/sfandom-mark.svg"
 ---
 
 야구가 시즌 끝자락에 도달하면 한 경기의 의미가 두 겹이 된다. 오늘 이겨야 하는 현실과 며칠 뒤 다시 써야 할 선수들을 어떻게 운용할 것인지가 동시에 걸린다. 2026 KBO 정규시즌 잔여 일정은 10월 12일까지 편성됐고, 포스트시즌은 14일 와일드카드 결정 1차전으로 시작된다. 지금 필요한 것은 점수를 확인하는 일과 경기 과정을 해석하는 일을 구분하는 것이다.
