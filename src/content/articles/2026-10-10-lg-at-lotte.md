@@ -7,12 +7,16 @@ subtitle: "9–1로 끝난 전날 경기와 14시 경기의 다른 조건"
 kicker: "KBO SATURDAY · SAJIK"
 meta: "2026.10.10 14:00 KST · 사직"
 league: "KBO"
-image: ""
-image_alt: ""
-credit: ""
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Busan_Sajik_Stadium_20080706.JPG/1200px-Busan_Sajik_Stadium_20080706.JPG"
+image_alt: "부산 사직야구장 전경(2008년 자료사진)"
+credit: "PHOTO · Cheolstar / Wikimedia Commons · 2008년 자료사진"
 edition: "2026-10-10"
 slug: "lg-at-lotte-rematch-20261010"
 sources: [{"label":"KBO 공식 일정 · 2026년 10월 10일","url":"https://www.koreabaseball.com/Schedule/Schedule.aspx?month=10&year=2026"},{"label":"2026 KBO 경기 결과 · 10월 9일","url":"https://sportify.tw/ko/kbo/schedule?season=all"},{"label":"LG·롯데 대진별 일정","url":"https://sports.news.nate.com/baseball/schedule?t_sq=942&ym=202610"}]
+photo_source: "https://commons.wikimedia.org/wiki/File:Busan_Sajik_Stadium_20080706.JPG"
+photo_license: "CC BY-SA 3.0"
+photo_license_url: "https://creativecommons.org/licenses/by-sa/3.0/"
+photo_fallback: "/assets/brand/sfandom-mark.svg"
 ---
 
 LG와 롯데는 10월 10일 오후 2시 사직에서 다시 만난다. 9일 같은 장소에서 열린 맞대결은 롯데의 9–1 승리였다. 같은 상대와 같은 구장이라고 해서 다음 경기까지 같은 전개가 이어지는 것은 아니다. 이 재대결의 첫 질문은 **LG가 전날의 실점 구조를 어떻게 끊을 것인가**, 두 번째 질문은 **롯데가 어제의 좋은 타석을 재현할 수 있는가**다.
