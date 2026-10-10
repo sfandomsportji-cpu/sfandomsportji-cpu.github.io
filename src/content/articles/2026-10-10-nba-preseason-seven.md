@@ -7,12 +7,16 @@ subtitle: "필라델피아–보스턴, 킹스–워리어스, 샌안토니오�
 kicker: "SFANDOM & KAIRO · NBA PRESEASON"
 meta: "2026.10.10 KST · 경기일 10월 11일 오전"
 league: "NBA"
-image: ""
-image_alt: ""
-credit: ""
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Basketball_Game_TD_Garden.jpg/1200px-Basketball_Game_TD_Garden.jpg"
+image_alt: "보스턴 TD가든 농구 경기장 내부(2009년 자료사진)"
+credit: "PHOTO · EgorovaSvetlana / Wikimedia Commons · 2009년 자료사진"
 edition: "2026-10-10"
 slug: "nba-preseason-seven-games-oct11"
 sources: [{"label":"NBA 공식 경기 일정 (시간 UTC → KST 환산)","url":"https://www.nba.com/schedule?region=10"}]
+photo_source: "https://commons.wikimedia.org/wiki/File:Basketball_Game_TD_Garden.jpg"
+photo_license: "CC BY-SA 4.0"
+photo_license_url: "https://creativecommons.org/licenses/by-sa/4.0/"
+photo_fallback: "/assets/teams/nba/bos.svg"
 ---
 
 NBA 2026–27시즌을 앞둔 프리시즌 경기가 한국시간 10월 11일 오전에 집중된다. 북미 현지 10월 10일 일정에 편성된 경기는 모두 일곱 경기다. 정규시즌 성적을 미리 확정하는 무대가 아니라, 새로운 조합의 역할과 로테이션 깊이를 실전에서 확인하는 시간에 가깝다. 특히 경기 전 출전 명단과 실제 쿼터별 출전 시간이 다를 수 있다는 점을 전제로 분석해야 한다.
