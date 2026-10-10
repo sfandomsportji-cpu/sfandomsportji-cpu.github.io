@@ -7,12 +7,16 @@ subtitle: "14시·16시 30분 두 경기의 수비 전환과 공격 루트"
 kicker: "SFANDOM & KAIRO · K LEAGUE"
 meta: "2026.10.10 KST · K리그1 토요일 프리뷰"
 league: "SOCCER"
-image: ""
-image_alt: ""
-credit: ""
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/260726_FC_%EC%84%9C%EC%9A%B8_%ED%8F%AC%ED%86%A0%ED%83%80%EC%9E%84_(Leonardo_Acevedo).jpg/1200px-260726_FC_%EC%84%9C%EC%9A%B8_%ED%8F%AC%ED%86%A0%ED%83%80%EC%9E%84_(Leonardo_Acevedo).jpg"
+image_alt: "FC서울 레오나르도 아세베도 선수, 2026년 7월 26일 경기 자료사진"
+credit: "PHOTO · Explicit / Wikimedia Commons · 2026년 자료사진"
 edition: "2026-10-10"
 slug: "kleague-seoul-jeju-gimcheon-anyang"
 sources: [{"label":"K리그 공식 경기 일정 달력","url":"https://portal.kleague.com/main/schedule/calendar.do"}]
+photo_source: "https://commons.wikimedia.org/wiki/File:260726_FC_%EC%84%9C%EC%9A%B8_%ED%8F%AC%ED%86%A0%ED%83%80%EC%9E%84_(Leonardo_Acevedo).jpg"
+photo_license: "CC BY-SA 4.0"
+photo_license_url: "https://creativecommons.org/licenses/by-sa/4.0/"
+photo_fallback: "/assets/brand/sfandom-mark.svg"
 ---
 
 10월 10일 토요일 K리그1은 서울–제주, 김천–안양의 두 경기로 이어진다. 공식 일정상 서울은 오후 2시에 제주를 만나고, 김천은 오후 4시 30분 안양과 맞붙는다. 정규시즌 후반의 승점 경쟁이라는 큰 틀은 같지만, 어떤 팀이 중원 압박을 택하느냐에 따라 경기 내내 관전 포인트는 달라질 수 있다.
