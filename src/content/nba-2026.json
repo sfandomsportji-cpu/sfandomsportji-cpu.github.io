@@ -92,7 +92,12 @@
     "POR": "#E03A3E",
     "BKN": "#000000",
     "PHX": "#1D1160",
-    "CHI": "#CE1141"
+    "CHI": "#CE1141",
+    "LAC": "#C8102E",
+    "TOR": "#CE1141",
+    "ATL": "#E03A3E",
+    "WAS": "#002B5C",
+    "SAC": "#5A2D81"
   },
   "storylines": [
     {
@@ -176,8 +181,64 @@
     ]
   ],
   "home_mode": "preseason",
-  "preseason_note": "2026.10.09 KST · 10월 8일 경기 최종 스코어 확인 (NBA 공식 기록·경기 결과)",
+  "preseason_note": "10월 11일 오전 7경기 일정은 NBA 공식 편성의 KST 환산. 출전 명단 발표 전이며, 과거 경기 결과는 아래에 별도 표기.",
   "preseason_games": [
+    {
+      "day": "UPCOMING",
+      "away": "LAC",
+      "home": "TOR",
+      "kst": "10.11 (일) 07:30",
+      "tv": "KST",
+      "tag": "선발 명단 발표 전"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "ATL",
+      "home": "IND",
+      "kst": "10.11 (일) 08:00",
+      "tv": "KST",
+      "tag": "선발 명단 발표 전"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "DET",
+      "home": "WAS",
+      "kst": "10.11 (일) 08:00",
+      "tv": "KST",
+      "tag": "선발 명단 발표 전"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "MIN",
+      "home": "MIA",
+      "kst": "10.11 (일) 09:00",
+      "tv": "KST",
+      "tag": "선발 명단 발표 전"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "PHI",
+      "home": "BOS",
+      "kst": "10.11 (일) 09:00",
+      "tv": "KST",
+      "tag": "선발 명단 발표 전"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "SAC",
+      "home": "GSW",
+      "kst": "10.11 (일) 09:30",
+      "tv": "KST",
+      "tag": "선발 명단 발표 전"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "SAS",
+      "home": "PHX",
+      "kst": "10.11 (일) 11:30",
+      "tv": "KST",
+      "tag": "선발 명단 발표 전"
+    },
     {
       "day": "FINAL",
       "away": "LAL",
