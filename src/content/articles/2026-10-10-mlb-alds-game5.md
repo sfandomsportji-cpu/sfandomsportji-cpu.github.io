@@ -7,12 +7,16 @@ subtitle: "화이트삭스–가디언스 ALDS 5차전, 선발과 불펜의 다�
 kicker: "SFANDOM & KAIRO · MLB POSTSEASON"
 meta: "2026.10.10 KST · 10월 11일 09:00 경기 프리뷰"
 league: "MLB"
-image: ""
-image_alt: ""
-credit: ""
+image: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Progressive_Field_Panorama.jpg/1200px-Progressive_Field_Panorama.jpg"
+image_alt: "클리블랜드 프로그레시브 필드 전경(2008년 자료사진)"
+credit: "PHOTO · Chris Metcalf / Wikimedia Commons · 2008년 자료사진"
 edition: "2026-10-10"
 slug: "guardians-white-sox-alds-game5"
 sources: [{"label":"MLB 공식 ALDS 5차전 프리뷰","url":"https://www.mlb.com/amp/news/white-sox-vs-guardians-alds-game-5-starting-lineups-and-pitching-matchup.html"},{"label":"MLB 공식 포스트시즌 일정","url":"https://www.mlb.com/postseason"}]
+photo_source: "https://commons.wikimedia.org/wiki/File:Progressive_Field_Panorama.jpg"
+photo_license: "CC BY 2.0"
+photo_license_url: "https://creativecommons.org/licenses/by/2.0/"
+photo_fallback: "/assets/teams/mlb/cle.svg"
 ---
 
 한국시간 10월 11일 오전 9시, 클리블랜드에서 아메리칸리그 디비전시리즈 마지막 5차전이 열린다. 시카고 화이트삭스가 1·2차전을 연속으로 잡았지만 클리블랜드 가디언스가 3·4차전을 9–3, 9–5로 가져오면서 시리즈는 2승 2패가 됐다. 이 경기 승자는 탬파베이 레이스를 만난다. 두 팀은 다시 한 번 같은 상대를 만나지만, 전날까지 사용한 투수와 가능한 대응책은 첫 경기와 같지 않다.
