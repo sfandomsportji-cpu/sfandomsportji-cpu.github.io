@@ -341,11 +341,17 @@
       const [tag, title] = splitTag(p.title);
       const a = el('article', 'post');
       a.dataset.postId = p.id;
+      a.id = 'comments-' + p.id;
       a.append(el('span', 'post-no', String(Math.max(1, total - ((page - 1) * size + i)))));
       const b = el('div', 'post-body');
       const meta = el('span', 'post-meta');
       meta.append(el('b', null, '#' + tag), document.createTextNode(` · ${p.nickname || 'ANON'} · ${fmtTime(p.created_at)}`));
       b.append(meta, el('strong', null, title || '(제목 없음)'), el('p', null, p.body || ''));
+      if (typeof p.source_url === 'string' && /^\/news\/\d{4}\/\d{2}\/[a-z0-9-]+\/$/.test(p.source_url)) {
+        const source = el('a', 'news-discussion-source', '원문 기사 보기 ↗');
+        source.href = p.source_url;
+        b.append(source);
+      }
       a.append(b);
       list.append(a);
     });
@@ -396,7 +402,7 @@
       const filter = scope === '자유' ? '&title=not.like.' + encodeURIComponent('[') + '*'
         : scope ? '&title=' + likeTag(scope) : '&title=not.' + likeTag(QUICK);
       try {
-        const res = await request('/rest/v1/posts?select=id,title,body,nickname,created_at&status=eq.published&order=created_at.desc' + filter, {
+        const res = await request('/rest/v1/posts?select=id,title,body,nickname,created_at,updated_at,source_url&status=eq.published&order=updated_at.desc' + filter, {
           headers: { Prefer: 'count=exact', 'Range-Unit': 'items', Range: `${from}-${from + size - 1}` }
         });
         const rows = await res.json();
