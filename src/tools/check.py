@@ -38,13 +38,16 @@ old_paths = [p for p in tracked if p.startswith(('archive/', 'scripts/')) or p i
     'analysis.html', 'content.html', 'about.html', 'terms.html', 'privacy.html', 'community-policy.html', 'legal-notice.html',
     'home.css', 'daily-edition.css', 'morning-content.css', 'visitor-counter.js') or (p.count('/') == 0 and p.endswith(('.css', '.js')))]
 check('03 이전 사이트 페이지 · 스타일 · 스크립트 파일 없음', old_paths)
-check('05 이전 이미지(avif · webp · 옛 로고) 없음', [p for p in tracked if p.lower().endswith(('.avif', '.webp')) or 'logo-official' in p or p.startswith('assets/sfandom-logo.')])
+# 예외: 예전 공유 미리보기 주소를 살리려고 일부러 복원한 파일(커밋 5c86e41) — 지우면 외부 미리보기가 깨짐
+LEGACY_SHARE_IMAGE = 'assets/sfandom-logo-official.png'
+check('05 이전 이미지(avif · webp · 옛 로고) 없음', [p for p in tracked if p != LEGACY_SHARE_IMAGE and (p.lower().endswith(('.avif', '.webp')) or 'logo-official' in p or p.startswith('assets/sfandom-logo.'))])
 gone = ['sfandom-logo-official', 'padres-analysis', 'padres-result', 'kairo-feature-rays-pitcher', 'daily-edition', 'morning-content.css', 'home.css',
         'visitor-counter', 'generate_edition', 'edition_prompt', 'legal-notice.html', 'community-policy.html', 'content.html']
 check('06 지운 파일을 가리키는 참조 없음', [(p, g) for p, t in ALL.items() for g in gone if g in t])
 check('07 저장소 밖 경로 · 임시 경로 · 로컬 주소 없음', [(p, m.group(0)) for p, t in ALL.items() for m in re.finditer(r'localhost|127\.0\.0\.1|/tmp/|scratchpad|/home/claude|/mnt/user-data', t)])
 mail = [(p, m.group(0)) for p, t in ALL.items() for m in re.finditer(r'[\w.+-]+@gmail\.com|mailto:', t)]
-mail += sorted({x for x in sh('git', 'log', '--all', '--format=%ae %ce').stdout.split() if not x.endswith(('@users.noreply.github.com', '@github.com'))})
+# 예외: Claude 커밋 표기(noreply@anthropic.com)는 개인 메일이 아니므로 검사하지 않음
+mail += sorted({x for x in sh('git', 'log', '--all', '--format=%ae %ce').stdout.split() if x != 'noreply@anthropic.com' and not x.endswith(('@users.noreply.github.com', '@github.com'))})
 check('07b 메일 주소가 파일과 커밋 기록 어디에도 없음 (커밋은 noreply 주소만)', mail)
 check('08 추적되지 않은 잉여 파일 없음', [x for x in sh('git', 'status', '--porcelain').stdout.split('\n') if x.strip()])
 
@@ -201,7 +204,7 @@ for f in sorted((R / 'src/content/articles').glob('*.md')):
 check('39 데이터 파일과 글 머리말이 모두 올바른 형식', jbad)
 ref = ' '.join(ALL.values())
 # 보관용으로 남기는 것: 브랜드 필름 원본, 로고 묶음(assets/brand)
-orphans = [p for p in tracked if p.startswith('assets/') and not p.startswith(('assets/brand/', 'assets/teams/')) and pathlib.Path(p).name not in ref and p != 'assets/sfandom-brand-film-20260901.mp4']
+orphans = [p for p in tracked if p.startswith('assets/') and not p.startswith(('assets/brand/', 'assets/teams/')) and pathlib.Path(p).name not in ref and p not in ('assets/sfandom-brand-film-20260901.mp4', LEGACY_SHARE_IMAGE)]
 conf = []
 if (R / 'CNAME').read_text().strip() != 'sfandom.com': conf.append('CNAME')
 if not (R / 'ads.txt').read_text().strip(): conf.append('ads.txt')
