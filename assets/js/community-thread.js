@@ -16,17 +16,27 @@
   const button = (label, cls) => {
     const b = el("button", cls, label); b.type = "button"; return b;
   };
+  // Retry read-only queries during transient database/API timeouts.
+  // A POST must never be retried here: a comment may already be saved.
   const request = async (path, init = {}) => {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 8000);
-    try {
-      const r = await fetch(cfg.url + path, {
-        ...init, signal: controller.signal, credentials: "omit", cache: "no-store",
-        headers: { apikey: cfg.key, Accept: "application/json", ...(init.headers || {}) }
-      });
-      if (!r.ok) { const e = Error("http_" + r.status); e.status = r.status; throw e; }
-      return r;
-    } finally { clearTimeout(timer); }
+    const isRead = !init.method || String(init.method).toUpperCase() === "GET";
+    const attempts = isRead ? 2 : 1;
+    for (let attempt = 0; attempt < attempts; attempt++) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), attempt ? 10000 : 8000);
+      try {
+        const r = await fetch(cfg.url + path, {
+          ...init, signal: controller.signal, credentials: "omit", cache: "no-store",
+          headers: { apikey: cfg.key, Accept: "application/json", ...(init.headers || {}) }
+        });
+        if (!r.ok) { const e = Error("http_" + r.status); e.status = r.status; throw e; }
+        return r;
+      } catch (err) {
+        const retryable = !err.status || err.status === 429 || err.status >= 500;
+        if (!isRead || attempt === attempts - 1 || !retryable) throw err;
+        await new Promise(resolve => setTimeout(resolve, 450));
+      } finally { clearTimeout(timer); }
+    }
   };
   const send = async data => {
     await request("/functions/v1/community-interact", {
@@ -114,10 +124,11 @@
         try {
           await send({ action:"comment", post_id:id, parent_id:target || null,
             nickname:nick.value.trim() || "ANON", body:text });
-          say("댓글이 등록되었습니다.");
+          say("댓글이 저장되었습니다. 목록을 확인하고 있어요.");
           loaded=false;
-          await load(1);
+          const visible = await load(1);
           writeForm(null,"",composer);
+          if (!visible) say("댓글은 저장되었습니다. 목록 조회만 지연 중입니다. 다시 불러오기를 눌러주세요.");
         } catch(err) {say(errorText(err));}
         finally {submit.disabled=false;}
       });
@@ -221,8 +232,18 @@
         draw();
         renderPagination();
         say(total ? total+"개 댓글 · "+page+" / "+Math.max(1,Math.ceil(total/BATCH))+"페이지" : "아직 댓글이 없습니다. 첫 댓글을 남겨보세요.");
+        return true;
       } catch(err) {
+        loaded=false;
+        const retry=button("댓글 다시 불러오기","ct-small");
+        retry.addEventListener("click",()=>{ if(!busy) load(target); });
+        if (!comments.querySelector(".ct-comment")) {
+          comments.replaceChildren(el("p","ct-empty","저장된 댓글을 불러오지 못했습니다."),retry);
+        } else {
+          pagination.replaceChildren(retry);
+        }
         say(errorText(err));
+        return false;
       } finally { busy=false; }
     }
     show.addEventListener("click",()=>{
