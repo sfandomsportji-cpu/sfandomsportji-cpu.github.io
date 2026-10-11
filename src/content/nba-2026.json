@@ -97,7 +97,9 @@
     "TOR": "#CE1141",
     "ATL": "#E03A3E",
     "WAS": "#002B5C",
-    "SAC": "#5A2D81"
+    "SAC": "#5A2D81",
+    "LON": "#C6AD70",
+    "UTA": "#002B5C"
   },
   "storylines": [
     {
@@ -181,63 +183,156 @@
     ]
   ],
   "home_mode": "preseason",
-  "preseason_note": "10월 11일 오전 7경기 일정은 NBA 공식 편성의 KST 환산. 출전 명단 발표 전이며, 과거 경기 결과는 아래에 별도 표기.",
+  "preseason_note": "2026년 10월 11일 14:13 KST 확인: 오전 프리시즌 7경기 전부 종료. 10월 11일 19:00 댈러스–휴스턴과 12~13일 예정 경기는 경기 전 상태로 유지. 최종 결과: NBA 공식 경기 기록 / 일정: NBA.com. 경기 시간은 한국시간(KST).",
   "preseason_games": [
     {
-      "day": "UPCOMING",
+      "day": "FINAL",
       "away": "LAC",
       "home": "TOR",
       "kst": "10.11 (일) 07:30",
-      "tv": "KST",
-      "tag": "선발 명단 발표 전"
+      "tv": "NBA",
+      "tag": "종료 · LAC 106–114 TOR",
+      "result": "LAC 106–114 TOR",
+      "away_score": 106,
+      "home_score": 114
     },
     {
-      "day": "UPCOMING",
+      "day": "FINAL",
       "away": "ATL",
       "home": "IND",
       "kst": "10.11 (일) 08:00",
-      "tv": "KST",
-      "tag": "선발 명단 발표 전"
+      "tv": "NBA",
+      "tag": "종료 · ATL 119–117 IND",
+      "result": "ATL 119–117 IND",
+      "away_score": 119,
+      "home_score": 117
     },
     {
-      "day": "UPCOMING",
+      "day": "FINAL",
       "away": "DET",
       "home": "WAS",
       "kst": "10.11 (일) 08:00",
+      "tv": "NBA",
+      "tag": "종료 · 연장 · DET 108–114 WAS",
+      "result": "DET 108–114 WAS",
+      "away_score": 108,
+      "home_score": 114
+    },
+    {
+      "day": "FINAL",
+      "away": "MIN",
+      "home": "MIA",
+      "kst": "10.11 (일) 09:00",
+      "tv": "NBA",
+      "tag": "종료 · MIN 125–124 MIA",
+      "result": "MIN 125–124 MIA",
+      "away_score": 125,
+      "home_score": 124
+    },
+    {
+      "day": "FINAL",
+      "away": "PHI",
+      "home": "BOS",
+      "kst": "10.11 (일) 09:00",
+      "tv": "NBA",
+      "tag": "종료 · PHI 106–144 BOS",
+      "result": "PHI 106–144 BOS",
+      "away_score": 106,
+      "home_score": 144
+    },
+    {
+      "day": "FINAL",
+      "away": "SAC",
+      "home": "GSW",
+      "kst": "10.11 (일) 09:30",
+      "tv": "NBA",
+      "tag": "종료 · SAC 106–111 GSW",
+      "result": "SAC 106–111 GSW",
+      "away_score": 106,
+      "home_score": 111
+    },
+    {
+      "day": "FINAL",
+      "away": "SAS",
+      "home": "PHX",
+      "kst": "10.11 (일) 11:30",
+      "tv": "NBA",
+      "tag": "종료 · SAS 98–102 PHX",
+      "result": "SAS 98–102 PHX",
+      "away_score": 98,
+      "home_score": 102
+    },
+    {
+      "day": "UPCOMING",
+      "away": "DAL",
+      "home": "HOU",
+      "kst": "10.11 (일) 19:00",
       "tv": "KST",
-      "tag": "선발 명단 발표 전"
+      "tag": "마카오 · 현지 10.11 18:00"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "ORL",
+      "home": "CLE",
+      "kst": "10.12 (월) 07:30",
+      "tv": "KST",
+      "tag": "클리블랜드 홈"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "MIL",
+      "home": "CHA",
+      "kst": "10.12 (월) 08:00",
+      "tv": "KST",
+      "tag": "샬럿 홈"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "CHI",
+      "home": "DEN",
+      "kst": "10.12 (월) 10:00",
+      "tv": "KST",
+      "tag": "덴버 홈"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "LON",
+      "home": "POR",
+      "kst": "10.13 (화) 05:00",
+      "tv": "KST",
+      "tag": "런던 라이언스 · NBA 프리시즌"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "OKC",
+      "home": "ATL",
+      "kst": "10.13 (화) 08:00",
+      "tv": "KST",
+      "tag": "애틀랜타 홈"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "BKN",
+      "home": "WAS",
+      "kst": "10.13 (화) 08:00",
+      "tv": "KST",
+      "tag": "워싱턴 홈"
     },
     {
       "day": "UPCOMING",
       "away": "MIN",
-      "home": "MIA",
-      "kst": "10.11 (일) 09:00",
+      "home": "NYK",
+      "kst": "10.13 (화) 08:30",
       "tv": "KST",
-      "tag": "선발 명단 발표 전"
-    },
-    {
-      "day": "UPCOMING",
-      "away": "PHI",
-      "home": "BOS",
-      "kst": "10.11 (일) 09:00",
-      "tv": "KST",
-      "tag": "선발 명단 발표 전"
-    },
-    {
-      "day": "UPCOMING",
-      "away": "SAC",
-      "home": "GSW",
-      "kst": "10.11 (일) 09:30",
-      "tv": "KST",
-      "tag": "선발 명단 발표 전"
+      "tag": "뉴욕 홈"
     },
     {
       "day": "UPCOMING",
       "away": "SAS",
-      "home": "PHX",
-      "kst": "10.11 (일) 11:30",
+      "home": "UTA",
+      "kst": "10.13 (화) 10:00",
       "tv": "KST",
-      "tag": "선발 명단 발표 전"
+      "tag": "유타 홈"
     },
     {
       "day": "FINAL",
