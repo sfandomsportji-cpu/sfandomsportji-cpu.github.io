@@ -414,22 +414,51 @@ def today_card(a: Article) -> str:
             f'<a class="ta-more" href="{a.url}">분석 전문 읽기 →</a></article>')
 
 
-def today_analysis() -> str:
-    """HERO 바로 아래 TODAY'S ANALYSIS: 네 칸 요약(brief)이 있는 최신 분석 3경기."""
-    # 경기 시각(meta 맨 앞 "2026.10.21 04:00 KST")이 빠른 순서로 세 경기
-    when = lambda a: (re.match(r'[\d.]+ [\d:]+', a.meta or '') or re.match('', '')).group(0) or '9999'
-    global TODAY_PICKS
-    picks = sorted([a for a in ARTICLES if a.kind == 'analysis' and getattr(a, 'brief', None)], key=when)[:3]
-    TODAY_PICKS = {a.url for a in picks}
-    if not picks:
-        return ''
-    ed_latest = max(EDITIONS)
-    return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
-            f'<div class="sec-head"><h2 class="sec-title" id="taTitle">SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> <span class="kr">스팬덤이 먼저 본 3경기</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>'
-            f'<div class="ta-grid">{"".join(today_card(a) for a in picks)}</div>'
-            f'<div class="ta-foot"><a class="review-link" href="/analysis/review/"><span class="display" style="font-size:24px">REVIEW <span class="accent">/</span> 복기 리포트</span><span class="muted" style="font-size:14px">결과가 아니라 판단 과정을 다시 봅니다</span></a>'
-            f'<a class="review-link" href="/news/morning/{ed_latest}/"><span class="display" style="font-size:24px">MORNING EDITION</span><span class="muted" style="font-size:14px">최신호 {ed_latest.replace("-", ".")} 읽기 →</span></a></div></section>')
 
+def morning_edition_card(a: Article, wide: bool = False) -> str:
+    """An editorial photo card linking to the actual article, without rewriting the original site layout."""
+    extra = ''
+    if a.slug == 'mls-weekend-watch':
+        extra = '<p class="morning-fixtures">인터 마이애미–D.C. 유나이티드 · 뉴잉글랜드–시애틀 · LAFC–밴쿠버</p>'
+    cells = getattr(a, 'brief', None) or {}
+    insight = cells.get('key') or cells.get('view') or a.excerpt
+    heading = '팬보드 전문 읽기' if a.kind == 'news' else '경기 분석 전문 읽기'
+    photo = thumb(a)
+    return (f'<article class="ta-card morning-card lift{" morning-wide" if wide else ""}">'
+            f'<div class="morning-photo">{photo}</div>'
+            f'<div class="morning-copy"><div class="ta-top"><span class="tag red">{esc(a.kicker or a.league)}</span>'
+            f'<span class="tag">{esc(a.date_dot)}</span></div>'
+            f'<h3>{esc(a.headline)}</h3>'
+            f'<p>{esc(insight[:245])}</p>{extra}'
+            f'<a class="ta-more" href="{a.url}">{heading} →</a></div></article>')
+
+
+def today_analysis() -> str:
+    """Show the actual latest approved morning edition, not three chronologically oldest articles."""
+    global TODAY_PICKS
+    ed_latest = max(EDITIONS)
+    keys = EDITIONS[ed_latest].get('items', [])
+    picks = [BY_KEY[k] for k in keys if k in BY_KEY]
+    if not picks:
+        picks = sorted([a for a in ARTICLES if a.kind == 'analysis'],
+                       key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)[:3]
+    TODAY_PICKS = {a.url for a in picks if a.kind == 'analysis'}
+    feature_count = len(picks)
+    cards = ''.join(morning_edition_card(a, wide=(i == feature_count - 1 and feature_count % 2 == 1))
+                    for i, a in enumerate(picks))
+    return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
+            f'<div class="sec-head"><h2 class="sec-title" id="taTitle">'
+            f'SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> '
+            f'<span class="kr">{ed_latest.replace("-", ".")} 선정 콘텐츠 {feature_count}편</span></h2>'
+            f'<a class="more" href="/news/morning/{ed_latest}/">오늘 에디션 전체 →</a></div>'
+            f'<div class="ta-grid morning-feature-grid">{cards}</div>'
+            f'<div class="ta-foot"><a class="review-link" href="/analysis/review/">'
+            f'<span class="display" style="font-size:24px">REVIEW <span class="accent">/</span> 복기 리포트</span>'
+            f'<span class="muted" style="font-size:14px">경기 결과와 분석 과정을 비교합니다</span></a>'
+            f'<a class="review-link" href="/news/morning/{ed_latest}/">'
+            f'<span class="display" style="font-size:24px">MORNING EDITION</span>'
+            f'<span class="muted" style="font-size:14px">오늘 5편 · 사진과 분석 전체 읽기 →</span>'
+            f'</a></div></section>')
 
 def talk_icon() -> str:
     return ('<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
@@ -566,7 +595,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-dedup-20261010">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-morning-edition5-20261011">
 {thread_css}{news_comments_css}
 {ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
