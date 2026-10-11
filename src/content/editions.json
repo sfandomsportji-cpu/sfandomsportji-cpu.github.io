@@ -151,5 +151,17 @@
       "2026-10-10-nba-preseason-seven",
       "2026-10-10-kleague-saturday"
     ]
+  },
+  "2026-10-11": {
+    "title": "103승과 100승, 첫 15아웃부터 읽는다.",
+    "subtitle": "SFANDOM × KAIRO · MLB · NFL · MLS · NBA · FAN BOARD",
+    "intro": "10월 11일 일요일 오전 에디션. 다저스–밀워키 NLCS 1차전, 필라델피아–잭슨빌 런던전, MLS 주말 세 경기, 마카오 NBA 재대결과 오늘의 팬보드 주제까지 다섯 편을 묶었습니다. 한국시간으로 이미 시작된 MLS 경기는 프리뷰 작성 시점을 명시하며 완료 전 결과를 추정하지 않습니다.",
+    "items": [
+      "2026-10-11-nlcs-dodgers-brewers-game1",
+      "2026-10-11-eagles-jaguars-london",
+      "2026-10-11-mls-weekend-watch",
+      "2026-10-11-mavericks-rockets-macao-rematch",
+      "2026-10-11-fanboard-sunday-questions"
+    ]
   }
 }
