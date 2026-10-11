@@ -29,7 +29,7 @@ VER = TODAY.replace('-', '')
 
 # 빌더가 만드는 최상위 경로 (다시 빌드할 때 지우고 새로 씀)
 GENERATED_DIRS = ['news', 'special', 'mlb', 'kbo', 'nba', 'soccer', 'analysis', 'community', 'magazine',
-                  'about', 'contact', 'sitemap', 'feed', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search']
+                  'about', 'contact', 'sitemap', 'feed', 'weekly', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search']
 
 esc = lambda s: html.escape(str(s or ''), quote=True)
 
@@ -37,6 +37,7 @@ sys.dont_write_bytecode = True  # 빌드가 임시 파일(__pycache__)을 남기
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / 'tools'))
 from fetch_logos import SOURCES as LOGO_SOURCES  # noqa: E402  (리그별 팀 ID · 공식 로고 주소)
 import feeds  # noqa: E402  (RSS 피드 생성)
+import weekly  # noqa: E402  (주간 인기 글 스냅샷)
 from build_article_cards import card_name  # noqa: E402  (글별 공유 카드 파일명)
 
 
@@ -507,6 +508,7 @@ def header(active: str) -> str:
 
 
 def footer() -> str:
+    weekly_link = '<a href="/weekly/">주간 베스트</a>' if WEEKLY_DIR.exists() and any(WEEKLY_DIR.glob('*.json')) else ''
     socials = ''.join(f'<a href="{s["url"]}" target="_blank" rel="noopener">{s["label"]}</a>' for s in SITE['socials'])
     return f'''<footer class="site-footer">
   <div class="wrap">
@@ -516,7 +518,7 @@ def footer() -> str:
         <p>SFANDOM은 스포츠 정보와 팬 토론을 위한 미디어입니다. 금전이 걸린 게임을 운영·중개하지 않습니다.</p></div>
       <div class="footer-right">
         <div class="socials">{socials}</div>
-        <nav class="footer-links" aria-label="하단 메뉴"><a href="/about/">소개</a><a href="/contact/">문의</a><a href="/privacy/">개인정보처리방침</a><a href="/ads-cookies/">광고·쿠키 고지</a><a href="/terms/">이용약관</a><a href="/feed/">RSS 구독</a><a href="/rules/">커뮤니티 규칙</a><a href="/legal/">법률고지</a></nav>
+        <nav class="footer-links" aria-label="하단 메뉴"><a href="/about/">소개</a><a href="/contact/">문의</a><a href="/privacy/">개인정보처리방침</a><a href="/ads-cookies/">광고·쿠키 고지</a><a href="/terms/">이용약관</a>{weekly_link}<a href="/feed/">RSS 구독</a><a href="/rules/">커뮤니티 규칙</a><a href="/legal/">법률고지</a></nav>
       </div>
     </div>
     <div class="copy"><span>© 2026 SFANDOM. ALL RIGHTS RESERVED.</span><span>기록 출처 · 각 리그·구단 공식 자료</span></div>
@@ -1322,6 +1324,54 @@ def build_meta_files():
     (ROOT / 'search-index.json').write_text(json.dumps(sorted(SEARCH, key=lambda s: s['d'], reverse=True), ensure_ascii=False), encoding='utf-8')
 
 
+WEEKLY_DIR = CONTENT / 'weekly'
+
+
+def prepare_weekly():
+    """지난 주 스냅샷이 없으면 한 번 읽어 저장한다 (푸터 링크가 있는지 알려면 페이지 빌드보다 먼저 해야 함)."""
+    WEEKLY_DIR.mkdir(parents=True, exist_ok=True)
+    y, w, start, end = weekly.last_week(dt.date.fromisoformat(TODAY))
+    f = WEEKLY_DIR / f'{y}-w{w:02d}.json'
+    if not f.exists():
+        snap = weekly.fetch_snapshot(SITE.get('supabase') or {}, y, w, start, end)
+        if snap:
+            f.write_text(json.dumps(snap, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
+
+
+def build_weekly():
+    """지난 주 팬 보드 인기 글(댓글 수 기준). 스냅샷이 하나도 없으면 페이지를 만들지 않는다."""
+    snaps = [json.loads(p.read_text(encoding='utf-8')) for p in sorted(WEEKLY_DIR.glob('*.json'), reverse=True)]
+    if not snaps:
+        return
+
+    def issue_body(sn):
+        rows = ''.join(
+            f'<li style="padding:14px 0;border-bottom:1px solid var(--line,#2a2f3d)"><small>{i}위 · {esc(r["channel"])} · {esc(r["created"])}</small><br>'
+            f'<a href="/community/?ch={quote(r["channel"])}"><b>{esc(r["title"])}</b></a><br>'
+            f'<small>{esc(r["nickname"])} · 댓글 {r["comments"]}개</small></li>'
+            for i, r in enumerate(sn['top'], 1))
+        chans = ' · '.join(f'{esc(k)} {v}' for k, v in sn['channels'].items())
+        return (f'<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0">'
+                f'<p>{esc(sn["start"])} ~ {esc(sn["end"])} · 새 글 {sn["posts"]}편 · 댓글 {sn["comments"]}개<br><small>{chans}</small></p>'
+                f'<ol style="list-style:none;padding:0;margin:16px 0">{rows}</ol>'
+                f'<div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill" href="/community/">팬 보드에서 이어 얘기하기</a>'
+                f'<a class="pill ghost" href="/weekly/">지난 주간 베스트</a></div></div>')
+
+    for sn in snaps:
+        label = f'{sn["start"][5:].replace("-", ".")} ~ {sn["end"][5:].replace("-", ".")}'
+        body = page_head(f'WEEKLY<span class="accent">.</span> <span class="kr">{label} 팬 보드 베스트</span>',
+                         '지난 한 주 팬 보드에서 가장 많은 이야기가 오간 글입니다. 순위는 댓글 수로만 정합니다.',
+                         [('주간 베스트', '/weekly/'), (label, '')]) + issue_body(sn)
+        write(f'/weekly/{sn["id"]}/', layout(f'주간 팬 보드 베스트 {label}', body, path=f'/weekly/{sn["id"]}/',
+                                          description=f'{label} 팬 보드 인기 글'), lastmod=sn['end'])
+    latest = snaps[0]
+    archive = ''.join(f'<li><a href="/weekly/{sn["id"]}/">{esc(sn["start"])} ~ {esc(sn["end"])} · 글 {sn["posts"]}편</a></li>' for sn in snaps)
+    body = page_head('WEEKLY<span class="accent">.</span> <span class="kr">주간 팬 보드 베스트</span>',
+                     '매주 월요일, 지난 한 주 팬 보드 인기 글을 모읍니다.', [('주간 베스트', '')]) + issue_body(latest) + \
+        f'<div class="wrap prose" style="max-width:960px;margin-left:0"><h2>지난 호</h2><ul>{archive}</ul></div>'
+    write('/weekly/', layout('주간 팬 보드 베스트', body, path='/weekly/', description='지난 한 주 SFANDOM 팬 보드 인기 글'))
+
+
 def build_feeds():
     """전체 · 리그별 · 팀별 RSS 와 구독 안내 페이지(/feed/)."""
     out = ROOT / 'feed'
@@ -1367,6 +1417,7 @@ def clean_generated():
 
 def main():
     clean_generated()
+    prepare_weekly()
     build_home()
     for a in ARTICLES:
         build_article(a)
@@ -1376,6 +1427,7 @@ def main():
     build_sitemap()
     build_static()
     build_feeds()
+    build_weekly()
     build_meta_files()
     print(f'built {len(PAGES)} indexable pages, {len(ARTICLES)} articles')
 
