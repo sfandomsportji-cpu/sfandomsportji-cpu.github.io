@@ -1039,7 +1039,7 @@ def build_hubs():
     kd = ''.join(f'<div class="round"><span class="display">{esc(d)}</span><span>{esc(t)}</span></div>' for d, t in NBA['key_dates'])
     nba_arts = [a for a in ARTICLES if a.league == 'NBA']
     preseason_rows = nba_cards(NBA.get('preseason_games', []), preseason_anchors=True)
-    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">GAME CENTER</span></h2><span class="muted">프리시즌 경기별 일정과 현재 기록된 상태 · 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div></div></section>') if preseason_rows else ''
+    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">GAME CENTER</span></h2><span class="muted">10월 11일 오전 7경기 전부 종료 · 다음 경기 별도 표시 · 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div></div></section>') if preseason_rows else ''
     nsec = lambda kind, title, kr, anchor: (f'<section id="{anchor}" class="sec"><div class="sec-head"><h2 class="sec-title">{title} <span class="kr">{kr}</span></h2></div>'
                                             + '<div class="card-grid">' + ''.join(mag_card(a) for a in nba_arts if a.kind == kind) + '</div></section>') if any(a.kind == kind for a in nba_arts) else ''
     nba_tabs = tabs([('프리시즌', '#preseason'), ('개막 주간', '#tipoff'), ('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('주요 날짜', '#dates')], '')
@@ -1055,9 +1055,9 @@ def build_hubs():
 <section class="sec" id="dates"><div class="bracket"><div class="bracket-head"><h2>KEY DATES</h2><span class="muted">{esc(NBA["note"])}</span></div><div class="rounds">{kd}</div></div></section>
 <section class="discuss"><div><h2>새 시즌 얘기는 팬 보드에서</h2><p>우승 후보, 기대되는 팀, 개막전 예상 모두 환영합니다.</p></div><a class="pill" href="/community/?topic={quote("[NBA] ")}#write">{talk_icon()}글쓰기</a></section>
 </div>''')
-    write('/nba/', layout('NBA 2026-27 개막 주간 일정 (한국시간)', nba_body, path='/nba/', description='NBA 2026-27 시즌 개막 주간 경기 일정과 크리스마스 경기, 주요 날짜를 한국시간으로 정리.', active='/nba/',
+    write('/nba/', layout('NBA 프리시즌 최종 결과·다음 경기 일정 (한국시간)', nba_body, path='/nba/', description='NBA 2026-27 프리시즌 7경기 최종 점수와 다음 일정, 개막 주간 경기 정보를 한국시간으로 정리.', active='/nba/',
           ld=[breadcrumb_ld([('NBA', '/nba/')])]),
-          search={'u': '/nba/', 't': 'NBA 2026-27 개막 주간 일정', 's': '팁오프 · 크리스마스 경기', 'k': 'NBA', 'd': '2026.10.04', 'x': '개막 주간 경기와 크리스마스 경기 한국시간 일정'})
+          search={'u': '/nba/', 't': 'NBA 프리시즌 최종 점수와 다음 일정', 's': '프리시즌 7경기 종료 · 다음 일정 · 정규시즌 개막', 'k': 'NBA', 'd': '2026.10.11', 'x': '10월 11일 NBA 프리시즌 7경기 최종 점수와 11~13일 다음 일정'})
     # 포스트시즌 특집
     wc = ''.join(wc_result(w) for w in PS['wildcard'])
     dsf = ''.join(ds_card(d, link=False, full=True) for d in PS['division'])
