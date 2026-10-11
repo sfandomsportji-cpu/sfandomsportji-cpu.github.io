@@ -1,0 +1,155 @@
+{
+  "checkedAt": "2026-10-11T02:12:10.363Z",
+  "page": "https://sfandom.com/",
+  "versions": {
+    "desktop": {
+      "title": "SFANDOM & KAIRO ANALYSIS 2026.10.11 선정 콘텐츠 5편",
+      "count": 5,
+      "images": [
+        {
+          "slug": "nlcs-dodgers-brewers-game1",
+          "src": "https://sfandom.com/assets/photos/morning-20261011-mlb.jpg",
+          "complete": true,
+          "naturalWidth": 960,
+          "naturalHeight": 720
+        },
+        {
+          "slug": "eagles-jaguars-london",
+          "src": "https://sfandom.com/assets/photos/morning-20261011-nfl.jpg",
+          "complete": true,
+          "naturalWidth": 960,
+          "naturalHeight": 448
+        },
+        {
+          "slug": "mls-weekend-watch",
+          "src": "https://sfandom.com/assets/photos/morning-20261011-mls.jpg",
+          "complete": true,
+          "naturalWidth": 960,
+          "naturalHeight": 640
+        },
+        {
+          "slug": "mavericks-rockets-macao-rematch",
+          "src": "https://sfandom.com/assets/photos/morning-20261011-nba.jpg",
+          "complete": true,
+          "naturalWidth": 960,
+          "naturalHeight": 720
+        },
+        {
+          "slug": "fanboard-sunday-questions",
+          "src": "https://sfandom.com/assets/share/sfandom-social-20261010.png",
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 630
+        }
+      ],
+      "links": [
+        {
+          "slug": "nlcs-dodgers-brewers-game1",
+          "href": "/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/",
+          "status": 200
+        },
+        {
+          "slug": "eagles-jaguars-london",
+          "href": "/analysis/nfl/2026-10-11-eagles-jaguars-london/",
+          "status": 200
+        },
+        {
+          "slug": "mls-weekend-watch",
+          "href": "/analysis/soccer/2026-10-11-mls-weekend-watch/",
+          "status": 200
+        },
+        {
+          "slug": "mavericks-rockets-macao-rematch",
+          "href": "/analysis/nba/2026-10-11-mavericks-rockets-macao-rematch/",
+          "status": 200
+        },
+        {
+          "slug": "fanboard-sunday-questions",
+          "href": "/news/2026/10/fanboard-sunday-questions/",
+          "status": 200
+        }
+      ],
+      "layout": {
+        "clientWidth": 1440,
+        "documentWidth": 1440,
+        "cardCount": 5
+      },
+      "filename": "assets/captures/sfandom-2026-10-11-photo-qa-desktop.png"
+    },
+    "mobile": {
+      "title": "SFANDOM & KAIRO ANALYSIS 2026.10.11 선정 콘텐츠 5편",
+      "count": 5,
+      "images": [
+        {
+          "slug": "nlcs-dodgers-brewers-game1",
+          "src": "https://sfandom.com/assets/photos/morning-20261011-mlb.jpg",
+          "complete": true,
+          "naturalWidth": 960,
+          "naturalHeight": 720
+        },
+        {
+          "slug": "eagles-jaguars-london",
+          "src": "https://sfandom.com/assets/photos/morning-20261011-nfl.jpg",
+          "complete": true,
+          "naturalWidth": 960,
+          "naturalHeight": 448
+        },
+        {
+          "slug": "mls-weekend-watch",
+          "src": "https://sfandom.com/assets/photos/morning-20261011-mls.jpg",
+          "complete": true,
+          "naturalWidth": 960,
+          "naturalHeight": 640
+        },
+        {
+          "slug": "mavericks-rockets-macao-rematch",
+          "src": "https://sfandom.com/assets/photos/morning-20261011-nba.jpg",
+          "complete": true,
+          "naturalWidth": 960,
+          "naturalHeight": 720
+        },
+        {
+          "slug": "fanboard-sunday-questions",
+          "src": "https://sfandom.com/assets/share/sfandom-social-20261010.png",
+          "complete": true,
+          "naturalWidth": 1200,
+          "naturalHeight": 630
+        }
+      ],
+      "links": [
+        {
+          "slug": "nlcs-dodgers-brewers-game1",
+          "href": "/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/",
+          "status": 200
+        },
+        {
+          "slug": "eagles-jaguars-london",
+          "href": "/analysis/nfl/2026-10-11-eagles-jaguars-london/",
+          "status": 200
+        },
+        {
+          "slug": "mls-weekend-watch",
+          "href": "/analysis/soccer/2026-10-11-mls-weekend-watch/",
+          "status": 200
+        },
+        {
+          "slug": "mavericks-rockets-macao-rematch",
+          "href": "/analysis/nba/2026-10-11-mavericks-rockets-macao-rematch/",
+          "status": 200
+        },
+        {
+          "slug": "fanboard-sunday-questions",
+          "href": "/news/2026/10/fanboard-sunday-questions/",
+          "status": 200
+        }
+      ],
+      "layout": {
+        "clientWidth": 390,
+        "documentWidth": 390,
+        "cardCount": 5
+      },
+      "filename": "assets/captures/sfandom-2026-10-11-photo-qa-mobile.png"
+    }
+  },
+  "errors": []
+}
