@@ -32,7 +32,7 @@ jobs:
             const check=(good,label,extra='')=>{report.checks.push({label,ok:!!good,extra});if(!good)report.errors.push(label+': '+extra);};
             try{
               const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
-              let response=await page.goto(base+'/?nba_qa=20261011-r2',{waitUntil:'domcontentloaded',timeout:45000});
+              let response=await page.goto(base+'/?nba_qa=20261011-r3',{waitUntil:'domcontentloaded',timeout:45000});
               check(response.status()===200,'homepage loads',response.status().toString());
               const lead=await page.locator('.news-lead h3').innerText();
               check(lead.includes('클리블랜드 2–0 화이트삭스'),'Cleveland review replaces old NPB lead',lead);
@@ -65,12 +65,20 @@ jobs:
                   });
                   report.images.push({url,...state});
                   check(state.ok,'image loads '+url,JSON.stringify(state));
+                  if(url.includes('warriors-kings')){
+                    check(state.src.includes('morning-20261011-gsw.jpg'),'local credited Warriors photo replaces logo fallback',state.src);
+                  }
                 }else{
                   check(false,'article image present '+url);
                 }
               }
-              await page.goto(base+'/nba/?nba_qa=20261011-r2',{waitUntil:'domcontentloaded',timeout:45000});
-              const title=await page.title();
+              await page.goto(base+'/nba/?nba_qa=20261011-r3',{waitUntil:'domcontentloaded',timeout:45000});
+              let title=await page.title();
+              for(let retry=0;retry<12&&!title.includes('프리시즌 최종 결과');retry++){
+                await page.waitForTimeout(3000);
+                await page.goto(base+'/nba/?nba_qa=20261011-final-'+retry,{waitUntil:'domcontentloaded',timeout:45000});
+                title=await page.title();
+              }
               check(title.includes('프리시즌 최종 결과'),'NBA hub latest title',title);
               const all=page.locator('#preseason .preseason-list .nba-card');
               const count=await all.count();
