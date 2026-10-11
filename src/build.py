@@ -1421,7 +1421,7 @@ def build_feeds():
                        f' {lg.upper()} <small>내 팀 고르기</small></h2>'
                        f'<div class="feed-team-grid">{cells}</div></section>')
     body = page_head('MY TEAM<span class="accent">.</span> <span class="kr">🔔 내 팀 구독</span>',
-                     '응원하는 팀이 있다면 여기로! 팀별 새 글을 나만의 RSS 리더에 모아 보세요.', [('내 팀 구독', '')]) + \
+                     '응원하는 팀이 있다면 여기로! 팀별 새 글을 나만의 RSS 리더에 모아 보세요.', [('내 팀 구독', '')]) + (
         f'<div class="wrap sec feed-page-wrap">'
         f'<div class="feed-intro"><span class="feed-intro-icon" aria-hidden="true">💌</span>'
         f'<div><strong>어떤 팀이 좋아요?</strong><p>아래에서 종목이나 팀을 골라보세요. 숫자는 지금 읽을 수 있는 글 수예요.</p></div></div>'
@@ -1431,7 +1431,7 @@ def build_feeds():
         f'<div class="feed-guide"><h2>💡 구독하는 방법</h2>'
         f'<p>원하는 팀을 누르면 RSS 주소가 열려요. 주소를 복사해서 Feedly나 Inoreader 같은 RSS 리더에 등록하면 새 글을 한곳에서 볼 수 있어요.</p>'
         f'<p class="feed-guide-note">※ RSS는 앱 알림이나 자동 회원 가입이 아니에요. 아직 글이 없는 팀은 첫 글이 발행되면 목록에 나타납니다.</p>'
-        f'</div></div>'
+        f'</div></div>')
     write('/feed/', layout('RSS 구독', body, path='/feed/', description='SFANDOM 전체·리그별·팀별 RSS 구독 안내'))
 
 
