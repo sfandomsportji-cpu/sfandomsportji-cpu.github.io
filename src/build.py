@@ -397,22 +397,6 @@ def matchup_strip(a: Article) -> str:
 
 
 TODAY_PICKS: set = set()
-BRIEF_CELLS = [('lineup', '선발/라인업'), ('form', '최근 흐름'), ('key', '핵심 변수'), ('view', 'KAIRO VIEW')]
-
-
-def today_card(a: Article) -> str:
-    left, right = split_teams(a)
-    b = a.brief
-    cells = ''.join(f'<div class="ta-cell{" kairo" if k == "view" else ""}"><b>{label}</b><p>{esc(b.get(k, ""))}</p></div>' for k, label in BRIEF_CELLS if b.get(k))
-    when = re.match(r'[\d.]+ [\d:]+ KST', a.meta or '')
-    # 카드 전체가 글로 가는 링크(.ta-more::after)이고, 휴대폰에서만 보이는 펼치기 단추가 그 위에 놓입니다
-    return (f'<article class="ta-card lift"><div class="ta-top"><span class="tag red">{esc(a.kicker or a.league)} · {esc(a.league)}</span><span class="tag">{esc(when.group(0) if when else a.date_dot)}</span></div>'
-            f'<div class="ta-vs"><span class="ta-team">{team_badge(a, 0)}<span class="display">{esc(left.upper())}</span></span><i>VS</i>'
-            f'<span class="ta-team r">{team_badge(a, 1)}<span class="display">{esc(right.upper())}</span></span></div>'
-            f'<strong class="ta-sub">{esc(a.subtitle)}</strong><div class="ta-cells">{cells}</div>'
-            f'<button type="button" class="ta-toggle" data-ta-toggle aria-expanded="false">선발 · 흐름 · 변수 펼치기</button>'
-            f'<a class="ta-more" href="{a.url}">분석 전문 읽기 →</a></article>')
-
 
 
 def morning_edition_card(a: Article, wide: bool = False) -> str:
@@ -831,7 +815,7 @@ def build_article(a: Article):
     section_url = {'news': '/news/', 'analysis': '/analysis/', 'magazine': '/magazine/'}[a.kind]
     trail = [(a.section, section_url)]
     if a.kind == 'analysis':
-        trail.append((a.league, f'/analysis/{a.league.lower()}/'))
+        trail.append((a.league, f'/analysis/{a.league.lower()}/' if a.league.lower() in ('mlb', 'nba') else ''))
     trail.append((a.title.rstrip(',.'), ''))
     fig = ''
     if a.image:
