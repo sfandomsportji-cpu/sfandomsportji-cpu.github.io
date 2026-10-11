@@ -518,7 +518,7 @@ def footer() -> str:
         <p>SFANDOM은 스포츠 정보와 팬 토론을 위한 미디어입니다. 금전이 걸린 게임을 운영·중개하지 않습니다.</p></div>
       <div class="footer-right">
         <div class="socials">{socials}</div>
-        <nav class="footer-links" aria-label="하단 메뉴"><a href="/about/">소개</a><a href="/contact/">문의</a><a href="/privacy/">개인정보처리방침</a><a href="/ads-cookies/">광고·쿠키 고지</a><a href="/terms/">이용약관</a>{weekly_link}<a href="/feed/">RSS 구독</a><a href="/rules/">커뮤니티 규칙</a><a href="/legal/">법률고지</a></nav>
+        <nav class="footer-links" aria-label="하단 메뉴"><a href="/about/">소개</a><a href="/contact/">문의</a><a href="/privacy/">개인정보처리방침</a><a href="/ads-cookies/">광고·쿠키 고지</a><a href="/terms/">이용약관</a>{weekly_link}<a href="/feed/" class="footer-subscribe"><span aria-hidden="true">🔔</span> 내 팀 구독</a><a href="/rules/">커뮤니티 규칙</a><a href="/legal/">법률고지</a></nav>
       </div>
     </div>
     <div class="copy"><span>© 2026 SFANDOM. ALL RIGHTS RESERVED.</span><span>기록 출처 · 각 리그·구단 공식 자료</span></div>
@@ -774,6 +774,14 @@ def build_home():
       {game_threads()}
     </aside>
   </div>
+</section>
+
+<section class="wrap feed-home-wrap" aria-label="내 팀 소식 구독">
+  <a class="feed-home-banner" href="/feed/">
+    <span class="feed-home-icon" aria-hidden="true">🔔</span>
+    <span class="feed-home-copy"><strong>MY TEAM <span>내 팀 소식 받기</span></strong><small>다저스부터 워리어스까지, 내가 좋아하는 팀의 새 글만 모아봐요.</small></span>
+    <span class="feed-home-arrow" aria-hidden="true">→</span>
+  </a>
 </section>
 
 <section class="wrap sec" id="division" aria-labelledby="dsTitle">
@@ -1387,7 +1395,12 @@ def build_feeds():
         if arts:
             put(f'{lg}.xml', f'SFANDOM {feeds.LEAGUE_NAME[lg]} 소식', f'SFANDOM {feeds.LEAGUE_NAME[lg]} 최신 글', arts)
             league_links.append((lg, feeds.LEAGUE_NAME[lg], f'/feed/{lg}.xml', len(arts)))
-    chips = ''.join(f'<a class="pill ghost" href="{u}">{esc(n)} <small>{c}</small></a>' for _, n, u, c in league_links)
+    feed_icons = {'all': '🌟', 'mlb': '⚾', 'nba': '🏀', 'nfl': '🏈', 'soccer': '⚽'}
+    chips = ''.join(
+        f'<a class="feed-league-link" href="{u}" title="{esc(n)} RSS 주소 열기">'
+        f'<span class="feed-league-icon" aria-hidden="true">{feed_icons.get(key, "🔔")}</span>'
+        f'<span class="feed-league-name">{esc(n)} 소식</span><small>{c}편</small></a>'
+        for key, n, u, c in league_links)
     blocks = ''
     for lg, teams in feeds.TEAMS.items():
         cells = ''
@@ -1396,17 +1409,29 @@ def build_feeds():
             if not arts:
                 continue
             put(f'team/{lg}-{abbr.lower()}.xml', f'SFANDOM {name} 소식', f'SFANDOM의 {name} 관련 글', arts)
-            cells += (f'<a href="/feed/team/{lg}-{abbr.lower()}.xml" style="display:flex;align-items:center;gap:10px;padding:10px 12px;'
-                      f'border:1px solid var(--line,#2a2f3d);border-radius:12px">{badge(abbr, team_color(abbr, lg), league=lg)}'
-                      f'<span>{esc(name)}</span><small style="margin-left:auto">{len(arts)}편</small></a>')
+            cells += (f'<a class="feed-team-card" href="/feed/team/{lg}-{abbr.lower()}.xml"'
+                      f' title="{esc(name)} RSS 주소 열기">'
+                      f'{badge(abbr, team_color(abbr, lg), league=lg)}'
+                      f'<span class="feed-team-name">{esc(name)}</span>'
+                      f'<small class="feed-team-count">{len(arts)}편</small>'
+                      f'<span class="feed-team-arrow" aria-hidden="true">↗</span></a>')
         if cells:
-            blocks += (f'<h2 style="margin:32px 0 12px">{lg.upper()} 팀별 구독</h2>'
-                       f'<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px">{cells}</div>')
-    body = page_head('RSS<span class="accent">.</span> <span class="kr">내 팀 구독</span>',
-                     '좋아하는 팀 소식을 RSS 리더로 받아 보세요. 새 글이 올라오면 리더에 자동으로 쌓입니다.', [('RSS 구독', '')]) + \
-        f'<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div style="display:flex;gap:10px;flex-wrap:wrap">{chips}</div>' \
-        f'{blocks}<div class="prose" style="margin-top:36px"><h2>사용 방법</h2><ul><li>Feedly, Inoreader 같은 RSS 리더에서 구독할 주소를 붙여넣으면 됩니다.</li>' \
-        f'<li>팀 카드나 버튼을 눌러 열린 주소(…xml)를 복사해 사용하세요.</li><li>글이 아직 없는 팀은 목록에 나타나지 않으며, 글이 생기면 자동으로 추가됩니다.</li></ul></div></div>'
+            blocks += (f'<section class="feed-league-section" aria-label="{lg.upper()} 팀별 소식">'
+                       f'<h2 class="feed-league-heading"><span aria-hidden="true">{feed_icons.get(lg, "⭐")}</span>'
+                       f' {lg.upper()} <small>내 팀 고르기</small></h2>'
+                       f'<div class="feed-team-grid">{cells}</div></section>')
+    body = page_head('MY TEAM<span class="accent">.</span> <span class="kr">🔔 내 팀 구독</span>',
+                     '응원하는 팀이 있다면 여기로! 팀별 새 글을 나만의 RSS 리더에 모아 보세요.', [('내 팀 구독', '')]) + (
+        f'<div class="wrap sec feed-page-wrap">'
+        f'<div class="feed-intro"><span class="feed-intro-icon" aria-hidden="true">💌</span>'
+        f'<div><strong>어떤 팀이 좋아요?</strong><p>아래에서 종목이나 팀을 골라보세요. 숫자는 지금 읽을 수 있는 글 수예요.</p></div></div>'
+        f'<h2 class="feed-subheading">🌈 리그별 소식 보기</h2>'
+        f'<div class="feed-league-grid">{chips}</div>'
+        f'{blocks}'
+        f'<div class="feed-guide"><h2>💡 구독하는 방법</h2>'
+        f'<p>원하는 팀을 누르면 RSS 주소가 열려요. 주소를 복사해서 Feedly나 Inoreader 같은 RSS 리더에 등록하면 새 글을 한곳에서 볼 수 있어요.</p>'
+        f'<p class="feed-guide-note">※ RSS는 앱 알림이나 자동 회원 가입이 아니에요. 아직 글이 없는 팀은 첫 글이 발행되면 목록에 나타납니다.</p>'
+        f'</div></div>')
     write('/feed/', layout('RSS 구독', body, path='/feed/', description='SFANDOM 전체·리그별·팀별 RSS 구독 안내'))
 
 
