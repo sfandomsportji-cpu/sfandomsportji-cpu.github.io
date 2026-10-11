@@ -29,13 +29,14 @@ VER = TODAY.replace('-', '')
 
 # 빌더가 만드는 최상위 경로 (다시 빌드할 때 지우고 새로 씀)
 GENERATED_DIRS = ['news', 'special', 'mlb', 'kbo', 'nba', 'soccer', 'analysis', 'community', 'magazine',
-                  'about', 'contact', 'sitemap', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search']
+                  'about', 'contact', 'sitemap', 'feed', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search']
 
 esc = lambda s: html.escape(str(s or ''), quote=True)
 
 sys.dont_write_bytecode = True  # 빌드가 임시 파일(__pycache__)을 남기지 않게
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / 'tools'))
 from fetch_logos import SOURCES as LOGO_SOURCES  # noqa: E402  (리그별 팀 ID · 공식 로고 주소)
+import feeds  # noqa: E402  (RSS 피드 생성)
 from build_article_cards import card_name  # noqa: E402  (글별 공유 카드 파일명)
 
 
@@ -515,7 +516,7 @@ def footer() -> str:
         <p>SFANDOM은 스포츠 정보와 팬 토론을 위한 미디어입니다. 금전이 걸린 게임을 운영·중개하지 않습니다.</p></div>
       <div class="footer-right">
         <div class="socials">{socials}</div>
-        <nav class="footer-links" aria-label="하단 메뉴"><a href="/about/">소개</a><a href="/contact/">문의</a><a href="/privacy/">개인정보처리방침</a><a href="/ads-cookies/">광고·쿠키 고지</a><a href="/terms/">이용약관</a><a href="/rules/">커뮤니티 규칙</a><a href="/legal/">법률고지</a></nav>
+        <nav class="footer-links" aria-label="하단 메뉴"><a href="/about/">소개</a><a href="/contact/">문의</a><a href="/privacy/">개인정보처리방침</a><a href="/ads-cookies/">광고·쿠키 고지</a><a href="/terms/">이용약관</a><a href="/feed/">RSS 구독</a><a href="/rules/">커뮤니티 규칙</a><a href="/legal/">법률고지</a></nav>
       </div>
     </div>
     <div class="copy"><span>© 2026 SFANDOM. ALL RIGHTS RESERVED.</span><span>기록 출처 · 각 리그·구단 공식 자료</span></div>
@@ -562,6 +563,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <meta name="google-adsense-account" content="{SITE['ads']['client']}">
 <meta name="theme-color" content="#0B0B0F">
 <link rel="canonical" href="{BASE}{path}">
+<link rel="alternate" type="application/rss+xml" title="SFANDOM 전체 소식" href="{BASE}/feed/all.xml">
 <meta property="og:type" content="{og_type}">
 <meta property="og:site_name" content="SFANDOM">
 <meta property="og:locale" content="ko_KR">
@@ -1320,6 +1322,44 @@ def build_meta_files():
     (ROOT / 'search-index.json').write_text(json.dumps(sorted(SEARCH, key=lambda s: s['d'], reverse=True), ensure_ascii=False), encoding='utf-8')
 
 
+def build_feeds():
+    """전체 · 리그별 · 팀별 RSS 와 구독 안내 페이지(/feed/)."""
+    out = ROOT / 'feed'
+    (out / 'team').mkdir(parents=True, exist_ok=True)
+
+    def put(rel: str, title: str, desc: str, arts: list):
+        (out / rel).write_text(feeds.render(BASE, f'/feed/{rel}', title, desc, arts), encoding='utf-8')
+
+    put('all.xml', 'SFANDOM 전체 소식', 'SFANDOM의 뉴스 · 분석 · 매거진 최신 글', ARTICLES)
+    league_links = [('all', '전체', '/feed/all.xml', len(ARTICLES))]
+    for lg in ('mlb', 'nba', 'nfl', 'soccer'):
+        arts = [a for a in ARTICLES if str(a.league).lower() == lg]
+        if arts:
+            put(f'{lg}.xml', f'SFANDOM {feeds.LEAGUE_NAME[lg]} 소식', f'SFANDOM {feeds.LEAGUE_NAME[lg]} 최신 글', arts)
+            league_links.append((lg, feeds.LEAGUE_NAME[lg], f'/feed/{lg}.xml', len(arts)))
+    chips = ''.join(f'<a class="pill ghost" href="{u}">{esc(n)} <small>{c}</small></a>' for _, n, u, c in league_links)
+    blocks = ''
+    for lg, teams in feeds.TEAMS.items():
+        cells = ''
+        for abbr, _, _, name in teams:
+            arts = [a for a in ARTICLES if abbr in feeds.team_matches(a, lg)]
+            if not arts:
+                continue
+            put(f'team/{lg}-{abbr.lower()}.xml', f'SFANDOM {name} 소식', f'SFANDOM의 {name} 관련 글', arts)
+            cells += (f'<a href="/feed/team/{lg}-{abbr.lower()}.xml" style="display:flex;align-items:center;gap:10px;padding:10px 12px;'
+                      f'border:1px solid var(--line,#2a2f3d);border-radius:12px">{badge(abbr, team_color(abbr, lg), league=lg)}'
+                      f'<span>{esc(name)}</span><small style="margin-left:auto">{len(arts)}편</small></a>')
+        if cells:
+            blocks += (f'<h2 style="margin:32px 0 12px">{lg.upper()} 팀별 구독</h2>'
+                       f'<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px">{cells}</div>')
+    body = page_head('RSS<span class="accent">.</span> <span class="kr">내 팀 구독</span>',
+                     '좋아하는 팀 소식을 RSS 리더로 받아 보세요. 새 글이 올라오면 리더에 자동으로 쌓입니다.', [('RSS 구독', '')]) + \
+        f'<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div style="display:flex;gap:10px;flex-wrap:wrap">{chips}</div>' \
+        f'{blocks}<div class="prose" style="margin-top:36px"><h2>사용 방법</h2><ul><li>Feedly, Inoreader 같은 RSS 리더에서 구독할 주소를 붙여넣으면 됩니다.</li>' \
+        f'<li>팀 카드나 버튼을 눌러 열린 주소(…xml)를 복사해 사용하세요.</li><li>글이 아직 없는 팀은 목록에 나타나지 않으며, 글이 생기면 자동으로 추가됩니다.</li></ul></div></div>'
+    write('/feed/', layout('RSS 구독', body, path='/feed/', description='SFANDOM 전체·리그별·팀별 RSS 구독 안내'))
+
+
 def clean_generated():
     for d in GENERATED_DIRS:
         shutil.rmtree(ROOT / d, ignore_errors=True)
@@ -1335,6 +1375,7 @@ def main():
     build_community()
     build_sitemap()
     build_static()
+    build_feeds()
     build_meta_files()
     print(f'built {len(PAGES)} indexable pages, {len(ARTICLES)} articles')
 
