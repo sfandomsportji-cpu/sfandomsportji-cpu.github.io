@@ -29,6 +29,8 @@ jobs:
         run: python3 src/tools/fetch_logos.py
       - name: Build share preview card (1200x630)
         run: python3 src/tools/build_social_card.py
+      - name: Cache licensed morning photographs
+        run: python3 src/tools/fetch_morning_photos.py
       - name: Build
         run: python3 src/build.py
       - name: Commit if changed (concurrent source updates safe)

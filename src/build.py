@@ -720,7 +720,7 @@ def build_home():
     <span class="hero-badge">{esc(hero.get("badge_en", "HOT ISSUE"))}<b>{esc(hero.get("badge_kr", ""))}</b></span>
     <h1 id="heroTitle">{hero_title}</h1>
     <p>{esc(hero_text)}</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill white" href="/nba/" style="height:54px;padding:0 28px">{home_cta}</a><a class="pill ghost" href="/community/#write" style="height:54px;padding:0 28px">팬 보드에서 얘기하기</a></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill white" href="{esc(hero_link or '/nba/')}" style="height:54px;padding:0 28px">{'오늘 특집 읽기' if hero_link else home_cta}</a><a class="pill ghost" href="/community/#write" style="height:54px;padding:0 28px">팬 보드에서 얘기하기</a></div>
   </article>
   {credit}{reel_tag}
   <aside class="top-stories" aria-label="{home_aria}"><h2>{home_heading} <span class="nba-dday">{home_status}</span></h2>{tip}</aside>
