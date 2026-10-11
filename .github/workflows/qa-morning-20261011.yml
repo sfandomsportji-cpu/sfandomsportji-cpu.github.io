@@ -1,0 +1,118 @@
+name: QA 2026-10-11 five photo cards
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/qa-morning-20261011.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  photo-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install browser QA tool
+        run: npm install --no-save playwright-core@1.56.1
+      - name: Inspect live desktop and mobile homepage
+        run: |
+          mkdir -p assets/captures
+          node <<'NODE'
+          const fs = require('node:fs');
+          const {chromium} = require('playwright-core');
+          const base='https://sfandom.com/';
+          const slugs=[
+            'nlcs-dodgers-brewers-game1',
+            'eagles-jaguars-london',
+            'mls-weekend-watch',
+            'mavericks-rockets-macao-rematch',
+            'fanboard-sunday-questions'
+          ];
+          (async()=>{
+            const browser=await chromium.launch({headless:true,channel:'chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
+            const report={checkedAt:new Date().toISOString(),page:base,versions:{}};
+            let failure=[];
+            try {
+              for(const config of [{name:'desktop',width:1440,height:900},{name:'mobile',width:390,height:844}]){
+                const page=await browser.newPage({viewport:{width:config.width,height:config.height},deviceScaleFactor:1});
+                const response=await page.goto(base+'?photo_qa_20261011='+Date.now(),{waitUntil:'domcontentloaded',timeout:45000});
+                await page.waitForTimeout(900);
+                const title=await page.locator('#taTitle').innerText();
+                const cards=page.locator('#today-analysis .morning-feature-grid .morning-card');
+                const count=await cards.count();
+                const images=[];
+                const links=[];
+                if(response.status()!==200)failure.push(config.name+': HTTP '+response.status());
+                if(!title.includes('2026.10.11')||count!==5)failure.push(config.name+': wrong editorial '+title+' or '+count+' cards');
+                for (const [i,slug] of slugs.entries()){
+                  const card=cards.nth(i);
+                  const anchor=card.locator('a.ta-more');
+                  const href=await anchor.getAttribute('href').catch(()=>null);
+                  const img=card.locator('img').first();
+                  if (await img.count()) {
+                    await img.scrollIntoViewIfNeeded();
+                    const state=await img.evaluate(async el=>{
+                      el.loading='eager';
+                      if(!el.complete)await Promise.race([
+                        new Promise(resolve=>{el.addEventListener('load',resolve,{once:true});el.addEventListener('error',resolve,{once:true});}),
+                        new Promise(resolve=>setTimeout(resolve,14000))
+                      ]);
+                      return {src:el.currentSrc||el.src,complete:el.complete,naturalWidth:el.naturalWidth,naturalHeight:el.naturalHeight};
+                    });
+                    images.push({slug,...state});
+                    if(!state.complete||state.naturalWidth<40||state.naturalHeight<40)failure.push(config.name+': broken image '+slug+' at '+state.src);
+                  }else{failure.push(config.name+': image missing from card '+slug)}
+                  if(!href||!href.includes(slug))failure.push(config.name+': wrong link for '+slug+': '+href);
+                  else {
+                    const ar=await page.request.get(new URL(href,base).href,{timeout:20000});
+                    links.push({slug,href,status:ar.status()});
+                    if(ar.status()!==200)failure.push(config.name+': article HTTP '+ar.status()+' '+slug);
+                  }
+                }
+                await page.evaluate(async()=>{
+                  document.querySelectorAll('img[loading="lazy"]').forEach(i=>i.loading='eager');
+                  try{await document.fonts.ready;}catch(e){}
+                });
+                await page.waitForTimeout(2600);
+                const layout=await page.evaluate(()=>({
+                  clientWidth:document.documentElement.clientWidth,
+                  documentWidth:document.documentElement.scrollWidth,
+                  cardCount:document.querySelectorAll('#today-analysis .morning-card').length
+                }));
+                if(layout.documentWidth>layout.clientWidth+8)console.log('LAYOUT WARNING horizontal overflow',config.name,JSON.stringify(layout));
+                const filename='assets/captures/sfandom-2026-10-11-photo-qa-'+config.name+'.png';
+                await page.screenshot({path:filename,fullPage:true,animations:'disabled',timeout:60000});
+                report.versions[config.name]={title,count,images,links,layout,filename};
+                console.log('AUDIT',config.name,JSON.stringify(report.versions[config.name]));
+                await page.close();
+              }
+            }finally{
+              await browser.close();
+            }
+            report.errors=failure;
+            fs.writeFileSync('assets/captures/sfandom-2026-10-11-photo-qa.json',JSON.stringify(report,null,2)+'\n');
+            if(failure.length){console.error('PHOTO QA FAILED',JSON.stringify(failure));process.exit(1);}
+            console.log('PHOTO QA PASSED - 5/5 desktop and 5/5 mobile cards, images and links');
+          })().catch(e=>{console.error(e);process.exit(1);});
+          NODE
+      - name: Upload QA screenshots and report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: sfandom-photo-qa-20261011
+          path: |
+            assets/captures/sfandom-2026-10-11-photo-qa-*.png
+            assets/captures/sfandom-2026-10-11-photo-qa.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Publish verified desktop and mobile captures
+        run: |
+          git config user.name "sfandom-bot"
+          git config user.email "sfandom-bot@users.noreply.github.com"
+          git add assets/captures/sfandom-2026-10-11-photo-qa-desktop.png assets/captures/sfandom-2026-10-11-photo-qa-mobile.png assets/captures/sfandom-2026-10-11-photo-qa.json
+          git commit -m "docs: verify SFANDOM five featured photos on desktop and mobile"
+          git push
