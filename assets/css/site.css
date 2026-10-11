@@ -941,3 +941,24 @@ section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo{
   .gt .vsline .tlogo-wrap:not(.nologo){width:46px;height:46px;flex-basis:46px}
 }
 /* SFANDOM GAME THREADS VS END */
+
+
+/* 2026-10-11 editorial list: five approved pieces shown visibly under hero.
+   Only scopes to the morning analysis grid; existing sections keep their layout. */
+.ta-grid.morning-feature-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.morning-feature-grid .morning-card{padding:18px;gap:14px;overflow:hidden}
+.morning-feature-grid .morning-photo{height:218px;border-radius:7px;overflow:hidden;background:var(--bg)}
+.morning-feature-grid .morning-photo .thumb{display:block;width:100%;height:100%;margin:0;min-height:0;aspect-ratio:auto;overflow:hidden}
+.morning-feature-grid .morning-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.morning-feature-grid .morning-copy{display:flex;flex-direction:column;gap:12px;min-width:0;flex:1}
+.morning-feature-grid .morning-copy h3{font-family:var(--head);font-size:clamp(20px,2vw,28px);font-weight:600;line-height:1.28;margin:0;color:#fff}
+.morning-feature-grid .morning-copy p{font-size:14px;line-height:1.65;color:var(--text-2);margin:0}
+.morning-feature-grid .morning-copy .morning-fixtures{font-weight:700;color:#fff}
+.morning-feature-grid .morning-card.morning-wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);align-items:center}
+.morning-feature-grid .morning-card.morning-wide .morning-photo{height:190px}
+.morning-feature-grid .morning-card .ta-more{margin-top:auto;align-self:flex-start;padding-top:5px}
+@media(max-width:850px){
+  .ta-grid.morning-feature-grid{grid-template-columns:1fr}
+  .morning-feature-grid .morning-card.morning-wide{grid-column:auto;display:flex}
+  .morning-feature-grid .morning-card.morning-wide .morning-photo{height:218px}
+}
