@@ -1,0 +1,35 @@
+{
+ "id": "2026-w41",
+ "start": "2026-10-05",
+ "end": "2026-10-11",
+ "posts": 3,
+ "comments": 5,
+ "channels": {
+  "NBA": 1,
+  "NEWS": 1,
+  "MLB": 1
+ },
+ "top": [
+  {
+   "channel": "NBA",
+   "title": "NBA프리시즌은 어렵네요...",
+   "nickname": "롤로",
+   "comments": 3,
+   "created": "2026-10-09"
+  },
+  {
+   "channel": "NEWS",
+   "title": "9회 한 방으로 뒤집힌 균형, DeNA가 먼저 웃었다 요미우리 1–2 DeNA · 마키의 선제포, 아즈마의 7이닝, 와타라이의 결승포",
+   "nickname": "SFANDOM",
+   "comments": 1,
+   "created": "2026-10-10"
+  },
+  {
+   "channel": "MLB",
+   "title": "화이트 삭스가 이길거라 생각했는데  털렸네요...",
+   "nickname": "JI",
+   "comments": 1,
+   "created": "2026-10-09"
+  }
+ ]
+}
