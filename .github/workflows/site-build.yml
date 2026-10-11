@@ -66,3 +66,22 @@ jobs:
           done
           echo "Generated commit could not be pushed after three retries." >&2
           exit 1
+      - name: Telegram 알림 (TELEGRAM_BOT_TOKEN · TELEGRAM_CHAT_ID Secrets 가 있을 때만 동작)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 src/tools/telegram_notify.py
+      - name: Commit telegram sent log
+        run: |
+          if [ -z "$(git status --porcelain src/content/telegram-sent.json)" ]; then
+            exit 0
+          fi
+          git config user.name "sfandom-bot"
+          git config user.email "sfandom-bot@users.noreply.github.com"
+          git add src/content/telegram-sent.json
+          git commit -m "chore: 텔레그램 발송 기록 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 3
+          done
+          exit 1
