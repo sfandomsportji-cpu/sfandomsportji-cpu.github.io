@@ -31,6 +31,12 @@ PHOTOS=[
     "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Intuit_Dome_Basketball.jpg/960px-Intuit_Dome_Basketball.jpg",
     "file": "Intuit_Dome_Basketball.jpg",
     "source": "https://commons.wikimedia.org/wiki/File:Intuit_Dome_Basketball.jpg"
+  },
+  {
+    "slot": "gsw",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Golden_State_Warriors_Point_Guard_Stephen_Curry_01.jpg/960px-Golden_State_Warriors_Point_Guard_Stephen_Curry_01.jpg",
+    "file": "Golden_State_Warriors_Point_Guard_Stephen_Curry_01.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Golden_State_Warriors_Point_Guard_Stephen_Curry_01.jpg"
   }
 ]
 OUT.mkdir(parents=True,exist_ok=True)
