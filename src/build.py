@@ -36,6 +36,7 @@ esc = lambda s: html.escape(str(s or ''), quote=True)
 sys.dont_write_bytecode = True  # 빌드가 임시 파일(__pycache__)을 남기지 않게
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / 'tools'))
 from fetch_logos import SOURCES as LOGO_SOURCES  # noqa: E402  (리그별 팀 ID · 공식 로고 주소)
+from build_article_cards import card_name  # noqa: E402  (글별 공유 카드 파일명)
 
 
 # ───────────────────────── 콘텐츠 읽기 ─────────────────────────
@@ -529,7 +530,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     img = image or f'{BASE}/assets/share/sfandom-social-20261010.png'
     if img.startswith('/'):
         img = f'{BASE}{img}'  # SNS crawlers need an absolute image URL.
-    social_card = img == f'{BASE}/assets/share/sfandom-social-20261010.png'
+    social_card = img.startswith(f'{BASE}/assets/share/')  # 대표 카드 · 글별 카드 모두 1200x630 PNG
     image_hints = (
         '<meta property="og:image:type" content="image/png">\n'
         '<meta property="og:image:width" content="1200">\n'
@@ -569,7 +570,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <meta property="og:url" content="{BASE}{path}">
 <meta property="og:image" content="{esc(img)}">
 <meta property="og:image:secure_url" content="{esc(img)}">
-{image_hints}<meta property="og:image:alt" content="{esc('SFANDOM & KAIRO 스포츠 팬 커뮤니티' if social_card else full_title)}">
+{image_hints}<meta property="og:image:alt" content="{esc('SFANDOM & KAIRO 스포츠 팬 커뮤니티' if img.endswith('sfandom-social-20261010.png') else full_title)}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{esc(img)}">
 <meta name="twitter:title" content="{esc(full_title)}">
@@ -888,9 +889,13 @@ def build_article(a: Article):
           'author': {'@type': 'Organization', 'name': 'SFANDOM', 'url': BASE + '/about/'},
           'publisher': {'@id': f'{BASE}/#organization', '@type': 'Organization', 'name': 'SFANDOM',
                         'logo': {'@type': 'ImageObject', 'url': f'{BASE}/assets/brand/sfandom-mark-512.png'}}}
-    if a.image:
-        ld['image'] = [a.image]
-    write(a.url, layout(a.headline, body, path=a.url, description=a.excerpt, image=a.image, og_type='article',
+    share = a.image
+    if not share:  # 사진이 없는 글은 build_article_cards.py 가 만든 글별 공유 카드 사용 (없으면 대표 카드)
+        card = f'/assets/share/cards/{card_name(pathlib.Path(a.file).stem, a.__dict__)}'
+        share = card if (ROOT / card.lstrip('/')).exists() else ''
+    if share:
+        ld['image'] = [share if share.startswith('http') else f'{BASE}{share}']
+    write(a.url, layout(a.headline, body, path=a.url, description=a.excerpt, image=share, og_type='article',
                         ld=[ld, breadcrumb_ld(trail)], active=section_url, ads=True), lastmod=a.date,
           search={'u': a.url, 't': a.headline, 's': a.subtitle, 'k': a.section, 'd': a.date_dot, 'x': a.excerpt})
 
