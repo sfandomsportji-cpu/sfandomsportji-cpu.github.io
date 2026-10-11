@@ -227,13 +227,6 @@
     if (im.complete && im.naturalWidth === 0 && im.currentSrc) fail(); else im.addEventListener('error', fail, { once: true });
   });
 
-  /* ── 오늘의 분석 카드: 휴대폰에서 세 칸 펼치기 ── */
-  $$('[data-ta-toggle]').forEach(btn => btn.addEventListener('click', () => {
-    const open = btn.closest('.ta-card').classList.toggle('open');
-    btn.setAttribute('aria-expanded', open);
-    btn.textContent = open ? '접기' : '선발 · 흐름 · 변수 펼치기';
-  }));
-
   /* ── 매거진: 구글 블로그(Blogger) 최신 글을 브라우저에서 바로 받아 합치기 ──
      네이버 글은 빌드 때 받아 HTML에 들어 있고, 구글 글은 여기서 JSONP로 최신 상태를 가져옵니다. */
   const grids = $$('[data-blog-grid]');
