@@ -962,3 +962,35 @@ section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo{
   .morning-feature-grid .morning-card.morning-wide{grid-column:auto;display:flex}
   .morning-feature-grid .morning-card.morning-wide .morning-photo{height:218px}
 }
+
+
+/* SFANDOM reading comfort adjustment · 2026-10-11
+   Reduces stark white bloom and blurred shadow, without changing approved layout. */
+:root{
+  --text:#E6E8ED;
+  --text-2:#C6CBD4;
+  --text-3:#B6BEC9;
+}
+.hero-copy h1,.hero-copy p{
+  text-shadow:0 1px 2px rgba(0,0,0,.42);
+}
+.hero-copy h1{color:#EBEDF1}
+.outline{-webkit-text-stroke:1px #B8C0CC}
+.sec-title{color:#E6E8ED}
+.morning-feature-grid .morning-copy h3{
+  color:#E5E9EE;
+  font-family:var(--body);
+  font-size:clamp(20px,1.8vw,25px);
+  font-weight:600;
+  line-height:1.48;
+  letter-spacing:-.02em;
+  text-shadow:none;
+}
+.morning-feature-grid .morning-copy p{
+  color:#C9CFD8;
+  font-size:15px;
+  line-height:1.75;
+}
+.morning-feature-grid .morning-copy .morning-fixtures{
+  color:#DEE2E8;
+}
