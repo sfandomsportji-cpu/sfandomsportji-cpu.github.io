@@ -1,0 +1,116 @@
+name: Verify NBA 2026-10-11 scores and recap publishing
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/qa-nba-results-20261011.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install browser runner
+        run: npm install --no-save playwright-core@1.56.1
+      - name: Check live NBA score records, published recaps, images
+        run: |
+          mkdir -p assets/captures
+          node <<'NODE'
+          const fs=require('node:fs');
+          const {chromium}=require('playwright-core');
+          const base='https://sfandom.com';
+          const expected=[
+            ['LAC','TOR','106–114'],['ATL','IND','119–117'],['DET','WAS','108–114'],
+            ['MIN','MIA','125–124'],['PHI','BOS','106–144'],
+            ['SAC','GSW','106–111'],['SAS','PHX','98–102']];
+          (async()=>{
+            const browser=await chromium.launch({headless:true,channel:'chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
+            const report={date:'2026-10-11',checks:[],images:[],errors:[]};
+            const check=(good,label,extra='')=>{report.checks.push({label,ok:!!good,extra});if(!good)report.errors.push(label+': '+extra);};
+            try{
+              const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
+              let response=await page.goto(base+'/?nba_qa=20261011-r2',{waitUntil:'domcontentloaded',timeout:45000});
+              check(response.status()===200,'homepage loads',response.status().toString());
+              const lead=await page.locator('.news-lead h3').innerText();
+              check(lead.includes('클리블랜드 2–0 화이트삭스'),'Cleveland review replaces old NPB lead',lead);
+              const news=await page.locator('.news-list').innerText();
+              check(news.includes('골든스테이트 111–106'),'Golden State review on homepage');
+              check(news.includes('NBA 프리시즌 오전 7경기'),'NBA slate summary on homepage');
+              const pages=[
+                '/news/2026/10/guardians-white-sox-alds-game5-recap/',
+                '/news/2026/10/warriors-kings-preseason-recap/',
+                '/news/2026/10/nba-preseason-7-final-scores-oct11/'
+              ];
+              for (const url of pages){
+                let resp=await page.request.get(base+url,{timeout:24000});
+                check(resp.status()===200,'article '+url,resp.status().toString());
+              }
+              for (const url of pages.slice(0,2)){
+                await page.goto(base+url,{waitUntil:'domcontentloaded',timeout:45000});
+                const image=page.locator('article img').first();
+                const imgCount=await image.count();
+                if(imgCount){
+                  const state=await image.evaluate(async img=>{
+                    img.loading='eager';
+                    await new Promise(resolve=>{
+                      if(img.complete)return resolve();
+                      img.addEventListener('load',resolve,{once:true});
+                      img.addEventListener('error',resolve,{once:true});
+                      setTimeout(resolve,14000);
+                    });
+                    return {src:img.currentSrc||img.src,alt:img.alt,ok:img.complete&&img.naturalWidth>=40,width:img.naturalWidth};
+                  });
+                  report.images.push({url,...state});
+                  check(state.ok,'image loads '+url,JSON.stringify(state));
+                }else{
+                  check(false,'article image present '+url);
+                }
+              }
+              await page.goto(base+'/nba/?nba_qa=20261011-r2',{waitUntil:'domcontentloaded',timeout:45000});
+              const title=await page.title();
+              check(title.includes('프리시즌 최종 결과'),'NBA hub latest title',title);
+              const all=page.locator('#preseason .preseason-list .nba-card');
+              const count=await all.count();
+              check(count>=16,'NBA hub has results and future slate',count.toString());
+              for(let i=0;i<expected.length;i++){
+                const card=await all.nth(i).innerText();
+                const [away,home,score]=expected[i];
+                check(card.includes('FINAL')&&card.includes('종료')&&card.includes(score),away+'-'+home+' final score',card.slice(0,260));
+              }
+              const upcomingCards=[];
+              for(let i=7;i<16;i++)upcomingCards.push(await all.nth(i).innerText());
+              check(upcomingCards.every(t=>t.includes('UPCOMING')&&!t.includes('종료')),'future NBA games remain scheduled');
+              check(upcomingCards[0]?.includes('10.11 (일) 19:00'),'Dallas Houston 19:00 KST remains scheduled',upcomingCards[0]||'not found');
+              await page.evaluate(async()=>{
+                document.querySelectorAll('img[loading="lazy"]').forEach(img=>img.loading='eager');
+                try{await document.fonts.ready;}catch(e){}
+              });
+              await page.waitForTimeout(2300);
+              await page.screenshot({path:'assets/captures/sfandom-nba-results-20261011-fullpage.png',fullPage:true,animations:'disabled',timeout:60000});
+              report.scorecards=expected.length;
+              report.scheduled=upcomingCards.length;
+              fs.writeFileSync('assets/captures/sfandom-nba-results-20261011-qa.json',JSON.stringify(report,null,2)+'\n');
+              console.log('NBA site QA summary',JSON.stringify({errors:report.errors,scorecards:report.scorecards,scheduled:report.scheduled,images:report.images}));
+              if(report.errors.length)process.exit(1);
+            }finally{await browser.close()}
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - name: Upload QA files for inspection
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: sfandom-nba-score-qa
+          path: |
+            assets/captures/sfandom-nba-results-20261011-fullpage.png
+            assets/captures/sfandom-nba-results-20261011-qa.json
+          if-no-files-found: warn
+      - name: Commit verified QA capture
+        run: |
+          git config user.name "sfandom-bot"
+          git config user.email "sfandom-bot@users.noreply.github.com"
+          git add assets/captures/sfandom-nba-results-20261011-fullpage.png assets/captures/sfandom-nba-results-20261011-qa.json
+          git commit -m "docs: verify October 11 NBA finals and reviews on public site"
+          git push
