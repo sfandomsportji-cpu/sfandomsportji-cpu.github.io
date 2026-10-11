@@ -595,7 +595,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-reading-comfort-20261011">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-nba-results-20261011-v2">
 {thread_css}{news_comments_css}
 {ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
@@ -727,7 +727,7 @@ def build_home():
     home_preseason = nba_home_preseason()
     home_games = nba_home_games()
     home_heading = 'PRESEASON' if home_preseason else 'TIP-OFF'
-    home_status = 'NOW' if home_preseason else nba_dday()
+    home_status = '7 FINAL' if home_preseason else nba_dday()
     home_cta = '프리시즌 일정' if home_preseason else '개막 주간 일정'
     home_aria = 'NBA 프리시즌' if home_preseason else 'NBA 개막 주간'
     tip = ''.join(nba_home_story(g) for g in home_games[:5])
@@ -1135,7 +1135,7 @@ def nba_home_story(g: dict) -> str:
     separator = 'VS' if (g.get('result') or str(g.get('day', '')).upper().startswith(('FINAL', 'LIVE'))) else '@'
     tag = f'<em class="nba-tag">{esc(g["tag"])}</em>' if g.get('tag') else ''
     destination = f'/nba/#preseason-{g["away"].lower()}-{g["home"].lower()}' if g in NBA.get('preseason_games', []) else '/nba/#tipoff'
-    label = esc(f'{g["away"]} - {g["home"]} 경기 일정 확인')
+    label = esc(f'{g["away"]} - {g["home"]} ' + ('최종 결과 확인' if g.get('result') else '경기 일정 확인'))
     return (f'<a class="ts tip" href="{destination}" aria-label="{label}"><span><span class="tag">{esc(g.get("day", "PRESEASON"))} · {esc(g["kst"])}</span>'
             f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i class="match-separator">{separator}</i>'
             f'{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>{tag}</span></a>')
@@ -1162,9 +1162,9 @@ def nba_section() -> str:
     preseason = nba_home_preseason()
     games = nba_home_games()
     cards = nba_cards(games)
-    dday = 'NOW' if preseason else nba_dday()
-    title = 'PRESEASON <span class="outline">NOW</span>' if preseason else 'TIP-OFF <span class="outline">WEEK</span>'
-    copy = ('프리시즌은 승패보다 역할을 보는 시간입니다. 최근 결과와 다음 경기에서 반복될 조합을 한국시간으로 정리했습니다.'
+    dday = '7 FINAL · NEXT' if preseason else nba_dday()
+    title = 'PRESEASON <span class="outline">RESULTS</span>' if preseason else 'TIP-OFF <span class="outline">WEEK</span>'
+    copy = ('10월 11일 오전 7경기 최종 점수를 모두 반영했습니다. 댈러스–휴스턴을 비롯한 다음 경기는 예정으로 구분합니다. 시간은 한국시간입니다.'
             if preseason else '10월 21일(수) 새벽, 새 시즌이 시작됩니다. 개막 주간 주요 경기를 한국시간으로 정리했습니다.')
     return (f'<section class="wrap sec" id="nba" aria-labelledby="nbaTitle"><div class="nba-stage">'
             f'<div class="nba-intro"><span class="nba-kicker"><span class="nba-ball" aria-hidden="true"></span>NBA {NBA["season"]}</span>'
