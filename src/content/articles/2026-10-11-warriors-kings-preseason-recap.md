@@ -7,10 +7,10 @@ subtitle: "접전의 마지막을 가져간 워리어스, 렌데보르그 23점�
 kicker: "NBA · PRESEASON RECAP"
 meta: "2026.10.11 09:30 KST · SACRAMENTO 106–111 GOLDEN STATE"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/201939.png"
+image: "/assets/photos/morning-20261011-gsw.jpg"
 photo_fallback: "/assets/teams/nba/gsw.svg"
-image_alt: "골든스테이트 스테픈 커리 NBA 공식 선수 프로필 이미지 · 새크라멘토 경기 실황 사진 아님"
-credit: "PHOTO · NBA 공식 선수 프로필 · 경기 장면 아님"
+image_alt: "2017년 덴버 원정 경기 전 스테픈 커리 슈팅 연습 자료사진 · 2026년 킹스전 실황 아님"
+credit: "PHOTO · Cyrus Saatsaz / Wikimedia Commons · CC BY-SA 4.0 · 2017년 자료사진"
 edition: "2026-10-11"
 slug: "warriors-kings-preseason-recap"
 sources: [{"label":"NBA 2026-10-10 새크라멘토–골든스테이트 공식 경기센터","url":"https://www.nba.com/game/0012600014"},{"label":"Sportsnet 골든스테이트 111–106 새크라멘토 하이라이트","url":"https://www.sportsnet.ca/nba/video/nba-pre-season-highlights-warriors-111-kings-106/"}]
@@ -43,6 +43,6 @@ sources: [{"label":"NBA 2026-10-10 새크라멘토–골든스테이트 공식 �
 워리어스의 111점에서 더 중요한 숫자는 렌데보르그의 6어시스트입니다. 커리의 점유와 출전 시간이 제한될 때도 다른 선수가 공격의 시작과 마무리를 연결할 수 있다는 점을 평가해야 합니다.
 :::
 
-사진은 스테픈 커리의 NBA 공식 프로필 사진이며, 이날 경기 현장을 촬영한 사진은 아닙니다.
+사진: [Cyrus Saatsaz / Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Golden_State_Warriors_Point_Guard_Stephen_Curry_01.jpg), [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). 2017년 덴버에서 촬영한 커리의 경기 전 슈팅 연습 자료사진이며, 2026년 새크라멘토전 실황 사진이 아닙니다.
 
 경기 출처: [NBA 공식 경기센터](https://www.nba.com/game/0012600014) · [Sportsnet 공식 하이라이트](https://www.sportsnet.ca/nba/video/nba-pre-season-highlights-warriors-111-kings-106/).
