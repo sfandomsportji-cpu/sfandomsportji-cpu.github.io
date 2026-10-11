@@ -25,10 +25,15 @@ jobs:
           python-version: "3.12"
       - name: Install social preview image dependency
         run: python3 -m pip install Pillow==11.3.0
+      - name: Korean font for article share cards
+        run: |
+          fc-list | grep -qi "Noto Sans CJK KR" || (sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-cjk)
       - name: Team logos (없는 것만 받아 저장소에 보관)
         run: python3 src/tools/fetch_logos.py
       - name: Build share preview card (1200x630)
         run: python3 src/tools/build_social_card.py
+      - name: Build per-article share cards (1200x630)
+        run: python3 src/tools/build_article_cards.py
       - name: Cache licensed morning photographs
         run: python3 src/tools/fetch_morning_photos.py
       - name: Build
