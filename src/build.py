@@ -653,17 +653,14 @@ def channel_chips() -> str:
 
 
 def game_threads(limit: int = 7) -> str:
-    """경기 스레드: NBA 개막일 경기 + 진행 중인 MLB 디비전시리즈. 누르면 그 경기 글만 모아 보여 줍니다."""
+    """경기 스레드: NBA 예정 경기와 MLB 챔피언십시리즈를 연결합니다."""
     rows = []
     for g in [x for x in nba_home_games() if not x.get('result')][:3]:
         tag = f'{g["away"]}@{g["home"]}'
         rows.append((f'NBA · {g["day"]}', badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba") + '<i class="thread-vs">VS</i>' + badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba"), tag, g['kst']))
-    for d in PS['division']:
-        nxt = ds_next(d)
-        if not nxt:
-            continue
+    for d in PS.get('lcs', []):
         tag = f'{d["away"]}@{d["home"]}'
-        rows.append((f'{d["league"]}DS', badge(d["away"], d["away_color"]) + '<i class="thread-vs">VS</i>' + badge(d["home"], d["home_color"]), tag, '디비전시리즈'))
+        rows.append((f'{d["league"]}CS', badge(d["away"], d["away_color"]) + '<i class="thread-vs">VS</i>' + badge(d["home"], d["home_color"]), tag, '챔피언십시리즈'))
     out = ''.join(f'<a class="gt" href="/community/?thread={quote(tag)}"><span><small>{esc(k)} · {esc(when)}</small><b class="vsline">{logos}</b></span><span class="gt-in"><span class="gt-dot"></span>입장</span></a>' for k, logos, tag, when in rows[:limit])
     return f'<div class="box"><span class="box-title">GAME THREADS · 경기 스레드</span>{out}</div>'
 
@@ -735,7 +732,7 @@ def build_home():
     tip = ''.join(nba_home_story(g) for g in home_games[:5])
     lead, rest = news[0], news[1:5]
     nl = ''.join(f'<a class="nl" href="{a.url}">{home_news_thumb(a)}<span class="t"><span class="tag">{esc(a.league)} · {a.date_dot}</span><strong>{esc(a.headline)}</strong></span><span class="talk">{talk_icon()}토론</span></a>' for a in rest)
-    ds_cards = ''.join(ds_card(d) for d in PS['division'])
+    lcs_cards = ''.join(lcs_card(d) for d in PS.get('lcs', []))
     ta_html = today_analysis()
     shown = TODAY_PICKS
     gt = lambda a: (re.match(r'[\d.]+ [\d:]+', a.meta or '') or re.match('', '')).group(0) or '9999'
@@ -801,9 +798,9 @@ def build_home():
   </a>
 </section>
 
-<section class="wrap sec" id="division" aria-labelledby="dsTitle">
-  <div class="sec-head"><h2 class="sec-title" id="dsTitle">MLB <span class="outline">POSTSEASON</span> <span class="kr">디비전시리즈</span></h2><a class="more" href="/special/postseason-2026/">대진표 · 전체 일정 →</a></div>
-  <div class="grid-4">{ds_cards}</div>
+<section class="wrap sec" id="lcs" aria-labelledby="dsTitle">
+  <div class="sec-head"><h2 class="sec-title" id="dsTitle">MLB <span class="outline">POSTSEASON</span> <span class="kr">챔피언십시리즈</span></h2><a class="more" href="/special/postseason-2026/">대진표 · 전체 일정 →</a></div>
+  <div class="grid-4">{lcs_cards}</div>
 </section>
 
 <section class="wrap sec split-8-4" aria-labelledby="anTitle">
@@ -1047,7 +1044,9 @@ def build_hubs():
     sec = lambda kind, title, kr, anchor: (f'<section id="{anchor}" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:52px">{title} <span class="kr">{kr}</span></h2></div>'
                                            + list_with_ads([a for a in mlb if a.kind == kind][:8], 4, 'SF-HUB-FEED') + '</section>')
     t = tabs([('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('포스트시즌', '/special/postseason-2026/')], '')
-    main = sec('news', 'NEWS', 'MLB 뉴스', 'news') + sec('analysis', 'ANALYSIS', '경기 프리뷰', 'analysis') + sec('magazine', 'MAGAZINE', '기획 · 스포트라이트', 'magazine')
+    live_mlb = ('<section id="lcs" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:42px">LEAGUE CHAMPIONSHIP <span class="kr">최신 전적 · 다음 경기</span></h2></div><div class="grid-4">'
+                + ''.join(lcs_card(d) for d in PS.get('lcs', [])) + '</div></section>')
+    main = live_mlb + sec('news', 'NEWS', 'MLB 뉴스', 'news') + sec('analysis', 'ANALYSIS', '경기 프리뷰', 'analysis') + sec('magazine', 'MAGAZINE', '기획 · 스포트라이트', 'magazine')
     write('/mlb/', layout('MLB · 메이저리그', page_head('MLB<span class="accent">.</span> <span class="kr">메이저리그</span>', '포스트시즌, 모닝 에디션, 선발 매치업까지 — MLB 이야기는 여기서 시작합니다.', [('MLB', '')], t)
           + two_col(main, 'SF-HUB-RAIL', '<div class="aside-box" style="margin-top:24px"><h2>POSTSEASON</h2><a href="/special/postseason-2026/">2026 포스트시즌 대진표 · 일정 →</a><a href="/community/">경기 얘기는 팬 보드에서 →</a></div>'),
           path='/mlb/', description='MLB 뉴스·경기 분석·매거진', active='/mlb/'))
@@ -1078,6 +1077,7 @@ def build_hubs():
     # 포스트시즌 특집
     wc = ''.join(wc_result(w) for w in PS['wildcard'])
     dsf = ''.join(ds_card(d, link=False, full=True) for d in PS['division'])
+    lcsf = ''.join(lcs_card(d, link=False, full=True) for d in PS.get('lcs', []))
     seeds = ''.join(
         f'<div class="seed-list"><h3>{lg["name"]}</h3>' + ''.join(
             f'<div class="seed-row"><b>{s["seed"]}</b>{badge(s["abbr"], s["color"])}<span class="abbr"></span><small>{s["record"]} · {esc(s["note"])}</small></div>' for s in lg['seeds']) + '</div>'
@@ -1085,27 +1085,46 @@ def build_hubs():
     rounds = ''.join(f'<div class="round"><span class="display">{r["name"]}</span><span>{esc(r["kr"])}</span><span class="tag red">{esc(r["dates"])}</span></div>' for r in PS['rounds'])
     srcs = ''.join(f'<span>{esc(s["label"])}</span>' for s in PS['source'])
     rel = [a for a in ARTICLES if a.league == 'MLB' and a.date >= '2026-09-24'][:6]
-    body = (page_head('POSTSEASON <span class="accent">2026</span>', '정규시즌 2,430경기가 끝났습니다. 와일드카드를 지나 8개 팀이 남았습니다. 디비전시리즈 전적과 일정, 그리고 경기마다 이어지는 토론.',
+    body = (page_head('POSTSEASON <span class="accent">2026</span>', '정규시즌 2,430경기가 끝났습니다. 챔피언십시리즈에 4개 팀이 남았습니다. NLCS·ALCS 최신 전적과 다음 경기, 지난 라운드 결과를 한국시간으로 확인합니다.',
                       [('POSTSEASON', '')])
             + f'''<div class="wrap">
-<section class="sec" id="division" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title">DIVISION <span class="outline">SERIES</span></h2><span class="muted">5전 3선승 · 시간은 한국시간 · {PS["updated"].replace("-", ".")} 기준</span></div><div class="grid-4">{dsf}</div></section>
+<section class="sec" id="lcs" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title">LEAGUE <span class="outline">CHAMPIONSHIP</span></h2><span class="muted">7전 4선승 · 한국시간 · {PS["updated"].replace("-", ".")} 기준</span></div><div class="grid-4">{lcsf}</div></section>
+<section class="sec" id="division"><div class="sec-head"><h2 class="sec-title">DIVISION <span class="outline">SERIES</span></h2><span class="muted">5전 3선승 · 시간은 한국시간 · {PS["updated"].replace("-", ".")} 기준</span></div><div class="grid-4">{dsf}</div></section>
 <section class="sec" id="wildcard"><div class="sec-head"><h2 class="sec-title">WILD CARD <span class="kr">결과</span></h2><span class="muted">3전 2선승 · 종료</span></div><div class="grid-4">{wc}</div></section>
 <section class="sec" id="bracket"><div class="bracket"><div class="bracket-head"><h2>SEEDS<span class="accent">.</span></h2><span class="muted">정규시즌 최종 성적 · {PS["updated"].replace("-", ".")} 확인</span></div><div class="seeds">{seeds}</div><div class="rounds">{rounds}</div>
 <div class="sources" style="border:0;padding-bottom:0"><strong>출처</strong>{srcs}</div></div></section>
 {ad_band('SF-LIST-BTM')}
 <section class="sec"><div class="sec-head"><h2 class="sec-title">ROAD TO <span class="accent">OCTOBER</span> <span class="kr">가을로 가는 길</span></h2><a class="more" href="/news/morning/">모닝 에디션 전체 →</a></div><div class="card-grid">{"".join(mag_card(a) for a in rel)}</div></section>
-<section class="discuss"><div><h2>경기 얘기는 팬 보드에서</h2><p>예상, 복기, 한 줄 평 모두 환영합니다.</p></div><a class="pill" href="/community/?topic={quote("[디비전시리즈] ")}#write">{talk_icon()}글쓰기</a></section>
+<section class="discuss"><div><h2>경기 얘기는 팬 보드에서</h2><p>예상, 복기, 한 줄 평 모두 환영합니다.</p></div><a class="pill" href="/community/?topic={quote("[챔피언십시리즈] ")}#write">{talk_icon()}글쓰기</a></section>
 </div>''')
     ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': '2026 MLB 포스트시즌 대진표·일정', 'url': BASE + '/special/postseason-2026/', 'inLanguage': 'ko-KR'}
-    write('/special/postseason-2026/', layout('2026 MLB 포스트시즌 대진표 · 디비전시리즈 일정 (한국시간)', body, path='/special/postseason-2026/',
-          description='2026 MLB 포스트시즌 디비전시리즈 전적과 한국시간 일정, 와일드카드 결과, 12개 팀 시드 정리.',
+    write('/special/postseason-2026/', layout('2026 MLB 포스트시즌 · 챔피언십시리즈 최신 일정 (한국시간)', body, path='/special/postseason-2026/',
+          description='2026 MLB 포스트시즌 챔피언십시리즈 최신 전적과 다음 경기, 디비전시리즈 종료 결과를 한국시간으로 정리.',
           ld=[ld, breadcrumb_ld([('POSTSEASON', '/special/postseason-2026/')])], active='/special/postseason-2026/'),
-          search={'u': '/special/postseason-2026/', 't': '2026 MLB 포스트시즌 대진표 · 일정', 's': '디비전시리즈 · 와일드카드 결과', 'k': 'SPECIAL', 'd': PS['updated'].replace('-', '.'), 'x': '디비전시리즈 전적과 한국시간 일정, 와일드카드 결과, 12개 팀 시드'})
+          search={'u': '/special/postseason-2026/', 't': '2026 MLB 포스트시즌 대진표 · 일정', 's': 'NLCS·ALCS · 디비전시리즈 종료 결과', 'k': 'SPECIAL', 'd': PS['updated'].replace('-', '.'), 'x': '챔피언십시리즈 전적과 다음 경기, 디비전시리즈 결과'})
 
 
 # ───────────────────────── 포스트시즌 · NBA 카드 ─────────────────────────
 def ds_next(d: dict):
     return next((g for g in d['games'] if not g.get('result')), None)
+
+
+
+def lcs_card(d: dict, link: bool = True, full: bool = False) -> str:
+    """챔피언십시리즈 최신 전적·확정 결과·앞으로의 한국시간 일정."""
+    done = [g for g in d['games'] if g.get('result')]
+    future = [g for g in d['games'] if not g.get('result')]
+    lead = 'lead-h' if d['hw'] > d['aw'] else ('lead-a' if d['aw'] > d['hw'] else '')
+    last = ''.join('<span class="ds-res"><b>G' + str(g['g']) + '</b>' + esc(g['result']) + '</span>' for g in (done if full else done[-1:]))
+    next_games = future if full else future[:1]
+    rest = ''.join('<span class="ds-res up"><b>G' + str(g['g']) + '</b>' + esc(g['kst']) + ' KST</span>' for g in next_games)
+    when = ('G' + str(future[0]['g']) + ' · ' + esc(future[0]['kst']) + ' KST') if future else '시리즈 종료'
+    tag = 'a' if link else 'div'
+    href = ' href="/special/postseason-2026/#lcs"' if link else ''
+    return (f'<{tag} class="matchup ds {lead}{" lift" if link else ""}"{href}><span class="tag">{esc(d["league"])}CS · 7전 4선승</span>'
+            f'<div class="row">{badge(d["home"], d["home_color"], "lg")}<span class="ds-name">{esc(d["home_kr"])}<small>#{d["hs"]} · 홈 어드밴티지</small></span><span class="ds-w h">{d["hw"]}</span></div>'
+            f'<div class="row">{badge(d["away"], d["away_color"], "lg")}<span class="ds-name">{esc(d["away_kr"])}<small>#{d["as"]}</small></span><span class="ds-w a">{d["aw"]}</span></div>'
+            f'<div class="ds-log">{last}{rest}</div><span class="when">{when}</span></{tag}>')
 
 
 def ds_card(d: dict, link: bool = True, full: bool = False) -> str:
