@@ -1163,3 +1163,99 @@ section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo{
     min-height:150px;
   }
 }
+
+
+/* SFANDOM 2026-10-13 readability v4 · visual QA */
+@media(min-width:761px){
+  /* Automatically share all available width across real cards, without empty grid columns. */
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{
+    display:flex;flex-wrap:wrap;align-items:stretch;gap:16px;padding:28px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box-title{
+    flex:0 0 100%;font-size:30px;line-height:1.2;letter-spacing:1px;color:#e5e7ef;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt{
+    flex:1 1 235px;min-width:0;min-height:220px;gap:18px;
+    padding:22px 20px;align-items:stretch;justify-content:space-between;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt small{
+    font-size:16px;line-height:1.55;color:#e2e5ef;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt .vsline{
+    display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 4px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt .tchip{
+    min-width:60px;height:44px;padding:0 10px;border-radius:22px;font-size:25px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt .vsline .thread-vs{
+    min-width:36px;flex:0 0 36px;font-size:34px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt .vsline .tlogo-wrap:not(.nologo){
+    width:64px;height:64px;flex:0 0 64px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{
+    align-self:flex-start;font-size:18px;padding:11px 17px;
+  }
+  section[aria-labelledby="anTitle"] .main .mini{min-height:226px;gap:17px;padding:30px}
+  section[aria-labelledby="anTitle"] .main .mini .tag{font-size:16px;line-height:1.4}
+  section[aria-labelledby="anTitle"] .main .mini .display{font-size:clamp(32px,2.15vw,42px);line-height:1.1}
+  section[aria-labelledby="anTitle"] .main .mini strong{font-size:21px;line-height:1.55}
+  section[aria-labelledby="anTitle"] .side>.box p{font-size:19px;line-height:1.6}
+  .morning-feature-grid .morning-copy h3{font-size:clamp(28px,1.9vw,34px);line-height:1.42}
+  .morning-feature-grid .morning-copy p{font-size:19px;line-height:1.7}
+  .morning-feature-grid .morning-card .tag{font-size:16px}
+  .morning-feature-grid .morning-card .ta-more{font-size:18px}
+  section[aria-labelledby="newsTitle"] .news-lead p{font-size:19px;line-height:1.7}
+  section[aria-labelledby="newsTitle"] .nl strong{font-size:22px;line-height:1.5}
+  section[aria-labelledby="magTitle"] .mag h3{font-size:29px;line-height:1.4}
+  section[aria-labelledby="magTitle"] .mag p{font-size:19px;line-height:1.7}
+  section[aria-labelledby="fanTitle"] .fan-side .rules{font-size:18px}
+  section[aria-labelledby="fanTitle"] .fan-side .quick-text{font-size:18px}
+  section[aria-labelledby="fanTitle"] .fan-side .quick-meta{font-size:15px}
+  section[aria-labelledby="fanTitle"] .fan-main .post-body strong{font-size:21px}
+  section[aria-labelledby="fanTitle"] .fan-main .post-body p{font-size:18px}
+  section[aria-labelledby="fanTitle"] .fan-main .post-meta{font-size:16px}
+  #lcs .matchup.ds .tag{font-size:16px}
+  #lcs .matchup.ds .ds-name{font-size:25px}
+  #lcs .matchup.ds .ds-name small{font-size:16px}
+  #lcs .matchup.ds .ds-log,#lcs .matchup.ds .when{font-size:18px}
+  .sec-title .kr{font-size:28px;line-height:1.35}
+  .sec-head .more{font-size:17px}
+  /* These selectors intentionally outrank the later-loaded section stylesheets. */
+  body .sf-scores__eyebrow{font-size:15px}
+  body .sf-scores__heading p{font-size:16px;color:#d3d6e1}
+  body .sf-scores__league-head h3{font-size:24px}
+  body .sf-scores__league-head small{font-size:15px;color:#d2d4de}
+  body .sf-scores__game{padding:18px 16px;row-gap:10px}
+  body .sf-scores__time time{font-size:16px}
+  body .sf-scores__time small{font-size:15px}
+  body .sf-scores__teams b{font-size:21px}
+  body .sf-scores__teams i{font-size:14px}
+  body .sf-scores__numbers{font-size:22px}
+  body .sf-scores__tag{font-size:15px;color:#d2d5df;line-height:1.5}
+  body .sf-identity__eyebrow{font-size:16px}
+  body .sf-identity__intro p{font-size:20px;line-height:1.8;color:#d9dae4}
+  body .sf-identity__link{font-size:18px}
+  body .sf-identity__value strong{font-size:21px}
+  body .sf-identity__value p{font-size:17px;line-height:1.65;color:#c9ccd9}
+  body .sf-identity__value{min-height:110px;gap:20px;padding:22px 26px}
+  body .sf-identity__symbol{width:52px;height:52px;font-size:25px}
+}
+@media(min-width:761px) and (max-width:1180px){
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt{flex-basis:285px}
+}
+@media(max-width:760px){
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{
+    display:flex;flex-wrap:wrap;gap:12px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box-title{flex:0 0 100%}
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt{
+    flex:1 1 220px;min-width:0;min-height:160px;padding:18px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt small{font-size:15px}
+  body .sf-scores__league-head small,body .sf-scores__tag{font-size:14px}
+  body .sf-scores__time time{font-size:15px}
+  body .sf-scores__teams b,body .sf-scores__numbers{font-size:19px}
+  body .sf-identity__intro p{font-size:16px}
+  body .sf-identity__value p{font-size:15px}
+}
