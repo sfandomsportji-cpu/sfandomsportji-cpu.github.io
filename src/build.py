@@ -40,6 +40,7 @@ import feeds  # noqa: E402  (RSS 피드 생성)
 import weekly  # noqa: E402  (주간 인기 글 스냅샷)
 from build_article_cards import card_name  # noqa: E402  (글별 공유 카드 파일명)
 from editorial_paths import related as editorial_related, index as editorial_index
+from naver_magazine import render as render_naver_magazine
 
 
 # ───────────────────────── 콘텐츠 읽기 ─────────────────────────
@@ -593,7 +594,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v={VER}-nba-results-20261011-v2">
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261012-site01">' if path == '/' else '')}
-{('<link rel="stylesheet" href="/assets/css/magazine-editorial.css?v=20261012-site02">' if path == '/magazine/' else '')}
+{('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-naver-only">' if path == '/magazine/' else '')}
 {('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261012-site03">' if path in ('/', '/games/') else '')}
 {('<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v=20261012-site04">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {('<link rel="stylesheet" href="/assets/css/editorial-links.css?v=20261012-site04-map">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
@@ -991,30 +992,18 @@ def build_lists():
           + two_col('<div class="list">' + ''.join(rows) + '</div>', 'SF-HUB-RAIL'), path='/news/morning/',
           description='SFANDOM 모닝 에디션 전체 목록', active='/news/'))
 
-    # 매거진: 자체 원문을 먼저 노출하고, 외부 블로그 연재는 별도 섹션으로 구분합니다.
-    # 외부 블로그의 RSS 요약만 가득한 페이지가 되지 않도록 내부 기사 연결을 유지합니다.
-    originals = [a for a in ARTICLES if a.kind == 'magazine']
-    own_cards = ''.join(mag_card(a) for a in originals)
-    original_section = (
-        '<section aria-labelledby="magOriginalTitle">'
-        '<div class="sec-head"><h2 class="sec-title" id="magOriginalTitle">SFANDOM <span class="accent">ORIGINAL</span> '
-        '<span class="kr">자체 심층 기사</span></h2></div>'
-        f'<div class="card-grid">{own_cards}</div></section>'
-    )
-    external_section = (
-        '<section aria-labelledby="magExternalTitle" style="margin-top:44px">'
-        '<div class="sec-head"><h2 class="sec-title" id="magExternalTitle">BLOG <span class="accent">SERIES</span> '
-        '<span class="kr">외부 채널 연재</span></h2></div>'
-        + blog_grid(24) + '</section>'
-    )
-    links = ''.join(f'<a class="pill ghost" href="{esc(v["url"])}" target="_blank" rel="noopener">{esc(v["label"])} ↗</a>' for v in SITE['blogs'].values() if v.get('url'))
-    inner = original_section + external_section + f'<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:28px">{links}</div>'
-    write('/magazine/', layout('MAGAZINE · 매거진', page_head(
-          'MAGAZINE<span class="accent">.</span>',
-          'SFANDOM 자체 심층 기사와 외부 블로그 연재를 구분해 읽을 수 있습니다.',
+    # 매거진: sfandomsport 네이버 블로그 최근 글 링크 전용 화면.
+    # 사진/영상 썸네일 외부 URL을 렌더링하거나 Google Blogger를 동적으로 스크랩하지 않습니다.
+    # 과거 SFANDOM 원문은 /analysis/ 및 개별 기사 경로에 그대로 보존합니다.
+    naver_mag = render_naver_magazine(BLOGS.get('naver', []), esc)
+    write('/magazine/', layout('MAGAZINE · SFANDOM 네이버 블로그', page_head(
+          'MAGAZINE<span class="accent">.</span> <span class="kr">NAVER BLOG</span>',
+          'SFANDOM 네이버 블로그에 직접 게시한 최근 글과 선정 특집을 모았습니다. 글은 네이버 원문에서 읽습니다.',
           [('MAGAZINE', '')])
-          + preserved_component('magazine-editorial') + f'<div class="wrap sec" style="padding-top:32px">{inner}</div>' + ad_band('SF-LIST-BTM'),
-          path='/magazine/', description='SFANDOM 자체 스포츠 심층 기사와 블로그 연재 모음', active='/magazine/'))
+          + naver_mag,
+          path='/magazine/', description='SFANDOM 네이버 블로그 최근 글과 NBA 심층 특집. 외부 사진 없는 원문 바로가기.',
+          active='/magazine/'))
+
 
     # 연결된 원문을 한눈에 보는 독립 페이지 · 콘텐츠는 중복 재발행하지 않습니다.
     reading_body = (page_head('EDITORIAL <span class="accent">PATHS.</span>',
