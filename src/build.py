@@ -594,6 +594,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v={VER}-desktop-wide-1680-v6-grid-fix">
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
+{('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
 {('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261013-readable-v1">' if path in ('/', '/games/') else '')}
 {('<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v=20261012-site04">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
@@ -1309,8 +1310,12 @@ def build_static():
     ]
     for key, en, kr, title in pages:
         lede, frag = page_fragment(key)
-        body = page_head(f'{en}<span class="accent">.</span> <span class="kr">{kr}</span>', lede, [(kr, '')]) + \
-            f'<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div class="prose">{frag}</div></div>'
+        if key == 'about':
+            body = page_head(f'{en}<span class="accent">.</span> <span class="kr">{kr}</span>', lede, [(kr, '')]) + \
+                f'<div class="wrap sf-about-wrap"><div class="sf-about">{frag}</div></div>'
+        else:
+            body = page_head(f'{en}<span class="accent">.</span> <span class="kr">{kr}</span>', lede, [(kr, '')]) + \
+                f'<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div class="prose">{frag}</div></div>'
         write(f'/{key}/', layout(title, body, path=f'/{key}/', description=lede[:150]))
 
     ep = (SITE.get('contact') or {}).get('endpoint', '')
