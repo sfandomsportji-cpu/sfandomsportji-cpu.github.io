@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-13T05:58+09:00",
+  "updated_at": "2026-10-13T06:11+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-13T05:58+09:00",
+      "checked_at": "2026-10-13T06:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -15,10 +15,10 @@
           "home": "MIL",
           "away_name": "Los Angeles Dodgers",
           "home_name": "Milwaukee Brewers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908031/dodgers-brewers"
+          "status": "live",
+          "away_score": 1,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908031"
         },
         {
           "id": "MLB-401908023",
@@ -62,7 +62,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-13T05:58+09:00",
+      "checked_at": "2026-10-13T06:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -75,8 +75,8 @@
           "away_name": "London Lions",
           "home_name": "Portland Trail Blazers",
           "status": "live",
-          "away_score": 31,
-          "home_score": 57,
+          "away_score": 33,
+          "home_score": 72,
           "source_url": "https://www.espn.com/nba/game?gameId=401914130"
         },
         {
@@ -290,7 +290,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-13T05:58+09:00",
+      "checked_at": "2026-10-13T06:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -310,7 +310,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-13T05:58+09:00",
+      "checked_at": "2026-10-13T06:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
