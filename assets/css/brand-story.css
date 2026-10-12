@@ -25,3 +25,32 @@
   .sf-identity__value strong{font-size:18px}
   .sf-identity__value p{font-size:15px;line-height:1.55}
 }
+
+
+/* SFANDOM brand identity editorial polish · 2026-10-13 */
+@media (min-width:801px) {
+  .sf-identity{position:relative;isolation:isolate;overflow:hidden;padding:70px 0 76px;border-top:2px solid #a83a50;background:radial-gradient(ellipse at 8% 25%,rgba(171,35,69,.17),transparent 43%),radial-gradient(ellipse at 90% 80%,rgba(73,63,109,.14),transparent 45%),#0d0e14}
+  .sf-identity::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:repeating-linear-gradient(112deg,transparent 0 110px,rgba(255,255,255,.013) 110px 111px)}
+  .sf-identity__grid{gap:clamp(38px,4vw,85px);align-items:center}
+  body .sf-identity__eyebrow{display:flex;align-items:center;gap:12px;color:#f28a9b;font-size:16px;letter-spacing:1.5px}
+  .sf-identity__eyebrow::before{content:"";width:24px;height:3px;background:#e15d76;border-radius:10px}
+  body .sf-identity__intro h2{font-size:clamp(44px,2.8vw,56px);font-weight:800;line-height:1.28;letter-spacing:-.035em;margin:22px 0 25px;text-wrap:balance;color:#f1f2f6}
+  body .sf-identity__intro p{font-size:20px;line-height:1.8;max-width:680px;color:#d6d8e2}
+  body .sf-identity__link{display:inline-flex;align-items:center;gap:12px;font-size:18px;margin-top:28px;padding:12px 18px;border:1px solid #7e3e50;border-radius:12px;background:rgba(193,48,78,.13)}
+  .sf-identity__values{counter-reset:sfvalue;gap:16px}
+  body .sf-identity__value{counter-increment:sfvalue;position:relative;overflow:hidden;min-height:120px;gap:21px;padding:24px 28px;border:1px solid #42404b;border-left:4px solid #b94764;border-radius:16px;background:linear-gradient(112deg,rgba(45,32,44,.97),rgba(24,26,36,.98) 70%)}
+  .sf-identity__value::after{content:"0" counter(sfvalue);position:absolute;right:21px;top:8px;font:700 55px/1 'Bebas Neue',Impact,sans-serif;color:rgba(255,255,255,.09);pointer-events:none}
+  body .sf-identity__symbol{width:58px;height:58px;flex-basis:58px;font-size:29px;color:#ff899d;background:#382934;border:1px solid #674054;border-radius:14px}
+  body .sf-identity__value strong{font-size:22px;letter-spacing:.01em;color:#f7f7fa}
+  body .sf-identity__value p{font-size:17px;line-height:1.6;color:#cfd2df;max-width:500px;margin-top:7px}
+}
+@media (max-width:800px){
+  .sf-identity{padding:42px 0 48px}
+  body .sf-identity__intro h2{font-size:clamp(29px,7vw,39px);line-height:1.35}
+  body .sf-identity__intro p{font-size:16px;line-height:1.75}
+  .sf-identity__values{gap:12px}
+  body .sf-identity__value{min-height:94px;border-left:3px solid #b94764}
+  body .sf-identity__value strong{font-size:18px}
+  body .sf-identity__value p{font-size:15px;line-height:1.55}
+  body .sf-identity__link{font-size:16px}
+}
