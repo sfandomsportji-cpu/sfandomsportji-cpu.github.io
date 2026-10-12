@@ -1259,3 +1259,6 @@ section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo{
   body .sf-identity__intro p{font-size:16px}
   body .sf-identity__value p{font-size:15px}
 }
+
+/* SFANDOM visual QA correction: avoid inherited .box flex-direction:column */
+section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{flex-direction:row}
