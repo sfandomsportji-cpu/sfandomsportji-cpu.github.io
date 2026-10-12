@@ -1,4 +1,4 @@
-/* NAVER-ONLY MAGAZINE — editorial typography, zero remote images or empty slots */
+/* NAVER-ONLY MAGAZINE — owner's post thumbnails; temporary remote-preview exception 2026-10-12 */
 .nm-magazine{padding-top:25px;padding-bottom:50px}
 .nm-hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(230px,.5fr);gap:20px;align-items:stretch;padding:36px 34px;border:1px solid #3b313b;border-top:3px solid #d34a66;border-radius:18px;background:radial-gradient(ellipse at 95% 10%,rgba(206,42,81,.23),transparent 46%),linear-gradient(130deg,#1b1b24,#121218)}
 .nm-hero__copy{min-width:0}
@@ -21,6 +21,10 @@
 .nm-card{min-width:0;display:flex;flex-direction:column;gap:0;padding:21px 19px 19px;border:1px solid #393945;border-radius:13px;background:#1e2028;color:#fff;min-height:258px;transition:border-color .18s,transform .18s,background .18s}
 .nm-card--featured{background:linear-gradient(150deg,#29222c,#1a1a23);border-color:#59404d;min-height:268px}
 .nm-card:hover{color:#fff;border-color:#f0859a;background:#302733;transform:translateY(-3px)}
+.nm-card__media{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;margin-top:14px;border-radius:9px;background:linear-gradient(145deg,#233247,#141721);display:grid;place-items:center;border:1px solid #3e4050}
+.nm-card__media-fallback{font-size:18px;font-weight:950;letter-spacing:2px;color:#9caac7}
+.nm-card__media img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#141721}
+.nm-card__media:not(:has(img)){background:linear-gradient(145deg,#242638,#12141d)}
 .nm-card__top{display:flex;align-items:center;flex-wrap:wrap;gap:7px 10px}
 .nm-card__num{font-variant-numeric:tabular-nums;font-weight:900;color:#fa96a5;font-size:19px}
 .nm-card__type{font-size:10px;color:#f2a4b3;font-weight:800;letter-spacing:.6px}
