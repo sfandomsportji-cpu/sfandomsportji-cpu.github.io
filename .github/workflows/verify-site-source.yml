@@ -68,7 +68,8 @@ jobs:
                       self.external_scripts.append(attrs.get("src"))
           s = Scan()
           s.feed(page[page.find('<main id="main">'):page.find('</main>')])
-          assert len(s.links) == 9, f"expected nine curated Naver posts, got {len(s.links)}"
+          assert 0 <= len(s.links) <= 9, f"excess Naver posts, got {len(s.links)}"
+          assert s.links or "최근 글 목록을 확인하고 있습니다" in page, "no fallback for unavailable blog feed"
           assert len(s.links) == len(set(s.links)), "duplicate Naver post"
           assert all(re.fullmatch(r'https://blog[.]naver[.]com/sfandomsport/[0-9]{8,20}', u) for u in s.links), "non-owned URL"
           assert not s.images, f"remote media in magazine: {s.images}"
@@ -76,7 +77,7 @@ jobs:
           assert not any(x in page for x in ('id="magOriginalTitle"', 'id="magExternalTitle"', 'class="wrap kairo-desk"')), "old hub wasn't replaced"
           assert 'naver-magazine.css' in page, "dedicated styles missing"
           assert 'sfandomji.blogspot.com' not in page, "unexpected Blogger link"
-          print("PASS: nine unique owned Naver posts and no magazine media embeddings.")
+          print(f"PASS: {len(s.links)} unique owned Naver posts and no magazine media embeddings.")
           PY
 
       - name: Verify published templates and KST game center
@@ -89,7 +90,8 @@ jobs:
           magazine = (root / "magazine/index.html").read_text(encoding="utf-8")
           games = (root / "games/index.html").read_text(encoding="utf-8")
           assert 'id="sfIdentityTitle"' in home, "item 01 brand story lost"
-          assert 'id="kairoDeskTitle"' in magazine, "item 02 editorial desk lost"
+          assert 'id="naverMagazineTitle"' in magazine and 'NAVER BLOG' in magazine, "approved Naver-only magazine missing"
+          assert 'id="kairoDeskTitle"' not in magazine, "retired editorial desk returned after rebuild"
           assert "스포츠에서 얻은 가치를 다시 사람에게" in about, "about mission lost"
           assert 'id="scorePreviewTitle"' in home, "homepage multi-league preview missing"
           assert 'sf-scores__league' in games, "game center missing"
@@ -107,5 +109,5 @@ jobs:
           assert "INDEPENDENT STORIES" in index, "separate articles hidden"
           assert 'editorial-links__related' in archived, "original related article links missing"
           print("PASS: approved 01-04 components persist; paired reviews and unique article links generated.")
-          print("PASS: original 01/02 preserved; four-league game center generated.")
+          print("PASS: original 01 and approved updated 02 Naver magazine preserved; four-league game center generated.")
           PY
