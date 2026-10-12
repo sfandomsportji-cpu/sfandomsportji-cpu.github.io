@@ -254,6 +254,11 @@ def blog_grid(limit: int, home: bool = False) -> str:
             + ('' if cards else '<p class="muted blog-empty" style="font-size:14px">외부 연재 목록을 가져오지 못했습니다. 블로그 채널에서 확인해 주세요.</p>'))
 
 
+def preserved_component(name: str) -> str:
+    """Read approved markup from the permanent source tree."""
+    path = CONTENT / 'components' / (name + '.html')
+    return path.read_text(encoding='utf-8') if path.is_file() else ''
+
 def page_fragment(name: str) -> tuple[str, str]:
     raw = (CONTENT / 'pages' / f'{name}.html').read_text(encoding='utf-8')
     m = re.match(r'<!-- lede: (.*?) -->\n', raw)
@@ -585,6 +590,8 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v={VER}-nba-results-20261011-v2">
+{('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261012-site01">' if path == '/' else '')}
+{('<link rel="stylesheet" href="/assets/css/magazine-editorial.css?v=20261012-site02">' if path == '/magazine/' else '')}
 {thread_css}{news_comments_css}
 {ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
@@ -744,6 +751,8 @@ def build_home():
   <aside class="top-stories" aria-label="{home_aria}"><h2>{home_heading} <span class="nba-dday">{home_status}</span></h2>{tip}</aside>
 </section>
 
+{preserved_component('home-brand-story')}
+
 {ta_html}
 
 {nba_section()}
@@ -791,7 +800,7 @@ def build_home():
 
 <section class="wrap sec split-8-4" aria-labelledby="anTitle">
   <div class="main">
-    <div class="sec-head" style="margin:0"><h2 class="sec-title" id="anTitle">MORE ANALYSIS<span class="accent">.</span> <span class="kr">이어지는 경기 프리뷰</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>
+    <div class="sec-head" style="margin:0"><h2 class="sec-title" id="anTitle">MORE ANALYSIS<span class="accent">.</span> <span class="kr">KAIRO · 이어지는 경기 프리뷰</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>
     <div class="grid-3">{minis}</div>
     {ad('SF-HOME-FEED')}
   </div>
@@ -995,7 +1004,7 @@ def build_lists():
           'MAGAZINE<span class="accent">.</span>',
           'SFANDOM 자체 심층 기사와 외부 블로그 연재를 구분해 읽을 수 있습니다.',
           [('MAGAZINE', '')])
-          + f'<div class="wrap sec" style="padding-top:32px">{inner}</div>' + ad_band('SF-LIST-BTM'),
+          + preserved_component('magazine-editorial') + f'<div class="wrap sec" style="padding-top:32px">{inner}</div>' + ad_band('SF-LIST-BTM'),
           path='/magazine/', description='SFANDOM 자체 스포츠 심층 기사와 블로그 연재 모음', active='/magazine/'))
 
     # 분석
