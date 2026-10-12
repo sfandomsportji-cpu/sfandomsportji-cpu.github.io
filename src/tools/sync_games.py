@@ -107,6 +107,65 @@ def parse_event(league: str, event: dict) -> dict | None:
         return None
 
 
+def refresh_nba_cards(snapshot: dict, now: dt.datetime) -> None:
+    """Update legacy NBA preseason cards only from confirmed ESPN event status.
+    Keep previews and historical results when no matching verified record is available.
+    """
+    import re
+
+    card_file = ROOT / "content" / "nba-2026.json"
+    try:
+        original = card_file.read_text(encoding="utf-8")
+        data = json.loads(original)
+    except (OSError, ValueError):
+        return
+    rows = (snapshot.get("leagues", {}).get("NBA") or {}).get("games") or []
+    verified = {}
+    for e in rows:
+        try:
+            d = dt.datetime.fromisoformat(e["start_kst"])
+            verified[(e["away"], e["home"], d.month, d.day)] = e
+        except (KeyError, TypeError, ValueError):
+            continue
+    changed = False
+    for g in data.get("preseason_games", []):
+        m = re.match(r"(\d{1,2})\.(\d{1,2}).*?(\d{2}):(\d{2})", g.get("kst", ""))
+        if not m:
+            continue
+        month, day, hour, minute = (int(x) for x in m.groups())
+        e = verified.get((g.get("away"), g.get("home"), month, day))
+        try:
+            start = dt.datetime(2026, month, day, hour, minute, tzinfo=KST)
+        except ValueError:
+            continue
+        if e and e.get("status") == "final":
+            av, hv = e.get("away_score"), e.get("home_score")
+            if not isinstance(av, int) or not isinstance(hv, int):
+                continue
+            updated = {"day": "FINAL", "away_score": av, "home_score": hv,
+                       "result": f'{g["away"]} {av}–{hv} {g["home"]}',
+                       "tag": f'종료 · {g["away"]} {av}–{hv} {g["home"]}'}
+        elif e and e.get("status") == "live":
+            updated = {"day": "LIVE", "tag": "진행 중 · 기록 제공처 확인 시각 기준"}
+        elif e and e.get("status") in ("postponed", "cancelled"):
+            updated = {"day": "DELAYED", "tag": "연기" if e["status"] == "postponed" else "취소"}
+        elif start < now - dt.timedelta(minutes=25) and not g.get("result"):
+            updated = {"day": "CHECKING", "tag": "경기 상태 확인 중"}
+        else:
+            continue
+        for key, value in updated.items():
+            if g.get(key) != value:
+                g[key] = value
+                changed = True
+        if e and e.get("status") != "final" and "result" in g:
+            g.pop("result")
+            changed = True
+    if changed:
+        card_file.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+                             encoding="utf-8")
+        print("[NBA] legacy hub cards reconciled with confirmed game states")
+
+
 def refresh() -> None:
     now = dt.datetime.now(KST)
     prior = read_previous()
@@ -172,6 +231,7 @@ def refresh() -> None:
     draft = SNAPSHOT.with_suffix(".json.tmp")
     draft.write_text(json.dumps(updated, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     draft.replace(SNAPSHOT)
+    refresh_nba_cards(updated, now)
 
 
 if __name__ == "__main__":
