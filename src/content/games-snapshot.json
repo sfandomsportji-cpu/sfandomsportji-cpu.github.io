@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-13T04:23+09:00",
+  "updated_at": "2026-10-13T04:52+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-13T04:23+09:00",
+      "checked_at": "2026-10-13T04:52+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -62,7 +62,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-13T04:23+09:00",
+      "checked_at": "2026-10-13T04:52+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -290,7 +290,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-13T04:23+09:00",
+      "checked_at": "2026-10-13T04:52+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -310,7 +310,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-13T04:23+09:00",
+      "checked_at": "2026-10-13T04:52+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -322,10 +322,10 @@
           "home": "BUF",
           "away_name": "Florida Panthers",
           "home_name": "Buffalo Sabres",
-          "status": "live",
+          "status": "final",
           "away_score": 3,
-          "home_score": 4,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892485"
+          "home_score": 5,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892485/panthers-sabres"
         },
         {
           "id": "NHL-401892486",
