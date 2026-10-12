@@ -52,7 +52,7 @@ def posts(cache: list[dict]) -> list[dict]:
         if not re.fullmatch(r"20\d{2}-\d{2}-\d{2}", date):
             continue
         seen.add(url)
-        # Summary belongs to this Naver account; never use images or video frames.
+        # Article summary and the optional preview image are both drawn from the owner's feed cache.
         desc = re.sub(r"\s+", " ", str(item.get("summary", "")).strip())
         result.append({"title": title, "link": url, "date": date, "summary": desc[:190],
                        "image": blog_preview_url(item.get("image", ""))})
@@ -131,7 +131,7 @@ def render(cache: list[dict], esc) -> str:
         '<div class="nm-hero__copy"><span class="nm-hero__kicker">SFANDOM × NAVER BLOG</span>'
         '<h2 id="naverMagazineTitle">우리가 쓴 이야기만.<br><em>최근 글을 한눈에.</em></h2>'
         '<p>SFANDOM 네이버 블로그에 직접 게시한 글만 연결합니다. '
-        '10월 12일에는 원문 대표 썸네일을 임시로 표시합니다. 이후 검토된 사이트 내부 이미지로 교체합니다.</p>'
+        '각 글의 대표 썸네일과 제목을 볼 수 있으며, 전문과 영상은 네이버 원문에서 확인할 수 있습니다.</p>'
         '<div class="nm-hero__chips"><span>OWNED POSTS</span><span>NAVER SOURCE PREVIEW</span>'
         '<span>DIRECT TO NAVER</span></div></div>'
         '<a class="nm-hero__link" href="https://blog.naver.com/sfandomsport" target="_blank" '
