@@ -6,7 +6,9 @@ on:
     - cron: "17 * * * *"   # 매시간 (구글 글은 방문 시 실시간, 네이버 글은 매시간 반영)
   push:
     branches: [main]
-    paths: ["src/**"]
+    paths:
+      - "src/**"
+      - "!src/content/games-snapshot.json" # bot-updated snapshot must not recursively retrigger
   workflow_dispatch:
 
 permissions:
