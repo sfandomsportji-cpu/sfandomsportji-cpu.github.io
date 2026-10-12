@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-12T14:50+09:00",
+  "updated_at": "2026-10-12T15:48+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-12T14:50+09:00",
+      "checked_at": "2026-10-12T15:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -58,11 +58,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/mlb/game/_/gameId/401908024/guardians-rays"
+        },
+        {
+          "id": "MLB-401908032",
+          "league": "MLB",
+          "start_kst": "2026-10-15T09:00+09:00",
+          "away": "MIL",
+          "home": "LAD",
+          "away_name": "Milwaukee Brewers",
+          "home_name": "Los Angeles Dodgers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908032/brewers-dodgers"
         }
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-12T14:50+09:00",
+      "checked_at": "2026-10-12T15:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -273,11 +286,63 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401898405/hornets-celtics"
+        },
+        {
+          "id": "NBA-401898722",
+          "league": "NBA",
+          "start_kst": "2026-10-15T09:00+09:00",
+          "away": "PHX",
+          "home": "SA",
+          "away_name": "Phoenix Suns",
+          "home_name": "San Antonio Spurs",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401898722/suns-spurs"
+        },
+        {
+          "id": "NBA-401901825",
+          "league": "NBA",
+          "start_kst": "2026-10-15T09:00+09:00",
+          "away": "NO",
+          "home": "DAL",
+          "away_name": "New Orleans Pelicans",
+          "home_name": "Dallas Mavericks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401901825/pelicans-mavericks"
+        },
+        {
+          "id": "NBA-401908942",
+          "league": "NBA",
+          "start_kst": "2026-10-15T09:00+09:00",
+          "away": "CHI",
+          "home": "MIL",
+          "away_name": "Chicago Bulls",
+          "home_name": "Milwaukee Bucks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401908942/bulls-bucks"
+        },
+        {
+          "id": "NBA-401914125",
+          "league": "NBA",
+          "start_kst": "2026-10-15T09:00+09:00",
+          "away": "DET",
+          "home": "MIN",
+          "away_name": "Detroit Pistons",
+          "home_name": "Minnesota Timberwolves",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401914125/pistons-timberwolves"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-12T14:50+09:00",
+      "checked_at": "2026-10-12T15:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -466,7 +531,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-12T14:50+09:00",
+      "checked_at": "2026-10-12T15:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -768,6 +833,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892504/canadiens-capitals"
+        },
+        {
+          "id": "NHL-401892505",
+          "league": "NHL",
+          "start_kst": "2026-10-15T09:30+09:00",
+          "away": "DAL",
+          "home": "COL",
+          "away_name": "Dallas Stars",
+          "home_name": "Colorado Avalanche",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892505/stars-avalanche"
         }
       ]
     }
