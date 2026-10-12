@@ -1328,3 +1328,21 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{flex-dir
   .hero-copy{max-width:min(780px,calc(100% - 95px));margin-left:44px}
   .hero-copy h1{font-size:clamp(53px,4.35vw,65px)}
 }
+
+
+/* SFANDOM refined hero hierarchy · 2026-10-13 v8 */
+@media(min-width:1501px){
+  .hero-copy h1{font-size:clamp(81px,4.8vw,92px);line-height:1.17;letter-spacing:-.044em}
+}
+@media(min-width:1181px) and (max-width:1500px){
+  .hero-copy h1{font-size:clamp(65px,5.15vw,72px);line-height:1.17}
+}
+@media(min-width:1181px){
+  .hero-copy p{font-size:22px;line-height:1.75}
+  .hero-copy .hero-badge b{font-size:20px;font-weight:700}
+  .hero-copy .pill{font-size:18px;font-weight:700}
+  .top-stories .ts.tip .tag{font-size:17px;line-height:1.48;letter-spacing:.015em}
+  .top-stories .ts.tip .nba-tag{font-size:17px;line-height:1.5}
+  .top-stories .ts.tip .vsline i{font-size:20px}
+  .top-stories .ts.tip{padding:18px 18px}
+}
