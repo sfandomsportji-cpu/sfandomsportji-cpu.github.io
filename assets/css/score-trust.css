@@ -1,0 +1,9 @@
+/* Site 03: source and currency transparency, scoped to game centers */
+.score-trust{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 18px;margin:0 0 16px;border:1px solid #43404a;border-left:3px solid #d24b63;background:#191920;border-radius:8px}
+.score-trust strong{font-size:13px;color:#fff;white-space:nowrap}
+.score-trust span{font-size:12px;line-height:1.7;color:#cdd0d7;flex:1;min-width:180px}
+.score-trust a{font-size:12px;font-weight:800;color:#ffa0ad;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.score-trust a:hover{color:#fff}
+.score-trust a:focus-visible{outline:3px solid #ffa0ad;outline-offset:3px}
+.score-trust--mlb{margin:20px 0 4px;max-width:940px}
+@media(max-width:650px){.score-trust{display:grid;gap:7px;padding:13px 14px}.score-trust strong{white-space:normal}.score-trust span{min-width:0}.score-trust a{white-space:normal}}
