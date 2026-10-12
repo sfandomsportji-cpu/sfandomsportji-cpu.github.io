@@ -29,7 +29,7 @@ VER = TODAY.replace('-', '')
 
 # 빌더가 만드는 최상위 경로 (다시 빌드할 때 지우고 새로 씀)
 GENERATED_DIRS = ['news', 'special', 'mlb', 'kbo', 'nba', 'soccer', 'analysis', 'community', 'magazine',
-                  'about', 'contact', 'sitemap', 'feed', 'weekly', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search']
+                  'about', 'contact', 'sitemap', 'feed', 'weekly', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search', 'games']
 
 esc = lambda s: html.escape(str(s or ''), quote=True)
 
@@ -592,6 +592,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="stylesheet" href="/assets/css/site.css?v={VER}-nba-results-20261011-v2">
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261012-site01">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/magazine-editorial.css?v=20261012-site02">' if path == '/magazine/' else '')}
+{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261012-site03">' if path in ('/', '/games/') else '')}
 {thread_css}{news_comments_css}
 {ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
@@ -752,6 +753,8 @@ def build_home():
 </section>
 
 {preserved_component('home-brand-story')}
+
+{game_preview()}
 
 {ta_html}
 
@@ -1444,6 +1447,138 @@ def build_feeds():
     write('/feed/', layout('RSS 구독', body, path='/feed/', description='SFANDOM 전체·리그별·팀별 RSS 구독 안내'))
 
 
+
+# ───────────────────────── 종목별 경기 센터 · 외부 확인 스냅샷 ─────────────────────────
+def game_snapshot() -> dict:
+    path = CONTENT / 'games-snapshot.json'
+    try:
+        data = json.loads(path.read_text(encoding='utf-8'))
+        return data if isinstance(data.get('leagues'), dict) else {'leagues': {}}
+    except (OSError, ValueError, TypeError):
+        return {'leagues': {}}
+
+
+SCORE_LABELS = {
+    'scheduled': '예정', 'live': '진행 중 · 확인 시각 기준',
+    'final': '종료', 'postponed': '연기', 'cancelled': '취소',
+}
+SCORE_LEAGUES = (('MLB', '⚾'), ('NBA', '🏀'), ('NFL', '🏈'), ('NHL', '🏒'))
+
+
+def game_clock(kst: str) -> dt.datetime | None:
+    try:
+        value = dt.datetime.fromisoformat(kst)
+        return value if value.tzinfo else None
+    except (TypeError, ValueError):
+        return None
+
+
+def game_card(g: dict, stale: bool = False) -> str:
+    when = game_clock(g.get('start_kst', ''))
+    if not when:
+        return ''
+    state = g.get('status')
+    if state not in SCORE_LABELS:
+        return ''
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    label = SCORE_LABELS[state]
+    if state == 'scheduled' and when < now - dt.timedelta(minutes=20):
+        label = '결과 확인 중'
+    elif stale and state == 'live':
+        label = '마지막 확인 당시 진행 중'
+    elif stale and state == 'scheduled':
+        label = '예정 · 갱신 지연'
+    scores = ''
+    if state in ('live', 'final'):
+        try:
+            av, hv = int(g['away_score']), int(g['home_score'])
+            if 0 <= av <= 300 and 0 <= hv <= 300:
+                scores = f'<strong class="sf-scores__numbers">{av}<span>:</span>{hv}</strong>'
+        except (ValueError, TypeError, KeyError):
+            pass
+    url = str(g.get('source_url', ''))
+    url = url if url.startswith('https://www.espn.com/') else ''
+    row_tag, link = ('a', f' href="{esc(url)}" target="_blank" rel="noopener"') if url else ('div', '')
+    badge_text = '자료 시각 기준'
+    if state == 'final':
+        badge_text = 'FINAL'
+    elif state == 'live' and not stale:
+        badge_text = 'LIVE · 지연 제공'
+    return (f'<{row_tag} class="sf-scores__game"{link}>'
+            f'<span class="sf-scores__time"><time datetime="{esc(g["start_kst"])}">{when.strftime("%m.%d %H:%M")}</time>'
+            f'<small>{esc(label)}</small></span>'
+            f'<span class="sf-scores__teams"><b title="{esc(g.get("away_name", ""))}">{esc(g.get("away", "?"))}</b>'
+            f'<i aria-hidden="true">VS</i><b title="{esc(g.get("home_name", ""))}">{esc(g.get("home", "?"))}</b></span>'
+            f'{scores}<span class="sf-scores__tag">{esc(badge_text)}</span>'
+            f'</{row_tag}>')
+
+
+def game_age(checked_at: str) -> tuple[str, bool]:
+    checked = game_clock(checked_at)
+    if not checked:
+        return '확인 시각 없음', True
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    return (checked.astimezone(now.tzinfo).strftime('%m.%d %H:%M KST'),
+            now - checked > dt.timedelta(hours=2))
+
+
+def game_sections(brief: bool = False) -> str:
+    snapshot = game_snapshot()
+    output = []
+    for league, icon in SCORE_LEAGUES:
+        details = snapshot.get('leagues', {}).get(league) or {}
+        verified, stale = game_age(details.get('checked_at', ''))
+        games = [g for g in details.get('games', []) if game_clock(g.get('start_kst', ''))]
+        games.sort(key=lambda g: (g.get('start_kst', ''), g.get('id', '')))
+        if brief:
+            now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+            games.sort(key=lambda g: (abs((game_clock(g['start_kst']) - now).total_seconds()),g['start_kst']))
+            games = games[:2]
+            games.sort(key=lambda g: g['start_kst'])
+        else:
+            games = games[-50:]
+        cards = ''.join(game_card(g, stale) for g in games)
+        if not cards:
+            cards = '<p class="sf-scores__empty">이 시간대 확인된 경기 정보가 없습니다. 다음 자료 갱신을 기다려 주세요.</p>'
+        note = ' · 일부 날짜 확인 지연' if details.get('coverage') == 'partial' else ''
+        if details.get('error'):
+            note += ' · 외부 자료 연결 지연'
+        output.append(f'<section class="sf-scores__league" aria-label="{league} 경기 결과와 일정">'
+                      f'<div class="sf-scores__league-head"><h3>{icon} {league}</h3>'
+                      f'<small>확인 {esc(verified)}{esc(note)}</small></div>'
+                      f'<div class="sf-scores__rows">{cards}</div></section>')
+    return ''.join(output)
+
+
+def game_preview() -> str:
+    return (f'<section class="wrap sf-scores sf-scores--preview" aria-labelledby="scorePreviewTitle">'
+            f'<div class="sf-scores__heading"><div><span class="sf-scores__eyebrow">GAME CENTER · KST</span>'
+            f'<h2 id="scorePreviewTitle">경기 일정 <span>·</span> 최종 결과</h2>'
+            f'<p>MLB·NBA·NFL·NHL · 외부 기록 제공처 확인 시각 기준</p></div>'
+            f'<a class="pill" href="/games/">전체 경기 보기 →</a></div>'
+            f'<div class="sf-scores__grid">{game_sections(True)}</div></section>')
+
+
+def build_games() -> None:
+    snapshot = game_snapshot()
+    updated, _stale = game_age(snapshot.get('updated_at', ''))
+    intro = page_head('GAME <span class="accent">CENTER.</span>',
+        'MLB·NBA·NFL·NHL 경기 일정과 결과를 한국시간으로 확인합니다. 실시간 중계가 아닌 외부 기록 제공처 확인 시각 기준입니다.',
+        [('GAME CENTER', '')])
+    body = (intro + f'<div class="wrap sf-scores sf-scores--page">'
+            f'<div class="sf-scores__heading"><div><span class="sf-scores__eyebrow">SCORES & FIXTURES · KST</span>'
+            f'<h2>종목별 경기 현황</h2><p>최종 수집 시각 {esc(updated)} · ESPN 경기 기록 보조 자료. '
+            f'점수와 경기 상태는 출처 페이지에서 다시 확인할 수 있습니다.</p></div></div>'
+            f'<div class="sf-scores__grid">{game_sections()}</div>'
+            f'<p class="sf-scores__foot">※ 예정 시간이 지났다고 종료로 표시하지 않습니다. '
+            f'기록 제공처가 확정한 점수만 FINAL로 표시하며, 자료 수집이 지연되면 마지막 확인 시각을 함께 표시합니다. '
+            f'KBO는 데이터 제공처 검증 전까지 자동 수집 대상에서 제외합니다.</p></div>')
+    write('/games/', layout('경기 일정·결과 | SFANDOM', body, path='/games/',
+         description='MLB NBA NFL NHL 경기 일정과 결과, KST 시간 및 마지막 확인 시각.'),
+         search={'u': '/games/', 't': '경기 일정·결과', 's': 'MLB NBA NFL NHL', 'k': 'GAME CENTER',
+                 'd': TODAY.replace('-', '.'), 'x': '경기 스코어 및 일정 KST'})
+
+
 def clean_generated():
     for d in GENERATED_DIRS:
         shutil.rmtree(ROOT / d, ignore_errors=True)
@@ -1457,6 +1592,7 @@ def main():
         build_article(a)
     build_lists()
     build_hubs()
+    build_games()
     build_community()
     build_sitemap()
     build_static()
