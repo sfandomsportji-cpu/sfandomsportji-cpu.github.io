@@ -14,3 +14,14 @@
 .sf-identity__value strong{display:block;font-size:15px}
 .sf-identity__value p{margin:5px 0 0;color:#aaaab5;font-size:12px;line-height:1.5}
 @media(max-width:800px){.sf-identity{padding:35px 0}.sf-identity__grid{grid-template-columns:minmax(0,1fr);gap:29px}.sf-identity__intro h2{font-size:27px}.sf-identity__intro p{font-size:13px}.sf-identity__value{min-height:72px;padding:14px 16px}}
+
+/* SFANDOM brand promise readability · 2026-10-13 */
+@media (min-width:801px){
+  .sf-identity__eyebrow{font-size:13px}
+  .sf-identity__intro h2{font-size:clamp(38px,2.6vw,44px)}
+  .sf-identity__intro p{font-size:17px;line-height:1.8;max-width:680px}
+  .sf-identity__link{font-size:15px}
+  .sf-identity__value{min-height:92px;padding:20px 22px}
+  .sf-identity__value strong{font-size:18px}
+  .sf-identity__value p{font-size:15px;line-height:1.55}
+}
