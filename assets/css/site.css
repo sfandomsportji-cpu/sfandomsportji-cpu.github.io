@@ -1047,3 +1047,119 @@ section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo{
   .mag p{font-size:16px}
   .feed-home-copy small{font-size:16px}
 }
+
+
+/* SFANDOM FULL-WIDTH EDITORIAL + GAME THREAD LEGIBILITY · 2026-10-13 */
+@media (min-width:761px){
+  /* Five games should occupy five columns, not seven reserved slots. */
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{
+    grid-template-columns:repeat(auto-fit,minmax(min(100%,205px),1fr));
+    gap:16px;padding:26px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .box-title{
+    font-size:28px;color:#e3e6ef;letter-spacing:1.2px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt{
+    min-width:0;min-height:200px;align-items:stretch;justify-content:space-between;
+    gap:18px;padding:18px 16px;border:1px solid #3c3d49;
+    border-radius:12px;background:linear-gradient(155deg,#21222c,#171820);
+    transition:border-color .2s ease,background .2s ease;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt:hover{
+    border-color:#d64b64;background:linear-gradient(155deg,#2b2633,#1c1a24);
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt small{
+    font-size:14px;line-height:1.6;color:#d4d7e1;font-weight:700;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt .vsline{
+    margin-top:15px;gap:10px;white-space:normal;flex-wrap:wrap;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt .tchip{
+    min-width:54px;height:40px;font-size:21px;border-radius:20px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt .vsline .thread-vs{
+    font-size:31px;flex:0 0 30px;min-width:30px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt .vsline .tlogo-wrap:not(.nologo){
+    width:57px;height:57px;flex:0 0 57px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{
+    align-self:flex-start;color:#ffe6eb;font-size:16px;line-height:1.2;
+    padding:9px 14px;border-radius:999px;
+    background:rgba(200,16,46,.18);border:1px solid rgba(220,73,102,.48);
+  }
+  /* Place MORE ANALYSIS across the available width, with the edition card as a banner. */
+  section[aria-labelledby="anTitle"].split-8-4>.main{grid-column:1/-1;gap:22px}
+  section[aria-labelledby="anTitle"].split-8-4>.side{grid-column:1/-1;display:block;margin-top:24px}
+  section[aria-labelledby="anTitle"] .side>.sticky-rail:has(.ad[hidden]){display:none}
+  section[aria-labelledby="anTitle"] .main>.grid-3{gap:20px}
+  section[aria-labelledby="anTitle"] .main .mini{
+    min-height:202px;padding:28px;gap:17px;border:1px solid #393a46;
+    border-top:4px solid var(--red);background:linear-gradient(145deg,#20212a,#15161d);
+  }
+  section[aria-labelledby="anTitle"] .main .mini .tag{font-size:14px;color:#ec8497}
+  section[aria-labelledby="anTitle"] .main .mini .display{
+    font-size:clamp(31px,2.2vw,41px);line-height:1.05;white-space:normal;
+  }
+  section[aria-labelledby="anTitle"] .main .mini strong{
+    font-size:19px;line-height:1.55;color:#e0e4ed;
+  }
+  section[aria-labelledby="anTitle"] .side>.box{
+    display:grid;grid-template-columns:minmax(200px,.65fr) minmax(0,1.3fr) auto;
+    gap:24px;align-items:center;padding:24px 30px;border:1px solid #3d3d48;
+    background:linear-gradient(100deg,#271b24,#191a23 70%);
+  }
+  section[aria-labelledby="anTitle"] .side>.box p{font-size:17px;line-height:1.6}
+  section[aria-labelledby="anTitle"] .side>.box .pill{justify-self:end}
+  /* Text hierarchy across the remaining homepage editorial sections. */
+  section[aria-labelledby="newsTitle"] .news-lead h3{font-size:32px}
+  section[aria-labelledby="newsTitle"] .nl strong{font-size:21px;line-height:1.5}
+  section[aria-labelledby="newsTitle"] .nl .thumb{width:150px;height:100px}
+  section[aria-labelledby="magTitle"] .mag h3{font-size:27px;line-height:1.4}
+  section[aria-labelledby="magTitle"] .mag p{font-size:17px;line-height:1.7}
+  section[aria-labelledby="fanTitle"] .fan-main .post-body strong{font-size:20px}
+  section[aria-labelledby="fanTitle"] .fan-main .post-body p{font-size:16px}
+  section[aria-labelledby="fanTitle"] .fan-main .post-meta{font-size:14px}
+  section[aria-labelledby="fanTitle"] .fan-side .rules{font-size:16px}
+  section[aria-labelledby="fanTitle"] .fan-side .quick-text{font-size:16px}
+  section[aria-labelledby="fanTitle"] .fan-side .quick-meta{font-size:13px}
+  section[aria-labelledby="fanTitle"] .fan-side .box-title{font-size:25px}
+  section[aria-labelledby="fanTitle"] .quick-form input[type=text]{font-size:16px}
+  /* Expanded LCS matchup panels should read like fixtures, not tiny summary rows. */
+  #lcs .matchup.ds{padding:28px 32px;gap:17px}
+  #lcs .matchup.ds .ds-name{font-size:22px}
+  #lcs .matchup.ds .ds-name small{font-size:14px}
+  #lcs .matchup.ds .ds-log{font-size:16px;line-height:1.65}
+  #lcs .matchup.ds .when{font-size:16px}
+}
+@media (min-width:761px) and (max-width:1050px){
+  section[aria-labelledby="anTitle"] .side>.box{grid-template-columns:1fr auto}
+  section[aria-labelledby="anTitle"] .side>.box p{grid-column:1}
+  section[aria-labelledby="anTitle"] .side>.box .pill{grid-column:2;grid-row:1/3}
+}
+@media (max-width:760px){
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{
+    grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt{
+    min-width:0;min-height:166px;padding:15px 13px;
+    background:#1e1f28;border-color:#40414c;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt small{
+    font-size:13px;line-height:1.55;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{
+    align-self:flex-start;font-size:15px;
+    padding:7px 10px;border-radius:999px;background:rgba(200,16,46,.18);
+  }
+  section[aria-labelledby="anTitle"] .main .mini strong{font-size:17px;line-height:1.55}
+  section[aria-labelledby="anTitle"] .side>.sticky-rail:has(.ad[hidden]){display:none}
+}
+@media (max-width:540px){
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{
+    grid-template-columns:1fr;padding:16px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt{
+    min-height:150px;
+  }
+}
