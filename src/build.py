@@ -800,7 +800,7 @@ def build_home():
 
 <section class="wrap sec" id="lcs" aria-labelledby="dsTitle">
   <div class="sec-head"><h2 class="sec-title" id="dsTitle">MLB <span class="outline">POSTSEASON</span> <span class="kr">챔피언십시리즈</span></h2><a class="more" href="/special/postseason-2026/">대진표 · 전체 일정 →</a></div>
-  <div class="grid-4">{lcs_cards}</div>
+  <div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">{lcs_cards}</div>
 </section>
 
 <section class="wrap sec split-8-4" aria-labelledby="anTitle">
@@ -1044,7 +1044,7 @@ def build_hubs():
     sec = lambda kind, title, kr, anchor: (f'<section id="{anchor}" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:52px">{title} <span class="kr">{kr}</span></h2></div>'
                                            + list_with_ads([a for a in mlb if a.kind == kind][:8], 4, 'SF-HUB-FEED') + '</section>')
     t = tabs([('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('포스트시즌', '/special/postseason-2026/')], '')
-    live_mlb = ('<section id="lcs" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:42px">LEAGUE CHAMPIONSHIP <span class="kr">최신 전적 · 다음 경기</span></h2></div><div class="grid-4">'
+    live_mlb = ('<section id="lcs" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:42px">LEAGUE CHAMPIONSHIP <span class="kr">최신 전적 · 다음 경기</span></h2></div><div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">'
                 + ''.join(lcs_card(d) for d in PS.get('lcs', [])) + '</div></section>')
     main = live_mlb + sec('news', 'NEWS', 'MLB 뉴스', 'news') + sec('analysis', 'ANALYSIS', '경기 프리뷰', 'analysis') + sec('magazine', 'MAGAZINE', '기획 · 스포트라이트', 'magazine')
     write('/mlb/', layout('MLB · 메이저리그', page_head('MLB<span class="accent">.</span> <span class="kr">메이저리그</span>', '포스트시즌, 모닝 에디션, 선발 매치업까지 — MLB 이야기는 여기서 시작합니다.', [('MLB', '')], t)
@@ -1088,7 +1088,7 @@ def build_hubs():
     body = (page_head('POSTSEASON <span class="accent">2026</span>', '정규시즌 2,430경기가 끝났습니다. 챔피언십시리즈에 4개 팀이 남았습니다. NLCS·ALCS 최신 전적과 다음 경기, 지난 라운드 결과를 한국시간으로 확인합니다.',
                       [('POSTSEASON', '')])
             + f'''<div class="wrap">
-<section class="sec" id="lcs" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title">LEAGUE <span class="outline">CHAMPIONSHIP</span></h2><span class="muted">7전 4선승 · 한국시간 · {PS["updated"].replace("-", ".")} 기준</span></div><div class="grid-4">{lcsf}</div></section>
+<section class="sec" id="lcs" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title">LEAGUE <span class="outline">CHAMPIONSHIP</span></h2><span class="muted">7전 4선승 · 한국시간 · {PS["updated"].replace("-", ".")} 기준</span></div><div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">{lcsf}</div></section>
 <section class="sec" id="division"><div class="sec-head"><h2 class="sec-title">DIVISION <span class="outline">SERIES</span></h2><span class="muted">5전 3선승 · 시간은 한국시간 · {PS["updated"].replace("-", ".")} 기준</span></div><div class="grid-4">{dsf}</div></section>
 <section class="sec" id="wildcard"><div class="sec-head"><h2 class="sec-title">WILD CARD <span class="kr">결과</span></h2><span class="muted">3전 2선승 · 종료</span></div><div class="grid-4">{wc}</div></section>
 <section class="sec" id="bracket"><div class="bracket"><div class="bracket-head"><h2>SEEDS<span class="accent">.</span></h2><span class="muted">정규시즌 최종 성적 · {PS["updated"].replace("-", ".")} 확인</span></div><div class="seeds">{seeds}</div><div class="rounds">{rounds}</div>
@@ -1571,7 +1571,7 @@ def game_sections(brief: bool = False) -> str:
         if brief:
             now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
             games.sort(key=lambda g: (abs((game_clock(g['start_kst']) - now).total_seconds()),g['start_kst']))
-            games = games[:2]
+            games = games[:(4 if league == 'MLB' else 2)]
             games.sort(key=lambda g: g['start_kst'])
         else:
             games = games[-50:]
