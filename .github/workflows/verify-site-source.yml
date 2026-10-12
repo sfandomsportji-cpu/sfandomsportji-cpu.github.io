@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Compile Python sources
-        run: python3 -m py_compile src/build.py src/tools/sync_games.py src/tools/editorial_paths.py
+        run: python3 -m py_compile src/build.py src/tools/sync_games.py src/tools/editorial_paths.py src/tools/naver_magazine.py
       - name: Verify provider access and refresh snapshot in CI
         run: |
           python3 src/tools/sync_games.py
@@ -43,6 +43,42 @@ jobs:
           PY
       - name: Generate site from repository source
         run: python3 src/build.py
+      - name: Validate Naver-only magazine and safe owned links
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from urllib.parse import urlsplit
+          import re
+          page = Path("magazine/index.html").read_text(encoding="utf-8")
+          class Scan(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.links = []
+                  self.images = []
+                  self.frames = []
+                  self.external_scripts = []
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag == "a" and "nm-card" in attrs.get("class", "").split():
+                      self.links.append(attrs.get("href", ""))
+                  if tag in ("img", "video", "iframe", "picture", "source"):
+                      self.images.append(tag)
+                  if tag == "script" and attrs.get("src", "").startswith(("https://", "http://")):
+                      self.external_scripts.append(attrs.get("src"))
+          s = Scan()
+          s.feed(page[page.find('<main id="main">'):page.find('</main>')])
+          assert len(s.links) == 9, f"expected nine curated Naver posts, got {len(s.links)}"
+          assert len(s.links) == len(set(s.links)), "duplicate Naver post"
+          assert all(re.fullmatch(r'https://blog[.]naver[.]com/sfandomsport/[0-9]{8,20}', u) for u in s.links), "non-owned URL"
+          assert not s.images, f"remote media in magazine: {s.images}"
+          assert not s.external_scripts, f"external scripts in magazine: {s.external_scripts}"
+          assert not any(x in page for x in ('id="magOriginalTitle"', 'id="magExternalTitle"', 'class="wrap kairo-desk"')), "old hub wasn't replaced"
+          assert 'naver-magazine.css' in page, "dedicated styles missing"
+          assert 'sfandomji.blogspot.com' not in page, "unexpected Blogger link"
+          print("PASS: nine unique owned Naver posts and no magazine media embeddings.")
+          PY
+
       - name: Verify published templates and KST game center
         run: |
           python3 - <<'PY'
