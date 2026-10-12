@@ -592,7 +592,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-desktop-wide-1680-v4-accessibility">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-desktop-wide-1680-v5-layout-qa">
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-readable-v1">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
 {('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261013-readable-v1">' if path in ('/', '/games/') else '')}
