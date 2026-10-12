@@ -29,7 +29,7 @@ VER = TODAY.replace('-', '')
 
 # 빌더가 만드는 최상위 경로 (다시 빌드할 때 지우고 새로 씀)
 GENERATED_DIRS = ['news', 'special', 'mlb', 'kbo', 'nba', 'soccer', 'analysis', 'community', 'magazine',
-                  'about', 'contact', 'sitemap', 'feed', 'weekly', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search']
+                  'about', 'contact', 'sitemap', 'feed', 'weekly', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search', 'games']
 
 esc = lambda s: html.escape(str(s or ''), quote=True)
 
@@ -253,6 +253,11 @@ def blog_grid(limit: int, home: bool = False) -> str:
             f'data-label="{esc(g.get("label", "GOOGLE BLOG"))}">{cards}</div>'
             + ('' if cards else '<p class="muted blog-empty" style="font-size:14px">외부 연재 목록을 가져오지 못했습니다. 블로그 채널에서 확인해 주세요.</p>'))
 
+
+def preserved_component(name: str) -> str:
+    """Read approved markup from the permanent source tree."""
+    path = CONTENT / 'components' / (name + '.html')
+    return path.read_text(encoding='utf-8') if path.is_file() else ''
 
 def page_fragment(name: str) -> tuple[str, str]:
     raw = (CONTENT / 'pages' / f'{name}.html').read_text(encoding='utf-8')
@@ -585,6 +590,9 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v={VER}-nba-results-20261011-v2">
+{('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261012-site01">' if path == '/' else '')}
+{('<link rel="stylesheet" href="/assets/css/magazine-editorial.css?v=20261012-site02">' if path == '/magazine/' else '')}
+{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261012-site03">' if path in ('/', '/games/') else '')}
 {thread_css}{news_comments_css}
 {ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
@@ -716,7 +724,7 @@ def build_home():
     home_preseason = nba_home_preseason()
     home_games = nba_home_games()
     home_heading = 'PRESEASON' if home_preseason else 'TIP-OFF'
-    home_status = '7 FINAL' if home_preseason else nba_dday()
+    home_status = (f'{sum(bool(g.get("result")) for g in home_games[:5])} FINAL · NEXT' if home_preseason else nba_dday())
     home_cta = '프리시즌 일정' if home_preseason else '개막 주간 일정'
     home_aria = 'NBA 프리시즌' if home_preseason else 'NBA 개막 주간'
     tip = ''.join(nba_home_story(g) for g in home_games[:5])
@@ -743,6 +751,10 @@ def build_home():
   {credit}{reel_tag}
   <aside class="top-stories" aria-label="{home_aria}"><h2>{home_heading} <span class="nba-dday">{home_status}</span></h2>{tip}</aside>
 </section>
+
+{preserved_component('home-brand-story')}
+
+{game_preview()}
 
 {ta_html}
 
@@ -791,7 +803,7 @@ def build_home():
 
 <section class="wrap sec split-8-4" aria-labelledby="anTitle">
   <div class="main">
-    <div class="sec-head" style="margin:0"><h2 class="sec-title" id="anTitle">MORE ANALYSIS<span class="accent">.</span> <span class="kr">이어지는 경기 프리뷰</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>
+    <div class="sec-head" style="margin:0"><h2 class="sec-title" id="anTitle">MORE ANALYSIS<span class="accent">.</span> <span class="kr">KAIRO · 이어지는 경기 프리뷰</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>
     <div class="grid-3">{minis}</div>
     {ad('SF-HOME-FEED')}
   </div>
@@ -995,7 +1007,7 @@ def build_lists():
           'MAGAZINE<span class="accent">.</span>',
           'SFANDOM 자체 심층 기사와 외부 블로그 연재를 구분해 읽을 수 있습니다.',
           [('MAGAZINE', '')])
-          + f'<div class="wrap sec" style="padding-top:32px">{inner}</div>' + ad_band('SF-LIST-BTM'),
+          + preserved_component('magazine-editorial') + f'<div class="wrap sec" style="padding-top:32px">{inner}</div>' + ad_band('SF-LIST-BTM'),
           path='/magazine/', description='SFANDOM 자체 스포츠 심층 기사와 블로그 연재 모음', active='/magazine/'))
 
     # 분석
@@ -1040,7 +1052,7 @@ def build_hubs():
     kd = ''.join(f'<div class="round"><span class="display">{esc(d)}</span><span>{esc(t)}</span></div>' for d, t in NBA['key_dates'])
     nba_arts = [a for a in ARTICLES if a.league == 'NBA']
     preseason_rows = nba_cards(NBA.get('preseason_games', []), preseason_anchors=True)
-    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">GAME CENTER</span></h2><span class="muted">10월 11일 오전 7경기 전부 종료 · 다음 경기 별도 표시 · 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div></div></section>') if preseason_rows else ''
+    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">GAME CENTER</span></h2><span class="muted">확인된 종료 {sum(bool(g.get("result")) for g in NBA.get("preseason_games", []))}경기 · 예정 및 확인 중 경기 구분 · 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div></div></section>') if preseason_rows else ''
     nsec = lambda kind, title, kr, anchor: (f'<section id="{anchor}" class="sec"><div class="sec-head"><h2 class="sec-title">{title} <span class="kr">{kr}</span></h2></div>'
                                             + '<div class="card-grid">' + ''.join(mag_card(a) for a in nba_arts if a.kind == kind) + '</div></section>') if any(a.kind == kind for a in nba_arts) else ''
     nba_tabs = tabs([('프리시즌', '#preseason'), ('개막 주간', '#tipoff'), ('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('주요 날짜', '#dates')], '')
@@ -1056,9 +1068,9 @@ def build_hubs():
 <section class="sec" id="dates"><div class="bracket"><div class="bracket-head"><h2>KEY DATES</h2><span class="muted">{esc(NBA["note"])}</span></div><div class="rounds">{kd}</div></div></section>
 <section class="discuss"><div><h2>새 시즌 얘기는 팬 보드에서</h2><p>우승 후보, 기대되는 팀, 개막전 예상 모두 환영합니다.</p></div><a class="pill" href="/community/?topic={quote("[NBA] ")}#write">{talk_icon()}글쓰기</a></section>
 </div>''')
-    write('/nba/', layout('NBA 프리시즌 최종 결과·다음 경기 일정 (한국시간)', nba_body, path='/nba/', description='NBA 2026-27 프리시즌 7경기 최종 점수와 다음 일정, 개막 주간 경기 정보를 한국시간으로 정리.', active='/nba/',
+    write('/nba/', layout('NBA 프리시즌 최종 결과·다음 경기 일정 (한국시간)', nba_body, path='/nba/', description='NBA 2026-27 프리시즌 결과와 다음 일정, 개막 주간 경기 정보를 한국시간으로 정리.', active='/nba/',
           ld=[breadcrumb_ld([('NBA', '/nba/')])]),
-          search={'u': '/nba/', 't': 'NBA 프리시즌 최종 점수와 다음 일정', 's': '프리시즌 7경기 종료 · 다음 일정 · 정규시즌 개막', 'k': 'NBA', 'd': '2026.10.11', 'x': '10월 11일 NBA 프리시즌 7경기 최종 점수와 11~13일 다음 일정'})
+          search={'u': '/nba/', 't': 'NBA 프리시즌 최종 점수와 다음 일정', 's': '프리시즌 종료 경기 · 다음 일정 · 정규시즌 개막', 'k': 'NBA', 'd': '2026.10.11', 'x': 'NBA 프리시즌 최신 확인 점수와 향후 일정'})
     # 포스트시즌 특집
     wc = ''.join(wc_result(w) for w in PS['wildcard'])
     dsf = ''.join(ds_card(d, link=False, full=True) for d in PS['division'])
@@ -1154,8 +1166,22 @@ def nba_home_preseason() -> bool:
 
 
 def nba_home_games() -> list:
-    """홈 화면은 개막 전 프리시즌, 개막 이후 정규시즌 주요 일정을 보여 줍니다."""
-    return NBA['preseason_games'] if nba_home_preseason() else NBA['games']
+    """Keep the five home results closest to KST now instead of pinned old finals."""
+    if not nba_home_preseason():
+        return NBA['games']
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    def when(game):
+        m = re.match(r'(\d{1,2})\.(\d{1,2}).*?(\d{2}):(\d{2})', game.get('kst', ''))
+        if not m:
+            return now + dt.timedelta(days=365)
+        month, day, hour, minute = map(int, m.groups())
+        try:
+            return dt.datetime(2026, month, day, hour, minute, tzinfo=now.tzinfo)
+        except ValueError:
+            return now + dt.timedelta(days=365)
+    ordered = sorted(NBA.get('preseason_games', []), key=when)
+    recent = [g for g in ordered if now - dt.timedelta(hours=18) <= when(g) <= now + dt.timedelta(hours=60)]
+    return recent or [g for g in ordered if when(g) >= now][:6] or ordered[-6:]
 
 
 def nba_section() -> str:
@@ -1163,9 +1189,10 @@ def nba_section() -> str:
     preseason = nba_home_preseason()
     games = nba_home_games()
     cards = nba_cards(games)
-    dday = '7 FINAL · NEXT' if preseason else nba_dday()
+    dday = (f'{sum(bool(g.get("result")) for g in games)} FINAL · NEXT' if preseason else nba_dday())
     title = 'PRESEASON <span class="outline">RESULTS</span>' if preseason else 'TIP-OFF <span class="outline">WEEK</span>'
-    copy = ('10월 11일 오전 7경기 최종 점수를 모두 반영했습니다. 댈러스–휴스턴을 비롯한 다음 경기는 예정으로 구분합니다. 시간은 한국시간입니다.'
+    verified_time, _old = game_age((game_snapshot().get('leagues', {}).get('NBA') or {}).get('checked_at', ''))
+    copy = (f'확인된 최종 결과와 예정·확인 중 경기를 구분합니다. 마지막 기록 확인: {verified_time}. 모든 시간은 한국시간입니다.'
             if preseason else '10월 21일(수) 새벽, 새 시즌이 시작됩니다. 개막 주간 주요 경기를 한국시간으로 정리했습니다.')
     return (f'<section class="wrap sec" id="nba" aria-labelledby="nbaTitle"><div class="nba-stage">'
             f'<div class="nba-intro"><span class="nba-kicker"><span class="nba-ball" aria-hidden="true"></span>NBA {NBA["season"]}</span>'
@@ -1435,6 +1462,138 @@ def build_feeds():
     write('/feed/', layout('RSS 구독', body, path='/feed/', description='SFANDOM 전체·리그별·팀별 RSS 구독 안내'))
 
 
+
+# ───────────────────────── 종목별 경기 센터 · 외부 확인 스냅샷 ─────────────────────────
+def game_snapshot() -> dict:
+    path = CONTENT / 'games-snapshot.json'
+    try:
+        data = json.loads(path.read_text(encoding='utf-8'))
+        return data if isinstance(data.get('leagues'), dict) else {'leagues': {}}
+    except (OSError, ValueError, TypeError):
+        return {'leagues': {}}
+
+
+SCORE_LABELS = {
+    'scheduled': '예정', 'live': '진행 중 · 확인 시각 기준',
+    'final': '종료', 'postponed': '연기', 'cancelled': '취소',
+}
+SCORE_LEAGUES = (('MLB', '⚾'), ('NBA', '🏀'), ('NFL', '🏈'), ('NHL', '🏒'))
+
+
+def game_clock(kst: str) -> dt.datetime | None:
+    try:
+        value = dt.datetime.fromisoformat(kst)
+        return value if value.tzinfo else None
+    except (TypeError, ValueError):
+        return None
+
+
+def game_card(g: dict, stale: bool = False) -> str:
+    when = game_clock(g.get('start_kst', ''))
+    if not when:
+        return ''
+    state = g.get('status')
+    if state not in SCORE_LABELS:
+        return ''
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    label = SCORE_LABELS[state]
+    if state == 'scheduled' and when < now - dt.timedelta(minutes=20):
+        label = '결과 확인 중'
+    elif stale and state == 'live':
+        label = '마지막 확인 당시 진행 중'
+    elif stale and state == 'scheduled':
+        label = '예정 · 갱신 지연'
+    scores = ''
+    if state in ('live', 'final'):
+        try:
+            av, hv = int(g['away_score']), int(g['home_score'])
+            if 0 <= av <= 300 and 0 <= hv <= 300:
+                scores = f'<strong class="sf-scores__numbers">{av}<span>:</span>{hv}</strong>'
+        except (ValueError, TypeError, KeyError):
+            pass
+    url = str(g.get('source_url', ''))
+    url = url if url.startswith('https://www.espn.com/') else ''
+    row_tag, link = ('a', f' href="{esc(url)}" target="_blank" rel="noopener"') if url else ('div', '')
+    badge_text = '자료 시각 기준'
+    if state == 'final':
+        badge_text = 'FINAL'
+    elif state == 'live' and not stale:
+        badge_text = 'LIVE · 지연 제공'
+    return (f'<{row_tag} class="sf-scores__game"{link}>'
+            f'<span class="sf-scores__time"><time datetime="{esc(g["start_kst"])}">{when.strftime("%m.%d %H:%M")}</time>'
+            f'<small>{esc(label)}</small></span>'
+            f'<span class="sf-scores__teams"><b title="{esc(g.get("away_name", ""))}">{esc(g.get("away", "?"))}</b>'
+            f'<i aria-hidden="true">VS</i><b title="{esc(g.get("home_name", ""))}">{esc(g.get("home", "?"))}</b></span>'
+            f'{scores}<span class="sf-scores__tag">{esc(badge_text)}</span>'
+            f'</{row_tag}>')
+
+
+def game_age(checked_at: str) -> tuple[str, bool]:
+    checked = game_clock(checked_at)
+    if not checked:
+        return '확인 시각 없음', True
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    return (checked.astimezone(now.tzinfo).strftime('%m.%d %H:%M KST'),
+            now - checked > dt.timedelta(hours=2))
+
+
+def game_sections(brief: bool = False) -> str:
+    snapshot = game_snapshot()
+    output = []
+    for league, icon in SCORE_LEAGUES:
+        details = snapshot.get('leagues', {}).get(league) or {}
+        verified, stale = game_age(details.get('checked_at', ''))
+        games = [g for g in details.get('games', []) if game_clock(g.get('start_kst', ''))]
+        games.sort(key=lambda g: (g.get('start_kst', ''), g.get('id', '')))
+        if brief:
+            now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+            games.sort(key=lambda g: (abs((game_clock(g['start_kst']) - now).total_seconds()),g['start_kst']))
+            games = games[:2]
+            games.sort(key=lambda g: g['start_kst'])
+        else:
+            games = games[-50:]
+        cards = ''.join(game_card(g, stale) for g in games)
+        if not cards:
+            cards = '<p class="sf-scores__empty">이 시간대 확인된 경기 정보가 없습니다. 다음 자료 갱신을 기다려 주세요.</p>'
+        note = ' · 일부 날짜 확인 지연' if details.get('coverage') == 'partial' else ''
+        if details.get('error'):
+            note += ' · 외부 자료 연결 지연'
+        output.append(f'<section class="sf-scores__league" aria-label="{league} 경기 결과와 일정">'
+                      f'<div class="sf-scores__league-head"><h3>{icon} {league}</h3>'
+                      f'<small>확인 {esc(verified)}{esc(note)}</small></div>'
+                      f'<div class="sf-scores__rows">{cards}</div></section>')
+    return ''.join(output)
+
+
+def game_preview() -> str:
+    return (f'<section class="wrap sf-scores sf-scores--preview" aria-labelledby="scorePreviewTitle">'
+            f'<div class="sf-scores__heading"><div><span class="sf-scores__eyebrow">GAME CENTER · KST</span>'
+            f'<h2 id="scorePreviewTitle">경기 일정 <span>·</span> 최종 결과</h2>'
+            f'<p>MLB·NBA·NFL·NHL · 외부 기록 제공처 확인 시각 기준</p></div>'
+            f'<a class="pill" href="/games/">전체 경기 보기 →</a></div>'
+            f'<div class="sf-scores__grid">{game_sections(True)}</div></section>')
+
+
+def build_games() -> None:
+    snapshot = game_snapshot()
+    updated, _stale = game_age(snapshot.get('updated_at', ''))
+    intro = page_head('GAME <span class="accent">CENTER.</span>',
+        'MLB·NBA·NFL·NHL 경기 일정과 결과를 한국시간으로 확인합니다. 실시간 중계가 아닌 외부 기록 제공처 확인 시각 기준입니다.',
+        [('GAME CENTER', '')])
+    body = (intro + f'<div class="wrap sf-scores sf-scores--page">'
+            f'<div class="sf-scores__heading"><div><span class="sf-scores__eyebrow">SCORES & FIXTURES · KST</span>'
+            f'<h2>종목별 경기 현황</h2><p>최종 수집 시각 {esc(updated)} · ESPN 경기 기록 보조 자료. '
+            f'점수와 경기 상태는 출처 페이지에서 다시 확인할 수 있습니다.</p></div></div>'
+            f'<div class="sf-scores__grid">{game_sections()}</div>'
+            f'<p class="sf-scores__foot">※ 예정 시간이 지났다고 종료로 표시하지 않습니다. '
+            f'기록 제공처가 확정한 점수만 FINAL로 표시하며, 자료 수집이 지연되면 마지막 확인 시각을 함께 표시합니다. '
+            f'KBO는 데이터 제공처 검증 전까지 자동 수집 대상에서 제외합니다.</p></div>')
+    write('/games/', layout('경기 일정·결과 | SFANDOM', body, path='/games/',
+         description='MLB NBA NFL NHL 경기 일정과 결과, KST 시간 및 마지막 확인 시각.'),
+         search={'u': '/games/', 't': '경기 일정·결과', 's': 'MLB NBA NFL NHL', 'k': 'GAME CENTER',
+                 'd': TODAY.replace('-', '.'), 'x': '경기 스코어 및 일정 KST'})
+
+
 def clean_generated():
     for d in GENERATED_DIRS:
         shutil.rmtree(ROOT / d, ignore_errors=True)
@@ -1448,6 +1607,7 @@ def main():
         build_article(a)
     build_lists()
     build_hubs()
+    build_games()
     build_community()
     build_sitemap()
     build_static()
