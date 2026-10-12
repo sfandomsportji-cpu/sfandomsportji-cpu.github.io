@@ -34,3 +34,18 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 .sf-scores--page .sf-scores__tag{grid-column:auto;text-align:right}
 @media(max-width:1150px){.sf-scores__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.sf-scores__heading{align-items:start;flex-direction:column}.sf-scores__grid,.sf-scores--page .sf-scores__grid{grid-template-columns:1fr}.sf-scores__heading h2{font-size:27px}.sf-scores--page .sf-scores__game{grid-template-columns:minmax(0,1fr) auto}.sf-scores--page .sf-scores__time{grid-column:1/-1}.sf-scores--page .sf-scores__tag{grid-column:1/-1;text-align:left}}
+
+/* SFANDOM scoreboard readability · 2026-10-13 */
+@media (min-width:701px){
+  .sf-scores__eyebrow{font-size:13px}
+  .sf-scores__heading p{font-size:15px}
+  .sf-scores__league-head h3{font-size:21px}
+  .sf-scores__league-head small{font-size:12px}
+  .sf-scores__game{padding:16px;row-gap:8px}
+  .sf-scores__time time{font-size:13px}
+  .sf-scores__time small{font-size:12px}
+  .sf-scores__teams b{font-size:17px}
+  .sf-scores__teams i{font-size:11px}
+  .sf-scores__numbers{font-size:18px}
+  .sf-scores__tag{font-size:12px;line-height:1.5}
+}

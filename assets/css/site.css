@@ -1034,3 +1034,16 @@ section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo{
 @media(max-width:440px){
   .feed-team-grid{grid-template-columns:1fr}
 }
+
+/* SFANDOM readability follow-up · 2026-10-13 (desktop only) */
+@media (min-width:761px){
+  .morning-feature-grid .morning-card{padding:24px;gap:16px}
+  .morning-feature-grid .morning-photo{height:clamp(240px,20vw,320px)}
+  .morning-feature-grid .morning-copy h3{font-size:clamp(25px,1.65vw,30px);line-height:1.42}
+  .morning-feature-grid .morning-copy p{font-size:17px;line-height:1.75}
+  .morning-feature-grid .morning-card .tag{font-size:13px}
+  .morning-feature-grid .morning-card .ta-more{font-size:16px}
+  .news-lead p,.li p{font-size:17px}
+  .mag p{font-size:16px}
+  .feed-home-copy small{font-size:16px}
+}
