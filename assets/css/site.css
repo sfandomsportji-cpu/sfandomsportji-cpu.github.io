@@ -1262,3 +1262,39 @@ section[aria-labelledby="newsTitle"] .news-mark-mini .tlogo{
 
 /* SFANDOM visual QA correction: avoid inherited .box flex-direction:column */
 section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{flex-direction:row}
+
+
+/* SFANDOM final responsive game-thread grid: verified 5 actual games, no phantom columns */
+@media(min-width:1360px){
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{
+    display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box-title{
+    grid-column:1/-1;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt{
+    min-width:0;width:auto;
+  }
+}
+@media(min-width:761px) and (max-width:1359px){
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box-title{
+    grid-column:1/-1;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt{
+    min-width:0;width:auto;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt:last-child:nth-child(even){
+    grid-column:1/-1;
+  }
+}
+@media(max-width:760px){
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{
+    display:grid;grid-template-columns:minmax(0,1fr);gap:12px;
+  }
+  section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box-title{
+    grid-column:1/-1;
+  }
+}
