@@ -39,6 +39,7 @@ from fetch_logos import SOURCES as LOGO_SOURCES  # noqa: E402  (리그별 팀 ID
 import feeds  # noqa: E402  (RSS 피드 생성)
 import weekly  # noqa: E402  (주간 인기 글 스냅샷)
 from build_article_cards import card_name  # noqa: E402  (글별 공유 카드 파일명)
+from editorial_paths import related as editorial_related, index as editorial_index
 
 
 # ───────────────────────── 콘텐츠 읽기 ─────────────────────────
@@ -121,6 +122,7 @@ PS = json.loads((CONTENT / 'postseason-2026.json').read_text(encoding='utf-8'))
 NBA = json.loads((CONTENT / 'nba-2026.json').read_text(encoding='utf-8'))
 RECORDS = json.loads((CONTENT / 'analysis-records.json').read_text(encoding='utf-8'))
 BY_KEY = {a.file[:-3]: a for a in ARTICLES}
+EDITORIAL_PATHS = json.loads((CONTENT / 'editorial-paths.json').read_text(encoding='utf-8'))
 
 
 # ───────────────────────── 블로그 연동 (구글 · 네이버) ─────────────────────────
@@ -593,6 +595,8 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261012-site01">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/magazine-editorial.css?v=20261012-site02">' if path == '/magazine/' else '')}
 {('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261012-site03">' if path in ('/', '/games/') else '')}
+{('<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v=20261012-site04">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
+{('<link rel="stylesheet" href="/assets/css/editorial-links.css?v=20261012-site04-map">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}
 {ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
@@ -891,12 +895,14 @@ def build_article(a: Article):
     {f'<p class="sub">{esc(a.subtitle)}</p>' if a.subtitle else ''}
     <div class="byline"><span>글 <b>SFANDOM & KAIRO</b></span><time datetime="{a.date}">{a.date_dot} KST</time>{f'<span>{esc(a.meta)}</span>' if a.meta else ''}</div>
   </header>
+  {preserved_component('nlcs-archived-preview-note') if a.file == '2026-10-11-nlcs-dodgers-brewers-game1.md' else ''}
   <div class="article-grid">
     <article>
       {matchup_strip(a) if a.kind == 'analysis' else ''}
       {fig}
       <div class="prose">{render_body(a)}</div>
       {src_html}{credit}
+      {editorial_related(a, EDITORIAL_PATHS, BY_KEY, esc)}
       {discussion_html}
       <div style="margin-top:24px">{ed}</div>
       <div style="margin-top:32px">{ad('SF-ART-MULTI')}</div>
@@ -1010,12 +1016,21 @@ def build_lists():
           + preserved_component('magazine-editorial') + f'<div class="wrap sec" style="padding-top:32px">{inner}</div>' + ad_band('SF-LIST-BTM'),
           path='/magazine/', description='SFANDOM 자체 스포츠 심층 기사와 블로그 연재 모음', active='/magazine/'))
 
+    # 연결된 원문을 한눈에 보는 독립 페이지 · 콘텐츠는 중복 재발행하지 않습니다.
+    reading_body = (page_head('EDITORIAL <span class="accent">PATHS.</span>',
+        '다른 시점과 관점으로 작성된 글은 합치지 않고, 연결해서 읽습니다.',
+        [('ANALYSIS', '/analysis/'), ('연결 읽기', '')])
+        + editorial_index(EDITORIAL_PATHS, BY_KEY, esc))
+    write('/analysis/reading-paths/', layout('경기 기사 연결 읽기 | SFANDOM', reading_body,
+          path='/analysis/reading-paths/', description='경기 전 프리뷰, 경기 후 복기와 독립 심층 기사 연결',
+          active='/analysis/'))
+
     # 분석
     an = [a for a in ARTICLES if a.kind == 'analysis']
     lede, method = page_fragment('method')
     an_tabs = tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/')
     write('/analysis/', layout('ANALYSIS · 경기 분석', page_head('ANALYSIS<span class="accent">.</span>', lede, [('ANALYSIS', '')], an_tabs)
-          + two_col('<h2 class="sec-title" style="font-size:44px">LATEST <span class="kr">최근 경기 프리뷰</span></h2>' + list_with_ads(an, 4)
+          + preserved_component('analysis-cycle-guide') + two_col('<h2 class="sec-title" style="font-size:44px">LATEST <span class="kr">최근 경기 프리뷰</span></h2>' + list_with_ads(an, 4)
                     + f'<section id="method" class="sec"><h2 class="sec-title" style="font-size:56px">METHOD <span class="kr">분석은 이렇게 만듭니다</span></h2><div class="prose">{method}</div></section>',
                     'SF-HUB-RAIL', '<div class="aside-box" style="margin-top:24px"><h2>REVIEW</h2><a href="/analysis/review/">경기 전 전망과 실제 결과 기록 보기 →</a></div>'),
           path='/analysis/', description=lede, active='/analysis/'))
@@ -1032,7 +1047,7 @@ def build_lists():
     ok = sum(r['matched'] for r in RECORDS['records'])
     write('/analysis/review/', layout('복기 리포트 · 경기 전 전망과 결과', page_head('REVIEW <span class="accent">/</span> <span class="kr">복기 리포트</span>', RECORDS['note'],
           [('ANALYSIS', '/analysis/'), ('REVIEW', '')], tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/review/'))
-          + two_col(f'<div class="stats" style="margin:0 0 12px"><div class="stat"><b>{len(RECORDS["records"])}</b><span>RECORDS</span></div><div class="stat"><b>{ok}</b><span>MATCHED</span></div><div class="stat"><b>{len(RECORDS["records"]) - ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{RECORDS["updated"][5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
+          + preserved_component('review-cycle-guide') + editorial_index(EDITORIAL_PATHS, BY_KEY, esc, 'before-after') + two_col(f'<div class="stats" style="margin:0 0 12px"><div class="stat"><b>{len(RECORDS["records"])}</b><span>RECORDS</span></div><div class="stat"><b>{ok}</b><span>MATCHED</span></div><div class="stat"><b>{len(RECORDS["records"]) - ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{RECORDS["updated"][5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
                     + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다른 결과도 지우지 않습니다. 어떤 전제가 틀렸는지 다음 분석에서 다시 확인합니다.</p>', 'SF-HUB-RAIL'),
           path='/analysis/review/', description=RECORDS['note'], active='/analysis/'))
 

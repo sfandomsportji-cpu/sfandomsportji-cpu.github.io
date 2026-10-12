@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Compile Python sources
-        run: python3 -m py_compile src/build.py src/tools/sync_games.py
+        run: python3 -m py_compile src/build.py src/tools/sync_games.py src/tools/editorial_paths.py
       - name: Verify provider access and refresh snapshot in CI
         run: |
           python3 src/tools/sync_games.py
@@ -59,5 +59,17 @@ jobs:
           assert 'sf-scores__league' in games, "game center missing"
           assert games.count('class="sf-scores__league"') == 4, "four leagues missing"
           assert "확인 시각" in games, "freshness disclosure missing"
+          analysis = (root / "analysis/index.html").read_text(encoding="utf-8")
+          review = (root / "analysis/review/index.html").read_text(encoding="utf-8")
+          index = (root / "analysis/reading-paths/index.html").read_text(encoding="utf-8")
+          archived = (root / "analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/index.html").read_text(encoding="utf-8")
+          assert 'id="cycleGuideTitle"' in analysis, "approved pregame guide lost"
+          assert 'id="cycleReviewTitle"' in review, "approved postgame guide lost"
+          assert 'cycle-article-note' in archived, "archived analysis notice lost"
+          assert 'ALDS 5차전' in review and '프리시즌 7경기' in review, "preview-review pairs missing"
+          assert index.count('class="editorial-links__group"') == 5, "independent editorial groups missing"
+          assert "INDEPENDENT STORIES" in index, "separate articles hidden"
+          assert 'editorial-links__related' in archived, "original related article links missing"
+          print("PASS: approved 01-04 components persist; paired reviews and unique article links generated.")
           print("PASS: original 01/02 preserved; four-league game center generated.")
           PY
