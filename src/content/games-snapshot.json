@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-13T05:12+09:00",
+  "updated_at": "2026-10-13T05:55+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-13T05:12+09:00",
+      "checked_at": "2026-10-13T05:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -62,7 +62,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-13T05:12+09:00",
+      "checked_at": "2026-10-13T05:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -74,10 +74,10 @@
           "home": "POR",
           "away_name": "London Lions",
           "home_name": "Portland Trail Blazers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401914130/lions-trail-blazers"
+          "status": "live",
+          "away_score": 31,
+          "home_score": 57,
+          "source_url": "https://www.espn.com/nba/game?gameId=401914130"
         },
         {
           "id": "NBA-401898402",
@@ -290,7 +290,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-13T05:12+09:00",
+      "checked_at": "2026-10-13T05:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -310,7 +310,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-13T05:12+09:00",
+      "checked_at": "2026-10-13T05:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
