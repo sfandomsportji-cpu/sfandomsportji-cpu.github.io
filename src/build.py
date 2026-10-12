@@ -724,7 +724,7 @@ def build_home():
     home_preseason = nba_home_preseason()
     home_games = nba_home_games()
     home_heading = 'PRESEASON' if home_preseason else 'TIP-OFF'
-    home_status = '7 FINAL' if home_preseason else nba_dday()
+    home_status = (f'{sum(bool(g.get("result")) for g in home_games[:5])} FINAL · NEXT' if home_preseason else nba_dday())
     home_cta = '프리시즌 일정' if home_preseason else '개막 주간 일정'
     home_aria = 'NBA 프리시즌' if home_preseason else 'NBA 개막 주간'
     tip = ''.join(nba_home_story(g) for g in home_games[:5])
@@ -1052,7 +1052,7 @@ def build_hubs():
     kd = ''.join(f'<div class="round"><span class="display">{esc(d)}</span><span>{esc(t)}</span></div>' for d, t in NBA['key_dates'])
     nba_arts = [a for a in ARTICLES if a.league == 'NBA']
     preseason_rows = nba_cards(NBA.get('preseason_games', []), preseason_anchors=True)
-    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">GAME CENTER</span></h2><span class="muted">10월 11일 오전 7경기 전부 종료 · 다음 경기 별도 표시 · 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div></div></section>') if preseason_rows else ''
+    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">GAME CENTER</span></h2><span class="muted">확인된 종료 {sum(bool(g.get("result")) for g in NBA.get("preseason_games", []))}경기 · 예정 및 확인 중 경기 구분 · 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div></div></section>') if preseason_rows else ''
     nsec = lambda kind, title, kr, anchor: (f'<section id="{anchor}" class="sec"><div class="sec-head"><h2 class="sec-title">{title} <span class="kr">{kr}</span></h2></div>'
                                             + '<div class="card-grid">' + ''.join(mag_card(a) for a in nba_arts if a.kind == kind) + '</div></section>') if any(a.kind == kind for a in nba_arts) else ''
     nba_tabs = tabs([('프리시즌', '#preseason'), ('개막 주간', '#tipoff'), ('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('주요 날짜', '#dates')], '')
@@ -1068,9 +1068,9 @@ def build_hubs():
 <section class="sec" id="dates"><div class="bracket"><div class="bracket-head"><h2>KEY DATES</h2><span class="muted">{esc(NBA["note"])}</span></div><div class="rounds">{kd}</div></div></section>
 <section class="discuss"><div><h2>새 시즌 얘기는 팬 보드에서</h2><p>우승 후보, 기대되는 팀, 개막전 예상 모두 환영합니다.</p></div><a class="pill" href="/community/?topic={quote("[NBA] ")}#write">{talk_icon()}글쓰기</a></section>
 </div>''')
-    write('/nba/', layout('NBA 프리시즌 최종 결과·다음 경기 일정 (한국시간)', nba_body, path='/nba/', description='NBA 2026-27 프리시즌 7경기 최종 점수와 다음 일정, 개막 주간 경기 정보를 한국시간으로 정리.', active='/nba/',
+    write('/nba/', layout('NBA 프리시즌 최종 결과·다음 경기 일정 (한국시간)', nba_body, path='/nba/', description='NBA 2026-27 프리시즌 결과와 다음 일정, 개막 주간 경기 정보를 한국시간으로 정리.', active='/nba/',
           ld=[breadcrumb_ld([('NBA', '/nba/')])]),
-          search={'u': '/nba/', 't': 'NBA 프리시즌 최종 점수와 다음 일정', 's': '프리시즌 7경기 종료 · 다음 일정 · 정규시즌 개막', 'k': 'NBA', 'd': '2026.10.11', 'x': '10월 11일 NBA 프리시즌 7경기 최종 점수와 11~13일 다음 일정'})
+          search={'u': '/nba/', 't': 'NBA 프리시즌 최종 점수와 다음 일정', 's': '프리시즌 종료 경기 · 다음 일정 · 정규시즌 개막', 'k': 'NBA', 'd': '2026.10.11', 'x': 'NBA 프리시즌 최신 확인 점수와 향후 일정'})
     # 포스트시즌 특집
     wc = ''.join(wc_result(w) for w in PS['wildcard'])
     dsf = ''.join(ds_card(d, link=False, full=True) for d in PS['division'])
@@ -1166,8 +1166,22 @@ def nba_home_preseason() -> bool:
 
 
 def nba_home_games() -> list:
-    """홈 화면은 개막 전 프리시즌, 개막 이후 정규시즌 주요 일정을 보여 줍니다."""
-    return NBA['preseason_games'] if nba_home_preseason() else NBA['games']
+    """Keep the five home results closest to KST now instead of pinned old finals."""
+    if not nba_home_preseason():
+        return NBA['games']
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    def when(game):
+        m = re.match(r'(\d{1,2})\.(\d{1,2}).*?(\d{2}):(\d{2})', game.get('kst', ''))
+        if not m:
+            return now + dt.timedelta(days=365)
+        month, day, hour, minute = map(int, m.groups())
+        try:
+            return dt.datetime(2026, month, day, hour, minute, tzinfo=now.tzinfo)
+        except ValueError:
+            return now + dt.timedelta(days=365)
+    ordered = sorted(NBA.get('preseason_games', []), key=when)
+    recent = [g for g in ordered if now - dt.timedelta(hours=18) <= when(g) <= now + dt.timedelta(hours=60)]
+    return recent or [g for g in ordered if when(g) >= now][:6] or ordered[-6:]
 
 
 def nba_section() -> str:
@@ -1175,9 +1189,10 @@ def nba_section() -> str:
     preseason = nba_home_preseason()
     games = nba_home_games()
     cards = nba_cards(games)
-    dday = '7 FINAL · NEXT' if preseason else nba_dday()
+    dday = (f'{sum(bool(g.get("result")) for g in games)} FINAL · NEXT' if preseason else nba_dday())
     title = 'PRESEASON <span class="outline">RESULTS</span>' if preseason else 'TIP-OFF <span class="outline">WEEK</span>'
-    copy = ('10월 11일 오전 7경기 최종 점수를 모두 반영했습니다. 댈러스–휴스턴을 비롯한 다음 경기는 예정으로 구분합니다. 시간은 한국시간입니다.'
+    verified_time, _old = game_age((game_snapshot().get('leagues', {}).get('NBA') or {}).get('checked_at', ''))
+    copy = (f'확인된 최종 결과와 예정·확인 중 경기를 구분합니다. 마지막 기록 확인: {verified_time}. 모든 시간은 한국시간입니다.'
             if preseason else '10월 21일(수) 새벽, 새 시즌이 시작됩니다. 개막 주간 주요 경기를 한국시간으로 정리했습니다.')
     return (f'<section class="wrap sec" id="nba" aria-labelledby="nbaTitle"><div class="nba-stage">'
             f'<div class="nba-intro"><span class="nba-kicker"><span class="nba-ball" aria-hidden="true"></span>NBA {NBA["season"]}</span>'
