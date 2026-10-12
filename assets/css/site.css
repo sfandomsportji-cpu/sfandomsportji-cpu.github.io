@@ -1298,3 +1298,33 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child>.box{flex-dir
     grid-column:1/-1;
   }
 }
+
+
+/* SFANDOM hero empty-space balance & premium typography · 2026-10-13 */
+@media(min-width:1181px){
+  .hero-copy{
+    align-self:center;justify-self:start;
+    margin:28px 45px 28px max(var(--gut),calc((100vw - var(--wrap))/2 + var(--gut)));
+    max-width:min(930px,calc(100% - 100px));width:auto;gap:21px;
+  }
+  .hero-copy h1{
+    font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+    font-size:clamp(57px,4.25vw,79px);font-weight:700;line-height:1.19;
+    letter-spacing:-.045em;text-shadow:0 4px 20px rgba(0,0,0,.68);
+    color:#f7f6f9;word-break:keep-all;
+  }
+  .hero-copy p{
+    max-width:890px;font-size:20px;line-height:1.72;color:#eff0f5;
+    text-shadow:0 2px 12px rgba(0,0,0,.85);
+  }
+  .hero-shade{
+    background:linear-gradient(90deg,rgba(7,8,13,.86) 0%,rgba(7,8,13,.65) 37%,rgba(7,8,13,.18) 77%,rgba(7,8,13,.24) 100%),linear-gradient(0deg,rgba(7,8,13,.57),transparent 60%);
+  }
+  .top-stories .ts.tip .tag{font-size:14px;line-height:1.4}
+  .top-stories .ts.tip .nba-tag{font-size:15px;line-height:1.5}
+  .top-stories .ts.tip{padding:17px 18px}
+}
+@media(min-width:1181px) and (max-width:1500px){
+  .hero-copy{max-width:min(780px,calc(100% - 95px));margin-left:44px}
+  .hero-copy h1{font-size:clamp(53px,4.35vw,65px)}
+}
