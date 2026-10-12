@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-12T16:22+09:00",
+  "updated_at": "2026-10-12T18:17+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-12T16:22+09:00",
+      "checked_at": "2026-10-12T18:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -75,7 +75,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-12T16:22+09:00",
+      "checked_at": "2026-10-12T18:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -338,11 +338,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401914125/pistons-timberwolves"
+        },
+        {
+          "id": "NBA-401918011",
+          "league": "NBA",
+          "start_kst": "2026-10-15T11:30+09:00",
+          "away": "DEN",
+          "home": "LAC",
+          "away_name": "Denver Nuggets",
+          "home_name": "LA Clippers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401918011/nuggets-clippers"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-12T16:22+09:00",
+      "checked_at": "2026-10-12T18:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -531,7 +544,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-12T16:22+09:00",
+      "checked_at": "2026-10-12T18:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
