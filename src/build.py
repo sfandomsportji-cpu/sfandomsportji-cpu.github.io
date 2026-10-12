@@ -596,7 +596,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
-{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261013-readable-v1">' if path in ('/', '/games/') else '')}
+{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261013-editorial-cards-v2">' if path in ('/', '/games/') else '')}
 {('<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v=20261012-site04">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {('<link rel="stylesheet" href="/assets/css/editorial-links.css?v=20261012-site04-map">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}
