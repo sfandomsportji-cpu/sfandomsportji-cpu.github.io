@@ -21,7 +21,8 @@ SOURCES = {
     "NFL": "football/nfl",
     "NHL": "hockey/nhl",
 }
-API = "https://site.api.espn.com/apis/site/v2/sports/{}/scoreboard?dates={}"
+API_HOSTS = ("site.api.espn.com", "site.web.api.espn.com")
+API = "https://{}/apis/site/v2/sports/{}/scoreboard?dates={}"
 STATUS = {"pre": "scheduled", "in": "live", "post": "final"}
 USER_AGENT = "SFANDOM-site-scoreboard/1.0 (https://sfandom.com/)"
 
@@ -35,23 +36,24 @@ def read_previous() -> dict:
 
 def fetch_one(league: str, endpoint: str, date: dt.date) -> tuple[str, str, dict | None]:
     day = date.strftime("%Y%m%d")
-    request = urllib.request.Request(
-        API.format(endpoint, day),
-        headers={"User-Agent": USER_AGENT, "Accept": "application/json"},
-    )
-    try:
-        with urllib.request.urlopen(request, timeout=12) as response:
-            body = response.read(2_500_001)
-            if len(body) > 2_500_000:
-                raise ValueError("scoreboard response too large")
-        value = json.loads(body)
-        if not isinstance(value.get("events"), list):
-            raise ValueError("scoreboard events list missing")
-        return league, day, value
-    except (urllib.error.URLError, TimeoutError, ValueError, OSError) as exc:
-        print(f"[{league}] {day}: provider error ({type(exc).__name__})")
-        return league, day, None
-
+    for host in API_HOSTS:
+        request = urllib.request.Request(
+            API.format(host, endpoint, day),
+            headers={"User-Agent": USER_AGENT, "Accept": "application/json"},
+        )
+        try:
+            with urllib.request.urlopen(request, timeout=12) as response:
+                body = response.read(2_500_001)
+                if len(body) > 2_500_000:
+                    raise ValueError("scoreboard response too large")
+            value = json.loads(body)
+            if not isinstance(value.get("events"), list):
+                raise ValueError("scoreboard events list missing")
+            return league, day, value
+        except (urllib.error.URLError, TimeoutError, ValueError, OSError) as exc:
+            code = getattr(exc, "code", "unknown")
+            print(f"[{league}] {day}: {host} error ({type(exc).__name__}, HTTP {code}); trying alternate")
+    return league, day, None
 
 def parse_event(league: str, event: dict) -> dict | None:
     try:
