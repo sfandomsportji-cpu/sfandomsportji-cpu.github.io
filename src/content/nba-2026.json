@@ -263,36 +263,48 @@
       "home_score": 102
     },
     {
-      "day": "UPCOMING",
+      "day": "FINAL",
       "away": "DAL",
       "home": "HOU",
       "kst": "10.11 (일) 19:00",
       "tv": "KST",
-      "tag": "마카오 · 현지 10.11 18:00"
+      "tag": "종료 · DAL 132–115 HOU",
+      "away_score": 132,
+      "home_score": 115,
+      "result": "DAL 132–115 HOU"
     },
     {
-      "day": "UPCOMING",
+      "day": "FINAL",
       "away": "ORL",
       "home": "CLE",
       "kst": "10.12 (월) 07:30",
       "tv": "KST",
-      "tag": "클리블랜드 홈"
+      "tag": "종료 · ORL 105–119 CLE",
+      "away_score": 105,
+      "home_score": 119,
+      "result": "ORL 105–119 CLE"
     },
     {
-      "day": "UPCOMING",
+      "day": "FINAL",
       "away": "MIL",
       "home": "CHA",
       "kst": "10.12 (월) 08:00",
       "tv": "KST",
-      "tag": "샬럿 홈"
+      "tag": "종료 · MIL 90–105 CHA",
+      "away_score": 90,
+      "home_score": 105,
+      "result": "MIL 90–105 CHA"
     },
     {
-      "day": "UPCOMING",
+      "day": "FINAL",
       "away": "CHI",
       "home": "DEN",
       "kst": "10.12 (월) 10:00",
       "tv": "KST",
-      "tag": "덴버 홈"
+      "tag": "종료 · CHI 128–133 DEN",
+      "away_score": 128,
+      "home_score": 133,
+      "result": "CHI 128–133 DEN"
     },
     {
       "day": "UPCOMING",
