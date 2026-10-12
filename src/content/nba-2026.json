@@ -307,12 +307,15 @@
       "result": "CHI 128–133 DEN"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "LON",
       "home": "POR",
       "kst": "10.13 (화) 05:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · LON 66–119 POR",
+      "away_score": 66,
+      "home_score": 119,
+      "result": "LON 66–119 POR"
     },
     {
       "day": "UPCOMING",
