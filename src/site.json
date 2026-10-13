@@ -133,11 +133,11 @@
     }
   },
   "community_video": {
-    "eyebrow": "SFANDOM REELS · @sportsfandom",
+    "eyebrow": "SFANDOM ORIGINAL · OWNED MEDIA",
     "title": "FAN ZONE.",
     "title2": "PLAY FIRST.",
-    "text": "스팬덤 인스타그램 릴스. 보고, 바로 팬 보드에서 떠들어요.",
-    "instagram_reel": "DdejDQDyYxv",
+    "text": "외부 콘텐츠 임베드 없이, 자체 저장한 영상으로 팬들의 이야기를 엽니다.",
+    "instagram_reel": "",
     "reel_ratio": "16/9",
     "fallback_video": "/assets/sfandom-brand-film-20260901.mp4",
     "fallback_poster": "/assets/sfandom-hero-poster.jpg"
