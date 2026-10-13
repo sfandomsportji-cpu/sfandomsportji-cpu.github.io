@@ -31,6 +31,34 @@
     if (img.complete && img.naturalWidth === 0) fallbackImage(img);
   });
 
+  /* 점수는 배포 시각의 기록입니다. 빌드가 늦어져도 오래된 LIVE를 현재형으로 남기지 않습니다. */
+  const refreshRecordedScores = () => {
+    const now = Date.now();
+    $('[data-score-state]').forEach(card => {
+      const state = card.dataset.scoreState;
+      const checked = Date.parse(card.dataset.scoreChecked || '');
+      const start = Date.parse(card.dataset.scoreStart || '');
+      const stale = !Number.isFinite(checked) || now - checked > 2 * 60 * 60 * 1000;
+      const label = $('.sf-scores__time small', card);
+      const badge = $('.sf-scores__tag', card);
+      if (!label || !badge) return;
+      if (state === 'live' && stale) {
+        label.textContent = '마지막 확인 당시 진행 중';
+        badge.textContent = '자료 시각 기준';
+      } else if (state === 'scheduled' && Number.isFinite(start) && now > start + 20 * 60 * 1000) {
+        label.textContent = '결과 확인 중';
+        badge.textContent = '자료 시각 기준';
+      } else if (state === 'scheduled' && stale) {
+        label.textContent = '예정 · 갱신 지연';
+        badge.textContent = '자료 시각 기준';
+      }
+    });
+  };
+  refreshRecordedScores();
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) refreshRecordedScores();
+  });
+
   /* ── 전체 메뉴 · 검색 ── */
   const toggle = (btn, panel, focusSel) => {
     if (!btn || !panel) return;
