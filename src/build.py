@@ -40,7 +40,7 @@ import feeds  # noqa: E402  (RSS 피드 생성)
 import weekly  # noqa: E402  (주간 인기 글 스냅샷)
 from build_article_cards import card_name  # noqa: E402  (글별 공유 카드 파일명)
 from editorial_paths import related as editorial_related, index as editorial_index
-from naver_magazine import render as render_naver_magazine
+from naver_magazine import render as render_naver_magazine, posts as naver_posts, media_for_item as magazine_media_for_item
 
 
 # ───────────────────────── 콘텐츠 읽기 ─────────────────────────
@@ -241,15 +241,23 @@ def blog_posts(limit: int = 6, core: bool = False) -> list[dict]:
 
 
 def blog_card(p: dict) -> str:
+    """Only title/link metadata is loaded from the owner's posts; media is local only."""
     label = SITE['blogs'][p['source']]['label']
-    return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener"><div class="body">'
-            f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3>'
+    media = magazine_media_for_item(p, esc)
+    return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{esc(p["source"])}" href="{esc(p["link"])}" target="_blank" rel="noopener noreferrer">'
+            + media +
+            f'<div class="body"><span class="tag red">{label}</span><h3>{esc(p["title"])}</h3>'
             f'<span class="tag">{p.get("date", "").replace("-", ".")} · 블로그에서 읽기 ↗</span></div></a>')
 
 
 def blog_grid(limit: int, home: bool = False) -> str:
-    """Owned post titles only: no remote images or browser-side feed injection."""
-    cards = ''.join(blog_card(p) for p in blog_posts(limit, core=home))
+    """Home MAGAZINE: latest relevant posts from the owner's Naver blog only."""
+    if home:
+        selected = [{**p, 'source': 'naver'} for p in naver_posts(BLOGS.get('naver', []))
+                    if is_core(p)][:limit]
+    else:
+        selected = blog_posts(limit)
+    cards = ''.join(blog_card(p) for p in selected)
     return (f'<div class="card-grid blog-grid{" home" if home else ""}">{cards}</div>'
             + ('' if cards else '<p class="muted blog-empty">최근 글 목록을 확인하고 있습니다.</p>'))
 
@@ -593,7 +601,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="stylesheet" href="/assets/css/site.css?v={VER}-desktop-wide-1680-v9-news-readable">
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
-{('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
+{('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261014-local-editorial-media-v1">' if path in ('/', '/magazine/') else '')}
 {('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261013-editorial-cards-v2">' if path in ('/', '/games/') else '')}
 {('<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v=20261012-site04">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {('<link rel="stylesheet" href="/assets/css/editorial-links.css?v=20261012-site04-map">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
