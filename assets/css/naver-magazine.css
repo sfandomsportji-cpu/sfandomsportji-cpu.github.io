@@ -41,3 +41,20 @@
 @media(max-width:970px){.nm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nm-hero{grid-template-columns:1fr}.nm-hero__link{gap:10px}}
 @media(max-width:640px){.nm-magazine{padding-top:15px}.nm-hero{padding:22px 18px;border-radius:13px}.nm-hero h2{font-size:27px;letter-spacing:-.8px}.nm-hero p{font-size:13px}.nm-grid{grid-template-columns:1fr}.nm-card,.nm-card--featured{min-height:unset;padding:20px 17px}.nm-section{padding-top:32px}.nm-section__header{align-items:start;flex-direction:column;gap:5px}.nm-section__header p{text-align:left;max-width:100%}.nm-card h3{font-size:18px}}
 @media(prefers-reduced-motion:reduce){.nm-card{transition:none}.nm-card:hover{transform:none}}
+
+
+/* Local-only editorial covers: these are typographic artwork, never passed off as game photos. */
+.nm-card__media--editorial{isolation:isolate;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;padding:17px 20px;text-align:left;min-height:155px;border-color:rgba(255,255,255,.17);background:radial-gradient(circle at 87% 18%,rgba(255,255,255,.15),transparent 45%),linear-gradient(127deg,#283d60,#101a2b)}
+.nm-card__media--nba{background:radial-gradient(circle at 78% 20%,rgba(255,176,108,.24),transparent 47%),linear-gradient(120deg,#54301e,#171726)}
+.nm-card__media--mlb{background:radial-gradient(circle at 85% 22%,rgba(95,173,236,.20),transparent 45%),linear-gradient(122deg,#122b43,#111721)}
+.nm-card__media--other{background:radial-gradient(circle at 83% 18%,rgba(171,129,237,.25),transparent 45%),linear-gradient(130deg,#352448,#151624)}
+.nm-card__cover-top{position:relative;color:#e2e8f4;font-size:9px;letter-spacing:1.75px;font-weight:900}
+.nm-card__cover-league{position:relative;font:900 clamp(34px,3.6vw,53px)/.98 Arial,sans-serif;letter-spacing:-2.5px;color:#fff}
+.nm-card__cover-category{position:relative;color:#ffbec9;font-size:10px;font-weight:900;letter-spacing:1.4px}
+.nm-card__cover-mark{position:relative;margin-top:10px;font-size:8px;color:#c5cce0;letter-spacing:.55px;line-height:1.35}
+.nm-card__media--photo{display:block}
+.nm-card__photo-credit{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.78));color:#fff;font-size:10px;line-height:1.4;font-weight:800;padding:22px 10px 9px}
+.blog-grid .nm-card__media{margin:0;border-radius:0;aspect-ratio:16/9}
+.blog-grid .nm-card__media--editorial{min-height:170px}
+.blog-grid .nm-card__cover-league{font-size:clamp(34px,3vw,50px)}
+@media(max-width:640px){.nm-card__media--editorial{min-height:170px}.nm-card__cover-league{font-size:43px}}
