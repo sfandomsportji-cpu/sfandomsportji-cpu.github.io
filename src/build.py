@@ -1519,7 +1519,7 @@ def game_clock(kst: str) -> dt.datetime | None:
         return None
 
 
-def game_card(g: dict, stale: bool = False) -> str:
+def game_card(g: dict, stale: bool = False, checked_at: str = '') -> str:
     when = game_clock(g.get('start_kst', ''))
     if not when:
         return ''
@@ -1550,7 +1550,7 @@ def game_card(g: dict, stale: bool = False) -> str:
         badge_text = 'FINAL'
     elif state == 'live' and not stale:
         badge_text = 'LIVE · 지연 제공'
-    return (f'<{row_tag} class="sf-scores__game"{link}>'
+    return (f'<{row_tag} class="sf-scores__game" data-score-state="{esc(state)}" data-score-start="{esc(g["start_kst"])}" data-score-checked="{esc(checked_at)}"{link}>'
             f'<span class="sf-scores__time"><time datetime="{esc(g["start_kst"])}">{when.strftime("%m.%d %H:%M")}</time>'
             f'<small>{esc(label)}</small></span>'
             f'<span class="sf-scores__teams"><b title="{esc(g.get("away_name", ""))}">{esc(g.get("away", "?"))}</b>'
@@ -1583,7 +1583,7 @@ def game_sections(brief: bool = False) -> str:
             games.sort(key=lambda g: g['start_kst'])
         else:
             games = games[-50:]
-        cards = ''.join(game_card(g, stale) for g in games)
+        cards = ''.join(game_card(g, stale, details.get('checked_at', '')) for g in games)
         if not cards:
             cards = '<p class="sf-scores__empty">이 시간대 확인된 경기 정보가 없습니다. 다음 자료 갱신을 기다려 주세요.</p>'
         note = ' · 일부 날짜 확인 지연' if details.get('coverage') == 'partial' else ''
