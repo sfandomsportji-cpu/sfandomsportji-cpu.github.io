@@ -429,7 +429,7 @@ def morning_edition_card(a: Article, wide: bool = False) -> str:
 
 
 def today_analysis() -> str:
-    """Show the actual latest approved morning edition, not three chronologically oldest articles."""
+    """Keep the approved morning edition and surface newer analysis on home."""
     global TODAY_PICKS
     ed_latest = max(EDITIONS)
     keys = EDITIONS[ed_latest].get('items', [])
@@ -437,6 +437,18 @@ def today_analysis() -> str:
     if not picks:
         picks = sorted([a for a in ARTICLES if a.kind == 'analysis'],
                        key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)[:3]
+
+    # A published analysis after the last edition must not disappear from the homepage.
+    newer = sorted([a for a in ARTICLES if a.kind == 'analysis' and a.date > ed_latest],
+                   key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
+    if newer:
+        latest = newer[:2]
+        latest_urls = {a.url for a in latest}
+        picks = (latest + [a for a in picks if a.url not in latest_urls])[:5]
+    display_date = newer[0].date if newer else ed_latest
+    section_label = '최신 분석' if newer else '선정 콘텐츠'
+    all_href = '/analysis/' if newer else f'/news/morning/{ed_latest}/'
+    all_label = '최신 분석 전체 →' if newer else '오늘 에디션 전체 →'
     TODAY_PICKS = {a.url for a in picks if a.kind == 'analysis'}
     feature_count = len(picks)
     cards = ''.join(morning_edition_card(a, wide=(i == feature_count - 1 and feature_count % 2 == 1))
@@ -444,15 +456,15 @@ def today_analysis() -> str:
     return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
             f'<div class="sec-head"><h2 class="sec-title" id="taTitle">'
             f'SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> '
-            f'<span class="kr">{ed_latest.replace("-", ".")} 선정 콘텐츠 {feature_count}편</span></h2>'
-            f'<a class="more" href="/news/morning/{ed_latest}/">오늘 에디션 전체 →</a></div>'
+            f'<span class="kr">{display_date.replace("-", ".")} {section_label} {feature_count}편</span></h2>'
+            f'<a class="more" href="{all_href}">{all_label}</a></div>'
             f'<div class="ta-grid morning-feature-grid">{cards}</div>'
             f'<div class="ta-foot"><a class="review-link" href="/analysis/review/">'
             f'<span class="display" style="font-size:24px">REVIEW <span class="accent">/</span> 복기 리포트</span>'
             f'<span class="muted" style="font-size:14px">경기 결과와 분석 과정을 비교합니다</span></a>'
             f'<a class="review-link" href="/news/morning/{ed_latest}/">'
             f'<span class="display" style="font-size:24px">MORNING EDITION</span>'
-            f'<span class="muted" style="font-size:14px">오늘 5편 · 사진과 분석 전체 읽기 →</span>'
+            f'<span class="muted" style="font-size:14px">{ed_latest.replace("-", ".")} 에디션 · 전체 읽기 →</span>'
             f'</a></div></section>')
 
 def talk_icon() -> str:
