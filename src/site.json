@@ -36,8 +36,9 @@
     }
   },
   "ads": {
+    "enabled": false,
     "client": "ca-pub-7606551466588787",
-    "phase": 1,
+    "phase": 0,
     "slots": {
       "SF-HOME-TOP": {
         "phase": 2,

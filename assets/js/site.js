@@ -85,7 +85,7 @@
      src/site.json 의 ads.slots 에서 unit(광고 단위 ID)이 채워지고 phase 가 현재 단계 이하인 슬롯만 켭니다.
      주소 뒤에 ?adpreview=1 을 붙이면 모든 자리를 빨간 박스로 보여줍니다. */
   const ads = CFG.ads || {};
-  const preview = /[?&]adpreview=1/.test(location.search);
+  const preview = ads.enabled === true && /[?&]adpreview=1/.test(location.search);
   $$('.ad[data-ad]').forEach(box => {
     const id = box.dataset.ad;
     const slot = (ads.slots || {})[id] || {};
@@ -95,7 +95,7 @@
       box.textContent = `${id} · ${slot.phase === 1 ? '1단계 · 심사 중부터' : '2단계 · 승인 후'}`;
       return;
     }
-    if (!ads.client || !slot.unit || (slot.phase || 9) > (ads.phase || 0)) return;
+    if (ads.enabled !== true || !ads.client || !slot.unit || (slot.phase || 9) > (ads.phase || 0)) return;
     const ins = el('ins', 'adsbygoogle');
     ins.style.display = 'block';
     ins.dataset.adClient = ads.client;
