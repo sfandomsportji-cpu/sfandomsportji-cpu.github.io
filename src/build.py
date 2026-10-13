@@ -606,7 +606,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {body}
 </main>
 {footer()}
-<script src="/assets/js/site.js?v={VER}-sound3-board1" defer></script>
+<script src="/assets/js/site.js?v={VER}-sound3-board1-scorefresh1" defer></script>
 {thread_js}{news_comments_js}
 </body>
 </html>
