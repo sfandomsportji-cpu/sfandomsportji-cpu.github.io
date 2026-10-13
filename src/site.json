@@ -22,15 +22,15 @@
     "image": "",
     "alt": "",
     "credit": "",
-    "badge_en": "MLB · NLCS GAME 1 FINAL",
-    "badge_kr": "NLCS 1차전 결과 · 경기 2–1 / 시리즈 밀워키 1–0",
-    "art": "NLCS · FINAL",
-    "title": "밀워키, NLCS 첫 승\n시리즈 1–0 리드",
-    "text": "NLCS 1차전 경기 점수는 밀워키 2–1 다저스, 시리즈 전적은 밀워키 1승·다저스 0승입니다. 한 경기의 점수와 시리즈 승수를 구분해 읽습니다.",
-    "link": "/special/postseason-2026/#lcs",
+    "badge_en": "MLB · NLCS GAME 3 PREVIEW",
+    "badge_kr": "NLCS 2차전 MIL 7–4 LAD · 시리즈 밀워키 2–0",
+    "art": "NLCS · GAME 3",
+    "title": "4점인데 단 3안타,\n다저스 공격의 경고등",
+    "text": "밀워키가 2승을 먼저 가져갔다. 다저스는 2차전에서 4점을 냈지만 단 3안타였고, 마지막 15타자가 연속 범타로 물러났다. 이 숫자가 말하는 3차전의 진짜 변수를 추적한다.",
+    "link": "/analysis/mlb/2026-10-13-nlcs-dodgers-brewers-game3/",
     "use_latest_google_post": false,
     "video": {
-      "src": "https://cdn.creativeclaw.co/u/c82d83cb/videos/b4fe9ce2-89eb-4918-9b43-86da0425351d.mp4",
+      "src": "/assets/sfandom-hero-loop.mp4",
       "poster": "/assets/sfandom-hero-poster.jpg",
       "label": "SFANDOM 브랜드 필름 (첫 화면 편집본)"
     }
