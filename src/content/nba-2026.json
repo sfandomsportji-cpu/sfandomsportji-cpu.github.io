@@ -318,12 +318,15 @@
       "result": "LON 66–119 POR"
     },
     {
-      "day": "CHECKING",
+      "day": "FINAL",
       "away": "OKC",
       "home": "ATL",
       "kst": "10.13 (화) 08:00",
       "tv": "KST",
-      "tag": "경기 상태 확인 중 · 게임센터 확인 시각 기준"
+      "tag": "종료 · OKC 110–113 ATL",
+      "away_score": 110,
+      "home_score": 113,
+      "result": "OKC 110–113 ATL"
     },
     {
       "day": "CHECKING",
@@ -342,12 +345,12 @@
       "tag": "경기 상태 확인 중"
     },
     {
-      "day": "UPCOMING",
+      "day": "CHECKING",
       "away": "SAS",
       "home": "UTA",
       "kst": "10.13 (화) 10:00",
       "tv": "KST",
-      "tag": "유타 홈"
+      "tag": "경기 상태 확인 중"
     },
     {
       "day": "FINAL",

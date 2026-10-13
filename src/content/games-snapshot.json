@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-13T09:49+09:00",
+  "updated_at": "2026-10-13T14:05+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-13T09:49+09:00",
+      "checked_at": "2026-10-13T14:05+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -28,10 +28,10 @@
           "home": "TB",
           "away_name": "Cleveland Guardians",
           "home_name": "Tampa Bay Rays",
-          "status": "live",
-          "away_score": 0,
-          "home_score": 2,
-          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908023"
+          "status": "final",
+          "away_score": 7,
+          "home_score": 3,
+          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908023/guardians-rays"
         },
         {
           "id": "MLB-401908024",
@@ -58,11 +58,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/mlb/game/_/gameId/401908032/brewers-dodgers"
+        },
+        {
+          "id": "MLB-401908025",
+          "league": "MLB",
+          "start_kst": "2026-10-16T07:00+09:00",
+          "away": "TB",
+          "home": "CLE",
+          "away_name": "Tampa Bay Rays",
+          "home_name": "Cleveland Guardians",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908025/rays-guardians"
         }
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-13T09:49+09:00",
+      "checked_at": "2026-10-13T14:05+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -87,10 +100,10 @@
           "home": "ATL",
           "away_name": "Oklahoma City Thunder",
           "home_name": "Atlanta Hawks",
-          "status": "live",
-          "away_score": 72,
-          "home_score": 77,
-          "source_url": "https://www.espn.com/nba/game?gameId=401898402"
+          "status": "final",
+          "away_score": 110,
+          "home_score": 113,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401898402/thunder-hawks"
         },
         {
           "id": "NBA-401901824",
@@ -100,10 +113,10 @@
           "home": "WSH",
           "away_name": "Brooklyn Nets",
           "home_name": "Washington Wizards",
-          "status": "live",
-          "away_score": 85,
-          "home_score": 86,
-          "source_url": "https://www.espn.com/nba/game?gameId=401901824"
+          "status": "final",
+          "away_score": 131,
+          "home_score": 122,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401901824/nets-wizards"
         },
         {
           "id": "NBA-401914124",
@@ -113,10 +126,10 @@
           "home": "NY",
           "away_name": "Minnesota Timberwolves",
           "home_name": "New York Knicks",
-          "status": "live",
-          "away_score": 62,
-          "home_score": 50,
-          "source_url": "https://www.espn.com/nba/game?gameId=401914124"
+          "status": "final",
+          "away_score": 122,
+          "home_score": 104,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401914124/timberwolves-knicks"
         },
         {
           "id": "NBA-401898721",
@@ -126,9 +139,9 @@
           "home": "UTAH",
           "away_name": "San Antonio Spurs",
           "home_name": "Utah Jazz",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
+          "status": "final",
+          "away_score": 109,
+          "home_score": 119,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401898721/spurs-jazz"
         },
         {
@@ -290,7 +303,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-13T09:49+09:00",
+      "checked_at": "2026-10-13T14:05+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -302,15 +315,15 @@
           "home": "LAR",
           "away_name": "Buffalo Bills",
           "home_name": "Los Angeles Rams",
-          "status": "live",
-          "away_score": 6,
-          "home_score": 0,
-          "source_url": "https://www.espn.com/nfl/game?gameId=401872994"
+          "status": "final",
+          "away_score": 37,
+          "home_score": 34,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401872994/bills-rams"
         }
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-13T09:49+09:00",
+      "checked_at": "2026-10-13T14:05+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -335,10 +348,10 @@
           "home": "NJ",
           "away_name": "Ottawa Senators",
           "home_name": "New Jersey Devils",
-          "status": "live",
-          "away_score": 2,
-          "home_score": 0,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892486"
+          "status": "final",
+          "away_score": 4,
+          "home_score": 1,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892486/senators-devils"
         },
         {
           "id": "NHL-401892487",
@@ -348,10 +361,10 @@
           "home": "MIN",
           "away_name": "Vegas Golden Knights",
           "home_name": "Minnesota Wild",
-          "status": "live",
-          "away_score": 0,
-          "home_score": 3,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892487"
+          "status": "final",
+          "away_score": 2,
+          "home_score": 4,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892487/golden-knights-wild"
         },
         {
           "id": "NHL-401892488",
@@ -586,6 +599,71 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892505/stars-avalanche"
+        },
+        {
+          "id": "NHL-401892506",
+          "league": "NHL",
+          "start_kst": "2026-10-16T08:00+09:00",
+          "away": "BUF",
+          "home": "TOR",
+          "away_name": "Buffalo Sabres",
+          "home_name": "Toronto Maple Leafs",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892506/sabres-maple-leafs"
+        },
+        {
+          "id": "NHL-401892507",
+          "league": "NHL",
+          "start_kst": "2026-10-16T08:00+09:00",
+          "away": "NYI",
+          "home": "OTT",
+          "away_name": "New York Islanders",
+          "home_name": "Ottawa Senators",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892507/islanders-senators"
+        },
+        {
+          "id": "NHL-401892509",
+          "league": "NHL",
+          "start_kst": "2026-10-16T08:00+09:00",
+          "away": "SEA",
+          "home": "TB",
+          "away_name": "Seattle Kraken",
+          "home_name": "Tampa Bay Lightning",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892509/kraken-lightning"
+        },
+        {
+          "id": "NHL-401892510",
+          "league": "NHL",
+          "start_kst": "2026-10-16T08:00+09:00",
+          "away": "VAN",
+          "home": "FLA",
+          "away_name": "Vancouver Canucks",
+          "home_name": "Florida Panthers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892510/canucks-panthers"
+        },
+        {
+          "id": "NHL-401892511",
+          "league": "NHL",
+          "start_kst": "2026-10-16T08:00+09:00",
+          "away": "NYR",
+          "home": "NJ",
+          "away_name": "New York Rangers",
+          "home_name": "New Jersey Devils",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892511/rangers-devils"
         }
       ]
     }
