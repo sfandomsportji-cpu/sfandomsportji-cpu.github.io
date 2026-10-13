@@ -1,17 +1,15 @@
 """SFANDOM magazine: selected links to the owner's Naver blog only.
 
-Temporary 2026-10-12 image exception: allow only thumbnail URLs already present in the owner's Naver RSS cache. No arbitrary third-party media.
+Remote thumbnail exception ended: cards do not embed external media.
 Naver RSS cache is loaded by the existing build process; this module only renders
 safe, verified owned blog URLs. Invalid or empty items are silently excluded.
 """
 from __future__ import annotations
 
 import re
-from urllib.parse import urlsplit
 
 ACCOUNT = "sfandomsport"
 POST_URL = re.compile(r"https://blog\.naver\.com/sfandomsport/(\d{8,20})\Z")
-ALLOWED_IMAGE_HOSTS = {"phinf.pstatic.net", "blogthumb.pstatic.net"}
 
 FEATURE_TAG = re.compile(r"NBA\s*특집", re.I)
 NBA_TAG = re.compile(r"NBA|76ers|Warriors|Kings|Sixers|Knicks|Thunder|Spurs|웸반야마|썬더|워리어스|필라델피아|뉴욕 닉스", re.I)
@@ -21,18 +19,8 @@ VOLLEY_TAG = re.compile(r"AVC|Volleyball|배구", re.I)
 
 
 def blog_preview_url(url: str) -> str:
-    """Accept a verified source thumbnail from the owner's own Naver feed."""
-    if not isinstance(url, str) or len(url) > 1400:
-        return ""
-    try:
-        p = urlsplit(url)
-    except ValueError:
-        return ""
-    if p.scheme != "https" or p.hostname not in ALLOWED_IMAGE_HOSTS:
-        return ""
-    if not re.search(r"\.(?:jpg|jpeg|png|webp)$", p.path, re.I):
-        return ""
-    return url
+    """The expired thumbnail exception must never hotlink a remote image."""
+    return ""
 
 
 def posts(cache: list[dict]) -> list[dict]:
@@ -76,11 +64,6 @@ def category(title: str) -> str:
 
 def card(item: dict, esc, index: int, *, featured: bool) -> str:
     date = item["date"].replace("-", ".")
-    intro = (item["summary"][:153].rstrip() + ("…" if len(item["summary"]) > 153 else "")) if item["summary"] else ""
-    desc = f'<p>{esc(intro)}</p>' if intro else ''
-    src = item.get('image', '')
-    preview = (f'<div class="nm-card__media"><span class="nm-card__media-fallback" aria-hidden="true">SFANDOM</span>'
-               f'<img src="{esc(src)}" alt="{esc(item["title"])} 원문 대표 썸네일" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></div>') if src else ''
     return (
         '<a class="nm-card' + (' nm-card--featured' if featured else '') + '"'
         f' href="{esc(item["link"])}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">'
@@ -88,7 +71,7 @@ def card(item: dict, esc, index: int, *, featured: bool) -> str:
         f'<span class="nm-card__num">{index:02d}</span>'
         f'<span class="nm-card__type">{esc(category(item["title"]))}</span>'
         f'<time datetime="{esc(item["date"])}">{esc(date)}</time></div>'
-        f'{preview}<h3>{esc(item["title"])}</h3>{desc}'
+        f'<h3>{esc(item["title"])}</h3>'
         '<span class="nm-card__open">네이버 블로그에서 원문 보기 <span aria-hidden="true">↗</span></span>'
         '</a>'
     )
@@ -131,14 +114,14 @@ def render(cache: list[dict], esc) -> str:
         '<div class="nm-hero__copy"><span class="nm-hero__kicker">SFANDOM × NAVER BLOG</span>'
         '<h2 id="naverMagazineTitle">우리가 쓴 이야기만.<br><em>최근 글을 한눈에.</em></h2>'
         '<p>SFANDOM 네이버 블로그에 직접 게시한 글만 연결합니다. '
-        '각 글의 대표 썸네일과 제목을 볼 수 있으며, 전문과 영상은 네이버 원문에서 확인할 수 있습니다.</p>'
+        '게시글 제목과 발행일을 볼 수 있으며, 전문과 영상은 네이버 원문에서 확인할 수 있습니다.</p>'
         '<div class="nm-hero__chips"><span>OWNED POSTS</span><span>NAVER SOURCE PREVIEW</span>'
         '<span>DIRECT TO NAVER</span></div></div>'
         '<a class="nm-hero__link" href="https://blog.naver.com/sfandomsport" target="_blank" '
         'rel="noopener noreferrer" referrerpolicy="no-referrer">'
         '<strong>SFANDOM NAVER</strong><span>전체 글 네이버에서 보기 ↗</span></a></div>'
         + content +
-        '<p class="nm-magazine__foot">대표 썸네일은 네이버 블로그 자체 글의 피드 기준입니다. 글 전문과 영상은 네이버 원문에서 확인합니다. '
+        '<p class="nm-magazine__foot">글 전문과 영상은 네이버 원문에서 확인합니다. '
         '페이지의 글 목록은 마지막으로 정상 확인된 자체 블로그 게시글을 기준으로 구성됩니다.</p>'
         '</section>'
     )
