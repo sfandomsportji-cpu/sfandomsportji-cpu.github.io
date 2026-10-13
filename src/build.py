@@ -241,20 +241,17 @@ def blog_posts(limit: int = 6, core: bool = False) -> list[dict]:
 
 def blog_card(p: dict) -> str:
     label = SITE['blogs'][p['source']]['label']
-    img = f'<div class="thumb"><img src="{esc(blog_img(p["image"]))}" alt="" loading="lazy" referrerpolicy="no-referrer"></div>' if p.get('image') else '<div class="thumb blog-thumb" aria-hidden="true"><span>' + ('G' if p['source'] == 'google' else 'N') + '</span></div>'
-    return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener">{img}<div class="body">'
-            f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3><p>{esc(_clip(p.get("summary", ""), 180))}</p>'
+    return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener"><div class="body">'
+            f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3>'
             f'<span class="tag">{p.get("date", "").replace("-", ".")} · 블로그에서 읽기 ↗</span></div></a>')
 
 
 def blog_grid(limit: int, home: bool = False) -> str:
-    """블로그 카드 격자. 빌드 때 받은 글(네이버·구글)을 먼저 그리고, 브라우저에서 구글 블로그 최신 글을 한 번 더 받아 합칩니다."""
-    g = SITE['blogs'].get('google', {})
+    """Owned post titles only: no remote images or browser-side feed injection."""
     cards = ''.join(blog_card(p) for p in blog_posts(limit, core=home))
-    core = f' data-core="{esc(CORE_RE)}"' if home else ''
-    return (f'<div class="card-grid blog-grid{" home" if home else ""}" data-blog-grid data-limit="{limit}"{core} data-blogger="{esc(g.get("url", ""))}" '
-            f'data-label="{esc(g.get("label", "GOOGLE BLOG"))}">{cards}</div>'
-            + ('' if cards else '<p class="muted blog-empty" style="font-size:14px">외부 연재 목록을 가져오지 못했습니다. 블로그 채널에서 확인해 주세요.</p>'))
+    return (f'<div class="card-grid blog-grid{" home" if home else ""}">{cards}</div>'
+            + ('' if cards else '<p class="muted blog-empty">최근 글 목록을 확인하고 있습니다.</p>'))
+
 
 
 def preserved_component(name: str) -> str:
