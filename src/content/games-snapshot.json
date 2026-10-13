@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-13T09:40+09:00",
+  "updated_at": "2026-10-13T09:42+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-13T09:40+09:00",
+      "checked_at": "2026-10-13T09:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -62,7 +62,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-13T09:40+09:00",
+      "checked_at": "2026-10-13T09:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -88,7 +88,7 @@
           "away_name": "Oklahoma City Thunder",
           "home_name": "Atlanta Hawks",
           "status": "live",
-          "away_score": 66,
+          "away_score": 68,
           "home_score": 72,
           "source_url": "https://www.espn.com/nba/game?gameId=401898402"
         },
@@ -101,7 +101,7 @@
           "away_name": "Brooklyn Nets",
           "home_name": "Washington Wizards",
           "status": "live",
-          "away_score": 82,
+          "away_score": 83,
           "home_score": 82,
           "source_url": "https://www.espn.com/nba/game?gameId=401901824"
         },
@@ -114,8 +114,8 @@
           "away_name": "Minnesota Timberwolves",
           "home_name": "New York Knicks",
           "status": "live",
-          "away_score": 55,
-          "home_score": 46,
+          "away_score": 59,
+          "home_score": 48,
           "source_url": "https://www.espn.com/nba/game?gameId=401914124"
         },
         {
@@ -290,7 +290,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-13T09:40+09:00",
+      "checked_at": "2026-10-13T09:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -303,14 +303,14 @@
           "away_name": "Buffalo Bills",
           "home_name": "Los Angeles Rams",
           "status": "live",
-          "away_score": 3,
+          "away_score": 6,
           "home_score": 0,
           "source_url": "https://www.espn.com/nfl/game?gameId=401872994"
         }
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-13T09:40+09:00",
+      "checked_at": "2026-10-13T09:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -350,7 +350,7 @@
           "home_name": "Minnesota Wild",
           "status": "live",
           "away_score": 0,
-          "home_score": 2,
+          "home_score": 3,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892487"
         },
         {
