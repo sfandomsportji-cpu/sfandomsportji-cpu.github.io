@@ -67,6 +67,7 @@ class Article:
         self.league = fm.get('league', 'MLB')
         self.sources = fm.get('sources', []) or []
         self.subtitle = fm.get('subtitle', '')
+        self.image = fm.get('image', '')  # 일부 기사에 이미지가 없어도 빌드 유지
         self.url = ''
 
     @property
@@ -545,14 +546,14 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
         '<meta property="og:image:height" content="630">\n'
         if social_card else ''
     )
-    cfg = {'root': '/', 'ads': {k: SITE['ads'][k] for k in ('client', 'phase')} | {
+    cfg = {'root': '/', 'ads': {k: SITE['ads'][k] for k in ('client', 'phase', 'enabled')} | {
         'slots': {k: {kk: v[kk] for kk in ('phase', 'unit', 'format', 'layout') if kk in v} for k, v in SITE['ads']['slots'].items()}},
         'supabase': SITE['supabase']}
     lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld or []))
     robots = 'noindex,follow' if noindex else 'index,follow,max-image-preview:large'
     # 광고 스크립트는 본문이 충분한 글 상세 페이지에만 싣는다. 목록·허브·검색·404·안내·커뮤니티 화면에는 싣지 않는다.
     ad_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE["ads"]["client"]}" crossorigin="anonymous"></script>\n'
-                 if ads and not noindex else '')
+                 if SITE['ads'].get('enabled', False) and ads and not noindex else '')
     thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v2">'
                   f'<link rel="stylesheet" href="/assets/css/community-admin.css?v={VER}-v1">' if path == '/community/' else '')
     news_comments_css = (f'<link rel="stylesheet" href="/assets/css/news-comments.css?v={VER}-v1">' if re.fullmatch(r'/news/\d{4}/\d{2}/[a-z0-9-]+/', path) else '')
@@ -1357,7 +1358,7 @@ def build_static():
 
     cookies = f'''<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div class="prose">
 <h2>광고 게재</h2>
-<p>SFANDOM은 Google AdSense를 통해 광고를 게재합니다. 광고는 본문과 구분되도록 “광고” 표시가 붙은 자리에만 나오며, 추천·글쓰기·투표 버튼 가까이에는 두지 않습니다.</p>
+<p>SFANDOM은 현재 Google AdSense 심사 중이며 광고를 게재하지 않습니다. 광고 배치 및 송출 기능은 비활성화되어 있습니다. 승인 이후 광고를 운영할 경우 별도로 안내합니다.</p>
 <h2>Google과 제3자 쿠키</h2>
 <p>Google을 포함한 제3자 광고 파트너는 쿠키(Google의 DART 쿠키 등)를 사용하여 이용자가 SFANDOM 및 인터넷상의 다른 사이트를 방문한 기록을 바탕으로 맞춤형 광고를 게재할 수 있습니다.</p>
 <ul><li><a href="https://adssettings.google.com" target="_blank" rel="noopener">Google 광고 설정</a>에서 맞춤형 광고를 끌 수 있습니다.</li>
