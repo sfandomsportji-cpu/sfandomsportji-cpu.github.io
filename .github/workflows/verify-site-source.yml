@@ -43,7 +43,7 @@ jobs:
           PY
       - name: Generate site from repository source
         run: python3 src/build.py
-      - name: Validate Naver-only magazine and safe owned links
+      - name: Validate Naver-only magazine and approved local media
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -72,7 +72,27 @@ jobs:
           assert s.links or "최근 글 목록을 확인하고 있습니다" in page, "no fallback for unavailable blog feed"
           assert len(s.links) == len(set(s.links)), "duplicate Naver post"
           assert all(re.fullmatch(r'https://blog[.]naver[.]com/sfandomsport/[0-9]{8,20}', u) for u in s.links), "non-owned URL"
-          assert not s.images, f"remote media in magazine: {s.images}"
+          # Local, explicitly licensed photos are allowed. No external media, frames, or embeds.
+          approved = __import__("json").loads(Path("src/content/magazine-media.json").read_text(encoding="utf-8")).get("posts", {})
+          from html.parser import HTMLParser as _Parser
+          class MediaScan(_Parser):
+              def __init__(self):
+                  super().__init__()
+                  self.sources = []
+              def handle_starttag(self, tag, attrs):
+                  if tag in ("img", "video", "iframe", "picture", "source"):
+                      self.sources.append((tag, dict(attrs).get("src", "")))
+          m = MediaScan()
+          m.feed(page[page.find('<main id="main">'):page.find('</main>')])
+          assert not any(tag != "img" for tag, _ in m.sources), "unexpected magazine video/embed"
+          for tag, url in m.sources:
+              assert re.fullmatch(r"/assets/photos/magazine/[0-9]{8,20}[.](?:jpg|jpeg|png|webp)", url), f"unsafe magazine image: {url}"
+              assert Path(url.lstrip("/")).is_file(), f"missing local magazine photo: {url}"
+              identifier = Path(url).stem
+              entry = approved.get(identifier, {})
+              assert entry.get("status") == "approved" and entry.get("path") == url
+              assert entry.get("source") and entry.get("rights_basis") and entry.get("alt")
+          assert len(s.images) == len(m.sources), "unexpected media in magazine"
           assert not s.external_scripts, f"external scripts in magazine: {s.external_scripts}"
           assert not any(x in page for x in ('id="magOriginalTitle"', 'id="magExternalTitle"', 'class="wrap kairo-desk"')), "old hub wasn't replaced"
           assert 'naver-magazine.css' in page, "dedicated styles missing"
