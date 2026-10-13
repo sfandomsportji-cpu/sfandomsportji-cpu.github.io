@@ -55,6 +55,7 @@ jobs:
               def __init__(self):
                   super().__init__()
                   self.links = []
+                  self.media_count = 0
                   self.images = []
                   self.frames = []
                   self.external_scripts = []
@@ -62,6 +63,8 @@ jobs:
                   attrs = dict(attrs)
                   if tag == "a" and "nm-card" in attrs.get("class", "").split():
                       self.links.append(attrs.get("href", ""))
+                  if tag == "div" and "nm-card__media" in attrs.get("class", "").split():
+                      self.media_count += 1
                   if tag in ("img", "video", "iframe", "picture", "source"):
                       self.images.append(tag)
                   if tag == "script" and attrs.get("src", "").startswith(("https://", "http://")):
@@ -71,6 +74,7 @@ jobs:
           assert 0 <= len(s.links) <= 9, f"excess Naver posts, got {len(s.links)}"
           assert s.links or "최근 글 목록을 확인하고 있습니다" in page, "no fallback for unavailable blog feed"
           assert len(s.links) == len(set(s.links)), "duplicate Naver post"
+          assert s.media_count == len(s.links), f"missing magazine media areas: {s.media_count}/{len(s.links)}"
           assert all(re.fullmatch(r'https://blog[.]naver[.]com/sfandomsport/[0-9]{8,20}', u) for u in s.links), "non-owned URL"
           # Local, explicitly licensed photos are allowed. No external media, frames, or embeds.
           approved = __import__("json").loads(Path("src/content/magazine-media.json").read_text(encoding="utf-8")).get("posts", {})
