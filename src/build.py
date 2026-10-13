@@ -336,25 +336,13 @@ def thumb(a: Article, cls: str = '') -> str:
 
 
 def home_news_thumb(a: Article, lead: bool = False) -> str:
-    """Homepage NEWS thumbnails only: use relevant cached team SVGs, not generic league text."""
-    if lead and a.slug == 'dodgers-clinch-nlcs':
-        return ('<div class="thumb news-mark-thumb news-mark-lead" aria-hidden="true">'
-                '<img src="/assets/teams/mlb/lad.svg?v=news-mark-20261010" alt="" loading="lazy" decoding="async">'
-                '</div>')
-    featured_teams = {
-        'guardians-force-game4': ('mlb', ('CLE', 'CWS')),
-        'nba-preseason-watch': ('nba', ('MIN', 'ORL', 'MIL', 'GSW')),
-        'warriors-lakers-preseason-2026': ('nba', ('GSW', 'LAL')),
-        '76ers-knicks-preseason-2026': ('nba', ('PHI', 'NYK')),
-    }
-    item = featured_teams.get(a.slug)
-    if item:
-        league, teams = item
-        style = 'quad' if len(teams) == 4 else 'duo'
-        marks = ''.join(badge(t, team_color(t, league), league=league) for t in teams)
-        return f'<div class="thumb news-mark-thumb news-mark-mini {style}" aria-hidden="true">{marks}</div>'
-    return thumb(a)
-
+    """Use existing local photographs only; never hotlink or substitute team logos."""
+    if not a.image or not a.image.startswith('/assets/photos/'):
+        return ''
+    if not (ROOT / a.image.lstrip('/')).is_file():
+        return ''
+    return (f'<div class="thumb"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" '
+            f'loading="lazy" decoding="async"></div>')
 
 
 
@@ -604,7 +592,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-desktop-wide-1680-v8-hero-type-large">
+<link rel="stylesheet" href="/assets/css/site.css?v={VER}-desktop-wide-1680-v9-news-readable">
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
@@ -743,7 +731,13 @@ def build_home():
     home_cta = '프리시즌 일정' if home_preseason else '개막 주간 일정'
     home_aria = 'NBA 프리시즌' if home_preseason else 'NBA 개막 주간'
     tip = ''.join(nba_home_story(g) for g in home_games[:5])
-    lead, rest = news[0], news[1:5]
+    # Surface the approved October 13 story; keep its analysis label explicit.
+    morning = next((a for a in analysis if a.slug == 'nfl-nhl-wnba-morning-preview'), None)
+    lead = morning or news[0]
+    rest = [a for a in news if a.url != lead.url][:4]
+    lead_summary = ('빌스–램스의 러시와 압박, 오타와의 수비 공백, 베이거스–미네소타의 골리와 스페셜팀을 살펴봅니다. WNBA는 결승 준비를 별도로 정리했습니다. 경기 전 작성한 분석을 읽고, 경기 뒤 흐름을 함께 복기하세요.' if morning else lead.excerpt)
+    lead_label = 'KAIRO ANALYSIS · 경기 전 프리뷰' if morning else 'LEAD'
+
     nl = ''.join(f'<a class="nl" href="{a.url}">{home_news_thumb(a)}<span class="t"><span class="tag">{esc(a.league)} · {a.date_dot}</span><strong>{esc(a.headline)}</strong></span><span class="talk">{talk_icon()}토론</span></a>' for a in rest)
     lcs_cards = ''.join(lcs_card(d) for d in PS.get('lcs', []))
     ta_html = today_analysis()
@@ -776,9 +770,9 @@ def build_home():
 {nba_section()}
 
 <section class="wrap sec" aria-labelledby="newsTitle">
-  <div class="sec-head"><h2 class="sec-title" id="newsTitle">NEWS<span class="accent">.</span> <span class="kr">읽고, 바로 토론</span></h2><a class="more" href="/news/">뉴스 전체 →</a></div>
+  <div class="sec-head"><h2 class="sec-title" id="newsTitle">NEWS<span class="accent">.</span> <span class="kr">오늘의 이야기, 함께 읽고 토론</span></h2><a class="more" href="/news/">뉴스 전체 →</a></div>
   <div class="news-grid">
-    <a class="news-lead lift" href="{lead.url}">{home_news_thumb(lead, lead=True)}<div class="body"><span class="tag red">LEAD · {esc(lead.league)} · {lead.date_dot}</span><h3>{esc(lead.headline)}</h3><p>{esc(lead.excerpt)}</p><span class="talk">{talk_icon()}이 뉴스 토론하기</span></div></a>
+    <a class="news-lead lift" href="{lead.url}">{home_news_thumb(lead, lead=True)}<div class="body"><span class="tag red">{esc(lead_label)} · {esc(lead.league)} · {lead.date_dot}</span><h3>{esc(lead.headline)}</h3><p>{esc(lead_summary)}</p><span class="talk">{talk_icon()}읽고 함께 이야기하기 →</span></div></a>
     <div class="news-list">{nl}</div>
   </div>
 </section>
@@ -974,7 +968,7 @@ def latest_box(exclude_kind: str | None = None) -> str:
 def build_lists():
     news = [a for a in ARTICLES if a.kind == 'news']
     news_tabs = tabs([('전체 뉴스', '/news/'), ('모닝 에디션', '/news/morning/')], '/news/')
-    write('/news/', layout('NEWS · 스포츠 뉴스', page_head('NEWS<span class="accent">.</span> <span class="kr">읽고, 바로 토론</span>',
+    write('/news/', layout('NEWS · 스포츠 뉴스', page_head('NEWS<span class="accent">.</span> <span class="kr">오늘의 이야기, 함께 읽고 토론</span>',
           '공식 기록으로 확인한 경기 소식. 모든 뉴스는 팬 보드 토론으로 이어집니다.', [('NEWS', '')], news_tabs)
           + two_col(list_with_ads(news) + ad_band('SF-LIST-BTM'), 'SF-HUB-RAIL', latest_box('news')),
           path='/news/', description='NBA 새 시즌과 MLB 포스트시즌 소식을 공식 기록 기준으로 정리합니다.', active='/news/',
