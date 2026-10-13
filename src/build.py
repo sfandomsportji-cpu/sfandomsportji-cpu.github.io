@@ -699,12 +699,16 @@ def build_home():
     if hero.get('use_latest_google_post') and g:
         hero_title, hero_text, hero_link = esc(g[0]['title']), g[0]['summary'], g[0]['link']
     cv = SITE.get('community_video') or {}
-    if cv.get('instagram_reel'):
-        r = cv['instagram_reel']
-        fb = (f'<video class="reel-fallback" muted loop playsinline preload="none" hidden data-src="{esc(cv["fallback_video"])}"'
-              f'{(" poster=" + chr(34) + esc(cv["fallback_poster"]) + chr(34)) if cv.get("fallback_poster") else ""}></video>') if cv.get('fallback_video') else ''
-        nba_media = (f'<div class="reel-fill" data-reel style="aspect-ratio:{esc(cv.get("reel_ratio", "9/16"))}"><iframe src="https://www.instagram.com/reel/{esc(r)}/embed/" title="SFANDOM 인스타그램 릴스" '
-                     f'loading="lazy" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"></iframe>{fb}</div>')
+    # Public site media must be stored locally; never embed third-party reels.
+    local_video = cv.get('fallback_video', '')
+    if local_video.startswith('/assets/'):
+        poster = f' poster="{esc(cv["fallback_poster"])}"' if cv.get('fallback_poster') else ''
+        nba_media = (f'<div class="reel-fill" style="aspect-ratio:{esc(cv.get("reel_ratio", "16/9"))}">'
+                     f'<video class="reel-local" controls playsinline preload="metadata"'
+                     f' style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000"'
+                     f'{poster} aria-label="SFANDOM 자체 제작 영상">'
+                     f'<source src="{esc(local_video)}" type="video/mp4">'
+                     '브라우저가 영상을 지원하지 않습니다.</video></div>')
     else:
         nba_media = ''
     nba_band = (f'<div class="nba-band{" fill" if "reel-fill" in nba_media else ""}">{nba_media}'
