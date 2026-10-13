@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-13T09:42+09:00",
+  "updated_at": "2026-10-13T09:49+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-13T09:42+09:00",
+      "checked_at": "2026-10-13T09:49+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -62,7 +62,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-13T09:42+09:00",
+      "checked_at": "2026-10-13T09:49+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -88,8 +88,8 @@
           "away_name": "Oklahoma City Thunder",
           "home_name": "Atlanta Hawks",
           "status": "live",
-          "away_score": 68,
-          "home_score": 72,
+          "away_score": 72,
+          "home_score": 77,
           "source_url": "https://www.espn.com/nba/game?gameId=401898402"
         },
         {
@@ -101,8 +101,8 @@
           "away_name": "Brooklyn Nets",
           "home_name": "Washington Wizards",
           "status": "live",
-          "away_score": 83,
-          "home_score": 82,
+          "away_score": 85,
+          "home_score": 86,
           "source_url": "https://www.espn.com/nba/game?gameId=401901824"
         },
         {
@@ -114,8 +114,8 @@
           "away_name": "Minnesota Timberwolves",
           "home_name": "New York Knicks",
           "status": "live",
-          "away_score": 59,
-          "home_score": 48,
+          "away_score": 62,
+          "home_score": 50,
           "source_url": "https://www.espn.com/nba/game?gameId=401914124"
         },
         {
@@ -290,7 +290,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-13T09:42+09:00",
+      "checked_at": "2026-10-13T09:49+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -310,7 +310,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-13T09:42+09:00",
+      "checked_at": "2026-10-13T09:49+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
