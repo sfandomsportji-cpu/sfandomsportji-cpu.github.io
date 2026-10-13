@@ -1,0 +1,5 @@
+{
+  "policy": "ONLY approve actual local files whose use and source are documented. An RSS image URL or screenshot alone does not establish republication rights.",
+  "posts": {},
+  "instruction": "For Naver post 2244..., save approved original as assets/photos/magazine/2244....jpg and add an entry with path, status:'approved', source, rights_basis and alt. Until approved, an editorial typography cover is shown, never a remote image."
+}
