@@ -6,7 +6,54 @@ safe, verified owned blog URLs. Invalid or empty items are silently excluded.
 """
 from __future__ import annotations
 
+import json
+import pathlib
 import re
+
+ROOT = pathlib.Path(__file__).resolve().parents[2]
+MEDIA_INDEX = ROOT / "src" / "content" / "magazine-media.json"
+
+
+def _verified_media(item: dict) -> dict | None:
+    """Only approved, locally stored photos. RSS thumbnails must never be used."""
+    match = POST_URL.fullmatch(str(item.get("link", "")).split("?", 1)[0])
+    if not match or not MEDIA_INDEX.is_file():
+        return None
+    try:
+        metadata = json.loads(MEDIA_INDEX.read_text(encoding="utf-8"))
+        entry = metadata.get("posts", {}).get(match.group(1), {})
+        path = str(entry.get("path", ""))
+        allowed = rf"/assets/photos/magazine/{match.group(1)}\.(?:jpg|jpeg|png|webp)"
+        if (entry.get("status") != "approved" or not re.fullmatch(allowed, path)
+                or not entry.get("source") or not entry.get("rights_basis")
+                or not entry.get("alt")):
+            return None
+        if not (ROOT / path.lstrip("/")).is_file():
+            return None
+        return entry
+    except (OSError, ValueError, TypeError, AttributeError):
+        return None
+
+
+def media_for_item(item: dict, esc) -> str:
+    """Actual authorized photo, or a clearly labeled original typography cover."""
+    media = _verified_media(item)
+    if media:
+        return ('<div class="nm-card__media nm-card__media--photo">'
+                f'<img src="{esc(media["path"])}" alt="{esc(media["alt"])}" loading="lazy" decoding="async">'
+                '<span class="nm-card__photo-credit">PHOTO · '
+                f'{esc(media["source"])}</span></div>')
+    genre = category(str(item.get("title", "")))
+    group = "nba" if genre.startswith("NBA") else ("mlb" if genre.startswith("MLB") else "other")
+    broad = "NBA" if group == "nba" else ("MLB" if group == "mlb" else "SPORTS")
+    return (f'<div class="nm-card__media nm-card__media--editorial nm-card__media--{group}"'
+            ' role="img" aria-label="SFANDOM 자체 제작 타이포그래피 표지 · 실제 경기 사진 아님">'
+            '<span class="nm-card__cover-top">SFANDOM × KAIRO</span>'
+            f'<strong class="nm-card__cover-league">{broad}</strong>'
+            f'<span class="nm-card__cover-category">{esc(genre)}</span>'
+            '<small class="nm-card__cover-mark">ORIGINAL EDITORIAL COVER · NOT A GAME PHOTO</small>'
+            '</div>')
+
 
 ACCOUNT = "sfandomsport"
 POST_URL = re.compile(r"https://blog\.naver\.com/sfandomsport/(\d{8,20})\Z")
@@ -72,6 +119,7 @@ def card(item: dict, esc, index: int, *, featured: bool) -> str:
         f'<span class="nm-card__type">{esc(category(item["title"]))}</span>'
         f'<time datetime="{esc(item["date"])}">{esc(date)}</time></div>'
         f'<h3>{esc(item["title"])}</h3>'
+        + media_for_item(item, esc) +
         '<span class="nm-card__open">네이버 블로그에서 원문 보기 <span aria-hidden="true">↗</span></span>'
         '</a>'
     )
