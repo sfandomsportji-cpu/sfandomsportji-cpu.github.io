@@ -318,28 +318,28 @@
       "result": "LON 66–119 POR"
     },
     {
-      "day": "UPCOMING",
+      "day": "LIVE",
       "away": "OKC",
       "home": "ATL",
       "kst": "10.13 (화) 08:00",
       "tv": "KST",
-      "tag": "애틀랜타 홈"
+      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
     },
     {
-      "day": "UPCOMING",
+      "day": "CHECKING",
       "away": "BKN",
       "home": "WAS",
       "kst": "10.13 (화) 08:00",
       "tv": "KST",
-      "tag": "워싱턴 홈"
+      "tag": "경기 상태 확인 중"
     },
     {
-      "day": "UPCOMING",
+      "day": "CHECKING",
       "away": "MIN",
       "home": "NYK",
       "kst": "10.13 (화) 08:30",
       "tv": "KST",
-      "tag": "뉴욕 홈"
+      "tag": "경기 상태 확인 중"
     },
     {
       "day": "UPCOMING",
