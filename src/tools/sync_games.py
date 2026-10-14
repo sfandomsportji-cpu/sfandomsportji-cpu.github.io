@@ -25,6 +25,8 @@ API_HOSTS = ("site.api.espn.com", "site.web.api.espn.com")
 API = "https://{}/apis/site/v2/sports/{}/scoreboard?dates={}"
 STATUS = {"pre": "scheduled", "in": "live", "post": "final"}
 USER_AGENT = "SFANDOM-site-scoreboard/1.0 (https://sfandom.com/)"
+# ESPN과 사이트가 다르게 쓰는 NBA 약자. 이 표가 없으면 해당 팀 경기는 영원히 '확인 중'에 머뭅니다.
+NBA_CODE = {"NY": "NYK", "GS": "GSW", "NO": "NOP", "SA": "SAS", "UTAH": "UTA", "WSH": "WAS"}
 
 
 def read_previous() -> dict:
@@ -109,6 +111,51 @@ def parse_event(league: str, event: dict) -> dict | None:
         return None
 
 
+def add_new_preseason_cards(data: dict, rows: list) -> bool:
+    """개막 전까지, ESPN이 확인한 새 프리시즌 경기를 카드 목록에 추가합니다(지난 경기·다른 날짜 중복은 넣지 않음)."""
+    try:
+        opening = dt.datetime.fromisoformat(data["opening_kst"]).date()
+    except (KeyError, TypeError, ValueError):
+        return False
+    if data.get("home_mode") != "preseason":
+        return False
+    logos = ROOT.parent / "assets" / "teams" / "nba"
+    weekdays = "월화수목금토일"
+    cards = data.setdefault("preseason_games", [])
+    added = False
+    for e in rows:
+        try:
+            d = dt.datetime.fromisoformat(e["start_kst"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        away, home = e.get("away"), e.get("home")
+        if d.date() >= opening or e.get("status") not in ("scheduled", "live", "final"):
+            continue
+        if not ((logos / f"{str(away).lower()}.svg").exists() and (logos / f"{str(home).lower()}.svg").exists()):
+            continue  # NBA 팀끼리의 경기만(해외 구단 등은 제외)
+        near = any(g.get("away") == away and g.get("home") == home
+                   and abs((dt.date(2026, *map(int, g["kst"].split(" ")[0].split("."))) - d.date()).days) <= 1
+                   for g in cards if re_kst_ok(g))
+        if near:
+            continue
+        card = {"day": "PRESEASON", "away": away, "home": home,
+                "kst": f"{d.month}.{d.day} ({weekdays[d.weekday()]}) {d:%H:%M}", "tv": "KST"}
+        if e["status"] == "final" and isinstance(e.get("away_score"), int) and isinstance(e.get("home_score"), int):
+            av, hv = e["away_score"], e["home_score"]
+            card.update({"day": "FINAL", "away_score": av, "home_score": hv,
+                         "result": f"{away} {av}–{hv} {home}", "tag": f"종료 · {away} {av}–{hv} {home}"})
+        elif e["status"] == "live":
+            card.update({"day": "LIVE", "tag": "진행 중 · 기록 제공처 확인 시각 기준"})
+        cards.append(card)
+        added = True
+    return added
+
+
+def re_kst_ok(card: dict) -> bool:
+    import re
+    return bool(re.match(r"\d{1,2}\.\d{1,2} ", str(card.get("kst", ""))))
+
+
 def refresh_nba_cards(snapshot: dict, now: dt.datetime) -> None:
     """Update legacy NBA preseason cards only from confirmed ESPN event status.
     Keep previews and historical results when no matching verified record is available.
@@ -121,9 +168,20 @@ def refresh_nba_cards(snapshot: dict, now: dt.datetime) -> None:
         data = json.loads(original)
     except (OSError, ValueError):
         return
-    rows = (snapshot.get("leagues", {}).get("NBA") or {}).get("games") or []
+    rows = [dict(e, away=NBA_CODE.get(e.get("away"), e.get("away")), home=NBA_CODE.get(e.get("home"), e.get("home")))
+            for e in ((snapshot.get("leagues", {}).get("NBA") or {}).get("games") or [])]
+    # 공개 스냅샷은 최근 경기만 담으므로, 카드에 남은 '확인 중' 경기는 지난 날짜를 따로 조회해 풀어 줍니다.
+    # 이 조회 결과는 카드 갱신에만 쓰고 스냅샷에는 넣지 않습니다.
+    older = []
+    for back in (2, 3, 4):
+        _lg, _day, payload = fetch_one("NBA", SOURCES["NBA"], now.date() - dt.timedelta(days=back))
+        for ev in (payload or {}).get("events", []):
+            parsed = parse_event("NBA", ev)
+            if parsed:
+                older.append(dict(parsed, away=NBA_CODE.get(parsed["away"], parsed["away"]),
+                                  home=NBA_CODE.get(parsed["home"], parsed["home"])))
     verified = {}
-    for e in rows:
+    for e in older + rows:
         try:
             d = dt.datetime.fromisoformat(e["start_kst"])
             verified[(e["away"], e["home"], d.month, d.day)] = e
@@ -162,6 +220,8 @@ def refresh_nba_cards(snapshot: dict, now: dt.datetime) -> None:
         if e and e.get("status") != "final" and "result" in g:
             g.pop("result")
             changed = True
+    if add_new_preseason_cards(data, rows):
+        changed = True
     if changed:
         card_file.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n",
                              encoding="utf-8")
