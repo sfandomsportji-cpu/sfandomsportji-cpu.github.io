@@ -62,8 +62,10 @@ jobs:
                   attrs = dict(attrs)
                   if tag == "a" and "nm-card" in attrs.get("class", "").split():
                       self.links.append(attrs.get("href", ""))
-                  if tag in ("img", "video", "iframe", "picture", "source"):
-                      self.images.append(tag)
+                  if tag == "img":
+                      self.images.append(attrs.get("src", ""))
+                  if tag in ("video", "iframe", "picture", "source"):
+                      self.frames.append(tag)
                   if tag == "script" and attrs.get("src", "").startswith(("https://", "http://")):
                       self.external_scripts.append(attrs.get("src"))
           s = Scan()
@@ -72,12 +74,14 @@ jobs:
           assert s.links or "최근 글 목록을 확인하고 있습니다" in page, "no fallback for unavailable blog feed"
           assert len(s.links) == len(set(s.links)), "duplicate Naver post"
           assert all(re.fullmatch(r'https://blog[.]naver[.]com/sfandomsport/[0-9]{8,20}', u) for u in s.links), "non-owned URL"
-          assert not s.images, f"remote media in magazine: {s.images}"
+          assert not s.frames, f"embedded media in magazine: {s.frames}"
+          assert all(re.fullmatch(r'/assets/blog-previews/naver-[0-9]{8,20}[.]jpg', u) for u in s.images), f"non-local magazine image: {s.images}"
+          assert all((Path(".") / u.lstrip("/")).is_file() for u in s.images), f"missing magazine image file: {s.images}"
           assert not s.external_scripts, f"external scripts in magazine: {s.external_scripts}"
           assert not any(x in page for x in ('id="magOriginalTitle"', 'id="magExternalTitle"', 'class="wrap kairo-desk"')), "old hub wasn't replaced"
           assert 'naver-magazine.css' in page, "dedicated styles missing"
           assert 'sfandomji.blogspot.com' not in page, "unexpected Blogger link"
-          print(f"PASS: {len(s.links)} unique owned Naver posts and no magazine media embeddings.")
+          print(f"PASS: {len(s.links)} unique owned Naver posts, {len(s.images)} local previews, zero embeds or hotlinks.")
           PY
 
       - name: Verify published templates and KST game center
