@@ -41,3 +41,10 @@
 @media(max-width:970px){.nm-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nm-hero{grid-template-columns:1fr}.nm-hero__link{gap:10px}}
 @media(max-width:640px){.nm-magazine{padding-top:15px}.nm-hero{padding:22px 18px;border-radius:13px}.nm-hero h2{font-size:27px;letter-spacing:-.8px}.nm-hero p{font-size:13px}.nm-grid{grid-template-columns:1fr}.nm-card,.nm-card--featured{min-height:unset;padding:20px 17px}.nm-section{padding-top:32px}.nm-section__header{align-items:start;flex-direction:column;gap:5px}.nm-section__header p{text-align:left;max-width:100%}.nm-card h3{font-size:18px}}
 @media(prefers-reduced-motion:reduce){.nm-card{transition:none}.nm-card:hover{transform:none}}
+
+/* Original editorial typography covers: no external images or hotlinks. */
+.nm-card__media--editorial{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:22px 24px;gap:11px;background:radial-gradient(circle at 90% 15%,rgba(254,107,132,.28),transparent 45%),linear-gradient(130deg,#242d44 0%,#191b29 60%,#17151e 100%);border:1px solid #4c4e64;min-height:155px}
+.nm-card__media--editorial .nm-card__media-kicker{font-size:11px;font-weight:800;letter-spacing:.15em;color:#ffb9c5}
+.nm-card__media--editorial strong{font-size:clamp(23px,3vw,34px);line-height:1;letter-spacing:.03em;color:white}
+.nm-card__media--editorial .nm-card__media-rule{height:3px;width:72px;background:#ff8da6;border-radius:3px}
+.nm-card__media--editorial small{font-size:10px;letter-spacing:.18em;font-weight:800;color:#c2cadd}
