@@ -1,6 +1,7 @@
 ---
 kind: "analysis"
 date: "2026-10-14"
+edition: "2026-10-14"
 priority: 522
 title: "한신–DeNA CS 파이널 1차전, 선발보다 먼저 읽을 것은 1승의 무게"
 subtitle: "무라카미–타이라 맞대결, 고시엔의 첫 3이닝과 불펜 선택"
