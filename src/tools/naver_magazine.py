@@ -46,7 +46,7 @@ def posts(cache: list[dict]) -> list[dict]:
         # Article summary and the optional preview image are both drawn from the owner's feed cache.
         desc = re.sub(r"\s+", " ", str(item.get("summary", "")).strip())
         result.append({"title": title, "link": url, "date": date, "summary": desc[:190],
-                       "image": blog_preview_url(item.get("image", ""))})
+                       "source": "naver", "image": blog_preview_url(item.get("image", ""))})
     # Stable on same-day posts: preserve the RSS entry order.
     return sorted(result, key=lambda x: x["date"], reverse=True)
 
