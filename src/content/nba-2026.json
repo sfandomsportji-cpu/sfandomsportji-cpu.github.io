@@ -462,18 +462,20 @@
       "result": "POR 110–98 SAC"
     },
     {
-      "day": "PRESEASON",
+      "day": "LIVE",
       "away": "BKN",
       "home": "MIA",
       "kst": "10.15 (목) 08:30",
-      "tv": "KST"
+      "tv": "KST",
+      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
     },
     {
-      "day": "PRESEASON",
+      "day": "LIVE",
       "away": "CHA",
       "home": "BOS",
       "kst": "10.15 (목) 08:30",
-      "tv": "KST"
+      "tv": "KST",
+      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
     },
     {
       "day": "PRESEASON",

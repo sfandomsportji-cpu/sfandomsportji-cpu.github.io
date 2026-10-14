@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-15T05:42+09:00",
+  "updated_at": "2026-10-15T08:55+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-15T05:42+09:00",
+      "checked_at": "2026-10-15T08:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -75,7 +75,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-15T05:42+09:00",
+      "checked_at": "2026-10-15T08:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -87,10 +87,10 @@
           "home": "MIA",
           "away_name": "Brooklyn Nets",
           "home_name": "Miami Heat",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401898404/nets-heat"
+          "status": "live",
+          "away_score": 10,
+          "home_score": 13,
+          "source_url": "https://www.espn.com/nba/game?gameId=401898404"
         },
         {
           "id": "NBA-401898405",
@@ -100,10 +100,10 @@
           "home": "BOS",
           "away_name": "Charlotte Hornets",
           "home_name": "Boston Celtics",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401898405/hornets-celtics"
+          "status": "live",
+          "away_score": 15,
+          "home_score": 20,
+          "source_url": "https://www.espn.com/nba/game?gameId=401898405"
         },
         {
           "id": "NBA-401898722",
@@ -355,7 +355,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-15T05:42+09:00",
+      "checked_at": "2026-10-15T08:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -375,7 +375,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-15T05:42+09:00",
+      "checked_at": "2026-10-15T08:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -387,10 +387,10 @@
           "home": "WSH",
           "away_name": "Montreal Canadiens",
           "home_name": "Washington Capitals",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892504/canadiens-capitals"
+          "status": "live",
+          "away_score": 1,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892504"
         },
         {
           "id": "NHL-401892505",
@@ -573,6 +573,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892518/bruins-ducks"
+        },
+        {
+          "id": "NHL-401892519",
+          "league": "NHL",
+          "start_kst": "2026-10-18T02:00+09:00",
+          "away": "NJ",
+          "home": "WSH",
+          "away_name": "New Jersey Devils",
+          "home_name": "Washington Capitals",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892519/devils-capitals"
         }
       ]
     }
