@@ -255,6 +255,54 @@
     if (im.complete && im.naturalWidth === 0 && im.currentSrc) fail(); else im.addEventListener('error', fail, { once: true });
   });
 
+  /* ── 매거진: 구글 블로그(Blogger) 최신 글을 브라우저에서 바로 받아 합치기 ──
+     네이버 글은 빌드 때 받아 HTML에 들어 있고, 구글 글은 여기서 JSONP로 최신 상태를 가져옵니다. */
+  const grids = $$('[data-blog-grid]');
+  const blogUrl = grids[0]?.dataset.blogger;
+  if (grids.length && blogUrl) {
+    // 정적 글이 이미 있는 경우 외부 API 실패와 무관하게 대기 문구를 즉시 숨깁니다.
+    grids.forEach(g => { const e = g.nextElementSibling; if (e?.classList.contains('blog-empty') && $('a.mag', g).length) e.hidden = true; });
+    const cb = '__sfBlogger' + Date.now();
+    const bigImg = u => (u || '').replace(/\/[sw]\d+(?:-[a-z]+\d*)*\//, '/w800-rj/').replace(/=[sw]\d+(?:-[a-z]+\d*)*$/, '=w800-rj');
+    const strip = h => { const d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); };
+    window[cb] = data => {
+      const entries = data?.feed?.entry || [];
+      const posts = entries.map(e => {
+        const link = (e.link || []).find(l => l.rel === 'alternate')?.href || '';
+        let img = e.media$thumbnail?.url || '';
+        if (!img) { const m = (e.content?.$t || '').match(/<img[^>]+src="([^"]+)"/i); img = m ? m[1] : ''; }
+        return { title: e.title?.$t || '', link, date: (e.published?.$t || '').slice(0, 10), img: bigImg(img),
+                 summary: (s => s.length > 320 ? s.slice(0, 319).trimEnd() + '…' : s)(strip(e.summary?.$t || e.content?.$t)) };
+      }).filter(p => p.link);
+      grids.forEach(grid => {
+        const have = new Set($$('a[href]', grid).map(a => a.href));
+        const core = grid.dataset.core ? new RegExp(grid.dataset.core, 'i') : null;   // 홈: NBA·MLB 글만
+        posts.forEach(p => {
+          if (have.has(p.link) || (core && !core.test(p.title + ' ' + p.summary))) return;
+          const a = el('a', 'mag lift'); a.href = p.link; a.target = '_blank'; a.rel = 'noopener';
+          a.dataset.date = p.date; a.dataset.src = 'google';
+          const th = el('div', 'thumb' + (p.img ? '' : ' blog-thumb'));
+          if (p.img) { const im = el('img'); im.src = p.img; im.alt = ''; im.loading = 'lazy'; im.referrerPolicy = 'no-referrer'; th.append(im); } else th.append(el('span', null, 'G'));
+          const body = el('div', 'body');
+          body.append(el('span', 'tag red', grid.dataset.label || 'GOOGLE BLOG'), el('h3', null, p.title), el('p', null, p.summary),
+                      el('span', 'tag', `${p.date.replace(/-/g, '.')} · 블로그에서 읽기 ↗`));
+          a.append(th, body); grid.append(a);
+        });
+        const cards = $$('a.mag', grid).sort((x, y) => (y.dataset.date || '').localeCompare(x.dataset.date || ''));
+        const limit = Number(grid.dataset.limit || 6);
+        cards.forEach((c, i) => { if (i < limit) grid.append(c); else c.remove(); });
+        const empty = grid.nextElementSibling;
+        if (empty && empty.classList.contains('blog-empty')) empty.hidden = cards.length > 0;
+      });
+      delete window[cb];
+    };
+    const sc = document.createElement('script');
+    sc.src = `${blogUrl.replace(/\/$/, '')}/feeds/posts/default?alt=json-in-script&max-results=24&callback=${cb}`;
+    sc.async = true;
+    sc.onerror = () => grids.forEach(g => { const e = g.nextElementSibling; if (e && !$$('a.mag', g).length) e.textContent = '블로그 글을 불러오지 못했습니다. 아래 블로그 바로가기를 이용해 주세요.'; });
+    document.head.append(sc);
+  }
+
   /* ── Supabase 공통 ── */
   const SB = CFG.supabase || {};
   // Reads can temporarily time out at PostgREST. Retry only safe GET requests.

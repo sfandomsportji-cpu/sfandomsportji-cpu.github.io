@@ -240,70 +240,22 @@ def blog_posts(limit: int = 6, core: bool = False) -> list[dict]:
     return sorted(allp, key=lambda p: p.get('date', ''), reverse=True)[:limit]
 
 
-def _local_naver_video_preview(p: dict) -> str:
-    """Keep the owner's Naver video preview on SFANDOM storage, never hotlink it.
-
-    The existing RSS auto-registration remains unchanged. New video cards download
-    only their preview JPEG to assets/blog-previews. Failed downloads leave the
-    card text/link intact; they must not show a misleading picture.
-    """
-    if p.get('source') != 'naver':
-        return ''
-    link = str(p.get('link') or '').split('?', 1)[0]
-    post = re.fullmatch(r'https://blog\.naver\.com/sfandomsport/(\d{8,20})', link)
-    image = str(p.get('image') or '')
-    if not post:
-        print('Naver preview skipped: feed item is not an approved blog post')
-        return ''
-    if not re.fullmatch(r'https://phinf\.pstatic\.net/image\.nmv/[A-Za-z0-9_./-]+\.jpg\?type=w\d+', image):
-        from urllib.parse import urlsplit
-        print(f'Naver preview {post.group(1)} skipped: non-video or missing image ({urlsplit(image).hostname or "none"})')
-        return ''
-    filename = f'naver-{post.group(1)}.jpg'
-    dest = ROOT / 'assets' / 'blog-previews' / filename
-    public = '/assets/blog-previews/' + filename
-    if dest.is_file() and 4096 <= dest.stat().st_size <= 1_500_000:
-        return public
-    try:
-        from urllib.parse import urlparse
-        req = urllib.request.Request(image, headers={
-            'User-Agent': 'Mozilla/5.0 SFANDOM-preview-cache',
-            'Referer': 'https://blog.naver.com/'})
-        with urllib.request.urlopen(req, timeout=8) as resp:
-            if urlparse(resp.geturl()).hostname != 'phinf.pstatic.net':
-                return ''
-            if resp.headers.get_content_type() != 'image/jpeg':
-                return ''
-            data = resp.read(1_500_001)
-        if not (4096 <= len(data) <= 1_500_000 and data.startswith(b'\xff\xd8\xff')):
-            return ''
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        temp = dest.with_suffix('.download')
-        temp.write_bytes(data)
-        temp.replace(dest)
-        return public
-    except (OSError, ValueError) as exc:
-        code = getattr(exc, 'code', '')
-        print(f'Naver video preview {post.group(1)} unavailable: {exc.__class__.__name__} {code}')
-        return ''
-
-
 def blog_card(p: dict) -> str:
     label = SITE['blogs'][p['source']]['label']
-    local_image = _local_naver_video_preview(p)
-    thumbnail = (f'<div class="thumb"><img src="{esc(local_image)}" alt="{esc(p["title"])} 영상 미리보기" loading="lazy" decoding="async"></div>'
-                 if local_image else '')
-    return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener">{thumbnail}<div class="body">'
-            f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3>'
+    img = f'<div class="thumb"><img src="{esc(blog_img(p["image"]))}" alt="" loading="lazy" referrerpolicy="no-referrer"></div>' if p.get('image') else '<div class="thumb blog-thumb" aria-hidden="true"><span>' + ('G' if p['source'] == 'google' else 'N') + '</span></div>'
+    return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener">{img}<div class="body">'
+            f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3><p>{esc(_clip(p.get("summary", ""), 180))}</p>'
             f'<span class="tag">{p.get("date", "").replace("-", ".")} · 블로그에서 읽기 ↗</span></div></a>')
 
 
 def blog_grid(limit: int, home: bool = False) -> str:
-    """Owned post titles only: no remote images or browser-side feed injection."""
+    """블로그 카드 격자. 빌드 때 받은 글(네이버·구글)을 먼저 그리고, 브라우저에서 구글 블로그 최신 글을 한 번 더 받아 합칩니다."""
+    g = SITE['blogs'].get('google', {})
     cards = ''.join(blog_card(p) for p in blog_posts(limit, core=home))
-    return (f'<div class="card-grid blog-grid{" home" if home else ""}">{cards}</div>'
-            + ('' if cards else '<p class="muted blog-empty">최근 글 목록을 확인하고 있습니다.</p>'))
-
+    core = f' data-core="{esc(CORE_RE)}"' if home else ''
+    return (f'<div class="card-grid blog-grid{" home" if home else ""}" data-blog-grid data-limit="{limit}"{core} data-blogger="{esc(g.get("url", ""))}" '
+            f'data-label="{esc(g.get("label", "GOOGLE BLOG"))}">{cards}</div>'
+            + ('' if cards else '<p class="muted blog-empty" style="font-size:14px">외부 연재 목록을 가져오지 못했습니다. 블로그 채널에서 확인해 주세요.</p>'))
 
 
 def preserved_component(name: str) -> str:
@@ -1048,7 +1000,7 @@ def build_lists():
     # 매거진: sfandomsport 네이버 블로그 최근 글 링크 전용 화면.
     # 사진/영상 썸네일 외부 URL을 렌더링하거나 Google Blogger를 동적으로 스크랩하지 않습니다.
     # 과거 SFANDOM 원문은 /analysis/ 및 개별 기사 경로에 그대로 보존합니다.
-    naver_mag = render_naver_magazine(BLOGS.get('naver', []), esc, _local_naver_video_preview)
+    naver_mag = render_naver_magazine(BLOGS.get('naver', []), esc)
     write('/magazine/', layout('MAGAZINE · SFANDOM 네이버 블로그', page_head(
           'MAGAZINE<span class="accent">.</span> <span class="kr">NAVER BLOG</span>',
           'SFANDOM 네이버 블로그에 직접 게시한 최근 글과 선정 특집을 모았습니다. 글은 네이버 원문에서 읽습니다.',
