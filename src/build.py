@@ -1041,7 +1041,7 @@ def build_lists():
     # 매거진: sfandomsport 네이버 블로그 최근 글 링크 전용 화면.
     # 사진/영상 썸네일 외부 URL을 렌더링하거나 Google Blogger를 동적으로 스크랩하지 않습니다.
     # 과거 SFANDOM 원문은 /analysis/ 및 개별 기사 경로에 그대로 보존합니다.
-    naver_mag = render_naver_magazine(BLOGS.get('naver', []), esc)
+    naver_mag = render_naver_magazine(BLOGS.get('naver', []), esc, _local_naver_video_preview)
     write('/magazine/', layout('MAGAZINE · SFANDOM 네이버 블로그', page_head(
           'MAGAZINE<span class="accent">.</span> <span class="kr">NAVER BLOG</span>',
           'SFANDOM 네이버 블로그에 직접 게시한 최근 글과 선정 특집을 모았습니다. 글은 네이버 원문에서 읽습니다.',
