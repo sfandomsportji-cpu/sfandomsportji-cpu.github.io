@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-14T15:09+09:00",
+  "updated_at": "2026-10-14T16:33+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-14T15:09+09:00",
+      "checked_at": "2026-10-14T16:33+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -71,11 +71,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/mlb/game/_/gameId/401908026/rays-guardians"
+        },
+        {
+          "id": "MLB-401908034",
+          "league": "MLB",
+          "start_kst": "2026-10-17T10:00+09:00",
+          "away": "MIL",
+          "home": "LAD",
+          "away_name": "Milwaukee Brewers",
+          "home_name": "Los Angeles Dodgers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908034/brewers-dodgers"
         }
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-14T15:09+09:00",
+      "checked_at": "2026-10-14T16:33+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -381,7 +394,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-14T15:09+09:00",
+      "checked_at": "2026-10-14T16:33+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -401,7 +414,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-14T15:09+09:00",
+      "checked_at": "2026-10-14T16:33+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -781,6 +794,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892516/flames-golden-knights"
+        },
+        {
+          "id": "NHL-401892517",
+          "league": "NHL",
+          "start_kst": "2026-10-17T10:00+09:00",
+          "away": "PIT",
+          "home": "COL",
+          "away_name": "Pittsburgh Penguins",
+          "home_name": "Colorado Avalanche",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892517/penguins-avalanche"
         }
       ]
     }
