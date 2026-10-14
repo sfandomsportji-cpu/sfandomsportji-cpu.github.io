@@ -93,8 +93,9 @@ def card(item: dict, esc, index: int, *, featured: bool, player=None) -> str:
         f'<span class="nm-card__type">{esc(category(item["title"]))}</span>'
         f'<time datetime="{esc(item["date"])}">{esc(date)}</time></div>'
         f'{preview}<h3>{esc(item["title"])}</h3>{desc}'
-        '<span class="nm-card__open">네이버 블로그에서 원문 보기 <span aria-hidden="true">↗</span></span>'
-        '</a>'
+        + ('<span class="nm-card__open">▶ 바로 재생 <span aria-hidden="true">·</span> 원문은 네이버에서</span>' if data else
+           '<span class="nm-card__open">네이버 블로그에서 원문 보기 <span aria-hidden="true">↗</span></span>')
+        + '</a>'
     )
 
 

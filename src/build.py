@@ -277,7 +277,7 @@ def blog_card(p: dict) -> str:
         img = img[:-len('</div>')] + '<span class="play-badge" aria-hidden="true">▶</span></div>'
     return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener"{player}>{img}<div class="body">'
             f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3><p>{esc(_clip(p.get("summary", ""), 180))}</p>'
-            f'<span class="tag">{p.get("date", "").replace("-", ".")} · 블로그에서 읽기 ↗</span></div></a>')
+            f'<span class="tag">{p.get("date", "").replace("-", ".")} · {"▶ 바로 재생" if player else "블로그에서 읽기 ↗"}</span></div></a>')
 
 
 def blog_grid(limit: int, home: bool = False) -> str:
@@ -642,7 +642,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {body}
 </main>
 {footer()}
-<script src="/assets/js/site.js?v={VER}-sound3-board1-scorefresh1" defer></script>
+<script src="/assets/js/site.js?v={VER}-sound3-board1-scorefresh2" defer></script>
 {thread_js}{news_comments_js}
 </body>
 </html>

@@ -34,7 +34,7 @@
   /* 점수는 배포 시각의 기록입니다. 빌드가 늦어져도 오래된 LIVE를 현재형으로 남기지 않습니다. */
   const refreshRecordedScores = () => {
     const now = Date.now();
-    $('[data-score-state]').forEach(card => {
+    $$('[data-score-state]').forEach(card => {
       const state = card.dataset.scoreState;
       const checked = Date.parse(card.dataset.scoreChecked || '');
       const start = Date.parse(card.dataset.scoreStart || '');
