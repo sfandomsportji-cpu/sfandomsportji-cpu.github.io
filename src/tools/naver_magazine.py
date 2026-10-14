@@ -19,8 +19,11 @@ VOLLEY_TAG = re.compile(r"AVC|Volleyball|배구", re.I)
 
 
 def blog_preview_url(url: str) -> str:
-    """The expired thumbnail exception must never hotlink a remote image."""
-    return ""
+    """Retain the owner's feed thumbnail URL only as input to a local cache resolver.
+
+    Never insert this URL directly into rendered HTML.
+    """
+    return str(url or '')
 
 
 def posts(cache: list[dict]) -> list[dict]:
@@ -43,7 +46,7 @@ def posts(cache: list[dict]) -> list[dict]:
         # Article summary and the optional preview image are both drawn from the owner's feed cache.
         desc = re.sub(r"\s+", " ", str(item.get("summary", "")).strip())
         result.append({"title": title, "link": url, "date": date, "summary": desc[:190],
-                       "image": blog_preview_url(item.get("image", ""))})
+                       "source": "naver", "image": blog_preview_url(item.get("image", ""))})
     # Stable on same-day posts: preserve the RSS entry order.
     return sorted(result, key=lambda x: x["date"], reverse=True)
 
@@ -62,8 +65,17 @@ def category(title: str) -> str:
     return "SPORTS"
 
 
-def card(item: dict, esc, index: int, *, featured: bool) -> str:
+def card(item: dict, esc, index: int, *, featured: bool, resolve_preview=None) -> str:
     date = item["date"].replace("-", ".")
+    local_image = resolve_preview(item) if resolve_preview else ''
+    # Only locally cached pictures may appear in HTML. Never hotlink Naver CDN.
+    if local_image and not re.fullmatch(r'/assets/blog-previews/naver-\d{8,20}\.jpg', local_image):
+        local_image = ''
+    preview = (
+        '<div class="nm-card__media">'
+        f'<img src="{esc(local_image)}" alt="{esc(item["title"])} 영상 미리보기" loading="lazy" decoding="async">'
+        '</div>' if local_image else ''
+    )
     return (
         '<a class="nm-card' + (' nm-card--featured' if featured else '') + '"'
         f' href="{esc(item["link"])}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">'
@@ -71,20 +83,21 @@ def card(item: dict, esc, index: int, *, featured: bool) -> str:
         f'<span class="nm-card__num">{index:02d}</span>'
         f'<span class="nm-card__type">{esc(category(item["title"]))}</span>'
         f'<time datetime="{esc(item["date"])}">{esc(date)}</time></div>'
+        + preview +
         f'<h3>{esc(item["title"])}</h3>'
         '<span class="nm-card__open">네이버 블로그에서 원문 보기 <span aria-hidden="true">↗</span></span>'
         '</a>'
     )
 
 
-def render(cache: list[dict], esc) -> str:
+def render(cache: list[dict], esc, resolve_preview=None) -> str:
     listed = posts(cache)
     # Three long-form NBA insights; six newest distinct updates, all owner's posts.
     insights = [p for p in listed if FEATURE_TAG.search(p["title"])][:3]
     featured_urls = {p["link"] for p in insights}
     latest = [p for p in listed if p["link"] not in featured_urls][:6]
-    featured_html = ''.join(card(p, esc, i, featured=True) for i, p in enumerate(insights, 1))
-    latest_html = ''.join(card(p, esc, i, featured=False) for i, p in enumerate(latest, 1))
+    featured_html = ''.join(card(p, esc, i, featured=True, resolve_preview=resolve_preview) for i, p in enumerate(insights, 1))
+    latest_html = ''.join(card(p, esc, i, featured=False, resolve_preview=resolve_preview) for i, p in enumerate(latest, 1))
     if not listed:
         content = (
             '<div class="nm-empty"><h2>최근 글 목록을 확인하고 있습니다.</h2>'
