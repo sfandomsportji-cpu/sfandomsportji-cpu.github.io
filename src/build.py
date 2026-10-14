@@ -252,7 +252,12 @@ def _local_naver_video_preview(p: dict) -> str:
     link = str(p.get('link') or '').split('?', 1)[0]
     post = re.fullmatch(r'https://blog\.naver\.com/sfandomsport/(\d{8,20})', link)
     image = str(p.get('image') or '')
-    if not post or not re.fullmatch(r'https://phinf\.pstatic\.net/image\.nmv/[A-Za-z0-9_./-]+\.jpg\?type=w\d+', image):
+    if not post:
+        print('Naver preview skipped: feed item is not an approved blog post')
+        return ''
+    if not re.fullmatch(r'https://phinf\.pstatic\.net/image\.nmv/[A-Za-z0-9_./-]+\.jpg\?type=w\d+', image):
+        from urllib.parse import urlsplit
+        print(f'Naver preview {post.group(1)} skipped: non-video or missing image ({urlsplit(image).hostname or "none"})')
         return ''
     filename = f'naver-{post.group(1)}.jpg'
     dest = ROOT / 'assets' / 'blog-previews' / filename
