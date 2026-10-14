@@ -250,9 +250,9 @@ def _local_naver_video_preview(p: dict) -> str:
     if p.get('source') != 'naver':
         return ''
     link = str(p.get('link') or '').split('?', 1)[0]
-    post = re.fullmatch(r'https://blog\\.naver\\.com/sfandomsport/(\\d{8,20})', link)
+    post = re.fullmatch(r'https://blog\.naver\.com/sfandomsport/(\d{8,20})', link)
     image = str(p.get('image') or '')
-    if not post or not re.fullmatch(r'https://phinf\\.pstatic\\.net/image\\.nmv/[A-Za-z0-9_./-]+\\.jpg\\?type=w\\d+', image):
+    if not post or not re.fullmatch(r'https://phinf\.pstatic\.net/image\.nmv/[A-Za-z0-9_./-]+\.jpg\?type=w\d+', image):
         return ''
     filename = f'naver-{post.group(1)}.jpg'
     dest = ROOT / 'assets' / 'blog-previews' / filename
@@ -270,7 +270,7 @@ def _local_naver_video_preview(p: dict) -> str:
             if resp.headers.get_content_type() != 'image/jpeg':
                 return ''
             data = resp.read(1_500_001)
-        if not (4096 <= len(data) <= 1_500_000 and data.startswith(b'\\xff\\xd8\\xff')):
+        if not (4096 <= len(data) <= 1_500_000 and data.startswith(b'\xff\xd8\xff')):
             return ''
         dest.parent.mkdir(parents=True, exist_ok=True)
         temp = dest.with_suffix('.download')
