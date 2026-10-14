@@ -277,7 +277,9 @@ def _local_naver_video_preview(p: dict) -> str:
         temp.write_bytes(data)
         temp.replace(dest)
         return public
-    except (OSError, ValueError):
+    except (OSError, ValueError) as exc:
+        code = getattr(exc, 'code', '')
+        print(f'Naver video preview {post.group(1)} unavailable: {exc.__class__.__name__} {code}')
         return ''
 
 
