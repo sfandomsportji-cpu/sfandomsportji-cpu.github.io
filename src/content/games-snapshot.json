@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-14T16:33+09:00",
+  "updated_at": "2026-10-14T17:41+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-14T16:33+09:00",
+      "checked_at": "2026-10-14T17:41+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -88,7 +88,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-14T16:33+09:00",
+      "checked_at": "2026-10-14T17:41+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -390,11 +390,50 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401908943/timberwolves-bulls"
+        },
+        {
+          "id": "NBA-401898409",
+          "league": "NBA",
+          "start_kst": "2026-10-17T11:00+09:00",
+          "away": "POR",
+          "home": "GS",
+          "away_name": "Portland Trail Blazers",
+          "home_name": "Golden State Warriors",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401898409/trail-blazers-warriors"
+        },
+        {
+          "id": "NBA-401908948",
+          "league": "NBA",
+          "start_kst": "2026-10-17T11:00+09:00",
+          "away": "UTAH",
+          "home": "PHX",
+          "away_name": "Utah Jazz",
+          "home_name": "Phoenix Suns",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401908948/jazz-suns"
+        },
+        {
+          "id": "NBA-401898719",
+          "league": "NBA",
+          "start_kst": "2026-10-17T11:30+09:00",
+          "away": "DEN",
+          "home": "LAL",
+          "away_name": "Denver Nuggets",
+          "home_name": "Los Angeles Lakers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401898719/nuggets-lakers"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-14T16:33+09:00",
+      "checked_at": "2026-10-14T17:41+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -414,7 +453,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-14T16:33+09:00",
+      "checked_at": "2026-10-14T17:41+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -807,6 +846,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892517/penguins-avalanche"
+        },
+        {
+          "id": "NHL-401892518",
+          "league": "NHL",
+          "start_kst": "2026-10-17T11:00+09:00",
+          "away": "BOS",
+          "home": "ANA",
+          "away_name": "Boston Bruins",
+          "home_name": "Anaheim Ducks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892518/bruins-ducks"
         }
       ]
     }
