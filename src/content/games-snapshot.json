@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-15T02:11+09:00",
+  "updated_at": "2026-10-15T05:42+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-15T02:11+09:00",
+      "checked_at": "2026-10-15T05:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
         {
           "id": "MLB-401908033",
           "league": "MLB",
-          "start_kst": "2026-10-16T10:00+09:00",
+          "start_kst": "2026-10-16T09:00+09:00",
           "away": "MIL",
           "home": "LAD",
           "away_name": "Milwaukee Brewers",
@@ -75,7 +75,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-15T02:11+09:00",
+      "checked_at": "2026-10-15T05:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -355,7 +355,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-15T02:11+09:00",
+      "checked_at": "2026-10-15T05:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -375,7 +375,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-15T02:11+09:00",
+      "checked_at": "2026-10-15T05:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
