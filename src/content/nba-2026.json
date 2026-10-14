@@ -183,7 +183,7 @@
     ]
   ],
   "home_mode": "preseason",
-  "preseason_note": "2026년 10월 11일 14:13 KST 확인: 오전 프리시즌 7경기 전부 종료. 10월 11일 19:00 댈러스–휴스턴과 12~13일 예정 경기는 경기 전 상태로 유지. 최종 결과: NBA 공식 경기 기록 / 일정: NBA.com. 경기 시간은 한국시간(KST).",
+  "preseason_note": "2026년 10월 14일 22:10 KST 확인: 10월 13일(KST) 세 경기와 14일 경기 종료. 최종 결과는 ESPN 스코어보드·경기 기록 교차 확인, 15~16일은 예정 경기로 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
   "preseason_games": [
     {
       "day": "FINAL",
@@ -329,28 +329,37 @@
       "result": "OKC 110–113 ATL"
     },
     {
-      "day": "CHECKING",
+      "day": "FINAL",
       "away": "BKN",
       "home": "WAS",
       "kst": "10.13 (화) 08:00",
       "tv": "KST",
-      "tag": "경기 상태 확인 중"
+      "tag": "종료 · BKN 131–122 WAS",
+      "away_score": 131,
+      "home_score": 122,
+      "result": "BKN 131–122 WAS"
     },
     {
-      "day": "CHECKING",
+      "day": "FINAL",
       "away": "MIN",
       "home": "NYK",
       "kst": "10.13 (화) 08:30",
       "tv": "KST",
-      "tag": "경기 상태 확인 중"
+      "tag": "종료 · MIN 122–104 NYK",
+      "away_score": 122,
+      "home_score": 104,
+      "result": "MIN 122–104 NYK"
     },
     {
-      "day": "CHECKING",
+      "day": "FINAL",
       "away": "SAS",
       "home": "UTA",
       "kst": "10.13 (화) 10:00",
       "tv": "KST",
-      "tag": "경기 상태 확인 중"
+      "tag": "종료 · SAS 109–119 UTA",
+      "away_score": 109,
+      "home_score": 119,
+      "result": "SAS 109–119 UTA"
     },
     {
       "day": "FINAL",
@@ -396,6 +405,124 @@
       "tv": "NBA TV",
       "tag": "GSW 118–123 POR",
       "result": "GSW 118–123 POR"
+    },
+    {
+      "day": "FINAL",
+      "away": "CLE",
+      "home": "ORL",
+      "kst": "10.14 (수) 08:00",
+      "tv": "KST",
+      "tag": "종료 · CLE 116–132 ORL",
+      "away_score": 116,
+      "home_score": 132,
+      "result": "CLE 116–132 ORL"
+    },
+    {
+      "day": "FINAL",
+      "away": "NYK",
+      "home": "TOR",
+      "kst": "10.14 (수) 08:00",
+      "tv": "KST",
+      "tag": "종료 · NYK 98–148 TOR",
+      "away_score": 98,
+      "home_score": 148,
+      "result": "NYK 98–148 TOR"
+    },
+    {
+      "day": "FINAL",
+      "away": "IND",
+      "home": "OKC",
+      "kst": "10.14 (수) 09:00",
+      "tv": "KST",
+      "tag": "종료 · IND 112–114 OKC",
+      "away_score": 112,
+      "home_score": 114,
+      "result": "IND 112–114 OKC"
+    },
+    {
+      "day": "FINAL",
+      "away": "GSW",
+      "home": "LAL",
+      "kst": "10.14 (수) 11:00",
+      "tv": "KST",
+      "tag": "종료 · GSW 101–89 LAL",
+      "away_score": 101,
+      "home_score": 89,
+      "result": "GSW 101–89 LAL"
+    },
+    {
+      "day": "FINAL",
+      "away": "POR",
+      "home": "SAC",
+      "kst": "10.14 (수) 11:00",
+      "tv": "KST",
+      "tag": "종료 · POR 110–98 SAC",
+      "away_score": 110,
+      "home_score": 98,
+      "result": "POR 110–98 SAC"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "BKN",
+      "home": "MIA",
+      "kst": "10.15 (목) 08:30",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "CHA",
+      "home": "BOS",
+      "kst": "10.15 (목) 08:30",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "PHX",
+      "home": "SAS",
+      "kst": "10.15 (목) 09:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "NOP",
+      "home": "DAL",
+      "kst": "10.15 (목) 09:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "CHI",
+      "home": "MIL",
+      "kst": "10.15 (목) 09:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "DET",
+      "home": "MIN",
+      "kst": "10.15 (목) 09:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "DEN",
+      "home": "LAC",
+      "kst": "10.15 (목) 11:30",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "TOR",
+      "home": "NYK",
+      "kst": "10.16 (금) 08:30",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "OKC",
+      "home": "HOU",
+      "kst": "10.16 (금) 09:30",
+      "tv": "KST"
     }
   ]
 }
