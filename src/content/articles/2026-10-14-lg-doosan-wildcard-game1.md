@@ -1,6 +1,7 @@
 ---
 kind: "analysis"
 date: "2026-10-14"
+edition: "2026-10-14"
 priority: 523
 title: "LG–두산 와일드카드 1차전, 같은 잠실에서 다른 계산"
 subtitle: "카라스코–곽빈, LG는 한 번의 무승부도 충분하고 두산은 2연승이 필요하다"
