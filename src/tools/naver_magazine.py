@@ -74,16 +74,20 @@ def category(title: str) -> str:
     return "SPORTS"
 
 
-def card(item: dict, esc, index: int, *, featured: bool) -> str:
+def card(item: dict, esc, index: int, *, featured: bool, player=None) -> str:
     date = item["date"].replace("-", ".")
     intro = (item["summary"][:153].rstrip() + ("…" if len(item["summary"]) > 153 else "")) if item["summary"] else ""
     desc = f'<p>{esc(intro)}</p>' if intro else ''
     src = item.get('image', '')
     preview = (f'<div class="nm-card__media"><span class="nm-card__media-fallback" aria-hidden="true">SFANDOM</span>'
                f'<img src="{esc(src)}" alt="{esc(item["title"])} 원문 대표 썸네일" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></div>') if src else ''
+    vid, inkey = player(item) if player else ('', '')
+    data = f' data-vid="{esc(vid)}" data-inkey="{esc(inkey)}"' if vid and inkey else ''
+    if data and preview:
+        preview = preview[:-len('</div>')] + '<span class="play-badge" aria-hidden="true">▶</span></div>'
     return (
         '<a class="nm-card' + (' nm-card--featured' if featured else '') + '"'
-        f' href="{esc(item["link"])}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">'
+        f' href="{esc(item["link"])}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"{data}>'
         '<div class="nm-card__top">'
         f'<span class="nm-card__num">{index:02d}</span>'
         f'<span class="nm-card__type">{esc(category(item["title"]))}</span>'
@@ -94,14 +98,14 @@ def card(item: dict, esc, index: int, *, featured: bool) -> str:
     )
 
 
-def render(cache: list[dict], esc) -> str:
+def render(cache: list[dict], esc, player=None) -> str:
     listed = posts(cache)
     # Three long-form NBA insights; six newest distinct updates, all owner's posts.
     insights = [p for p in listed if FEATURE_TAG.search(p["title"])][:3]
     featured_urls = {p["link"] for p in insights}
     latest = [p for p in listed if p["link"] not in featured_urls][:6]
-    featured_html = ''.join(card(p, esc, i, featured=True) for i, p in enumerate(insights, 1))
-    latest_html = ''.join(card(p, esc, i, featured=False) for i, p in enumerate(latest, 1))
+    featured_html = ''.join(card(p, esc, i, featured=True, player=player) for i, p in enumerate(insights, 1))
+    latest_html = ''.join(card(p, esc, i, featured=False, player=player) for i, p in enumerate(latest, 1))
     if not listed:
         content = (
             '<div class="nm-empty"><h2>최근 글 목록을 확인하고 있습니다.</h2>'

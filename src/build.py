@@ -240,10 +240,42 @@ def blog_posts(limit: int = 6, core: bool = False) -> list[dict]:
     return sorted(allp, key=lambda p: p.get('date', ''), reverse=True)[:limit]
 
 
+_NAVER_PLAYER_KEYS: dict[str, tuple[str, str]] = {}
+
+
+def naver_player(item: dict) -> tuple[str, str]:
+    """내 네이버 블로그 영상 글의 (영상 번호, 재생 키). 빌드 때 글 페이지에서 받아 오며, 못 받으면 ('', '').
+
+    못 받은 카드는 지금처럼 네이버 원문 링크로만 열립니다. 이 값은 공개 영상의 재생용 값이라 HTML에 들어가도 됩니다.
+    """
+    m = re.fullmatch(r'https://blog\.naver\.com/sfandomsport/(\d{8,20})', str(item.get('link') or '').split('?', 1)[0])
+    if not m:
+        return ('', '')
+    no = m.group(1)
+    if no not in _NAVER_PLAYER_KEYS:
+        found = ('', '')
+        try:
+            req = urllib.request.Request(f'https://m.blog.naver.com/sfandomsport/{no}',
+                                         headers={'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)'})
+            page = urllib.request.urlopen(req, timeout=6).read(700_000).decode('utf-8', 'replace')
+            vid = re.search(r'"vid"\s*:\s*"([A-Z0-9]{20,64})"', page)
+            key = re.search(r'"inkey"\s*:\s*"(V[A-Za-z0-9_.=-]{30,300})"', page)
+            if vid and key:
+                found = (vid.group(1), key.group(1))
+        except Exception as exc:  # 네트워크 실패는 조용히: 카드는 원문 링크로 동작
+            print(f'naver player key {no}: {exc.__class__.__name__}')
+        _NAVER_PLAYER_KEYS[no] = found
+    return _NAVER_PLAYER_KEYS[no]
+
+
 def blog_card(p: dict) -> str:
     label = SITE['blogs'][p['source']]['label']
     img = f'<div class="thumb"><img src="{esc(blog_img(p["image"]))}" alt="" loading="lazy" referrerpolicy="no-referrer"></div>' if p.get('image') else '<div class="thumb blog-thumb" aria-hidden="true"><span>' + ('G' if p['source'] == 'google' else 'N') + '</span></div>'
-    return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener">{img}<div class="body">'
+    vid, inkey = naver_player(p) if p['source'] == 'naver' else ('', '')
+    player = f' data-vid="{esc(vid)}" data-inkey="{esc(inkey)}"' if vid and inkey else ''
+    if player:
+        img = img[:-len('</div>')] + '<span class="play-badge" aria-hidden="true">▶</span></div>'
+    return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener"{player}>{img}<div class="body">'
             f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3><p>{esc(_clip(p.get("summary", ""), 180))}</p>'
             f'<span class="tag">{p.get("date", "").replace("-", ".")} · 블로그에서 읽기 ↗</span></div></a>')
 
@@ -1000,7 +1032,7 @@ def build_lists():
     # 매거진: sfandomsport 네이버 블로그 최근 글 링크 전용 화면.
     # 사진/영상 썸네일 외부 URL을 렌더링하거나 Google Blogger를 동적으로 스크랩하지 않습니다.
     # 과거 SFANDOM 원문은 /analysis/ 및 개별 기사 경로에 그대로 보존합니다.
-    naver_mag = render_naver_magazine(BLOGS.get('naver', []), esc)
+    naver_mag = render_naver_magazine(BLOGS.get('naver', []), esc, naver_player)
     write('/magazine/', layout('MAGAZINE · SFANDOM 네이버 블로그', page_head(
           'MAGAZINE<span class="accent">.</span> <span class="kr">NAVER BLOG</span>',
           'SFANDOM 네이버 블로그에 직접 게시한 최근 글과 선정 특집을 모았습니다. 글은 네이버 원문에서 읽습니다.',

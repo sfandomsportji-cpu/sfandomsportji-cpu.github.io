@@ -303,6 +303,51 @@
     document.head.append(sc);
   }
 
+  /* ── 네이버 영상 카드: 누르면 사이트 안에서 바로 재생 ──
+     영상 번호·재생 키는 빌드 때 네이버 글에서 받아 카드에 넣어 둡니다(data-vid · data-inkey).
+     값이 없거나 Ctrl·⌘·Shift 클릭이면 기존처럼 네이버 원문이 새 탭으로 열립니다. */
+  const closePlayer = () => {
+    const box = document.querySelector('.sf-vmodal');
+    if (!box) return;
+    const back = box._opener;
+    box.remove();
+    document.documentElement.classList.remove('sf-vmodal-open');
+    if (back && back.focus) back.focus();
+  };
+  const openPlayer = card => {
+    closePlayer();
+    const vid = card.dataset.vid, key = card.dataset.inkey;
+    const title = (card.querySelector('h3') || {}).textContent || '네이버 영상';
+    const box = el('div', 'sf-vmodal'); box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', title);
+    box._opener = card;
+    const panel = el('div', 'sf-vmodal__panel');
+    const bar = el('div', 'sf-vmodal__bar');
+    const t = el('strong', null, title);
+    const close = el('button', 'sf-vmodal__close', '닫기 ✕'); close.type = 'button'; close.addEventListener('click', closePlayer);
+    bar.append(t, close);
+    const stage = el('div', 'sf-vmodal__stage');
+    const frame = document.createElement('iframe');
+    frame.src = 'https://serviceapi.nmv.naver.com/flash/convertIframeTag.nhn?vid=' + encodeURIComponent(vid) + '&inKey=' + encodeURIComponent(key) + '&autoPlay=true&width=1280&height=720';
+    frame.allow = 'autoplay; fullscreen; encrypted-media; picture-in-picture';
+    frame.allowFullscreen = true; frame.title = title; frame.referrerPolicy = 'strict-origin-when-cross-origin';
+    stage.append(frame);
+    const foot = el('div', 'sf-vmodal__foot');
+    const out = el('a', null, '재생이 안 되면 네이버에서 열기 ↗'); out.href = card.href; out.target = '_blank'; out.rel = 'noopener';
+    foot.append(out);
+    panel.append(bar, stage, foot); box.append(panel);
+    box.addEventListener('click', e => { if (e.target === box) closePlayer(); });
+    document.body.append(box);
+    document.documentElement.classList.add('sf-vmodal-open');
+    close.focus();
+  };
+  document.addEventListener('click', e => {
+    const card = e.target.closest && e.target.closest('a[data-vid][data-inkey]');
+    if (!card || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    openPlayer(card);
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePlayer(); });
+
   /* ── Supabase 공통 ── */
   const SB = CFG.supabase || {};
   // Reads can temporarily time out at PostgREST. Retry only safe GET requests.

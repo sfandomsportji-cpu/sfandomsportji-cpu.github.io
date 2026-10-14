@@ -1374,3 +1374,20 @@ section[aria-labelledby="newsTitle"] .news-lead:focus-visible,section[aria-label
  section[aria-labelledby="newsTitle"] .nl .talk{margin-left:auto}
  section[aria-labelledby="newsTitle"] .nl .t{flex-basis:calc(100% - 110px)}
 }
+
+/* 네이버 영상 카드: ▶ 표시와 사이트 안 재생 창 */
+.mag .thumb,.nm-card__media{position:relative}
+.play-badge{position:absolute;left:12px;bottom:12px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(10,10,14,.78);color:#fff;font-size:15px;padding-left:3px;box-shadow:0 0 0 2px rgba(255,255,255,.85);pointer-events:none;transition:transform .15s,background .15s}
+a[data-vid]:hover .play-badge,a[data-vid]:focus-visible .play-badge{transform:scale(1.1);background:#c8102e}
+.sf-vmodal{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:20px;background:rgba(5,5,8,.88)}
+.sf-vmodal__panel{width:min(1100px,100%);background:#101117;border:1px solid #343540;border-radius:14px;overflow:hidden}
+.sf-vmodal__bar{display:flex;align-items:center;gap:14px;padding:12px 16px}
+.sf-vmodal__bar strong{flex:1;min-width:0;font-size:14px;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sf-vmodal__close{flex:none;border:1px solid #4a4c5a;background:#1b1c25;color:#fff;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer}
+.sf-vmodal__close:hover{border-color:#ff8397}
+.sf-vmodal__stage{position:relative;aspect-ratio:16/9;background:#000}
+.sf-vmodal__stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.sf-vmodal__foot{padding:10px 16px 14px;font-size:12.5px}
+.sf-vmodal__foot a{color:#c9cad7;border-bottom:1px solid #5b5d6c}
+html.sf-vmodal-open{overflow:hidden}
+@media(max-width:560px){.sf-vmodal{padding:0;align-items:center}.sf-vmodal__panel{border-radius:0;border-left:0;border-right:0}.play-badge{width:36px;height:36px;left:10px;bottom:10px}}
