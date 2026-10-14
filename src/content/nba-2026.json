@@ -213,7 +213,7 @@
       "home": "WAS",
       "kst": "10.11 (일) 08:00",
       "tv": "NBA",
-      "tag": "종료 · 연장 · DET 108–114 WAS",
+      "tag": "종료 · DET 108–114 WAS",
       "result": "DET 108–114 WAS",
       "away_score": 108,
       "home_score": 114
@@ -522,6 +522,90 @@
       "away": "OKC",
       "home": "HOU",
       "kst": "10.16 (금) 09:30",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "MIA",
+      "home": "ORL",
+      "kst": "10.17 (토) 08:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "BOS",
+      "home": "PHI",
+      "kst": "10.17 (토) 08:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "TOR",
+      "home": "DET",
+      "kst": "10.17 (토) 08:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "MIL",
+      "home": "IND",
+      "kst": "10.17 (토) 08:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "ATL",
+      "home": "DAL",
+      "kst": "10.17 (토) 09:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "SAC",
+      "home": "SAS",
+      "kst": "10.17 (토) 09:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "CHA",
+      "home": "MEM",
+      "kst": "10.17 (토) 09:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "WAS",
+      "home": "NOP",
+      "kst": "10.17 (토) 09:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "MIN",
+      "home": "CHI",
+      "kst": "10.17 (토) 09:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "POR",
+      "home": "GSW",
+      "kst": "10.17 (토) 11:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "UTA",
+      "home": "PHX",
+      "kst": "10.17 (토) 11:00",
+      "tv": "KST"
+    },
+    {
+      "day": "PRESEASON",
+      "away": "DEN",
+      "home": "LAL",
+      "kst": "10.17 (토) 11:30",
       "tv": "KST"
     }
   ]
