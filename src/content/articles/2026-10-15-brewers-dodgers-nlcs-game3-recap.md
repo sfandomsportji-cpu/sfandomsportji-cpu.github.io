@@ -7,9 +7,10 @@ subtitle: "7회 바워스·미첼 연속 홈런, NLCS 3연승으로 파이널 �
 kicker: "MLB · NLCS GAME 3 RECAP"
 meta: "2026.10.15 09:00 KST · BREWERS 6–2 DODGERS"
 league: "MLB"
-image: "/assets/teams/mlb/mil.svg"
-image_alt: "밀워키 브루어스 팀 로고. 2026년 NLCS 3차전 경기 사진이 아님"
-credit: "팀 로고 · 경기 현장 사진 아님"
+image: "/assets/photos/20261015-mlb-brewers-celebrate.jpg"
+photo_fallback: "/assets/teams/mlb/mil.svg"
+image_alt: "밀워키 브루어스 선수들이 더그아웃 앞에서 기뻐하는 자료사진. 2026년 NLCS 3차전 사진으로 확인된 것은 아님"
+credit: "PHOTO · 사용자 제공 밀워키–다저스 자료사진 · 3차전 경기 사진으로 확인되지 않음"
 edition: "2026-10-15"
 slug: "brewers-dodgers-nlcs-game3-recap"
 teams: ["MIL","LAD"]
@@ -43,5 +44,7 @@ MLB.com은 이번 포스트시즌에서 밀워키가 거둔 다섯 번째 역전
 ::: angle SFANDOM 체크
 4차전은 한국시간 10월 16일 오전 9시 다저스타디움에서 열린다. 다저스는 타일러 글래스나우를 예고했다. 밀워키 선발은 확인된 자료가 없어 확정 전까지 적지 않는다.
 :::
+
+사진 안내: 대표 이미지는 사용자 제공 자료사진으로 NLCS 3차전 경기 사진으로 확인된 것이 아니다. [밀워키 투수 자료사진](/assets/photos/20261015-mlb-brewers-pitcher.jpg) · [다저스 선수들 자료사진](/assets/photos/20261015-mlb-dodgers-trio.jpg)도 함께 볼 수 있다.
 
 공식 자료: [MLB.com NLCS 3차전 기사](https://www.mlb.com/dodgers/news/brewers-win-nlcs-game-3-2026) · [ABC7 경기 기사](https://abc7.com/post/dodgers-brink-elimination-loss-brewers-nlcs-game-3/19939491/). 승리·패전·세이브 투수의 공식 기록은 확인되는 대로 반영한다.
