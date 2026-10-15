@@ -462,55 +462,78 @@
       "result": "POR 110–98 SAC"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "BKN",
       "home": "MIA",
       "kst": "10.15 (목) 08:30",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · BKN 128–144 MIA",
+      "away_score": 128,
+      "home_score": 144,
+      "result": "BKN 128–144 MIA"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "CHA",
       "home": "BOS",
       "kst": "10.15 (목) 08:30",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · CHA 93–114 BOS",
+      "away_score": 93,
+      "home_score": 114,
+      "result": "CHA 93–114 BOS"
     },
     {
-      "day": "PRESEASON",
+      "day": "FINAL",
       "away": "PHX",
       "home": "SAS",
       "kst": "10.15 (목) 09:00",
-      "tv": "KST"
+      "tv": "KST",
+      "away_score": 103,
+      "home_score": 123,
+      "result": "PHX 103–123 SAS",
+      "tag": "종료 · PHX 103–123 SAS"
     },
     {
-      "day": "PRESEASON",
+      "day": "FINAL",
       "away": "NOP",
       "home": "DAL",
       "kst": "10.15 (목) 09:00",
-      "tv": "KST"
+      "tv": "KST",
+      "away_score": 101,
+      "home_score": 97,
+      "result": "NOP 101–97 DAL",
+      "tag": "종료 · NOP 101–97 DAL"
     },
     {
-      "day": "PRESEASON",
+      "day": "FINAL",
       "away": "CHI",
       "home": "MIL",
       "kst": "10.15 (목) 09:00",
-      "tv": "KST"
+      "tv": "KST",
+      "away_score": 125,
+      "home_score": 104,
+      "result": "CHI 125–104 MIL",
+      "tag": "종료 · CHI 125–104 MIL"
     },
     {
-      "day": "PRESEASON",
+      "day": "FINAL",
       "away": "DET",
       "home": "MIN",
       "kst": "10.15 (목) 09:00",
-      "tv": "KST"
+      "tv": "KST",
+      "away_score": 128,
+      "home_score": 106,
+      "result": "DET 128–106 MIN",
+      "tag": "종료 · DET 128–106 MIN"
     },
     {
-      "day": "PRESEASON",
+      "day": "LIVE",
       "away": "DEN",
       "home": "LAC",
       "kst": "10.15 (목) 11:30",
-      "tv": "KST"
+      "tv": "KST",
+      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
     },
     {
       "day": "PRESEASON",
