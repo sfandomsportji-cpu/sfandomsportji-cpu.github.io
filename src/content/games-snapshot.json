@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-16T07:19+09:00",
+  "updated_at": "2026-10-16T08:04+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-16T07:19+09:00",
+      "checked_at": "2026-10-16T08:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -75,7 +75,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-16T07:19+09:00",
+      "checked_at": "2026-10-16T08:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -264,7 +264,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-16T07:19+09:00",
+      "checked_at": "2026-10-16T08:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -293,11 +293,102 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nfl/game/_/gameId/401872996/texans-jaguars"
+        },
+        {
+          "id": "NFL-401872997",
+          "league": "NFL",
+          "start_kst": "2026-10-19T02:00+09:00",
+          "away": "BAL",
+          "home": "CLE",
+          "away_name": "Baltimore Ravens",
+          "home_name": "Cleveland Browns",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401872997/ravens-browns"
+        },
+        {
+          "id": "NFL-401872998",
+          "league": "NFL",
+          "start_kst": "2026-10-19T02:00+09:00",
+          "away": "CAR",
+          "home": "PHI",
+          "away_name": "Carolina Panthers",
+          "home_name": "Philadelphia Eagles",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401872998/panthers-eagles"
+        },
+        {
+          "id": "NFL-401872999",
+          "league": "NFL",
+          "start_kst": "2026-10-19T02:00+09:00",
+          "away": "CHI",
+          "home": "ATL",
+          "away_name": "Chicago Bears",
+          "home_name": "Atlanta Falcons",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401872999/bears-falcons"
+        },
+        {
+          "id": "NFL-401873000",
+          "league": "NFL",
+          "start_kst": "2026-10-19T02:00+09:00",
+          "away": "NO",
+          "home": "NYG",
+          "away_name": "New Orleans Saints",
+          "home_name": "New York Giants",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873000/saints-giants"
+        },
+        {
+          "id": "NFL-401873001",
+          "league": "NFL",
+          "start_kst": "2026-10-19T02:00+09:00",
+          "away": "NYJ",
+          "home": "NE",
+          "away_name": "New York Jets",
+          "home_name": "New England Patriots",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873001/jets-patriots"
+        },
+        {
+          "id": "NFL-401873002",
+          "league": "NFL",
+          "start_kst": "2026-10-19T02:00+09:00",
+          "away": "PIT",
+          "home": "TB",
+          "away_name": "Pittsburgh Steelers",
+          "home_name": "Tampa Bay Buccaneers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873002/steelers-buccaneers"
+        },
+        {
+          "id": "NFL-401873003",
+          "league": "NFL",
+          "start_kst": "2026-10-19T02:00+09:00",
+          "away": "TEN",
+          "home": "IND",
+          "away_name": "Tennessee Titans",
+          "home_name": "Indianapolis Colts",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873003/titans-colts"
         }
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-16T07:19+09:00",
+      "checked_at": "2026-10-16T08:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
