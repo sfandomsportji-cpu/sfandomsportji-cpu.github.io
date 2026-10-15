@@ -213,6 +213,11 @@ wf = ALL['.github/workflows/site-build.yml']
 conf += [s for s in re.findall(r'python3 (src/[\w/.-]+)', wf) if not (R / s).exists()]
 check('40 어디에서도 쓰이지 않는 자산 없음 · 도메인 · 광고 · 자동 작업 설정 정상', orphans + conf)
 
+# 홈 화면에서 같은 사진이 두 번 보이지 않게 한다 (로고·브랜드 이미지는 제외)
+home_imgs = re.findall(r'<img\b[^>]*\bsrc="([^"]+)"', H.get('index.html', ''))
+home_imgs = [i for i in home_imgs if '/assets/teams/' not in i and '/assets/brand/' not in i and 'tlogo' not in i]
+check('41 홈 화면에 같은 사진이 두 번 쓰이지 않음', sorted({i for i in home_imgs if home_imgs.count(i) > 1}))
+
 fails = [r for r in res if not r[0]]
 for ok, name, note in res:
     print(('PASS ' if ok else 'FAIL ') + name + ('' if ok else '\n      → ' + note))
