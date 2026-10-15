@@ -7,19 +7,6 @@
       "failed_dates": [],
       "games": [
         {
-          "id": "NPB-scores-2026-1015-t-db-02",
-          "league": "NPB",
-          "start_kst": "2026-10-15T18:00+09:00",
-          "away": "HAN",
-          "home": "DeNA",
-          "away_name": "Hanshin Tigers",
-          "home_name": "Yokohama DeNA BayStars",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://npb.jp/scores/2026/1015/t-db-02/"
-        },
-        {
           "id": "NPB-scores-2026-1015-h-f-02",
           "league": "NPB",
           "start_kst": "2026-10-15T18:00+09:00",
@@ -31,6 +18,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://npb.jp/scores/2026/1015/h-f-02/"
+        },
+        {
+          "id": "NPB-scores-2026-1015-t-db-02",
+          "league": "NPB",
+          "start_kst": "2026-10-15T18:00+09:00",
+          "away": "HAN",
+          "home": "DeNA",
+          "away_name": "Hanshin Tigers",
+          "home_name": "Yokohama DeNA BayStars",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://npb.jp/scores/2026/1015/t-db-02/"
         }
       ]
     }
