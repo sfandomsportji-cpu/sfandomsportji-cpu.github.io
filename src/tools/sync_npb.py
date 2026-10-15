@@ -2,6 +2,7 @@
 """NPB 공식 사이트(npb.jp) 첫 화면의 오늘 경기 속보 줄에서 일정·점수를 받아 npb-snapshot.json 에 보관합니다.
 
 - robots.txt 가 허용할 때만 받습니다. 실패하면 이전 값을 그대로 둡니다.
+- 왼쪽(첫 번째) 팀이 홈입니다.
 - 점수가 숫자이고 '試合終了'가 확인된 경기만 final 로 적습니다. 그 밖은 scheduled/live 입니다.
 - KBO 는 공식 사이트가 자동 수집을 금지(robots.txt)하고 있어 대상이 아닙니다.
 """
@@ -62,15 +63,15 @@ def parse(page: str, today: dt.date) -> list[dict]:
         nums = re.fullmatch(r"(\d+)\s*[-–－]\s*(\d+)", score_t)
         time_m = re.search(r"(\d{1,2}):(\d{2})", state_t)
         status, a, h = "scheduled", None, None
-        if nums:
-            a, h = int(nums[1]), int(nums[2])
+        if nums:  # npb.jp 는 홈 팀을 왼쪽에 적는다: 왼쪽 점수 = 홈
+            h, a = int(nums[1]), int(nums[2])
             status = "final" if "終了" in state_t else "live"
         if status != "final" and not time_m:
             if status == "scheduled":
                 continue
         hour, minute = (int(time_m[1]), int(time_m[2])) if time_m else (0, 0)
         start_dt = dt.datetime.combine(day, dt.time(hour, minute), tzinfo=KST)
-        away, home = TEAMS[names[0]], TEAMS[names[1]]
+        home, away = TEAMS[names[0]], TEAMS[names[1]]
         if "中止" in state_t or "ノーゲーム" in state_t:
             status = "cancelled"
         games.append({
@@ -97,6 +98,10 @@ def main() -> None:
         fresh, error = [], str(exc)[:80]
     merged = {g["id"]: g for g in prev}
     for g in fresh:
+        old_g = merged.get(g["id"])
+        # 경기 중·종료 화면에는 시작 시각이 없으니, 이전에 받은 시작 시각을 유지한다
+        if old_g and g["status"] != "scheduled" and old_g.get("start_kst", "")[11:16] != "00:00":
+            g["start_kst"] = old_g["start_kst"]
         merged[g["id"]] = g
     cutoff = (now - dt.timedelta(days=KEEP_DAYS)).isoformat(timespec="minutes")
     games = sorted((g for g in merged.values() if g["start_kst"] >= cutoff), key=lambda g: (g["start_kst"], g["id"]))

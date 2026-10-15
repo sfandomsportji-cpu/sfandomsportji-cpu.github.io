@@ -1,9 +1,0 @@
-probe 2026-10-15 12:17 UTC
-https://www.koreabaseball.com: robots.txt 읽기 실패 UnicodeDecodeError('utf-8', b'# \xba\xbb \xbb\xe7\xc0\xcc\xc6\xae\xc0\xc7 \xb5\xa5\xc0\xcc\xc5\xcd\xb8\xa6 \xbb\xe7\xc0\xfc \xbd\xc2\xc0\xce \xbe\xf8\xc0\xcc \xc0\xda\xb5\xbf \xbc\xf6\xc1\xfd\xa1\xa4\xc5\xa9\xb7\xd1\xb8\xb5\xa1\xa4\xba\xb9\xc1\xa6\xc7\xcf\xb4\xc2 \xc7\xe0\xc0\xa7\xb8\xa6 \xb1\xdd\xc1\xf6\xc7\xd5\xb4\xcf\xb4\xd9.\r\n\r\nUser-agent: Googlebot\r\nDisallow: /ws/\r\n\r\nUser-agent: Yeti\r\nDisallow: /ws/\r\n\r\nUser-agent: Daumoa\r\nDisallow: /ws/\r\n\r\nUser-agent: Bingbot\r\nDisallow: /ws/\r\n\r\nUser-agent: *\r\nDisallow: /', 2, 3, 'invalid start byte') → 받지 않음
-kbo-schedule: robots.txt 불허 또는 확인 불가 → 받지 않음 (https://www.koreabaseball.com/Schedule/Schedule.aspx)
-kbo-scoreboard: robots.txt 불허 또는 확인 불가 → 받지 않음 (https://www.koreabaseball.com/Schedule/ScoreBoard.aspx)
-kbo-postseason: robots.txt 불허 또는 확인 불가 → 받지 않음 (https://www.koreabaseball.com/Schedule/Schedule.aspx?seriesId=3,4,5,7)
-npb-top: HTTP 200 112680 bytes
-npb-games: HTTP 200 59163 bytes
-npb-cs: HTTP 200 62489 bytes
-npb-scores-today: HTTP 200 334 bytes
