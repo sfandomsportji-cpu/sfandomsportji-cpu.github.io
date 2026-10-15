@@ -1361,3 +1361,4 @@ section[aria-labelledby="newsTitle"] .nl:hover{background:linear-gradient(130deg
  section[aria-labelledby="newsTitle"] .nl .tag{font-size:13px}
  section[aria-labelledby="newsTitle"] .sec-title .kr{font-size:17px}
 }
+section[aria-labelledby="taTitle"] .sec-title .kr,#today-analysis .sec-title .kr{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:700;letter-spacing:-.01em;color:#cbd1df}
