@@ -27,6 +27,13 @@ BASE = SITE['url'].rstrip('/')
 TODAY = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
 VER = TODAY.replace('-', '')
 
+
+def av(rel: str) -> str:
+    """자산 파일 내용으로 만든 짧은 버전표. 파일이 바뀔 때만 주소가 바뀌어 브라우저 캐시가 즉시 갱신된다."""
+    import hashlib
+    f = ROOT / rel.lstrip('/')
+    return hashlib.md5(f.read_bytes()).hexdigest()[:8] if f.is_file() else VER
+
 # 빌더가 만드는 최상위 경로 (다시 빌드할 때 지우고 새로 씀)
 GENERATED_DIRS = ['news', 'special', 'mlb', 'kbo', 'nba', 'soccer', 'analysis', 'community', 'magazine',
                   'about', 'contact', 'sitemap', 'feed', 'weekly', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search', 'games']
@@ -727,7 +734,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v5" defer></script>'
                  f'<script src="/assets/js/community-admin.js?v={VER}-v1" defer></script>' if path == '/community/' else '')
     news_comments_js = (f'<script src="/assets/js/news-comments.js?v={VER}-v1" defer></script>' if re.fullmatch(r'/news/\d{4}/\d{2}/[a-z0-9-]+/', path) else '')
-    vote_js = (f'<script src="/assets/js/game-vote.js?v={VER}-v1" defer></script><script src="/assets/js/my-team.js?v={VER}-v1" defer></script>' if path == '/' else '')
+    vote_js = (f'<script src="/assets/js/game-vote.js?v={av("/assets/js/game-vote.js")}" defer></script><script src="/assets/js/my-team.js?v={av("/assets/js/my-team.js")}" defer></script>' if path == '/' else '')
     return f'''<!doctype html>
 <html lang="ko">
 <head>
@@ -758,7 +765,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css?v={VER}-desktop-wide-1680-v10-news-editorial-layout">
+<link rel="stylesheet" href="/assets/css/site.css?v={av("/assets/css/site.css")}">
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
@@ -775,7 +782,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {body}
 </main>
 {footer()}
-<script src="/assets/js/site.js?v={VER}-sound3-board1-scorefresh2" defer></script>
+<script src="/assets/js/site.js?v={av("/assets/js/site.js")}" defer></script>
 {thread_js}{news_comments_js}{vote_js}
 </body>
 </html>
