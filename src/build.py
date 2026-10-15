@@ -589,7 +589,6 @@ def today_analysis() -> str:
     if not pool:
         raise SystemExit('홈 분석 줄에 쓸 분석 글(away/home 포함)이 없음')
     picks = [a for a in pool if a.date == pool[0].date][:5]  # 가장 최신 날짜의 분석만 (옛 글로 칸을 채우지 않음)
-    newer = picks
     display_date = pool[0].date
     section_label = '최신 분석'
     all_href = '/analysis/'
@@ -1552,7 +1551,7 @@ def build_static():
     write('/contact/', layout('문의', page_head('CONTACT<span class="accent">.</span> <span class="kr">문의</span>', 'SFANDOM에 전하고 싶은 이야기가 있다면 쪽지로 남겨 주세요.', [('문의', '')]) + contact,
           path='/contact/', description='SFANDOM 문의 양식 · 오류 제보 · 권리침해 신고'))
 
-    cookies = f'''<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div class="prose">
+    cookies = '''<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div class="prose">
 <h2>광고 게재</h2>
 <p>SFANDOM은 현재 Google AdSense 심사 중이며 광고를 게재하지 않습니다. 광고 배치 및 송출 기능은 비활성화되어 있습니다. 승인 이후 광고를 운영할 경우 별도로 안내합니다.</p>
 <h2>Google과 제3자 쿠키</h2>
