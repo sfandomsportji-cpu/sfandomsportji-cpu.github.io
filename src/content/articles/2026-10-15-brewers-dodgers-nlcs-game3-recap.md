@@ -7,9 +7,10 @@ subtitle: "7회 바워스·미첼 연속 홈런, NLCS 3연승으로 파이널 �
 kicker: "MLB · NLCS GAME 3 RECAP"
 meta: "2026.10.15 09:00 KST · BREWERS 6–2 DODGERS"
 league: "MLB"
-image: "/assets/teams/mlb/mil.svg"
-image_alt: "밀워키 브루어스 팀 로고. 2026년 NLCS 3차전 경기 사진이 아님"
-credit: "팀 로고 · 경기 현장 사진 아님"
+image: "/assets/photos/20261015-nlcs-game3-bauers.png"
+photo_fallback: "/assets/teams/mlb/mil.svg"
+image_alt: "밀워키 브루어스 제이크 바워스 공식 선수 프로필 사진. 2026년 NLCS 3차전 경기 현장 사진이 아님"
+credit: "PHOTO · MLB 선수 공식 프로필 · 경기 현장 사진 아님"
 edition: "2026-10-15"
 slug: "brewers-dodgers-nlcs-game3-recap"
 teams: ["MIL","LAD"]
