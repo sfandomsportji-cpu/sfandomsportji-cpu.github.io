@@ -473,9 +473,7 @@ def today_analysis() -> str:
     newer = sorted([a for a in ARTICLES if a.kind == 'analysis' and a.date > ed_latest],
                    key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
     if newer:
-        latest = newer[:5]  # 승인된 지난 에디션보다 새 분석이 먼저 보이게 한다
-        latest_urls = {a.url for a in latest}
-        picks = (latest + [a for a in picks if a.url not in latest_urls])[:5]
+        picks = newer[:5]  # 새 분석이 있으면 새 분석만 보여 준다 (옛 글로 칸을 채우지 않음)
     display_date = newer[0].date if newer else ed_latest
     section_label = '최신 분석' if newer else '선정 콘텐츠'
     all_href = '/analysis/' if newer else f'/news/morning/{ed_latest}/'
