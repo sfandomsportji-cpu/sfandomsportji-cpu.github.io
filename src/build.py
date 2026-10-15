@@ -124,6 +124,30 @@ PS = json.loads((CONTENT / 'postseason-2026.json').read_text(encoding='utf-8'))
 NBA = json.loads((CONTENT / 'nba-2026.json').read_text(encoding='utf-8'))
 RECORDS = json.loads((CONTENT / 'analysis-records.json').read_text(encoding='utf-8'))
 BY_KEY = {a.file[:-3]: a for a in ARTICLES}
+
+
+def auto_editions() -> None:
+    """손으로 쓴 에디션이 없는 날짜는, 그날 `edition` 값을 가진 글을 묶어 에디션을 자동으로 만든다(분석 먼저, 우선순위 순)."""
+    days = sorted({getattr(a, 'edition', '') for a in ARTICLES if getattr(a, 'edition', '')})
+    for d in days:
+        if d in EDITIONS or d < max(EDITIONS):
+            continue
+        group = sorted([a for a in ARTICLES if getattr(a, 'edition', '') == d],
+                       key=lambda a: (a.kind != 'analysis', -getattr(a, 'priority', 0), a.file))
+        games = [a for a in group if a.kind == 'analysis' and getattr(a, 'away', '')]
+        if not games:
+            continue
+        leagues = ' · '.join(dict.fromkeys(a.league for a in group))
+        names = ', '.join(f"{a.away}–{a.home}" for a in games[:5])
+        m, dd = int(d[5:7]), int(d[8:10])
+        EDITIONS[d] = {
+            'title': f'{m}월 {dd}일, 오늘의 분석 {len(games)}경기',
+            'subtitle': f'SFANDOM × KAIRO · {leagues}',
+            'intro': f'{m}월 {dd}일 에디션. {names} 경기의 분석과 어제 경기 결과를 묶었습니다. 모든 시간은 한국시간(KST)입니다.',
+            'items': [a.file[:-3] for a in group], 'auto': True}
+
+
+auto_editions()
 EDITORIAL_PATHS = json.loads((CONTENT / 'editorial-paths.json').read_text(encoding='utf-8'))
 
 
@@ -542,7 +566,7 @@ def analysis_row(a: Article, opened: bool = False) -> str:
         mark = {'hit': ' ✔', 'miss': ' ✘'}.get(res['verdict'], '')
         label = '종료' if res['status'] == 'final' else 'LIVE'
         state = (f'<em class="an-state" data-s="{res["status"]}" data-v="{res["verdict"]}">{label} {res["away"]}–{res["home"]}{mark}</em>')
-    return (f'<details class="an-item{" is-final" if res and res["status"] == "final" else ""}" data-teams="{esc(away)}|{esc(home)}"{" open" if opened else ""}><summary class="an-row">'
+    return (f'<details class="an-item" data-final="{1 if res and res["status"] == "final" else 0}" data-teams="{esc(away)}|{esc(home)}"{" open" if opened else ""}><summary class="an-row">'
             f'<span class="an-time"><b>{esc(clock or "-")}</b><small>{esc(day)} {esc(a.league)}</small>{state}</span>'
             f'<span class="an-match">{an_thumb(a)}<span class="an-names"><small>{esc(tag)}</small>'
             f'<span class="an-teams">{esc(away)} <i>VS</i> {esc(home)}</span></span></span>'
@@ -553,21 +577,16 @@ def today_analysis() -> str:
     """Keep the approved morning edition and surface newer analysis on home."""
     global TODAY_PICKS
     ed_latest = max(EDITIONS)
-    keys = EDITIONS[ed_latest].get('items', [])
-    picks = [BY_KEY[k] for k in keys if k in BY_KEY]
-    if not picks:
-        picks = sorted([a for a in ARTICLES if a.kind == 'analysis'],
-                       key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)[:3]
-
-    # A published analysis after the last edition must not disappear from the homepage.
-    newer = sorted([a for a in ARTICLES if a.kind == 'analysis' and a.date > ed_latest],
-                   key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
-    if newer:
-        picks = [a for a in newer if a.date == newer[0].date][:5]  # 가장 최신 날짜의 분석만 보여 준다 (옛 글로 칸을 채우지 않음)
-    display_date = newer[0].date if newer else ed_latest
-    section_label = '최신 분석' if newer else '선정 콘텐츠'
-    all_href = '/analysis/' if newer else f'/news/morning/{ed_latest}/'
-    all_label = '최신 분석 전체 →' if newer else '오늘 에디션 전체 →'
+    pool = sorted([a for a in ARTICLES if a.kind == 'analysis' and getattr(a, 'away', '') and getattr(a, 'home', '')],
+                  key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
+    if not pool:
+        raise SystemExit('홈 분석 줄에 쓸 분석 글(away/home 포함)이 없음')
+    picks = [a for a in pool if a.date == pool[0].date][:5]  # 가장 최신 날짜의 분석만 (옛 글로 칸을 채우지 않음)
+    newer = picks
+    display_date = pool[0].date
+    section_label = '최신 분석'
+    all_href = '/analysis/'
+    all_label = '최신 분석 전체 →'
     TODAY_PICKS = {a.url for a in picks if a.kind == 'analysis'}
     feature_count = len(picks)
     hit, total = hit_rate()
