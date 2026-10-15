@@ -2,34 +2,34 @@
   "provider": "npb.jp 첫 화면 속보",
   "leagues": {
     "NPB": {
-      "checked_at": "2026-10-15T17:35+09:00",
+      "checked_at": "2026-10-15T18:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
         {
           "id": "NPB-scores-2026-1015-h-f-02",
           "league": "NPB",
-          "start_kst": "2026-10-15T18:00+09:00",
+          "start_kst": "2026-10-15T00:00+09:00",
           "away": "SB",
           "home": "NIP",
           "away_name": "Fukuoka SoftBank Hawks",
           "home_name": "Hokkaido Nippon-Ham Fighters",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
+          "status": "live",
+          "away_score": 0,
+          "home_score": 2,
           "source_url": "https://npb.jp/scores/2026/1015/h-f-02/"
         },
         {
           "id": "NPB-scores-2026-1015-t-db-02",
           "league": "NPB",
-          "start_kst": "2026-10-15T18:00+09:00",
+          "start_kst": "2026-10-15T00:00+09:00",
           "away": "HAN",
           "home": "DeNA",
           "away_name": "Hanshin Tigers",
           "home_name": "Yokohama DeNA BayStars",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
+          "status": "live",
+          "away_score": 0,
+          "home_score": 0,
           "source_url": "https://npb.jp/scores/2026/1015/t-db-02/"
         }
       ]
