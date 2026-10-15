@@ -6,9 +6,9 @@ subtitle: "야니스의 마이애미 첫 경기, 상대도 새 얼굴을 앞세�
 kicker: "DAY 2"
 meta: "2026.10.22 08:30 KST MINNESOTA TIMBERWOLVES @ MIAMI HEAT"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/203507.png"
-image_alt: "야니스 아데토쿤보 프로필 사진"
-credit: "PREGAME FRAME · 2026.10.05 CHECK · 출전 명단은 경기 당일 확인 · PHOTO · NBA"
+image: "/assets/teams/nba/mia.svg"
+image_alt: "마이애미 히트 팀 로고"
+credit: "PREGAME FRAME · 2026.10.05 CHECK · 출전 명단은 경기 당일 확인"
 edition: ""
 slug: "timberwolves-at-heat"
 sources: [{"label": "NBA 2026-27 정규시즌 일정 발표"}, {"label": "2026 오프시즌 주요 이적 정리 (YAHOO SPORTS)"}]

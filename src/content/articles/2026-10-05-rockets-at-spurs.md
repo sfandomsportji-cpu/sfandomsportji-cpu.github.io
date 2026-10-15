@@ -6,9 +6,9 @@ subtitle: "오스틴에서 열리는 홈 경기, 준우승팀의 두 번째 시�
 kicker: "DAY 4"
 meta: "2026.10.24 10:30 KST HOUSTON ROCKETS @ SAN ANTONIO SPURS · AUSTIN"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1641705.png"
-image_alt: "빅터 웸반야마 프로필 사진"
-credit: "PREGAME FRAME · 2026.10.05 CHECK · 출전 명단은 경기 당일 확인 · PHOTO · NBA"
+image: "/assets/teams/nba/sas.svg"
+image_alt: "샌안토니오 스퍼스 팀 로고"
+credit: "PREGAME FRAME · 2026.10.05 CHECK · 출전 명단은 경기 당일 확인"
 edition: ""
 slug: "rockets-at-spurs"
 sources: [{"label": "NBA 2026-27 정규시즌 일정 발표"}, {"label": "2026 NBA 플레이오프 결과"}, {"label": "2026 자유계약 정리 (CBS SPORTS)"}]

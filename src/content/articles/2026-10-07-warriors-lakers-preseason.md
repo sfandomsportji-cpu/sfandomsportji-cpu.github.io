@@ -7,9 +7,9 @@ subtitle: "프리시즌 두 번째 경기에서 드러난 속도와 역할 분�
 kicker: "DAILY NEWS"
 meta: "2026.10.07 KST · LOS ANGELES LAKERS 98–124 GOLDEN STATE WARRIORS"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/201939.png"
-image_alt: "골든스테이트 워리어스 스테픈 커리 공식 프로필 사진"
-credit: "PHOTO · NBA"
+image: "/assets/teams/nba/gsw.svg"
+image_alt: "골든스테이트 워리어스 팀 로고"
+credit: "TEAM LOGO"
 edition: "2026-10-07"
 slug: "warriors-lakers-preseason-2026"
 sources: [{"label":"NBA Game Recap · Warriors 124, Lakers 98"},{"label":"NBA Box Score · LAL at GSW · 2026-10-06"},{"label":"Golden State Warriors 2026 Preseason Schedule"}]

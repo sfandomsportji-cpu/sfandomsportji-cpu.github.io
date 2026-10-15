@@ -6,9 +6,9 @@ subtitle: "밀워키를 떠난 MVP 2회 수상자, 히트 데뷔전은 10월 22�
 kicker: "OFFSEASON"
 meta: "MILWAUKEE BUCKS → MIAMI HEAT · TRADE"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/203507.png"
-image_alt: "야니스 아데토쿤보 프로필 사진"
-credit: "2026.10.04 확인 · 시간은 한국시간(KST) · PHOTO · NBA"
+image: "/assets/teams/nba/mia.svg"
+image_alt: "마이애미 히트 팀 로고"
+credit: "2026.10.04 확인 · 시간은 한국시간(KST)"
 edition: ""
 slug: "giannis-antetokounmpo-miami-heat"
 sources: [{"label": "2026 오프시즌 주요 이적 정리 (YAHOO SPORTS)"}, {"label": "NBA 2026-27 정규시즌 일정 발표"}]

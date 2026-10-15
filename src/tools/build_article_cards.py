@@ -183,7 +183,8 @@ def main():
     keep, made = set(), 0
     for p in sorted(ARTICLES.glob('*.md')):
         fm = front_matter(p)
-        if str(fm.get('image', '')).strip() and not is_match_card(fm):
+        img = str(fm.get('image', '')).strip()
+        if img and not img.lower().endswith('.svg') and not is_match_card(fm):  # 로고(SVG) 글도 공유용 PNG 카드가 필요
             continue
         name = card_name(p.stem, fm)
         keep.add(name)

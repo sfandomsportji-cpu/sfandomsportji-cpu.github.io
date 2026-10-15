@@ -6,9 +6,9 @@ subtitle: "야니스부터 카와이까지, 2026 오프시즌 주요 이적 정�
 kicker: "OFFSEASON"
 meta: "NBA 2026 · TRADES & FREE AGENCY"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/202695.png"
-image_alt: "카와이 레너드 프로필 사진"
-credit: "2026.10.04 확인 · 날짜는 미국 현지 기준 · PHOTO · NBA"
+image: "/assets/brand/sfandom-mark.svg"
+image_alt: "SFANDOM 로고"
+credit: "2026.10.04 확인 · 날짜는 미국 현지 기준"
 edition: ""
 slug: "nba-2026-offseason-moves"
 sources: [{"label": "2026 오프시즌 주요 이적 정리 (YAHOO SPORTS)"}, {"label": "2026 자유계약 정리 (CBS SPORTS)"}, {"label": "2026-27 시즌 프리뷰 (FORBES)"}]

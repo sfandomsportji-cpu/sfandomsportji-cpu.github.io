@@ -7,10 +7,9 @@ subtitle: "ALDS 0–2 열세 뒤 3연승, 라미레스 결승포와 21탈삼진 
 kicker: "MLB · ALDS GAME 5 RECAP"
 meta: "2026.10.11 09:00 KST · WHITE SOX 0–2 GUARDIANS"
 league: "MLB"
-image: "https://img.mlbstatic.com/mlb-photos/image/upload/w_900,q_auto:good/v1/people/608070/headshot/67/current"
-photo_fallback: "/assets/teams/mlb/cle.svg"
-image_alt: "클리블랜드 호세 라미레스 공식 선수 프로필 자료사진, 2026년 ALDS 5차전 실황 사진 아님"
-credit: "PHOTO · MLB 선수 공식 프로필 · 경기 현장 사진 아님"
+image: "/assets/teams/mlb/cle.svg"
+image_alt: "클리블랜드 가디언스 팀 로고"
+credit: "TEAM LOGO"
 edition: "2026-10-11"
 slug: "guardians-white-sox-alds-game5-recap"
 sources: [{"label":"MLB 공식 ALDS 5차전 종료 기록","url":"https://www.mlb.com/gameday/white-sox-vs-guardians/2026/10/10/849831/final/video"},{"label":"MLB 화이트삭스 시리즈 종료 기사","url":"https://www.mlb.com/news/white-sox-lose-2026-alds-to-guardians"}]

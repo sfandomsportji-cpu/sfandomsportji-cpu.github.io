@@ -49,6 +49,8 @@ mail = [(p, m.group(0)) for p, t in ALL.items() for m in re.finditer(r'[\w.+-]+@
 # 예외: Claude 커밋 표기(noreply@anthropic.com)는 개인 메일이 아니므로 검사하지 않음
 mail += sorted({x for x in sh('git', 'log', '--all', '--format=%ae %ce').stdout.split() if x != 'noreply@anthropic.com' and not x.endswith(('@users.noreply.github.com', '@github.com'))})
 check('07b 메일 주소가 파일과 커밋 기록 어디에도 없음 (커밋은 noreply 주소만)', mail)
+check('07c 글 대표 이미지는 저장소 안 파일만 (외부 사진 링크 없음)', [p for p in tracked if p.startswith('src/content/articles/') and p.endswith('.md')
+      and re.search(r'^image:\s*"https?://', ALL.get(p, ''), re.M)])
 check('08 추적되지 않은 잉여 파일 없음', [x for x in sh('git', 'status', '--porcelain').stdout.split('\n') if x.strip()])
 
 # ── 빌더 코드 ──

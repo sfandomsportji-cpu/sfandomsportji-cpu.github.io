@@ -7,9 +7,9 @@ subtitle: "주요 선수들이 빠져도 공격이 멈추지 않았던 프리시
 kicker: "DAILY NEWS"
 meta: "NEW YORK KNICKS 97–120 PHILADELPHIA 76ERS · PRESEASON"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1627759.png"
-image_alt: "필라델피아 76ers 제일런 브라운 공식 프로필 사진"
-credit: "PHOTO · NBA"
+image: "/assets/teams/nba/phi.svg"
+image_alt: "필라델피아 76ers 팀 로고"
+credit: "TEAM LOGO"
 edition: "2026-10-07"
 slug: "76ers-knicks-preseason-2026"
 sources: [{"label":"NBA Starting 5 · October 6, 2026"},{"label":"Philadelphia 76ers Box Score · Knicks at Sixers"},{"label":"NBA Game Recap · 76ers 120, Knicks 97"}]

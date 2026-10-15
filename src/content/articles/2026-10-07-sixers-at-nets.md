@@ -7,9 +7,9 @@ subtitle: "필라델피아의 새 공격은 한 명이 빠져도 무너지지 �
 kicker: "KAIRO FEATURE"
 meta: "2026.10.09 08:30 KST PHILADELPHIA 76ERS @ BROOKLYN NETS"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1627759.png"
-image_alt: "필라델피아 76ers 제일런 브라운 공식 프로필 사진"
-credit: "PHOTO · NBA"
+image: "/assets/teams/nba/bkn.svg"
+image_alt: "브루클린 네츠 팀 로고"
+credit: "TEAM LOGO"
 edition: "2026-10-07"
 slug: "sixers-at-nets"
 sources: [{"label":"NBA Starting 5 · October 6, 2026"},{"label":"Philadelphia 76ers Team Schedule & Box Scores"},{"label":"NBA · LeBron James 76ers Open Scrimmage"}]

@@ -7,9 +7,9 @@ subtitle: "커리가 쉬는 밤, 골든스테이트는 벤치 구조를 시험�
 kicker: "PRESEASON"
 meta: "2026.10.08 11:00 KST GOLDEN STATE WARRIORS @ PORTLAND TRAIL BLAZERS"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/201939.png"
-image_alt: "골든스테이트 워리어스 스테픈 커리 공식 프로필 사진"
-credit: "PHOTO · NBA"
+image: "/assets/teams/nba/por.svg"
+image_alt: "포틀랜드 트레일블레이저스 팀 로고"
+credit: "TEAM LOGO"
 edition: "2026-10-07"
 slug: "warriors-at-trail-blazers"
 sources: [{"label":"NBA · Golden State Warriors Schedule"},{"label":"NBA Player News · Stephen Curry · October 7, 2026"},{"label":"NBA Game Recap · Warriors 124, Lakers 98"}]

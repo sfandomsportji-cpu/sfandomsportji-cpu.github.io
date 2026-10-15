@@ -1103,7 +1103,7 @@ def build_article(a: Article):
           'author': {'@type': 'Organization', 'name': 'SFANDOM', 'url': BASE + '/about/'},
           'publisher': {'@id': f'{BASE}/#organization', '@type': 'Organization', 'name': 'SFANDOM',
                         'logo': {'@type': 'ImageObject', 'url': f'{BASE}/assets/brand/sfandom-mark-512.png'}}}
-    share = '' if is_match_card(a.__dict__) else a.image  # 대진이 있는 분석은 스코어보드 카드가 공유 이미지
+    share = '' if is_match_card(a.__dict__) or a.image.lower().endswith('.svg') else a.image  # 대진 분석은 스코어보드 카드, 로고(SVG) 글은 글별 공유 카드가 공유 이미지 (SNS는 SVG 미리보기를 못 씀)
     if not share:  # 사진이 없는 글은 build_article_cards.py 가 만든 글별 공유 카드 사용 (없으면 대표 카드)
         card = f'/assets/share/cards/{card_name(pathlib.Path(a.file).stem, a.__dict__)}'
         share = card if (ROOT / card.lstrip('/')).exists() else ''

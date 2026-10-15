@@ -6,9 +6,9 @@ subtitle: "배너가 올라가는 밤, 새 얼굴의 필라델피아가 찾아�
 kicker: "OPENING NIGHT"
 meta: "2026.10.21 08:00 KST PHILADELPHIA 76ERS @ NEW YORK KNICKS · MADISON SQUARE GARDEN"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/1627759.png"
-image_alt: "제일런 브라운 프로필 사진"
-credit: "PREGAME FRAME · 2026.10.04 CHECK · 출전 명단은 경기 당일 확인 · PHOTO · NBA"
+image: "/assets/teams/nba/nyk.svg"
+image_alt: "뉴욕 닉스 팀 로고"
+credit: "PREGAME FRAME · 2026.10.04 CHECK · 출전 명단은 경기 당일 확인"
 edition: ""
 slug: "76ers-at-knicks"
 sources: [{"label": "NBA 2026-27 정규시즌 일정 발표"}, {"label": "2026 NBA 플레이오프 결과"}, {"label": "2026 오프시즌 주요 이적 정리 (YAHOO SPORTS)"}]

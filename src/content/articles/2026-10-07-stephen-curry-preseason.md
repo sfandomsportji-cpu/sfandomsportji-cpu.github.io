@@ -7,9 +7,9 @@ subtitle: "레이커스전 16점·5어시스트, 프리시즌에서 확인한 �
 kicker: "PLAYER SPOTLIGHT"
 meta: "STEPHEN CURRY · GSW · PRESEASON"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/201939.png"
-image_alt: "골든스테이트 워리어스 스테픈 커리 공식 프로필 사진"
-credit: "PHOTO · NBA"
+image: "/assets/teams/nba/gsw.svg"
+image_alt: "골든스테이트 워리어스 팀 로고"
+credit: "TEAM LOGO"
 edition: "2026-10-07"
 slug: "stephen-curry-preseason"
 sources: [{"label":"NBA · Stephen Curry Player Page"},{"label":"NBA · Lakers at Warriors Box Score"},{"label":"NBA · Curry is all smiles after drilling the three through contact"}]

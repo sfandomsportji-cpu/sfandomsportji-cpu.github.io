@@ -6,9 +6,9 @@ subtitle: "르브론의 필라델피아 홈 데뷔, 상대는 친정팀 클리�
 kicker: "DAY 3"
 meta: "2026.10.23 08:00 KST CLEVELAND CAVALIERS @ PHILADELPHIA 76ERS"
 league: "NBA"
-image: "https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png"
-image_alt: "르브론 제임스 프로필 사진"
-credit: "PREGAME FRAME · 2026.10.05 CHECK · 출전 명단은 경기 당일 확인 · PHOTO · NBA"
+image: "/assets/teams/nba/phi.svg"
+image_alt: "필라델피아 76ers 팀 로고"
+credit: "PREGAME FRAME · 2026.10.05 CHECK · 출전 명단은 경기 당일 확인"
 edition: ""
 slug: "cavaliers-at-76ers"
 sources: [{"label": "NBA 2026-27 정규시즌 일정 발표"}, {"label": "2026 NBA 플레이오프 결과"}, {"label": "2026 오프시즌 주요 이적 정리 (YAHOO SPORTS)"}, {"label": "2026 자유계약 정리 (CBS SPORTS)"}]
