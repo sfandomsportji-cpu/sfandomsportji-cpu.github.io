@@ -443,6 +443,18 @@ def an_thumb(a: Article) -> str:
     return ''
 
 
+def an_vote(a: Article) -> str:
+    """경기별 한 줄 투표. 끝난 경기는 결과만 보여 주고, 서버 응답이 없으면 JS가 칸을 숨긴다(hidden 기본)."""
+    away, home = getattr(a, 'away', ''), getattr(a, 'home', '')
+    res = game_result(a)
+    ro = ' data-readonly="1"' if res and res['status'] == 'final' else ''
+    gid = a.file[:-3][11:]  # 날짜를 뗀 글 이름 = 경기 투표 id
+    q = '누가 이길까?' if not ro else '투표 결과'
+    return (f'<div class="an-vote" data-vote="{esc(gid)}"{ro} hidden><b>{q}</b>'
+            f'<button type="button" data-side="away"><span>{esc(away)}</span><em></em></button>'
+            f'<button type="button" data-side="home"><span>{esc(home)}</span><em></em></button><small></small></div>')
+
+
 def an_recap_link(a: Article) -> str:
     res, rc = game_result(a), recap_for(a)
     if res and res['status'] == 'final' and rc:
@@ -464,7 +476,7 @@ def an_detail(a: Article) -> str:
         view_title, view = m.group(1).strip() or view_title, re.sub(r'\s+', ' ', m.group(2)).strip()
     items = ''.join(f'<li><b>{esc(v)}</b><span>{esc(l)}</span></li>' for v, l in stats)
     return (f'<div class="an-open"><ul class="an-stats">{items}</ul>'
-            f'<p class="an-view"><b>{esc(view_title)}</b>{esc(view)}</p>'
+            f'<p class="an-view"><b>{esc(view_title)}</b>{esc(view)}</p>{an_vote(a)}'
             f'<div class="an-links"><a class="an-read" href="{a.url}">분석 전문 읽기 →</a>{an_recap_link(a)}</div></div>')
 
 
@@ -683,6 +695,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v5" defer></script>'
                  f'<script src="/assets/js/community-admin.js?v={VER}-v1" defer></script>' if path == '/community/' else '')
     news_comments_js = (f'<script src="/assets/js/news-comments.js?v={VER}-v1" defer></script>' if re.fullmatch(r'/news/\d{4}/\d{2}/[a-z0-9-]+/', path) else '')
+    vote_js = (f'<script src="/assets/js/game-vote.js?v={VER}-v1" defer></script>' if path == '/' else '')
     return f'''<!doctype html>
 <html lang="ko">
 <head>
@@ -731,7 +744,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 </main>
 {footer()}
 <script src="/assets/js/site.js?v={VER}-sound3-board1-scorefresh2" defer></script>
-{thread_js}{news_comments_js}
+{thread_js}{news_comments_js}{vote_js}
 </body>
 </html>
 '''

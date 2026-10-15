@@ -1339,6 +1339,18 @@ section[aria-labelledby="taTitle"] .sec-title .kr,#today-analysis .sec-title .kr
 .an-stats span{font-size:13px;color:var(--text-3)}
 .an-view{margin:0;padding-left:14px;border-left:3px solid var(--red);font-size:15px;line-height:1.7;color:var(--text-2)}
 .an-view b{display:block;margin-bottom:4px;font-size:12px;letter-spacing:.1em;color:var(--red)}
+.an-vote{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr 1fr;gap:8px 10px;align-items:center}
+.an-vote[hidden]{display:none}
+.an-vote>b{font-size:12px;letter-spacing:.1em;color:var(--red)}
+.an-vote button{position:relative;overflow:hidden;display:flex;justify-content:space-between;gap:8px;padding:10px 14px;border:1px solid #343848;border-radius:6px;background:#12131a;color:#fff;font:700 14px var(--body);cursor:pointer}
+.an-vote button em{font-style:normal;color:var(--text-3)}
+.an-vote button::before{content:"";position:absolute;inset:0 auto 0 0;width:0;background:#e5173f33}
+.an-vote[data-state="open"] button:hover{border-color:var(--red)}
+.an-vote[data-state="done"] button,.an-vote[data-state="busy"] button{cursor:default;pointer-events:none}
+.an-vote[data-state="done"] button::before{width:var(--p)}
+.an-vote button>*{position:relative}
+.an-vote button[data-mine="1"]{border-color:var(--red)}
+.an-vote small{grid-column:2/-1;font-size:12px;color:var(--text-3)}
 .an-links{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 20px}
 .an-read{font-size:15px;font-weight:700;color:var(--red)}
 @media (max-width:900px){
