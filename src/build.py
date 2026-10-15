@@ -1208,12 +1208,26 @@ def build_lists():
           tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/nba/'))
           + two_col(list_with_ads([a for a in an if a.league == 'NBA'], 4), 'SF-HUB-RAIL', latest_box('analysis')),
           path='/analysis/nba/', description='NBA 경기 프리뷰와 분석', active='/analysis/'))
+    # 자동 복기: 경기 전에 pick을 남긴 분석 중 끝난 경기를 결과와 대조해 덧붙인다(손으로 쓴 기록은 그대로 유지).
+    auto_recs = []
+    for a in sorted([x for x in ARTICLES if x.kind == 'analysis' and getattr(x, 'pick', '')], key=lambda x: (x.date, x.file)):
+        r = game_result(a)
+        if not r or not r['verdict']:
+            continue
+        side = a.away if a.pick == 'away' else a.home
+        auto_recs.append({'no': f'#A{len(auto_recs) + 1:02d}', 'date': a.date, 'league': a.league, 'match': f'{a.away} vs {a.home}',
+                          'venue': f'{getattr(a, "kst", "")} KST', 'outlook': f'{side} 우세 전망',
+                          'result': f'{a.away} {r["away"]}–{r["home"]} {a.home}',
+                          'detail': f'경기 전 글에 남긴 예측과 종료 결과를 자동으로 대조했습니다. 분석: {a.headline}',
+                          'matched': r['verdict'] == 'hit'})
+    all_recs = auto_recs[::-1] + RECORDS['records']
+    updated = TODAY if auto_recs else RECORDS['updated']
     recs = ''.join(f'''<div class="record"><span class="no">{r["no"]}</span><div><span class="tag red">{r["league"]} · {r["date"].replace("-", ".")} · {esc(r["venue"])}</span><h3>{esc(r["match"])}</h3>
-<p>경기 전 · {esc(r["outlook"])} → 결과 · {esc(r["result"])}. {esc(r["detail"])}</p></div><span class="verdict {"ok" if r["matched"] else "no"}">{"MATCHED" if r["matched"] else "NOT MATCHED"}</span></div>''' for r in RECORDS['records'])
-    ok = sum(r['matched'] for r in RECORDS['records'])
+<p>경기 전 · {esc(r["outlook"])} → 결과 · {esc(r["result"])}. {esc(r["detail"])}</p></div><span class="verdict {"ok" if r["matched"] else "no"}">{"MATCHED" if r["matched"] else "NOT MATCHED"}</span></div>''' for r in all_recs)
+    ok = sum(r['matched'] for r in all_recs)
     write('/analysis/review/', layout('복기 리포트 · 경기 전 전망과 결과', page_head('REVIEW <span class="accent">/</span> <span class="kr">복기 리포트</span>', RECORDS['note'],
           [('ANALYSIS', '/analysis/'), ('REVIEW', '')], tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/review/'))
-          + preserved_component('review-cycle-guide') + editorial_index(EDITORIAL_PATHS, BY_KEY, esc, 'before-after') + two_col(f'<div class="stats" style="margin:0 0 12px"><div class="stat"><b>{len(RECORDS["records"])}</b><span>RECORDS</span></div><div class="stat"><b>{ok}</b><span>MATCHED</span></div><div class="stat"><b>{len(RECORDS["records"]) - ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{RECORDS["updated"][5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
+          + preserved_component('review-cycle-guide') + editorial_index(EDITORIAL_PATHS, BY_KEY, esc, 'before-after') + two_col(f'<div class="stats" style="margin:0 0 12px"><div class="stat"><b>{len(all_recs)}</b><span>RECORDS</span></div><div class="stat"><b>{ok}</b><span>MATCHED</span></div><div class="stat"><b>{len(all_recs) - ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{updated[5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
                     + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다른 결과도 지우지 않습니다. 어떤 전제가 틀렸는지 다음 분석에서 다시 확인합니다.</p>', 'SF-HUB-RAIL'),
           path='/analysis/review/', description=RECORDS['note'], active='/analysis/'))
 
