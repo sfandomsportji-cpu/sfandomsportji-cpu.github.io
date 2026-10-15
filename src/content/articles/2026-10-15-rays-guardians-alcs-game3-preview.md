@@ -15,6 +15,7 @@ slug: "rays-guardians-alcs-game3-20261016"
 teams: ["TB","CLE"]
 away: "RAYS"
 home: "GUARDIANS"
+game: "MLB-401908025"
 kst: "10.16 02:00"
 glance: [["핵심", "윌리엄스 1.54 · 잭스 최근 0.90"], ["변수", "비로 당겨진 낮 경기 · 쉰 불펜"], ["시선", "1~3회 첫 타순, 베이커·스미스 등판 시점"]]
 sources: [{"label":"MLB.com ALCS 3차전 라인업·선발 매치업","url":"https://www.mlb.com/news/rays-vs-guardians-alcs-game-3-starting-lineups-and-pitching-matchup"}]

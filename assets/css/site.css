@@ -1312,6 +1312,12 @@ section[aria-labelledby="taTitle"] .sec-title .kr,#today-analysis .sec-title .kr
 .an-time{display:flex;flex-direction:column;line-height:1}
 .an-time b{white-space:nowrap;font-family:var(--display);font-size:34px;font-weight:400;letter-spacing:1px;color:var(--red)}
 .an-time small{margin-top:4px;font-size:12px;letter-spacing:.06em;color:var(--text-3)}
+.an-state{margin-top:6px;font-style:normal;font-size:12px;font-weight:700;letter-spacing:.04em;white-space:nowrap;color:var(--text-2)}
+.an-state[data-s="live"]{color:var(--red)}
+.an-state[data-v="hit"]{color:#35d07f}
+.an-state[data-v="miss"]{color:#ff6b6b}
+[data-rate]{margin-left:12px;font-family:var(--display);font-size:20px;letter-spacing:1px;color:#35d07f;white-space:nowrap}
+.an-item.is-final{border-left-color:#4a4f60}
 .an-match{display:flex;align-items:center;gap:12px;min-width:0}
 .an-thumb{flex:none;display:flex;align-items:center;justify-content:center;gap:4px;width:72px;height:54px;overflow:hidden;border-radius:6px;background:#0d0e14}
 .an-thumb .thumb{display:block;width:100%;height:100%;margin:0;min-height:0;aspect-ratio:auto}
@@ -1333,7 +1339,8 @@ section[aria-labelledby="taTitle"] .sec-title .kr,#today-analysis .sec-title .kr
 .an-stats span{font-size:13px;color:var(--text-3)}
 .an-view{margin:0;padding-left:14px;border-left:3px solid var(--red);font-size:15px;line-height:1.7;color:var(--text-2)}
 .an-view b{display:block;margin-bottom:4px;font-size:12px;letter-spacing:.1em;color:var(--red)}
-.an-read{grid-column:1/-1;justify-self:start;font-size:15px;font-weight:700;color:var(--red)}
+.an-links{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 20px}
+.an-read{font-size:15px;font-weight:700;color:var(--red)}
 @media (max-width:900px){
 .an-head{display:none}
 .an-row{grid-template-columns:96px minmax(0,1fr);gap:10px 12px;padding:14px}

@@ -443,6 +443,13 @@ def an_thumb(a: Article) -> str:
     return ''
 
 
+def an_recap_link(a: Article) -> str:
+    res, rc = game_result(a), recap_for(a)
+    if res and res['status'] == 'final' and rc:
+        return f'<a class="an-read" href="{rc.url}">경기 결과 기사 →</a>'
+    return ''
+
+
 def an_detail(a: Article) -> str:
     """펼쳤을 때 보이는 상세: 경기 숫자(stats 블록)와 KAIRO VIEW(angle 블록), 전문 링크."""
     stats, view_title, view = [], 'KAIRO VIEW', ''
@@ -458,7 +465,52 @@ def an_detail(a: Article) -> str:
     items = ''.join(f'<li><b>{esc(v)}</b><span>{esc(l)}</span></li>' for v, l in stats)
     return (f'<div class="an-open"><ul class="an-stats">{items}</ul>'
             f'<p class="an-view"><b>{esc(view_title)}</b>{esc(view)}</p>'
-            f'<a class="an-read" href="{a.url}">분석 전문 읽기 →</a></div>')
+            f'<div class="an-links"><a class="an-read" href="{a.url}">분석 전문 읽기 →</a>{an_recap_link(a)}</div></div>')
+
+
+def game_result(a: Article):
+    """분석 글에 연결된 경기의 진행 상태. 글의 game(스냅샷 id)로 ESPN·NPB 스냅샷에서, 없으면 results.json(수동)에서 찾는다.
+    반환: {'status','away','home','verdict'} 또는 None. verdict는 pick이 있고 경기가 끝났을 때만 'hit'/'miss'."""
+    res = None
+    gid = getattr(a, 'game', '')
+    if gid:
+        for lg in game_snapshot().get('leagues', {}).values():
+            for g in lg.get('games', []):
+                if g.get('id') == gid:
+                    res = {'status': g.get('status'), 'away': g.get('away_score'), 'home': g.get('home_score')}
+    if res is None:
+        try:
+            m = json.loads((CONTENT / 'results.json').read_text(encoding='utf-8')).get(a.file[:-3])
+        except (OSError, ValueError):
+            m = None
+        if isinstance(m, dict):
+            res = {'status': m.get('status', 'final'), 'away': m.get('away'), 'home': m.get('home')}
+    if not res or res['status'] not in ('live', 'final'):
+        return None
+    if not all(isinstance(res[k], int) for k in ('away', 'home')):
+        return None
+    res['verdict'] = ''
+    pick = getattr(a, 'pick', '')
+    if pick in ('away', 'home') and res['status'] == 'final' and res['away'] != res['home']:
+        res['verdict'] = 'hit' if (res['away'] > res['home']) == (pick == 'away') else 'miss'
+    return res
+
+
+def recap_for(a: Article):
+    """같은 시리즈의 결과 기사(파일명 preview → recap, 날짜 무관) 중 가장 가까운 것."""
+    stem = re.sub(r'^\d{4}-\d{2}-\d{2}-', '', a.file[:-3])
+    if not stem.endswith('-preview'):
+        return None
+    want = stem[:-len('-preview')] + '-recap'
+    hit = [b for b in ARTICLES if re.sub(r'^\d{4}-\d{2}-\d{2}-', '', b.file[:-3]) == want]
+    return hit[0] if hit else None
+
+
+def hit_rate():
+    """pick을 남긴 분석 중 끝난 경기의 (맞힌 수, 전체)."""
+    done = [game_result(a) for a in ARTICLES if a.kind == 'analysis' and getattr(a, 'pick', '')]
+    done = [r for r in done if r and r['verdict']]
+    return sum(r['verdict'] == 'hit' for r in done), len(done)
 
 
 def analysis_row(a: Article, opened: bool = False) -> str:
@@ -472,8 +524,14 @@ def analysis_row(a: Article, opened: bool = False) -> str:
     labels = ['핵심', '변수', '시선']
     rows = {k: v for k, v in (getattr(a, 'glance', None) or [])}
     cells = ''.join(f'<span class="an-cell" data-label="{k}">{esc(rows.get(k, "-"))}</span>' for k in labels)
-    return (f'<details class="an-item"{" open" if opened else ""}><summary class="an-row">'
-            f'<span class="an-time"><b>{esc(clock or "-")}</b><small>{esc(day)} {esc(a.league)}</small></span>'
+    res = game_result(a)
+    state = ''
+    if res:
+        mark = {'hit': ' ✔', 'miss': ' ✘'}.get(res['verdict'], '')
+        label = '종료' if res['status'] == 'final' else 'LIVE'
+        state = (f'<em class="an-state" data-s="{res["status"]}" data-v="{res["verdict"]}">{label} {res["away"]}–{res["home"]}{mark}</em>')
+    return (f'<details class="an-item{" is-final" if res and res["status"] == "final" else ""}"{" open" if opened else ""}><summary class="an-row">'
+            f'<span class="an-time"><b>{esc(clock or "-")}</b><small>{esc(day)} {esc(a.league)}</small>{state}</span>'
             f'<span class="an-match">{an_thumb(a)}<span class="an-names"><small>{esc(tag)}</small>'
             f'<span class="an-teams">{esc(away)} <i>VS</i> {esc(home)}</span></span></span>'
             f'{cells}<span class="an-go" aria-hidden="true">+</span></summary>{an_detail(a)}</details>')
@@ -500,11 +558,13 @@ def today_analysis() -> str:
     all_label = '최신 분석 전체 →' if newer else '오늘 에디션 전체 →'
     TODAY_PICKS = {a.url for a in picks if a.kind == 'analysis'}
     feature_count = len(picks)
+    hit, total = hit_rate()
+    rate = f'<span data-rate title="경기 전에 남긴 예측과 실제 결과 기록">예측 {hit}/{total}</span>' if total else ''
     cards = ''.join(analysis_row(a, n == 0) for n, a in enumerate(picks))
     return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
             f'<div class="sec-head"><h2 class="sec-title" id="taTitle">'
             f'SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> '
-            f'<span class="kr">{display_date.replace("-", ".")} {section_label} {feature_count}편</span></h2>'
+            f'<span class="kr">{display_date.replace("-", ".")} {section_label} {feature_count}편</span>{rate}</h2>'
             f'<a class="more" href="{all_href}">{all_label}</a></div>'
             f'<div class="an-board"><div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
             f'<span>핵심</span><span>변수</span><span>시선</span><span></span></div>{cards}</div>'

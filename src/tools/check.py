@@ -218,6 +218,13 @@ home_imgs = re.findall(r'<img\b[^>]*\bsrc="([^"]+)"', H.get('index.html', ''))
 home_imgs = [i for i in home_imgs if '/assets/teams/' not in i and '/assets/brand/' not in i and 'tlogo' not in i]
 check('41 홈 화면에 같은 사진이 두 번 쓰이지 않음', sorted({i for i in home_imgs if home_imgs.count(i) > 1}))
 
+import json as _json
+_arts = {f.stem: f.read_text(encoding='utf-8') for f in (R / 'src/content/articles').glob('*.md')}
+_bad = [k for k, t in _arts.items() if re.search(r'^pick: ', t, re.M) and not re.search(r'^pick: "(away|home)"', t, re.M)]
+_res = _json.loads((R / 'src/content/results.json').read_text(encoding='utf-8'))
+_bad += [f'results.json:{k}' for k in _res if k not in _arts]
+check('42 예측(pick)은 away/home만, 결과 기록은 실제 글에 연결됨', _bad)
+
 fails = [r for r in res if not r[0]]
 for ok, name, note in res:
     print(('PASS ' if ok else 'FAIL ') + name + ('' if ok else '\n      → ' + note))

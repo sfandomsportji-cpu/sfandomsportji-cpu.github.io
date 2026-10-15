@@ -16,6 +16,7 @@ slug: "brewers-dodgers-nlcs-game4-20261016"
 teams: ["MIL","LAD"]
 away: "BREWERS"
 home: "DODGERS"
+game: "MLB-401908033"
 kst: "10.16 09:00"
 glance: [["핵심", "글래스나우 3.53 · 밀워키 선발 미확정"], ["변수", "스쿠발·야마모토 4차전 제외"], ["시선", "글래스나우 투구 이닝, 밀워키 교체 시점"]]
 sources: [{"label":"SI NLCS 4차전 예상 선발","url":"https://www.si.com/fannation/mlb/fastball/news/probable-starting-pitchers-in-dodgers-win-or-go-home-nlcs-game-4-against-brewers-justin3"},{"label":"SI 로버츠 감독 4차전 투수 기용 발언","url":"https://www.si.com/mlb/dodgers/onsi/dodgers-dave-roberts-3-pitchers-not-available-must-win-game-4-brewers"}]
