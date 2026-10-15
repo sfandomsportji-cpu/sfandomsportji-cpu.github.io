@@ -443,7 +443,25 @@ def an_thumb(a: Article) -> str:
     return ''
 
 
-def analysis_row(a: Article) -> str:
+def an_detail(a: Article) -> str:
+    """펼쳤을 때 보이는 상세: 경기 숫자(stats 블록)와 KAIRO VIEW(angle 블록), 전문 링크."""
+    stats, view_title, view = [], 'KAIRO VIEW', ''
+    m = re.search(r'::: stats\n(.*?)\n:::', a.body, re.S)
+    if m:
+        for line in m.group(1).splitlines():
+            if '|' in line:
+                v, l = [x.strip() for x in line.split('|', 1)]
+                stats.append((v, l))
+    m = re.search(r'::: angle ([^\n]*)\n(.*?)\n:::', a.body, re.S)
+    if m:
+        view_title, view = m.group(1).strip() or view_title, re.sub(r'\s+', ' ', m.group(2)).strip()
+    items = ''.join(f'<li><b>{esc(v)}</b><span>{esc(l)}</span></li>' for v, l in stats)
+    return (f'<div class="an-open"><ul class="an-stats">{items}</ul>'
+            f'<p class="an-view"><b>{esc(view_title)}</b>{esc(view)}</p>'
+            f'<a class="an-read" href="{a.url}">분석 전문 읽기 →</a></div>')
+
+
+def analysis_row(a: Article, opened: bool = False) -> str:
     away, home = getattr(a, 'away', ''), getattr(a, 'home', '')
     if not (away and home):
         raise SystemExit(f'분석 줄에 대진(away/home)이 없음: {a.file}')
@@ -454,11 +472,11 @@ def analysis_row(a: Article) -> str:
     labels = ['핵심', '변수', '시선']
     rows = {k: v for k, v in (getattr(a, 'glance', None) or [])}
     cells = ''.join(f'<span class="an-cell" data-label="{k}">{esc(rows.get(k, "-"))}</span>' for k in labels)
-    return (f'<a class="an-row lift" href="{a.url}" aria-label="{esc(a.title)}">'
+    return (f'<details class="an-item"{" open" if opened else ""}><summary class="an-row">'
             f'<span class="an-time"><b>{esc(clock or "-")}</b><small>{esc(day)} {esc(a.league)}</small></span>'
             f'<span class="an-match">{an_thumb(a)}<span class="an-names"><small>{esc(tag)}</small>'
             f'<span class="an-teams">{esc(away)} <i>VS</i> {esc(home)}</span></span></span>'
-            f'{cells}<span class="an-go" aria-hidden="true">→</span></a>')
+            f'{cells}<span class="an-go" aria-hidden="true">+</span></summary>{an_detail(a)}</details>')
 
 
 def today_analysis() -> str:
@@ -482,7 +500,7 @@ def today_analysis() -> str:
     all_label = '최신 분석 전체 →' if newer else '오늘 에디션 전체 →'
     TODAY_PICKS = {a.url for a in picks if a.kind == 'analysis'}
     feature_count = len(picks)
-    cards = ''.join(analysis_row(a) for a in picks)
+    cards = ''.join(analysis_row(a, n == 0) for n, a in enumerate(picks))
     return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
             f'<div class="sec-head"><h2 class="sec-title" id="taTitle">'
             f'SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> '
