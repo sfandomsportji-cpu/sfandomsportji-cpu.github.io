@@ -875,6 +875,16 @@ def build_home():
 
     nl = ''.join(f'<a class="nl" href="{a.url}">{home_news_thumb(a)}<span class="t"><span class="tag">{esc(a.league)} · {a.date_dot}</span><strong>{esc(a.headline)}</strong></span><span class="talk">{talk_icon()}토론</span></a>' for a in rest)
     lcs_cards = ''.join(lcs_card(d) for d in PS.get('lcs', []))
+    lcs_html = f'''<section class="wrap sec" id="lcs" aria-labelledby="dsTitle">
+  <div class="sec-head"><h2 class="sec-title" id="dsTitle">MLB <span class="outline">POSTSEASON</span> <span class="kr">챔피언십시리즈</span></h2><a class="more" href="/special/postseason-2026/">대진표 · 전체 일정 →</a></div>
+  <div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">{lcs_cards}</div>
+</section>'''
+    # 시즌 달력: 지금 가장 뜨거운 블록을 위로. NBA 개막 3일 전부터는 NBA, 그 전에는 진행 중인 MLB 챔피언십시리즈가 먼저.
+    lcs_live = any(max(d.get('hw', 0), d.get('aw', 0)) < 4 for d in PS.get('lcs', []))
+    nba_days = (dt.datetime.fromisoformat(NBA['opening_kst']).date() - dt.date.fromisoformat(TODAY)).days
+    lcs_first = lcs_live and nba_days > 3
+    top_blocks = (lcs_html + nba_section()) if lcs_first else nba_section()
+    lcs_low = '' if lcs_first else lcs_html
     ta_html = today_analysis()
     shown = TODAY_PICKS
     gt = lambda a: (re.match(r'[\d.]+ [\d:]+', a.meta or '') or re.match('', '')).group(0) or '9999'
@@ -902,7 +912,7 @@ def build_home():
 
 {ta_html}
 
-{nba_section()}
+{top_blocks}
 
 <section class="wrap sec" aria-labelledby="newsTitle">
   <div class="sec-head"><h2 class="sec-title" id="newsTitle">NEWS<span class="accent">.</span> <span class="kr">오늘의 이야기, 함께 읽고 토론</span></h2><a class="more" href="/news/">뉴스 전체 →</a></div>
@@ -940,10 +950,7 @@ def build_home():
   </a>
 </section>
 
-<section class="wrap sec" id="lcs" aria-labelledby="dsTitle">
-  <div class="sec-head"><h2 class="sec-title" id="dsTitle">MLB <span class="outline">POSTSEASON</span> <span class="kr">챔피언십시리즈</span></h2><a class="more" href="/special/postseason-2026/">대진표 · 전체 일정 →</a></div>
-  <div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">{lcs_cards}</div>
-</section>
+{lcs_low}
 
 <section class="wrap sec split-8-4" aria-labelledby="anTitle">
   <div class="main">
