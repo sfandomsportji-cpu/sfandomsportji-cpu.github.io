@@ -431,32 +431,34 @@ def matchup_strip(a: Article) -> str:
 TODAY_PICKS: set = set()
 
 
-def an_visual(a: Article) -> str:
-    """분석 카드의 이미지 자리. 사진 파일이 있으면 사진, 없으면 팀 대진 화면. 빈 칸은 만들지 않는다."""
-    kst = getattr(a, 'kst', '')
-    chip = f'<span class="an-kst">{esc(kst)} KST</span>' if kst else ''
+def an_thumb(a: Article) -> str:
+    """분석 한 줄의 작은 이미지. 사진 파일이 있으면 사진, 없으면 팀 로고, 둘 다 없으면 빈 칸 없이 생략."""
     if a.image.startswith('/assets/photos/') and not (ROOT / a.image.lstrip('/')).is_file():
-        raise SystemExit(f'분석 카드 사진 파일이 없음: {a.image} ({a.file})')
-    if not home_news_thumb(a) and not (getattr(a, 'away', '') and getattr(a, 'home', '')):
-        raise SystemExit(f'분석 카드에 사진도 대진(away/home)도 없음: {a.file}')
-    if home_news_thumb(a):
-        return f'<div class="an-visual an-photo">{home_news_thumb(a)}{chip}</div>'
+        raise SystemExit(f'분석 줄 사진 파일이 없음: {a.image} ({a.file})')
+    photo = home_news_thumb(a)
+    if photo:
+        return f'<span class="an-thumb">{photo}</span>'
+    if a.league in ('MLB', 'NBA') and len(getattr(a, 'teams', None) or []) == 2:
+        return f'<span class="an-thumb an-logos">{team_badge(a, 0)}{team_badge(a, 1)}</span>'
+    return ''
+
+
+def analysis_row(a: Article) -> str:
     away, home = getattr(a, 'away', ''), getattr(a, 'home', '')
-    logos = a.league in ('MLB', 'NBA') and len(getattr(a, 'teams', None) or []) == 2
-    left = team_badge(a, 0, 'lg') if logos else ''
-    right = team_badge(a, 1, 'lg') if logos else ''
-    return (f'<div class="an-visual an-versus" aria-hidden="true">{chip}'
-            f'<div class="an-side">{left}<span class="an-name">{esc(away)}</span></div>'
-            f'<span class="an-vs">VS</span>'
-            f'<div class="an-side">{right}<span class="an-name">{esc(home)}</span></div></div>')
-
-
-def analysis_card(a: Article) -> str:
-    rows = getattr(a, 'glance', None) or [['핵심', a.excerpt[:60]]]
-    glance = ''.join(f'<li><b>{esc(k)}</b><span>{esc(v)}</span></li>' for k, v in rows)
-    return (f'<article class="an-card lift">{an_visual(a)}'
-            f'<div class="an-copy"><h3>{esc(a.title)}</h3><ul class="an-glance">{glance}</ul>'
-            f'<a class="an-more" href="{a.url}" aria-label="{esc(a.title)} 분석 전문">전문 →</a></div></article>')
+    if not (away and home):
+        raise SystemExit(f'분석 줄에 대진(away/home)이 없음: {a.file}')
+    day, _, clock = (getattr(a, 'kst', '') or '').partition(' ')
+    tag = a.kicker.split('·')[-1].strip() if a.kicker else a.league
+    if tag.upper().startswith(a.league.upper() + ' '):
+        tag = tag[len(a.league) + 1:]
+    labels = ['핵심', '변수', '시선']
+    rows = {k: v for k, v in (getattr(a, 'glance', None) or [])}
+    cells = ''.join(f'<span class="an-cell" data-label="{k}">{esc(rows.get(k, "-"))}</span>' for k in labels)
+    return (f'<a class="an-row lift" href="{a.url}" aria-label="{esc(a.title)}">'
+            f'<span class="an-time"><b>{esc(clock or "-")}</b><small>{esc(day)} {esc(a.league)}</small></span>'
+            f'<span class="an-match">{an_thumb(a)}<span class="an-names"><small>{esc(tag)}</small>'
+            f'<span class="an-teams">{esc(away)} <i>VS</i> {esc(home)}</span></span></span>'
+            f'{cells}<span class="an-go" aria-hidden="true">→</span></a>')
 
 
 def today_analysis() -> str:
@@ -480,13 +482,14 @@ def today_analysis() -> str:
     all_label = '최신 분석 전체 →' if newer else '오늘 에디션 전체 →'
     TODAY_PICKS = {a.url for a in picks if a.kind == 'analysis'}
     feature_count = len(picks)
-    cards = ''.join(analysis_card(a) for a in picks)
+    cards = ''.join(analysis_row(a) for a in picks)
     return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
             f'<div class="sec-head"><h2 class="sec-title" id="taTitle">'
             f'SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> '
             f'<span class="kr">{display_date.replace("-", ".")} {section_label} {feature_count}편</span></h2>'
             f'<a class="more" href="{all_href}">{all_label}</a></div>'
-            f'<div class="an-grid">{cards}</div>'
+            f'<div class="an-board"><div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
+            f'<span>핵심</span><span>변수</span><span>시선</span><span></span></div>{cards}</div>'
             f'<div class="ta-foot"><a class="review-link" href="/analysis/review/">'
             f'<span class="display" style="font-size:24px">REVIEW <span class="accent">/</span> 복기 리포트</span>'
             f'<span class="muted" style="font-size:14px">경기 결과와 분석 과정을 비교합니다</span></a>'

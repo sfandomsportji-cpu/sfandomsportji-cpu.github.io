@@ -1300,24 +1300,33 @@ section[aria-labelledby="newsTitle"] .nl:hover{background:linear-gradient(130deg
  section[aria-labelledby="newsTitle"] .sec-title .kr{font-size:17px}
 }
 section[aria-labelledby="taTitle"] .sec-title .kr,#today-analysis .sec-title .kr{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:700;letter-spacing:-.01em;color:#cbd1df}
-/* 홈 분석 구역: 대진 카드 */
-.an-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
-.an-card{position:relative;display:flex;flex-direction:column;min-width:0;overflow:hidden;background:var(--panel);border-top:4px solid var(--red);border-radius:10px;color:#fff}
-.an-card:hover{color:#fff}
-.an-visual{position:relative;aspect-ratio:16/9;overflow:hidden;background:linear-gradient(135deg,#14151c,#2a1018)}
-.an-photo .thumb{display:block;width:100%;height:100%;margin:0;min-height:0;aspect-ratio:auto}
-.an-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
-.an-versus{display:flex;align-items:center;justify-content:center;gap:6px;padding:40px 8px 14px}
-.an-side{flex:1 1 0;display:flex;flex-direction:column;align-items:center;gap:8px;min-width:0;text-align:center}
-.an-versus .tlogo-wrap.lg{width:56px;height:56px}
-.an-name{font-family:var(--display);font-size:clamp(15px,1.3vw,21px);line-height:1;letter-spacing:.5px;white-space:nowrap;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.8)}
-.an-vs{font-family:var(--display);font-size:24px;color:var(--red)}
-.an-kst{position:absolute;left:10px;top:10px;z-index:2;background:var(--red);color:#fff;font-family:var(--display);font-size:18px;letter-spacing:1px;line-height:1;padding:5px 9px;border-radius:4px}
-.an-copy{display:flex;flex-direction:column;gap:8px;padding:16px;min-width:0;flex:1}
-.an-copy h3{margin:0;font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:18px;font-weight:700;line-height:1.35;letter-spacing:-.01em}
-.an-glance{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.an-glance li{display:flex;flex-direction:column;gap:2px}
-.an-glance b{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--red)}
-.an-glance span{font-size:15px;font-weight:600;line-height:1.45;color:#fff}
-.an-more{margin-top:auto;padding-top:6px;font-size:13px;font-weight:700;color:var(--text-3)}
-.an-more::after{content:'';position:absolute;inset:0}
+/* 홈 분석 구역: 스코어보드형 */
+.an-board{display:flex;flex-direction:column;gap:8px}
+.an-head,.an-row{display:grid;grid-template-columns:92px minmax(280px,1.3fr) repeat(3,minmax(0,1fr)) 24px;align-items:center;gap:16px}
+.an-head{padding:0 18px;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--text-3)}
+.an-row{position:relative;padding:14px 18px;background:var(--panel);border-left:4px solid var(--red);border-radius:8px;color:#fff}
+.an-row:hover{color:#fff;background:#1d1f29}
+.an-time{display:flex;flex-direction:column;line-height:1}
+.an-time b{white-space:nowrap;font-family:var(--display);font-size:34px;font-weight:400;letter-spacing:1px;color:var(--red)}
+.an-time small{margin-top:4px;font-size:12px;letter-spacing:.06em;color:var(--text-3)}
+.an-match{display:flex;align-items:center;gap:12px;min-width:0}
+.an-thumb{flex:none;display:flex;align-items:center;justify-content:center;gap:4px;width:72px;height:54px;overflow:hidden;border-radius:6px;background:#0d0e14}
+.an-thumb .thumb{display:block;width:100%;height:100%;margin:0;min-height:0;aspect-ratio:auto}
+.an-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+.an-logos{width:96px}
+.an-logos .tlogo-wrap{width:44px;height:34px;padding:0;border-radius:6px}
+.an-logos .tlogo{width:100%;height:100%;object-fit:contain}
+.an-names{display:flex;flex-direction:column;gap:3px;min-width:0}
+.an-names small{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--text-3)}
+.an-teams{font-family:var(--display);font-size:22px;line-height:1;letter-spacing:1px}
+.an-teams i{font-style:normal;color:var(--red)}
+.an-cell{font-size:15px;font-weight:600;line-height:1.45;min-width:0}
+.an-go{font-family:var(--display);font-size:22px;color:var(--text-3)}
+@media (max-width:900px){
+.an-head{display:none}
+.an-row{grid-template-columns:96px minmax(0,1fr);gap:10px 12px;padding:14px}
+.an-time b{font-size:30px}
+.an-cell{grid-column:1/-1;display:flex;gap:10px;font-size:14px}
+.an-cell::before{content:attr(data-label);flex:none;width:34px;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--red)}
+.an-go{display:none}
+}
