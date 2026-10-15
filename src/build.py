@@ -434,8 +434,6 @@ TODAY_PICKS: set = set()
 def morning_edition_card(a: Article, wide: bool = False) -> str:
     """An editorial photo card linking to the actual article, without rewriting the original site layout."""
     extra = ''
-    if a.slug == 'mls-weekend-watch':
-        extra = '<p class="morning-fixtures">인터 마이애미–D.C. 유나이티드 · 뉴잉글랜드–시애틀 · LAFC–밴쿠버</p>'
     cells = getattr(a, 'brief', None) or {}
     insight = cells.get('key') or cells.get('view') or a.excerpt
     heading = '팬보드 전문 읽기' if a.kind == 'news' else '경기 분석 전문 읽기'

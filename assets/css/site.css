@@ -842,7 +842,6 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
 .morning-feature-grid .morning-copy{display:flex;flex-direction:column;gap:12px;min-width:0;flex:1}
 .morning-feature-grid .morning-copy h3{font-family:var(--head);font-size:clamp(20px,2vw,28px);font-weight:600;line-height:1.28;margin:0;color:#fff}
 .morning-feature-grid .morning-copy p{font-size:14px;line-height:1.65;color:var(--text-2);margin:0}
-.morning-feature-grid .morning-copy .morning-fixtures{font-weight:700;color:#fff}
 .morning-feature-grid .morning-card.morning-wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);align-items:center}
 .morning-feature-grid .morning-card.morning-wide .morning-photo{height:190px}
 .morning-feature-grid .morning-card .ta-more{margin-top:auto;align-self:flex-start;padding-top:5px}
@@ -878,9 +877,6 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
   color:#C9CFD8;
   font-size:15px;
   line-height:1.75;
-}
-.morning-feature-grid .morning-copy .morning-fixtures{
-  color:#DEE2E8;
 }
 
 /* FAN BOARD 2026-10-11: keep the entire brand banner visible on all viewports. */
