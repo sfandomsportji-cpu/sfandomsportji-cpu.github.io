@@ -19,14 +19,15 @@
     }
   ],
   "hero": {
+    "auto": true,
     "image": "",
     "alt": "",
     "credit": "",
     "badge_en": "MLB · NLCS GAME 3 FINAL",
-    "badge_kr": "NLCS 3차전 결과 · 경기 6–2 / 시리즈 밀워키 3–0",
+    "badge_kr": "NLCS 3차전 결과 · 경기 6–2 / 시리즈 3–0 밀워키 리드",
     "art": "NLCS · FINAL",
     "title": "밀워키, NLCS 3연승\n시리즈 3–0 리드",
-    "text": "NLCS 3차전 경기 점수는 밀워키 6–2 다저스, 시리즈 전적은 밀워키 3승·다저스 0승입니다. 4차전은 다저스타디움에서 한국시간 10월 16일 오전 9시에 열립니다.",
+    "text": "NLCS 3차전 경기 결과는 밀워키 6–2 LA 다저스, 시리즈 전적은 3–0 밀워키 리드입니다. 다음 4차전은 한국시간 10.16 (금) 09:00에 열립니다.",
     "link": "/special/postseason-2026/#lcs",
     "use_latest_google_post": false,
     "video": {

@@ -40,6 +40,8 @@ jobs:
         run: python3 src/tools/fetch_morning_photos.py
       - name: Sync league scores and schedules (ESPN, verified states only)
         run: python3 src/tools/sync_games.py
+      - name: Sync postseason / NBA / hero from verified scores
+        run: python3 src/tools/sync_postseason.py
       - name: Build
         run: python3 src/build.py
       - name: Commit if changed (concurrent source updates safe)
