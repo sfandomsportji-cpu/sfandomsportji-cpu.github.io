@@ -8,9 +8,9 @@ subtitle: "다카하시 하루토 대 오가타 다카토, 고시엔에서 다�
 kicker: "SFANDOM & KAIRO · NPB CLIMAX SERIES"
 meta: "2026.10.15 18:00 KST · HANSHIN vs YOKOHAMA DeNA · CS 파이널 2차전 프리뷰"
 league: "NPB"
-image: "/assets/photos/20261014-hanshin-dena-dena.png"
-image_alt: "요코하마 DeNA 베이스타스 관련 자료사진. 2026년 CS 파이널 2차전 경기 사진이 아님"
-credit: "PHOTO · 사용자 제공 DeNA 자료사진 · 당일 경기 사진 아님"
+image: "/assets/photos/20261015-npb-hanshin-home.jpg"
+image_alt: "한신 타이거스 선수가 홈을 밟고 동료와 기뻐하는 자료사진. 2026년 CS 파이널 2차전 경기 사진이 아님"
+credit: "PHOTO · 사용자 제공 한신 자료사진 · 당일 경기 사진 아님"
 slug: "hanshin-dena-cs-final-game2-20261015"
 sources: [{"label":"골닷컴 재팬 한신–DeNA CS 파이널 일정·방송","url":"https://www.goal.com/jp/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/when-hanshin-dena-final-stage-npb-climax-series-2026/blt4c433fe112574777"},{"label":"NNN 뉴스 CS 파이널 2차전 예고 선발","url":"https://news.yahoo.co.jp/articles/5d59831b47f2615c879f2a77327966e61f349bcf"}]
 ---
@@ -35,6 +35,6 @@ DeNA는 1차전에서 2–0 리드를 지켰다. 6회 2사 2루에서 선발을 
 2차전 선발의 평균자책점보다 먼저 볼 것은 첫 세 타순에서 출루가 나오는지와 6회 전후의 투수 교체 시점이다. 1차전에서 한 번의 교체가 이닝의 흐름을 끊었다는 점이 2차전의 관전 기준이 된다.
 :::
 
-**사진 안내:** 대표 이미지는 사용자 제공 자료사진으로 당일 경기 사진이 아니다. 지난 경기 기록은 [DeNA 2–0 한신 결과 기사](/news/2026/10/hanshin-dena-cs-final-game1-recap/)에서 볼 수 있다.
+**사진 안내:** 대표 이미지는 사용자 제공 한신 자료사진으로 당일 경기 사진이 아니다. [한신 선수단 자료사진](/assets/photos/20261015-npb-hanshin-team.jpg)도 함께 볼 수 있다. 지난 경기 기록은 [DeNA 2–0 한신 결과 기사](/news/2026/10/hanshin-dena-cs-final-game1-recap/)에서 볼 수 있다.
 
 **자료:** [골닷컴 재팬 일정·방송 안내](https://www.goal.com/jp/%E3%83%8B%E3%83%A5%E3%83%BC%E3%82%B9/when-hanshin-dena-final-stage-npb-climax-series-2026/blt4c433fe112574777) · [NNN 뉴스 2차전 예고 선발](https://news.yahoo.co.jp/articles/5d59831b47f2615c879f2a77327966e61f349bcf). 경기 전 선발·라인업 변경이 있을 수 있다.
