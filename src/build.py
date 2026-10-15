@@ -1615,8 +1615,6 @@ def game_sections(brief: bool = False) -> str:
     snapshot = game_snapshot()
     output = []
     for league, icon in SCORE_LEAGUES:
-        if brief and league == 'NPB':  # 홈 미리보기는 4열 그대로 둔다
-            continue
         details = snapshot.get('leagues', {}).get(league) or {}
         verified, stale = game_age(details.get('checked_at', ''))
         games = [g for g in details.get('games', []) if game_clock(g.get('start_kst', ''))]
@@ -1649,7 +1647,7 @@ def game_preview() -> str:
     return (f'<section class="wrap sf-scores sf-scores--preview" aria-labelledby="scorePreviewTitle">'
             f'<div class="sf-scores__heading"><div><span class="sf-scores__eyebrow">GAME CENTER · KST</span>'
             f'<h2 id="scorePreviewTitle">경기 일정 <span>·</span> 최종 결과</h2>'
-            f'<p>MLB·NBA·NFL·NHL · 외부 기록 제공처 확인 시각 기준</p></div>'
+            f'<p>MLB·NBA·NFL·NHL·NPB · 외부 기록 제공처 확인 시각 기준</p></div>'
             f'<a class="pill" href="/games/">전체 경기 보기 →</a></div>'
             f'<div class="sf-scores__grid">{game_sections(True)}</div></section>')
 

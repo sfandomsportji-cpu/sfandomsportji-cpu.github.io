@@ -3,7 +3,7 @@
   "leagues": {
     "NPB": {
       "checked_at": "2026-10-15T16:40+09:00",
-      "coverage": "partial",
+      "coverage": "complete",
       "failed_dates": [],
       "games": [
         {

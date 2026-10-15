@@ -101,7 +101,7 @@ def main() -> None:
     cutoff = (now - dt.timedelta(days=KEEP_DAYS)).isoformat(timespec="minutes")
     games = sorted((g for g in merged.values() if g["start_kst"] >= cutoff), key=lambda g: (g["start_kst"], g["id"]))
     league = {"checked_at": now.isoformat(timespec="minutes") if not error else old.get("leagues", {}).get("NPB", {}).get("checked_at", ""),
-              "coverage": "partial", "failed_dates": [], "games": games}
+              "coverage": "complete", "failed_dates": [], "games": games}
     if error:
         league["error"] = error
     text = json.dumps({"provider": "npb.jp 첫 화면 속보", "leagues": {"NPB": league}}, ensure_ascii=False, indent=2) + "\n"
