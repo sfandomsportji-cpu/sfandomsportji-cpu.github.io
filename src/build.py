@@ -542,7 +542,7 @@ def analysis_row(a: Article, opened: bool = False) -> str:
         mark = {'hit': ' ✔', 'miss': ' ✘'}.get(res['verdict'], '')
         label = '종료' if res['status'] == 'final' else 'LIVE'
         state = (f'<em class="an-state" data-s="{res["status"]}" data-v="{res["verdict"]}">{label} {res["away"]}–{res["home"]}{mark}</em>')
-    return (f'<details class="an-item{" is-final" if res and res["status"] == "final" else ""}"{" open" if opened else ""}><summary class="an-row">'
+    return (f'<details class="an-item{" is-final" if res and res["status"] == "final" else ""}" data-teams="{esc(away)}|{esc(home)}"{" open" if opened else ""}><summary class="an-row">'
             f'<span class="an-time"><b>{esc(clock or "-")}</b><small>{esc(day)} {esc(a.league)}</small>{state}</span>'
             f'<span class="an-match">{an_thumb(a)}<span class="an-names"><small>{esc(tag)}</small>'
             f'<span class="an-teams">{esc(away)} <i>VS</i> {esc(home)}</span></span></span>'
@@ -578,6 +578,7 @@ def today_analysis() -> str:
             f'SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> '
             f'<span class="kr">{display_date.replace("-", ".")} {section_label} {feature_count}편</span>{rate}</h2>'
             f'<a class="more" href="{all_href}">{all_label}</a></div>'
+            f'<div class="an-my" data-my hidden><b>MY TEAM</b><span data-my-chips></span></div>'
             f'<div class="an-board"><div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
             f'<span>핵심</span><span>변수</span><span>시선</span><span></span></div>{cards}</div>'
             f'<div class="ta-foot"><a class="review-link" href="/analysis/review/">'
@@ -695,7 +696,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v5" defer></script>'
                  f'<script src="/assets/js/community-admin.js?v={VER}-v1" defer></script>' if path == '/community/' else '')
     news_comments_js = (f'<script src="/assets/js/news-comments.js?v={VER}-v1" defer></script>' if re.fullmatch(r'/news/\d{4}/\d{2}/[a-z0-9-]+/', path) else '')
-    vote_js = (f'<script src="/assets/js/game-vote.js?v={VER}-v1" defer></script>' if path == '/' else '')
+    vote_js = (f'<script src="/assets/js/game-vote.js?v={VER}-v1" defer></script><script src="/assets/js/my-team.js?v={VER}-v1" defer></script>' if path == '/' else '')
     return f'''<!doctype html>
 <html lang="ko">
 <head>

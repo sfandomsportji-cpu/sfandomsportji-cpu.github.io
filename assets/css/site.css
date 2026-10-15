@@ -1339,6 +1339,13 @@ section[aria-labelledby="taTitle"] .sec-title .kr,#today-analysis .sec-title .kr
 .an-stats span{font-size:13px;color:var(--text-3)}
 .an-view{margin:0;padding-left:14px;border-left:3px solid var(--red);font-size:15px;line-height:1.7;color:var(--text-2)}
 .an-view b{display:block;margin-bottom:4px;font-size:12px;letter-spacing:.1em;color:var(--red)}
+.an-my{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:0 0 12px}
+.an-my[hidden]{display:none}
+.an-my>b{font-size:12px;letter-spacing:.12em;color:var(--red)}
+.an-my button{padding:6px 12px;border:1px solid #343848;border-radius:999px;background:#12131a;color:#fff;font:700 13px var(--body);cursor:pointer}
+.an-my button[aria-pressed="true"]{border-color:var(--red);background:var(--red)}
+.an-item[data-mine="1"]{box-shadow:0 0 0 1px var(--red)}
+.an-item[data-mine="1"] .an-names small::after{content:" · MY TEAM";color:var(--red)}
 .an-vote{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr 1fr;gap:8px 10px;align-items:center}
 .an-vote[hidden]{display:none}
 .an-vote>b{font-size:12px;letter-spacing:.1em;color:var(--red)}
