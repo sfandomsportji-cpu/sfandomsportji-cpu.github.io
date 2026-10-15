@@ -1,9 +1,9 @@
 {
   "title": "2026 MLB 포스트시즌",
-  "updated": "2026-10-14",
+  "updated": "2026-10-15",
   "source": [
     {
-      "label": "MLB.com·ESPN·CBS Sports 2026 포스트시즌 일정·최종 스코어 (2026.10.14 KST 확인)"
+      "label": "MLB.com·ESPN·CBS Sports 2026 포스트시즌 일정·최종 스코어 (2026.10.15 KST 확인)"
     }
   ],
   "leagues": [
@@ -392,7 +392,7 @@
       "as": 2,
       "home_color": "#12284B",
       "away_color": "#005A9C",
-      "hw": 2,
+      "hw": 3,
       "aw": 0,
       "games": [
         {
@@ -407,7 +407,12 @@
         },
         {
           "g": 3,
-          "kst": "10.15 (목) 09:00"
+          "kst": "10.15 (목) 09:00",
+          "result": "MIL 6–2 LAD"
+        },
+        {
+          "g": 4,
+          "kst": "10.16 (금) 09:00"
         }
       ]
     },
