@@ -668,10 +668,22 @@ def footer() -> str:
 </footer>'''
 
 
+def meta_clip(text: str, limit: int = 150) -> str:
+    """검색 결과·공유 미리보기용 설명문: 150자 안쪽으로, 가능하면 문장 끝에서 끊는다."""
+    t = re.sub(r'\s+', ' ', text or '').strip()
+    if len(t) <= limit:
+        return t
+    cut = t[:limit]
+    ends = [m.end() for m in re.finditer(r'(?:다|요|\.|!|\?)(?=\s|$)', cut) if m.end() >= 60]
+    if ends:
+        return cut[:ends[-1]].strip()
+    return cut[:cut.rfind(' ')].rstrip(' ,·') + '…' if ' ' in cut[40:] else cut.rstrip() + '…'
+
+
 def layout(title: str, body: str, *, path: str, description: str = '', image: str = '', ld: list | None = None,
            noindex: bool = False, active: str = '', og_type: str = 'website', ads: bool = False) -> str:
     full_title = title if title.startswith('SFANDOM') else f'{title} | SFANDOM'
-    desc = description or SITE['description']
+    desc = meta_clip(description or SITE['description'])
     img = image or f'{BASE}/assets/share/sfandom-social-20261010.png'
     if img.startswith('/'):
         img = f'{BASE}{img}'  # SNS crawlers need an absolute image URL.
