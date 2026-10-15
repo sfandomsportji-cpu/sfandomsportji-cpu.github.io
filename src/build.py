@@ -1535,16 +1535,23 @@ def game_snapshot() -> dict:
     path = CONTENT / 'games-snapshot.json'
     try:
         data = json.loads(path.read_text(encoding='utf-8'))
-        return data if isinstance(data.get('leagues'), dict) else {'leagues': {}}
+        data = data if isinstance(data.get('leagues'), dict) else {'leagues': {}}
     except (OSError, ValueError, TypeError):
-        return {'leagues': {}}
+        data = {'leagues': {}}
+    try:  # NPB는 별도 수집기(sync_npb.py)가 채우는 파일에서 합친다
+        extra = json.loads((CONTENT / 'npb-snapshot.json').read_text(encoding='utf-8')).get('leagues', {})
+        if isinstance(extra, dict):
+            data['leagues'].update({k: v for k, v in extra.items() if isinstance(v, dict)})
+    except (OSError, ValueError, TypeError):
+        pass
+    return data
 
 
 SCORE_LABELS = {
     'scheduled': '예정', 'live': '진행 중 · 확인 시각 기준',
     'final': '종료', 'postponed': '연기', 'cancelled': '취소',
 }
-SCORE_LEAGUES = (('MLB', '⚾'), ('NBA', '🏀'), ('NFL', '🏈'), ('NHL', '🏒'))
+SCORE_LEAGUES = (('MLB', '⚾'), ('NBA', '🏀'), ('NFL', '🏈'), ('NHL', '🏒'), ('NPB', '⚾'))
 
 
 def game_clock(kst: str) -> dt.datetime | None:
@@ -1608,6 +1615,8 @@ def game_sections(brief: bool = False) -> str:
     snapshot = game_snapshot()
     output = []
     for league, icon in SCORE_LEAGUES:
+        if brief and league == 'NPB':  # 홈 미리보기는 4열 그대로 둔다
+            continue
         details = snapshot.get('leagues', {}).get(league) or {}
         verified, stale = game_age(details.get('checked_at', ''))
         games = [g for g in details.get('games', []) if game_clock(g.get('start_kst', ''))]
@@ -1658,7 +1667,7 @@ def build_games() -> None:
             f'<div class="sf-scores__grid">{game_sections()}</div>'
             f'<p class="sf-scores__foot">※ 예정 시간이 지났다고 종료로 표시하지 않습니다. '
             f'기록 제공처가 확정한 점수만 FINAL로 표시하며, 자료 수집이 지연되면 마지막 확인 시각을 함께 표시합니다. '
-            f'KBO는 데이터 제공처 검증 전까지 자동 수집 대상에서 제외합니다.</p></div>')
+            f'NPB는 npb.jp 첫 화면 속보 기준이며 오늘 경기 위주로 갱신됩니다. KBO는 공식 사이트가 자동 수집을 허용하지 않아 이 페이지에서 제외합니다.</p></div>')
     write('/games/', layout('경기 일정·결과 | SFANDOM', body, path='/games/',
          description='MLB NBA NFL NHL 경기 일정과 결과, KST 시간 및 마지막 확인 시각.'),
          search={'u': '/games/', 't': '경기 일정·결과', 's': 'MLB NBA NFL NHL', 'k': 'GAME CENTER',

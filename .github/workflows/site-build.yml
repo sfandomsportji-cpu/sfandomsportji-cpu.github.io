@@ -40,6 +40,8 @@ jobs:
         run: python3 src/tools/fetch_morning_photos.py
       - name: Sync league scores and schedules (ESPN, verified states only)
         run: python3 src/tools/sync_games.py
+      - name: Sync NPB scores (npb.jp, robots.txt 허용 · 실패 시 이전 값 유지)
+        run: python3 src/tools/sync_npb.py
       - name: Sync postseason / NBA / hero from verified scores
         run: python3 src/tools/sync_postseason.py
       - name: Build
