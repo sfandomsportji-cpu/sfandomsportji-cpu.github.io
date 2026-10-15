@@ -25,4 +25,4 @@
 .cycle-article-note__links{display:flex;gap:12px;flex-wrap:wrap}
 .cycle-article-note__links a{color:#ffb2be;font-size:12px;font-weight:750;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:880px){.cycle-guide__head{grid-template-columns:1fr;gap:10px}.cycle-guide__cards{grid-template-columns:1fr}.cycle-guide__card{min-height:unset}.cycle-guide__foot{align-items:flex-start}}
-@media(max-width:560px){.cycle-guide{margin-top:15px}.cycle-guide__head h2{font-size:24px}.cycle-guide__card{padding:17px 16px}.cycle-guide__card h3{font-size:17px}.cycle-guide__foot{padding:12px 14px}.cycle-article-note{padding:14px 16px;gap:12px}}
+@media(max-width:560px){.cycle-guide{margin-top:15px}.cycle-guide__head h2{font-size:24px}.cycle-guide__card{padding:17px 16px}.cycle-guide__card h3{font-size:17px}.cycle-guide__foot{padding:12px 14px}.cycle-guide__foot a{white-space:normal}.cycle-article-note{padding:14px 16px;gap:12px}}

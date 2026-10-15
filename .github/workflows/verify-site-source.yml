@@ -95,7 +95,9 @@ jobs:
           assert "스포츠에서 얻은 가치를 다시 사람에게" in about, "about mission lost"
           assert 'id="scorePreviewTitle"' in home, "homepage multi-league preview missing"
           assert 'sf-scores__league' in games, "game center missing"
-          assert games.count('class="sf-scores__league"') == 4, "four leagues missing"
+          for lg in ("MLB", "NBA", "NFL", "NHL"):
+              assert f'aria-label="{lg} 경기 결과와 일정"' in games, f"{lg} game center section missing"
+          assert games.count('class="sf-scores__league"') >= 4, "game center leagues missing"
           assert "확인 시각" in games, "freshness disclosure missing"
           analysis = (root / "analysis/index.html").read_text(encoding="utf-8")
           review = (root / "analysis/review/index.html").read_text(encoding="utf-8")
@@ -104,8 +106,12 @@ jobs:
           assert 'id="cycleGuideTitle"' in analysis, "approved pregame guide lost"
           assert 'id="cycleReviewTitle"' in review, "approved postgame guide lost"
           assert 'cycle-article-note' in archived, "archived analysis notice lost"
-          assert 'ALDS 5차전' in review and '프리시즌 7경기' in review, "preview-review pairs missing"
-          assert index.count('class="editorial-links__group"') == 5, "independent editorial groups missing"
+          import html, json
+          groups = json.loads((root / "src/content/editorial-paths.json").read_text(encoding="utf-8"))["groups"]
+          for g in groups:
+              if g.get("kind") == "before-after":
+                  assert html.escape(g["title"]) in review, f"preview-review pair missing: {g['id']}"
+          assert index.count('class="editorial-links__group"') == len(groups), "independent editorial groups missing"
           assert "INDEPENDENT STORIES" in index, "separate articles hidden"
           assert 'editorial-links__related' in archived, "original related article links missing"
           print("PASS: approved 01-04 components persist; paired reviews and unique article links generated.")
