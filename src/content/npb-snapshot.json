@@ -2,7 +2,7 @@
   "provider": "npb.jp 첫 화면 속보",
   "leagues": {
     "NPB": {
-      "checked_at": "2026-10-15T21:18+09:00",
+      "checked_at": "2026-10-16T00:02+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -14,7 +14,7 @@
           "home": "SB",
           "away_name": "Hokkaido Nippon-Ham Fighters",
           "home_name": "Fukuoka SoftBank Hawks",
-          "status": "live",
+          "status": "final",
           "away_score": 2,
           "home_score": 6,
           "source_url": "https://npb.jp/scores/2026/1015/h-f-02/"
