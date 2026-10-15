@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-15T16:42+09:00",
+  "updated_at": "2026-10-15T17:35+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-15T16:42+09:00",
+      "checked_at": "2026-10-15T17:35+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -88,7 +88,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-15T16:42+09:00",
+      "checked_at": "2026-10-15T17:35+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -368,7 +368,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-15T16:42+09:00",
+      "checked_at": "2026-10-15T17:35+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -388,7 +388,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-15T16:42+09:00",
+      "checked_at": "2026-10-15T17:35+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -742,6 +742,32 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892530/bruins-kings"
+        },
+        {
+          "id": "NHL-401892531",
+          "league": "NHL",
+          "start_kst": "2026-10-18T11:00+09:00",
+          "away": "EDM",
+          "home": "UTA",
+          "away_name": "Edmonton Oilers",
+          "home_name": "Utah Mammoth",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892531/oilers-mammoth"
+        },
+        {
+          "id": "NHL-401892532",
+          "league": "NHL",
+          "start_kst": "2026-10-18T11:00+09:00",
+          "away": "PIT",
+          "home": "VGK",
+          "away_name": "Pittsburgh Penguins",
+          "home_name": "Vegas Golden Knights",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892532/penguins-golden-knights"
         }
       ]
     }
