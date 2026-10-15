@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-15T15:51+09:00",
+  "updated_at": "2026-10-15T16:21+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-15T15:51+09:00",
+      "checked_at": "2026-10-15T16:21+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -88,7 +88,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-15T15:51+09:00",
+      "checked_at": "2026-10-15T16:21+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -368,7 +368,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-15T15:51+09:00",
+      "checked_at": "2026-10-15T16:21+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -388,7 +388,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-15T15:51+09:00",
+      "checked_at": "2026-10-15T16:21+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -729,6 +729,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892529/blues-predators"
+        },
+        {
+          "id": "NHL-401892530",
+          "league": "NHL",
+          "start_kst": "2026-10-18T10:00+09:00",
+          "away": "BOS",
+          "home": "LA",
+          "away_name": "Boston Bruins",
+          "home_name": "Los Angeles Kings",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892530/bruins-kings"
         }
       ]
     }
