@@ -38,7 +38,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / 'tools'))
 from fetch_logos import SOURCES as LOGO_SOURCES  # noqa: E402  (리그별 팀 ID · 공식 로고 주소)
 import feeds  # noqa: E402  (RSS 피드 생성)
 import weekly  # noqa: E402  (주간 인기 글 스냅샷)
-from build_article_cards import card_name  # noqa: E402  (글별 공유 카드 파일명)
+from build_article_cards import card_name, is_match_card  # noqa: E402  (글별 공유 카드 파일명)
 from editorial_paths import related as editorial_related, index as editorial_index
 from naver_magazine import render as render_naver_magazine
 
@@ -1066,7 +1066,7 @@ def build_article(a: Article):
           'author': {'@type': 'Organization', 'name': 'SFANDOM', 'url': BASE + '/about/'},
           'publisher': {'@id': f'{BASE}/#organization', '@type': 'Organization', 'name': 'SFANDOM',
                         'logo': {'@type': 'ImageObject', 'url': f'{BASE}/assets/brand/sfandom-mark-512.png'}}}
-    share = a.image
+    share = '' if is_match_card(a.__dict__) else a.image  # 대진이 있는 분석은 스코어보드 카드가 공유 이미지
     if not share:  # 사진이 없는 글은 build_article_cards.py 가 만든 글별 공유 카드 사용 (없으면 대표 카드)
         card = f'/assets/share/cards/{card_name(pathlib.Path(a.file).stem, a.__dict__)}'
         share = card if (ROOT / card.lstrip('/')).exists() else ''

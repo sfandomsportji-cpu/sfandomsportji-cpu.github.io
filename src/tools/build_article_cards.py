@@ -49,9 +49,17 @@ def front_matter(path):
     return fm
 
 
+def is_match_card(fm):
+    """분석 글 중 대진(away/home)이 있는 글은 사진 유무와 관계없이 스코어보드형 공유 카드를 쓴다."""
+    return fm.get('kind') == 'analysis' and bool(fm.get('away')) and bool(fm.get('home'))
+
+
 def card_key(fm):
     headline = f"{fm.get('title', '')} {fm.get('subtitle', '')}".strip()
-    return hashlib.sha1(f"{headline}|{fm.get('league', 'MLB')}|{fm.get('kind', 'news')}".encode()).hexdigest()[:6]
+    extra = ''
+    if is_match_card(fm):
+        extra = f"|{fm.get('away')}|{fm.get('home')}|{fm.get('kst', '')}|{json.dumps(fm.get('glance', ''), ensure_ascii=False)}|v2"
+    return hashlib.sha1(f"{headline}|{fm.get('league', 'MLB')}|{fm.get('kind', 'news')}{extra}".encode()).hexdigest()[:6]
 
 
 def card_name(stem, fm):
@@ -84,8 +92,53 @@ def wrap(draw, text, font, width, max_lines):
     return lines
 
 
+def render_match(fm, dest):
+    """홈 분석 줄과 같은 모양: 시간 · AWAY VS HOME · 핵심/변수/시선 세 줄."""
+    from PIL import Image, ImageDraw
+    im = Image.new('RGB', (W, H), '#0B0C11')
+    d = ImageDraw.Draw(im, 'RGBA')
+    d.rectangle((0, 0, 14, H), fill=(229, 23, 63, 255))
+    if MARK.exists():
+        mark = Image.open(MARK).convert('RGBA').resize((56, 56), Image.Resampling.LANCZOS)
+        im.paste(mark, (70, 44), mark)
+    d.text((140, 50), 'SFANDOM', font=load_font(36), fill=(249, 250, 253, 255))
+    badge = f"ANALYSIS  ·  {fm.get('league', 'MLB')}"
+    bf = load_font(22)
+    bw = d.textlength(badge, font=bf)
+    d.rounded_rectangle((1130 - bw - 36, 48, 1130, 96), radius=24, fill=(229, 23, 63, 255))
+    d.text((1130 - bw - 18, 57), badge, font=bf, fill=(255, 255, 255, 255))
+    d.text((70, 128), f"{fm.get('kst', '')} KST", font=load_font(52), fill=(229, 23, 63, 255))
+    away, home = str(fm.get('away', '')).upper(), str(fm.get('home', '')).upper()
+    nf = load_font(88)
+    vs = ' VS '
+    size = 88
+    while d.textlength(f"{away}{vs}{home}", font=nf) > 1060 and size > 40:
+        size -= 4
+        nf = load_font(size)
+    x = 70
+    for text, color in ((away, (249, 250, 253, 255)), (vs, (229, 23, 63, 255)), (home, (249, 250, 253, 255))):
+        d.text((x, 196), text, font=nf, fill=color)
+        x += d.textlength(text, font=nf)
+    rows = dict(fm.get('glance') or [])
+    y = 330
+    lf, vf = load_font(24), load_font(34)
+    for label in ('핵심', '변수', '시선'):
+        d.rounded_rectangle((70, y, 70 + 450 * 0 + 96, y + 52), radius=8, fill=(26, 28, 38, 255))
+        d.text((70 + 22, y + 10), label, font=lf, fill=(229, 23, 63, 255))
+        for line in wrap(d, str(rows.get(label, '-')), vf, 900, 1):
+            d.text((190, y + 6), line, font=vf, fill=(249, 250, 253, 255))
+        y += 66
+    d.line((70, 548, 1130, 548), fill=(245, 245, 245, 50), width=2)
+    d.text((70, 563), 'sfandom.com', font=load_font(26), fill=(224, 228, 237, 255))
+    d.text((1130 - d.textlength('Play First. Analysis Next.', font=load_font(26, bold=False)), 563), 'Play First. Analysis Next.',
+           font=load_font(26, bold=False), fill=(167, 180, 199, 255))
+    im.save(dest, 'PNG', optimize=True)
+
+
 def render(fm, dest):
     from PIL import Image, ImageDraw
+    if is_match_card(fm):
+        return render_match(fm, dest)
     im = Image.new('RGB', (W, H), '#090C17')
     px = im.load()
     for y in range(H):
@@ -130,7 +183,7 @@ def main():
     keep, made = set(), 0
     for p in sorted(ARTICLES.glob('*.md')):
         fm = front_matter(p)
-        if str(fm.get('image', '')).strip():
+        if str(fm.get('image', '')).strip() and not is_match_card(fm):
             continue
         name = card_name(p.stem, fm)
         keep.add(name)
