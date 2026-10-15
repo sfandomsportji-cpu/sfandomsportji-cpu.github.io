@@ -528,12 +528,15 @@
       "tag": "종료 · DET 128–106 MIN"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "DEN",
       "home": "LAC",
       "kst": "10.15 (목) 11:30",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · DEN 110–122 LAC",
+      "away_score": 110,
+      "home_score": 122,
+      "result": "DEN 110–122 LAC"
     },
     {
       "day": "PRESEASON",
