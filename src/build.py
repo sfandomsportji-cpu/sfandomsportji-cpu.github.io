@@ -1614,8 +1614,12 @@ def game_sections(brief: bool = False) -> str:
         games.sort(key=lambda g: (g.get('start_kst', ''), g.get('id', '')))
         if brief:
             now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
-            games.sort(key=lambda g: (abs((game_clock(g['start_kst']) - now).total_seconds()),g['start_kst']))
-            games = games[:(4 if league == 'MLB' else 2)]
+            limit = 4 if league == 'MLB' else 2
+            # 홈 미리보기: 앞으로 열릴(또는 진행 중인) 경기를 먼저, 모자라면 가장 최근 종료 경기로 채운다
+            cutoff = now - dt.timedelta(minutes=20)
+            ahead = [g for g in games if g.get('status') in ('scheduled', 'live') and game_clock(g['start_kst']) >= cutoff]
+            behind = [g for g in games if g not in ahead]
+            games = ahead[:limit] + behind[-(limit - len(ahead[:limit])):] if len(ahead) < limit else ahead[:limit]
             games.sort(key=lambda g: g['start_kst'])
         else:
             games = games[-50:]
