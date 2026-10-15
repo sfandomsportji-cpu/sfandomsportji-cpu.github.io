@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-16T04:10+09:00",
+  "updated_at": "2026-10-16T04:49+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-16T04:10+09:00",
+      "checked_at": "2026-10-16T04:49+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -15,10 +15,10 @@
           "home": "CLE",
           "away_name": "Tampa Bay Rays",
           "home_name": "Cleveland Guardians",
-          "status": "live",
+          "status": "final",
           "away_score": 2,
           "home_score": 3,
-          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908025"
+          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908025/rays-guardians"
         },
         {
           "id": "MLB-401908033",
@@ -75,7 +75,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-16T04:10+09:00",
+      "checked_at": "2026-10-16T04:49+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -264,7 +264,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-16T04:10+09:00",
+      "checked_at": "2026-10-16T04:49+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -280,11 +280,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nfl/game/_/gameId/401872995/seahawks-broncos"
+        },
+        {
+          "id": "NFL-401872996",
+          "league": "NFL",
+          "start_kst": "2026-10-18T22:30+09:00",
+          "away": "HOU",
+          "home": "JAX",
+          "away_name": "Houston Texans",
+          "home_name": "Jacksonville Jaguars",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401872996/texans-jaguars"
         }
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-16T04:10+09:00",
+      "checked_at": "2026-10-16T04:49+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
