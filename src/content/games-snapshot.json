@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-16T08:04+09:00",
+  "updated_at": "2026-10-16T08:30+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-16T08:04+09:00",
+      "checked_at": "2026-10-16T08:30+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -75,7 +75,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-16T08:04+09:00",
+      "checked_at": "2026-10-16T08:30+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -264,7 +264,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-16T08:04+09:00",
+      "checked_at": "2026-10-16T08:30+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -388,7 +388,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-16T08:04+09:00",
+      "checked_at": "2026-10-16T08:30+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -400,10 +400,10 @@
           "home": "TOR",
           "away_name": "Buffalo Sabres",
           "home_name": "Toronto Maple Leafs",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892506/sabres-maple-leafs"
+          "status": "live",
+          "away_score": 1,
+          "home_score": 1,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892506"
         },
         {
           "id": "NHL-401892507",
@@ -413,10 +413,10 @@
           "home": "OTT",
           "away_name": "New York Islanders",
           "home_name": "Ottawa Senators",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892507/islanders-senators"
+          "status": "live",
+          "away_score": 0,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892507"
         },
         {
           "id": "NHL-401892509",
@@ -426,10 +426,10 @@
           "home": "TB",
           "away_name": "Seattle Kraken",
           "home_name": "Tampa Bay Lightning",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892509/kraken-lightning"
+          "status": "live",
+          "away_score": 1,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892509"
         },
         {
           "id": "NHL-401892510",
@@ -439,10 +439,10 @@
           "home": "FLA",
           "away_name": "Vancouver Canucks",
           "home_name": "Florida Panthers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892510/canucks-panthers"
+          "status": "live",
+          "away_score": 1,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892510"
         },
         {
           "id": "NHL-401892511",
@@ -452,10 +452,10 @@
           "home": "NJ",
           "away_name": "New York Rangers",
           "home_name": "New Jersey Devils",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892511/rangers-devils"
+          "status": "live",
+          "away_score": 0,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892511"
         },
         {
           "id": "NHL-401892508",
