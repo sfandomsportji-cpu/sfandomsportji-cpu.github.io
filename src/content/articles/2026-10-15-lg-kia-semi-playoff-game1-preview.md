@@ -8,9 +8,9 @@ subtitle: "와일드카드를 넘은 LG, 4일 쉰 KIA를 광주에서 만난다"
 kicker: "SFANDOM & KAIRO · KBO SEMI-PLAYOFF"
 meta: "2026.10.17 14:00 KST · KIA TIGERS vs LG TWINS · 준플레이오프 1차전 프리뷰"
 league: "KBO"
-image: "/assets/photos/20261014-lg-doosan-lg.png"
-image_alt: "LG와 두산 선수들이 함께 있는 잠실 야구장 자료사진. 2026년 준플레이오프 경기 사진이 아님"
-credit: "PHOTO · 사용자 제공 잠실 자료사진 · 준플레이오프 경기 사진 아님"
+image: "/assets/photos/20261015-kbo-lg-kia-matchup.jpg"
+image_alt: "LG 투수와 KIA 타자가 한 화면에 잡힌 KBO 경기 자료사진. 2026년 준플레이오프 경기 사진이 아님"
+credit: "PHOTO · 사용자 제공 LG–KIA 경기 자료사진 · 준플레이오프 경기 사진 아님"
 slug: "lg-kia-semi-playoff-game1-20261017"
 sources: [{"label":"뉴스핌 LG–KIA 준플레이오프 앞둔 염경엽 감독 발언","url":"https://www.newspim.com/news/view/20261014001462"},{"label":"이투데이 2026 KBO 준플레이오프 관전포인트","url":"https://www.etoday.co.kr/news/view/2636261"}]
 ---
@@ -45,6 +45,6 @@ KIA도 뒷문이 완전히 확정된 것은 아니다. 정해영이 흔들린 �
 숫자는 KIA의 광주 홈 이점과 김도영의 장타를 가리키지만, LG는 오스틴의 장타와 휴식 없이 올라온 흐름이라는 다른 근거가 있다. 1차전에서 승패보다 먼저 확인할 것은 톨허스트가 몇 회까지 던지는지와 LG가 7회 이후 어떤 투수를 먼저 올리는지다.
 :::
 
-**사진 안내:** 대표 이미지는 사용자 제공 잠실 자료사진으로 준플레이오프 경기 사진이 아니다.
+**사진 안내:** 대표 이미지는 사용자 제공 LG–KIA 경기 자료사진으로 준플레이오프 경기 사진이 아니다. [KIA 선수단 더그아웃 자료사진](/assets/photos/20261015-kbo-kia-dugout.jpg) · [LG 선수단 자료사진](/assets/photos/20261015-kbo-lg-team.jpg)도 함께 볼 수 있다.
 
 **자료:** [뉴스핌 염경엽 감독 발언 기사](https://www.newspim.com/news/view/20261014001462) · [이투데이 준플레이오프 관전포인트](https://www.etoday.co.kr/news/view/2636261). 확정되지 않은 선발과 엔트리는 경기 전 공식 발표에 맞춰 갱신한다.
