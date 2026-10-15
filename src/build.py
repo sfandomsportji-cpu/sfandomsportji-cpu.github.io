@@ -463,7 +463,7 @@ def today_analysis() -> str:
     newer = sorted([a for a in ARTICLES if a.kind == 'analysis' and a.date > ed_latest],
                    key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
     if newer:
-        latest = newer[:2]
+        latest = newer[:5]  # 승인된 지난 에디션보다 새 분석이 먼저 보이게 한다
         latest_urls = {a.url for a in latest}
         picks = (latest + [a for a in picks if a.url not in latest_urls])[:5]
     display_date = newer[0].date if newer else ed_latest
