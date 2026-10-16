@@ -734,7 +734,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="icon" type="image/png" sizes="512x512" href="/assets/brand/sfandom-mark-512.png">
 <link rel="apple-touch-icon" href="/assets/brand/sfandom-mark-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Jua&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Jua&display=swap">
 <link rel="stylesheet" href="/assets/css/site.css?v={av("/assets/css/site.css")}">
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
