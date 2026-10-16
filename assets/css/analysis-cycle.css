@@ -1,28 +1,28 @@
 /* Site 04 · KAIRO pregame/aftergame editorial framework, scoped to cycle-guide. */
 .cycle-guide{margin-top:25px;margin-bottom:5px}
 .cycle-guide__head{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(0,.82fr);gap:28px;align-items:end;margin-bottom:19px}
-.cycle-guide__eyebrow{display:inline-block;color:#ff899d;font-size:11px;font-weight:400;letter-spacing:1.5px;font-family:var(--head)}
+.cycle-guide__eyebrow{display:inline-block;color:#ff899d;font-size:14px;font-weight:400;letter-spacing:1.5px;font-family:var(--head)}
 .cycle-guide__head h2{font-size:clamp(22px,2.4vw,34px);line-height:1.4;margin:8px 0 0;letter-spacing:-1.3px;word-break:keep-all}
 .cycle-guide__head h2 em{color:#f09caf;font-style:normal}
-.cycle-guide__head>p{font-size:13px;line-height:1.8;color:#c9ccd7;margin:0}
+.cycle-guide__head>p{font-size:14px;line-height:1.8;color:#c9ccd7;margin:0}
 .cycle-guide__head>p strong{color:#fff}
 .cycle-guide__cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
 .cycle-guide__card{border:1px solid #41414b;border-top:2px solid #bb4a61;background:#1b1c24;border-radius:10px;padding:20px 20px 21px;min-height:166px}
-.cycle-guide__card>span{color:#ffa6b3;font-size:11px;letter-spacing:1.2px;font-weight:850}
+.cycle-guide__card>span{color:#ffa6b3;font-size:14px;letter-spacing:1.2px;font-weight:850}
 .cycle-guide__card h3{color:#fff;font-size:18px;line-height:1.45;margin:11px 0 9px}
-.cycle-guide__card p{font-size:13px;color:#cbd0da;line-height:1.7;margin:0;word-break:keep-all}
+.cycle-guide__card p{font-size:14px;color:#cbd0da;line-height:1.7;margin:0;word-break:keep-all}
 .cycle-guide__foot{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:14px 17px;border:1px solid #393b46;border-radius:0 0 9px 9px;background:#121319;margin-top:5px}
-.cycle-guide__foot span{font-size:12px;line-height:1.5;color:#bfc2ce}
+.cycle-guide__foot span{font-size:14px;line-height:1.5;color:#bfc2ce}
 .cycle-guide__foot b{color:#fff;margin-right:9px}
-.cycle-guide__foot a{font-size:12px;color:#ffa1b1;white-space:nowrap;font-weight:400;font-family:var(--head)}
+.cycle-guide__foot a{font-size:14px;color:#ffa1b1;white-space:nowrap;font-weight:400;font-family:var(--head)}
 .cycle-guide a:focus-visible,.cycle-article-note a:focus-visible{outline:3px solid #ffa1b1;outline-offset:4px}
 .cycle-guide--review{margin-bottom:4px}
 .cycle-article-note{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:15px 20px;margin:14px 0 21px;border-left:4px solid #d75b72;border-radius:8px;background:#1b1c24}
 .cycle-article-note>div:first-child{display:grid;gap:5px;flex:1 1 265px}
-.cycle-article-note__label{color:#ffa3b0;letter-spacing:1.1px;font-size:11px;font-weight:850}
-.cycle-article-note strong{font-size:13px;color:#fff;line-height:1.5}
-.cycle-article-note>p{margin:0;flex:2 1 320px;font-size:12px;color:#cdd0db;line-height:1.7}
+.cycle-article-note__label{color:#ffa3b0;letter-spacing:1.1px;font-size:14px;font-weight:850}
+.cycle-article-note strong{font-size:14px;color:#fff;line-height:1.5}
+.cycle-article-note>p{margin:0;flex:2 1 320px;font-size:14px;color:#cdd0db;line-height:1.7}
 .cycle-article-note__links{display:flex;gap:12px;flex-wrap:wrap}
-.cycle-article-note__links a{color:#ffb2be;font-size:12px;font-weight:750;text-decoration:underline;text-underline-offset:3px}
+.cycle-article-note__links a{color:#ffb2be;font-size:14px;font-weight:750;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:880px){.cycle-guide__head{grid-template-columns:1fr;gap:10px}.cycle-guide__cards{grid-template-columns:1fr}.cycle-guide__card{min-height:unset}.cycle-guide__foot{align-items:flex-start}}
 @media(max-width:560px){.cycle-guide{margin-top:15px}.cycle-guide__head h2{font-size:24px}.cycle-guide__card{padding:17px 16px}.cycle-guide__card h3{font-size:17px}.cycle-guide__foot{padding:12px 14px}.cycle-guide__foot a{white-space:normal}.cycle-article-note{padding:14px 16px;gap:12px}}

@@ -73,7 +73,7 @@ body:has(.sf-about) .page-head p.lede{margin:18px auto 0;max-width:850px;font-si
   body:has(.sf-about) .page-head h1{font-size:55px}
   body:has(.sf-about) .page-head p.lede{font-size:15.5px;line-height:1.75;margin-top:13px}
   .sf-about-wrap{padding-top:6px;padding-bottom:50px}
-  .sf-about .about-overline{font-size:12px;letter-spacing:1.3px}
+  .sf-about .about-overline{font-size:14px;letter-spacing:1.3px}
   .about-mission{padding:52px 20px 23px;border-radius:16px}
   .about-mission h2{font-size:clamp(36px,8.8vw,54px);margin:20px auto;line-height:1.33;letter-spacing:-.047em}
   .about-mission .about-mission-lead{font-size:20px}
