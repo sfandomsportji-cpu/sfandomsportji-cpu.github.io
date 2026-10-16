@@ -1365,3 +1365,5 @@ section[aria-labelledby="taTitle"] .sec-title .kr,#today-analysis .sec-title .kr
 .an-row{position:relative}
 .an-open{grid-template-columns:1fr;padding:4px 14px 18px}
 }
+.tabbr{font-family:var(--display);font-size:34px;line-height:1;letter-spacing:.04em;color:#fff}
+.top-stories .ts.tip .tabbr{font-size:44px}
