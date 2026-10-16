@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-16T12:22+09:00",
+  "updated_at": "2026-10-16T12:37+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-16T12:22+09:00",
+      "checked_at": "2026-10-16T12:37+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -62,7 +62,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-16T12:22+09:00",
+      "checked_at": "2026-10-16T12:37+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -251,7 +251,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-16T12:22+09:00",
+      "checked_at": "2026-10-16T12:37+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -263,10 +263,10 @@
           "home": "DEN",
           "away_name": "Seattle Seahawks",
           "home_name": "Denver Broncos",
-          "status": "live",
+          "status": "final",
           "away_score": 14,
-          "home_score": 14,
-          "source_url": "https://www.espn.com/nfl/game?gameId=401872995"
+          "home_score": 17,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401872995/seahawks-broncos"
         },
         {
           "id": "NFL-401872996",
@@ -414,7 +414,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-16T12:22+09:00",
+      "checked_at": "2026-10-16T12:37+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -543,10 +543,10 @@
           "home": "EDM",
           "away_name": "Utah Mammoth",
           "home_name": "Edmonton Oilers",
-          "status": "live",
-          "away_score": 3,
+          "status": "final",
+          "away_score": 4,
           "home_score": 2,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892515"
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892515/mammoth-oilers"
         },
         {
           "id": "NHL-401892516",
