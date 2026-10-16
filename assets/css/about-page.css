@@ -5,9 +5,9 @@ body:has(.sf-about) .page-head h1{font-size:clamp(50px,5vw,80px);line-height:1}
 body:has(.sf-about) .page-head h1 .kr{font-size:clamp(21px,2vw,28px)}
 body:has(.sf-about) .page-head p.lede{margin:18px auto 0;max-width:850px;font-size:19px;line-height:1.7;color:#bec2d0}
 .sf-about-wrap{padding-top:12px;padding-bottom:100px}
-.sf-about{max-width:1550px;margin:0 auto;color:#ecedf3;font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif}
+.sf-about{max-width:1550px;margin:0 auto;color:#ecedf3;font-family:var(--body)}
 .sf-about *{box-sizing:border-box}
-.sf-about h2,.sf-about h3{font-family:'IBM Plex Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;letter-spacing:-.035em}
+.sf-about h2,.sf-about h3{font-family:var(--head);letter-spacing:-.01em}
 .sf-about h2{font-weight:700}
 .sf-about p{margin:0}
 .sf-about .about-overline{display:block;font-size:15px;font-weight:700;letter-spacing:2px;line-height:1.5;color:#f08ea2}
@@ -19,7 +19,7 @@ body:has(.sf-about) .page-head p.lede{margin:18px auto 0;max-width:850px;font-si
 .about-mission .about-mission-desc{font-size:20px;line-height:1.9;color:#cdd0dc;max-width:930px;margin:0 auto}
 .about-journey{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:66px;text-align:left}
 .about-journey>div{padding:25px 27px 27px;border:1px solid #46414d;border-radius:14px;background:rgba(255,255,255,.045);min-width:0}
-.about-journey-no{display:block;color:#ec7894;font-family:'Bebas Neue',Impact,sans-serif;font-size:29px;letter-spacing:1px;line-height:1}
+.about-journey-no{display:block;color:#ec7894;font-family:var(--display);font-size:29px;letter-spacing:1px;line-height:1}
 .about-journey strong{display:block;font-size:24px;margin:9px 0 7px;font-weight:700;letter-spacing:-.02em;color:#f5f5fa}
 .about-journey p{font-size:17px;line-height:1.65;color:#d0d2df}
 .about-giveback{margin-top:34px;display:grid;grid-template-columns:140px minmax(0,1fr);gap:34px;padding:62px 64px;border:1px solid #754656;border-radius:24px;background:linear-gradient(125deg,#33212b,#241f2b 53%,#181821);align-items:start}
@@ -36,13 +36,13 @@ body:has(.sf-about) .page-head p.lede{margin:18px auto 0;max-width:850px;font-si
 .about-principles-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:19px}
 .about-principle{grid-column:span 2;min-width:0;min-height:245px;padding:31px 28px 33px;border:1px solid #3b3b48;border-top:4px solid #bf4962;border-radius:18px;background:linear-gradient(148deg,#22212b,#171821)}
 .about-principle-feature{grid-column:span 3;background:linear-gradient(148deg,#2e222e,#181a23);border-top-color:#ed7994}
-.about-card-no{display:block;font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:1.4px;font-size:18px;color:#ed91a8}
+.about-card-no{display:block;font-family:var(--display);letter-spacing:1.4px;font-size:18px;color:#ed91a8}
 .about-principle h3{margin:23px 0 16px;font-size:clamp(25px,1.7vw,32px);font-weight:700;line-height:1.2;letter-spacing:-.025em}
 .about-principle h3 span{display:block;color:#ffbecd;font-size:16px;font-weight:600;letter-spacing:0;margin-top:8px}
 .about-principle p{font-size:18px;line-height:1.78;color:#d3d5e0}
 .about-people-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .about-people-grid article{min-height:230px;padding:36px 39px;border:1px solid #3c3e4b;border-radius:18px;background:#1c1e27}
-.about-person-role{display:block;font-family:'Bebas Neue',Impact,sans-serif;font-size:20px;color:#ed8098;letter-spacing:1.2px}
+.about-person-role{display:block;font-family:var(--display);font-size:20px;color:#ed8098;letter-spacing:1.2px}
 .about-people-grid h3{font-size:39px;line-height:1.2;margin:16px 0 14px;font-weight:700}
 .about-people-grid h3 span{font-size:20px;color:#cdd1dc;font-weight:600}
 .about-people-grid p{font-size:19px;line-height:1.8;color:#d5d8e1}
