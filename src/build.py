@@ -549,6 +549,13 @@ def hit_rate():
     return sum(r['verdict'] == 'hit' for r in done), len(done)
 
 
+def an_team(name: str, league: str) -> str:
+    """분석 줄의 팀 표기. 축구는 로고를 이름 앞에 붙이고, 이름과 로고가 줄바꿈에서 갈라지지 않게 묶는다."""
+    if league == 'SOCCER' and soccer_badge(name):
+        return f'<span style="white-space:nowrap">{soccer_badge(name)}{esc(name)}</span>'
+    return esc(name)
+
+
 def analysis_row(a: Article, opened: bool = False) -> str:
     away, home = getattr(a, 'away', ''), getattr(a, 'home', '')
     if not (away and home):
@@ -569,7 +576,7 @@ def analysis_row(a: Article, opened: bool = False) -> str:
     return (f'<details class="an-item" data-final="{1 if res and res["status"] == "final" else 0}" data-teams="{esc(away)}|{esc(home)}"{" open" if opened else ""}><summary class="an-row">'
             f'<span class="an-time"><b>{esc(clock or "-")}</b><small>{esc(day)} {esc(a.league)}</small>{state}</span>'
             f'<span class="an-match"><span class="an-names"><small>{esc(tag)}</small>'
-            f'<span class="an-teams">{soccer_badge(away) if a.league == "SOCCER" else ""}{esc(away)} <i>VS</i> {esc(home)}{soccer_badge(home) if a.league == "SOCCER" else ""}</span></span></span>'
+            f'<span class="an-teams">{an_team(away, a.league)} <i>VS</i> {an_team(home, a.league)}</span></span></span>'
             f'{cells}<span class="an-go" aria-hidden="true">+</span></summary>{an_detail(a)}</details>')
 
 
