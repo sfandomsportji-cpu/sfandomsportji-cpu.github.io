@@ -1,4 +1,4 @@
-/* SFANDOM site script — 메뉴 · 광고 슬롯 · 릴스 · 쪽지 · 팀 로고 · 블로그 · 팬 보드 · 검색 */
+/* SFANDOM site script — 메뉴 · 경기 종목 탭 · 릴스 · 쪽지 · 팀 로고 · 블로그 · 팬 보드 · 검색 */
 (() => {
   'use strict';
   const CFG = window.SFANDOM || {};
@@ -59,6 +59,22 @@
     if (!document.hidden) refreshRecordedScores();
   });
 
+  /* ── 경기 센터 종목 탭: 스크립트가 켜질 때만 탭으로 바꾸고, 꺼져 있으면 전 종목이 그대로 보입니다 ── */
+  $$('[data-score-tabs]').forEach(box => {
+    const bar = $('.sf-scores__tabs', box);
+    const tabs = $$('[data-score-tab]', box);
+    const panels = $$('.sf-scores__league[data-league]', box);
+    if (!bar || !tabs.length || !panels.length) return;
+    const show = league => {
+      tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.scoreTab === league)));
+      panels.forEach(p => { p.hidden = p.dataset.league !== league; });
+    };
+    bar.hidden = false;
+    box.classList.add('is-tabbed');
+    tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.scoreTab)));
+    show(tabs[0].dataset.scoreTab);
+  });
+
   /* ── 전체 메뉴 · 검색 ── */
   const toggle = (btn, panel, focusSel) => {
     if (!btn || !panel) return;
@@ -79,33 +95,6 @@
     if (e.key !== 'Escape') return;
     $$('[data-panel]').forEach(p => p.setAttribute('hidden', ''));
     $$('[aria-controls]').forEach(b => b.setAttribute('aria-expanded', 'false'));
-  });
-
-  /* ── 광고 슬롯 ──
-     src/site.json 의 ads.slots 에서 unit(광고 단위 ID)이 채워지고 phase 가 현재 단계 이하인 슬롯만 켭니다.
-     주소 뒤에 ?adpreview=1 을 붙이면 모든 자리를 빨간 박스로 보여줍니다. */
-  const ads = CFG.ads || {};
-  const preview = ads.enabled === true && /[?&]adpreview=1/.test(location.search);
-  $$('.ad[data-ad]').forEach(box => {
-    const id = box.dataset.ad;
-    const slot = (ads.slots || {})[id] || {};
-    if (preview) {
-      box.hidden = false;
-      box.classList.add('preview', slot.phase === 1 ? 'p1' : 'p2');
-      box.textContent = `${id} · ${slot.phase === 1 ? '1단계 · 심사 중부터' : '2단계 · 승인 후'}`;
-      return;
-    }
-    if (ads.enabled !== true || !ads.client || !slot.unit || (slot.phase || 9) > (ads.phase || 0)) return;
-    const ins = el('ins', 'adsbygoogle');
-    ins.style.display = 'block';
-    ins.dataset.adClient = ads.client;
-    ins.dataset.adSlot = slot.unit;
-    if (slot.format) ins.dataset.adFormat = slot.format;
-    if (slot.layout) ins.dataset.adLayout = slot.layout;
-    if (slot.responsive !== false) ins.dataset.fullWidthResponsive = 'true';
-    box.append(ins);
-    box.hidden = false;
-    try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (_) {}
   });
 
   /* ── 첫 화면 배경 영상: 자동재생 + 자동 사운드 복구 ── */

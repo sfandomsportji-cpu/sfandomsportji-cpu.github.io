@@ -346,8 +346,8 @@ def inline(s: str) -> str:
     return s
 
 
-def render_body(a: Article, ad_after: int = 2) -> str:
-    out, paras = [], 0
+def render_body(a: Article) -> str:
+    out = []
     for block in re.split(r'\n{2,}', a.body):
         b = block.strip()
         if not b:
@@ -366,27 +366,10 @@ def render_body(a: Article, ad_after: int = 2) -> str:
             out.append(f'<h3>{inline(b[4:])}</h3>')
         else:
             out.append(f'<p>{inline(" ".join(b.splitlines()))}</p>')
-            paras += 1
-            if paras == ad_after:
-                out.append(ad('SF-ART-IN'))
     return '\n'.join(out)
 
 
 # ───────────────────────── 조각 ─────────────────────────
-def ad(slot_id: str, extra: str = '') -> str:
-    # 광고가 꺼져 있는 동안(site.json ads.enabled=false)에는 빈 광고 자리를 HTML에 두지 않습니다. 켜면 그대로 되살아납니다.
-    if not SITE['ads'].get('enabled', False):
-        return ''
-    slot = SITE['ads']['slots'][slot_id]
-    return f'<div class="ad ad-{slot["size"]} {extra}" data-ad="{slot_id}" hidden></div>'
-
-
-def ad_band(slot_id: str) -> str:
-    if not SITE['ads'].get('enabled', False):
-        return ''
-    return f'<div class="wrap ad-band">{ad(slot_id)}</div>'
-
-
 def thumb(a: Article, cls: str = '') -> str:
     if not a.image:
         if 'SPOTLIGHT' in a.kicker:
@@ -467,7 +450,6 @@ def matchup_strip(a: Article) -> str:
             f'<span class="mc-vs">VS</span><div class="mc-team r">{team_badge(a, 1)}<small>HOME</small><span class="display">{esc(right.upper())}</span></div></div>')
 
 
-TODAY_PICKS: set = set()
 
 
 def an_vote(a: Article) -> str:
@@ -578,18 +560,16 @@ def analysis_row(a: Article, opened: bool = False) -> str:
 
 def today_analysis() -> str:
     """Keep the approved morning edition and surface newer analysis on home."""
-    global TODAY_PICKS
     ed_latest = max(EDITIONS)
     pool = sorted([a for a in ARTICLES if a.kind == 'analysis' and getattr(a, 'away', '') and getattr(a, 'home', '')],
                   key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
     if not pool:
         raise SystemExit('홈 분석 줄에 쓸 분석 글(away/home 포함)이 없음')
-    picks = [a for a in pool if a.date == pool[0].date][:5]  # 가장 최신 날짜의 분석만 (옛 글로 칸을 채우지 않음)
+    picks = [a for a in pool if a.date == pool[0].date][:3]  # 가장 최신 날짜의 분석만 (옛 글로 칸을 채우지 않음)
     display_date = pool[0].date
     section_label = '최신 분석'
     all_href = '/analysis/'
     all_label = '최신 분석 전체 →'
-    TODAY_PICKS = {a.url for a in picks if a.kind == 'analysis'}
     feature_count = len(picks)
     hit, total = hit_rate()
     rate = f'<span data-rate title="경기 전에 남긴 예측과 실제 결과 기록">예측 {hit}/{total}</span>' if total else ''
@@ -702,7 +682,7 @@ def meta_clip(text: str, limit: int = 150) -> str:
 
 
 def layout(title: str, body: str, *, path: str, description: str = '', image: str = '', ld: list | None = None,
-           noindex: bool = False, active: str = '', og_type: str = 'website', ads: bool = False) -> str:
+           noindex: bool = False, active: str = '', og_type: str = 'website') -> str:
     full_title = title if title.startswith('SFANDOM') else f'{title} | SFANDOM'
     desc = meta_clip(description or SITE['description'])
     img = image or f'{BASE}/assets/share/sfandom-social-20261010.png'
@@ -715,14 +695,9 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
         '<meta property="og:image:height" content="630">\n'
         if social_card else ''
     )
-    cfg = {'root': '/', 'ads': {k: SITE['ads'][k] for k in ('client', 'phase', 'enabled')} | {
-        'slots': {k: {kk: v[kk] for kk in ('phase', 'unit', 'format', 'layout') if kk in v} for k, v in SITE['ads']['slots'].items()}},
-        'supabase': SITE['supabase']}
+    cfg = {'root': '/', 'supabase': SITE['supabase']}
     lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld or []))
     robots = 'noindex,follow' if noindex else 'index,follow,max-image-preview:large'
-    # 광고 스크립트는 본문이 충분한 글 상세 페이지에만 싣는다. 목록·허브·검색·404·안내·커뮤니티 화면에는 싣지 않는다.
-    ad_script = (f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={SITE["ads"]["client"]}" crossorigin="anonymous"></script>\n'
-                 if SITE['ads'].get('enabled', False) and ads and not noindex else '')
     thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v2">'
                   f'<link rel="stylesheet" href="/assets/css/community-admin.css?v={VER}-v1">' if path == '/community/' else '')
     news_comments_css = (f'<link rel="stylesheet" href="/assets/css/news-comments.css?v={VER}-v1">' if re.fullmatch(r'/news/\d{4}/\d{2}/[a-z0-9-]+/', path) else '')
@@ -768,7 +743,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/editorial-links.css?v={av("/assets/css/editorial-links.css")}">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}
-{ad_script}<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
+<script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
 {lds}
 </head>
 <body>
@@ -814,7 +789,6 @@ def org_ld() -> dict:
 
 # ───────────────────────── 팬 보드 공통 조각 ─────────────────────────
 CHANNELS = ['NBA', 'MLB', 'NEWS', '분석 토론', '직관 후기', '자유']   # 글 제목 앞 [채널] 머리말로 구분 (게시판 저장소는 그대로)
-QUICK_TAG = '한줄'
 
 
 def channel_chips() -> str:
@@ -913,20 +887,8 @@ def build_home():
   <div class="sec-head"><h2 class="sec-title" id="dsTitle">MLB <span class="outline">POSTSEASON</span> <span class="kr">챔피언십시리즈</span></h2><a class="more" href="/special/postseason-2026/">대진표 · 전체 일정 →</a></div>
   <div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">{lcs_cards}</div>
 </section>'''
-    # 시즌 달력: 지금 가장 뜨거운 블록을 위로. NBA 개막 3일 전부터는 NBA, 그 전에는 진행 중인 MLB 챔피언십시리즈가 먼저.
-    lcs_live = any(max(d.get('hw', 0), d.get('aw', 0)) < 4 for d in PS.get('lcs', []))
-    nba_days = (dt.datetime.fromisoformat(NBA['opening_kst']).date() - dt.date.fromisoformat(TODAY)).days
-    lcs_first = lcs_live and nba_days > 3
-    top_blocks = (lcs_html + nba_section()) if lcs_first else nba_section()
-    lcs_low = '' if lcs_first else lcs_html
     ta_html = today_analysis()
-    shown = TODAY_PICKS
-    gt = lambda a: (re.match(r'[\d.]+ [\d:]+', a.meta or '') or re.match('', '')).group(0) or '9999'
-    upcoming = sorted([x for x in analysis if getattr(x, 'brief', None) and x.url not in shown], key=gt)
-    minis = ''.join(f'<a class="mini lift" href="{a.url}"><span class="tag">{esc(a.league)} · {a.date_dot}</span><span class="display">{esc(a.title.rstrip(".,"))}</span><strong>{esc(a.subtitle)}</strong></a>' for a in (upcoming or [x for x in analysis if x.url not in shown])[:3])
-    ed_latest = max(EDITIONS)
     body = f'''
-{ad_band('SF-HOME-TOP')}
 <section class="hero" aria-labelledby="heroTitle">
   <div class="hero-media">{media}</div>
   <div class="hero-shade" aria-hidden="true"></div>
@@ -937,16 +899,14 @@ def build_home():
     <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill white" href="{esc(hero_link or '/nba/')}" style="height:54px;padding:0 28px">{'오늘 특집 읽기' if hero_link else home_cta}</a><a class="pill ghost" href="/community/#write" style="height:54px;padding:0 28px">팬 보드에서 얘기하기</a></div>
   </article>
   {credit}{reel_tag}
-  <aside class="top-stories" aria-label="{home_aria}"><h2>{home_heading} <span class="nba-dday">{home_status}</span></h2>{tip}</aside>
+  <aside class="top-stories" aria-label="{home_aria}"><h2>{home_heading} <span class="nba-dday">{home_status}</span></h2>{tip}<a class="more top-stories-more" href="/nba/">NBA 허브 →</a></aside>
 </section>
-
-{preserved_component('home-brand-story')}
-
-{game_preview()}
 
 {ta_html}
 
-{top_blocks}
+{game_preview()}
+
+{lcs_html}
 
 <section class="wrap sec" aria-labelledby="newsTitle">
   <div class="sec-head"><h2 class="sec-title" id="newsTitle">NEWS<span class="accent">.</span> <span class="kr">오늘의 이야기, 함께 읽고 토론</span></h2><a class="more" href="/news/">뉴스 전체 →</a></div>
@@ -954,6 +914,11 @@ def build_home():
     <a class="news-lead lift" href="{lead.url}">{home_news_thumb(lead, lead=True)}<div class="body"><span class="tag red">{esc(lead_label)} · {esc(lead.league)} · {lead.date_dot}</span><h3>{esc(lead.headline)}</h3><p>{esc(lead_summary)}</p><span class="talk">{talk_icon()}읽고 함께 이야기하기 →</span></div></a>
     <div class="news-list">{nl}</div>
   </div>
+</section>
+
+<section class="wrap sec" aria-labelledby="magTitle">
+  <div class="sec-head"><h2 class="sec-title" id="magTitle">MAGAZINE<span class="accent">.</span></h2><a class="more" href="/magazine/">매거진 전체 →</a></div>
+  {blog_grid(3, home=True)}
 </section>
 
 <section class="wrap sec" aria-labelledby="fanTitle">
@@ -984,32 +949,9 @@ def build_home():
   </a>
 </section>
 
-{lcs_low}
-
-<section class="wrap sec split-8-4" aria-labelledby="anTitle">
-  <div class="main">
-    <div class="sec-head" style="margin:0"><h2 class="sec-title" id="anTitle">MORE ANALYSIS<span class="accent">.</span> <span class="kr">KAIRO · 이어지는 경기 프리뷰</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>
-    <div class="grid-3">{minis}</div>
-    {ad('SF-HOME-FEED')}
-  </div>
-  <aside class="side">
-    <div class="sticky-rail">{ad('SF-HOME-RAIL')}</div>
-    <div class="box"><span class="display" style="font-size:30px">MORNING EDITION</span><p style="margin:0;color:var(--text-3)">어제 경기에서 오늘 남는 것만. 최신호 {ed_latest.replace("-", ".")}</p><a class="pill" href="/news/morning/{ed_latest}/">최신호 읽기</a></div>
-  </aside>
-</section>
-
-{ad_band('SF-HOME-MID')}
-
-<section class="wrap sec" aria-labelledby="magTitle">
-  <div class="sec-head"><h2 class="sec-title" id="magTitle">MAGAZINE<span class="accent">.</span></h2><a class="more" href="/magazine/">매거진 전체 →</a></div>
-  {blog_grid(3, home=True)}
-</section>
-
+{preserved_component('home-brand-story')}
 
 {message_box()}
-
-<section class="wrap"><div class="edition-band"><div><h2>MORNING EDITION</h2><p>어제 경기 요약과 오늘의 분석 경기를 매일 아침 SFANDOM에서.</p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill" href="/news/morning/">지난 에디션</a><a class="pill ghost" href="{SITE['socials'][0]['url']}" target="_blank" rel="noopener">인스타그램 팔로우</a></div></div></section>
-{ad_band('SF-HOME-BTM')}
 '''
     write('/', layout('SFANDOM | Play First. Analysis Next. — 스포츠 팬 커뮤니티', body, path='/', ld=[org_ld()], active='/'))
 
@@ -1067,7 +1009,6 @@ def build_article(a: Article):
     else:
         discussion_html = f'''<section class="discuss" aria-label="토론"><div><h2>이 글 토론하기</h2><p>생각이 다르면 더 좋습니다. 팬 보드에 한 줄 남겨 주세요.</p></div><a class="pill" href="/community/?topic={topic}#write">{talk_icon()}팬 보드에 글쓰기</a></section>'''
     body = f'''
-{ad_band('SF-ART-TOP')}
 <div class="wrap">
   <header class="article-head">
     {crumbs(trail)}
@@ -1086,10 +1027,8 @@ def build_article(a: Article):
       {editorial_related(a, EDITORIAL_PATHS, BY_KEY, esc)}
       {discussion_html}
       <div style="margin-top:24px">{ed}</div>
-      <div style="margin-top:32px">{ad('SF-ART-MULTI')}</div>
     </article>
     <aside class="article-aside" style="display:flex;flex-direction:column;gap:24px">
-      {ad('SF-ART-RAIL')}
       <div class="aside-box"><h2>함께 읽기</h2>{rel}</div>
     </aside>
   </div>
@@ -1107,18 +1046,13 @@ def build_article(a: Article):
     if share:
         ld['image'] = [share if share.startswith('http') else f'{BASE}{share}']
     write(a.url, layout(a.headline, body, path=a.url, description=a.excerpt, image=share, og_type='article',
-                        ld=[ld, breadcrumb_ld(trail)], active=section_url, ads=True), lastmod=a.date,
+                        ld=[ld, breadcrumb_ld(trail)], active=section_url), lastmod=a.date,
           search={'u': a.url, 't': a.headline, 's': a.subtitle, 'k': a.section, 'd': a.date_dot, 'x': a.excerpt})
 
 
 # ───────────────────────── 목록 ─────────────────────────
-def list_with_ads(items: list[Article], every: int = 5, slot: str = 'SF-LIST-FEED') -> str:
-    out = []
-    for i, a in enumerate(items, 1):
-        out.append(list_item(a))
-        if i % every == 0 and i < len(items) and i // every <= 3:
-            out.append(f'<div style="padding:16px 0">{ad(slot)}</div>')
-    return '<div class="list">' + ''.join(out) + '</div>'
+def item_list(items: list[Article]) -> str:
+    return '<div class="list">' + ''.join(list_item(a) for a in items) + '</div>'
 
 
 def page_head(title_html: str, lede: str, trail: list[tuple[str, str]], tabs: str = '') -> str:
@@ -1130,9 +1064,9 @@ def tabs(items: list[tuple[str, str]], current: str) -> str:
         f'<a href="{u}"{CUR if u == current else ""}>{esc(l)}</a>' for l, u in items) + '</nav>'
 
 
-def two_col(main: str, side_slot: str, side_extra: str = '') -> str:
+def two_col(main: str, side_extra: str = '') -> str:
     return (f'<div class="wrap sec split-8-4" style="padding-top:32px"><div class="main">{main}</div>'
-            f'<aside class="side"><div class="sticky-rail">{ad(side_slot)}{side_extra}</div></aside></div>')
+            f'<aside class="side"><div class="sticky-rail">{side_extra}</div></aside></div>')
 
 
 def latest_box(exclude_kind: str | None = None) -> str:
@@ -1146,7 +1080,7 @@ def build_lists():
     news_tabs = tabs([('전체 뉴스', '/news/'), ('모닝 에디션', '/news/morning/')], '/news/')
     write('/news/', layout('NEWS · 스포츠 뉴스', page_head('NEWS<span class="accent">.</span> <span class="kr">오늘의 이야기, 함께 읽고 토론</span>',
           '공식 기록으로 확인한 경기 소식. 모든 뉴스는 팬 보드 토론으로 이어집니다.', [('NEWS', '')], news_tabs)
-          + two_col(list_with_ads(news) + ad_band('SF-LIST-BTM'), 'SF-HUB-RAIL', latest_box('news')),
+          + two_col(item_list(news), latest_box('news')),
           path='/news/', description='NBA 새 시즌과 MLB 포스트시즌 소식을 공식 기록 기준으로 정리합니다.', active='/news/',
           ld=[breadcrumb_ld([('NEWS', '/news/')])]))
 
@@ -1163,13 +1097,13 @@ def build_lists():
         ebody = (page_head(f'MORNING <span class="accent">EDITION</span> <span class="kr">{d.replace("-", ".")}</span>', e.get('intro', ''),
                            [('NEWS', '/news/'), ('MORNING EDITION', '/news/morning/'), (d.replace('-', '.'), '')])
                  + two_col(f'<h2 class="sec-title" style="font-size:44px;margin-bottom:8px">{esc(e.get("title", ""))} <span class="kr">{esc(e.get("subtitle", ""))}</span></h2>'
-                           + list_with_ads(items, 3), 'SF-HUB-RAIL', latest_box()))
+                           + item_list(items), latest_box()))
         write(f'/news/morning/{d}/', layout(f'모닝 에디션 {d.replace("-", ".")} · {e.get("title", "")}', ebody, path=f'/news/morning/{d}/',
-              description=e.get('intro', ''), active='/news/', ld=[breadcrumb_ld([('NEWS', '/news/'), ('MORNING EDITION', '/news/morning/'), (d, '')])], ads=True), lastmod=d)
+              description=e.get('intro', ''), active='/news/', ld=[breadcrumb_ld([('NEWS', '/news/'), ('MORNING EDITION', '/news/morning/'), (d, '')])]), lastmod=d)
     write('/news/morning/', layout('MORNING EDITION · 모닝 에디션', page_head('MORNING <span class="accent">EDITION</span>',
           '어제 경기에서 오늘까지 남는 것만 골라 매일 아침 정리합니다.', [('NEWS', '/news/'), ('MORNING EDITION', '')],
           tabs([('전체 뉴스', '/news/'), ('모닝 에디션', '/news/morning/')], '/news/morning/'))
-          + two_col('<div class="list">' + ''.join(rows) + '</div>', 'SF-HUB-RAIL'), path='/news/morning/',
+          + two_col('<div class="list">' + ''.join(rows) + '</div>'), path='/news/morning/',
           description='SFANDOM 모닝 에디션 전체 목록', active='/news/'))
 
     # 매거진: sfandomsport 네이버 블로그 최근 글 링크 전용 화면.
@@ -1199,17 +1133,17 @@ def build_lists():
     lede, method = page_fragment('method')
     an_tabs = tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/')
     write('/analysis/', layout('ANALYSIS · 경기 분석', page_head('ANALYSIS<span class="accent">.</span>', lede, [('ANALYSIS', '')], an_tabs)
-          + preserved_component('analysis-cycle-guide') + two_col('<h2 class="sec-title" style="font-size:44px">LATEST <span class="kr">최근 경기 프리뷰</span></h2>' + list_with_ads(an, 4)
+          + preserved_component('analysis-cycle-guide') + two_col('<h2 class="sec-title" style="font-size:44px">LATEST <span class="kr">최근 경기 프리뷰</span></h2>' + item_list(an)
                     + f'<section id="method" class="sec"><h2 class="sec-title" style="font-size:56px">METHOD <span class="kr">분석은 이렇게 만듭니다</span></h2><div class="prose">{method}</div></section>',
-                    'SF-HUB-RAIL', '<div class="aside-box" style="margin-top:24px"><h2>REVIEW</h2><a href="/analysis/review/">경기 전 전망과 실제 결과 기록 보기 →</a></div>'),
+                    '<div class="aside-box" style="margin-top:24px"><h2>REVIEW</h2><a href="/analysis/review/">경기 전 전망과 실제 결과 기록 보기 →</a></div>'),
           path='/analysis/', description=lede, active='/analysis/'))
     write('/analysis/mlb/', layout('MLB 분석', page_head('MLB <span class="accent">ANALYSIS</span>', '선발 매치업과 순위 경쟁을 중심으로 본 MLB 경기 프리뷰.', [('ANALYSIS', '/analysis/'), ('MLB', '')],
           tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/mlb/'))
-          + two_col(list_with_ads([a for a in an if a.league == 'MLB'], 4), 'SF-HUB-RAIL', latest_box('analysis')),
+          + two_col(item_list([a for a in an if a.league == 'MLB']), latest_box('analysis')),
           path='/analysis/mlb/', description='MLB 경기 프리뷰와 분석', active='/analysis/'))
     write('/analysis/nba/', layout('NBA 분석', page_head('NBA <span class="accent">ANALYSIS</span>', '새 시즌 주요 경기를 경기 전 구도 중심으로 정리한 NBA 프리뷰.', [('ANALYSIS', '/analysis/'), ('NBA', '')],
           tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/nba/'))
-          + two_col(list_with_ads([a for a in an if a.league == 'NBA'], 4), 'SF-HUB-RAIL', latest_box('analysis')),
+          + two_col(item_list([a for a in an if a.league == 'NBA']), latest_box('analysis')),
           path='/analysis/nba/', description='NBA 경기 프리뷰와 분석', active='/analysis/'))
     # 자동 복기: 경기 전에 pick을 남긴 분석 중 끝난 경기를 결과와 대조해 덧붙인다(손으로 쓴 기록은 그대로 유지).
     auto_recs = []
@@ -1231,7 +1165,7 @@ def build_lists():
     write('/analysis/review/', layout('복기 리포트 · 경기 전 전망과 결과', page_head('REVIEW <span class="accent">/</span> <span class="kr">복기 리포트</span>', RECORDS['note'],
           [('ANALYSIS', '/analysis/'), ('REVIEW', '')], tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/review/'))
           + preserved_component('review-cycle-guide') + editorial_index(EDITORIAL_PATHS, BY_KEY, esc, 'before-after') + two_col(f'<div class="stats" style="margin:0 0 12px"><div class="stat"><b>{len(all_recs)}</b><span>RECORDS</span></div><div class="stat"><b>{ok}</b><span>MATCHED</span></div><div class="stat"><b>{len(all_recs) - ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{updated[5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
-                    + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다른 결과도 지우지 않습니다. 어떤 전제가 틀렸는지 다음 분석에서 다시 확인합니다.</p>', 'SF-HUB-RAIL'),
+                    + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다른 결과도 지우지 않습니다. 어떤 전제가 틀렸는지 다음 분석에서 다시 확인합니다.</p>'),
           path='/analysis/review/', description=RECORDS['note'], active='/analysis/'))
 
 
@@ -1239,13 +1173,13 @@ def build_lists():
 def build_hubs():
     mlb = [a for a in ARTICLES if a.league == 'MLB']
     sec = lambda kind, title, kr, anchor: (f'<section id="{anchor}" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:52px">{title} <span class="kr">{kr}</span></h2></div>'
-                                           + list_with_ads([a for a in mlb if a.kind == kind][:8], 4, 'SF-HUB-FEED') + '</section>')
+                                           + item_list([a for a in mlb if a.kind == kind][:8]) + '</section>')
     t = tabs([('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('포스트시즌', '/special/postseason-2026/')], '')
     live_mlb = ('<section id="lcs" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:42px">LEAGUE CHAMPIONSHIP <span class="kr">최신 전적 · 다음 경기</span></h2></div><div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">'
                 + ''.join(lcs_card(d) for d in PS.get('lcs', [])) + '</div></section>')
     main = live_mlb + sec('news', 'NEWS', 'MLB 뉴스', 'news') + sec('analysis', 'ANALYSIS', '경기 프리뷰', 'analysis') + sec('magazine', 'MAGAZINE', '기획 · 스포트라이트', 'magazine')
     write('/mlb/', layout('MLB · 메이저리그', page_head('MLB<span class="accent">.</span> <span class="kr">메이저리그</span>', '포스트시즌, 모닝 에디션, 선발 매치업까지 — MLB 이야기는 여기서 시작합니다.', [('MLB', '')], t)
-          + two_col(main, 'SF-HUB-RAIL', '<div class="aside-box" style="margin-top:24px"><h2>POSTSEASON</h2><a href="/special/postseason-2026/">2026 포스트시즌 대진표 · 일정 →</a><a href="/community/">경기 얘기는 팬 보드에서 →</a></div>'),
+          + two_col(main, '<div class="aside-box" style="margin-top:24px"><h2>POSTSEASON</h2><a href="/special/postseason-2026/">2026 포스트시즌 대진표 · 일정 →</a><a href="/community/">경기 얘기는 팬 보드에서 →</a></div>'),
           path='/mlb/', description='MLB 뉴스·경기 분석·매거진', active='/mlb/'))
     # NBA 허브
     story = ''.join(f'<div class="nba-story"><b>{x["k"]}</b><h3>{esc(x["t"])}</h3><p>{esc(x["x"])}</p></div>' for x in NBA['storylines'])
@@ -1290,7 +1224,6 @@ def build_hubs():
 <section class="sec" id="wildcard"><div class="sec-head"><h2 class="sec-title">WILD CARD <span class="kr">결과</span></h2><span class="muted">3전 2선승 · 종료</span></div><div class="grid-4">{wc}</div></section>
 <section class="sec" id="bracket"><div class="bracket"><div class="bracket-head"><h2>SEEDS<span class="accent">.</span></h2><span class="muted">정규시즌 최종 성적 · {PS["updated"].replace("-", ".")} 확인</span></div><div class="seeds">{seeds}</div><div class="rounds">{rounds}</div>
 <div class="sources" style="border:0;padding-bottom:0"><strong>출처</strong>{srcs}</div></div></section>
-{ad_band('SF-LIST-BTM')}
 <section class="sec"><div class="sec-head"><h2 class="sec-title">ROAD TO <span class="accent">OCTOBER</span> <span class="kr">가을로 가는 길</span></h2><a class="more" href="/news/morning/">모닝 에디션 전체 →</a></div><div class="card-grid">{"".join(mag_card(a) for a in rel)}</div></section>
 <section class="discuss"><div><h2>경기 얘기는 팬 보드에서</h2><p>예상, 복기, 한 줄 평 모두 환영합니다.</p></div><a class="pill" href="/community/?topic={quote("[챔피언십시리즈] ")}#write">{talk_icon()}글쓰기</a></section>
 </div>''')
@@ -1402,24 +1335,6 @@ def nba_home_games() -> list:
     ordered = sorted(NBA.get('preseason_games', []), key=when)
     recent = [g for g in ordered if now - dt.timedelta(hours=18) <= when(g) <= now + dt.timedelta(hours=60)]
     return recent or [g for g in ordered if when(g) >= now][:6] or ordered[-6:]
-
-
-def nba_section() -> str:
-    """NBA 현재 구간 띠 (홈 화면 전체 폭)."""
-    preseason = nba_home_preseason()
-    games = nba_home_games()
-    cards = nba_cards(games)
-    dday = (f'{sum(bool(g.get("result")) for g in games)} FINAL · NEXT' if preseason else nba_dday())
-    title = 'PRESEASON <span class="outline">RESULTS</span>' if preseason else 'TIP-OFF <span class="outline">WEEK</span>'
-    verified_time, _old = game_age((game_snapshot().get('leagues', {}).get('NBA') or {}).get('checked_at', ''))
-    copy = (f'확인된 최종 결과와 예정·확인 중 경기를 구분합니다. 마지막 기록 확인: {verified_time}. 모든 시간은 한국시간입니다.'
-            if preseason else '10월 21일(수) 새벽, 새 시즌이 시작됩니다. 개막 주간 주요 경기를 한국시간으로 정리했습니다.')
-    return (f'<section class="wrap sec" id="nba" aria-labelledby="nbaTitle"><div class="nba-stage">'
-            f'<div class="nba-intro"><span class="nba-kicker"><span class="nba-ball" aria-hidden="true"></span>NBA {NBA["season"]}</span>'
-            f'<h2 class="sec-title" id="nbaTitle">{title}</h2>'
-            f'<p>{copy}</p><a class="pill" href="/nba/">NBA 허브 →</a>'
-            f'<b class="nba-dday">{dday}</b></div>'
-            f'<div class="nba-rail">{cards}</div></div></section>')
 
 
 # ───────────────────────── 커뮤니티 · 정적 ─────────────────────────
@@ -1793,7 +1708,7 @@ def game_sections(brief: bool = False) -> str:
         note = ' · 일부 날짜 확인 지연' if details.get('coverage') == 'partial' else ''
         if details.get('error'):
             note += ' · 외부 자료 연결 지연'
-        output.append(f'<section class="sf-scores__league" aria-label="{league} 경기 결과와 일정">'
+        output.append(f'<section class="sf-scores__league" data-league="{league}" aria-label="{league} 경기 결과와 일정">'
                       f'<div class="sf-scores__league-head"><h3>{icon} {league}</h3>'
                       f'<small>확인 {esc(verified)}{esc(note)}</small></div>'
                       f'<div class="sf-scores__rows">{cards}</div></section>')
@@ -1801,11 +1716,15 @@ def game_sections(brief: bool = False) -> str:
 
 
 def game_preview() -> str:
-    return (f'<section class="wrap sf-scores sf-scores--preview" aria-labelledby="scorePreviewTitle">'
+    # 종목 탭: 자바스크립트가 켜지면 NBA부터 한 종목씩 보여주고, 꺼져 있으면 전 종목을 그대로 펼쳐 둡니다.
+    order = ('NBA', 'MLB', 'NPB', 'NFL', 'NHL')
+    tabs_html = ''.join(f'<button type="button" role="tab" data-score-tab="{lg}" aria-selected="{"true" if lg == order[0] else "false"}">{lg}</button>' for lg in order)
+    return (f'<section class="wrap sf-scores sf-scores--preview" aria-labelledby="scorePreviewTitle" data-score-tabs>'
             f'<div class="sf-scores__heading"><div><span class="sf-scores__eyebrow">GAME CENTER · KST</span>'
             f'<h2 id="scorePreviewTitle">경기 일정 <span>·</span> 최종 결과</h2>'
             f'<p>MLB·NBA·NFL·NHL·NPB · 외부 기록 제공처 확인 시각 기준</p></div>'
             f'<a class="pill" href="/games/">전체 경기 보기 →</a></div>'
+            f'<div class="sf-scores__tabs" role="tablist" aria-label="종목" hidden>{tabs_html}</div>'
             f'<div class="sf-scores__grid">{game_sections(True)}</div></section>')
 
 

@@ -117,3 +117,14 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
   .sf-scores--preview .sf-scores__league{display:flex;flex-direction:column;align-self:stretch}
   .sf-scores--preview .sf-scores__rows{flex:1;grid-auto-rows:1fr}
 }
+
+/* 홈 경기 센터 종목 탭 · 2026-10-17 */
+.sf-scores__tabs{display:flex;gap:8px;margin:0 0 16px;overflow-x:auto;scrollbar-width:none}
+.sf-scores__tabs[hidden]{display:none}
+.sf-scores__tabs button{flex:0 0 auto;height:40px;padding:0 20px;border-radius:20px;border:1px solid #353640;background:#1b1c24;color:#d7d7e0;font:inherit;font-weight:800;letter-spacing:.06em;cursor:pointer}
+.sf-scores__tabs button[aria-selected="true"]{background:#c8102e;border-color:#c8102e;color:#fff}
+.sf-scores__tabs button:focus-visible{outline:2px solid #f98a9a;outline-offset:2px}
+.is-tabbed .sf-scores__grid{grid-template-columns:1fr}
+.is-tabbed .sf-scores__league[hidden]{display:none}
+.sf-scores--preview.is-tabbed .sf-scores__rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));flex:none}
+.is-tabbed .sf-scores__game{border-right:1px solid #2e2e38}
