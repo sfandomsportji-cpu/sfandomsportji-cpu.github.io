@@ -1,0 +1,134 @@
+{
+  "season": "2026-27",
+  "league": "ligue-1",
+  "source_repository": "https://github.com/luukhopman/football-logos",
+  "source_commit": "2a3978f0b4730645c205d855a4bda54c161183e9",
+  "files": [
+    {
+      "club": "AJ Auxerre",
+      "file": "aj-auxerre.png",
+      "relative_path": "ligue-1/aj-auxerre.png",
+      "size_bytes": 19770,
+      "source_sha": "2feebe80cf78d7ee47682471c9ccc754865302ff"
+    },
+    {
+      "club": "AS Monaco",
+      "file": "as-monaco.png",
+      "relative_path": "ligue-1/as-monaco.png",
+      "size_bytes": 17992,
+      "source_sha": "710f2c985001b3cd2b0e6048fe756e69c4fd391c"
+    },
+    {
+      "club": "Angers SCO",
+      "file": "angers-sco.png",
+      "relative_path": "ligue-1/angers-sco.png",
+      "size_bytes": 20322,
+      "source_sha": "f99ba73cbf3f5151d6637ff9095b7ed24078cb19"
+    },
+    {
+      "club": "ESTAC Troyes",
+      "file": "estac-troyes.png",
+      "relative_path": "ligue-1/estac-troyes.png",
+      "size_bytes": 34571,
+      "source_sha": "a531b3ededb1c4437f2e2b95d337975bcc5cd1ea"
+    },
+    {
+      "club": "FC Lorient",
+      "file": "fc-lorient.png",
+      "relative_path": "ligue-1/fc-lorient.png",
+      "size_bytes": 26425,
+      "source_sha": "aa56ddc5d138b2322d88f87fb0a1e10eb0b8779e"
+    },
+    {
+      "club": "FC Toulouse",
+      "file": "fc-toulouse.png",
+      "relative_path": "ligue-1/fc-toulouse.png",
+      "size_bytes": 30735,
+      "source_sha": "f6ea1dcf309724d70d56a4a78e77633f56365862"
+    },
+    {
+      "club": "LOSC Lille",
+      "file": "losc-lille.png",
+      "relative_path": "ligue-1/losc-lille.png",
+      "size_bytes": 18715,
+      "source_sha": "318a01561441fae398ba9c90775fe05a60903a1f"
+    },
+    {
+      "club": "Le Havre AC",
+      "file": "le-havre-ac.png",
+      "relative_path": "ligue-1/le-havre-ac.png",
+      "size_bytes": 24840,
+      "source_sha": "ed84cadf001e8916c6bd097ed17701a4c45122e8"
+    },
+    {
+      "club": "Le Mans FC",
+      "file": "le-mans-fc.png",
+      "relative_path": "ligue-1/le-mans-fc.png",
+      "size_bytes": 24882,
+      "source_sha": "ebf224d1666b00a3e4ccf339cff3ce42edb514de"
+    },
+    {
+      "club": "OGC Nice",
+      "file": "ogc-nice.png",
+      "relative_path": "ligue-1/ogc-nice.png",
+      "size_bytes": 42256,
+      "source_sha": "e9d7cff9366b8fdc9b29fd00edc1d098050296c3"
+    },
+    {
+      "club": "Olympique Lyon",
+      "file": "olympique-lyon.png",
+      "relative_path": "ligue-1/olympique-lyon.png",
+      "size_bytes": 17832,
+      "source_sha": "7390f0bd833cb2a7072cae62a1fe2f59276682a6"
+    },
+    {
+      "club": "Olympique Marseille",
+      "file": "olympique-marseille.png",
+      "relative_path": "ligue-1/olympique-marseille.png",
+      "size_bytes": 23256,
+      "source_sha": "499c1c14e743ccda34191faa42c536b5f89228fb"
+    },
+    {
+      "club": "Paris FC",
+      "file": "paris-fc.png",
+      "relative_path": "ligue-1/paris-fc.png",
+      "size_bytes": 24851,
+      "source_sha": "9989259f9bd5b69d16700d016dc2f32ceb35bf5b"
+    },
+    {
+      "club": "Paris Saint-Germain",
+      "file": "paris-saint-germain.png",
+      "relative_path": "ligue-1/paris-saint-germain.png",
+      "size_bytes": 22525,
+      "source_sha": "823a6035ccfc9a6f120d6fa8c91e0b86a68c0793"
+    },
+    {
+      "club": "RC Lens",
+      "file": "rc-lens.png",
+      "relative_path": "ligue-1/rc-lens.png",
+      "size_bytes": 23826,
+      "source_sha": "eea54b4f024c3c3cf0baee558823579e6f7df612"
+    },
+    {
+      "club": "RC Strasbourg Alsace",
+      "file": "rc-strasbourg-alsace.png",
+      "relative_path": "ligue-1/rc-strasbourg-alsace.png",
+      "size_bytes": 25057,
+      "source_sha": "e4e96a58efb8329dc2d80867e05cb6ebc9295f17"
+    },
+    {
+      "club": "Stade Brestois 29",
+      "file": "stade-brestois-29.png",
+      "relative_path": "ligue-1/stade-brestois-29.png",
+      "size_bytes": 29274,
+      "source_sha": "2a699842d47dde1e9073fcff17b1be16165ba9dc"
+    },
+    {
+      "club": "Stade Rennais FC",
+      "file": "stade-rennais-fc.png",
+      "relative_path": "ligue-1/stade-rennais-fc.png",
+      "size_bytes": 21365,
+      "source_sha": "8d8f6dc72967d38b80ae257380e0cf13fd270028"
+    }
+  ]
+}
