@@ -109,3 +109,11 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
  .sf-scores--page .sf-scores__time small{font-size:14px}
  .sf-scores--page .sf-scores__teams b{font-size:20px}
 }
+
+/* SFANDOM home scoreboard · 2026-10-17 — 5개 리그를 빈 칸 없이 배치 (PC: 3열, MLB는 2행 높이) */
+@media (min-width:1151px){
+  .sf-scores--preview .sf-scores__grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+  .sf-scores--preview .sf-scores__league:first-child{grid-row:span 2}
+  .sf-scores--preview .sf-scores__league{display:flex;flex-direction:column;align-self:stretch}
+  .sf-scores--preview .sf-scores__rows{flex:1;grid-auto-rows:1fr}
+}
