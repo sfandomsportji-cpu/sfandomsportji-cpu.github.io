@@ -61,6 +61,7 @@ python3 src/tools/check.py
 | `assets/brand/` | SFANDOM 로고 (SVG · PNG) |
 | `assets/sfandom-brand-film-20260901.mp4` | 브랜드 필름 |
 | `assets/sfandom-hero-loop.mp4` · `assets/sfandom-hero-poster.jpg` | 첫 화면 배경 영상과 첫 장면 |
+| `assets/nba-hero-clip.mp4` · `assets/nba-hero-poster.jpg` | 지금 첫 화면에 쓰는 NBA 클립과 첫 장면 (`src/site.json`의 `hero.video`) |
 | `assets/css/site.css` · `assets/js/site.js` | 스타일 · 스크립트 |
 
 팀 로고는 리그 공식 주소에서 불러옵니다. `python3 src/tools/fetch_logos.py`를 실행하면 `assets/teams/`에 받아 두고 그 파일을 씁니다.
