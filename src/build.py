@@ -646,7 +646,14 @@ def talk_icon() -> str:
 
 
 def list_item(a: Article, h: str = 'h2') -> str:
-    return (f'<a class="li" href="{a.url}">{thumb(a)}<div><span class="tag red">{esc(a.section)} · {esc(a.league)}</span>'
+    # 사진이 없는 글은 사진칸(자리표시 타일)을 아예 두지 않고, 대진이 있으면 글자로 'A VS B'만 적는다.
+    if a.image:
+        media, cls, vs = thumb(a), 'li', ''
+    else:
+        media, cls = '', 'li no-thumb'
+        away, home = getattr(a, 'away', ''), getattr(a, 'home', '')
+        vs = f'<span class="li-vs">{esc(away)} <i>VS</i> {esc(home)}</span>' if away and home else ''
+    return (f'<a class="{cls}" href="{a.url}">{media}<div><span class="tag red">{esc(a.section)} · {esc(a.league)}</span>{vs}'
             f'<{h}>{esc(a.headline)}</{h}><p>{esc(a.excerpt)}</p>'
             f'<span class="foot"><time datetime="{a.date}">{a.date_dot}</time><span class="talk">{talk_icon()}토론</span></span></div></a>')
 
