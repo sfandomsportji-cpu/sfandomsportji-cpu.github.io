@@ -374,11 +374,16 @@ def render_body(a: Article, ad_after: int = 2) -> str:
 
 # ───────────────────────── 조각 ─────────────────────────
 def ad(slot_id: str, extra: str = '') -> str:
+    # 광고가 꺼져 있는 동안(site.json ads.enabled=false)에는 빈 광고 자리를 HTML에 두지 않습니다. 켜면 그대로 되살아납니다.
+    if not SITE['ads'].get('enabled', False):
+        return ''
     slot = SITE['ads']['slots'][slot_id]
     return f'<div class="ad ad-{slot["size"]} {extra}" data-ad="{slot_id}" hidden></div>'
 
 
 def ad_band(slot_id: str) -> str:
+    if not SITE['ads'].get('enabled', False):
+        return ''
     return f'<div class="wrap ad-band">{ad(slot_id)}</div>'
 
 
