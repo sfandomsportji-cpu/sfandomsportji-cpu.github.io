@@ -1,0 +1,16 @@
+{
+ "EVERTON": "premier-league/everton-fc.png",
+ "CHELSEA": "premier-league/chelsea-fc.png",
+ "ESPANYOL": "la-liga/rcd-espanyol-barcelona.png",
+ "ATLÉTICO": "la-liga/atletico-de-madrid.png",
+ "BRENTFORD": "premier-league/brentford-fc.png",
+ "LIVERPOOL": "premier-league/liverpool-fc.png",
+ "STRASBOURG": "ligue-1/rc-strasbourg-alsace.png",
+ "PSG": "ligue-1/paris-saint-germain.png",
+ "BAYERN": "bundesliga/bayern-munich.png",
+ "LEIPZIG": "bundesliga/rb-leipzig.png",
+ "BETIS": "la-liga/real-betis-balompie.png",
+ "BARCELONA": "la-liga/fc-barcelona.png",
+ "NEWCASTLE": "premier-league/newcastle-united.png",
+ "ASTON VILLA": "premier-league/aston-villa.png"
+}

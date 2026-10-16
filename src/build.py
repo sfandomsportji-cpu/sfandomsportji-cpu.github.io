@@ -129,6 +129,7 @@ def load_articles() -> list[Article]:
 ARTICLES = load_articles()
 EDITIONS = json.loads((CONTENT / 'editions.json').read_text(encoding='utf-8'))
 SPECIALS = json.loads((CONTENT / 'specials.json').read_text(encoding='utf-8'))
+SOCCER_LOGOS = json.loads((CONTENT / 'soccer_logos.json').read_text(encoding='utf-8'))
 PS = json.loads((CONTENT / 'postseason-2026.json').read_text(encoding='utf-8'))
 NBA = json.loads((CONTENT / 'nba-2026.json').read_text(encoding='utf-8'))
 RECORDS = json.loads((CONTENT / 'analysis-records.json').read_text(encoding='utf-8'))
@@ -437,6 +438,16 @@ def team_badge(a: Article, i: int, size: str = 'lg') -> str:
     return badge(teams[i], team_color(teams[i], lg), size, league=lg if lg in LOGO_SOURCES else 'mlb')
 
 
+def soccer_badge(name: str, size: str = '') -> str:
+    """축구 구단 로고(assets/teams/soccer/2026-27). soccer_logos.json에 없는 팀은 빈 문자열."""
+    rel = SOCCER_LOGOS.get(name.upper().strip())
+    if not rel:
+        return ''
+    return (f'<span class="tlogo-wrap {size}" data-abbr="{esc(name)}" style="--c:#444" title="{esc(name)}">'
+            f'<img class="tlogo" src="/assets/teams/soccer/2026-27/{rel}" alt="{esc(name)}" width="40" height="40" '
+            f'loading="lazy" decoding="async"></span>')
+
+
 def split_teams(a: Article) -> tuple[str, str]:
     t = re.split(r'\s+(?:at|vs\.?|@)\s+', a.title.rstrip('.'), maxsplit=1, flags=re.I)
     return (t[0], t[1]) if len(t) > 1 else (a.title.rstrip('.'), '')
@@ -444,6 +455,9 @@ def split_teams(a: Article) -> tuple[str, str]:
 
 def matchup_strip(a: Article) -> str:
     """분석 글 상단의 대진 표시 (팀 로고 + 팀 이름)."""
+    if a.league == 'SOCCER' and soccer_badge(getattr(a, 'away', '')) and soccer_badge(getattr(a, 'home', '')):
+        return (f'<div class="mc-stage in-article"><div class="mc-team">{soccer_badge(a.away, "lg")}<small>AWAY</small><span class="display">{esc(a.away.upper())}</span></div>'
+                f'<span class="mc-vs">VS</span><div class="mc-team r">{soccer_badge(a.home, "lg")}<small>HOME</small><span class="display">{esc(a.home.upper())}</span></div></div>')
     if not getattr(a, 'teams', None):
         return ''
     left, right = split_teams(a)
@@ -555,7 +569,7 @@ def analysis_row(a: Article, opened: bool = False) -> str:
     return (f'<details class="an-item" data-final="{1 if res and res["status"] == "final" else 0}" data-teams="{esc(away)}|{esc(home)}"{" open" if opened else ""}><summary class="an-row">'
             f'<span class="an-time"><b>{esc(clock or "-")}</b><small>{esc(day)} {esc(a.league)}</small>{state}</span>'
             f'<span class="an-match"><span class="an-names"><small>{esc(tag)}</small>'
-            f'<span class="an-teams">{esc(away)} <i>VS</i> {esc(home)}</span></span></span>'
+            f'<span class="an-teams">{soccer_badge(away) if a.league == "SOCCER" else ""}{esc(away)} <i>VS</i> {esc(home)}{soccer_badge(home) if a.league == "SOCCER" else ""}</span></span></span>'
             f'{cells}<span class="an-go" aria-hidden="true">+</span></summary>{an_detail(a)}</details>')
 
 
