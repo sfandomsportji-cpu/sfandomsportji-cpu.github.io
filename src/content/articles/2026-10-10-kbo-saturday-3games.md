@@ -7,9 +7,9 @@ subtitle: "사직 LG–롯데, 광주 SSG–KIA, 대전 NC–한화… 전날 �
 kicker: "SFANDOM & KAIRO · KBO SPECIAL"
 meta: "2026.10.10 오전 · KBO 정규시즌 잔여 일정"
 league: "KBO"
-image: "/assets/brand/sfandom-mark.svg"
-image_alt: "SFANDOM 로고"
-credit: "SFANDOM ORIGINAL"
+image: ""
+image_alt: ""
+credit: ""
 edition: "2026-10-10"
 slug: "kbo-saturday-3games-20261010"
 sources: [{"label":"KBO 공식 일정 · 2026년 10월 10일","url":"https://www.koreabaseball.com/Schedule/Schedule.aspx?month=10&year=2026"},{"label":"KBO · 포스트시즌 10월 14일 개막","url":"https://www.koreabaseball.com/MediaNews/Notice/View.aspx?bdSe=12183"},{"label":"2026 KBO 경기 결과 · 10월 9일","url":"https://sportify.tw/ko/kbo/schedule?season=all"},{"label":"KBO 팀 순위 · 10월 9일 기준","url":"https://yachi.kr/schedule"}]

@@ -7,9 +7,9 @@ subtitle: "10월 10일 KBO 세 경기로 읽는 선발·불펜·가을야구의 
 kicker: "KAIRO FEATURE · KBO WEEKEND"
 meta: "2026.10.10 · KBO SPECIAL · 경기 전 심층 해설"
 league: "KBO"
-image: "/assets/brand/sfandom-mark.svg"
-image_alt: "SFANDOM 로고"
-credit: "SFANDOM ORIGINAL"
+image: ""
+image_alt: ""
+credit: ""
 edition: "2026-10-10"
 slug: "kbo-final-weekend-20261010"
 sources: [{"label":"KBO 공식 일정 · 2026년 10월 10일","url":"https://www.koreabaseball.com/Schedule/Schedule.aspx?month=10&year=2026"},{"label":"KBO · 포스트시즌 10월 14일 개막","url":"https://www.koreabaseball.com/MediaNews/Notice/View.aspx?bdSe=12183"},{"label":"2026 KBO 경기 결과 · 10월 9일","url":"https://sportify.tw/ko/kbo/schedule?season=all"},{"label":"KBO 팀 순위 · 10월 9일 기준","url":"https://yachi.kr/schedule"}]

@@ -7,9 +7,9 @@ subtitle: "필라델피아–보스턴, 킹스–워리어스, 샌안토니오�
 kicker: "SFANDOM & KAIRO · NBA PRESEASON"
 meta: "2026.10.10 KST · 경기일 10월 11일 오전"
 league: "NBA"
-image: "/assets/brand/sfandom-mark.svg"
-image_alt: "SFANDOM 로고"
-credit: "SFANDOM ORIGINAL"
+image: "/assets/editorial/20261016-nba-preseason-seven-teams.svg"
+image_alt: "필라델피아·보스턴·새크라멘토·골든스테이트·샌안토니오·피닉스 팀 로고"
+credit: "TEAM LOGO"
 edition: "2026-10-10"
 slug: "nba-preseason-seven-games-oct11"
 sources: [{"label":"NBA 공식 경기 일정 (시간 UTC → KST 환산)","url":"https://www.nba.com/schedule?region=10"}]

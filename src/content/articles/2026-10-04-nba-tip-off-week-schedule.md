@@ -6,9 +6,9 @@ subtitle: "개막 주간 주요 9경기를 한국시간으로 정리했습니다
 kicker: "TIP-OFF WEEK"
 meta: "NBA 2026-27 · OPENING WEEK"
 league: "NBA"
-image: "/assets/brand/sfandom-mark.svg"
-image_alt: "SFANDOM 로고"
-credit: "2026.10.04 확인 · 시간은 한국시간(KST)"
+image: "/assets/editorial/20261016-nba-tip-off-teams.svg"
+image_alt: "보스턴·디트로이트·필라델피아·뉴욕·오클라호마시티·샌안토니오 팀 로고"
+credit: "TEAM LOGO"
 edition: ""
 slug: "nba-tip-off-week-schedule"
 sources: [{"label": "NBA 2026-27 정규시즌 일정 발표"}]
