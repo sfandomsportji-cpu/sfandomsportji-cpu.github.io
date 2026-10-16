@@ -15,6 +15,7 @@ import pathlib
 import re
 import shutil
 import sys
+import time
 from urllib.parse import quote
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -271,20 +272,22 @@ def blog_posts(limit: int = 6, core: bool = False) -> list[dict]:
     return sorted(allp, key=lambda p: p.get('date', ''), reverse=True)[:limit]
 
 
-_NAVER_PLAYER_KEYS: dict[str, tuple[str, str]] = {}
+_NAVER_PLAYER_KEYS: dict[str, tuple[str, str, int]] = {}
 
 
-def naver_player(item: dict) -> tuple[str, str]:
-    """내 네이버 블로그 영상 글의 (영상 번호, 재생 키). 빌드 때 글 페이지에서 받아 오며, 못 받으면 ('', '').
+def naver_player(item: dict) -> tuple[str, str, int]:
+    """내 네이버 블로그 영상 글의 (영상 번호, 재생 키, 키를 받은 시각). 빌드 때 글 페이지에서 받아 오며, 못 받으면 ('', '', 0).
+
+    재생 키는 오래 쓰면 만료되므로 받은 시각(초)을 카드에 함께 적어 두고, 브라우저가 30분이 지난 키는 쓰지 않고 네이버 원문으로 엽니다.
 
     못 받은 카드는 지금처럼 네이버 원문 링크로만 열립니다. 이 값은 공개 영상의 재생용 값이라 HTML에 들어가도 됩니다.
     """
     m = re.fullmatch(r'https://blog\.naver\.com/sfandomsport/(\d{8,20})', str(item.get('link') or '').split('?', 1)[0])
     if not m:
-        return ('', '')
+        return ('', '', 0)
     no = m.group(1)
     if no not in _NAVER_PLAYER_KEYS:
-        found = ('', '')
+        found = ('', '', 0)
         try:
             req = urllib.request.Request(f'https://m.blog.naver.com/sfandomsport/{no}',
                                          headers={'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)'})
@@ -292,7 +295,7 @@ def naver_player(item: dict) -> tuple[str, str]:
             vid = re.search(r'"vid"\s*:\s*"([A-Z0-9]{20,64})"', page)
             key = re.search(r'"inkey"\s*:\s*"(V[A-Za-z0-9_.=-]{30,300})"', page)
             if vid and key:
-                found = (vid.group(1), key.group(1))
+                found = (vid.group(1), key.group(1), int(time.time()))
         except Exception as exc:  # 네트워크 실패는 조용히: 카드는 원문 링크로 동작
             print(f'naver player key {no}: {exc.__class__.__name__}')
         _NAVER_PLAYER_KEYS[no] = found
@@ -302,8 +305,8 @@ def naver_player(item: dict) -> tuple[str, str]:
 def blog_card(p: dict) -> str:
     label = SITE['blogs'][p['source']]['label']
     img = f'<div class="thumb"><img src="{esc(blog_img(p["image"]))}" alt="" loading="lazy" referrerpolicy="no-referrer"></div>' if p.get('image') else '<div class="thumb blog-thumb" aria-hidden="true"><span>' + ('G' if p['source'] == 'google' else 'N') + '</span></div>'
-    vid, inkey = naver_player(p) if p['source'] == 'naver' else ('', '')
-    player = f' data-vid="{esc(vid)}" data-inkey="{esc(inkey)}"' if vid and inkey else ''
+    vid, inkey, got = naver_player(p) if p['source'] == 'naver' else ('', '', 0)
+    player = f' data-vid="{esc(vid)}" data-inkey="{esc(inkey)}" data-inkey-at="{got}"' if vid and inkey else ''
     if player:
         img = img[:-len('</div>')] + '<span class="play-badge" aria-hidden="true">▶</span></div>'
     return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener"{player}>{img}<div class="body">'

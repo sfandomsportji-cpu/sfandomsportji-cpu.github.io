@@ -81,8 +81,8 @@ def card(item: dict, esc, index: int, *, featured: bool, player=None) -> str:
     src = item.get('image', '')
     preview = (f'<div class="nm-card__media"><span class="nm-card__media-fallback" aria-hidden="true">SFANDOM</span>'
                f'<img src="{esc(src)}" alt="{esc(item["title"])} 원문 대표 썸네일" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.remove()"></div>') if src else ''
-    vid, inkey = player(item) if player else ('', '')
-    data = f' data-vid="{esc(vid)}" data-inkey="{esc(inkey)}"' if vid and inkey else ''
+    vid, inkey, got = player(item) if player else ('', '', 0)
+    data = f' data-vid="{esc(vid)}" data-inkey="{esc(inkey)}" data-inkey-at="{got}"' if vid and inkey else ''
     if data and preview:
         preview = preview[:-len('</div>')] + '<span class="play-badge" aria-hidden="true">▶</span></div>'
     return (
