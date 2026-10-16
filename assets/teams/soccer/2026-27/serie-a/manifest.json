@@ -1,0 +1,148 @@
+{
+  "season": "2026-27",
+  "league": "serie-a",
+  "source_repository": "https://github.com/luukhopman/football-logos",
+  "source_commit": "2a3978f0b4730645c205d855a4bda54c161183e9",
+  "files": [
+    {
+      "club": "AC Milan",
+      "file": "ac-milan.png",
+      "relative_path": "serie-a/ac-milan.png",
+      "size_bytes": 24439,
+      "source_sha": "e6209230efa5637278c47ba989f57c60e7fc0b66"
+    },
+    {
+      "club": "AC Monza",
+      "file": "ac-monza.png",
+      "relative_path": "serie-a/ac-monza.png",
+      "size_bytes": 20888,
+      "source_sha": "ab048b64648968d458825891ea031120c914342c"
+    },
+    {
+      "club": "ACF Fiorentina",
+      "file": "acf-fiorentina.png",
+      "relative_path": "serie-a/acf-fiorentina.png",
+      "size_bytes": 19091,
+      "source_sha": "563b3b9aebac8570f21d5c760c8fe40071583e8e"
+    },
+    {
+      "club": "AS Roma",
+      "file": "as-roma.png",
+      "relative_path": "serie-a/as-roma.png",
+      "size_bytes": 27674,
+      "source_sha": "29eb52986c5a31579b6b73ba16ebb6f3d3597554"
+    },
+    {
+      "club": "Atalanta BC",
+      "file": "atalanta-bc.png",
+      "relative_path": "serie-a/atalanta-bc.png",
+      "size_bytes": 18571,
+      "source_sha": "82ff5039e80c07462e3aa571f72c2c6326ced52d"
+    },
+    {
+      "club": "Bologna FC 1909",
+      "file": "bologna-fc-1909.png",
+      "relative_path": "serie-a/bologna-fc-1909.png",
+      "size_bytes": 18922,
+      "source_sha": "4d365db8c83e28692456e4f0af6f315455e7644b"
+    },
+    {
+      "club": "Cagliari Calcio",
+      "file": "cagliari-calcio.png",
+      "relative_path": "serie-a/cagliari-calcio.png",
+      "size_bytes": 30733,
+      "source_sha": "fe3af34527dc2a2ddf37a592a7a7da71565f90ae"
+    },
+    {
+      "club": "Como 1907",
+      "file": "como-1907.png",
+      "relative_path": "serie-a/como-1907.png",
+      "size_bytes": 20047,
+      "source_sha": "e2e17a77263e709c88215a02a170b31ac10457bc"
+    },
+    {
+      "club": "Frosinone Calcio",
+      "file": "frosinone-calcio.png",
+      "relative_path": "serie-a/frosinone-calcio.png",
+      "size_bytes": 25796,
+      "source_sha": "9927deb1f5b13614a08085a9506f8cb4f0106912"
+    },
+    {
+      "club": "Genoa CFC",
+      "file": "genoa-cfc.png",
+      "relative_path": "serie-a/genoa-cfc.png",
+      "size_bytes": 15917,
+      "source_sha": "07ced06487a192fec58ab3a58a3494b0feaf64d7"
+    },
+    {
+      "club": "Inter Milan",
+      "file": "inter-milan.png",
+      "relative_path": "serie-a/inter-milan.png",
+      "size_bytes": 13799,
+      "source_sha": "3749aa06618e3946683484d069a9ef9a87e52341"
+    },
+    {
+      "club": "Juventus FC",
+      "file": "juventus-fc.png",
+      "relative_path": "serie-a/juventus-fc.png",
+      "size_bytes": 3955,
+      "source_sha": "89d23971e016e5ffc61c6bf86d0b2c1bce887b4a"
+    },
+    {
+      "club": "Parma Calcio 1913",
+      "file": "parma-calcio-1913.png",
+      "relative_path": "serie-a/parma-calcio-1913.png",
+      "size_bytes": 17161,
+      "source_sha": "f8b4278bda6cb4d4f09dbc9d989a6f3c7e84196a"
+    },
+    {
+      "club": "SS Lazio",
+      "file": "ss-lazio.png",
+      "relative_path": "serie-a/ss-lazio.png",
+      "size_bytes": 10087,
+      "source_sha": "8692b46c3e61cad208042f55199336d7a4a5c5e2"
+    },
+    {
+      "club": "SSC Napoli",
+      "file": "ssc-napoli.png",
+      "relative_path": "serie-a/ssc-napoli.png",
+      "size_bytes": 15716,
+      "source_sha": "31c5cd81086c54d5150b4b767e7d2761dfa4d7c8"
+    },
+    {
+      "club": "Torino FC",
+      "file": "torino-fc.png",
+      "relative_path": "serie-a/torino-fc.png",
+      "size_bytes": 27264,
+      "source_sha": "b45412aae91d51741984ea6bcb04bc254649b1ea"
+    },
+    {
+      "club": "US Lecce",
+      "file": "us-lecce.png",
+      "relative_path": "serie-a/us-lecce.png",
+      "size_bytes": 26965,
+      "source_sha": "c80a4578262c3e419540ca4fb37cc77d5d150a84"
+    },
+    {
+      "club": "US Sassuolo",
+      "file": "us-sassuolo.png",
+      "relative_path": "serie-a/us-sassuolo.png",
+      "size_bytes": 22569,
+      "source_sha": "1df7050fdf1372cdd702d75d4e23a876800662e2"
+    },
+    {
+      "club": "Udinese Calcio",
+      "file": "udinese-calcio.png",
+      "relative_path": "serie-a/udinese-calcio.png",
+      "size_bytes": 23784,
+      "source_sha": "56d2ff97960d742c09508e4fafa8e1ed260d0f51"
+    },
+    {
+      "club": "Venezia FC",
+      "file": "venezia-fc.png",
+      "relative_path": "serie-a/venezia-fc.png",
+      "size_bytes": 5749,
+      "source_sha": "3d4a450766a897d0efc7eb5c7f6dbe35bc20338a"
+    }
+  ]
+}

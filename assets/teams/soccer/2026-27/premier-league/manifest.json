@@ -1,0 +1,148 @@
+{
+  "season": "2026-27",
+  "league": "premier-league",
+  "source_repository": "https://github.com/luukhopman/football-logos",
+  "source_commit": "2a3978f0b4730645c205d855a4bda54c161183e9",
+  "files": [
+    {
+      "club": "AFC Bournemouth",
+      "file": "afc-bournemouth.png",
+      "relative_path": "premier-league/afc-bournemouth.png",
+      "size_bytes": 26146,
+      "source_sha": "14810679717c6be956912126c4ab8bd6341971c4"
+    },
+    {
+      "club": "Arsenal FC",
+      "file": "arsenal-fc.png",
+      "relative_path": "premier-league/arsenal-fc.png",
+      "size_bytes": 28744,
+      "source_sha": "24f24c15aa0e0094cbb54fab4c7fc82407b6a0ff"
+    },
+    {
+      "club": "Aston Villa",
+      "file": "aston-villa.png",
+      "relative_path": "premier-league/aston-villa.png",
+      "size_bytes": 29845,
+      "source_sha": "f1081b911ae6592533eeb92f0f1cddd661b8e03b"
+    },
+    {
+      "club": "Brentford FC",
+      "file": "brentford-fc.png",
+      "relative_path": "premier-league/brentford-fc.png",
+      "size_bytes": 29398,
+      "source_sha": "637597914e0f2dde5f3b93f930e990930c76700c"
+    },
+    {
+      "club": "Brighton & Hove Albion",
+      "file": "brighton-hove-albion.png",
+      "relative_path": "premier-league/brighton-hove-albion.png",
+      "size_bytes": 24561,
+      "source_sha": "da0c49418ff7d70e68fb26e40b4ea5538aeded3b"
+    },
+    {
+      "club": "Chelsea FC",
+      "file": "chelsea-fc.png",
+      "relative_path": "premier-league/chelsea-fc.png",
+      "size_bytes": 25350,
+      "source_sha": "d02c01d8217fe02343489fc29d36ef555def4ace"
+    },
+    {
+      "club": "Coventry City",
+      "file": "coventry-city.png",
+      "relative_path": "premier-league/coventry-city.png",
+      "size_bytes": 46471,
+      "source_sha": "085eb2bc2b8ba0b53beb30c3a8d68d88dfb8a8e5"
+    },
+    {
+      "club": "Crystal Palace",
+      "file": "crystal-palace.png",
+      "relative_path": "premier-league/crystal-palace.png",
+      "size_bytes": 34635,
+      "source_sha": "2653b2a05078e9d0c21a26a449e0ff469e67f5b1"
+    },
+    {
+      "club": "Everton FC",
+      "file": "everton-fc.png",
+      "relative_path": "premier-league/everton-fc.png",
+      "size_bytes": 28489,
+      "source_sha": "96518ec7b0ab58ccabc056f2e80e7a4a92a76027"
+    },
+    {
+      "club": "Fulham FC",
+      "file": "fulham-fc.png",
+      "relative_path": "premier-league/fulham-fc.png",
+      "size_bytes": 12525,
+      "source_sha": "700ca4f84c96d479a7cd577e0015174638a0ace3"
+    },
+    {
+      "club": "Hull City",
+      "file": "hull-city.png",
+      "relative_path": "premier-league/hull-city.png",
+      "size_bytes": 36190,
+      "source_sha": "102cc3343443e5d0648e746a93d8b8ef63e43790"
+    },
+    {
+      "club": "Ipswich Town",
+      "file": "ipswich-town.png",
+      "relative_path": "premier-league/ipswich-town.png",
+      "size_bytes": 29373,
+      "source_sha": "3c82fdcb8bef0d9b7168542bf5880e91963eaf20"
+    },
+    {
+      "club": "Leeds United",
+      "file": "leeds-united.png",
+      "relative_path": "premier-league/leeds-united.png",
+      "size_bytes": 29564,
+      "source_sha": "01b01a101f2eced1234ab17b8402ecc3b2708cd4"
+    },
+    {
+      "club": "Liverpool FC",
+      "file": "liverpool-fc.png",
+      "relative_path": "premier-league/liverpool-fc.png",
+      "size_bytes": 15244,
+      "source_sha": "654691d267680a6683fe58c55619de0684185404"
+    },
+    {
+      "club": "Manchester City",
+      "file": "manchester-city.png",
+      "relative_path": "premier-league/manchester-city.png",
+      "size_bytes": 30312,
+      "source_sha": "b55d4568ad21f2c3bd09805a666b3252eda0595a"
+    },
+    {
+      "club": "Manchester United",
+      "file": "manchester-united.png",
+      "relative_path": "premier-league/manchester-united.png",
+      "size_bytes": 26455,
+      "source_sha": "4e2a112b088c67916aaf973d4eb1a6dfbdb38b88"
+    },
+    {
+      "club": "Newcastle United",
+      "file": "newcastle-united.png",
+      "relative_path": "premier-league/newcastle-united.png",
+      "size_bytes": 30961,
+      "source_sha": "aaf463cb8a15982bb5a1e0c598a69545b94b6b9d"
+    },
+    {
+      "club": "Nottingham Forest",
+      "file": "nottingham-forest.png",
+      "relative_path": "premier-league/nottingham-forest.png",
+      "size_bytes": 9995,
+      "source_sha": "a42f47452d42200a0bdea083f09e486155e274fe"
+    },
+    {
+      "club": "Sunderland AFC",
+      "file": "sunderland-afc.png",
+      "relative_path": "premier-league/sunderland-afc.png",
+      "size_bytes": 20952,
+      "source_sha": "af221f2cd30474564b0b4c9690e397fc1aaf03e9"
+    },
+    {
+      "club": "Tottenham Hotspur",
+      "file": "tottenham-hotspur.png",
+      "relative_path": "premier-league/tottenham-hotspur.png",
+      "size_bytes": 7692,
+      "source_sha": "319fef3bdd51435c92dd8a3c35ce8014b88cd1ae"
+    }
+  ]
+}

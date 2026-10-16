@@ -1,0 +1,148 @@
+{
+  "season": "2026-27",
+  "league": "la-liga",
+  "source_repository": "https://github.com/luukhopman/football-logos",
+  "source_commit": "2a3978f0b4730645c205d855a4bda54c161183e9",
+  "files": [
+    {
+      "club": "Athletic Bilbao",
+      "file": "athletic-bilbao.png",
+      "relative_path": "la-liga/athletic-bilbao.png",
+      "size_bytes": 17513,
+      "source_sha": "624b9ea0c3115b4c2326726934401a4cf05f5de0"
+    },
+    {
+      "club": "Atlético de Madrid",
+      "file": "atletico-de-madrid.png",
+      "relative_path": "la-liga/atletico-de-madrid.png",
+      "size_bytes": 19328,
+      "source_sha": "7398c88ac9e34f7bb7df9207802bffe07db5d560"
+    },
+    {
+      "club": "CA Osasuna",
+      "file": "ca-osasuna.png",
+      "relative_path": "la-liga/ca-osasuna.png",
+      "size_bytes": 21727,
+      "source_sha": "ab981326964f8b753c78dd48d1b9d1a1ec48104d"
+    },
+    {
+      "club": "Celta de Vigo",
+      "file": "celta-de-vigo.png",
+      "relative_path": "la-liga/celta-de-vigo.png",
+      "size_bytes": 12178,
+      "source_sha": "323bf79463695cde7b996fa4dd3cefa6c0ba1dd0"
+    },
+    {
+      "club": "Deportivo A Coruña",
+      "file": "deportivo-a-coruna.png",
+      "relative_path": "la-liga/deportivo-a-coruna.png",
+      "size_bytes": 20249,
+      "source_sha": "16c57d3baaa40bbc48d7604e32a8729b35e3b3b8"
+    },
+    {
+      "club": "Deportivo Alavés",
+      "file": "deportivo-alaves.png",
+      "relative_path": "la-liga/deportivo-alaves.png",
+      "size_bytes": 31032,
+      "source_sha": "e1464ddf254e17f7747a31bef6f744486c1169fa"
+    },
+    {
+      "club": "Elche CF",
+      "file": "elche-cf.png",
+      "relative_path": "la-liga/elche-cf.png",
+      "size_bytes": 25343,
+      "source_sha": "739cdce299d3fc7b329b0111d1fe0fddae704a1b"
+    },
+    {
+      "club": "FC Barcelona",
+      "file": "fc-barcelona.png",
+      "relative_path": "la-liga/fc-barcelona.png",
+      "size_bytes": 16512,
+      "source_sha": "bfaffd03668480678408bc5021e592de8f2b8d4e"
+    },
+    {
+      "club": "Getafe CF",
+      "file": "getafe-cf.png",
+      "relative_path": "la-liga/getafe-cf.png",
+      "size_bytes": 32235,
+      "source_sha": "3140071b8720fab7a36115f9ce63229d938db751"
+    },
+    {
+      "club": "Levante UD",
+      "file": "levante-ud.png",
+      "relative_path": "la-liga/levante-ud.png",
+      "size_bytes": 22298,
+      "source_sha": "5a79a4981eca1b864ed07e50a4fd8e52b900abb3"
+    },
+    {
+      "club": "Málaga CF",
+      "file": "malaga-cf.png",
+      "relative_path": "la-liga/malaga-cf.png",
+      "size_bytes": 32183,
+      "source_sha": "4cfbf6eca31f9af03656ab939ec455afa07e9433"
+    },
+    {
+      "club": "RCD Espanyol Barcelona",
+      "file": "rcd-espanyol-barcelona.png",
+      "relative_path": "la-liga/rcd-espanyol-barcelona.png",
+      "size_bytes": 29805,
+      "source_sha": "a012d08c45880195db1c0a4f67f695a36767aa30"
+    },
+    {
+      "club": "Racing Santander",
+      "file": "racing-santander.png",
+      "relative_path": "la-liga/racing-santander.png",
+      "size_bytes": 34644,
+      "source_sha": "998ead86932993257da4fc7ca2f4b60fb55ed39e"
+    },
+    {
+      "club": "Rayo Vallecano",
+      "file": "rayo-vallecano.png",
+      "relative_path": "la-liga/rayo-vallecano.png",
+      "size_bytes": 21504,
+      "source_sha": "86f27a83668e0f7f00c8cc53f6d0bb66b6e17ad8"
+    },
+    {
+      "club": "Real Betis Balompié",
+      "file": "real-betis-balompie.png",
+      "relative_path": "la-liga/real-betis-balompie.png",
+      "size_bytes": 13390,
+      "source_sha": "8e3808a0788aa8f7ae7915265544774c9317518d"
+    },
+    {
+      "club": "Real Madrid",
+      "file": "real-madrid.png",
+      "relative_path": "la-liga/real-madrid.png",
+      "size_bytes": 36650,
+      "source_sha": "e713ce0470f9673294c374596889a659b2624dcf"
+    },
+    {
+      "club": "Real Sociedad",
+      "file": "real-sociedad.png",
+      "relative_path": "la-liga/real-sociedad.png",
+      "size_bytes": 26395,
+      "source_sha": "b1d8bcdf54803231b466a3b698549eecd55270d2"
+    },
+    {
+      "club": "Sevilla FC",
+      "file": "sevilla-fc.png",
+      "relative_path": "la-liga/sevilla-fc.png",
+      "size_bytes": 27453,
+      "source_sha": "a7d6232baa28c7e439287352286162b858ef3cdb"
+    },
+    {
+      "club": "Valencia CF",
+      "file": "valencia-cf.png",
+      "relative_path": "la-liga/valencia-cf.png",
+      "size_bytes": 21439,
+      "source_sha": "0ff1356ce991a5f3c5a8f044d6118377ceb9d95f"
+    },
+    {
+      "club": "Villarreal CF",
+      "file": "villarreal-cf.png",
+      "relative_path": "la-liga/villarreal-cf.png",
+      "size_bytes": 30704,
+      "source_sha": "f750f3e8ceb5613d439ece556ad6a0edf7a187d0"
+    }
+  ]
+}
