@@ -565,8 +565,20 @@ def today_analysis() -> str:
                   key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
     if not pool:
         raise SystemExit('홈 분석 줄에 쓸 분석 글(away/home 포함)이 없음')
-    picks = [a for a in pool if a.date == pool[0].date][:3]  # 가장 최신 날짜의 분석만 (옛 글로 칸을 채우지 않음)
-    display_date = pool[0].date
+    def start_kst(a):
+        m = re.match(r'(\d{1,2})\.(\d{1,2})\s+(\d{1,2}):(\d{2})', getattr(a, 'kst', '') or '')
+        if not m:
+            return None
+        year = int(a.date[:4])
+        return dt.datetime(year, int(m[1]), int(m[2]), int(m[3]), int(m[4]), tzinfo=dt.timezone(dt.timedelta(hours=9)))
+    now_kst = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    upcoming = sorted([a for a in pool if start_kst(a) and start_kst(a) >= now_kst - dt.timedelta(hours=1)], key=start_kst)
+    if upcoming:  # 아직 시작 전(또는 막 시작한) 경기 분석을 시작 시각 순으로 — 이미 끝난 경기 카드로 칸을 채우지 않음
+        picks = upcoming[:3]
+        display_date = start_kst(picks[0]).date().isoformat()
+    else:
+        picks = [a for a in pool if a.date == pool[0].date][:3]  # 가장 최신 날짜의 분석만 (옛 글로 칸을 채우지 않음)
+        display_date = pool[0].date
     section_label = '최신 분석'
     all_href = '/analysis/'
     all_label = '최신 분석 전체 →'
