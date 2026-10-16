@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-16T12:03+09:00",
+  "updated_at": "2026-10-16T12:14+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-16T12:03+09:00",
+      "checked_at": "2026-10-16T12:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -28,10 +28,10 @@
           "home": "LAD",
           "away_name": "Milwaukee Brewers",
           "home_name": "Los Angeles Dodgers",
-          "status": "live",
+          "status": "final",
           "away_score": 6,
           "home_score": 4,
-          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908033"
+          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908033/brewers-dodgers"
         },
         {
           "id": "MLB-401908026",
@@ -75,7 +75,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-16T12:03+09:00",
+      "checked_at": "2026-10-16T12:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -264,7 +264,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-16T12:03+09:00",
+      "checked_at": "2026-10-16T12:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -427,7 +427,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-16T12:03+09:00",
+      "checked_at": "2026-10-16T12:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
