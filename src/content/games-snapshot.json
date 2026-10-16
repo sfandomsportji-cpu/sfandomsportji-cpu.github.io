@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-16T12:44+09:00",
+  "updated_at": "2026-10-16T13:05+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-16T12:44+09:00",
+      "checked_at": "2026-10-16T13:05+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -62,7 +62,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-16T12:44+09:00",
+      "checked_at": "2026-10-16T13:05+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -251,7 +251,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-16T12:44+09:00",
+      "checked_at": "2026-10-16T13:05+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -414,7 +414,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-16T12:44+09:00",
+      "checked_at": "2026-10-16T13:05+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -558,7 +558,7 @@
           "home_name": "Vegas Golden Knights",
           "status": "live",
           "away_score": 1,
-          "home_score": 3,
+          "home_score": 4,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892516"
         },
         {
@@ -768,6 +768,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892532/penguins-golden-knights"
+        },
+        {
+          "id": "NHL-401892533",
+          "league": "NHL",
+          "start_kst": "2026-10-19T07:00+09:00",
+          "away": "CBJ",
+          "home": "MIN",
+          "away_name": "Columbus Blue Jackets",
+          "home_name": "Minnesota Wild",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892533/blue-jackets-wild"
         }
       ]
     }
