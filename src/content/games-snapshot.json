@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-17T08:05+09:00",
+  "updated_at": "2026-10-17T08:31+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-17T08:05+09:00",
+      "checked_at": "2026-10-17T08:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -15,10 +15,10 @@
           "home": "CLE",
           "away_name": "Tampa Bay Rays",
           "home_name": "Cleveland Guardians",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908026/rays-guardians"
+          "status": "live",
+          "away_score": 0,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908026"
         },
         {
           "id": "MLB-401908027",
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-17T08:05+09:00",
+      "checked_at": "2026-10-17T08:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -48,10 +48,10 @@
           "home": "ORL",
           "away_name": "Miami Heat",
           "home_name": "Orlando Magic",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401898406/heat-magic"
+          "status": "live",
+          "away_score": 30,
+          "home_score": 18,
+          "source_url": "https://www.espn.com/nba/game?gameId=401898406"
         },
         {
           "id": "NBA-401898407",
@@ -61,10 +61,10 @@
           "home": "PHI",
           "away_name": "Boston Celtics",
           "home_name": "Philadelphia 76ers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401898407/celtics-76ers"
+          "status": "live",
+          "away_score": 22,
+          "home_score": 22,
+          "source_url": "https://www.espn.com/nba/game?gameId=401898407"
         },
         {
           "id": "NBA-401908946",
@@ -74,10 +74,10 @@
           "home": "DET",
           "away_name": "Toronto Raptors",
           "home_name": "Detroit Pistons",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401908946/raptors-pistons"
+          "status": "live",
+          "away_score": 20,
+          "home_score": 21,
+          "source_url": "https://www.espn.com/nba/game?gameId=401908946"
         },
         {
           "id": "NBA-401914126",
@@ -87,10 +87,10 @@
           "home": "IND",
           "away_name": "Milwaukee Bucks",
           "home_name": "Indiana Pacers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401914126/bucks-pacers"
+          "status": "live",
+          "away_score": 21,
+          "home_score": 16,
+          "source_url": "https://www.espn.com/nba/game?gameId=401914126"
         },
         {
           "id": "NBA-401898408",
@@ -199,7 +199,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-17T08:05+09:00",
+      "checked_at": "2026-10-17T08:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -362,7 +362,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-17T08:05+09:00",
+      "checked_at": "2026-10-17T08:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
