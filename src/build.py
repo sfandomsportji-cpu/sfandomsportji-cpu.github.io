@@ -128,6 +128,7 @@ def load_articles() -> list[Article]:
 
 ARTICLES = load_articles()
 EDITIONS = json.loads((CONTENT / 'editions.json').read_text(encoding='utf-8'))
+SPECIALS = json.loads((CONTENT / 'specials.json').read_text(encoding='utf-8'))
 PS = json.loads((CONTENT / 'postseason-2026.json').read_text(encoding='utf-8'))
 NBA = json.loads((CONTENT / 'nba-2026.json').read_text(encoding='utf-8'))
 RECORDS = json.loads((CONTENT / 'analysis-records.json').read_text(encoding='utf-8'))
@@ -1147,7 +1148,8 @@ def build_lists():
     write('/analysis/', layout('ANALYSIS · 경기 분석', page_head('ANALYSIS<span class="accent">.</span>', lede, [('ANALYSIS', '')], an_tabs)
           + preserved_component('analysis-cycle-guide') + two_col('<h2 class="sec-title" style="font-size:44px">LATEST <span class="kr">최근 경기 프리뷰</span></h2>' + item_list(an)
                     + f'<section id="method" class="sec"><h2 class="sec-title" style="font-size:56px">METHOD <span class="kr">분석은 이렇게 만듭니다</span></h2><div class="prose">{method}</div></section>',
-                    '<div class="aside-box" style="margin-top:24px"><h2>REVIEW</h2><a href="/analysis/review/">경기 전 전망과 실제 결과 기록 보기 →</a></div>'),
+                    '<div class="aside-box" style="margin-top:24px"><h2>REVIEW</h2><a href="/analysis/review/">경기 전 전망과 실제 결과 기록 보기 →</a></div>'
+                    + (f'<div class="aside-box" style="margin-top:24px"><h2>SPECIAL</h2>{special_links()}</div>' if special_links() else '')),
           path='/analysis/', description=lede, active='/analysis/'))
     write('/analysis/mlb/', layout('MLB 분석', page_head('MLB <span class="accent">ANALYSIS</span>', '선발 매치업과 순위 경쟁을 중심으로 본 MLB 경기 프리뷰.', [('ANALYSIS', '/analysis/'), ('MLB', '')],
           tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/mlb/'))
@@ -1374,7 +1376,8 @@ def build_sitemap():
          [k('포스트시즌 대진표', '/special/postseason-2026/'), k('디비전시리즈', '/special/postseason-2026/#division'), k('와일드카드 결과', '/special/postseason-2026/#wildcard'),
           k('MLB 뉴스', '/mlb/#news'), k('MLB 분석', '/mlb/#analysis'), k('MLB 매거진', '/mlb/#magazine')]),
         ('ANALYSIS', '/analysis/', '경기 프리뷰 + 복기',
-         [k('분석 전체', '/analysis/'), k('NBA 분석', '/analysis/nba/'), k('MLB 분석', '/analysis/mlb/'), k('분석 원칙', '/analysis/#method'), k('복기 리포트', '/analysis/review/', True)]),
+         [k('분석 전체', '/analysis/'), k('NBA 분석', '/analysis/nba/'), k('MLB 분석', '/analysis/mlb/'), k('분석 원칙', '/analysis/#method'), k('복기 리포트', '/analysis/review/', True)]
+         + [k(f['kr'], f'/special/{f["id"]}/') for f in SPECIALS.get('features', []) if special_picks(f)[1]]),
         ('FAN BOARD', '/community/', '먼저 놀고. 가입 없이 쓰는 팬 게시판',
          [k('팬 보드', '/community/', True), k('글쓰기', '/community/#write', True), k('커뮤니티 규칙', '/rules/')]),
         ('BLOG', SITE['blogs']['google']['url'], '뉴스 · 볼거리는 구글 · 네이버 블로그에서', blog_kids),
@@ -1773,6 +1776,50 @@ def clean_generated():
         shutil.rmtree(ROOT / d, ignore_errors=True)
 
 
+def special_picks(f: dict) -> tuple[str, list]:
+    """특집(specials.json) 하나에 묶인 가장 최근 날짜의 경기 분석을 킥오프 순으로 돌려준다. 글 머리말의 special 값이 특집 id."""
+    pool = [a for a in ARTICLES if getattr(a, 'special', '') == f['id'] and getattr(a, 'away', '') and getattr(a, 'home', '')]
+    if not pool:
+        return '', []
+    day = max(a.date for a in pool)
+
+    def when(a: Article):
+        m = re.match(r'(\d{1,2})\.(\d{1,2})\s+(\d{1,2}):(\d{2})', getattr(a, 'kst', '') or '')
+        return tuple(int(x) for x in m.groups()) if m else (99, 99, 99, 99)
+    return day, sorted([a for a in pool if a.date == day], key=when)[:f.get('count', 7)]
+
+
+def special_links() -> str:
+    out = ''
+    for f in SPECIALS.get('features', []):
+        if special_picks(f)[1]:
+            out += f'<a href="/special/{f["id"]}/">{esc(f["kr"])} · {esc(f["short"])} →</a>'
+    return out
+
+
+def build_specials():
+    """특집 페이지 /special/<id>/ — 같은 날 묶인 경기 분석을 한 화면 보드로. 특집이 늘면 specials.json에 항목만 추가한다."""
+    for f in SPECIALS.get('features', []):
+        day, picks = special_picks(f)
+        if not picks:
+            continue
+        cards = ''.join(analysis_row(a, False) for a in picks)
+        board = ('<div class="an-board"><div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
+                 f'<span>핵심</span><span>변수</span><span>시선</span><span></span></div>{cards}</div>')
+        url = f'/special/{f["id"]}/'
+        body = (page_head(f'{esc(f["title_a"])} <span class="accent">{esc(f["title_b"])}</span> <span class="kr">{esc(f["kr"])}</span>', f['lede'],
+                          [('SPECIAL', ''), (f['title_b'], '')])
+                + f'<div class="wrap"><section class="sec" id="board" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title">{day.replace("-", ".")} '
+                  f'<span class="kr">{len(picks)}경기 · 한국시간</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>{board}</section>'
+                  f'<section class="discuss"><div><h2>오늘 밤 경기 얘기는 팬 보드에서</h2><p>응원하는 팀, 기대되는 경기, 한 줄 평 모두 환영합니다.</p></div>'
+                  f'<a class="pill" href="/community/?topic={quote("[축구] ")}#write">{talk_icon()}글쓰기</a></section></div>')
+        ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': f'{f["title_a"]} {f["title_b"]} · {f["kr"]}', 'url': BASE + url, 'inLanguage': 'ko-KR'}
+        write(url, layout(f'{f["title_a"]} {f["title_b"]} · {f["kr"]} ({day.replace("-", ".")})', body, path=url, description=f['lede'],
+              ld=[ld, breadcrumb_ld([('SPECIAL', ''), (f['title_b'], url)])], active='/analysis/'),
+              lastmod=day, search={'u': url, 't': f'{f["title_a"]} {f["title_b"]} · {f["kr"]}', 's': f['short'], 'k': 'SPECIAL', 'd': day.replace('-', '.'),
+                                   'x': ' '.join(f'{a.away} {a.home}' for a in picks)})
+
+
 def main():
     clean_generated()
     prepare_weekly()
@@ -1781,6 +1828,7 @@ def main():
         build_article(a)
     build_lists()
     build_hubs()
+    build_specials()
     build_games()
     build_community()
     build_sitemap()

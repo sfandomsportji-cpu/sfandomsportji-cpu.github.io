@@ -174,6 +174,12 @@ def alerts():
                 title = re.search(r'^title: "(.*)"', text, re.M).group(1)
                 if notify(f"[경기 2시간 전 · 프리뷰 초안] {title}\n{t.strftime('%m.%d %H:%M')} KST 시작\n\n초안이 만들어졌습니다. 선발·명단은 공식 발표 확인 뒤 반영합니다.\n파일: src/content/drafts/{t.strftime('%Y-%m-%d')}-{slug}.md"):
                     state['preview'].append(g['id']); made += 1
+    try:  # 특집(오늘의 축구 7 등) 초안 — 실패해도 경기 알림은 그대로
+        import auto_special
+        for fid in auto_special.FEATURES:
+            made += auto_special.run(fid, state, notify)
+    except Exception as e:
+        print(f'special: 건너뜀 ({type(e).__name__})')
     LOG.write_text(json.dumps(state, ensure_ascii=False, indent=1) + '\n', encoding='utf-8')
     print(f'auto-alerts: {made} new draft(s)' + (' (첫 실행: 기존 경기 기록만)' if first else ''))
 
