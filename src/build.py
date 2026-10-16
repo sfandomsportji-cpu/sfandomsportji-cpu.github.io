@@ -587,6 +587,14 @@ def today_analysis() -> str:
         year = int(a.date[:4])
         return dt.datetime(year, int(m[1]), int(m[2]), int(m[3]), int(m[4]), tzinfo=dt.timezone(dt.timedelta(hours=9)))
     now_kst = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    live_specials = []  # 오늘(또는 이후) 날짜로 묶인 특집 — 홈에 경기 전부를 보여 준다
+    for f in SPECIALS.get('features', []):
+        sday, spicks = special_picks(f)
+        if spicks and sday >= now_kst.date().isoformat():
+            live_specials.append((f, sday, spicks))
+    in_special = {a.file for _, _, ps in live_specials for a in ps}
+    if any(a.file not in in_special for a in pool):  # 특집 경기는 아래 특집 블록에 있으므로 위 3칸에서는 겹치지 않게 뺀다
+        pool = [a for a in pool if a.file not in in_special]
     upcoming = sorted([a for a in pool if start_kst(a) and start_kst(a) >= now_kst - dt.timedelta(hours=1)], key=start_kst)
     if upcoming:  # 아직 시작 전(또는 막 시작한) 경기 분석을 시작 시각 순으로 — 이미 끝난 경기 카드로 칸을 채우지 않음
         picks = upcoming[:3]
@@ -601,6 +609,13 @@ def today_analysis() -> str:
     hit, total = hit_rate()
     rate = f'<span data-rate title="경기 전에 남긴 예측과 실제 결과 기록">예측 {hit}/{total}</span>' if total else ''
     cards = ''.join(analysis_row(a, n == 0) for n, a in enumerate(picks))
+    head = ('<div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
+            '<span>핵심</span><span>변수</span><span>시선</span><span></span></div>')
+    special_blocks = ''.join(
+        f'<div class="sec-head" style="margin-top:40px"><h2 class="sec-title">{esc(f["title_a"])} <span class="outline">{esc(f["title_b"])}</span> '
+        f'<span class="kr">{esc(f["kr"])} {len(ps)}경기</span></h2><a class="more" href="/special/{f["id"]}/">특집 전체 →</a></div>'
+        f'<div class="an-board">{head}{"".join(analysis_row(a, False) for a in ps)}</div>'
+        for f, _, ps in live_specials)
     return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
             f'<div class="sec-head"><h2 class="sec-title" id="taTitle">'
             f'SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> '
@@ -609,6 +624,7 @@ def today_analysis() -> str:
             f'<div class="an-my" data-my hidden><b>MY TEAM</b><span data-my-chips></span></div>'
             f'<div class="an-board"><div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
             f'<span>핵심</span><span>변수</span><span>시선</span><span></span></div>{cards}</div>'
+            f'{special_blocks}'
             f'<div class="ta-foot"><a class="review-link" href="/analysis/review/">'
             f'<span class="display" style="font-size:24px">REVIEW <span class="accent">/</span> 복기 리포트</span>'
             f'<span class="muted" style="font-size:14px">경기 결과와 분석 과정을 비교합니다</span></a>'
