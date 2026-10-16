@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-16T13:05+09:00",
+  "updated_at": "2026-10-16T15:14+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-16T13:05+09:00",
+      "checked_at": "2026-10-16T15:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -62,7 +62,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-16T13:05+09:00",
+      "checked_at": "2026-10-16T15:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -251,7 +251,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-16T13:05+09:00",
+      "checked_at": "2026-10-16T15:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -414,7 +414,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-16T13:05+09:00",
+      "checked_at": "2026-10-16T15:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -556,10 +556,10 @@
           "home": "VGK",
           "away_name": "Calgary Flames",
           "home_name": "Vegas Golden Knights",
-          "status": "live",
-          "away_score": 1,
-          "home_score": 4,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892516"
+          "status": "final",
+          "away_score": 2,
+          "home_score": 6,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892516/flames-golden-knights"
         },
         {
           "id": "NHL-401892517",
@@ -781,6 +781,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892533/blue-jackets-wild"
+        },
+        {
+          "id": "NHL-401892534",
+          "league": "NHL",
+          "start_kst": "2026-10-19T09:00+09:00",
+          "away": "CAR",
+          "home": "CGY",
+          "away_name": "Carolina Hurricanes",
+          "home_name": "Calgary Flames",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892534/hurricanes-flames"
         }
       ]
     }
