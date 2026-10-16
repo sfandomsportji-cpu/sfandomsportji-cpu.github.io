@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-16T09:30+09:00",
+  "updated_at": "2026-10-16T09:55+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-16T09:30+09:00",
+      "checked_at": "2026-10-16T09:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -30,7 +30,7 @@
           "home_name": "Los Angeles Dodgers",
           "status": "live",
           "away_score": 0,
-          "home_score": 0,
+          "home_score": 4,
           "source_url": "https://www.espn.com/mlb/game/_/gameId/401908033"
         },
         {
@@ -75,7 +75,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-16T09:30+09:00",
+      "checked_at": "2026-10-16T09:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -88,8 +88,8 @@
           "away_name": "Toronto Raptors",
           "home_name": "New York Knicks",
           "status": "live",
-          "away_score": 45,
-          "home_score": 51,
+          "away_score": 58,
+          "home_score": 63,
           "source_url": "https://www.espn.com/nba/game?gameId=401908945"
         },
         {
@@ -100,10 +100,10 @@
           "home": "HOU",
           "away_name": "Oklahoma City Thunder",
           "home_name": "Houston Rockets",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401908622/thunder-rockets"
+          "status": "live",
+          "away_score": 8,
+          "home_score": 22,
+          "source_url": "https://www.espn.com/nba/game?gameId=401908622"
         },
         {
           "id": "NBA-401898406",
@@ -264,7 +264,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-16T09:30+09:00",
+      "checked_at": "2026-10-16T09:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -277,8 +277,8 @@
           "away_name": "Seattle Seahawks",
           "home_name": "Denver Broncos",
           "status": "live",
-          "away_score": 0,
-          "home_score": 0,
+          "away_score": 3,
+          "home_score": 7,
           "source_url": "https://www.espn.com/nfl/game?gameId=401872995"
         },
         {
@@ -388,7 +388,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-16T09:30+09:00",
+      "checked_at": "2026-10-16T09:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -402,7 +402,7 @@
           "home_name": "Toronto Maple Leafs",
           "status": "live",
           "away_score": 2,
-          "home_score": 3,
+          "home_score": 4,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892506"
         },
         {
@@ -415,7 +415,7 @@
           "home_name": "Ottawa Senators",
           "status": "live",
           "away_score": 1,
-          "home_score": 0,
+          "home_score": 1,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892507"
         },
         {
@@ -454,7 +454,7 @@
           "home_name": "New Jersey Devils",
           "status": "live",
           "away_score": 0,
-          "home_score": 4,
+          "home_score": 5,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892511"
         },
         {
@@ -467,7 +467,7 @@
           "home_name": "Detroit Red Wings",
           "status": "live",
           "away_score": 1,
-          "home_score": 0,
+          "home_score": 1,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892508"
         },
         {
@@ -479,8 +479,8 @@
           "away_name": "Winnipeg Jets",
           "home_name": "Chicago Blackhawks",
           "status": "live",
-          "away_score": 0,
-          "home_score": 1,
+          "away_score": 1,
+          "home_score": 3,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892512"
         },
         {
@@ -506,7 +506,7 @@
           "home_name": "Minnesota Wild",
           "status": "live",
           "away_score": 1,
-          "home_score": 1,
+          "home_score": 2,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892514"
         },
         {
