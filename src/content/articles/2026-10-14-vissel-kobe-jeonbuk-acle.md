@@ -8,9 +8,9 @@ subtitle: "ACLE 동아시아 2라운드, 첫 압박을 벗어난 뒤 누가 위�
 kicker: "SFANDOM & KAIRO · AFC CHAMPIONS LEAGUE ELITE"
 meta: "2026.10.14 19:00 KST · VISSEL KOBE vs JEONBUK · 경기 전 프리뷰"
 league: "SOCCER"
-image: "/assets/photos/20261014-vissel-jeonbuk-vissel.png"
-image_alt: "비셀 고베 선수가 경기 중 기뻐하는 모습. 사용자 제공 과거 경기 자료사진으로 오늘 전북전 장면은 아님"
-credit: "PHOTO · 사용자 제공 비셀 고베 자료사진 · 전북전 실황 아님"
+image: ""
+image_alt: ""
+credit: ""
 slug: "vissel-kobe-jeonbuk-acle-20261014"
 sources: [{"label":"J리그 공식 ACLE 2026/27 경기 일정","url":"https://www.jleague.jp/en/acle/match/search-list/"}]
 ---
@@ -38,7 +38,5 @@ sources: [{"label":"J리그 공식 ACLE 2026/27 경기 일정","url":"https://ww
 ::: angle KAIRO VIEW
 공격 횟수와 득점 기대를 혼동하지 않는다. 고베의 홈 점유율이 높아도 전북이 더 좋은 슈팅 위치를 만든다면 분석은 즉시 수정돼야 한다. 숫자보다 장면의 질을 먼저 확인하는 경기다.
 :::
-
-**사진 안내:** 대표 이미지는 사용자 제공 비셀 고베 자료사진이며 오늘 전북전 장면이 아니다. [전북 현대의 과거 경기 자료사진 보기](/assets/photos/20261014-vissel-jeonbuk-jeonbuk.png). 보조 사진 역시 이번 고베전 장면이 아니다.
 
 **일정 확인:** [J리그 ACLE 2026/27 공식 일정](https://www.jleague.jp/en/acle/match/search-list/). 경기 시작 직전 선발·포메이션과 실제 기록이 확인되면 별도의 업데이트 및 복기로 이어간다.

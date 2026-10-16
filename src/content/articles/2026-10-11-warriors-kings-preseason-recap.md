@@ -7,10 +7,9 @@ subtitle: "접전의 마지막을 가져간 워리어스, 렌데보르그 23점�
 kicker: "NBA · PRESEASON RECAP"
 meta: "2026.10.11 09:30 KST · SACRAMENTO 106–111 GOLDEN STATE"
 league: "NBA"
-image: "/assets/photos/morning-20261011-gsw.jpg"
-photo_fallback: "/assets/teams/nba/gsw.svg"
-image_alt: "2017년 덴버 원정 경기 전 스테픈 커리 슈팅 연습 자료사진 · 2026년 킹스전 실황 아님"
-credit: "PHOTO · Cyrus Saatsaz / Wikimedia Commons · CC BY-SA 4.0 · 2017년 자료사진"
+image: ""
+image_alt: ""
+credit: ""
 edition: "2026-10-11"
 slug: "warriors-kings-preseason-recap"
 sources: [{"label":"NBA 2026-10-10 새크라멘토–골든스테이트 공식 경기센터","url":"https://www.nba.com/game/0012600014"},{"label":"Sportsnet 골든스테이트 111–106 새크라멘토 하이라이트","url":"https://www.sportsnet.ca/nba/video/nba-pre-season-highlights-warriors-111-kings-106/"}]

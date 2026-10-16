@@ -7,9 +7,9 @@ subtitle: "마키 8회 2사 결승 솔로, DeNA 2연승으로 시리즈 2–1"
 kicker: "NPB · CLIMAX SERIES FINAL GAME 2 RECAP"
 meta: "2026.10.15 KST · DeNA 1–0 HANSHIN · 고시엔"
 league: "NPB"
-image: "/assets/photos/20261015-npb-hanshin-team.jpg"
-image_alt: "한신 타이거스 선수들이 그라운드에 모여 있는 자료사진. 2026년 10월 15일 CS 파이널 2차전 실황이 아님"
-credit: "PHOTO · 사용자 제공 한신 자료사진 · 당일 경기 사진 아님"
+image: ""
+image_alt: ""
+credit: ""
 edition: "2026-10-15"
 slug: "hanshin-dena-cs-final-game2-recap"
 teams: ["DeNA","HAN"]
@@ -35,7 +35,5 @@ DeNA는 1차전을 2–0으로 가져갔고, 2차전도 한 점 차로 이겼다
 ::: angle SFANDOM 체크
 2차전은 선발 다카하시의 7이닝보다 8회 2사 한 타석에서 갈렸다. 3차전은 10월 16일 오후 6시 고시엔에서 열린다.
 :::
-
-사진 안내: 대표 이미지는 사용자 제공 한신 자료사진으로 당일 경기 사진이 아니다. 이전 경기 기록은 [DeNA 2–0 한신 1차전 결과 기사](/news/2026/10/hanshin-dena-cs-final-game1-recap/)에서 볼 수 있다.
 
 공식 자료: [NPB 공식 경기 속보](https://npb.jp/scores/2026/1015/t-db-02/) · [풀카운트 경기 기사](https://full-count.jp/2026/10/15/post2031222/) · [스포츠 호치 경기 기사](https://news.yahoo.co.jp/articles/d9ec792cb87bde1e84ac505a764ca2d97d2d9aee).

@@ -8,9 +8,9 @@ subtitle: "무라카미–타이라 맞대결, 고시엔의 첫 3이닝과 불�
 kicker: "SFANDOM & KAIRO · NPB CLIMAX SERIES"
 meta: "2026.10.14 18:00 KST · HANSHIN vs YOKOHAMA DeNA · 경기 전 프리뷰"
 league: "NPB"
-image: "/assets/photos/20261014-hanshin-dena-hanshin.png"
-image_alt: "한신 타이거스 소속 투수의 투구 장면. 사용자 제공 자료사진이며 2026년 10월 14일 경기 실황이 아님"
-credit: "PHOTO · 사용자 제공 한신 자료사진 · 당일 경기 사진 아님"
+image: ""
+image_alt: ""
+credit: ""
 slug: "hanshin-dena-cs-final-20261014"
 sources: [{"label":"NPB 공식 10월 14일 일정·선발 예고","url":"https://npb.jp/cl/index.html"},{"label":"DeNA 구단 클라이맥스시리즈 공식 안내","url":"https://www.baystars.co.jp/specialevent/cs2026/"}]
 ---
@@ -38,7 +38,5 @@ DeNA는 10월 10일 요미우리에 2–1, 11일 4–1로 승리해 짧은 시�
 ::: angle KAIRO VIEW
 한신은 1승을 먼저 쥐고 있다. 그렇다고 수비적으로만 움직일 이유는 없다. 단, DeNA의 첫 기회가 곧바로 대량 득점으로 번지는 상황을 허용하지 않는 것이 시리즈 전체 운영에 더 큰 가치가 있다.
 :::
-
-**사진 안내:** 대표 이미지는 사용자 제공 한신 자료사진으로, 오늘 경기에서 촬영된 사진이 아니다. [DeNA 선수 자료사진 함께 보기](/assets/photos/20261014-hanshin-dena-dena.png).
 
 **자료 검증:** [NPB 공식 일정·선발](https://npb.jp/cl/index.html) · [DeNA 공식 CS 안내](https://www.baystars.co.jp/specialevent/cs2026/). 경기 도중 결과·기용 변경은 본문 프리뷰의 사전 관점과 구분한다.

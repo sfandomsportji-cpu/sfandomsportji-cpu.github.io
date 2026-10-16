@@ -34,10 +34,10 @@ jobs:
         run: python3 src/tools/fetch_logos.py
       - name: Build share preview card (1200x630)
         run: python3 src/tools/build_social_card.py
+      - name: Expire reference photos (3 days)
+        run: python3 src/tools/expire_photos.py
       - name: Build per-article share cards (1200x630)
         run: python3 src/tools/build_article_cards.py
-      - name: Cache licensed morning photographs
-        run: python3 src/tools/fetch_morning_photos.py
       - name: Sync league scores and schedules (ESPN, verified states only)
         run: python3 src/tools/sync_games.py
       - name: Sync NPB scores (npb.jp, robots.txt 허용 · 실패 시 이전 값 유지)

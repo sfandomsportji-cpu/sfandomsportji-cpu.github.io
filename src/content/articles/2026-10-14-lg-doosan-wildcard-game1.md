@@ -8,9 +8,9 @@ subtitle: "카라스코–곽빈, LG는 한 번의 무승부도 충분하고 두
 kicker: "SFANDOM & KAIRO · KBO WILDCARD"
 meta: "2026.10.14 18:30 KST · LG TWINS vs DOOSAN BEARS · 경기 전 프리뷰"
 league: "KBO"
-image: "/assets/photos/20261014-lg-doosan-lg.png"
-image_alt: "LG와 두산 선수들이 함께 있는 잠실 야구장 자료사진, 2026년 10월 14일 와일드카드 1차전 실황이 아님"
-credit: "PHOTO · 사용자 제공 잠실 라이벌 자료사진 · 당일 경기 사진 아님"
+image: ""
+image_alt: ""
+credit: ""
 slug: "lg-doosan-wildcard-game1-20261014"
 sources: [{"label":"KBO 와일드카드 공식 프리뷰","url":"https://www.koreabaseball.com/MediaNews/News/Preview/View.aspx?bdSe=62568"},{"label":"10월 13일 선발 예고 관련 보도","url":"https://www.fnnews.com/news/202610131057168150"}]
 ---
@@ -38,7 +38,5 @@ LG는 12일 KIA와 정규시즌 최종전을 치르고 하루 휴식 후 다시 
 ::: angle KAIRO VIEW
 투수 지표만 보면 곽빈이 돋보인다. 그러나 시리즈 규칙은 LG에 유리하다. 승리 가능성과 다음 라운드 진출 가능성을 같은 숫자로 혼동하지 않는 것이 오늘 분석의 핵심이다.
 :::
-
-**사진 안내:** 대표 이미지는 사용자 제공 잠실 자료사진으로, 오늘 경기의 실황이 아니다. [두산 선수단·잠실 전경 자료사진 보기](/assets/photos/20261014-lg-doosan-doosan.png).
 
 **공식 자료:** [KBO 와일드카드 1차전 프리뷰](https://www.koreabaseball.com/MediaNews/News/Preview/View.aspx?bdSe=62568) · [선발 정보·정규시즌 기록](https://www.fnnews.com/news/202610131057168150). 경기 전 분석을 종료 결과에 맞춰 소급 수정하지 않는다.

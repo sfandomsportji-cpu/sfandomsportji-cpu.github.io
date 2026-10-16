@@ -8,9 +8,9 @@ subtitle: "DeNA가 2–1로 앞선 시리즈, 고시엔에서 다시 만난다"
 kicker: "SFANDOM & KAIRO · NPB CLIMAX SERIES GAME 3"
 meta: "2026.10.16 18:00 KST · HANSHIN vs YOKOHAMA DeNA · CS 파이널 3차전 프리뷰"
 league: "NPB"
-image: "/assets/photos/20261015-npb-hanshin-home.jpg"
-image_alt: "한신 타이거스 선수가 홈을 밟고 동료와 기뻐하는 자료사진. 2026년 CS 파이널 경기 사진이 아님"
-credit: "PHOTO · 사용자 제공 한신 자료사진 · 당일 경기 사진 아님"
+image: ""
+image_alt: ""
+credit: ""
 slug: "hanshin-dena-cs-final-game3-20261016"
 away: "DeNA"
 home: "HANSHIN"
@@ -38,7 +38,5 @@ sources: [{"label":"NPB 공식 사이트 2차전 경기 종료 표기(DeNA 1–0
 ::: angle KAIRO VIEW
 3차전은 선발 평균자책점보다 한신의 첫 점수가 언제 나오는지가 먼저다. 이탈한 타자가 라인업에서 빠지면 타순이 어떻게 바뀌는지, DeNA가 7명 릴레이를 3차전에도 이어가는지를 본다. 예고 선발은 NPB 공식 발표가 나오면 반영한다.
 :::
-
-사진 안내: 대표 이미지는 사용자 제공 한신 자료사진으로 당일 경기 사진이 아니다. [한신 선수단 자료사진](/assets/photos/20261015-npb-hanshin-team.jpg)도 함께 볼 수 있다. 지난 경기는 [DeNA 1–0 한신 2차전 결과 기사](/news/2026/10/hanshin-dena-cs-final-game2-recap/)에서 볼 수 있다.
 
 **자료:** [NPB 공식 경기 속보](https://npb.jp/scores/2026/1015/t-db-02/) · [풀카운트 2차전 기사](https://full-count.jp/2026/10/15/post2031222/). 선발과 라인업은 경기 전 공식 발표에 맞춰 반영한다.

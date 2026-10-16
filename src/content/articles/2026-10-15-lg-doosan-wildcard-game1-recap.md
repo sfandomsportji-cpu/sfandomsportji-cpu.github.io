@@ -7,9 +7,9 @@ subtitle: "오스틴의 1회 2점포, 잠실 마지막 라이벌전에서 준PO 
 kicker: "KBO · WILDCARD GAME 1 RECAP"
 meta: "2026.10.14 18:30 KST · LG 4–1 DOOSAN · 잠실"
 league: "KBO"
-image: "/assets/photos/20261014-lg-doosan-doosan.png"
-image_alt: "야간 잠실 야구장에서 두산 선수단이 줄지어 인사를 나누는 자료사진. 2026년 10월 14일 와일드카드 1차전 실황이 아님"
-credit: "PHOTO · 사용자 제공 잠실 라이벌 자료사진 · 당일 경기 사진 아님"
+image: ""
+image_alt: ""
+credit: ""
 edition: "2026-10-15"
 slug: "lg-doosan-wildcard-game1-recap"
 sources: [{"label":"경향신문 LG–두산 와일드카드 1차전 기사","url":"https://www.khan.co.kr/article/202610142226001"}]

@@ -7,9 +7,9 @@ subtitle: "리그 3위 DeNA, 고시엔 완봉승으로 CS 파이널 첫 판 가�
 kicker: "NPB · CLIMAX SERIES FINAL GAME 1 RECAP"
 meta: "2026.10.14 KST · DeNA 2–0 HANSHIN · 고시엔"
 league: "NPB"
-image: "/assets/photos/20261014-hanshin-dena-dena.png"
-image_alt: "요코하마 DeNA 베이스타스 관련 자료사진. 2026년 10월 14일 CS 파이널 1차전 실황이 아님"
-credit: "PHOTO · 사용자 제공 DeNA 자료사진 · 당일 경기 사진 아님"
+image: ""
+image_alt: ""
+credit: ""
 edition: "2026-10-15"
 slug: "hanshin-dena-cs-final-game1-recap"
 sources: [{"label":"NHK 클라이맥스시리즈 파이널 스테이지 1차전 결과","url":"https://news.web.nhk/newsweb/na/nd-20261014de59494"},{"label":"풀카운트 DeNA 이와타 구원 기사","url":"https://full-count.jp/2026/10/15/post2031157/"}]

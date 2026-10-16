@@ -8,10 +8,9 @@ subtitle: "밀워키는 4연승 월드시리즈행, 다저스는 내일이 없�
 kicker: "SFANDOM & KAIRO · MLB NLCS GAME 4"
 meta: "2026.10.16 09:00 KST · BREWERS vs DODGERS · NLCS 4차전 프리뷰"
 league: "MLB"
-image: "/assets/photos/20261015-mlb-dodgers-trio.jpg"
-photo_fallback: "/assets/teams/mlb/lad.svg"
-image_alt: "다저스 유니폼을 입은 선수들이 함께 있는 자료사진. 2026년 NLCS 4차전 사진이 아님"
-credit: "PHOTO · 사용자 제공 다저스 자료사진 · 4차전 경기 사진 아님"
+image: ""
+image_alt: ""
+credit: ""
 slug: "brewers-dodgers-nlcs-game4-20261016"
 teams: ["MIL","LAD"]
 away: "BREWERS"
@@ -45,7 +44,5 @@ NLCS 4차전은 한국시간 10월 16일 오전 9시에 다저스타디움에서
 ::: angle KAIRO VIEW
 오늘은 선발 이름보다 교체 시점이 갈린다. 글래스나우가 몇 회까지 던지는지, 밀워키가 신인 선발을 어느 이닝에 바꾸는지를 보면 된다. 선발이 확정되면 이 글에 반영한다.
 :::
-
-사진 안내: 대표 이미지는 사용자 제공 다저스 자료사진으로 4차전 경기 사진이 아니다.
 
 **자료:** [SI 예상 선발 기사](https://www.si.com/fannation/mlb/fastball/news/probable-starting-pitchers-in-dodgers-win-or-go-home-nlcs-game-4-against-brewers-justin3) · [SI 로버츠 발언 기사](https://www.si.com/mlb/dodgers/onsi/dodgers-dave-roberts-3-pitchers-not-available-must-win-game-4-brewers). 지난 경기는 [밀워키 6–2 다저스 결과 기사](/news/2026/10/brewers-dodgers-nlcs-game3-recap/)에서 볼 수 있다.
