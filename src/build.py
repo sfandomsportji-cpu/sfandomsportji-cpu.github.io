@@ -425,11 +425,6 @@ def badge(abbr: str, color: str, size: str = '', league: str = 'mlb') -> str:
             f'<img class="tlogo" src="{src}" alt="{esc(abbr)}" width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>')
 
 
-def team_abbr(abbr: str) -> str:
-    """로고 없이 영어 팀 약자만 표시."""
-    return f'<span class="tabbr">{esc(abbr)}</span>'
-
-
 def team_color(abbr: str, league: str) -> str:
     if league.lower() == 'nba':
         return NBA['colors'].get(abbr, '#444')
@@ -1355,7 +1350,7 @@ def nba_cards(games: list, preseason_anchors: bool = False) -> str:
         id_attr = f' id="preseason-{g["away"].lower()}-{g["home"].lower()}"' if preseason_anchors else ''
         separator = 'VS' if (g.get('result') or str(g.get('day', '')).upper().startswith(('FINAL', 'LIVE'))) else '@'
         out += (f'<div class="nba-card"{id_attr}><small>{esc(head)}</small>'
-                f'<b class="vsline">{team_abbr(g["away"])}<i class="match-separator">{separator}</i>{team_abbr(g["home"])}</b>'
+                f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i class="match-separator">{separator}</i>{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>'
                 f'<time>{esc(g["kst"])}</time>{tag}</div>')
     return out
 
@@ -1366,8 +1361,8 @@ def nba_home_story(g: dict) -> str:
     destination = f'/nba/#preseason-{g["away"].lower()}-{g["home"].lower()}' if g in NBA.get('preseason_games', []) else '/nba/#tipoff'
     label = esc(f'{g["away"]} - {g["home"]} ' + ('최종 결과 확인' if g.get('result') else '경기 일정 확인'))
     return (f'<a class="ts tip" href="{destination}" aria-label="{label}"><span><span class="tag">{esc(g.get("day", "PRESEASON"))} · {esc(g["kst"])}</span>'
-            f'<b class="vsline">{team_abbr(g["away"])}<i class="match-separator">{separator}</i>'
-            f'{team_abbr(g["home"])}</b>{tag}</span></a>')
+            f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i class="match-separator">{separator}</i>'
+            f'{badge(g["home"], NBA["colors"].get(g["home"], "#444"), league="nba")}</b>{tag}</span></a>')
 
 
 def nba_dday() -> str:
