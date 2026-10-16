@@ -462,18 +462,6 @@ def matchup_strip(a: Article) -> str:
 TODAY_PICKS: set = set()
 
 
-def an_thumb(a: Article) -> str:
-    """분석 한 줄의 작은 이미지. 사진 파일이 있으면 사진, 없으면 팀 로고, 둘 다 없으면 빈 칸 없이 생략."""
-    if a.image.startswith('/assets/photos/') and not (ROOT / a.image.lstrip('/')).is_file():
-        raise SystemExit(f'분석 줄 사진 파일이 없음: {a.image} ({a.file})')
-    photo = home_news_thumb(a)
-    if photo:
-        return f'<span class="an-thumb">{photo}</span>'
-    if a.league in ('MLB', 'NBA') and len(getattr(a, 'teams', None) or []) == 2:
-        return f'<span class="an-thumb an-logos">{team_badge(a, 0)}{team_badge(a, 1)}</span>'
-    return ''
-
-
 def an_vote(a: Article) -> str:
     """경기별 한 줄 투표. 끝난 경기는 결과만 보여 주고, 서버 응답이 없으면 JS가 칸을 숨긴다(hidden 기본)."""
     away, home = getattr(a, 'away', ''), getattr(a, 'home', '')
@@ -575,7 +563,7 @@ def analysis_row(a: Article, opened: bool = False) -> str:
         state = (f'<em class="an-state" data-s="{res["status"]}" data-v="{res["verdict"]}">{label} {res["away"]}–{res["home"]}{mark}</em>')
     return (f'<details class="an-item" data-final="{1 if res and res["status"] == "final" else 0}" data-teams="{esc(away)}|{esc(home)}"{" open" if opened else ""}><summary class="an-row">'
             f'<span class="an-time"><b>{esc(clock or "-")}</b><small>{esc(day)} {esc(a.league)}</small>{state}</span>'
-            f'<span class="an-match">{an_thumb(a)}<span class="an-names"><small>{esc(tag)}</small>'
+            f'<span class="an-match"><span class="an-names"><small>{esc(tag)}</small>'
             f'<span class="an-teams">{esc(away)} <i>VS</i> {esc(home)}</span></span></span>'
             f'{cells}<span class="an-go" aria-hidden="true">+</span></summary>{an_detail(a)}</details>')
 
