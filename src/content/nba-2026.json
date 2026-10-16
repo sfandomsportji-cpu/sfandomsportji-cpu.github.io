@@ -183,7 +183,7 @@
     ]
   ],
   "home_mode": "preseason",
-  "preseason_note": "2026년 10월 16일 10:48 KST 확인: 프리시즌 종료 33경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
+  "preseason_note": "2026년 10월 16일 12:03 KST 확인: 프리시즌 종료 35경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
   "preseason_games": [
     {
       "day": "FINAL",
@@ -539,20 +539,26 @@
       "result": "DEN 110–122 LAC"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "TOR",
       "home": "NYK",
       "kst": "10.16 (금) 08:30",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · TOR 120–122 NYK",
+      "away_score": 120,
+      "home_score": 122,
+      "result": "TOR 120–122 NYK"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "OKC",
       "home": "HOU",
       "kst": "10.16 (금) 09:30",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · OKC 89–116 HOU",
+      "away_score": 89,
+      "home_score": 116,
+      "result": "OKC 89–116 HOU"
     },
     {
       "day": "PRESEASON",
