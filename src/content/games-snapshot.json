@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-16T12:14+09:00",
+  "updated_at": "2026-10-16T12:22+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-16T12:14+09:00",
+      "checked_at": "2026-10-16T12:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
         {
           "id": "MLB-401908026",
           "league": "MLB",
-          "start_kst": "2026-10-17T07:00+09:00",
+          "start_kst": "2026-10-17T09:00+09:00",
           "away": "TB",
           "home": "CLE",
           "away_name": "Tampa Bay Rays",
@@ -45,19 +45,6 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/mlb/game/_/gameId/401908026/rays-guardians"
-        },
-        {
-          "id": "MLB-401908034",
-          "league": "MLB",
-          "start_kst": "2026-10-17T10:00+09:00",
-          "away": "MIL",
-          "home": "LAD",
-          "away_name": "Milwaukee Brewers",
-          "home_name": "Los Angeles Dodgers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908034/brewers-dodgers"
         },
         {
           "id": "MLB-401908027",
@@ -75,7 +62,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-16T12:14+09:00",
+      "checked_at": "2026-10-16T12:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -264,7 +251,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-16T12:14+09:00",
+      "checked_at": "2026-10-16T12:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -277,7 +264,7 @@
           "away_name": "Seattle Seahawks",
           "home_name": "Denver Broncos",
           "status": "live",
-          "away_score": 11,
+          "away_score": 14,
           "home_score": 14,
           "source_url": "https://www.espn.com/nfl/game?gameId=401872995"
         },
@@ -427,7 +414,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-16T12:14+09:00",
+      "checked_at": "2026-10-16T12:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -570,8 +557,8 @@
           "away_name": "Calgary Flames",
           "home_name": "Vegas Golden Knights",
           "status": "live",
-          "away_score": 0,
-          "home_score": 2,
+          "away_score": 1,
+          "home_score": 3,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892516"
         },
         {
