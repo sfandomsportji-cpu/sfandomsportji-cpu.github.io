@@ -438,7 +438,7 @@ main{display:block}
 .nba-card .vsline{margin:0}
 .nba-card time{font-weight:700;font-size:14px;color:#F58426}
 .nba-card .nba-tag{margin:0}
-@media (max-width:1100px){.nba-stage{grid-template-columns:1fr}.nba-rail{grid-template-columns:repeat(3,minmax(0,1fr))}.nba-intro .nba-dday{position:absolute;right:0;top:0;font-size:44px;margin:0}}
+@media (max-width:1100px){.nba-stage{grid-template-columns:1fr}.nba-rail{grid-template-columns:repeat(3,minmax(0,1fr))}.nba-intro .nba-dday{font-size:40px;margin:4px 0 0}}
 @media (max-width:700px){.nba-stage{padding:22px 18px}.nba-intro .sec-title{font-size:42px}
   .nba-rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-right:-18px;padding-right:18px}.nba-card{flex:0 0 190px;scroll-snap-align:start}}
 /* ── NBA 중심 홈 · 허브 ── */
