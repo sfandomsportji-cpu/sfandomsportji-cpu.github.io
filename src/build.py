@@ -788,6 +788,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 PAGES: list[dict] = []   # sitemap / search 용
 
 
+# 본문이 얇은 기능 페이지(팬 보드·문의·주간 베스트)는 noindex + 사이트맵 제외(index=False). 내용이 충분해지면 두 곳을 되돌립니다.
 def write(url: str, html_text: str, *, index: bool = True, lastmod: str = TODAY, search: dict | None = None):
     target = ROOT / url.lstrip('/') / 'index.html' if url.endswith('/') else ROOT / url.lstrip('/')
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -1492,7 +1493,7 @@ def build_community():
     <div class="box"><span class="box-title">HOUSE RULES</span><ul class="rules"><li>욕설 · 비하 · 혐오 표현 금지</li><li>도배 · 광고 링크 · 사칭 금지</li><li>불법 도박 사이트 홍보 · 가입코드 금지</li><li>개인정보 · 사생활 노출 금지</li><li>스포일러는 경기 스레드에서</li></ul><a class="more" href="/rules/">전체 규칙 →</a></div>
   </aside>
 </div>''')
-    write('/community/', layout('FAN BOARD · 팬 게시판', body, path='/community/', description='SFANDOM 팬 보드 — 가입 없이 쓰는 스포츠 팬 게시판', active='/community/'))
+    write('/community/', layout('FAN BOARD · 팬 게시판', body, path='/community/', description='SFANDOM 팬 보드 — 가입 없이 쓰는 스포츠 팬 게시판', active='/community/', noindex=True), index=False)
 
 
 def build_static():
@@ -1545,7 +1546,7 @@ def build_static():
 <p>보내 주신 내용은 운영자만 볼 수 있는 곳에 보관하며, 답변이 필요한 문의는 적어 주신 이메일로 회신합니다. 권리침해 신고가 들어온 게시물은 확인 전까지 임시로 비공개 처리할 수 있으며, 처리 기준은 <a href="/rules/">커뮤니티 규칙</a>과 <a href="/legal/">법률고지</a>를 따릅니다. SFANDOM은 금전이 걸린 게임, 불법 스포츠도박 사이트와 관련된 제휴 문의에는 응하지 않습니다.</p>
 </div></div>'''
     write('/contact/', layout('문의', page_head('CONTACT<span class="accent">.</span> <span class="kr">문의</span>', 'SFANDOM에 전하고 싶은 이야기가 있다면 쪽지로 남겨 주세요.', [('문의', '')]) + contact,
-          path='/contact/', description='SFANDOM 문의 양식 · 오류 제보 · 권리침해 신고'))
+          path='/contact/', description='SFANDOM 문의 양식 · 오류 제보 · 권리침해 신고', noindex=True), index=False)
 
     cookies = '''<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div class="prose">
 <h2>광고 게재</h2>
@@ -1621,13 +1622,13 @@ def build_weekly():
                          '지난 한 주 팬 보드에서 가장 많은 이야기가 오간 글입니다. 순위는 댓글 수로만 정합니다.',
                          [('주간 베스트', '/weekly/'), (label, '')]) + issue_body(sn)
         write(f'/weekly/{sn["id"]}/', layout(f'주간 팬 보드 베스트 {label}', body, path=f'/weekly/{sn["id"]}/',
-                                          description=f'{label} 팬 보드 인기 글'), lastmod=sn['end'])
+                                          description=f'{label} 팬 보드 인기 글', noindex=True), index=False, lastmod=sn['end'])
     latest = snaps[0]
     archive = ''.join(f'<li><a href="/weekly/{sn["id"]}/">{esc(sn["start"])} ~ {esc(sn["end"])} · 글 {sn["posts"]}편</a></li>' for sn in snaps)
     body = page_head('WEEKLY<span class="accent">.</span> <span class="kr">주간 팬 보드 베스트</span>',
                      '매주 월요일, 지난 한 주 팬 보드 인기 글을 모읍니다.', [('주간 베스트', '')]) + issue_body(latest) + \
         f'<div class="wrap prose" style="max-width:960px;margin-left:0"><h2>지난 호</h2><ul>{archive}</ul></div>'
-    write('/weekly/', layout('주간 팬 보드 베스트', body, path='/weekly/', description='지난 한 주 SFANDOM 팬 보드 인기 글'))
+    write('/weekly/', layout('주간 팬 보드 베스트', body, path='/weekly/', description='지난 한 주 SFANDOM 팬 보드 인기 글', noindex=True), index=False)
 
 
 def build_feeds():
