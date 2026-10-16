@@ -1281,3 +1281,12 @@ section[aria-labelledby="taTitle"] .sec-title .kr,#today-analysis .sec-title .kr
 .top-stories .top-stories-more{align-self:flex-end;margin-top:10px;font-weight:800}
 @media (max-width:560px){#lcs .sec-title{font-size:44px}}
 @media (max-width:700px){.sec-title{font-size:clamp(26px,8vw,38px);line-height:1.1}}
+.art-tab-bar{display:flex;gap:8px;margin:48px 0 0;flex-wrap:wrap}
+.art-tab-bar button{height:44px;padding:0 22px;border-radius:999px;border:1px solid var(--line-2);background:transparent;color:var(--text-2,#cbd1df);font-size:17px;cursor:pointer}
+.art-tab-bar button[aria-selected="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.art-tabs .sec{padding-top:24px}
+.past-games{margin-top:14px}
+.past-games summary{cursor:pointer;display:inline-flex;align-items:center;height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--line-2);font-size:16px;color:var(--text-2,#cbd1df);list-style:none}
+.past-games summary::-webkit-details-marker{display:none}
+.past-games[open] summary{margin-bottom:14px}
+@media (max-width:700px){.art-tab-bar{margin-top:32px}}

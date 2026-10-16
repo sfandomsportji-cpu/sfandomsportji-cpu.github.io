@@ -616,4 +616,34 @@
       if (!hits.length) results.append(el('div', 'empty', '검색 결과가 없습니다. 다른 단어로 찾아보세요.'));
     }).catch(() => { if (count) count.textContent = '검색을 불러오지 못했습니다.'; });
   }
+
+  /* NBA 허브: 기사 탭(뉴스·분석·매거진)과 접힌 지난 경기 — 해시로 들어오면 해당 부분을 펼친다 */
+  const artTabs = $('[data-art-tabs]');
+  const pastGames = $('.past-games');
+  const showPanel = (id, focus) => {
+    if (!artTabs) return false;
+    const panel = $$('section[id]', artTabs).find(s => s.id === id);
+    if (!panel) return false;
+    $$('section[id]', artTabs).forEach(s => { s.hidden = s !== panel; });
+    $$('[data-panel]', artTabs).forEach(b => b.setAttribute('aria-selected', String(b.dataset.panel === id)));
+    if (focus) artTabs.scrollIntoView({ block: 'start' });
+    return true;
+  };
+  if (artTabs) {
+    $$('[data-panel]', artTabs).forEach(b => b.addEventListener('click', () => showPanel(b.dataset.panel, false)));
+    const first = $('[data-panel]', artTabs);
+    if (first) showPanel(first.dataset.panel, false);
+  }
+  const openFromHash = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    if (showPanel(id, true)) return;
+    const target = document.getElementById(id);
+    if (pastGames && target && pastGames.contains(target)) {
+      pastGames.open = true;
+      target.scrollIntoView({ block: 'center' });
+    }
+  };
+  openFromHash();
+  window.addEventListener('hashchange', openFromHash);
 })();

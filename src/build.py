@@ -1185,19 +1185,27 @@ def build_hubs():
     story = ''.join(f'<div class="nba-story"><b>{x["k"]}</b><h3>{esc(x["t"])}</h3><p>{esc(x["x"])}</p></div>' for x in NBA['storylines'])
     kd = ''.join(f'<div class="round"><span class="display">{esc(d)}</span><span>{esc(t)}</span></div>' for d, t in NBA['key_dates'])
     nba_arts = [a for a in ARTICLES if a.league == 'NBA']
-    preseason_rows = nba_cards(NBA.get('preseason_games', []), preseason_anchors=True)
-    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">GAME CENTER</span></h2><span class="muted">확인된 종료 {sum(bool(g.get("result")) for g in NBA.get("preseason_games", []))}경기 · 예정 및 확인 중 경기 구분 · 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div></div></section>') if preseason_rows else ''
+    pre_all = NBA.get('preseason_games', [])
+    pre_done = [g for g in pre_all if g.get('result')]
+    pre_next = [g for g in pre_all if not g.get('result')]
+    preseason_rows = nba_cards(pre_next, preseason_anchors=True)
+    past_html = (f'<details class="past-games"><summary>지난 경기 결과 {len(pre_done)}개 보기</summary><div class="nba-rail preseason-list">'
+                 + nba_cards(pre_done, preseason_anchors=True) + '</div></details>') if pre_done else ''
+    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">GAME CENTER</span></h2><span class="muted">확인된 종료 {sum(bool(g.get("result")) for g in NBA.get("preseason_games", []))}경기 · 예정 및 확인 중 경기 구분 · 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div>{past_html}</div></section>') if (preseason_rows or past_html) else ''
     nsec = lambda kind, title, kr, anchor: (f'<section id="{anchor}" class="sec"><div class="sec-head"><h2 class="sec-title">{title} <span class="kr">{kr}</span></h2></div>'
                                             + '<div class="card-grid">' + ''.join(mag_card(a) for a in nba_arts if a.kind == kind) + '</div></section>') if any(a.kind == kind for a in nba_arts) else ''
+    _arts = [(k, t, nsec(k, t, kr, k)) for k, t, kr in (('news', 'NEWS', 'NBA 뉴스'), ('analysis', 'ANALYSIS', '개막전 프리뷰'), ('magazine', 'MAGAZINE', '기획 · 시즌 가이드'))]
+    _arts = [x for x in _arts if x[2]]
+    art_tabs = ('<div class="art-tabs" data-art-tabs><div class="art-tab-bar" role="tablist">'
+                + ''.join(f'<button type="button" role="tab" data-panel="{k}" aria-selected="{"true" if i == 0 else "false"}">{ {"news": "뉴스", "analysis": "분석", "magazine": "매거진"}[k] }</button>' for i, (k, t, h) in enumerate(_arts))
+                + '</div>' + ''.join(h for k, t, h in _arts) + '</div>') if _arts else ''
     nba_tabs = tabs([('프리시즌', '#preseason'), ('개막 주간', '#tipoff'), ('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('주요 날짜', '#dates')], '')
     nba_body = (page_head('NBA <span class="accent">2026-27</span>', '새 시즌 개막까지 ' + nba_dday() + '. 개막 주간 일정과 여름 이적 시장, 개막전 프리뷰, 시즌 달력을 한곳에 모았습니다. 시간은 모두 한국시간입니다.', [('NBA', '')], nba_tabs)
                 + f'''<div class="wrap">
 {preseason_block}
 <section class="sec" id="tipoff" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title">TIP-OFF <span class="outline">WEEK</span></h2><span class="muted">개막 주간 · 시간은 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail">{nba_cards(NBA["games"])}</div></div></section>
 <section class="sec" id="stories"><div class="sec-head"><h2 class="sec-title">STORYLINES <span class="kr">개막 주간 볼거리</span></h2></div><div class="grid-4">{story}</div></section>
-{nsec('news', 'NEWS', 'NBA 뉴스', 'news')}
-{nsec('analysis', 'ANALYSIS', '개막전 프리뷰', 'analysis')}
-{nsec('magazine', 'MAGAZINE', '기획 · 시즌 가이드', 'magazine')}
+{art_tabs}
 <section class="sec" id="christmas"><div class="sec-head"><h2 class="sec-title">CHRISTMAS <span class="outline">DAY</span></h2><span class="muted">현지 12.25 · 한국시간 12.26</span></div><div class="nba-stage solo"><div class="nba-rail five">{nba_cards(NBA["christmas"])}</div></div></section>
 <section class="sec" id="dates"><div class="bracket"><div class="bracket-head"><h2>KEY DATES</h2><span class="muted">{esc(NBA["note"])}</span></div><div class="rounds">{kd}</div></div></section>
 <section class="discuss"><div><h2>새 시즌 얘기는 팬 보드에서</h2><p>우승 후보, 기대되는 팀, 개막전 예상 모두 환영합니다.</p></div><a class="pill" href="/community/?topic={quote("[NBA] ")}#write">{talk_icon()}글쓰기</a></section>
