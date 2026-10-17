@@ -1306,3 +1306,12 @@ h1,h2,h3,.news-lead h3,.li h2,.li h3,.mag h3,.nba-story h3,.top-stories h2{font-
 .an-teams .tlogo-wrap{width:26px;height:26px;padding:2px;border-radius:8px;margin:0 7px 0 0}
 .an-teams .tlogo{width:100%;height:100%;object-fit:contain}
 .mc-team .tlogo{object-fit:contain}
+
+/* Home hero game cards: swipe sideways on phones instead of a long vertical stack. */
+.tip-rail{display:contents}
+@media (max-width:760px){
+  .tip-rail{display:flex;gap:10px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -16px;padding:0 16px 8px;scroll-padding-left:16px}
+  .tip-rail::-webkit-scrollbar{display:none}
+  .top-stories .tip-rail .ts.tip{flex:0 0 78%;min-width:0;margin:0;scroll-snap-align:start}
+  .top-stories .tip-rail .ts.tip .vsline .tlogo-wrap:not(.nologo){width:56px;height:56px;min-width:56px;min-height:56px}
+}
