@@ -1,0 +1,48 @@
+{
+  "competition": "KOVO 2026-27 women's division",
+  "source": "KOVO official 360VR site",
+  "teams": [
+    {
+      "slug": "kixx",
+      "name": "GS칼텍스 서울 KIXX",
+      "file": "kixx.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/kixx.png"
+    },
+    {
+      "slug": "hipass",
+      "name": "한국도로공사 하이패스",
+      "file": "hipass.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/hipass.png"
+    },
+    {
+      "slug": "hillstate",
+      "name": "현대건설 힐스테이트",
+      "file": "hillstate.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/hillstate.png"
+    },
+    {
+      "slug": "pinkspiders",
+      "name": "흥국생명 핑크스파이더스",
+      "file": "pinkspiders.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/pinkspiders.png"
+    },
+    {
+      "slug": "altos",
+      "name": "IBK기업은행 알토스",
+      "file": "altos.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/altos.png"
+    },
+    {
+      "slug": "redsparks",
+      "name": "정관장 레드스파크스",
+      "file": "redsparks.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/redsparks.png"
+    },
+    {
+      "slug": "soopers",
+      "name": "SOOP 수퍼스",
+      "file": "soopers.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/soopers.png"
+    }
+  ]
+}
