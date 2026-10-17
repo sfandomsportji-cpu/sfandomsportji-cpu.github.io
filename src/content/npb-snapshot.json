@@ -2,7 +2,7 @@
   "provider": "npb.jp 첫 화면 속보",
   "leagues": {
     "NPB": {
-      "checked_at": "2026-10-17T14:27+09:00",
+      "checked_at": "2026-10-17T15:12+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -67,7 +67,7 @@
           "away_name": "Yokohama DeNA BayStars",
           "home_name": "Hanshin Tigers",
           "status": "live",
-          "away_score": 1,
+          "away_score": 3,
           "home_score": 1,
           "source_url": "https://npb.jp/scores/2026/1017/t-db-04/"
         }
