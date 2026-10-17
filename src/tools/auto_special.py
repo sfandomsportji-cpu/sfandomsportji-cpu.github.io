@@ -171,6 +171,18 @@ def soccer_day(now):
     return (now - timedelta(hours=10)).date() if now.hour < 10 else now.date()
 
 
+WEEKEND_DAYS = {4, 5, 6}  # 특집은 금(12시 발행)·토·일에만 — 평일에는 초안을 만들지 않는다
+
+
+def already_published(feature_id, day):
+    """그날 이 특집 글이 이미 articles/ 에 있으면 True — 직접 올린 날에는 자동 초안을 또 만들지 않는다."""
+    for p in (C / 'articles').glob(f'{day}-*.md'):
+        head = p.read_text(encoding='utf-8').split('---', 2)[1] if p.read_text(encoding='utf-8').startswith('---') else ''
+        if re.search(rf'^special:\s*"{re.escape(feature_id)}"', head, re.M):
+            return True
+    return False
+
+
 def run(feature_id, state, notify, now=None, fetcher=fetch):
     """초안을 만들었으면 만든 개수, 아직 할 때가 아니거나 자료가 없으면 0."""
     cfg = FEATURES[feature_id]
@@ -178,8 +190,13 @@ def run(feature_id, state, notify, now=None, fetcher=fetch):
     if not (cfg['run_from'] <= now.hour < cfg['run_until']):
         return 0
     day = soccer_day(now).isoformat()
+    if soccer_day(now).weekday() not in WEEKEND_DAYS:
+        return 0
     done = state.setdefault('special', {})
     if done.get(feature_id) == day:
+        return 0
+    if already_published(feature_id, day):  # 이미 올린 날: 기록만 하고 알리지 않는다
+        done[feature_id] = day
         return 0
     start = datetime.fromisoformat(day + 'T00:00:00+09:00').replace(hour=cfg['window_start'])
     end = start + timedelta(hours=cfg['hours'])
