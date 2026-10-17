@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-18T02:09+09:00",
+  "updated_at": "2026-10-18T04:23+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-18T02:09+09:00",
+      "checked_at": "2026-10-18T04:23+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -49,13 +49,13 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-18T02:09+09:00",
+      "checked_at": "2026-10-18T04:23+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NFL": {
-      "checked_at": "2026-10-18T02:09+09:00",
+      "checked_at": "2026-10-18T04:23+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -231,7 +231,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-18T02:09+09:00",
+      "checked_at": "2026-10-18T04:23+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -244,8 +244,8 @@
           "away_name": "New Jersey Devils",
           "home_name": "Washington Capitals",
           "status": "live",
-          "away_score": 0,
-          "home_score": 0,
+          "away_score": 1,
+          "home_score": 4,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892519"
         },
         {

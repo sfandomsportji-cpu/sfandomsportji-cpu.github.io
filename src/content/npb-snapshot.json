@@ -71,7 +71,8 @@
           "home_score": 5,
           "source_url": "https://npb.jp/scores/2026/1017/t-db-04/"
         }
-      ]
+      ],
+      "error": "header_score 블록 없음"
     }
   }
 }
