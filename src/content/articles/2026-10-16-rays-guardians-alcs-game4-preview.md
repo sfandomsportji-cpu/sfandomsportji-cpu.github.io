@@ -45,4 +45,4 @@ ALCS 4차전은 현지 10월 16일 금요일 저녁 8시, 한국시간 10월 17�
 오늘은 선발 이름보다 투수 교체 순서가 승부를 가른다. 암스트롱이 디아스와 카미네로를 몇 타석 막는지, 그리고 그 뒤에 나오는 긴 이닝 투수가 누구인지 먼저 보자. 탬파베이 선발 확정과 우천 일정 변경도 경기 직전 다시 확인해야 한다.
 :::
 
-**자료:** [MLB.com 4차전 투수 계획](https://www.mlb.com/news/rays-and-guardians-pitching-plans-for-alcs-game-4), [MLB.com 4차전 일정·라인업](https://www.mlb.com/news/when-is-rays-vs-guardians-alcs-game-4-date-time-and-lineups). 배당·구매율 자료는 이 글에 포함하지 않았다. 선발·라인업은 경기 전에 바뀔 수 있다.
+**자료:** [MLB.com 4차전 투수 계획](https://www.mlb.com/news/rays-and-guardians-pitching-plans-for-alcs-game-4), [MLB.com 4차전 일정·라인업](https://www.mlb.com/news/when-is-rays-vs-guardians-alcs-game-4-date-time-and-lineups). 선발·라인업은 경기 전에 바뀔 수 있다.
