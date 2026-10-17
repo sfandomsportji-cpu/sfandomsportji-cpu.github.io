@@ -1,0 +1,106 @@
+{
+  "source": "FootyLogos (editorial/reference only)",
+  "competition": "j1-league",
+  "teams": [
+    {
+      "slug": "avispa-fukuoka",
+      "name": "Avispa Fukuoka (アビスパ福岡)",
+      "src": "https://assets.footylogos.com/logos/avispa-fukuoka/avispa-fukuoka-logo-footylogos.svg"
+    },
+    {
+      "slug": "cerezo-osaka",
+      "name": "Cerezo Osaka (セレッソ大阪)",
+      "src": "https://assets.footylogos.com/logos/cerezo-osaka/cerezo-osaka-logo-footylogos.svg"
+    },
+    {
+      "slug": "fagiano-okayama",
+      "name": "Fagiano Okayama (ファジアーノ岡山)",
+      "src": "https://assets.footylogos.com/logos/fagiano-okayama/fagiano-okayama-logo-footylogos.svg"
+    },
+    {
+      "slug": "fc-tokyo",
+      "name": "FC Tokyo (FC東京)",
+      "src": "https://assets.footylogos.com/logos/fc-tokyo/fc-tokyo-logo-footylogos.svg"
+    },
+    {
+      "slug": "gamba-osaka",
+      "name": "Gamba Osaka (ガンバ大阪)",
+      "src": "https://assets.footylogos.com/logos/gamba-osaka/gamba-osaka-logo-footylogos.svg"
+    },
+    {
+      "slug": "jef-united-chiba",
+      "name": "JEF United Chiba (ジェフユナイテッド千葉)",
+      "src": "https://assets.footylogos.com/logos/jef-united-chiba/jef-united-chiba-logo-footylogos.svg"
+    },
+    {
+      "slug": "kashima-antlers",
+      "name": "Kashima Antlers (鹿島アントラーズ)",
+      "src": "https://assets.footylogos.com/logos/kashima-antlers/kashima-antlers-logo-footylogos.svg"
+    },
+    {
+      "slug": "kashiwa-reysol",
+      "name": "Kashiwa Reysol (柏レイソル)",
+      "src": "https://assets.footylogos.com/logos/kashiwa-reysol/kashiwa-reysol-logo-footylogos.svg"
+    },
+    {
+      "slug": "kawasaki-frontale",
+      "name": "Kawasaki Frontale (川崎フロンターレ)",
+      "src": "https://assets.footylogos.com/logos/kawasaki-frontale/kawasaki-frontale-logo-footylogos.svg"
+    },
+    {
+      "slug": "kyoto-sanga",
+      "name": "Kyoto Sanga (京都サンガF.C.)",
+      "src": "https://assets.footylogos.com/logos/kyoto-sanga/kyoto-sanga-logo-footylogos.svg"
+    },
+    {
+      "slug": "machida-zelvia",
+      "name": "Machida Zelvia (FC町田ゼルビア)",
+      "src": "https://assets.footylogos.com/logos/machida-zelvia/machida-zelvia-logo-footylogos.svg"
+    },
+    {
+      "slug": "mito-hollyhock",
+      "name": "Mito Hollyhock (水戸ホーリーホック)",
+      "src": "https://assets.footylogos.com/logos/mito-hollyhock/mito-hollyhock-logo-footylogos.svg"
+    },
+    {
+      "slug": "nagoya-grampus",
+      "name": "Nagoya Grampus (名古屋グランパス)",
+      "src": "https://assets.footylogos.com/logos/nagoya-grampus/nagoya-grampus-logo-footylogos.svg"
+    },
+    {
+      "slug": "sanfrecce-hiroshima",
+      "name": "Sanfrecce Hiroshima (サンフレッチェ広島)",
+      "src": "https://assets.footylogos.com/logos/sanfrecce-hiroshima/sanfrecce-hiroshima-logo-footylogos.svg"
+    },
+    {
+      "slug": "shimizu-s-pulse",
+      "name": "Shimizu S-Pulse (清水エスパルス)",
+      "src": "https://assets.footylogos.com/logos/shimizu-s-pulse/shimizu-s-pulse-logo-footylogos.svg"
+    },
+    {
+      "slug": "tokyo-verdy",
+      "name": "Tokyo Verdy (東京ヴェルディ)",
+      "src": "https://assets.footylogos.com/logos/tokyo-verdy/tokyo-verdy-logo-footylogos.svg"
+    },
+    {
+      "slug": "urawa-red-diamonds",
+      "name": "Urawa Red Diamonds (浦和レッズ)",
+      "src": "https://assets.footylogos.com/logos/urawa-red-diamonds/urawa-red-diamonds-logo-footylogos.svg"
+    },
+    {
+      "slug": "v-varen-nagasaki",
+      "name": "V-Varen Nagasaki (V・ファーレン長崎)",
+      "src": "https://assets.footylogos.com/logos/v-varen-nagasaki/v-varen-nagasaki-logo-footylogos.svg"
+    },
+    {
+      "slug": "vissel-kobe",
+      "name": "Vissel Kobe (ヴィッセル神戸)",
+      "src": "https://assets.footylogos.com/logos/vissel-kobe/vissel-kobe-logo-footylogos.svg"
+    },
+    {
+      "slug": "yokohama-f-marinos",
+      "name": "Yokohama F. Marinos (横浜F・マリノス)",
+      "src": "https://assets.footylogos.com/logos/yokohama-f-marinos/yokohama-f-marinos-logo-footylogos.svg"
+    }
+  ]
+}
