@@ -6,7 +6,7 @@
   const list = hasBoard ? board.querySelector("[data-board-list]") : null;
   const cfg = (window.SFANDOM || {}).supabase || {};
   if (!cfg.url || !cfg.key || (hasBoard && !list)) return;
-  const validId = x => /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(x || "");
+  const validId = x => /^[0-9a-zA-Z-]{1,40}$/.test(String(x || ""));
   const el = (tag, cls, value) => {
     const e = document.createElement(tag);
     if (cls) e.className = cls;

@@ -415,6 +415,37 @@
     });
   };
 
+  // 글 목록(홈 등) 바로 밑에 최근 댓글을 보여 줍니다. 댓글·답글 전체 화면(community-thread.js)이 있는 팬 보드에서는 그쪽이 대신합니다.
+  const previewComments = async (list, rows) => {
+    if (window.SFANDOM_THREAD || !rows.length) return;
+    const ids = rows.map(p => p.id).filter(id => /^[0-9a-zA-Z-]{1,40}$/.test(String(id)));
+    if (!ids.length) return;
+    try {
+      const res = await request('/rest/v1/comments?select=id,post_id,nickname,body,created_at&status=eq.published&order=created_at.desc&limit=80&post_id=in.(' + ids.join(',') + ')');
+      const all = await res.json();
+      if (!Array.isArray(all)) return;
+      const by = {};
+      all.forEach(c => { (by[c.post_id] = by[c.post_id] || []).push(c); });
+      list.querySelectorAll('article.post[data-post-id]').forEach(card => {
+        const cs = by[card.dataset.postId];
+        const body = card.querySelector('.post-body');
+        if (!cs || !cs.length || !body || body.querySelector('.post-preview')) return;
+        const box = el('div', 'post-preview');
+        cs.slice(0, 3).reverse().forEach(c => {
+          const item = el('div', 'pp-item');
+          const meta = el('span', 'pp-meta');
+          meta.append(el('b', null, c.nickname || 'ANON'), document.createTextNode(' · ' + fmtTime(c.created_at)));
+          item.append(meta, el('span', 'pp-text', c.body || ''));
+          box.append(item);
+        });
+        const more = el('a', 'pp-more', cs.length > 3 ? '댓글 ' + cs.length + '개 모두 보기 →' : '댓글 · 답글 쓰기 →');
+        more.href = '/community/#comments-' + card.dataset.postId;
+        box.append(more);
+        body.append(box);
+      });
+    } catch (_) { /* 댓글 미리보기는 부가 기능입니다. 실패해도 글 목록은 그대로 둡니다. */ }
+  };
+
   const params = new URLSearchParams(location.search);
   const channel = (params.get('ch') || '').slice(0, 20), thread = (params.get('thread') || '').slice(0, 20);
   const onBoardPage = !!$('[data-board-form]');
@@ -468,6 +499,7 @@
         total = m ? Number(m[1]) : rows.length;
         renderPosts(list, rows, total, page, size);
         renderPager();
+        previewComments(list, rows);
         return true;
       } catch (_) {
         // Keep any already visible posts on intermittent read failures.
