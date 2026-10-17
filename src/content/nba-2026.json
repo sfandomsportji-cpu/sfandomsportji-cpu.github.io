@@ -183,7 +183,7 @@
     ]
   ],
   "home_mode": "preseason",
-  "preseason_note": "2026년 10월 17일 10:29 KST 확인: 프리시즌 종료 36경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
+  "preseason_note": "2026년 10월 17일 12:48 KST 확인: 프리시즌 종료 44경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
   "preseason_games": [
     {
       "day": "FINAL",
@@ -572,89 +572,116 @@
       "result": "MIA 115–136 ORL"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "BOS",
       "home": "PHI",
       "kst": "10.17 (토) 08:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · BOS 125–120 PHI",
+      "away_score": 125,
+      "home_score": 120,
+      "result": "BOS 125–120 PHI"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "TOR",
       "home": "DET",
       "kst": "10.17 (토) 08:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · TOR 125–129 DET",
+      "away_score": 125,
+      "home_score": 129,
+      "result": "TOR 125–129 DET"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "MIL",
       "home": "IND",
       "kst": "10.17 (토) 08:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · MIL 128–127 IND",
+      "away_score": 128,
+      "home_score": 127,
+      "result": "MIL 128–127 IND"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "ATL",
       "home": "DAL",
       "kst": "10.17 (토) 09:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · ATL 135–111 DAL",
+      "away_score": 135,
+      "home_score": 111,
+      "result": "ATL 135–111 DAL"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "SAC",
       "home": "SAS",
       "kst": "10.17 (토) 09:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · SAC 97–126 SAS",
+      "away_score": 97,
+      "home_score": 126,
+      "result": "SAC 97–126 SAS"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "CHA",
       "home": "MEM",
       "kst": "10.17 (토) 09:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · CHA 98–117 MEM",
+      "away_score": 98,
+      "home_score": 117,
+      "result": "CHA 98–117 MEM"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "WAS",
       "home": "NOP",
       "kst": "10.17 (토) 09:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · WAS 106–107 NOP",
+      "away_score": 106,
+      "home_score": 107,
+      "result": "WAS 106–107 NOP"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "MIN",
       "home": "CHI",
       "kst": "10.17 (토) 09:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · MIN 116–133 CHI",
+      "away_score": 116,
+      "home_score": 133,
+      "result": "MIN 116–133 CHI"
     },
     {
-      "day": "PRESEASON",
+      "day": "LIVE",
       "away": "POR",
       "home": "GSW",
       "kst": "10.17 (토) 11:00",
-      "tv": "KST"
+      "tv": "KST",
+      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
     },
     {
-      "day": "PRESEASON",
+      "day": "LIVE",
       "away": "UTA",
       "home": "PHX",
       "kst": "10.17 (토) 11:00",
-      "tv": "KST"
+      "tv": "KST",
+      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
     },
     {
-      "day": "PRESEASON",
+      "day": "LIVE",
       "away": "DEN",
       "home": "LAL",
       "kst": "10.17 (토) 11:30",
-      "tv": "KST"
+      "tv": "KST",
+      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
     }
   ]
 }
