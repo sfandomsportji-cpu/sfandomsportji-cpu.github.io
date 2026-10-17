@@ -7,9 +7,9 @@ subtitle: "보스턴 144점, 미네소타 1점 차, 워리어스 5점 차 승리
 kicker: "NBA · FINAL SCORES"
 meta: "2026.10.11 14:13 KST · 7 GAMES FINAL"
 league: "NBA"
-image: "/assets/share/sfandom-social-20261010.png"
-image_alt: "SFANDOM NBA 프리시즌 경기 결과 정리 이미지"
-credit: "SFANDOM ORIGINAL"
+image: ""
+image_alt: ""
+credit: ""
 edition: "2026-10-11"
 slug: "nba-preseason-7-final-scores-oct11"
 sources: [{"label":"NBA 공식 경기 일정·경기센터","url":"https://www.nba.com/schedule"}]
