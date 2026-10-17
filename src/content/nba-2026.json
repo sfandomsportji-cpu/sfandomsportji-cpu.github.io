@@ -183,7 +183,7 @@
     ]
   ],
   "home_mode": "preseason",
-  "preseason_note": "2026년 10월 17일 12:48 KST 확인: 프리시즌 종료 44경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
+  "preseason_note": "2026년 10월 17일 14:27 KST 확인: 프리시즌 종료 47경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
   "preseason_games": [
     {
       "day": "FINAL",
@@ -660,28 +660,37 @@
       "result": "MIN 116–133 CHI"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "POR",
       "home": "GSW",
       "kst": "10.17 (토) 11:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · POR 118–128 GSW",
+      "away_score": 118,
+      "home_score": 128,
+      "result": "POR 118–128 GSW"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "UTA",
       "home": "PHX",
       "kst": "10.17 (토) 11:00",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · UTA 119–116 PHX",
+      "away_score": 119,
+      "home_score": 116,
+      "result": "UTA 119–116 PHX"
     },
     {
-      "day": "LIVE",
+      "day": "FINAL",
       "away": "DEN",
       "home": "LAL",
       "kst": "10.17 (토) 11:30",
       "tv": "KST",
-      "tag": "진행 중 · 기록 제공처 확인 시각 기준"
+      "tag": "종료 · DEN 121–106 LAL",
+      "away_score": 121,
+      "home_score": 106,
+      "result": "DEN 121–106 LAL"
     }
   ]
 }

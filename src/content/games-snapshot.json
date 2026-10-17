@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-17T12:48+09:00",
+  "updated_at": "2026-10-17T14:27+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-17T12:48+09:00",
+      "checked_at": "2026-10-17T14:27+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -49,7 +49,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-17T12:48+09:00",
+      "checked_at": "2026-10-17T14:27+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -178,10 +178,10 @@
           "home": "GS",
           "away_name": "Portland Trail Blazers",
           "home_name": "Golden State Warriors",
-          "status": "live",
-          "away_score": 70,
-          "home_score": 94,
-          "source_url": "https://www.espn.com/nba/game?gameId=401898409"
+          "status": "final",
+          "away_score": 118,
+          "home_score": 128,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401898409/trail-blazers-warriors"
         },
         {
           "id": "NBA-401908948",
@@ -191,10 +191,10 @@
           "home": "PHX",
           "away_name": "Utah Jazz",
           "home_name": "Phoenix Suns",
-          "status": "live",
-          "away_score": 78,
-          "home_score": 89,
-          "source_url": "https://www.espn.com/nba/game?gameId=401908948"
+          "status": "final",
+          "away_score": 119,
+          "home_score": 116,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401908948/jazz-suns"
         },
         {
           "id": "NBA-401898719",
@@ -204,15 +204,15 @@
           "home": "LAL",
           "away_name": "Denver Nuggets",
           "home_name": "Los Angeles Lakers",
-          "status": "live",
-          "away_score": 61,
-          "home_score": 55,
-          "source_url": "https://www.espn.com/nba/game?gameId=401898719"
+          "status": "final",
+          "away_score": 121,
+          "home_score": 106,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401898719/nuggets-lakers"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-17T12:48+09:00",
+      "checked_at": "2026-10-17T14:27+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -375,7 +375,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-17T12:48+09:00",
+      "checked_at": "2026-10-17T14:27+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -400,10 +400,10 @@
           "home": "ANA",
           "away_name": "Boston Bruins",
           "home_name": "Anaheim Ducks",
-          "status": "live",
-          "away_score": 1,
+          "status": "final",
+          "away_score": 4,
           "home_score": 2,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892518"
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892518/bruins-ducks"
         },
         {
           "id": "NHL-401892519",
@@ -612,6 +612,32 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892534/hurricanes-flames"
+        },
+        {
+          "id": "NHL-401892535",
+          "league": "NHL",
+          "start_kst": "2026-10-20T08:00+09:00",
+          "away": "ANA",
+          "home": "NYR",
+          "away_name": "Anaheim Ducks",
+          "home_name": "New York Rangers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892535/ducks-rangers"
+        },
+        {
+          "id": "NHL-401892536",
+          "league": "NHL",
+          "start_kst": "2026-10-20T08:00+09:00",
+          "away": "COL",
+          "home": "PHI",
+          "away_name": "Colorado Avalanche",
+          "home_name": "Philadelphia Flyers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892536/avalanche-flyers"
         }
       ]
     }
