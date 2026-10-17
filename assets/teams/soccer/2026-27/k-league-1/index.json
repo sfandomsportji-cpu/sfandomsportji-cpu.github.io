@@ -1,0 +1,66 @@
+{
+  "source": "FootyLogos (editorial/reference only)",
+  "competition": "k-league-1",
+  "teams": [
+    {
+      "slug": "bucheon-1995",
+      "name": "Bucheon FC 1995",
+      "src": "https://assets.footylogos.com/logos/bucheon-1995-logo-footylogos.svg"
+    },
+    {
+      "slug": "daejeon-hana-citizen",
+      "name": "Daejeon Hana Citizen (대전 하나 시티즌 FC)",
+      "src": "https://assets.footylogos.com/logos/daejeon-hana-citizen/daejeon-hana-citizen-logo-footylogos.svg"
+    },
+    {
+      "slug": "fc-anyang",
+      "name": "FC Anyang (FC 안양)",
+      "src": "https://assets.footylogos.com/logos/fc-anyang/fc-anyang-logo-footylogos.svg"
+    },
+    {
+      "slug": "fc-seoul",
+      "name": "FC Seoul (FC 서울)",
+      "src": "https://assets.footylogos.com/logos/fc-seoul/fc-seoul-logo-footylogos.svg"
+    },
+    {
+      "slug": "gangwon-fc",
+      "name": "Gangwon FC (강원 FC)",
+      "src": "https://assets.footylogos.com/logos/gangwon-fc/gangwon-fc-logo-footylogos.svg"
+    },
+    {
+      "slug": "gimcheon-sangmu",
+      "name": "Gimcheon Sangmu (김천 상무 FC)",
+      "src": "https://assets.footylogos.com/logos/gimcheon-sangmu/gimcheon-sangmu-logo-footylogos.svg"
+    },
+    {
+      "slug": "gwangju-fc",
+      "name": "Gwangju FC (광주 FC)",
+      "src": "https://assets.footylogos.com/logos/gwangju-fc/gwangju-fc-logo-footylogos.svg"
+    },
+    {
+      "slug": "incheon-united",
+      "name": "Incheon United",
+      "src": "https://assets.footylogos.com/logos/incheon-united-logo-footylogos.svg"
+    },
+    {
+      "slug": "jeju-united",
+      "name": "Jeju United (제주 SK 축구단)",
+      "src": "https://assets.footylogos.com/logos/jeju-united/jeju-united-logo-footylogos.svg"
+    },
+    {
+      "slug": "jeonbuk-hyundai-motors",
+      "name": "Jeonbuk Hyundai Motors (전북 현대 모터스)",
+      "src": "https://assets.footylogos.com/logos/jeonbuk-hyundai-motors/jeonbuk-hyundai-motors-logo-footylogos.svg"
+    },
+    {
+      "slug": "pohang-steelers",
+      "name": "Pohang Steelers (포항 스틸러스)",
+      "src": "https://assets.footylogos.com/logos/pohang-steelers/pohang-steelers-logo-footylogos.svg"
+    },
+    {
+      "slug": "ulsan-hd",
+      "name": "Ulsan HD (울산 HD FC)",
+      "src": "https://assets.footylogos.com/logos/ulsan-hd/ulsan-hd-logo-footylogos.svg"
+    }
+  ]
+}
