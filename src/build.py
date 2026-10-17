@@ -127,6 +127,7 @@ def load_articles() -> list[Article]:
 
 
 ARTICLES = load_articles()
+ARTICLE_URLS = {a.url for a in ARTICLES}  # 기사 바로 밑 토론(댓글·답글)이 붙는 페이지
 EDITIONS = json.loads((CONTENT / 'editions.json').read_text(encoding='utf-8'))
 SPECIALS = json.loads((CONTENT / 'specials.json').read_text(encoding='utf-8'))
 SOCCER_LOGOS = json.loads((CONTENT / 'soccer_logos.json').read_text(encoding='utf-8'))
@@ -755,12 +756,14 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     cfg = {'root': '/', 'supabase': SITE['supabase']}
     lds = ''.join(f'<script type="application/ld+json">{json.dumps(x, ensure_ascii=False)}</script>' for x in (ld or []))
     robots = 'noindex,follow' if noindex else 'index,follow,max-image-preview:large'
-    thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v2">'
-                  f'<link rel="stylesheet" href="/assets/css/community-admin.css?v={VER}-v1">' if path == '/community/' else '')
-    news_comments_css = (f'<link rel="stylesheet" href="/assets/css/news-comments.css?v={VER}-v1">' if re.fullmatch(r'/news/\d{4}/\d{2}/[a-z0-9-]+/', path) else '')
-    thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v5" defer></script>'
-                 f'<script src="/assets/js/community-admin.js?v={VER}-v1" defer></script>' if path == '/community/' else '')
-    news_comments_js = (f'<script src="/assets/js/news-comments.js?v={VER}-v1" defer></script>' if re.fullmatch(r'/news/\d{4}/\d{2}/[a-z0-9-]+/', path) else '')
+    on_board = path == '/community/'
+    on_article = path in ARTICLE_URLS
+    thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v3">'
+                  + (f'<link rel="stylesheet" href="/assets/css/community-admin.css?v={VER}-v1">' if on_board else '') if (on_board or on_article) else '')
+    news_comments_css = (f'<link rel="stylesheet" href="/assets/css/news-comments.css?v={VER}-v2">' if on_article else '')
+    thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v6" defer></script>'
+                 + (f'<script src="/assets/js/community-admin.js?v={VER}-v1" defer></script>' if on_board else '') if (on_board or on_article) else '')
+    news_comments_js = (f'<script src="/assets/js/news-comments.js?v={VER}-v2" defer></script>' if on_article else '')
     vote_js = (f'<script src="/assets/js/game-vote.js?v={av("/assets/js/game-vote.js")}" defer></script><script src="/assets/js/my-team.js?v={av("/assets/js/my-team.js")}" defer></script>' if path == '/' else '')
     return f'''<!doctype html>
 <html lang="ko">
@@ -1050,21 +1053,15 @@ def build_article(a: Article):
     rel = ''.join(f'<a href="{x.url}"><small>{esc(x.section)} · {x.date_dot}</small>{esc(x.headline)}</a>' for x in related(a))
     ed = f'<a class="more" href="/news/morning/{a.edition}/">{a.edition.replace("-", ".")} 모닝 에디션 전체 →</a>' if a.edition in EDITIONS else ''
     topic = quote(f'[토론] {a.title.rstrip(",.")}')
-    if a.kind == 'news':
-        discussion_html = f'''<section class="news-comment-box" data-news-comments data-article-path="{esc(a.url)}" aria-label="뉴스 의견">
-          <h2>이 뉴스 이야기하기</h2>
-          <p class="nc-intro">이 기사에 남긴 댓글은 FAN BOARD의 전체 이야기에도 함께 표시됩니다.</p>
-          <div data-news-comment-list><p class="news-comment-empty">댓글을 불러오는 중…</p></div>
-          <form data-news-comment-form novalidate>
-            <input name="nickname" maxlength="30" placeholder="닉네임 (선택)" aria-label="닉네임">
-            <textarea name="body" maxlength="2000" required aria-label="댓글 내용" placeholder="이 경기에 대한 생각을 남겨 주세요."></textarea>
-            <label class="hp" aria-hidden="true">website<input name="website" tabindex="-1" autocomplete="off"></label>
-            <div class="nc-actions"><button class="pill" type="submit">댓글 등록</button><a class="more" href="/community/" data-news-comment-link hidden>전체 이야기에서 보기 →</a></div>
-            <p class="nc-status" data-news-comment-status role="status"></p>
-          </form>
+    anchor_title = f'[분석 토론] {a.title.rstrip(",.")[:100]}'
+    discussion_html = f'''<section class="news-comment-box" data-news-comments data-article-path="{esc(a.url)}" data-article-kind="{'news' if a.kind == 'news' else 'article'}" data-article-title="{esc(anchor_title)}" aria-label="토론">
+          <h2>이 글 이야기하기</h2>
+          <p class="nc-intro">이 글에 남긴 댓글과 답글은 이 아래에 바로 보이고, FAN BOARD의 전체 이야기에도 함께 표시됩니다.</p>
+          <div data-discussion-mount><p class="news-comment-empty">댓글을 불러오는 중…</p></div>
+          <noscript><a class="pill" href="/community/?topic={topic}#write">{talk_icon()}팬 보드에 글쓰기</a></noscript>
+          <div class="nc-actions"><a class="more" href="/community/" data-news-comment-link hidden>전체 이야기에서 보기 →</a></div>
+          <p class="nc-status" data-news-comment-status role="status"></p>
         </section>'''
-    else:
-        discussion_html = f'''<section class="discuss" aria-label="토론"><div><h2>이 글 토론하기</h2><p>생각이 다르면 더 좋습니다. 팬 보드에 한 줄 남겨 주세요.</p></div><a class="pill" href="/community/?topic={topic}#write">{talk_icon()}팬 보드에 글쓰기</a></section>'''
     body = f'''
 <div class="wrap">
   <header class="article-head">

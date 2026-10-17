@@ -1,11 +1,11 @@
 /* SFANDOM threaded discussions. Optional enhancement, isolated from the core board. */
 (() => {
   "use strict";
-  const board = document.querySelector("[data-board][data-size]"); 
-  if (!board || !board.querySelector("[data-board-form]")) return;
-  const list = board.querySelector("[data-board-list]");
+  const board = document.querySelector("[data-board][data-size]");
+  const hasBoard = !!(board && board.querySelector("[data-board-form]"));
+  const list = hasBoard ? board.querySelector("[data-board-list]") : null;
   const cfg = (window.SFANDOM || {}).supabase || {};
-  if (!list || !cfg.url || !cfg.key) return;
+  if (!cfg.url || !cfg.key || (hasBoard && !list)) return;
   const validId = x => /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(x || "");
   const el = (tag, cls, value) => {
     const e = document.createElement(tag);
@@ -284,11 +284,15 @@
   }
 
   document.addEventListener("sfandom-admin-state",()=>{
-    list.querySelectorAll("[data-admin-delete-comment]").forEach(b=>{
+    document.querySelectorAll("[data-admin-delete-comment]").forEach(b=>{
       b.hidden=!(window.SFANDOM_ADMIN?.canDelete);
     });
   });
-  const decorate=()=>list.querySelectorAll("article.post[data-post-id]").forEach(attach);
-  new MutationObserver(decorate).observe(list,{childList:true});
-  decorate();
+  // 기사 페이지의 토론 영역(news-comments.js)도 같은 댓글·답글 화면을 쓰도록 노출합니다.
+  window.SFANDOM_THREAD = { attach };
+  if (list) {
+    const decorate=()=>list.querySelectorAll("article.post[data-post-id]").forEach(attach);
+    new MutationObserver(decorate).observe(list,{childList:true});
+    decorate();
+  }
 })();
