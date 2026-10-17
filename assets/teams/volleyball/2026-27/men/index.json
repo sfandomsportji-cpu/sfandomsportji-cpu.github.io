@@ -1,0 +1,48 @@
+{
+  "competition": "KOVO 2026-27 men's division",
+  "source": "KOVO official 360VR site",
+  "teams": [
+    {
+      "slug": "jumbos",
+      "name": "대한항공 점보스",
+      "file": "jumbos.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/jumbos.png"
+    },
+    {
+      "slug": "skywalkers",
+      "name": "현대캐피탈 스카이워커스",
+      "file": "skywalkers.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/skywalkers.png"
+    },
+    {
+      "slug": "wooriwon",
+      "name": "우리카드 우리WON",
+      "file": "wooriwon.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/wooriwon.png"
+    },
+    {
+      "slug": "kbstars",
+      "name": "KB손해보험 스타즈",
+      "file": "kbstars.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/kbstars.png"
+    },
+    {
+      "slug": "vixtorm",
+      "name": "한국전력 빅스톰",
+      "file": "vixtorm.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/vixtorm.png"
+    },
+    {
+      "slug": "okman",
+      "name": "OK저축은행 읏맨",
+      "file": "okman.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/okman.png"
+    },
+    {
+      "slug": "bluefangs",
+      "name": "삼성화재 블루팡스",
+      "file": "bluefangs.png",
+      "source_url": "https://cdn.kovo.co.kr/court-views/src/assets/images/bluefangs.png"
+    }
+  ]
+}
