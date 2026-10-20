@@ -697,7 +697,7 @@ def logo_box(key: str) -> tuple:
 # (기준 크기, 한 변 최대, 대각선 최대) — 상자 한 변을 1로 본 비율. 가로·세로 비율이 달라도 눈에 보이는 크기가 비슷하도록
 # 가로세로의 기하평균을 맞추고, 상자(원형 배지 등)를 넘지 않게 제한한다.
 LOGO_FIT_BADGE = (0.66, 0.80, 0.92)  # 홈 '오늘 SOCCER' 원형 배지
-LOGO_FIT_PLAIN = (0.90, 1.12, 1.50)  # 글 안 대진·분석 목록(배경 없는 정사각 칸)
+LOGO_FIT_PLAIN = (0.80, 0.96, 0.0)  # 글 안 대진·분석 목록·홈 카드: 눈에 보이는 면적(가로×세로)을 같게 맞추되 긴 변은 칸의 96% 이내, 가운데 정렬
 
 
 try:  # 글자 위주의 가로로 긴 로고(레이커스 등)는 로고별 배율을 따로 보관 (src/content/logo_scale.json)
@@ -710,6 +710,10 @@ def logo_size(key: str, fit: tuple) -> tuple:
     """상자 한 변을 1로 했을 때 보여 줄 (가로, 세로)."""
     _, asp = logo_box(key)
     g, cap, diag = fit
+    if fit is LOGO_FIT_PLAIN:  # 면적 통일 + 긴 변 상한: 가로형·세로형·원형이 비슷한 크기로 보이게(로고별 배율 없음)
+        w, h = g * math.sqrt(asp), g / math.sqrt(asp)
+        k = min(1.0, cap / max(w, h))
+        return w * k, h * k
     w, h = g * math.sqrt(asp), g / math.sqrt(asp)
     k = min(1.0, cap / w, cap / h, diag / math.hypot(w, h))
     m = LOGO_SCALE.get(key, 1.0) if fit is not LOGO_FIT_BADGE else 1.0
