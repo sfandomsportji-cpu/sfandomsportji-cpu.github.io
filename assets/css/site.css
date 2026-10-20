@@ -1424,3 +1424,21 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
   body{font-size:16.5px}
   .tag,.chip,.talk,.post-meta,.li-vs,.nba-card small,.nba-card time,.tabs a,.more,.pill,.rules,.footer-in p{font-size:15px}
 }
+
+/* SFANDOM logo optical centering · 2026-10-20
+   칸 가운데가 아니라 '시각적 무게 중심'을 맞춤 (로고별 측정값의 75% 보정) */
+.tlogo[alt="BOS"]{--oy:2.4%}
+.tlogo[alt="CHA"]{--oy:5.4%}
+.tlogo[alt="HOU"]{--oy:3.3%}
+.tlogo[alt="IND"]{--oy:3.4%}
+.tlogo[alt="MEM"]{--oy:4.3%}
+.tlogo[alt="MIA"]{--oy:-2.5%}
+.tlogo[alt="NOP"]{--oy:4.5%}
+.tlogo[alt="NYK"]{--oy:6.0%}
+.tlogo[alt="OKC"]{--oy:6.2%}
+.tlogo[alt="ORL"]{--oy:-2.9%}
+.tlogo[alt="PHI"]{--oy:-11.0%}
+.tlogo[alt="PHX"]{--oy:1.9%}
+.tlogo[alt="SAS"]{--oy:5.1%}
+.tlogo[alt="UTA"]{--oy:5.5%}
+.tlogo{transform:translateY(var(--oy,0%))}
