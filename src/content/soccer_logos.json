@@ -122,5 +122,10 @@
  "TOTTENHAM": "premier-league/tottenham-hotspur.png",
  "COVENTRY": "premier-league/coventry-city.png",
  "GETAFE": "la-liga/getafe-cf.png",
- "RAYO": "la-liga/rayo-vallecano.png"
+ "RAYO": "la-liga/rayo-vallecano.png",
+ "ROMA": "serie-a/as-roma.png",
+ "MAN CITY": "premier-league/manchester-city.png",
+ "VILLARREAL": "la-liga/villarreal-cf.png",
+ "STUTTGART": "bundesliga/vfb-stuttgart.png",
+ "ATLETICO": "la-liga/atletico-de-madrid.png"
 }
