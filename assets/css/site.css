@@ -1389,3 +1389,9 @@ a.sc-card:hover{background:rgba(255,255,255,.08);border-color:rgba(255,144,66,.4
 .sc-hint{margin:6px 0 0;font-size:12.5px;color:#8f98a8}
 @media (min-width:900px){.sc-rail{margin:0;padding:2px 0 10px;scroll-padding-left:0}.sc-card{flex-basis:280px}}
 
+
+/* SFANDOM NBA card logos: one uniform box, centered, same visual size · 2026-10-20 */
+.nba-card .vsline{align-items:center}
+.nba-card .tlogo-wrap:not(.nologo){display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;min-width:56px;padding:2px;box-sizing:border-box;overflow:visible}
+.nba-card .tlogo-wrap:not(.nologo) .tlogo{display:block;width:100%!important;height:100%!important;max-width:100%;max-height:100%;object-fit:contain!important;object-position:center!important;margin:0}
+@media (max-width:700px){.nba-card .tlogo-wrap:not(.nologo){width:50px;height:50px;min-width:50px}}
