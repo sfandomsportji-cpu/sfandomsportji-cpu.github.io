@@ -1395,3 +1395,32 @@ a.sc-card:hover{background:rgba(255,255,255,.08);border-color:rgba(255,144,66,.4
 .nba-card .tlogo-wrap:not(.nologo){display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;min-width:56px;padding:2px;box-sizing:border-box;overflow:visible}
 .nba-card .tlogo-wrap:not(.nologo) .tlogo{display:block;width:100%!important;height:100%!important;max-width:100%;max-height:100%;object-fit:contain!important;object-position:center!important;margin:0}
 @media (max-width:700px){.nba-card .tlogo-wrap:not(.nologo){width:50px;height:50px;min-width:50px}}
+
+/* SFANDOM typography pass · 2026-10-20
+   큰 제목 = 귀여운 Bagel Fat One / Jua, 작은 글씨 = 둥글둥글 Gowun Dodum */
+:root{
+  --body:'Gowun Dodum','Nunito','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --round:'Gowun Dodum','Nunito','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  --text:#FFFFFF;--text-2:#EEF1F6;--text-3:#E1E6EE;--muted:#CDD3DE;--faint:#B4BAC8;
+}
+body{font-family:var(--body);font-size:17px;line-height:1.75;letter-spacing:.005em;-webkit-font-smoothing:auto;text-rendering:optimizeLegibility}
+p,li,td,small,time,label,input,textarea,select,figcaption,.muted,.rules,.lede{font-family:var(--round)}
+.hero p,.news-lead p,.nba-copy p,.page-head p.lede{font-size:17px;line-height:1.75}
+/* 작은 라벨·메타 글씨 */
+h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs,.crumbs,
+.nba-card small,.nba-card time,.nba-tag,.mc-team small,.seed-row,.seed-row small,.round span,.sec-title .kr,.page-head h1 .kr{font-family:var(--round)}
+.tag,.chip,.talk,.post-meta,.li-vs,.nba-card small,.nba-card time,.nba-tag,.mc-team small,.seed-row small,.round span,.crumbs,.socials,.tabs a,.more,.pill,.muted.sm,
+.rules,.empty,.footer-in p,.post-body p,.post-preview .pp-text,.post-preview .pp-meta{font-size:15px}
+.tag,.chip,.talk,.post-meta,.li-vs,.nba-card small,.nba-card time,.tabs a,.more,.pill,.chip,.seed-row,.sec-title .kr{font-weight:700}
+.nba-card small,.nba-card time,.tag{letter-spacing:.02em}
+/* 큰 제목은 귀엽게 */
+.hero h1,.page-head h1,.sec-title,.bracket-head h2,.news-lead h3,.li h2,.li h3,.mag h3,.nba-story h3,.top-stories h2,.logo,.motto,.nav,.all-btn,.hero-badge{font-family:var(--display);font-weight:400}
+.hero h1{letter-spacing:-.5px}
+.news-lead h3,.li h2,.li h3,.nba-story h3{font-family:'Jua','Bagel Fat One','Apple SD Gothic Neo',sans-serif;letter-spacing:0}
+/* 로고 이미지: 과한 대비·그림자 완화 */
+.tlogo{filter:contrast(1.04) saturate(1.06) drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+.top-stories .ts.tip .vsline .tlogo{filter:contrast(1.04) saturate(1.06) drop-shadow(0 1px 2px rgba(0,0,0,.4))}
+@media (max-width:700px){
+  body{font-size:16.5px}
+  .tag,.chip,.talk,.post-meta,.li-vs,.nba-card small,.nba-card time,.tabs a,.more,.pill,.rules,.footer-in p{font-size:15px}
+}
