@@ -1428,17 +1428,21 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 /* SFANDOM logo optical centering · 2026-10-20
    칸 가운데가 아니라 '시각적 무게 중심'을 맞춤 (로고별 측정값의 75% 보정) */
 .tlogo[alt="BOS"]{--oy:2.4%}
-.tlogo[alt="CHA"]{--oy:5.4%}
+.tlogo[alt="CHA"]{--oy:5.2%}
 .tlogo[alt="HOU"]{--oy:3.3%}
-.tlogo[alt="IND"]{--oy:3.4%}
-.tlogo[alt="MEM"]{--oy:4.3%}
+.tlogo[alt="IND"]{--oy:3.2%}
+.tlogo[alt="MEM"]{--oy:4.0%}
 .tlogo[alt="MIA"]{--oy:-2.5%}
-.tlogo[alt="NOP"]{--oy:4.5%}
-.tlogo[alt="NYK"]{--oy:6.0%}
-.tlogo[alt="OKC"]{--oy:6.2%}
-.tlogo[alt="ORL"]{--oy:-2.9%}
+.tlogo[alt="NOP"]{--oy:1.9%}
+.tlogo[alt="NYK"]{--oy:4.9%}
+.tlogo[alt="OKC"]{--oy:3.9%}
+.tlogo[alt="ORL"]{--oy:-2.1%}
 .tlogo[alt="PHI"]{--oy:-11.0%}
-.tlogo[alt="PHX"]{--oy:1.9%}
+.tlogo[alt="PHX"]{--oy:1.6%}
 .tlogo[alt="SAS"]{--oy:5.1%}
-.tlogo[alt="UTA"]{--oy:5.5%}
+.tlogo[alt="UTA"]{--oy:3.7%}
 .tlogo{transform:translateY(var(--oy,0%))}
+
+/* SFANDOM NBA logos everywhere (홈 오른쪽 목록 · 팬 보드 · 기타): 같은 정사각 칸에 같은 방식으로 맞춤 · 2026-10-20 */
+.tlogo-wrap:not(.nologo){display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box}
+.tlogo-wrap:not(.nologo) .tlogo[src*="/teams/nba/"]{display:block;width:100%!important;height:100%!important;max-width:100%;max-height:100%;object-fit:contain!important;object-position:center!important;margin:0}
