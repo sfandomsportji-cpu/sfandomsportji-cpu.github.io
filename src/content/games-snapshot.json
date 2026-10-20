@@ -1,29 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-20T19:25+09:00",
+  "updated_at": "2026-10-21T00:22+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-20T19:25+09:00",
+      "checked_at": "2026-10-21T00:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
-      "games": [
-        {
-          "id": "MLB-401908028",
-          "league": "MLB",
-          "start_kst": "2026-10-20T09:00+09:00",
-          "away": "CLE",
-          "home": "TB",
-          "away_name": "Cleveland Guardians",
-          "home_name": "Tampa Bay Rays",
-          "status": "final",
-          "away_score": 3,
-          "home_score": 7,
-          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908028/guardians-rays"
-        }
-      ]
+      "games": []
     },
     "NBA": {
-      "checked_at": "2026-10-20T19:25+09:00",
+      "checked_at": "2026-10-21T00:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -238,23 +224,10 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-20T19:25+09:00",
+      "checked_at": "2026-10-21T00:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NFL-401873008",
-          "league": "NFL",
-          "start_kst": "2026-10-20T09:15+09:00",
-          "away": "WSH",
-          "home": "SF",
-          "away_name": "Washington Commanders",
-          "home_name": "San Francisco 49ers",
-          "status": "final",
-          "away_score": 17,
-          "home_score": 23,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873008/commanders-49ers"
-        },
         {
           "id": "NFL-401873010",
           "league": "NFL",
@@ -271,62 +244,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-20T19:25+09:00",
+      "checked_at": "2026-10-21T00:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892535",
-          "league": "NHL",
-          "start_kst": "2026-10-20T08:00+09:00",
-          "away": "ANA",
-          "home": "NYR",
-          "away_name": "Anaheim Ducks",
-          "home_name": "New York Rangers",
-          "status": "final",
-          "away_score": 2,
-          "home_score": 5,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892535/ducks-rangers"
-        },
-        {
-          "id": "NHL-401892536",
-          "league": "NHL",
-          "start_kst": "2026-10-20T08:00+09:00",
-          "away": "COL",
-          "home": "PHI",
-          "away_name": "Colorado Avalanche",
-          "home_name": "Philadelphia Flyers",
-          "status": "final",
-          "away_score": 2,
-          "home_score": 3,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892536/avalanche-flyers"
-        },
-        {
-          "id": "NHL-401892537",
-          "league": "NHL",
-          "start_kst": "2026-10-20T08:30+09:00",
-          "away": "SJ",
-          "home": "TOR",
-          "away_name": "San Jose Sharks",
-          "home_name": "Toronto Maple Leafs",
-          "status": "final",
-          "away_score": 1,
-          "home_score": 3,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892537/sharks-maple-leafs"
-        },
-        {
-          "id": "NHL-401892538",
-          "league": "NHL",
-          "start_kst": "2026-10-20T10:00+09:00",
-          "away": "PIT",
-          "home": "UTA",
-          "away_name": "Pittsburgh Penguins",
-          "home_name": "Utah Mammoth",
-          "status": "final",
-          "away_score": 4,
-          "home_score": 5,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892538/penguins-mammoth"
-        },
         {
           "id": "NHL-401892539",
           "league": "NHL",
