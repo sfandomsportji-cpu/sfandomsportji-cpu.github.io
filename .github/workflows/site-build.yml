@@ -1,0 +1,117 @@
+name: Site build (블로그 새 글 · 팀 로고 반영)
+
+# 구글·네이버 블로그 새 글을 받아 홈·사이트맵에 반영합니다. API 비용 없음.
+on:
+  schedule:
+    - cron: "17,47 * * * *"   # 30분마다 (GitHub 예약 실행이 자주 밀려서 간격을 좁힘. 구글 글은 방문 시 실시간, 네이버 글은 빌드 때 반영)
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "!src/content/games-snapshot.json" # bot-updated snapshot must not recursively retrigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: site-build
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Install social preview image dependency
+        run: python3 -m pip install Pillow==11.3.0
+      - name: Korean font for article share cards
+        run: |
+          fc-list | grep -qi "Noto Sans CJK KR" || (sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-cjk)
+      - name: Team logos (없는 것만 받아 저장소에 보관)
+        run: python3 src/tools/fetch_logos.py
+      - name: Build share preview card (1200x630)
+        run: python3 src/tools/build_social_card.py
+      - name: Expire reference photos (3 days)
+        run: python3 src/tools/expire_photos.py
+      - name: Build per-article share cards (1200x630)
+        run: python3 src/tools/build_article_cards.py
+      - name: Sync league scores and schedules (ESPN, verified states only)
+        run: python3 src/tools/sync_games.py
+      - name: Sync NPB scores (npb.jp, robots.txt 허용 · 실패 시 이전 값 유지)
+        run: python3 src/tools/sync_npb.py
+      - name: Sync postseason / NBA / hero from verified scores
+        run: python3 src/tools/sync_postseason.py
+      - name: Build
+        run: python3 src/build.py
+      - name: Site check (check.py) - 경고만, 빌드는 멈추지 않음
+        continue-on-error: true
+        run: python3 src/tools/check.py
+      - name: Commit if changed (concurrent source updates safe)
+        run: |
+          git config user.name "sfandom-bot"
+          git config user.email "sfandom-bot@users.noreply.github.com"
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No generated changes."
+            exit 0
+          fi
+          git add -A
+          git commit -m "build: 블로그 새 글 반영 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "Generated pages pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Main advanced during build: refreshing generated files (attempt $attempt)."
+            git fetch origin main
+            git reset --hard origin/main
+            python3 src/build.py
+            if [ -z "$(git status --porcelain)" ]; then
+              echo "Latest main already has the generated result."
+              exit 0
+            fi
+            git add -A
+            git commit -m "build: 최신 main 기준 재생성 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
+          done
+          echo "Generated commit could not be pushed after three retries." >&2
+          exit 1
+      - name: 경기 종료 · 시작 2시간 전 초안 + 텔레그램 알림 (초안만 만들고 게시는 하지 않음)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 src/tools/auto_recap.py --alerts
+      - name: Commit auto drafts
+        run: |
+          if [ -z "$(git status --porcelain src/content/drafts src/content/auto-alerts.json)" ]; then
+            exit 0
+          fi
+          git config user.name "sfandom-bot"
+          git config user.email "sfandom-bot@users.noreply.github.com"
+          git add src/content/drafts src/content/auto-alerts.json
+          git commit -m "chore: 자동 초안·알림 기록 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 3
+          done
+          exit 1
+      - name: Telegram 알림 (TELEGRAM_BOT_TOKEN · TELEGRAM_CHAT_ID Secrets 가 있을 때만 동작)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 src/tools/telegram_notify.py
+      - name: Commit telegram sent log
+        run: |
+          if [ -z "$(git status --porcelain src/content/telegram-sent.json)" ]; then
+            exit 0
+          fi
+          git config user.name "sfandom-bot"
+          git config user.email "sfandom-bot@users.noreply.github.com"
+          git add src/content/telegram-sent.json
+          git commit -m "chore: 텔레그램 발송 기록 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
+          for attempt in 1 2 3; do
+            git pull --rebase origin main && git push && exit 0
+            sleep 3
+          done
+          exit 1

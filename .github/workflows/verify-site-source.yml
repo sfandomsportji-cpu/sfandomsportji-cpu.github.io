@@ -1,0 +1,119 @@
+name: Verify generated site and game center
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/**"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Compile Python sources
+        run: python3 -m py_compile src/build.py src/tools/sync_games.py src/tools/editorial_paths.py src/tools/naver_magazine.py
+      - name: Verify provider access and refresh snapshot in CI
+        run: |
+          python3 src/tools/sync_games.py
+          python3 - <<'PY'
+          import datetime as dt
+          import json
+          from pathlib import Path
+          path = Path("src/content/games-snapshot.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          now = dt.datetime.now(dt.timezone.utc)
+          for league in ("MLB", "NBA", "NFL", "NHL"):
+              checked = data["leagues"].get(league, {}).get("checked_at")
+              if not checked:
+                  raise SystemExit(f"Missing fresh provider data for {league}")
+              age = now - dt.datetime.fromisoformat(checked)
+              print(league, "age_seconds", round(age.total_seconds()))
+              if not dt.timedelta(seconds=-300) <= age < dt.timedelta(minutes=8):
+                  raise SystemExit(f"Scoreboard provider did not refresh {league}")
+          PY
+      - name: Generate site from repository source
+        run: python3 src/build.py
+      - name: Validate Naver-only magazine and safe owned links
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from urllib.parse import urlsplit
+          import re
+          page = Path("magazine/index.html").read_text(encoding="utf-8")
+          class Scan(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.links = []
+                  self.images = []
+                  self.frames = []
+                  self.external_scripts = []
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  if tag == "a" and "nm-card" in attrs.get("class", "").split():
+                      self.links.append(attrs.get("href", ""))
+                  if tag in ("img", "video", "iframe", "picture", "source"):
+                      self.images.append(tag)
+                  if tag == "script" and attrs.get("src", "").startswith(("https://", "http://")):
+                      self.external_scripts.append(attrs.get("src"))
+          s = Scan()
+          s.feed(page[page.find('<main id="main">'):page.find('</main>')])
+          assert 0 <= len(s.links) <= 9, f"excess Naver posts, got {len(s.links)}"
+          assert s.links or "최근 글 목록을 확인하고 있습니다" in page, "no fallback for unavailable blog feed"
+          assert len(s.links) == len(set(s.links)), "duplicate Naver post"
+          assert all(re.fullmatch(r'https://blog[.]naver[.]com/sfandomsport/[0-9]{8,20}', u) for u in s.links), "non-owned URL"
+          assert not s.images, f"remote media in magazine: {s.images}"
+          assert not s.external_scripts, f"external scripts in magazine: {s.external_scripts}"
+          assert not any(x in page for x in ('id="magOriginalTitle"', 'id="magExternalTitle"', 'class="wrap kairo-desk"')), "old hub wasn't replaced"
+          assert 'naver-magazine.css' in page, "dedicated styles missing"
+          assert 'sfandomji.blogspot.com' not in page, "unexpected Blogger link"
+          print(f"PASS: {len(s.links)} unique owned Naver posts and no magazine media embeddings.")
+          PY
+
+      - name: Verify published templates and KST game center
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path(".")
+          home = (root / "index.html").read_text(encoding="utf-8")
+          about = (root / "about/index.html").read_text(encoding="utf-8")
+          magazine = (root / "magazine/index.html").read_text(encoding="utf-8")
+          games = (root / "games/index.html").read_text(encoding="utf-8")
+          assert 'id="sfIdentityTitle"' in home, "item 01 brand story lost"
+          assert 'id="naverMagazineTitle"' in magazine and 'NAVER BLOG' in magazine, "approved Naver-only magazine missing"
+          assert 'id="kairoDeskTitle"' not in magazine, "retired editorial desk returned after rebuild"
+          assert "스포츠에서 얻은 가치를 다시 사람에게" in about, "about mission lost"
+          assert 'id="scorePreviewTitle"' in home, "homepage multi-league preview missing"
+          assert 'sf-scores__league' in games, "game center missing"
+          for lg in ("MLB", "NBA", "NFL", "NHL"):
+              assert f'aria-label="{lg} 경기 결과와 일정"' in games, f"{lg} game center section missing"
+          assert games.count('class="sf-scores__league"') >= 4, "game center leagues missing"
+          assert "확인 시각" in games, "freshness disclosure missing"
+          analysis = (root / "analysis/index.html").read_text(encoding="utf-8")
+          review = (root / "analysis/review/index.html").read_text(encoding="utf-8")
+          index = (root / "analysis/reading-paths/index.html").read_text(encoding="utf-8")
+          archived = (root / "analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/index.html").read_text(encoding="utf-8")
+          assert 'id="cycleGuideTitle"' in analysis, "approved pregame guide lost"
+          assert 'id="cycleReviewTitle"' in review, "approved postgame guide lost"
+          assert 'cycle-article-note' in archived, "archived analysis notice lost"
+          import html, json
+          groups = json.loads((root / "src/content/editorial-paths.json").read_text(encoding="utf-8"))["groups"]
+          for g in groups:
+              if g.get("kind") == "before-after":
+                  assert html.escape(g["title"]) in review, f"preview-review pair missing: {g['id']}"
+          assert index.count('class="editorial-links__group"') == len(groups), "independent editorial groups missing"
+          assert "INDEPENDENT STORIES" in index, "separate articles hidden"
+          assert 'editorial-links__related' in archived, "original related article links missing"
+          print("PASS: approved 01-04 components persist; paired reviews and unique article links generated.")
+          print("PASS: original 01 and approved updated 02 Naver magazine preserved; four-league game center generated.")
+          PY

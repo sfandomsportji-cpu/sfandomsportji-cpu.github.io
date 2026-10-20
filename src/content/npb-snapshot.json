@@ -1,0 +1,78 @@
+{
+  "provider": "npb.jp 첫 화면 속보",
+  "leagues": {
+    "NPB": {
+      "checked_at": "2026-10-18T02:09+09:00",
+      "coverage": "complete",
+      "failed_dates": [],
+      "games": [
+        {
+          "id": "NPB-scores-2026-1015-h-f-02",
+          "league": "NPB",
+          "start_kst": "2026-10-15T18:00+09:00",
+          "away": "NIP",
+          "home": "SB",
+          "away_name": "Hokkaido Nippon-Ham Fighters",
+          "home_name": "Fukuoka SoftBank Hawks",
+          "status": "final",
+          "away_score": 2,
+          "home_score": 6,
+          "source_url": "https://npb.jp/scores/2026/1015/h-f-02/"
+        },
+        {
+          "id": "NPB-scores-2026-1015-t-db-02",
+          "league": "NPB",
+          "start_kst": "2026-10-15T18:00+09:00",
+          "away": "DeNA",
+          "home": "HAN",
+          "away_name": "Yokohama DeNA BayStars",
+          "home_name": "Hanshin Tigers",
+          "status": "final",
+          "away_score": 1,
+          "home_score": 0,
+          "source_url": "https://npb.jp/scores/2026/1015/t-db-02/"
+        },
+        {
+          "id": "NPB-scores-2026-1016-h-f-03",
+          "league": "NPB",
+          "start_kst": "2026-10-16T18:00+09:00",
+          "away": "NIP",
+          "home": "SB",
+          "away_name": "Hokkaido Nippon-Ham Fighters",
+          "home_name": "Fukuoka SoftBank Hawks",
+          "status": "final",
+          "away_score": 2,
+          "home_score": 6,
+          "source_url": "https://npb.jp/scores/2026/1016/h-f-03/"
+        },
+        {
+          "id": "NPB-scores-2026-1016-t-db-03",
+          "league": "NPB",
+          "start_kst": "2026-10-16T18:00+09:00",
+          "away": "DeNA",
+          "home": "HAN",
+          "away_name": "Yokohama DeNA BayStars",
+          "home_name": "Hanshin Tigers",
+          "status": "final",
+          "away_score": 4,
+          "home_score": 0,
+          "source_url": "https://npb.jp/scores/2026/1016/t-db-03/"
+        },
+        {
+          "id": "NPB-scores-2026-1017-t-db-04",
+          "league": "NPB",
+          "start_kst": "2026-10-17T14:00+09:00",
+          "away": "DeNA",
+          "home": "HAN",
+          "away_name": "Yokohama DeNA BayStars",
+          "home_name": "Hanshin Tigers",
+          "status": "final",
+          "away_score": 8,
+          "home_score": 5,
+          "source_url": "https://npb.jp/scores/2026/1017/t-db-04/"
+        }
+      ],
+      "error": "header_score 블록 없음"
+    }
+  }
+}

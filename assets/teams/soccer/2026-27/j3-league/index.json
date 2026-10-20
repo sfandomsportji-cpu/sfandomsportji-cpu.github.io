@@ -1,0 +1,106 @@
+{
+  "source": "FootyLogos (editorial/reference only)",
+  "competition": "j3-league",
+  "teams": [
+    {
+      "slug": "ac-nagano-parceiro",
+      "name": "AC Nagano Parceiro (AC長野パルセイロ)",
+      "src": "https://assets.footylogos.com/logos/ac-nagano-parceiro-logo-footylogos.svg"
+    },
+    {
+      "slug": "ehime-fc",
+      "name": "Ehime FC (愛媛FC)",
+      "src": "https://assets.footylogos.com/logos/ehime-fc-logo-footylogos.svg"
+    },
+    {
+      "slug": "fc-gifu",
+      "name": "FC Gifu (FC岐阜)",
+      "src": "https://assets.footylogos.com/logos/fc-gifu-logo-footylogos.svg"
+    },
+    {
+      "slug": "fc-osaka",
+      "name": "FC Osaka (FC大阪)",
+      "src": "https://assets.footylogos.com/logos/fc-osaka-logo-footylogos.svg"
+    },
+    {
+      "slug": "fc-ryukyu",
+      "name": "FC Ryukyu (FC琉球)",
+      "src": "https://assets.footylogos.com/logos/fc-ryukyu-logo-footylogos.svg"
+    },
+    {
+      "slug": "fukushima-united",
+      "name": "Fukushima United FC (福島ユナイテッドFC)",
+      "src": "https://assets.footylogos.com/logos/fukushima-united-logo-footylogos.svg"
+    },
+    {
+      "slug": "gainare-tottori",
+      "name": "Gainare Tottori (ガイナーレ鳥取)",
+      "src": "https://assets.footylogos.com/logos/gainare-tottori-logo-footylogos.svg"
+    },
+    {
+      "slug": "giravanz-kitakyushu",
+      "name": "Giravanz Kitakyushu (ギラヴァンツ北九州)",
+      "src": "https://assets.footylogos.com/logos/giravanz-kitakyushu-logo-footylogos.svg"
+    },
+    {
+      "slug": "kagoshima-united",
+      "name": "Kagoshima United FC (鹿児島ユナイテッドFC)",
+      "src": "https://assets.footylogos.com/logos/kagoshima-united-logo-footylogos.svg"
+    },
+    {
+      "slug": "kamatamare-sanuki",
+      "name": "Kamatamare Sanuki (カマタマーレ讃岐)",
+      "src": "https://assets.footylogos.com/logos/kamatamare-sanuki-logo-footylogos.svg"
+    },
+    {
+      "slug": "kochi-united",
+      "name": "Kochi United SC (高知ユナイテッドSC)",
+      "src": "https://assets.footylogos.com/logos/kochi-united-logo-footylogos.svg"
+    },
+    {
+      "slug": "matsumoto-yamaga",
+      "name": "Matsumoto Yamaga FC (松本山雅FC)",
+      "src": "https://assets.footylogos.com/logos/matsumoto-yamaga-logo-footylogos.svg"
+    },
+    {
+      "slug": "nara-club",
+      "name": "Nara Club (奈良クラブ)",
+      "src": "https://assets.footylogos.com/logos/nara-club-logo-footylogos.svg"
+    },
+    {
+      "slug": "reilac-shiga",
+      "name": "Reilac Shiga FC (レイラック滋賀FC)",
+      "src": "https://assets.footylogos.com/logos/reilac-shiga-logo-footylogos.svg"
+    },
+    {
+      "slug": "renofa-yamaguchi",
+      "name": "Renofa Yamaguchi FC (レノファ山口FC)",
+      "src": "https://assets.footylogos.com/logos/renofa-yamaguchi-logo-footylogos.svg"
+    },
+    {
+      "slug": "roasso-kumamoto",
+      "name": "Roasso Kumamoto (ロアッソ熊本)",
+      "src": "https://assets.footylogos.com/logos/roasso-kumamoto-logo-footylogos.svg"
+    },
+    {
+      "slug": "sc-sagamihara",
+      "name": "S.C. Sagamihara (SC相模原)",
+      "src": "https://assets.footylogos.com/logos/sc-sagamihara-logo-footylogos.svg"
+    },
+    {
+      "slug": "thespa-gunma",
+      "name": "Thespa Gunma (ザスパ群馬)",
+      "src": "https://assets.footylogos.com/logos/thespa-gunma-logo-footylogos.svg"
+    },
+    {
+      "slug": "tochigi-sc",
+      "name": "Tochigi SC (栃木SC)",
+      "src": "https://assets.footylogos.com/logos/tochigi-sc-logo-footylogos.svg"
+    },
+    {
+      "slug": "zweigen-kanazawa",
+      "name": "Zweigen Kanazawa (ツエーゲン金沢)",
+      "src": "https://assets.footylogos.com/logos/zweigen-kanazawa-logo-footylogos.svg"
+    }
+  ]
+}

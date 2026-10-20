@@ -1,0 +1,106 @@
+{
+  "source": "FootyLogos (editorial/reference only)",
+  "competition": "j2-league",
+  "teams": [
+    {
+      "slug": "albirex-niigata",
+      "name": "Albirex Niigata (アルビレックス新潟)",
+      "src": "https://assets.footylogos.com/logos/albirex-niigata/albirex-niigata-logo-footylogos.svg"
+    },
+    {
+      "slug": "blaublitz-akita",
+      "name": "Blaublitz Akita (ブラウブリッツ秋田)",
+      "src": "https://assets.footylogos.com/logos/blaublitz-akita-logo-footylogos.svg"
+    },
+    {
+      "slug": "fc-imabari",
+      "name": "FC Imabari (FC今治)",
+      "src": "https://assets.footylogos.com/logos/fc-imabari-logo-footylogos.svg"
+    },
+    {
+      "slug": "fujieda-myfc",
+      "name": "Fujieda MYFC (藤枝MYFC)",
+      "src": "https://assets.footylogos.com/logos/fujieda-myfc-logo-footylogos.svg"
+    },
+    {
+      "slug": "hokkaido-consadole-sapporo",
+      "name": "Hokkaido Consadole Sapporo (北海道コンサドーレ札幌)",
+      "src": "https://assets.footylogos.com/logos/hokkaido-consadole-sapporo/hokkaido-consadole-sapporo-logo-footylogos.svg"
+    },
+    {
+      "slug": "iwaki-fc",
+      "name": "Iwaki FC (いわきFC)",
+      "src": "https://assets.footylogos.com/logos/iwaki-fc-logo-footylogos.svg"
+    },
+    {
+      "slug": "jubilo-iwata",
+      "name": "Júbilo Iwata (ジュビロ磐田)",
+      "src": "https://assets.footylogos.com/logos/jubilo-iwata/jubilo-iwata-logo-footylogos.svg"
+    },
+    {
+      "slug": "kataller-toyama",
+      "name": "Kataller Toyama (カターレ富山)",
+      "src": "https://assets.footylogos.com/logos/kataller-toyama-logo-footylogos.svg"
+    },
+    {
+      "slug": "montedio-yamagata",
+      "name": "Montedio Yamagata (モンテディオ山形)",
+      "src": "https://assets.footylogos.com/logos/montedio-yamagata-logo-footylogos.svg"
+    },
+    {
+      "slug": "oita-trinita",
+      "name": "Oita Trinita (大分トリニータ)",
+      "src": "https://assets.footylogos.com/logos/oita-trinita-logo-footylogos.svg"
+    },
+    {
+      "slug": "rb-omiya-ardija",
+      "name": "RB Omiya Ardija (RB大宮アルディージャ)",
+      "src": "https://assets.footylogos.com/logos/rb-omiya-ardija-logo-footylogos.svg"
+    },
+    {
+      "slug": "sagan-tosu",
+      "name": "Sagan Tosu (サガン鳥栖)",
+      "src": "https://assets.footylogos.com/logos/sagan-tosu/sagan-tosu-logo-footylogos.svg"
+    },
+    {
+      "slug": "shonan-bellmare",
+      "name": "Shonan Bellmare (湘南ベルマーレ)",
+      "src": "https://assets.footylogos.com/logos/shonan-bellmare/shonan-bellmare-logo-footylogos.svg"
+    },
+    {
+      "slug": "tegevajaro-miyazaki",
+      "name": "Tegevajaro Miyazaki (テゲバジャーロ宮崎)",
+      "src": "https://assets.footylogos.com/logos/tegevajaro-miyazaki-logo-footylogos.svg"
+    },
+    {
+      "slug": "tochigi-city",
+      "name": "Tochigi City (栃木シティ)",
+      "src": "https://assets.footylogos.com/logos/tochigi-city-logo-footylogos.svg"
+    },
+    {
+      "slug": "tokushima-vortis",
+      "name": "Tokushima Vortis (徳島ヴォルティス)",
+      "src": "https://assets.footylogos.com/logos/tokushima-vortis-logo-footylogos.svg"
+    },
+    {
+      "slug": "vanraure-hachinohe",
+      "name": "Vanraure Hachinohe (ヴァンラーレ八戸)",
+      "src": "https://assets.footylogos.com/logos/vanraure-hachinohe-logo-footylogos.svg"
+    },
+    {
+      "slug": "vegalta-sendai",
+      "name": "Vegalta Sendai (ベガルタ仙台)",
+      "src": "https://assets.footylogos.com/logos/vegalta-sendai-logo-footylogos.svg"
+    },
+    {
+      "slug": "ventforet-kofu",
+      "name": "Ventforet Kofu (ヴァンフォーレ甲府)",
+      "src": "https://assets.footylogos.com/logos/ventforet-kofu-logo-footylogos.svg"
+    },
+    {
+      "slug": "yokohama-fc",
+      "name": "Yokohama FC (横浜FC)",
+      "src": "https://assets.footylogos.com/logos/yokohama-fc-logo-footylogos.svg"
+    }
+  ]
+}

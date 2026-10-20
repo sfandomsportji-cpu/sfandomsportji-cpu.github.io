@@ -1,0 +1,72 @@
+{
+  "name": "SFANDOM",
+  "name_kr": "스팬덤",
+  "url": "https://sfandom.com",
+  "motto": "Play First. Analysis Next.",
+  "description": "SFANDOM & KAIRO 스포츠 팬 커뮤니티. KBO·MLB·NBA·축구의 경기 기록과 프리뷰·인사이트, 팬 토론을 연결합니다.",
+  "socials": [
+    {
+      "label": "INSTAGRAM",
+      "url": "https://www.instagram.com/sportsfandom/"
+    },
+    {
+      "label": "THREADS",
+      "url": "https://www.threads.com/@sportsfandom"
+    },
+    {
+      "label": "BLOG",
+      "url": "https://blog.naver.com/sfandomsport"
+    }
+  ],
+  "hero": {
+    "auto": false,
+    "image": "",
+    "alt": "",
+    "credit": "",
+    "badge_en": "NBA · 2026-27 OPENING",
+    "badge_kr": "개막전 보스턴–디트로이트 · 한국시간 10.21 (수) 04:00",
+    "art": "NBA · OPENING",
+    "title": "NBA 정규시즌 개막\n보스턴–디트로이트",
+    "text": "프리시즌 마지막 12경기가 모두 끝났고, 정규시즌은 한국시간 21일 오전 4시 보스턴–디트로이트 개막전으로 시작합니다.",
+    "link": "/nba/",
+    "use_latest_google_post": false,
+    "video": {
+      "src": "/assets/nba-hero-clip.mp4",
+      "poster": "/assets/nba-hero-poster.jpg",
+      "label": "NBA 플레이오프 하이라이트 (첫 화면)"
+    }
+  },
+  "ads": {
+    "client": "ca-pub-7606551466588787"
+  },
+  "supabase": {
+    "url": "https://yyjjgxzbqvlpatccbpxm.supabase.co",
+    "key": "sb_publishable_ABoOVvaUzGuVPBryIpY02w_tTcdt-Q4"
+  },
+  "blogs": {
+    "google": {
+      "label": "GOOGLE BLOG",
+      "url": "https://sfandomji.blogspot.com",
+      "feed": "https://sfandomji.blogspot.com/feeds/posts/default?alt=rss&max-results=20"
+    },
+    "naver": {
+      "label": "NAVER BLOG",
+      "url": "https://blog.naver.com/sfandomsport",
+      "feed": "https://rss.blog.naver.com/sfandomsport.xml"
+    }
+  },
+  "community_video": {
+    "eyebrow": "SFANDOM REELS · @sportsfandom",
+    "title": "FAN ZONE.",
+    "title2": "PLAY FIRST.",
+    "text": "스팬덤 인스타그램 릴스. 보고, 바로 팬 보드에서 떠들어요.",
+    "instagram_reel": "DdejDQDyYxv",
+    "reel_ratio": "16/9",
+    "fallback_video": "/assets/sfandom-brand-film-20260901.mp4",
+    "fallback_poster": "/assets/sfandom-hero-poster.jpg"
+  },
+  "contact": {
+    "endpoint": "https://script.google.com/macros/s/AKfycbwQSvOdKSFbRoVn3D1dR6q1qnsI-0vSjRjwIMixzTKr1W5nU5bIBOf6jaCUS2s9JMEk-A/exec",
+    "note": "드라이브 \"SFANDOM 쪽지함\" 시트에 붙인 Apps Script 웹 앱 주소(https://script.google.com/macros/s/.../exec). 비어 있으면 양식은 보이지만 전송되지 않습니다. 설정 방법은 드라이브의 \"SFANDOM 쪽지함 연동 코드 (Apps Script)\" 문서에 있습니다."
+  }
+}

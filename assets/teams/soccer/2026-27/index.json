@@ -1,0 +1,712 @@
+{
+  "collection": "SFANDOM - European Big 5 team crests",
+  "season": "2026-27",
+  "source": "https://github.com/luukhopman/football-logos",
+  "source_commit": "2a3978f0b4730645c205d855a4bda54c161183e9",
+  "images": 96,
+  "usage_note": "Third-party club crests. Rights are not transferred; review permissions before publication or commercial use.",
+  "leagues": {
+    "premier-league": {
+      "count": 20,
+      "original_directory": "logos/England - Premier League",
+      "files": [
+        {
+          "club": "AFC Bournemouth",
+          "file": "afc-bournemouth.png",
+          "relative_path": "premier-league/afc-bournemouth.png",
+          "size_bytes": 26146,
+          "source_sha": "14810679717c6be956912126c4ab8bd6341971c4"
+        },
+        {
+          "club": "Arsenal FC",
+          "file": "arsenal-fc.png",
+          "relative_path": "premier-league/arsenal-fc.png",
+          "size_bytes": 28744,
+          "source_sha": "24f24c15aa0e0094cbb54fab4c7fc82407b6a0ff"
+        },
+        {
+          "club": "Aston Villa",
+          "file": "aston-villa.png",
+          "relative_path": "premier-league/aston-villa.png",
+          "size_bytes": 29845,
+          "source_sha": "f1081b911ae6592533eeb92f0f1cddd661b8e03b"
+        },
+        {
+          "club": "Brentford FC",
+          "file": "brentford-fc.png",
+          "relative_path": "premier-league/brentford-fc.png",
+          "size_bytes": 29398,
+          "source_sha": "637597914e0f2dde5f3b93f930e990930c76700c"
+        },
+        {
+          "club": "Brighton & Hove Albion",
+          "file": "brighton-hove-albion.png",
+          "relative_path": "premier-league/brighton-hove-albion.png",
+          "size_bytes": 24561,
+          "source_sha": "da0c49418ff7d70e68fb26e40b4ea5538aeded3b"
+        },
+        {
+          "club": "Chelsea FC",
+          "file": "chelsea-fc.png",
+          "relative_path": "premier-league/chelsea-fc.png",
+          "size_bytes": 25350,
+          "source_sha": "d02c01d8217fe02343489fc29d36ef555def4ace"
+        },
+        {
+          "club": "Coventry City",
+          "file": "coventry-city.png",
+          "relative_path": "premier-league/coventry-city.png",
+          "size_bytes": 46471,
+          "source_sha": "085eb2bc2b8ba0b53beb30c3a8d68d88dfb8a8e5"
+        },
+        {
+          "club": "Crystal Palace",
+          "file": "crystal-palace.png",
+          "relative_path": "premier-league/crystal-palace.png",
+          "size_bytes": 34635,
+          "source_sha": "2653b2a05078e9d0c21a26a449e0ff469e67f5b1"
+        },
+        {
+          "club": "Everton FC",
+          "file": "everton-fc.png",
+          "relative_path": "premier-league/everton-fc.png",
+          "size_bytes": 28489,
+          "source_sha": "96518ec7b0ab58ccabc056f2e80e7a4a92a76027"
+        },
+        {
+          "club": "Fulham FC",
+          "file": "fulham-fc.png",
+          "relative_path": "premier-league/fulham-fc.png",
+          "size_bytes": 12525,
+          "source_sha": "700ca4f84c96d479a7cd577e0015174638a0ace3"
+        },
+        {
+          "club": "Hull City",
+          "file": "hull-city.png",
+          "relative_path": "premier-league/hull-city.png",
+          "size_bytes": 36190,
+          "source_sha": "102cc3343443e5d0648e746a93d8b8ef63e43790"
+        },
+        {
+          "club": "Ipswich Town",
+          "file": "ipswich-town.png",
+          "relative_path": "premier-league/ipswich-town.png",
+          "size_bytes": 29373,
+          "source_sha": "3c82fdcb8bef0d9b7168542bf5880e91963eaf20"
+        },
+        {
+          "club": "Leeds United",
+          "file": "leeds-united.png",
+          "relative_path": "premier-league/leeds-united.png",
+          "size_bytes": 29564,
+          "source_sha": "01b01a101f2eced1234ab17b8402ecc3b2708cd4"
+        },
+        {
+          "club": "Liverpool FC",
+          "file": "liverpool-fc.png",
+          "relative_path": "premier-league/liverpool-fc.png",
+          "size_bytes": 15244,
+          "source_sha": "654691d267680a6683fe58c55619de0684185404"
+        },
+        {
+          "club": "Manchester City",
+          "file": "manchester-city.png",
+          "relative_path": "premier-league/manchester-city.png",
+          "size_bytes": 30312,
+          "source_sha": "b55d4568ad21f2c3bd09805a666b3252eda0595a"
+        },
+        {
+          "club": "Manchester United",
+          "file": "manchester-united.png",
+          "relative_path": "premier-league/manchester-united.png",
+          "size_bytes": 26455,
+          "source_sha": "4e2a112b088c67916aaf973d4eb1a6dfbdb38b88"
+        },
+        {
+          "club": "Newcastle United",
+          "file": "newcastle-united.png",
+          "relative_path": "premier-league/newcastle-united.png",
+          "size_bytes": 30961,
+          "source_sha": "aaf463cb8a15982bb5a1e0c598a69545b94b6b9d"
+        },
+        {
+          "club": "Nottingham Forest",
+          "file": "nottingham-forest.png",
+          "relative_path": "premier-league/nottingham-forest.png",
+          "size_bytes": 9995,
+          "source_sha": "a42f47452d42200a0bdea083f09e486155e274fe"
+        },
+        {
+          "club": "Sunderland AFC",
+          "file": "sunderland-afc.png",
+          "relative_path": "premier-league/sunderland-afc.png",
+          "size_bytes": 20952,
+          "source_sha": "af221f2cd30474564b0b4c9690e397fc1aaf03e9"
+        },
+        {
+          "club": "Tottenham Hotspur",
+          "file": "tottenham-hotspur.png",
+          "relative_path": "premier-league/tottenham-hotspur.png",
+          "size_bytes": 7692,
+          "source_sha": "319fef3bdd51435c92dd8a3c35ce8014b88cd1ae"
+        }
+      ]
+    },
+    "la-liga": {
+      "count": 20,
+      "original_directory": "logos/Spain - LaLiga",
+      "files": [
+        {
+          "club": "Athletic Bilbao",
+          "file": "athletic-bilbao.png",
+          "relative_path": "la-liga/athletic-bilbao.png",
+          "size_bytes": 17513,
+          "source_sha": "624b9ea0c3115b4c2326726934401a4cf05f5de0"
+        },
+        {
+          "club": "Atlético de Madrid",
+          "file": "atletico-de-madrid.png",
+          "relative_path": "la-liga/atletico-de-madrid.png",
+          "size_bytes": 19328,
+          "source_sha": "7398c88ac9e34f7bb7df9207802bffe07db5d560"
+        },
+        {
+          "club": "CA Osasuna",
+          "file": "ca-osasuna.png",
+          "relative_path": "la-liga/ca-osasuna.png",
+          "size_bytes": 21727,
+          "source_sha": "ab981326964f8b753c78dd48d1b9d1a1ec48104d"
+        },
+        {
+          "club": "Celta de Vigo",
+          "file": "celta-de-vigo.png",
+          "relative_path": "la-liga/celta-de-vigo.png",
+          "size_bytes": 12178,
+          "source_sha": "323bf79463695cde7b996fa4dd3cefa6c0ba1dd0"
+        },
+        {
+          "club": "Deportivo A Coruña",
+          "file": "deportivo-a-coruna.png",
+          "relative_path": "la-liga/deportivo-a-coruna.png",
+          "size_bytes": 20249,
+          "source_sha": "16c57d3baaa40bbc48d7604e32a8729b35e3b3b8"
+        },
+        {
+          "club": "Deportivo Alavés",
+          "file": "deportivo-alaves.png",
+          "relative_path": "la-liga/deportivo-alaves.png",
+          "size_bytes": 31032,
+          "source_sha": "e1464ddf254e17f7747a31bef6f744486c1169fa"
+        },
+        {
+          "club": "Elche CF",
+          "file": "elche-cf.png",
+          "relative_path": "la-liga/elche-cf.png",
+          "size_bytes": 25343,
+          "source_sha": "739cdce299d3fc7b329b0111d1fe0fddae704a1b"
+        },
+        {
+          "club": "FC Barcelona",
+          "file": "fc-barcelona.png",
+          "relative_path": "la-liga/fc-barcelona.png",
+          "size_bytes": 16512,
+          "source_sha": "bfaffd03668480678408bc5021e592de8f2b8d4e"
+        },
+        {
+          "club": "Getafe CF",
+          "file": "getafe-cf.png",
+          "relative_path": "la-liga/getafe-cf.png",
+          "size_bytes": 32235,
+          "source_sha": "3140071b8720fab7a36115f9ce63229d938db751"
+        },
+        {
+          "club": "Levante UD",
+          "file": "levante-ud.png",
+          "relative_path": "la-liga/levante-ud.png",
+          "size_bytes": 22298,
+          "source_sha": "5a79a4981eca1b864ed07e50a4fd8e52b900abb3"
+        },
+        {
+          "club": "Málaga CF",
+          "file": "malaga-cf.png",
+          "relative_path": "la-liga/malaga-cf.png",
+          "size_bytes": 32183,
+          "source_sha": "4cfbf6eca31f9af03656ab939ec455afa07e9433"
+        },
+        {
+          "club": "RCD Espanyol Barcelona",
+          "file": "rcd-espanyol-barcelona.png",
+          "relative_path": "la-liga/rcd-espanyol-barcelona.png",
+          "size_bytes": 29805,
+          "source_sha": "a012d08c45880195db1c0a4f67f695a36767aa30"
+        },
+        {
+          "club": "Racing Santander",
+          "file": "racing-santander.png",
+          "relative_path": "la-liga/racing-santander.png",
+          "size_bytes": 34644,
+          "source_sha": "998ead86932993257da4fc7ca2f4b60fb55ed39e"
+        },
+        {
+          "club": "Rayo Vallecano",
+          "file": "rayo-vallecano.png",
+          "relative_path": "la-liga/rayo-vallecano.png",
+          "size_bytes": 21504,
+          "source_sha": "86f27a83668e0f7f00c8cc53f6d0bb66b6e17ad8"
+        },
+        {
+          "club": "Real Betis Balompié",
+          "file": "real-betis-balompie.png",
+          "relative_path": "la-liga/real-betis-balompie.png",
+          "size_bytes": 13390,
+          "source_sha": "8e3808a0788aa8f7ae7915265544774c9317518d"
+        },
+        {
+          "club": "Real Madrid",
+          "file": "real-madrid.png",
+          "relative_path": "la-liga/real-madrid.png",
+          "size_bytes": 36650,
+          "source_sha": "e713ce0470f9673294c374596889a659b2624dcf"
+        },
+        {
+          "club": "Real Sociedad",
+          "file": "real-sociedad.png",
+          "relative_path": "la-liga/real-sociedad.png",
+          "size_bytes": 26395,
+          "source_sha": "b1d8bcdf54803231b466a3b698549eecd55270d2"
+        },
+        {
+          "club": "Sevilla FC",
+          "file": "sevilla-fc.png",
+          "relative_path": "la-liga/sevilla-fc.png",
+          "size_bytes": 27453,
+          "source_sha": "a7d6232baa28c7e439287352286162b858ef3cdb"
+        },
+        {
+          "club": "Valencia CF",
+          "file": "valencia-cf.png",
+          "relative_path": "la-liga/valencia-cf.png",
+          "size_bytes": 21439,
+          "source_sha": "0ff1356ce991a5f3c5a8f044d6118377ceb9d95f"
+        },
+        {
+          "club": "Villarreal CF",
+          "file": "villarreal-cf.png",
+          "relative_path": "la-liga/villarreal-cf.png",
+          "size_bytes": 30704,
+          "source_sha": "f750f3e8ceb5613d439ece556ad6a0edf7a187d0"
+        }
+      ]
+    },
+    "bundesliga": {
+      "count": 18,
+      "original_directory": "logos/Germany - Bundesliga",
+      "files": [
+        {
+          "club": "1.FC Köln",
+          "file": "1-fc-koln.png",
+          "relative_path": "bundesliga/1-fc-koln.png",
+          "size_bytes": 24913,
+          "source_sha": "f945bc1a23480dd7292ca572173231d378541855"
+        },
+        {
+          "club": "1.FC Union Berlin",
+          "file": "1-fc-union-berlin.png",
+          "relative_path": "bundesliga/1-fc-union-berlin.png",
+          "size_bytes": 9510,
+          "source_sha": "d3936bf1d8d13aca786c2164c6e61b34cfb1e3a1"
+        },
+        {
+          "club": "1.FSV Mainz 05",
+          "file": "1-fsv-mainz-05.png",
+          "relative_path": "bundesliga/1-fsv-mainz-05.png",
+          "size_bytes": 18851,
+          "source_sha": "a556faf3c101728ed9c84f0be9b1856fbb80b9ed"
+        },
+        {
+          "club": "Bayer 04 Leverkusen",
+          "file": "bayer-04-leverkusen.png",
+          "relative_path": "bundesliga/bayer-04-leverkusen.png",
+          "size_bytes": 20552,
+          "source_sha": "22cef703c4bb657a60d874d4b62f0a6b35ce3e93"
+        },
+        {
+          "club": "Bayern Munich",
+          "file": "bayern-munich.png",
+          "relative_path": "bundesliga/bayern-munich.png",
+          "size_bytes": 24597,
+          "source_sha": "499ce6f97c63f974b5b439eb977377e127f71a34"
+        },
+        {
+          "club": "Borussia Dortmund",
+          "file": "borussia-dortmund.png",
+          "relative_path": "bundesliga/borussia-dortmund.png",
+          "size_bytes": 16017,
+          "source_sha": "2dc4b0289782930c6b81b40309e81039928225fc"
+        },
+        {
+          "club": "Borussia Mönchengladbach",
+          "file": "borussia-monchengladbach.png",
+          "relative_path": "bundesliga/borussia-monchengladbach.png",
+          "size_bytes": 9887,
+          "source_sha": "288e9b7ac204e28518e388634297f21fc53dcf00"
+        },
+        {
+          "club": "Eintracht Frankfurt",
+          "file": "eintracht-frankfurt.png",
+          "relative_path": "bundesliga/eintracht-frankfurt.png",
+          "size_bytes": 21922,
+          "source_sha": "6818579c2b9af420c5078682b778426016f880b1"
+        },
+        {
+          "club": "FC Augsburg",
+          "file": "fc-augsburg.png",
+          "relative_path": "bundesliga/fc-augsburg.png",
+          "size_bytes": 22691,
+          "source_sha": "36b56e0cecd48142d28862d884a3006a03f403ae"
+        },
+        {
+          "club": "FC Schalke 04",
+          "file": "fc-schalke-04.png",
+          "relative_path": "bundesliga/fc-schalke-04.png",
+          "size_bytes": 14704,
+          "source_sha": "de20ad7334c3f2acb1371fde8a50e24b94365b80"
+        },
+        {
+          "club": "Hamburger SV",
+          "file": "hamburger-sv.png",
+          "relative_path": "bundesliga/hamburger-sv.png",
+          "size_bytes": 11028,
+          "source_sha": "1f6063acd89667fd816a23a3fe2cd6008d630186"
+        },
+        {
+          "club": "RB Leipzig",
+          "file": "rb-leipzig.png",
+          "relative_path": "bundesliga/rb-leipzig.png",
+          "size_bytes": 14090,
+          "source_sha": "06a031c8920a0f0dcd3df6b2e95629fa8b99ced9"
+        },
+        {
+          "club": "SC Freiburg",
+          "file": "sc-freiburg.png",
+          "relative_path": "bundesliga/sc-freiburg.png",
+          "size_bytes": 18342,
+          "source_sha": "426f9fb8812522675b06025adb48857e3b94e090"
+        },
+        {
+          "club": "SC Paderborn 07",
+          "file": "sc-paderborn-07.png",
+          "relative_path": "bundesliga/sc-paderborn-07.png",
+          "size_bytes": 10378,
+          "source_sha": "c0209f09a60e9dbadfcf9a5787439b207d74cceb"
+        },
+        {
+          "club": "SV 07 Elversberg",
+          "file": "sv-07-elversberg.png",
+          "relative_path": "bundesliga/sv-07-elversberg.png",
+          "size_bytes": 16723,
+          "source_sha": "6f398372139851d542f18a8363d2e28fd6ca5c3a"
+        },
+        {
+          "club": "SV Werder Bremen",
+          "file": "sv-werder-bremen.png",
+          "relative_path": "bundesliga/sv-werder-bremen.png",
+          "size_bytes": 20811,
+          "source_sha": "5bcd74dddcff71fbe8cd7de60baae2b926e35ba1"
+        },
+        {
+          "club": "TSG 1899 Hoffenheim",
+          "file": "tsg-1899-hoffenheim.png",
+          "relative_path": "bundesliga/tsg-1899-hoffenheim.png",
+          "size_bytes": 24296,
+          "source_sha": "dc5fe98029eededad6268a654625eff99a8a364d"
+        },
+        {
+          "club": "VfB Stuttgart",
+          "file": "vfb-stuttgart.png",
+          "relative_path": "bundesliga/vfb-stuttgart.png",
+          "size_bytes": 26905,
+          "source_sha": "c42c4eccbc2c63925567801ce896ef659e143881"
+        }
+      ]
+    },
+    "serie-a": {
+      "count": 20,
+      "original_directory": "logos/Italy - Serie A",
+      "files": [
+        {
+          "club": "AC Milan",
+          "file": "ac-milan.png",
+          "relative_path": "serie-a/ac-milan.png",
+          "size_bytes": 24439,
+          "source_sha": "e6209230efa5637278c47ba989f57c60e7fc0b66"
+        },
+        {
+          "club": "AC Monza",
+          "file": "ac-monza.png",
+          "relative_path": "serie-a/ac-monza.png",
+          "size_bytes": 20888,
+          "source_sha": "ab048b64648968d458825891ea031120c914342c"
+        },
+        {
+          "club": "ACF Fiorentina",
+          "file": "acf-fiorentina.png",
+          "relative_path": "serie-a/acf-fiorentina.png",
+          "size_bytes": 19091,
+          "source_sha": "563b3b9aebac8570f21d5c760c8fe40071583e8e"
+        },
+        {
+          "club": "AS Roma",
+          "file": "as-roma.png",
+          "relative_path": "serie-a/as-roma.png",
+          "size_bytes": 27674,
+          "source_sha": "29eb52986c5a31579b6b73ba16ebb6f3d3597554"
+        },
+        {
+          "club": "Atalanta BC",
+          "file": "atalanta-bc.png",
+          "relative_path": "serie-a/atalanta-bc.png",
+          "size_bytes": 18571,
+          "source_sha": "82ff5039e80c07462e3aa571f72c2c6326ced52d"
+        },
+        {
+          "club": "Bologna FC 1909",
+          "file": "bologna-fc-1909.png",
+          "relative_path": "serie-a/bologna-fc-1909.png",
+          "size_bytes": 18922,
+          "source_sha": "4d365db8c83e28692456e4f0af6f315455e7644b"
+        },
+        {
+          "club": "Cagliari Calcio",
+          "file": "cagliari-calcio.png",
+          "relative_path": "serie-a/cagliari-calcio.png",
+          "size_bytes": 30733,
+          "source_sha": "fe3af34527dc2a2ddf37a592a7a7da71565f90ae"
+        },
+        {
+          "club": "Como 1907",
+          "file": "como-1907.png",
+          "relative_path": "serie-a/como-1907.png",
+          "size_bytes": 20047,
+          "source_sha": "e2e17a77263e709c88215a02a170b31ac10457bc"
+        },
+        {
+          "club": "Frosinone Calcio",
+          "file": "frosinone-calcio.png",
+          "relative_path": "serie-a/frosinone-calcio.png",
+          "size_bytes": 25796,
+          "source_sha": "9927deb1f5b13614a08085a9506f8cb4f0106912"
+        },
+        {
+          "club": "Genoa CFC",
+          "file": "genoa-cfc.png",
+          "relative_path": "serie-a/genoa-cfc.png",
+          "size_bytes": 15917,
+          "source_sha": "07ced06487a192fec58ab3a58a3494b0feaf64d7"
+        },
+        {
+          "club": "Inter Milan",
+          "file": "inter-milan.png",
+          "relative_path": "serie-a/inter-milan.png",
+          "size_bytes": 13799,
+          "source_sha": "3749aa06618e3946683484d069a9ef9a87e52341"
+        },
+        {
+          "club": "Juventus FC",
+          "file": "juventus-fc.png",
+          "relative_path": "serie-a/juventus-fc.png",
+          "size_bytes": 3955,
+          "source_sha": "89d23971e016e5ffc61c6bf86d0b2c1bce887b4a"
+        },
+        {
+          "club": "Parma Calcio 1913",
+          "file": "parma-calcio-1913.png",
+          "relative_path": "serie-a/parma-calcio-1913.png",
+          "size_bytes": 17161,
+          "source_sha": "f8b4278bda6cb4d4f09dbc9d989a6f3c7e84196a"
+        },
+        {
+          "club": "SS Lazio",
+          "file": "ss-lazio.png",
+          "relative_path": "serie-a/ss-lazio.png",
+          "size_bytes": 10087,
+          "source_sha": "8692b46c3e61cad208042f55199336d7a4a5c5e2"
+        },
+        {
+          "club": "SSC Napoli",
+          "file": "ssc-napoli.png",
+          "relative_path": "serie-a/ssc-napoli.png",
+          "size_bytes": 15716,
+          "source_sha": "31c5cd81086c54d5150b4b767e7d2761dfa4d7c8"
+        },
+        {
+          "club": "Torino FC",
+          "file": "torino-fc.png",
+          "relative_path": "serie-a/torino-fc.png",
+          "size_bytes": 27264,
+          "source_sha": "b45412aae91d51741984ea6bcb04bc254649b1ea"
+        },
+        {
+          "club": "US Lecce",
+          "file": "us-lecce.png",
+          "relative_path": "serie-a/us-lecce.png",
+          "size_bytes": 26965,
+          "source_sha": "c80a4578262c3e419540ca4fb37cc77d5d150a84"
+        },
+        {
+          "club": "US Sassuolo",
+          "file": "us-sassuolo.png",
+          "relative_path": "serie-a/us-sassuolo.png",
+          "size_bytes": 22569,
+          "source_sha": "1df7050fdf1372cdd702d75d4e23a876800662e2"
+        },
+        {
+          "club": "Udinese Calcio",
+          "file": "udinese-calcio.png",
+          "relative_path": "serie-a/udinese-calcio.png",
+          "size_bytes": 23784,
+          "source_sha": "56d2ff97960d742c09508e4fafa8e1ed260d0f51"
+        },
+        {
+          "club": "Venezia FC",
+          "file": "venezia-fc.png",
+          "relative_path": "serie-a/venezia-fc.png",
+          "size_bytes": 5749,
+          "source_sha": "3d4a450766a897d0efc7eb5c7f6dbe35bc20338a"
+        }
+      ]
+    },
+    "ligue-1": {
+      "count": 18,
+      "original_directory": "logos/France - Ligue 1",
+      "files": [
+        {
+          "club": "AJ Auxerre",
+          "file": "aj-auxerre.png",
+          "relative_path": "ligue-1/aj-auxerre.png",
+          "size_bytes": 19770,
+          "source_sha": "2feebe80cf78d7ee47682471c9ccc754865302ff"
+        },
+        {
+          "club": "AS Monaco",
+          "file": "as-monaco.png",
+          "relative_path": "ligue-1/as-monaco.png",
+          "size_bytes": 17992,
+          "source_sha": "710f2c985001b3cd2b0e6048fe756e69c4fd391c"
+        },
+        {
+          "club": "Angers SCO",
+          "file": "angers-sco.png",
+          "relative_path": "ligue-1/angers-sco.png",
+          "size_bytes": 20322,
+          "source_sha": "f99ba73cbf3f5151d6637ff9095b7ed24078cb19"
+        },
+        {
+          "club": "ESTAC Troyes",
+          "file": "estac-troyes.png",
+          "relative_path": "ligue-1/estac-troyes.png",
+          "size_bytes": 34571,
+          "source_sha": "a531b3ededb1c4437f2e2b95d337975bcc5cd1ea"
+        },
+        {
+          "club": "FC Lorient",
+          "file": "fc-lorient.png",
+          "relative_path": "ligue-1/fc-lorient.png",
+          "size_bytes": 26425,
+          "source_sha": "aa56ddc5d138b2322d88f87fb0a1e10eb0b8779e"
+        },
+        {
+          "club": "FC Toulouse",
+          "file": "fc-toulouse.png",
+          "relative_path": "ligue-1/fc-toulouse.png",
+          "size_bytes": 30735,
+          "source_sha": "f6ea1dcf309724d70d56a4a78e77633f56365862"
+        },
+        {
+          "club": "LOSC Lille",
+          "file": "losc-lille.png",
+          "relative_path": "ligue-1/losc-lille.png",
+          "size_bytes": 18715,
+          "source_sha": "318a01561441fae398ba9c90775fe05a60903a1f"
+        },
+        {
+          "club": "Le Havre AC",
+          "file": "le-havre-ac.png",
+          "relative_path": "ligue-1/le-havre-ac.png",
+          "size_bytes": 24840,
+          "source_sha": "ed84cadf001e8916c6bd097ed17701a4c45122e8"
+        },
+        {
+          "club": "Le Mans FC",
+          "file": "le-mans-fc.png",
+          "relative_path": "ligue-1/le-mans-fc.png",
+          "size_bytes": 24882,
+          "source_sha": "ebf224d1666b00a3e4ccf339cff3ce42edb514de"
+        },
+        {
+          "club": "OGC Nice",
+          "file": "ogc-nice.png",
+          "relative_path": "ligue-1/ogc-nice.png",
+          "size_bytes": 42256,
+          "source_sha": "e9d7cff9366b8fdc9b29fd00edc1d098050296c3"
+        },
+        {
+          "club": "Olympique Lyon",
+          "file": "olympique-lyon.png",
+          "relative_path": "ligue-1/olympique-lyon.png",
+          "size_bytes": 17832,
+          "source_sha": "7390f0bd833cb2a7072cae62a1fe2f59276682a6"
+        },
+        {
+          "club": "Olympique Marseille",
+          "file": "olympique-marseille.png",
+          "relative_path": "ligue-1/olympique-marseille.png",
+          "size_bytes": 23256,
+          "source_sha": "499c1c14e743ccda34191faa42c536b5f89228fb"
+        },
+        {
+          "club": "Paris FC",
+          "file": "paris-fc.png",
+          "relative_path": "ligue-1/paris-fc.png",
+          "size_bytes": 24851,
+          "source_sha": "9989259f9bd5b69d16700d016dc2f32ceb35bf5b"
+        },
+        {
+          "club": "Paris Saint-Germain",
+          "file": "paris-saint-germain.png",
+          "relative_path": "ligue-1/paris-saint-germain.png",
+          "size_bytes": 22525,
+          "source_sha": "823a6035ccfc9a6f120d6fa8c91e0b86a68c0793"
+        },
+        {
+          "club": "RC Lens",
+          "file": "rc-lens.png",
+          "relative_path": "ligue-1/rc-lens.png",
+          "size_bytes": 23826,
+          "source_sha": "eea54b4f024c3c3cf0baee558823579e6f7df612"
+        },
+        {
+          "club": "RC Strasbourg Alsace",
+          "file": "rc-strasbourg-alsace.png",
+          "relative_path": "ligue-1/rc-strasbourg-alsace.png",
+          "size_bytes": 25057,
+          "source_sha": "e4e96a58efb8329dc2d80867e05cb6ebc9295f17"
+        },
+        {
+          "club": "Stade Brestois 29",
+          "file": "stade-brestois-29.png",
+          "relative_path": "ligue-1/stade-brestois-29.png",
+          "size_bytes": 29274,
+          "source_sha": "2a699842d47dde1e9073fcff17b1be16165ba9dc"
+        },
+        {
+          "club": "Stade Rennais FC",
+          "file": "stade-rennais-fc.png",
+          "relative_path": "ligue-1/stade-rennais-fc.png",
+          "size_bytes": 21365,
+          "source_sha": "8d8f6dc72967d38b80ae257380e0cf13fd270028"
+        }
+      ]
+    }
+  }
+}

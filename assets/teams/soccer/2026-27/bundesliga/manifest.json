@@ -1,0 +1,134 @@
+{
+  "season": "2026-27",
+  "league": "bundesliga",
+  "source_repository": "https://github.com/luukhopman/football-logos",
+  "source_commit": "2a3978f0b4730645c205d855a4bda54c161183e9",
+  "files": [
+    {
+      "club": "1.FC Köln",
+      "file": "1-fc-koln.png",
+      "relative_path": "bundesliga/1-fc-koln.png",
+      "size_bytes": 24913,
+      "source_sha": "f945bc1a23480dd7292ca572173231d378541855"
+    },
+    {
+      "club": "1.FC Union Berlin",
+      "file": "1-fc-union-berlin.png",
+      "relative_path": "bundesliga/1-fc-union-berlin.png",
+      "size_bytes": 9510,
+      "source_sha": "d3936bf1d8d13aca786c2164c6e61b34cfb1e3a1"
+    },
+    {
+      "club": "1.FSV Mainz 05",
+      "file": "1-fsv-mainz-05.png",
+      "relative_path": "bundesliga/1-fsv-mainz-05.png",
+      "size_bytes": 18851,
+      "source_sha": "a556faf3c101728ed9c84f0be9b1856fbb80b9ed"
+    },
+    {
+      "club": "Bayer 04 Leverkusen",
+      "file": "bayer-04-leverkusen.png",
+      "relative_path": "bundesliga/bayer-04-leverkusen.png",
+      "size_bytes": 20552,
+      "source_sha": "22cef703c4bb657a60d874d4b62f0a6b35ce3e93"
+    },
+    {
+      "club": "Bayern Munich",
+      "file": "bayern-munich.png",
+      "relative_path": "bundesliga/bayern-munich.png",
+      "size_bytes": 24597,
+      "source_sha": "499ce6f97c63f974b5b439eb977377e127f71a34"
+    },
+    {
+      "club": "Borussia Dortmund",
+      "file": "borussia-dortmund.png",
+      "relative_path": "bundesliga/borussia-dortmund.png",
+      "size_bytes": 16017,
+      "source_sha": "2dc4b0289782930c6b81b40309e81039928225fc"
+    },
+    {
+      "club": "Borussia Mönchengladbach",
+      "file": "borussia-monchengladbach.png",
+      "relative_path": "bundesliga/borussia-monchengladbach.png",
+      "size_bytes": 9887,
+      "source_sha": "288e9b7ac204e28518e388634297f21fc53dcf00"
+    },
+    {
+      "club": "Eintracht Frankfurt",
+      "file": "eintracht-frankfurt.png",
+      "relative_path": "bundesliga/eintracht-frankfurt.png",
+      "size_bytes": 21922,
+      "source_sha": "6818579c2b9af420c5078682b778426016f880b1"
+    },
+    {
+      "club": "FC Augsburg",
+      "file": "fc-augsburg.png",
+      "relative_path": "bundesliga/fc-augsburg.png",
+      "size_bytes": 22691,
+      "source_sha": "36b56e0cecd48142d28862d884a3006a03f403ae"
+    },
+    {
+      "club": "FC Schalke 04",
+      "file": "fc-schalke-04.png",
+      "relative_path": "bundesliga/fc-schalke-04.png",
+      "size_bytes": 14704,
+      "source_sha": "de20ad7334c3f2acb1371fde8a50e24b94365b80"
+    },
+    {
+      "club": "Hamburger SV",
+      "file": "hamburger-sv.png",
+      "relative_path": "bundesliga/hamburger-sv.png",
+      "size_bytes": 11028,
+      "source_sha": "1f6063acd89667fd816a23a3fe2cd6008d630186"
+    },
+    {
+      "club": "RB Leipzig",
+      "file": "rb-leipzig.png",
+      "relative_path": "bundesliga/rb-leipzig.png",
+      "size_bytes": 14090,
+      "source_sha": "06a031c8920a0f0dcd3df6b2e95629fa8b99ced9"
+    },
+    {
+      "club": "SC Freiburg",
+      "file": "sc-freiburg.png",
+      "relative_path": "bundesliga/sc-freiburg.png",
+      "size_bytes": 18342,
+      "source_sha": "426f9fb8812522675b06025adb48857e3b94e090"
+    },
+    {
+      "club": "SC Paderborn 07",
+      "file": "sc-paderborn-07.png",
+      "relative_path": "bundesliga/sc-paderborn-07.png",
+      "size_bytes": 10378,
+      "source_sha": "c0209f09a60e9dbadfcf9a5787439b207d74cceb"
+    },
+    {
+      "club": "SV 07 Elversberg",
+      "file": "sv-07-elversberg.png",
+      "relative_path": "bundesliga/sv-07-elversberg.png",
+      "size_bytes": 16723,
+      "source_sha": "6f398372139851d542f18a8363d2e28fd6ca5c3a"
+    },
+    {
+      "club": "SV Werder Bremen",
+      "file": "sv-werder-bremen.png",
+      "relative_path": "bundesliga/sv-werder-bremen.png",
+      "size_bytes": 20811,
+      "source_sha": "5bcd74dddcff71fbe8cd7de60baae2b926e35ba1"
+    },
+    {
+      "club": "TSG 1899 Hoffenheim",
+      "file": "tsg-1899-hoffenheim.png",
+      "relative_path": "bundesliga/tsg-1899-hoffenheim.png",
+      "size_bytes": 24296,
+      "source_sha": "dc5fe98029eededad6268a654625eff99a8a364d"
+    },
+    {
+      "club": "VfB Stuttgart",
+      "file": "vfb-stuttgart.png",
+      "relative_path": "bundesliga/vfb-stuttgart.png",
+      "size_bytes": 26905,
+      "source_sha": "c42c4eccbc2c63925567801ce896ef659e143881"
+    }
+  ]
+}
