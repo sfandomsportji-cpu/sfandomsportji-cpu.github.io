@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-21T04:45+09:00",
+  "updated_at": "2026-10-21T07:40+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-21T04:45+09:00",
+      "checked_at": "2026-10-21T07:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-10-21T04:45+09:00",
+      "checked_at": "2026-10-21T07:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -21,10 +21,10 @@
           "home": "DET",
           "away_name": "Boston Celtics",
           "home_name": "Detroit Pistons",
-          "status": "live",
-          "away_score": 34,
-          "home_score": 34,
-          "source_url": "https://www.espn.com/nba/game?gameId=401909088"
+          "status": "final",
+          "away_score": 113,
+          "home_score": 121,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909088/celtics-pistons"
         },
         {
           "id": "NBA-401909089",
@@ -224,7 +224,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-21T04:45+09:00",
+      "checked_at": "2026-10-21T07:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -244,7 +244,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-21T04:45+09:00",
+      "checked_at": "2026-10-21T07:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
