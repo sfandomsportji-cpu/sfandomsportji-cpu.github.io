@@ -31,6 +31,16 @@
       "count": 9
     },
     {
+      "id": "nba-day2",
+      "title_a": "TODAY'S",
+      "title_b": "NBA 3",
+      "kr": "오늘의 NBA 특집",
+      "lede": "NBA 개막 둘째 날 아침 세 경기를 한국시간 순서로 모았습니다. 올랜도–애틀랜타, 뉴올리언스–인디애나, 포틀랜드–피닉스이며 모두 경기 전 프리뷰입니다. 경기가 끝나면 결과로 이어집니다.",
+      "short": "할리버튼 복귀전, 올랜도 새 감독, 릴라드의 포틀랜드",
+      "league": "NBA",
+      "count": 3
+    },
+    {
       "id": "nba-open",
       "title_a": "NBA",
       "title_b": "OPENING WEEK",
