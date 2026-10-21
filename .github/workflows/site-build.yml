@@ -66,7 +66,13 @@ jobs:
             echo "Main advanced during build: refreshing generated files (attempt $attempt)."
             git fetch origin main
             git reset --hard origin/main
+            # 다른 배포와 겹쳐 리셋했을 때도 점수 스냅샷을 반드시 다시 수집한다.
+            # HTML만 재생성하면 새로 확인한 NPB 날짜가 사라질 수 있다.
+            python3 src/tools/sync_games.py
+            python3 src/tools/sync_npb.py
+            python3 src/tools/sync_postseason.py
             python3 src/build.py
+            python3 src/tools/check.py
             if [ -z "$(git status --porcelain)" ]; then
               echo "Latest main already has the generated result."
               exit 0
