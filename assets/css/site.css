@@ -1454,6 +1454,8 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 
 /* Keep analysis photos compact, uncropped, and aligned with their summary. */
 @media (min-width:901px){
+.an-board:has(.an-banner) .an-head{grid-template-columns:140px 72px minmax(150px,1.3fr) repeat(3,minmax(0,1fr)) 24px;gap:14px}
+.an-board:has(.an-banner) .an-head::before{content:""}
 .an-item:not([open])>.an-row:has(>.an-media){grid-template-columns:140px 72px minmax(150px,1.3fr) repeat(3,minmax(0,1fr)) 24px;gap:14px}
 .an-row>.an-media{grid-column:auto;min-width:0;width:140px}
 }
