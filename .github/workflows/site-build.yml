@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - "src/**"
+      - ".github/workflows/site-build.yml"
       - "!src/content/games-snapshot.json" # bot-updated snapshot must not recursively retrigger
   workflow_dispatch:
 
@@ -46,6 +47,10 @@ jobs:
         run: python3 src/tools/sync_postseason.py
       - name: Build
         run: python3 src/build.py
+      # check.py reads the Git index: include generated files and expired deletions.
+      # Staging is local only; failed validation prevents every commit/push.
+      - name: Stage generated files for validation
+        run: git add -A
       - name: Site check (check.py) - 필수 검증 실패 시 빌드 중단
         run: python3 src/tools/check.py
       - name: Commit if changed (concurrent source updates safe)
@@ -72,6 +77,7 @@ jobs:
             python3 src/tools/sync_npb.py
             python3 src/tools/sync_postseason.py
             python3 src/build.py
+            git add -A
             python3 src/tools/check.py
             if [ -z "$(git status --porcelain)" ]; then
               echo "Latest main already has the generated result."
