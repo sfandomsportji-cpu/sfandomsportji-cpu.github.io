@@ -1,6 +1,6 @@
 ---
 kind: "analysis"
-date: "2026-10-21"
+date: "2026-10-22"
 edition: "2026-10-21"
 priority: 680
 title: "달라진 포틀랜드, '릴라드 효과'를 확인할 개막전이 열린다"
@@ -12,7 +12,7 @@ image: ""
 image_alt: ""
 credit: ""
 slug: "portland-lillard-opener-20261021"
-special: "nba-open"
+special: "nba-day2"
 away: "PHX"
 home: "POR"
 kst: "10.22 11:00"
