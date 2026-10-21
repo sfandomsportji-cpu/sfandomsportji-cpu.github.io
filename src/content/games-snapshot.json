@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-21T15:01+09:00",
+  "updated_at": "2026-10-21T18:36+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-21T15:01+09:00",
+      "checked_at": "2026-10-21T18:36+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -23,7 +23,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-21T15:01+09:00",
+      "checked_at": "2026-10-21T18:36+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -325,11 +325,76 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909847/pistons-heat"
+        },
+        {
+          "id": "NBA-401909096",
+          "league": "NBA",
+          "start_kst": "2026-10-24T10:30+09:00",
+          "away": "HOU",
+          "home": "SA",
+          "away_name": "Houston Rockets",
+          "home_name": "San Antonio Spurs",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909096/rockets-spurs"
+        },
+        {
+          "id": "NBA-401909849",
+          "league": "NBA",
+          "start_kst": "2026-10-24T10:30+09:00",
+          "away": "NO",
+          "home": "UTAH",
+          "away_name": "New Orleans Pelicans",
+          "home_name": "Utah Jazz",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909849/pelicans-jazz"
+        },
+        {
+          "id": "NBA-401909850",
+          "league": "NBA",
+          "start_kst": "2026-10-24T11:00+09:00",
+          "away": "MEM",
+          "home": "GS",
+          "away_name": "Memphis Grizzlies",
+          "home_name": "Golden State Warriors",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909850/grizzlies-warriors"
+        },
+        {
+          "id": "NBA-401909851",
+          "league": "NBA",
+          "start_kst": "2026-10-24T11:00+09:00",
+          "away": "LAC",
+          "home": "LAL",
+          "away_name": "LA Clippers",
+          "home_name": "Los Angeles Lakers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909851/clippers-lakers"
+        },
+        {
+          "id": "NBA-401909852",
+          "league": "NBA",
+          "start_kst": "2026-10-24T11:00+09:00",
+          "away": "POR",
+          "home": "SAC",
+          "away_name": "Portland Trail Blazers",
+          "home_name": "Sacramento Kings",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909852/trail-blazers-kings"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-21T15:01+09:00",
+      "checked_at": "2026-10-21T18:36+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -349,7 +414,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-21T15:01+09:00",
+      "checked_at": "2026-10-21T18:36+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -690,6 +755,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892564/canadiens-blackhawks"
+        },
+        {
+          "id": "NHL-401892565",
+          "league": "NHL",
+          "start_kst": "2026-10-24T10:00+09:00",
+          "away": "TB",
+          "home": "COL",
+          "away_name": "Tampa Bay Lightning",
+          "home_name": "Colorado Avalanche",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892565/lightning-avalanche"
         }
       ]
     }

@@ -2,7 +2,7 @@
   "provider": "npb.jp 첫 화면 속보",
   "leagues": {
     "NPB": {
-      "checked_at": "2026-10-18T02:09+09:00",
+      "checked_at": "2026-10-21T18:36+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -72,7 +72,7 @@
           "source_url": "https://npb.jp/scores/2026/1017/t-db-04/"
         }
       ],
-      "error": "header_score 블록 없음"
+      "no_games_today": true
     }
   }
 }
