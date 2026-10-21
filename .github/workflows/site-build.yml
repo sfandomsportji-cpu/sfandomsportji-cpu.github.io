@@ -46,8 +46,7 @@ jobs:
         run: python3 src/tools/sync_postseason.py
       - name: Build
         run: python3 src/build.py
-      - name: Site check (check.py) - 경고만, 빌드는 멈추지 않음
-        continue-on-error: true
+      - name: Site check (check.py) - 필수 검증 실패 시 빌드 중단
         run: python3 src/tools/check.py
       - name: Commit if changed (concurrent source updates safe)
         run: |
