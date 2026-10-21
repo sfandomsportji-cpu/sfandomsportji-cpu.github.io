@@ -1085,7 +1085,7 @@ def message_box() -> str:
 
 # ───────────────────────── 홈 ─────────────────────────
 def build_home():
-    news = [a for a in ARTICLES if a.kind == 'news' and not (HOME_HIDE_MLB and a.league == 'MLB')]
+    news = [a for a in ARTICLES if a.kind == 'news' and not (HOME_HIDE_MLB and a.league == 'MLB') and 'preseason' not in a.slug]  # 홈에서 프리시즌 기사 제외(글·목록은 유지)
     analysis = [a for a in ARTICLES if a.kind == 'analysis']
     hero = SITE['hero']
     g = BLOGS.get('google') or []
