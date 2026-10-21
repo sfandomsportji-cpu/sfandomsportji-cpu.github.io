@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-22T05:09+09:00",
+  "updated_at": "2026-10-22T08:17+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-22T05:09+09:00",
+      "checked_at": "2026-10-22T08:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -23,7 +23,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-22T05:09+09:00",
+      "checked_at": "2026-10-22T08:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -35,10 +35,10 @@
           "home": "ORL",
           "away_name": "Atlanta Hawks",
           "home_name": "Orlando Magic",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909834/hawks-magic"
+          "status": "live",
+          "away_score": 6,
+          "home_score": 8,
+          "source_url": "https://www.espn.com/nba/game?gameId=401909834"
         },
         {
           "id": "NBA-401909835",
@@ -48,10 +48,10 @@
           "home": "WSH",
           "away_name": "Milwaukee Bucks",
           "home_name": "Washington Wizards",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909835/bucks-wizards"
+          "status": "live",
+          "away_score": 3,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nba/game?gameId=401909835"
         },
         {
           "id": "NBA-401909091",
@@ -355,7 +355,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-22T05:09+09:00",
+      "checked_at": "2026-10-22T08:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -375,7 +375,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-22T05:09+09:00",
+      "checked_at": "2026-10-22T08:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -586,6 +586,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892565/lightning-avalanche"
+        },
+        {
+          "id": "NHL-401892566",
+          "league": "NHL",
+          "start_kst": "2026-10-25T02:00+09:00",
+          "away": "ANA",
+          "home": "PHI",
+          "away_name": "Anaheim Ducks",
+          "home_name": "Philadelphia Flyers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892566/ducks-flyers"
         }
       ]
     }
