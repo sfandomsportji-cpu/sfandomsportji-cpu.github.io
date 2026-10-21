@@ -8,8 +8,8 @@ subtitle: "탬파베이 3–1 클리블랜드 · 1~3회 한 점씩, 불펜까지
 kicker: "SFANDOM · MLB ALCS GAME 5 RECAP"
 meta: "2026.10.19 · RAYS 3–1 GUARDIANS · ALCS 5차전 복기"
 league: "MLB"
-image: "/assets/photos/rays-guardians-alcs5-recap.jpg"
-image_alt: "5차전 7이닝을 던지고 내려가는 탬파베이 선발 라스무센"
+image: ""
+image_alt: ""
 credit: ""
 slug: "rays-guardians-alcs-game5-recap-20261019"
 teams: ["TB","CLE"]
