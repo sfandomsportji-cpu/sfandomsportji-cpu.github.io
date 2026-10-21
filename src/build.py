@@ -1254,7 +1254,7 @@ def build_article(a: Article):
         if getattr(a, 'photo_fallback', ''):
             fallback_attr = f' onerror="this.onerror=null;this.src=\'{esc(a.photo_fallback)}\'"'
         fallback = '<div class="feature-fallback">DODGERS · NLCS</div>' if feature else ''
-        fig = f'<figure class="figure {logo}{feature}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" fetchpriority="high"{fallback_attr}>{fallback}{an_logos(a) if a.image.startswith('/assets/photos/') else ''}{cap}</figure>'
+        fig = f'<figure class="figure {logo}{feature}{" photo" if a.image.startswith("/assets/photos/") else ""}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" fetchpriority="high"{fallback_attr}>{fallback}{an_logos(a) if a.image.startswith('/assets/photos/') else ''}{cap}</figure>'
     srcs = ''.join(f'<span>{esc(s["label"])}</span>' for s in a.sources if s.get('label'))
     src_html = f'<div class="sources"><strong>출처</strong>{srcs}</div>' if srcs else ''
     credit = f'<p class="credit">{esc(a.credit)}</p>' if a.credit and not a.credit.startswith('PHOTO') else ''

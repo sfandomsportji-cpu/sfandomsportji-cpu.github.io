@@ -216,6 +216,7 @@ main{display:block}
 .figure{margin:0 0 32px;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#22222B,#16161C)}
 .figure img{color:transparent;width:100%;max-height:520px;object-fit:contain;object-position:center bottom}
 .figure.logo img{max-height:360px;padding:40px;object-fit:contain}
+.figure.photo img{aspect-ratio:16/9;max-height:none;object-fit:cover;object-position:center 22%}
 .figure figcaption{font-size:14px;color:var(--faint);padding:10px 16px;background:var(--panel)}
 .prose{font-size:18px;line-height:1.85;color:#EDEDF2}
 .prose p{margin:0 0 1.35em}
