@@ -127,5 +127,9 @@
  "MAN CITY": "premier-league/manchester-city.png",
  "VILLARREAL": "la-liga/villarreal-cf.png",
  "STUTTGART": "bundesliga/vfb-stuttgart.png",
- "ATLETICO": "la-liga/atletico-de-madrid.png"
+ "ATLETICO": "la-liga/atletico-de-madrid.png",
+ "ARSENAL": "premier-league/arsenal-fc.png",
+ "REAL MADRID": "la-liga/real-madrid.png",
+ "COMO": "serie-a/como-1907.png",
+ "MAN UNITED": "premier-league/manchester-united.png"
 }
