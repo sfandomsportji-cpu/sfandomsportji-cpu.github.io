@@ -1450,11 +1450,15 @@ def build_hubs():
     nba_arts = [a for a in ARTICLES if a.league == 'NBA']
     pre_all = NBA.get('preseason_games', [])
     pre_done = [g for g in pre_all if g.get('result')]
-    pre_next = [g for g in pre_all if not g.get('result')]
+    preseason_finished = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))) >= dt.datetime.fromisoformat(NBA["opening_kst"])
+    pre_next = [] if preseason_finished else [g for g in pre_all if not g.get('result')]
     preseason_rows = nba_cards(pre_next, preseason_anchors=True)
     past_html = (f'<details class="past-games"><summary>지난 경기 결과 {len(pre_done)}개 보기</summary><div class="nba-rail preseason-list">'
                  + nba_cards(pre_done, preseason_anchors=True) + '</div></details>') if pre_done else ''
-    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">GAME CENTER</span></h2><span class="muted">확인된 종료 {sum(bool(g.get("result")) for g in NBA.get("preseason_games", []))}경기 · 예정 및 확인 중 경기 구분 · 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div>{past_html}</div></section>') if (preseason_rows or past_html) else ''
+    preseason_title = "ARCHIVE" if preseason_finished else "GAME CENTER"
+    preseason_note = ("프리시즌 종료 · 확인된 결과를 기록으로 보관합니다 · 한국시간" if preseason_finished
+                      else "확인된 종료 경기와 예정·확인 중 경기 구분 · 한국시간")
+    preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">{preseason_title}</span></h2><span class="muted">{preseason_note}</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div>{past_html}</div></section>') if (preseason_rows or past_html) else ''
     nsec = lambda kind, title, kr, anchor: (f'<section id="{anchor}" class="sec"><div class="sec-head"><h2 class="sec-title">{title} <span class="kr">{kr}</span></h2></div>'
                                             + '<div class="card-grid">' + ''.join(mag_card(a) for a in nba_arts if a.kind == kind) + '</div></section>') if any(a.kind == kind for a in nba_arts) else ''
     _arts = [(k, t, nsec(k, t, kr, k)) for k, t, kr in (('news', 'NEWS', 'NBA 뉴스'), ('analysis', 'ANALYSIS', '개막전 프리뷰'), ('magazine', 'MAGAZINE', '기획 · 시즌 가이드'))]
@@ -1462,7 +1466,7 @@ def build_hubs():
     art_tabs = ('<div class="art-tabs" data-art-tabs><div class="art-tab-bar" role="tablist">'
                 + ''.join(f'<button type="button" role="tab" data-panel="{k}" aria-selected="{"true" if i == 0 else "false"}">{ {"news": "뉴스", "analysis": "분석", "magazine": "매거진"}[k] }</button>' for i, (k, t, h) in enumerate(_arts))
                 + '</div>' + ''.join(h for k, t, h in _arts) + '</div>') if _arts else ''
-    nba_tabs = tabs([('프리시즌', '#preseason'), ('개막 주간', '#tipoff'), ('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('주요 날짜', '#dates')], '')
+    nba_tabs = tabs([('프리시즌 기록' if preseason_finished else '프리시즌', '#preseason'), ('개막 주간', '#tipoff'), ('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('주요 날짜', '#dates')], '')
     opening_started = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))) >= dt.datetime.fromisoformat(NBA["opening_kst"])
     nba_description = ('2026-27 정규시즌 진행 중. 최신 경기 일정·결과, 개막 주간 기록, 시즌 분석을 한국시간으로 확인합니다.'
                        if opening_started else '새 시즌 개막까지 ' + nba_dday() + '. 개막 주간 일정과 프리뷰를 한국시간으로 확인합니다.')
