@@ -44,7 +44,13 @@ def fetch() -> str:
 def parse(page: str, today: dt.date) -> list[dict]:
     start = page.find('id="header_score"')
     if start < 0:
-        raise ValueError("header_score 블록 없음")
+        # 공식 사이트는 경기가 없는 날 점수 블록 대신 "N월N일(요일)의 시합 없음"을 출력한다.
+        # 해당 날짜를 정확히 확인한 경우에만 정상적인 0경기로 처리한다.
+        today_no_games = rf'{today.month}月{today.day}日[（(][^）)]*[）)]の試合はありません'
+        if re.search(today_no_games, page):
+            print(f"NPB {today.isoformat()}: 공식 홈페이지에 오늘 경기 없음")
+            return []
+        raise ValueError("header_score 블록 없음 (오늘 경기 없음 표기도 확인되지 않음)")
     block = page[start:start + 12000]
     date_m = re.search(r'<div class="score_box date"><div>(\d{4})<br>(\d{1,2})/(\d{1,2})', block)
     if not date_m:
@@ -80,6 +86,8 @@ def parse(page: str, today: dt.date) -> list[dict]:
             "away": away[0], "home": home[0], "away_name": away[1], "home_name": home[1],
             "status": status, "away_score": a, "home_score": h, "source_url": "https://npb.jp" + href,
         })
+    if not games:
+        raise ValueError("header_score 블록은 있지만 확인 가능한 경기 없음 (HTML 구조 확인 필요)")
     return games
 
 
@@ -106,7 +114,9 @@ def main() -> None:
     cutoff = (now - dt.timedelta(days=KEEP_DAYS)).isoformat(timespec="minutes")
     games = sorted((g for g in merged.values() if g["start_kst"] >= cutoff), key=lambda g: (g["start_kst"], g["id"]))
     league = {"checked_at": now.isoformat(timespec="minutes") if not error else old.get("leagues", {}).get("NPB", {}).get("checked_at", ""),
-              "coverage": "complete", "failed_dates": [], "games": games}
+              "coverage": "complete" if not error else "partial", "failed_dates": [],
+              "games": games,
+              "no_games_today": (not bool(fresh)) if not error else old.get("leagues", {}).get("NPB", {}).get("no_games_today", False)}
     if error:
         league["error"] = error
     text = json.dumps({"provider": "npb.jp 첫 화면 속보", "leagues": {"NPB": league}}, ensure_ascii=False, indent=2) + "\n"
