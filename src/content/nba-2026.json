@@ -8,7 +8,11 @@
       "away": "BOS",
       "home": "DET",
       "kst": "10.21 (수) 04:00",
-      "tv": "NBC"
+      "tv": "NBC",
+      "tag": "종료 · BOS 113–121 DET",
+      "result": "BOS 113–121 DET",
+      "away_score": 113,
+      "home_score": 121
     },
     {
       "day": "OPENING NIGHT",
@@ -16,14 +20,21 @@
       "home": "NYK",
       "kst": "10.21 (수) 08:00",
       "tv": "NBC",
-      "tag": "챔피언 배너식"
+      "tag": "종료 · PHI 106–100 NYK · 챔피언 배너식",
+      "result": "PHI 106–100 NYK",
+      "away_score": 106,
+      "home_score": 100
     },
     {
       "day": "OPENING NIGHT",
       "away": "OKC",
       "home": "SAS",
       "kst": "10.21 (수) 10:30",
-      "tv": "NBC"
+      "tv": "NBC",
+      "tag": "종료 · OKC 116–104 SAS",
+      "result": "OKC 116–104 SAS",
+      "away_score": 116,
+      "home_score": 104
     },
     {
       "day": "DAY 2",

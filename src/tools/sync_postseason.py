@@ -171,6 +171,17 @@ def sync_nba(snap: dict) -> None:
             a, h = int(g["away_score"]), int(g["home_score"])
             text = f"{row['away']} {a}–{h} {row['home']}"
             row.update({"day": "FINAL", "tag": f"종료 · {text}", "result": text, "away_score": a, "home_score": h})
+    # 정규시즌 개막 주간 카드: 종료 경기만 점수를 붙이고 day(OPENING NIGHT 등)·기존 태그는 유지
+    for row in data.get("games", []):
+        if row.get("result"):
+            continue
+        month, day = row["kst"].split()[0].split(".")
+        g = index.get((row["away"], row["home"], f"{int(month):02d}.{int(day):02d}"))
+        if g:
+            a, h = int(g["away_score"]), int(g["home_score"])
+            text = f"{row['away']} {a}–{h} {row['home']}"
+            tag = f"종료 · {text}" + (f" · {row['tag']}" if row.get("tag") else "")
+            row.update({"tag": tag, "result": text, "away_score": a, "home_score": h})
     if league.get("checked_at") and league.get("coverage") == "complete":
         finals = sum(1 for r in data.get("preseason_games", []) if r.get("result"))
         data["preseason_note"] = (f"{checked_label(league['checked_at'])} 확인: 프리시즌 종료 {finals}경기 반영. "
