@@ -19,7 +19,7 @@
     }
   ],
   "hero": {
-    "auto": false,
+    "auto": true,
     "image": "",
     "alt": "",
     "credit": "",
