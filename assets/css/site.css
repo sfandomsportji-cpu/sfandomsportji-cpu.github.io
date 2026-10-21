@@ -217,6 +217,7 @@ main{display:block}
 .figure img{color:transparent;width:100%;max-height:520px;object-fit:contain;object-position:center bottom}
 .figure.logo img{max-height:360px;padding:40px;object-fit:contain}
 .figure.photo img{aspect-ratio:16/9;max-height:none;object-fit:cover;object-position:center 22%}
+.figure.photo-sm img{width:auto;max-width:min(100%,var(--pw));max-height:520px;margin:0 auto;display:block;object-fit:contain}
 .figure figcaption{font-size:14px;color:var(--faint);padding:10px 16px;background:var(--panel)}
 .prose{font-size:18px;line-height:1.85;color:#EDEDF2}
 .prose p{margin:0 0 1.35em}
