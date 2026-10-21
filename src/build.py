@@ -536,6 +536,16 @@ def kbo_logo(name: str) -> str:
     return f'/assets/teams/kbo/{f}.png' if f and (ROOT / 'assets' / 'teams' / 'kbo' / f'{f}.png').is_file() else ''
 
 
+def photo_small(a):
+    """직접 받은 사진이 가로 1000px 미만이면 (넓은 칸에서 키우면 흐려지므로) 원본 크기로만 표시."""
+    try:
+        from PIL import Image
+        w = Image.open(ROOT / a.image.lstrip('/')).size[0]
+    except Exception:
+        return ''
+    return w if w < 1000 else ''
+
+
 def photo_cls(a):
     """직접 받은 사진: 가로 1000px 이상이면 16:9 꽉 채움, 작으면 원본 크기를 넘겨 키우지 않고 가운데 배치."""
     if not a.image.startswith('/assets/photos/'):
@@ -565,7 +575,7 @@ def an_logos(a: Article) -> str:
 def an_banner(a: Article) -> str:
     """접힌 줄 위쪽에 보이는 자료사진 띠 — 직접 받은 사진(/assets/photos/)이 있을 때만."""
     if a.image.startswith('/assets/photos/') and (ROOT / a.image.lstrip('/')).is_file():
-        return (f'<span class="an-media"><img class="an-banner" src="{esc(a.image)}" alt="{esc(a.image_alt)}" loading="lazy" decoding="async">'
+        return (f'<span class="an-media"><img class="an-banner{" sm" if photo_small(a) else ""}"{f' style="--pw:{photo_small(a)}px"' if photo_small(a) else ""} src="{esc(a.image)}" alt="{esc(a.image_alt)}" loading="lazy" decoding="async">'
                 f'{an_logos(a)}</span>')
     return ''
 
@@ -591,7 +601,7 @@ def an_detail(a: Article) -> str:
     items = ''.join(f'<li><b>{esc(v)}</b><span>{esc(l)}</span></li>' for v, l in stats)
     ph = ''
     if a.image.startswith('/assets/photos/') and (ROOT / a.image.lstrip('/')).is_file():  # 직접 받은 자료사진만(3일 보관) — 홈에서도 펼치면 보이게
-        ph = f'<span class="an-media"><span class="an-photo" role="img" aria-label="{esc(a.image_alt)}" style="background-image:url({esc(a.image)})"></span>{an_logos(a)}</span>'
+        ph = f'<span class="an-media"><span class="an-photo{" sm" if photo_small(a) else ""}" role="img" aria-label="{esc(a.image_alt)}" style="background-image:url({esc(a.image)})"></span>{an_logos(a)}</span>'
     vd = ''
     if getattr(a, 'verdict', ''):  # 사람이 확정한 최종 전망 — 펼친 칸 사진 옆에 한눈에
         sm = ''.join(f'<li>{esc(x)}</li>' for x in (getattr(a, 'summary', None) or []))

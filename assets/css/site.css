@@ -242,6 +242,9 @@ main{display:block}
 .split-head b{font-family:var(--display);font-weight:600;font-size:24px;line-height:1.1}
 .split-head span{font-size:14px;color:var(--muted);font-family:var(--head)}
 .an-media{grid-column:1/-1;display:block}
+.an-banner.sm{aspect-ratio:auto;width:auto;max-width:min(100%,var(--pw));max-height:320px;margin:0 auto;object-fit:contain}
+.an-media:has(.an-banner.sm),.an-media:has(.an-photo.sm){background:#16161C;border-radius:6px 6px 0 0;text-align:center}
+.an-photo.sm{background-size:contain;background-repeat:no-repeat;background-color:#16161C}
 .an-banner{display:block;width:100%;aspect-ratio:21/8;object-fit:cover;object-position:center 22%;border-radius:6px 6px 0 0}
 .an-item[open] .an-row>.an-media{display:none}
 .an-logos{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:2px}
