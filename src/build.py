@@ -1091,6 +1091,17 @@ def build_home():
     g = BLOGS.get('google') or []
     hero_title = '<br>'.join(esc(x) for x in hero['title'].split('\n'))
     hero_text, hero_link = hero['text'], hero.get('link', '')
+    hero_badge_en = hero.get("badge_en", "HOT ISSUE")
+    hero_badge_kr = hero.get("badge_kr", "")
+    hero_cta = "오늘 특집 읽기"
+    # 이전 경기 날짜를 고정 노출하지 않도록 시즌 진행 상태를 빌드 시점에 반영한다.
+    if hero.get("auto") and dt.datetime.now(dt.timezone(dt.timedelta(hours=9))) >= dt.datetime.fromisoformat(NBA["opening_kst"]):
+        hero_badge_en = "NBA · 2026-27 REGULAR SEASON"
+        hero_badge_kr = "최신 경기 일정과 확정 결과 · 한국시간"
+        hero_title = "NBA 정규시즌<br>경기 일정과 결과"
+        hero_text = "오늘 확인된 경기 결과와 다가오는 일정을 함께 확인하세요. 경기 정보는 외부 제공처의 마지막 확인 시각을 표시합니다."
+        hero_link = "/games/"
+        hero_cta = "경기 일정·결과 보기"
     if hero.get('use_latest_google_post') and g:
         hero_title, hero_text, hero_link = esc(g[0]['title']), g[0]['summary'], g[0]['link']
     cv = SITE.get('community_video') or {}
@@ -1119,10 +1130,12 @@ def build_home():
     credit = f'<span class="hero-credit">{esc(hero["credit"])}</span>' if hero.get('credit') else ''
     home_preseason = nba_home_preseason()
     home_games = nba_home_games()
-    home_heading = 'PRESEASON' if home_preseason else 'TIP-OFF'
-    home_status = (f'{sum(bool(g.get("result")) for g in home_games[:5])} FINAL · NEXT' if home_preseason else nba_dday())
-    home_cta = '프리시즌 일정' if home_preseason else '개막 주간 일정'
-    home_aria = 'NBA 프리시즌' if home_preseason else 'NBA 개막 주간'
+    season_started = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))) >= dt.datetime.fromisoformat(NBA["opening_kst"])
+    home_heading = 'PRESEASON' if home_preseason else ('NBA SEASON' if season_started else 'TIP-OFF')
+    home_status = (f'{sum(bool(g.get("result")) for g in home_games[:5])} FINAL · NEXT' if home_preseason
+                   else ('LIVE SCHEDULE' if season_started else nba_dday()))
+    home_cta = '프리시즌 일정' if home_preseason else ('정규시즌 일정·결과' if season_started else '개막 주간 일정')
+    home_aria = 'NBA 프리시즌' if home_preseason else ('NBA 정규시즌' if season_started else 'NBA 개막 주간')
     tip = ''.join(nba_home_story(g) for g in home_games[:5])
     # 홈 NEWS 대표 카드는 가장 최신 뉴스 글 (특정 날짜 글 고정 해제)
     lead = news[0]
@@ -1146,10 +1159,10 @@ def build_home():
   <div class="hero-media">{media}</div>
   <div class="hero-shade" aria-hidden="true"></div>
   <article class="hero-copy">
-    <span class="hero-badge">{esc(hero.get("badge_en", "HOT ISSUE"))}<b>{esc(hero.get("badge_kr", ""))}</b></span>
+    <span class="hero-badge">{esc(hero_badge_en)}<b>{esc(hero_badge_kr)}</b></span>
     <h1 id="heroTitle">{hero_title}</h1>
     <p>{esc(hero_text)}</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill white" href="{esc(hero_link or '/nba/')}" style="height:54px;padding:0 28px">{'오늘 특집 읽기' if hero_link else home_cta}</a><a class="pill ghost" href="/community/#write" style="height:54px;padding:0 28px">팬 보드에서 얘기하기</a></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill white" href="{esc(hero_link or '/nba/')}" style="height:54px;padding:0 28px">{hero_cta if hero_link else home_cta}</a><a class="pill ghost" href="/community/#write" style="height:54px;padding:0 28px">팬 보드에서 얘기하기</a></div>
   </article>
   {credit}{reel_tag}
   <aside class="top-stories" aria-label="{home_aria}"><h2>{home_heading} <span class="nba-dday">{home_status}</span></h2><div class="tip-rail">{tip}</div><a class="more top-stories-more" href="/nba/">NBA 허브 →</a></aside>
@@ -1450,7 +1463,10 @@ def build_hubs():
                 + ''.join(f'<button type="button" role="tab" data-panel="{k}" aria-selected="{"true" if i == 0 else "false"}">{ {"news": "뉴스", "analysis": "분석", "magazine": "매거진"}[k] }</button>' for i, (k, t, h) in enumerate(_arts))
                 + '</div>' + ''.join(h for k, t, h in _arts) + '</div>') if _arts else ''
     nba_tabs = tabs([('프리시즌', '#preseason'), ('개막 주간', '#tipoff'), ('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('주요 날짜', '#dates')], '')
-    nba_body = (page_head('NBA <span class="accent">2026-27</span>', '새 시즌 개막까지 ' + nba_dday() + '. 개막 주간 일정과 여름 이적 시장, 개막전 프리뷰, 시즌 달력을 한곳에 모았습니다. 시간은 모두 한국시간입니다.', [('NBA', '')], nba_tabs)
+    opening_started = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))) >= dt.datetime.fromisoformat(NBA["opening_kst"])
+    nba_description = ('2026-27 정규시즌 진행 중. 최신 경기 일정·결과, 개막 주간 기록, 시즌 분석을 한국시간으로 확인합니다.'
+                       if opening_started else '새 시즌 개막까지 ' + nba_dday() + '. 개막 주간 일정과 프리뷰를 한국시간으로 확인합니다.')
+    nba_body = (page_head('NBA <span class="accent">2026-27</span>', nba_description, [('NBA', '')], nba_tabs)
                 + f'''<div class="wrap">
 {preseason_block}
 <section class="sec" id="tipoff" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title">TIP-OFF <span class="outline">WEEK</span></h2><span class="muted">개막 주간 · 시간은 한국시간</span></div><div class="nba-stage solo"><div class="nba-rail">{nba_cards(NBA["games"])}</div></div></section>
@@ -1558,7 +1574,8 @@ def nba_cards(games: list, preseason_anchors: bool = False) -> str:
 def nba_home_story(g: dict) -> str:
     separator = 'VS' if (g.get('result') or str(g.get('day', '')).upper().startswith(('FINAL', 'LIVE'))) else '@'
     tag = f'<em class="nba-tag">{esc(g["tag"])}</em>' if g.get('tag') else ''
-    destination = f'/nba/#preseason-{g["away"].lower()}-{g["home"].lower()}' if g in NBA.get('preseason_games', []) else '/nba/#tipoff'
+    destination = ('/games/' if g.get("source_live_snapshot") else
+                   (f'/nba/#preseason-{g["away"].lower()}-{g["home"].lower()}' if g in NBA.get('preseason_games', []) else '/nba/#tipoff'))
     label = esc(f'{g["away"]} - {g["home"]} ' + ('최종 결과 확인' if g.get('result') else '경기 일정 확인'))
     return (f'<a class="ts tip" href="{destination}" aria-label="{label}"><span><span class="tag">{esc(g.get("day", "PRESEASON"))} · {esc(g["kst"])}</span>'
             f'<b class="vsline">{badge(g["away"], NBA["colors"].get(g["away"], "#444"), league="nba")}<i class="match-separator">{separator}</i>'
@@ -1579,7 +1596,30 @@ def nba_home_preseason() -> bool:
 def nba_home_games() -> list:
     """Keep the five home results closest to KST now instead of pinned old finals."""
     if not nba_home_preseason():
-        return NBA['games']
+        now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+        if now < dt.datetime.fromisoformat(NBA["opening_kst"]):
+            return NBA["games"]
+        snapshot = game_snapshot().get("leagues", {}).get("NBA", {})
+        valid = [x for x in snapshot.get("games", []) if game_clock(x.get("start_kst", ""))]
+        upcoming = sorted((x for x in valid if x.get("status") in ("scheduled", "live")
+                           and game_clock(x["start_kst"]) >= now - dt.timedelta(minutes=20)),
+                          key=lambda x: x["start_kst"])
+        recent = sorted((x for x in valid if x.get("status") == "final"),
+                        key=lambda x: x["start_kst"], reverse=True)
+        selected = (upcoming[:5] + recent[:max(0, 5 - len(upcoming[:5]))]) if upcoming else recent[:5]
+        selected.sort(key=lambda x: x["start_kst"])
+        abbr = {"NY": "NYK", "GS": "GSW", "NO": "NOP", "SA": "SAS", "UTAH": "UTA", "WSH": "WAS"}
+        cards = []
+        for x in selected:
+            when = game_clock(x["start_kst"])
+            finished = x["status"] == "final"
+            score = (f'{x["away_score"]}–{x["home_score"]}' if finished else "")
+            cards.append({"away": abbr.get(x["away"], x["away"]), "home": abbr.get(x["home"], x["home"]),
+                          "day": "FINAL" if finished else ("LIVE" if x["status"] == "live" else "REGULAR SEASON"),
+                          "kst": when.strftime("%m.%d") + f' ({"월화수목금토일"[when.weekday()]}) ' + when.strftime("%H:%M"),
+                          "result": score, "tag": score if finished else "", "tv": "",
+                          "source_live_snapshot": True})
+        return cards or NBA["games"]
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
     def when(game):
         m = re.match(r'(\d{1,2})\.(\d{1,2}).*?(\d{2}):(\d{2})', game.get('kst', ''))
@@ -1977,6 +2017,8 @@ def game_sections(brief: bool = False) -> str:
         else:
             games = games[-50:]
         cards = ''.join(game_card(g, stale, details.get('checked_at', '')) for g in games)
+        if details.get('no_games_today') and league == 'NPB':
+            cards = '<p class="sf-scores__empty">오늘 NPB 공식 일정에 경기가 없습니다. 아래는 이전 경기 기록입니다.</p>' + cards
         if not cards:
             cards = '<p class="sf-scores__empty">이 시간대 확인된 경기 정보가 없습니다. 다음 자료 갱신을 기다려 주세요.</p>'
         note = ' · 일부 날짜 확인 지연' if details.get('coverage') == 'partial' else ''
