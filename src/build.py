@@ -1159,9 +1159,21 @@ def build_home():
     home_cta = '프리시즌 일정' if home_preseason else ('정규시즌 일정·결과' if season_started else '개막 주간 일정')
     home_aria = 'NBA 프리시즌' if home_preseason else ('NBA 정규시즌' if season_started else 'NBA 개막 주간')
     tip = ''.join(nba_home_story(g) for g in home_games[:5])
-    # 홈 NEWS 대표 카드는 가장 최신 뉴스 글 (특정 날짜 글 고정 해제)
-    lead = news[0]
-    rest = [a for a in news if a.url != lead.url][:4]
+    # 2026-10-23 사용자 승인 홈 편집: 신작 특집 3건을 우선 노출.
+    # 보존된 기사/전체 뉴스 목록에는 영향 없음. 추후 신규 뉴스가 나오면 자동 최신순 복귀.
+    home_pins = [
+        'nba-opening-week-special-20261023',
+        'cavaliers-sixers-preview-20261023',
+        'nuggets-thunder-preview-20261023',
+    ]
+    pin_articles = [next((a for a in ARTICLES if a.slug == slug), None) for slug in home_pins]
+    pin_articles = [a for a in pin_articles if a is not None]
+    stale_home_slugs = {'nba-day2-results-20261022', 'nba-oct22-records-20261021'}
+    home_other = [a for a in news if a.slug not in stale_home_slugs and a.slug not in home_pins]
+    newer_news = [a for a in home_other if a.date > '2026-10-23']
+    home_feed = newer_news + pin_articles + [a for a in home_other if a not in newer_news]
+    lead = home_feed[0]
+    rest = home_feed[1:5]
     lead_summary = lead.excerpt
     lead_label = 'LEAD'
 
