@@ -1,7 +1,7 @@
 {
   "season": "2026-27",
   "opening_kst": "2026-10-21T04:00:00+09:00",
-  "note": "시간은 한국시간(KST). 출처: NBA 2026-27 정규시즌 일정 발표",
+  "note": "시간은 한국시간(KST). 2026년 10월 22일 종료 경기 11개와 개막일 3개 결과 확인. 이후 예정 경기는 경기 완료 전 결과를 표시하지 않음.",
   "games": [
     {
       "day": "OPENING NIGHT",
@@ -87,6 +87,105 @@
       "kst": "10.24 (토) 10:30",
       "tv": "PRIME VIDEO",
       "tag": "오스틴 개최"
+    },
+    {
+      "day": "DAY 2",
+      "away": "MIL",
+      "home": "WAS",
+      "kst": "10.22 (목) 08:00",
+      "tv": "NBA",
+      "tag": "종료 · MIL 116–128 WAS",
+      "result": "MIL 116–128 WAS",
+      "away_score": 116,
+      "home_score": 128
+    },
+    {
+      "day": "DAY 2",
+      "away": "ATL",
+      "home": "ORL",
+      "kst": "10.22 (목) 08:00",
+      "tv": "NBA",
+      "tag": "종료 · ATL 132–125 ORL",
+      "result": "ATL 132–125 ORL",
+      "away_score": 132,
+      "home_score": 125
+    },
+    {
+      "day": "DAY 2",
+      "away": "CHA",
+      "home": "BKN",
+      "kst": "10.22 (목) 08:30",
+      "tv": "NBA",
+      "tag": "종료 · CHA 110–103 BKN",
+      "result": "CHA 110–103 BKN",
+      "away_score": 110,
+      "home_score": 103
+    },
+    {
+      "day": "DAY 2",
+      "away": "CHI",
+      "home": "TOR",
+      "kst": "10.22 (목) 08:30",
+      "tv": "NBA",
+      "tag": "종료 · CHI 92–135 TOR",
+      "result": "CHI 92–135 TOR",
+      "away_score": 92,
+      "home_score": 135
+    },
+    {
+      "day": "DAY 2",
+      "away": "IND",
+      "home": "NOP",
+      "kst": "10.22 (목) 09:00",
+      "tv": "NBA",
+      "tag": "종료 · IND 123–120 NOP",
+      "result": "IND 123–120 NOP",
+      "away_score": 123,
+      "home_score": 120
+    },
+    {
+      "day": "DAY 2",
+      "away": "UTA",
+      "home": "MEM",
+      "kst": "10.22 (목) 09:00",
+      "tv": "NBA",
+      "tag": "종료 · UTA 103–123 MEM",
+      "result": "UTA 103–123 MEM",
+      "away_score": 103,
+      "home_score": 123
+    },
+    {
+      "day": "DAY 2",
+      "away": "DAL",
+      "home": "HOU",
+      "kst": "10.22 (목) 09:30",
+      "tv": "NBA",
+      "tag": "종료 · DAL 110–128 HOU",
+      "result": "DAL 110–128 HOU",
+      "away_score": 110,
+      "home_score": 128
+    },
+    {
+      "day": "DAY 2",
+      "away": "PHX",
+      "home": "POR",
+      "kst": "10.22 (목) 11:00",
+      "tv": "NBA",
+      "tag": "종료 · PHX 83–124 POR",
+      "result": "PHX 83–124 POR",
+      "away_score": 83,
+      "home_score": 124
+    },
+    {
+      "day": "DAY 2",
+      "away": "SAC",
+      "home": "LAC",
+      "kst": "10.22 (목) 11:30",
+      "tv": "NBA",
+      "tag": "종료 · SAC 96–121 LAC",
+      "result": "SAC 96–121 LAC",
+      "away_score": 96,
+      "home_score": 121
     }
   ],
   "colors": {
