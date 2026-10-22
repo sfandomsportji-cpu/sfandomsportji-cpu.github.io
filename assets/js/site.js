@@ -250,7 +250,7 @@
   const blogUrl = grids[0]?.dataset.blogger;
   if (grids.length && blogUrl) {
     // 정적 글이 이미 있는 경우 외부 API 실패와 무관하게 대기 문구를 즉시 숨깁니다.
-    grids.forEach(g => { const e = g.nextElementSibling; if (e?.classList.contains('blog-empty') && $('a.mag', g).length) e.hidden = true; });
+    grids.forEach(g => { const e = g.nextElementSibling; if (e?.classList.contains('blog-empty') && $$('a.mag', g).length) e.hidden = true; });
     const cb = '__sfBlogger' + Date.now();
     const bigImg = u => (u || '').replace(/\/[sw]\d+(?:-[a-z]+\d*)*\//, '/w800-rj/').replace(/=[sw]\d+(?:-[a-z]+\d*)*$/, '=w800-rj');
     const strip = h => { const d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').replace(/\s+/g, ' ').trim(); };
