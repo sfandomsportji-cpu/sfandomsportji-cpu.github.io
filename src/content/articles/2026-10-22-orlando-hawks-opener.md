@@ -1,5 +1,6 @@
 ---
 kind: "analysis"
+hide_home: true
 date: "2026-10-22"
 edition: ""
 priority: 665
