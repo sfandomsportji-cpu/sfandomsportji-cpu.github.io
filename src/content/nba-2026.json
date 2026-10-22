@@ -42,14 +42,21 @@
       "home": "MIA",
       "kst": "10.22 (목) 08:30",
       "tv": "ESPN",
-      "tag": "야니스 마이애미 데뷔"
+      "tag": "종료 · MIN 131–106 MIA · 야니스 마이애미 데뷔",
+      "result": "MIN 131–106 MIA",
+      "away_score": 131,
+      "home_score": 106
     },
     {
       "day": "DAY 2",
       "away": "GSW",
       "home": "LAL",
       "kst": "10.22 (목) 11:00",
-      "tv": "ESPN"
+      "tv": "ESPN",
+      "tag": "종료 · GSW 105–127 LAL",
+      "result": "GSW 105–127 LAL",
+      "away_score": 105,
+      "home_score": 127
     },
     {
       "day": "DAY 3",
@@ -194,7 +201,7 @@
     ]
   ],
   "home_mode": "tipoff",
-  "preseason_note": "2026년 10월 22일 10:52 KST 확인: 프리시즌 종료 47경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
+  "preseason_note": "2026년 10월 22일 16:17 KST 확인: 프리시즌 종료 47경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
   "preseason_games": [
     {
       "day": "FINAL",
