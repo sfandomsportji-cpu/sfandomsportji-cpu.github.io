@@ -1485,3 +1485,14 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 .top-stories .top-stories-more{flex:none;margin:0;align-self:flex-end}
 .hero .hero-mute-toggle{top:136px!important;bottom:auto!important;right:460px!important}
 }
+
+/* ── 홈 분석 보드: 경기가 1~2개일 때 줄을 펼쳐 넓게 (2026-10-23) ── */
+.an-board.roomy{gap:14px}
+.an-board.roomy .an-item{padding-bottom:4px}
+.an-board.roomy .an-row{padding:26px 22px}
+.an-board.roomy .an-cell{font-size:19px;line-height:1.65}
+.an-board.roomy .an-open{padding:8px 22px 28px 130px;gap:22px 36px}
+.an-board.roomy .an-stats{gap:18px 24px}
+.an-board.roomy .an-stats b{font-size:26px}
+.an-board.roomy .an-view{font-size:19px;line-height:1.8;padding-left:18px}
+@media (max-width:900px){.an-board.roomy .an-row{padding:18px 14px}.an-board.roomy .an-open{padding:4px 14px 20px}}

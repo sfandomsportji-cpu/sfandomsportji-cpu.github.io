@@ -294,7 +294,7 @@
 
   /* ── 네이버 영상 카드: 누르면 사이트 안에서 바로 재생 ──
      영상 번호·재생 키는 빌드 때 네이버 글에서 받아 카드에 넣어 둡니다(data-vid · data-inkey).
-     값이 없거나 30분이 지났거나 Ctrl·⌘·Shift 클릭이면 기존처럼 네이버 원문이 새 탭으로 열립니다. */
+     값이 없거나 24시간이 지났거나 Ctrl·⌘·Shift 클릭이면 기존처럼 네이버 원문이 새 탭으로 열립니다. */
   const closePlayer = () => {
     const box = document.querySelector('.sf-vmodal');
     if (!box) return;
@@ -332,9 +332,9 @@
   document.addEventListener('click', e => {
     const card = e.target.closest && e.target.closest('a[data-vid][data-inkey]');
     if (!card || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    // 재생 키는 받은 지 30분이 지나면 쓰지 않습니다. 시각이 없거나 오래됐으면 네이버 원문이 새 탭으로 열립니다.
+    // 재생 키는 빌드 때 받은 값입니다. 30분 제한은 빌드가 밀리면 카드가 새 탭으로만 열려 바로 재생이 사라진 것처럼 보여 24시간으로 늘렸고, 재생창에 네이버 원문 링크를 남겨 둡니다.
     const got = Number(card.dataset.inkeyAt || 0);
-    if (!got || Date.now() / 1000 - got > 30 * 60) return;
+    if (!got || Date.now() / 1000 - got > 24 * 60 * 60) return;
     e.preventDefault();
     openPlayer(card);
   });

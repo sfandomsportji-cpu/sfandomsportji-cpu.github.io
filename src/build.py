@@ -827,7 +827,8 @@ def today_analysis() -> str:
     rate = f'<span data-rate title="경기 전에 남긴 예측과 실제 결과 기록">예측 {hit}/{total}</span>' if total else ''
     # 직접 받은 자료사진이 있는 글(오늘의 메인 특집)을 맨 위로 — 모든 줄은 접어 두고 사진 띠만 보이게
     picks = sorted(picks, key=lambda a: not (a.image.startswith('/assets/photos/') and (ROOT / a.image.lstrip('/')).is_file()))
-    cards = ''.join(analysis_row(a, bool(upcoming) and getattr(a, 'league', '') == 'SOCCER') for a in picks)
+    roomy = len(picks) <= 2 and not live_specials  # 경기가 두 개 이하면 줄을 펼친 채로 넓게 — 핵심·변수·시선과 숫자·KAIRO VIEW를 바로 보여 준다
+    cards = ''.join(analysis_row(a, roomy or (bool(upcoming) and getattr(a, 'league', '') == 'SOCCER')) for a in picks)
     head = ('<div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
             '<span>핵심</span><span>변수</span><span>시선</span><span></span></div>')
     special_blocks = ''.join(
@@ -841,7 +842,7 @@ def today_analysis() -> str:
             f'<span class="kr">{display_date.replace("-", ".")} {section_label} {feature_count}편</span>{rate}</h2>'
             f'<a class="more" href="{all_href}">{all_label}</a></div>'
             f'<div class="an-my" data-my hidden><b>MY TEAM</b><span data-my-chips></span></div>'
-            f'<div class="an-board"><div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
+            f'<div class="an-board{" roomy" if roomy else ""}"><div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
             f'<span>핵심</span><span>변수</span><span>시선</span><span></span></div>{cards}</div>'
             f'{special_blocks}'
             f'<p class="sc-hint">경기 분석에 궁금한 점은 쪽지나 댓글로 남겨 주세요 · 킥오프는 한국시간 · 확정 라인업 발표 후 반영</p>'
