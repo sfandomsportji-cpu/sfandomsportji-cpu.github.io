@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-23T04:13+09:00",
+  "updated_at": "2026-10-23T04:31+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-23T04:13+09:00",
+      "checked_at": "2026-10-23T04:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-23T04:13+09:00",
+      "checked_at": "2026-10-23T04:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -329,7 +329,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-23T04:13+09:00",
+      "checked_at": "2026-10-23T04:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -345,11 +345,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nfl/game/_/gameId/401873010/patriots-bears"
+        },
+        {
+          "id": "NFL-401873011",
+          "league": "NFL",
+          "start_kst": "2026-10-25T22:30+09:00",
+          "away": "PIT",
+          "home": "NO",
+          "away_name": "Pittsburgh Steelers",
+          "home_name": "New Orleans Saints",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873011/steelers-saints"
         }
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-23T04:13+09:00",
+      "checked_at": "2026-10-23T04:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
