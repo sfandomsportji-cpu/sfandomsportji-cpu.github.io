@@ -835,6 +835,12 @@ def today_analysis() -> str:
         f'<span class="kr">{esc(f["kr"])} {len(ps)}경기</span></h2><a class="more" href="/special/{f["id"]}/">특집 전체 →</a></div>'
         f'<div class="an-board">{head}{"".join(analysis_row(a, False) for a in ps)}</div>'
         for f, _, ps in live_specials)
+    # 모닝 에디션 카드는 오늘(한국시간) 에디션일 때만 홈에 둔다 — 지난 에디션은 홈에서 내림(에디션 페이지·목록은 유지)
+    show_edition = ed_latest >= now_kst.date().isoformat()
+    edition_card = (f'<a class="review-link" href="/news/morning/{ed_latest}/">'
+                    f'<span class="display" style="font-size:24px">MORNING EDITION</span>'
+                    f'<span class="muted" style="font-size:14px">{ed_latest.replace("-", ".")} 에디션 · 전체 읽기 →</span></a>') if show_edition else ''
+    foot_style = '' if show_edition else ' style="grid-template-columns:1fr"'
     return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
             f'<div class="sec-head"><h2 class="sec-title" id="taTitle">'
             f'SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> '
@@ -845,13 +851,10 @@ def today_analysis() -> str:
             f'<span>핵심</span><span>변수</span><span>시선</span><span></span></div>{cards}</div>'
             f'{special_blocks}'
             f'<p class="sc-hint">경기 분석에 궁금한 점은 쪽지나 댓글로 남겨 주세요 · 킥오프는 한국시간 · 확정 라인업 발표 후 반영</p>'
-            f'<div class="ta-foot"><a class="review-link" href="/analysis/review/">'
+            f'<div class="ta-foot"{foot_style}><a class="review-link" href="/analysis/review/">'
             f'<span class="display" style="font-size:24px">REVIEW <span class="accent">/</span> 복기 리포트</span>'
             f'<span class="muted" style="font-size:14px">경기 결과와 분석 과정을 비교합니다</span></a>'
-            f'<a class="review-link" href="/news/morning/{ed_latest}/">'
-            f'<span class="display" style="font-size:24px">MORNING EDITION</span>'
-            f'<span class="muted" style="font-size:14px">{ed_latest.replace("-", ".")} 에디션 · 전체 읽기 →</span>'
-            f'</a></div></section>')
+            f'{edition_card}</div></section>')
 
 def talk_icon() -> str:
     return ('<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
@@ -1173,6 +1176,9 @@ def build_home():
     home_other = [a for a in news if a.slug not in stale_home_slugs and a.slug not in home_pins]
     newer_news = [a for a in home_other if a.date > '2026-10-23']
     home_feed = newer_news + pin_articles + [a for a in home_other if a not in newer_news]
+    # 홈 뉴스는 오늘(한국시간) 날짜 글만 — 지난 뉴스는 홈에서 내리고(글·전체 목록은 유지), 오늘 글이 없으면 최신순으로 되돌린다.
+    today_kst = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
+    home_feed = [a for a in home_feed if a.date >= today_kst] or home_feed
     lead = home_feed[0]
     rest = home_feed[1:5]
     lead_summary = lead.excerpt
