@@ -1168,7 +1168,8 @@ def build_home():
     ]
     pin_articles = [next((a for a in ARTICLES if a.slug == slug), None) for slug in home_pins]
     pin_articles = [a for a in pin_articles if a is not None]
-    stale_home_slugs = {'nba-day2-results-20261022', 'nba-oct22-records-20261021'}
+    stale_home_slugs = {'nba-day2-results-20261022', 'nba-oct22-records-20261021',
+                        'hanshin-dena-cs-final-game2-recap', 'lg-doosan-wildcard-game1-recap'}
     home_other = [a for a in news if a.slug not in stale_home_slugs and a.slug not in home_pins]
     newer_news = [a for a in home_other if a.date > '2026-10-23']
     home_feed = newer_news + pin_articles + [a for a in home_other if a not in newer_news]
