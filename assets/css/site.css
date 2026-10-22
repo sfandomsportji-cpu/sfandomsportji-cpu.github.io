@@ -1485,3 +1485,41 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 .top-stories .top-stories-more{flex:none;margin:0;align-self:flex-end}
 .hero .hero-mute-toggle{top:136px!important;bottom:auto!important;right:460px!important}
 }
+
+/* Approved NBA home splash (2026-10-23). Four user-provided photos live in a local atlas. */
+.sf-home-spotlight{padding:28px 0 30px;background:linear-gradient(140deg,#181a23,#0a0b0e);border-bottom:1px solid rgba(255,255,255,.1)}
+.sf-home-spotlight__head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:18px}
+.sf-home-spotlight__eyebrow{font-size:13px;font-weight:800;letter-spacing:.12em;color:#ff8998}
+.sf-home-spotlight__head h2{margin:5px 0 0;font:400 clamp(28px,3.2vw,44px)/1.15 var(--display);color:#fff}
+.sf-home-spotlight__head h2 span{font:400 .55em var(--round);color:#c9cfda}
+.sf-home-spotlight__all{color:white;text-decoration:none;white-space:nowrap;border:1px solid #777b86;border-radius:100px;padding:9px 16px;font-size:14px}
+.sf-home-spotlight__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.sf-home-spotlight__card{display:block;position:relative;isolation:isolate;aspect-ratio:34/25;min-width:0;overflow:hidden;border:1px solid rgba(255,255,255,.17);border-radius:15px;background:#1b1c22;color:white;text-decoration:none}
+.sf-home-spotlight__card:focus-visible{outline:3px solid #ff8797;outline-offset:3px}
+.sf-home-spotlight__photo{position:absolute;inset:0;display:block;background:url('/assets/editorial/nba-20261023-spotlight-atlas.webp') no-repeat;background-size:200% 200%;transition:transform .25s ease}
+.sf-home-spotlight__card--jokic .sf-home-spotlight__photo{background-position:0 0}
+.sf-home-spotlight__card--harden .sf-home-spotlight__photo{background-position:100% 0}
+.sf-home-spotlight__card--phila .sf-home-spotlight__photo{background-position:0 100%}
+.sf-home-spotlight__card--okc .sf-home-spotlight__photo{background-position:100% 100%}
+.sf-home-spotlight__card:hover .sf-home-spotlight__photo{transform:scale(1.025)}
+.sf-home-spotlight__card::after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(0deg,rgba(4,5,11,.96),rgba(4,5,11,.32) 65%,transparent);z-index:1;pointer-events:none}
+.sf-home-spotlight__copy{position:absolute;z-index:2;left:24px;right:24px;bottom:20px;display:flex;flex-direction:column;gap:5px;line-height:1.35;text-shadow:0 2px 12px #0008}
+.sf-home-spotlight__copy small{color:#f1afba;font-size:13px;letter-spacing:.06em;font-weight:800}
+.sf-home-spotlight__copy strong{font:400 clamp(24px,2.7vw,37px)/1.2 'Jua',var(--display)}
+.sf-home-spotlight__copy em{font:normal 15px var(--round);color:#edf0f5}
+.sf-home-spotlight__note{margin:10px 0 0;color:#abb2bf;font-size:12px!important}
+@media(max-width:700px){
+ .sf-home-spotlight{padding:20px 0}
+ .sf-home-spotlight__head{align-items:start;gap:8px;margin-bottom:12px}
+ .sf-home-spotlight__head h2{font-size:clamp(22px,6vw,31px)}
+ .sf-home-spotlight__head h2 span{display:block;margin-top:3px;font-size:14px}
+ .sf-home-spotlight__eyebrow{font-size:11px}
+ .sf-home-spotlight__all{font-size:12px;padding:7px 9px}
+ .sf-home-spotlight__grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 3px 10px}
+ .sf-home-spotlight__grid::-webkit-scrollbar{display:none}
+ .sf-home-spotlight__card{flex:0 0 min(88%,430px);scroll-snap-align:start}
+ .sf-home-spotlight__copy{left:15px;right:15px;bottom:13px}
+ .sf-home-spotlight__copy strong{font-size:clamp(23px,5.5vw,29px)}
+ .sf-home-spotlight__copy small,.sf-home-spotlight__copy em{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.sf-home-spotlight__photo{transition:none}}
