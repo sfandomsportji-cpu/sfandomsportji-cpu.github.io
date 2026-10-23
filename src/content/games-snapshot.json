@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-23T06:53+09:00",
+      "checked_at": "2026-10-23T14:43+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -48,9 +48,9 @@
           "home": "PHI",
           "away_name": "Cleveland Cavaliers",
           "home_name": "Philadelphia 76ers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
+          "status": "final",
+          "away_score": 106,
+          "home_score": 114,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909093/cavaliers-76ers"
         },
         {
@@ -61,9 +61,9 @@
           "home": "OKC",
           "away_name": "Denver Nuggets",
           "home_name": "Oklahoma City Thunder",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
+          "status": "final",
+          "away_score": 84,
+          "home_score": 96,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909094/nuggets-thunder"
         },
         {
