@@ -1199,19 +1199,6 @@ def build_home():
     # 홈 '오늘 SOCCER' 줄: 카드가 클릭되지 않아 일단 홈에서만 내림(삭제 아님). 다시 올리려면 True로.
     sc_html = soccer_today() if (SHOW_HOME_SOCCER and soccer_today_active()) else ''
     body = f'''
-<section class="sf-home-spotlight" aria-labelledby="sfSpotlightTitle">
- <div class="wrap">
-  <div class="sf-home-spotlight__head"><div><span class="sf-home-spotlight__eyebrow">NBA 2026-27 · OPENING WEEK</span><h2 id="sfSpotlightTitle">NBA SPOTLIGHT <span>경기의 순간들</span></h2></div><a class="sf-home-spotlight__all" href="/news/2026/10/nba-opening-week-special-20261023/">개막 특집 기사 →</a></div>
-  <div class="sf-home-spotlight__grid">
-   <a class="sf-home-spotlight__card sf-home-spotlight__card--jokic" href="/analysis/nba/2026-10-23-nuggets-thunder-preview-20261023/"><span class="sf-home-spotlight__photo" role="img" aria-label="덴버의 니콜라 요키치 경기 장면"></span><span class="sf-home-spotlight__copy"><small>DENVER NUGGETS</small><strong>요키치, 서부의 기준점</strong><em>덴버–오클라호마시티 프리뷰 →</em></span></a>
-   <a class="sf-home-spotlight__card sf-home-spotlight__card--harden" href="/analysis/nba/2026-10-23-cavaliers-sixers-preview-20261023/"><span class="sf-home-spotlight__photo" role="img" aria-label="클리블랜드의 제임스 하든 슛 장면"></span><span class="sf-home-spotlight__copy"><small>CLEVELAND CAVALIERS</small><strong>하든의 볼 운반, 승부의 열쇠</strong><em>클리블랜드–필라델피아 프리뷰 →</em></span></a>
-   <a class="sf-home-spotlight__card sf-home-spotlight__card--phila" href="/analysis/nba/2026-10-23-cavaliers-sixers-preview-20261023/"><span class="sf-home-spotlight__photo" role="img" aria-label="필라델피아 선수의 골밑 슛 장면"></span><span class="sf-home-spotlight__copy"><small>PHILADELPHIA 76ERS</small><strong>골밑에서 시작되는 승부</strong><em>필라델피아 홈 개막전 분석 →</em></span></a>
-   <a class="sf-home-spotlight__card sf-home-spotlight__card--okc" href="/analysis/nba/2026-10-23-nuggets-thunder-preview-20261023/"><span class="sf-home-spotlight__photo" role="img" aria-label="오클라호마시티 선수가 미네소타 수비 사이로 돌파하는 장면"></span><span class="sf-home-spotlight__copy"><small>OKLAHOMA CITY THUNDER</small><strong>속도와 압박, 선더의 방식</strong><em>덴버–오클라호마시티 프리뷰 →</em></span></a>
-  </div>
-  <p class="sf-home-spotlight__note">제공된 경기 사진입니다. 기사 속 경기와 촬영 시점은 다를 수 있습니다.</p>
- </div>
-</section>
-
 <section class="hero" aria-labelledby="heroTitle">
   <div class="hero-media">{media}</div>
   <div class="hero-shade" aria-hidden="true"></div>
