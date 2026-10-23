@@ -1243,6 +1243,9 @@ section[aria-labelledby="newsTitle"] .nl>.talk{grid-column:-2;justify-self:end;w
 section[aria-labelledby="newsTitle"] .nl strong{font-size:clamp(19px,1.2vw,22px);line-height:1.46;font-weight:400;word-break:keep-all;color:#f3f4f7;letter-spacing:-.015em;font-family:var(--head)}
 section[aria-labelledby="newsTitle"] .nl .tag{font-size:15px;color:#b7c1d2;white-space:normal;line-height:1.4}
 section[aria-labelledby="newsTitle"] .nl:hover{background:linear-gradient(130deg,#262639,#171a26);border-color:#856073}
+@media(min-width:1181px){
+ section[aria-labelledby="newsTitle"] .news-list .nl{flex:1 1 0}
+}
 @media(min-width:761px) and (max-width:1180px){
  section[aria-labelledby="newsTitle"] .news-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
  section[aria-labelledby="newsTitle"] .news-lead,section[aria-labelledby="newsTitle"] .news-list{grid-column:1}

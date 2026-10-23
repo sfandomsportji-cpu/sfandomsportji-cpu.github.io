@@ -1178,7 +1178,10 @@ def build_home():
     home_feed = newer_news + pin_articles + [a for a in home_other if a not in newer_news]
     # 홈 뉴스는 오늘(한국시간) 날짜 글만 — 지난 뉴스는 홈에서 내리고(글·전체 목록은 유지), 오늘 글이 없으면 최신순으로 되돌린다.
     today_kst = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
-    home_feed = [a for a in home_feed if a.date >= today_kst] or home_feed
+    # 오늘 글만 남기면 오른쪽 목록이 비어 보이므로(2026-10-23 사용자 지적), 리드 1 + 목록 4 = 5건이 되도록 최신순으로 채운다.
+    _today_feed = [a for a in home_feed if a.date >= today_kst]
+    _fill = [a for a in home_feed if a not in _today_feed]
+    home_feed = ((_today_feed + _fill)[:5]) or home_feed
     lead = home_feed[0]
     rest = home_feed[1:5]
     lead_summary = lead.excerpt
