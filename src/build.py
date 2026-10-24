@@ -823,7 +823,6 @@ def today_analysis() -> str:
     else:
         picks = []
         display_date = now_kst.date().isoformat()
-    section_label = '최신 분석'
     all_href = '/analysis/'
     all_label = '최신 분석 전체 →'
     feature_count = len(picks)
