@@ -15,6 +15,7 @@ import pathlib
 import re
 import urllib.request
 import urllib.robotparser
+import urllib.error
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / "content" / "npb-snapshot.json"
@@ -37,8 +38,16 @@ def fetch() -> str:
     rp.read()
     if not rp.can_fetch(UA, URL):
         raise RuntimeError("robots.txt 불허")
-    with urllib.request.urlopen(urllib.request.Request(URL, headers={"User-Agent": UA}), timeout=20) as r:
-        return r.read(1_500_000).decode("utf-8", "replace")
+    request = urllib.request.Request(URL, headers={"User-Agent": UA})
+    for attempt in range(2):
+        try:
+            with urllib.request.urlopen(request, timeout=15) as r:
+                return r.read(1_500_000).decode("utf-8", "replace")
+        except (TimeoutError, urllib.error.URLError) as exc:
+            if attempt:
+                raise
+            print(f"NPB 일시적 연결 실패, 1회 재시도: {exc!r}")
+    raise RuntimeError("NPB 응답 없음")
 
 
 def parse(page: str, today: dt.date) -> list[dict]:
@@ -56,6 +65,8 @@ def parse(page: str, today: dt.date) -> list[dict]:
     if not date_m:
         raise ValueError("날짜 없음")
     day = dt.date(int(date_m[1]), int(date_m[2]), int(date_m[3]))
+    if day != today:
+        raise ValueError(f"표시된 NPB 점수 날짜 {day}가 점검 날짜 {today}와 다름")
     games = []
     for m in re.finditer(r'<div class="score_box">\s*<a href="(/scores/[^"]+)">(.*?)</a>\s*</div>', block, re.S):
         href, inner = m[1], m[2]
@@ -114,9 +125,11 @@ def main() -> None:
     cutoff = (now - dt.timedelta(days=KEEP_DAYS)).isoformat(timespec="minutes")
     games = sorted((g for g in merged.values() if g["start_kst"] >= cutoff), key=lambda g: (g["start_kst"], g["id"]))
     league = {"checked_at": now.isoformat(timespec="minutes") if not error else old.get("leagues", {}).get("NPB", {}).get("checked_at", ""),
+              "last_attempt_at": now.isoformat(timespec="minutes"),
               "coverage": "complete" if not error else "partial", "failed_dates": [],
               "games": games,
-              "no_games_today": (not bool(fresh)) if not error else old.get("leagues", {}).get("NPB", {}).get("no_games_today", False)}
+              # 지난 날짜에 확인한 '오늘 경기 없음'을 다음날에도 재사용하면 잘못된 안내가 된다.
+              "no_games_today": (not bool(fresh)) if not error else False}
     if error:
         league["error"] = error
     text = json.dumps({"provider": "npb.jp 첫 화면 속보", "leagues": {"NPB": league}}, ensure_ascii=False, indent=2) + "\n"

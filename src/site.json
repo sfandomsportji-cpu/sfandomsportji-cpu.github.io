@@ -33,7 +33,7 @@
     "video": {
       "src": "/assets/nba-hero-clip.mp4",
       "poster": "/assets/nba-hero-poster.jpg",
-      "label": "NBA 플레이오프 하이라이트 (첫 화면)"
+      "label": "NBA 경기 영상 (첫 화면)"
     }
   },
   "ads": {

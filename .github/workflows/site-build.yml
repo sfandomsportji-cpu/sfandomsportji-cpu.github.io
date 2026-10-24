@@ -47,6 +47,7 @@ jobs:
         run: python3 src/tools/sync_postseason.py
       - name: Build
         run: python3 src/build.py
+      # Automatic article drafting/Telegram alerts are disabled. Editorial publication requires approval.
       # check.py reads the Git index: include generated files and expired deletions.
       # Staging is local only; failed validation prevents every commit/push.
       - name: Stage generated files for validation
@@ -87,42 +88,4 @@ jobs:
             git commit -m "build: 최신 main 기준 재생성 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
           done
           echo "Generated commit could not be pushed after three retries." >&2
-          exit 1
-      - name: 경기 종료 · 시작 2시간 전 초안 + 텔레그램 알림 (초안만 만들고 게시는 하지 않음)
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 src/tools/auto_recap.py --alerts
-      - name: Commit auto drafts
-        run: |
-          if [ -z "$(git status --porcelain src/content/drafts src/content/auto-alerts.json)" ]; then
-            exit 0
-          fi
-          git config user.name "sfandom-bot"
-          git config user.email "sfandom-bot@users.noreply.github.com"
-          git add src/content/drafts src/content/auto-alerts.json
-          git commit -m "chore: 자동 초안·알림 기록 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
-          for attempt in 1 2 3; do
-            git pull --rebase origin main && git push && exit 0
-            sleep 3
-          done
-          exit 1
-      - name: Telegram 알림 (TELEGRAM_BOT_TOKEN · TELEGRAM_CHAT_ID Secrets 가 있을 때만 동작)
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 src/tools/telegram_notify.py
-      - name: Commit telegram sent log
-        run: |
-          if [ -z "$(git status --porcelain src/content/telegram-sent.json)" ]; then
-            exit 0
-          fi
-          git config user.name "sfandom-bot"
-          git config user.email "sfandom-bot@users.noreply.github.com"
-          git add src/content/telegram-sent.json
-          git commit -m "chore: 텔레그램 발송 기록 $(TZ=Asia/Seoul date +%Y-%m-%d\ %H:%M)"
-          for attempt in 1 2 3; do
-            git pull --rebase origin main && git push && exit 0
-            sleep 3
-          done
           exit 1

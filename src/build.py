@@ -808,21 +808,27 @@ def today_analysis() -> str:
     for f in SPECIALS.get('features', []):
         sday, spicks = special_picks(f)
         if spicks and sday >= now_kst.date().isoformat():
-            live_specials.append((f, sday, spicks))
+            # 같은 날 종료된 특집 경기 프리뷰를 홈에서 계속 재노출하지 않는다.
+            spicks = [a for a in spicks if (start_kst(a) and start_kst(a) >= now_kst - dt.timedelta(hours=1))
+                      or (start_kst(a) is None and sday > now_kst.date().isoformat())]
+            if spicks:
+                live_specials.append((f, sday, spicks))
     in_special = {a.file for _, _, ps in live_specials for a in ps}
     if any(a.file not in in_special for a in pool):  # 특집 경기는 아래 특집 블록에 있으므로 위 3칸에서는 겹치지 않게 뺀다
         pool = [a for a in pool if a.file not in in_special]
     upcoming = sorted([a for a in pool if start_kst(a) and start_kst(a) >= now_kst - dt.timedelta(hours=1)], key=start_kst)
-    if upcoming:  # 아직 시작 전(또는 막 시작한) 경기 분석을 시작 시각 순으로 — 이미 끝난 경기 카드로 칸을 채우지 않음
+    if upcoming:  # 진행 예정 경기만 홈에 노출하고, 지난 프리뷰는 목록에 보존한다.
         picks = upcoming[:4]
         display_date = start_kst(picks[0]).date().isoformat()
     else:
-        picks = [a for a in pool if a.date == pool[0].date][:3]  # 가장 최신 날짜의 분석만 (옛 글로 칸을 채우지 않음)
-        display_date = pool[0].date
+        picks = []
+        display_date = now_kst.date().isoformat()
     section_label = '최신 분석'
     all_href = '/analysis/'
     all_label = '최신 분석 전체 →'
     feature_count = len(picks)
+    header_sub = (f'{display_date.replace("-", ".")} 최신 분석 {feature_count}편' if picks
+                  else '새 경기 분석 준비 중')
     hit, total = hit_rate()
     rate = f'<span data-rate title="경기 전에 남긴 예측과 실제 결과 기록">예측 {hit}/{total}</span>' if total else ''
     # 직접 받은 자료사진이 있는 글(오늘의 메인 특집)을 맨 위로 — 모든 줄은 접어 두고 사진 띠만 보이게
@@ -830,6 +836,8 @@ def today_analysis() -> str:
     cards = ''.join(analysis_row(a, bool(upcoming) and getattr(a, 'league', '') == 'SOCCER') for a in picks)
     head = ('<div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
             '<span>핵심</span><span>변수</span><span>시선</span><span></span></div>')
+    board = (f'<div class="an-board">{head}{cards}</div>' if picks else
+             '<div class="an-board"><p class="sc-hint" style="padding:24px;margin:0">예정된 경기 프리뷰가 등록되면 이곳에 표시됩니다. 이전 경기 분석은 전체 목록과 복기 리포트에서 확인할 수 있습니다.</p></div>')
     special_blocks = ''.join(
         f'<div class="sec-head" style="margin-top:40px"><h2 class="sec-title">{esc(f["title_a"])} <span class="outline">{esc(f["title_b"])}</span> '
         f'<span class="kr">{esc(f["kr"])} {len(ps)}경기</span></h2><a class="more" href="/special/{f["id"]}/">특집 전체 →</a></div>'
@@ -844,11 +852,10 @@ def today_analysis() -> str:
     return (f'<section class="wrap sec" id="today-analysis" aria-labelledby="taTitle">'
             f'<div class="sec-head"><h2 class="sec-title" id="taTitle">'
             f'SFANDOM &amp; KAIRO <span class="outline">ANALYSIS</span> '
-            f'<span class="kr">{display_date.replace("-", ".")} {section_label} {feature_count}편</span>{rate}</h2>'
+            f'<span class="kr">{esc(header_sub)}</span>{rate}</h2>'
             f'<a class="more" href="{all_href}">{all_label}</a></div>'
             f'<div class="an-my" data-my hidden><b>MY TEAM</b><span data-my-chips></span></div>'
-            f'<div class="an-board"><div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
-            f'<span>핵심</span><span>변수</span><span>시선</span><span></span></div>{cards}</div>'
+            f'{board}'
             f'{special_blocks}'
             f'<p class="sc-hint">경기 분석에 궁금한 점은 쪽지나 댓글로 남겨 주세요 · 킥오프는 한국시간 · 확정 라인업 발표 후 반영</p>'
             f'<div class="ta-foot"{foot_style}><a class="review-link" href="/analysis/review/">'
@@ -1162,13 +1169,9 @@ def build_home():
     home_cta = '프리시즌 일정' if home_preseason else ('정규시즌 일정·결과' if season_started else '개막 주간 일정')
     home_aria = 'NBA 프리시즌' if home_preseason else ('NBA 정규시즌' if season_started else 'NBA 개막 주간')
     tip = ''.join(nba_home_story(g) for g in home_games[:5])
-    # 2026-10-23 사용자 승인 홈 편집: 신작 특집 3건을 우선 노출.
-    # 보존된 기사/전체 뉴스 목록에는 영향 없음. 추후 신규 뉴스가 나오면 자동 최신순 복귀.
-    home_pins = [
-        'nba-opening-week-special-20261023',
-        'cavaliers-sixers-preview-20261023',
-        'nuggets-thunder-preview-20261023',
-    ]
+    # 지난 경기 프리뷰는 홈 뉴스에서 내리고, 기사·분석 목록에는 보존한다.
+    # 신규 뉴스가 발행되면 날짜순으로 우선 노출한다.
+    home_pins = ['nba-opening-week-special-20261023']
     pin_articles = [next((a for a in ARTICLES if a.slug == slug), None) for slug in home_pins]
     pin_articles = [a for a in pin_articles if a is not None]
     stale_home_slugs = {'nba-day2-results-20261022', 'nba-oct22-records-20261021',
@@ -2065,13 +2068,13 @@ def game_sections(brief: bool = False) -> str:
         else:
             games = games[-50:]
         cards = ''.join(game_card(g, stale, details.get('checked_at', '')) for g in games)
-        if details.get('no_games_today') and league == 'NPB':
+        if details.get('no_games_today') and league == 'NPB' and details.get('checked_at', '')[:10] == TODAY:
             cards = '<p class="sf-scores__empty">오늘 NPB 공식 일정에 경기가 없습니다. 아래는 이전 경기 기록입니다.</p>' + cards
         if not cards:
             cards = '<p class="sf-scores__empty">이 시간대 확인된 경기 정보가 없습니다. 다음 자료 갱신을 기다려 주세요.</p>'
         note = ' · 일부 날짜 확인 지연' if details.get('coverage') == 'partial' else ''
         if details.get('error'):
-            note += ' · 외부 자료 연결 지연'
+            note += ' · 외부 자료 확인 지연'
         output.append(f'<section class="sf-scores__league" data-league="{league}" aria-label="{league} 경기 결과와 일정">'
                       f'<div class="sf-scores__league-head"><h3>{icon} {league}</h3>'
                       f'<small>확인 {esc(verified)}{esc(note)}</small></div>'
