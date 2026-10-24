@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-25T04:29+09:00",
+  "updated_at": "2026-10-25T06:54+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-25T04:29+09:00",
+      "checked_at": "2026-10-25T06:54+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-25T04:29+09:00",
+      "checked_at": "2026-10-25T06:54+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -355,7 +355,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-25T04:29+09:00",
+      "checked_at": "2026-10-25T06:54+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -531,7 +531,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-25T04:29+09:00",
+      "checked_at": "2026-10-25T06:54+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -543,10 +543,10 @@
           "home": "PHI",
           "away_name": "Anaheim Ducks",
           "home_name": "Philadelphia Flyers",
-          "status": "live",
+          "status": "final",
           "away_score": 5,
           "home_score": 4,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892566"
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892566/ducks-flyers"
         },
         {
           "id": "NHL-401892567",
@@ -556,10 +556,10 @@
           "home": "NJ",
           "away_name": "Los Angeles Kings",
           "home_name": "New Jersey Devils",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892567/kings-devils"
+          "status": "live",
+          "away_score": 1,
+          "home_score": 3,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892567"
         },
         {
           "id": "NHL-401892568",
