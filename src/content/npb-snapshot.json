@@ -3,6 +3,7 @@
   "leagues": {
     "NPB": {
       "checked_at": "2026-10-21T20:46+09:00",
+      "last_attempt_at": "2026-10-25T01:09+09:00",
       "coverage": "partial",
       "failed_dates": [],
       "games": [
@@ -72,8 +73,8 @@
           "source_url": "https://npb.jp/scores/2026/1017/t-db-04/"
         }
       ],
-      "no_games_today": true,
-      "error": "<urlopen error [Errno 110] Connection timed out>"
+      "no_games_today": false,
+      "error": "<urlopen error timed out>"
     }
   }
 }
