@@ -34,8 +34,11 @@ TEAMS = {
 
 
 def fetch() -> str:
+    # robotparser.read()에는 타임아웃 인수가 없어 공식 사이트 장애 시 빌드 전체가 지연된다.
     rp = urllib.robotparser.RobotFileParser("https://npb.jp/robots.txt")
-    rp.read()
+    robots_request = urllib.request.Request("https://npb.jp/robots.txt", headers={"User-Agent": UA})
+    with urllib.request.urlopen(robots_request, timeout=10) as r:
+        rp.parse(r.read(200_000).decode("utf-8", "replace").splitlines())
     if not rp.can_fetch(UA, URL):
         raise RuntimeError("robots.txt 불허")
     request = urllib.request.Request(URL, headers={"User-Agent": UA})

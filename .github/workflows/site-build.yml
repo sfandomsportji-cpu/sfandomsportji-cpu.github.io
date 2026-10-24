@@ -42,7 +42,14 @@ jobs:
       - name: Sync league scores and schedules (ESPN, verified states only)
         run: python3 src/tools/sync_games.py
       - name: Sync NPB scores (npb.jp, robots.txt 허용 · 실패 시 이전 값 유지)
-        run: python3 src/tools/sync_npb.py
+        run: |
+          rc=0
+          timeout 65s python3 src/tools/sync_npb.py || rc=$?
+          if [ "$rc" -eq 124 ]; then
+            echo "NPB 공식 사이트 응답 지연: 이전 기록 유지, 나머지 사이트 빌드 계속"
+          elif [ "$rc" -ne 0 ]; then
+            exit "$rc"
+          fi
       - name: Sync postseason / NBA / hero from verified scores
         run: python3 src/tools/sync_postseason.py
       - name: Build
