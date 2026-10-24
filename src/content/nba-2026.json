@@ -1,7 +1,7 @@
 {
   "season": "2026-27",
   "opening_kst": "2026-10-21T04:00:00+09:00",
-  "note": "시간은 한국시간(KST). 2026년 10월 22일 종료 경기 11개와 개막일 3개 결과 확인. 이후 예정 경기는 경기 완료 전 결과를 표시하지 않음.",
+  "note": "시간은 한국시간(KST). 2026년 10월 24일(토) 종료 경기까지 결과를 확인해 표시했습니다. 이후 예정 경기는 경기 완료 전 결과를 표시하지 않음.",
   "games": [
     {
       "day": "OPENING NIGHT",
@@ -38,65 +38,6 @@
     },
     {
       "day": "DAY 2",
-      "away": "MIN",
-      "home": "MIA",
-      "kst": "10.22 (목) 08:30",
-      "tv": "ESPN",
-      "tag": "종료 · MIN 131–106 MIA · 야니스 마이애미 데뷔",
-      "result": "MIN 131–106 MIA",
-      "away_score": 131,
-      "home_score": 106
-    },
-    {
-      "day": "DAY 2",
-      "away": "GSW",
-      "home": "LAL",
-      "kst": "10.22 (목) 11:00",
-      "tv": "ESPN",
-      "tag": "종료 · GSW 105–127 LAL",
-      "result": "GSW 105–127 LAL",
-      "away_score": 105,
-      "home_score": 127
-    },
-    {
-      "day": "DAY 3",
-      "away": "CLE",
-      "home": "PHI",
-      "kst": "10.23 (금) 08:00",
-      "tv": "ESPN",
-      "tag": "르브론 필라델피아 홈 데뷔"
-    },
-    {
-      "day": "DAY 3",
-      "away": "DEN",
-      "home": "OKC",
-      "kst": "10.23 (금) 10:30",
-      "tv": "ESPN"
-    },
-    {
-      "day": "DAY 4",
-      "away": "NYK",
-      "home": "BOS",
-      "kst": "10.24 (토) 08:00",
-      "tv": "PRIME VIDEO",
-      "tag": "종료 · NYK 103–107 BOS",
-      "result": "NYK 103–107 BOS",
-      "away_score": 103,
-      "home_score": 107
-    },
-    {
-      "day": "DAY 4",
-      "away": "HOU",
-      "home": "SAS",
-      "kst": "10.24 (토) 10:30",
-      "tv": "PRIME VIDEO",
-      "tag": "종료 · HOU 114–110 SAS · 오스틴 개최",
-      "result": "HOU 114–110 SAS",
-      "away_score": 114,
-      "home_score": 110
-    },
-    {
-      "day": "DAY 2",
       "away": "MIL",
       "home": "WAS",
       "kst": "10.22 (목) 08:00",
@@ -116,6 +57,17 @@
       "result": "ATL 132–125 ORL",
       "away_score": 132,
       "home_score": 125
+    },
+    {
+      "day": "DAY 2",
+      "away": "MIN",
+      "home": "MIA",
+      "kst": "10.22 (목) 08:30",
+      "tv": "ESPN",
+      "tag": "종료 · MIN 131–106 MIA · 야니스 마이애미 데뷔",
+      "result": "MIN 131–106 MIA",
+      "away_score": 131,
+      "home_score": 106
     },
     {
       "day": "DAY 2",
@@ -174,6 +126,17 @@
     },
     {
       "day": "DAY 2",
+      "away": "GSW",
+      "home": "LAL",
+      "kst": "10.22 (목) 11:00",
+      "tv": "ESPN",
+      "tag": "종료 · GSW 105–127 LAL",
+      "result": "GSW 105–127 LAL",
+      "away_score": 105,
+      "home_score": 127
+    },
+    {
+      "day": "DAY 2",
       "away": "PHX",
       "home": "POR",
       "kst": "10.22 (목) 11:00",
@@ -193,6 +156,265 @@
       "result": "SAC 96–121 LAC",
       "away_score": 96,
       "home_score": 121
+    },
+    {
+      "day": "DAY 3",
+      "away": "CLE",
+      "home": "PHI",
+      "kst": "10.23 (금) 08:00",
+      "tv": "ESPN",
+      "tag": "종료 · CLE 106–114 PHI · 르브론 필라델피아 홈 데뷔",
+      "result": "CLE 106–114 PHI",
+      "away_score": 106,
+      "home_score": 114
+    },
+    {
+      "day": "DAY 3",
+      "away": "DEN",
+      "home": "OKC",
+      "kst": "10.23 (금) 10:30",
+      "tv": "ESPN",
+      "result": "DEN 84–96 OKC",
+      "tag": "종료 · DEN 84–96 OKC",
+      "away_score": 84,
+      "home_score": 96
+    },
+    {
+      "day": "DAY 4",
+      "away": "CHI",
+      "home": "MIL",
+      "kst": "10.24 (토) 05:00",
+      "tv": "NBA",
+      "tag": "종료 · CHI 132–125 MIL",
+      "result": "CHI 132–125 MIL",
+      "away_score": 132,
+      "home_score": 125
+    },
+    {
+      "day": "DAY 4",
+      "away": "NYK",
+      "home": "BOS",
+      "kst": "10.24 (토) 08:00",
+      "tv": "PRIME VIDEO",
+      "tag": "종료 · NYK 103–107 BOS",
+      "result": "NYK 103–107 BOS",
+      "away_score": 103,
+      "home_score": 107
+    },
+    {
+      "day": "DAY 4",
+      "away": "ATL",
+      "home": "CHA",
+      "kst": "10.24 (토) 08:00",
+      "tv": "NBA",
+      "tag": "종료 · ATL 128–81 CHA",
+      "result": "ATL 128–81 CHA",
+      "away_score": 128,
+      "home_score": 81
+    },
+    {
+      "day": "DAY 4",
+      "away": "DAL",
+      "home": "IND",
+      "kst": "10.24 (토) 08:00",
+      "tv": "NBA",
+      "tag": "종료 · DAL 121–105 IND",
+      "result": "DAL 121–105 IND",
+      "away_score": 121,
+      "home_score": 105
+    },
+    {
+      "day": "DAY 4",
+      "away": "MIN",
+      "home": "ORL",
+      "kst": "10.24 (토) 08:00",
+      "tv": "NBA",
+      "tag": "종료 · MIN 115–93 ORL",
+      "result": "MIN 115–93 ORL",
+      "away_score": 115,
+      "home_score": 93
+    },
+    {
+      "day": "DAY 4",
+      "away": "TOR",
+      "home": "WAS",
+      "kst": "10.24 (토) 08:00",
+      "tv": "NBA",
+      "tag": "종료 · TOR 112–102 WAS",
+      "result": "TOR 112–102 WAS",
+      "away_score": 112,
+      "home_score": 102
+    },
+    {
+      "day": "DAY 4",
+      "away": "DET",
+      "home": "MIA",
+      "kst": "10.24 (토) 09:00",
+      "tv": "NBA",
+      "tag": "종료 · DET 128–111 MIA",
+      "result": "DET 128–111 MIA",
+      "away_score": 128,
+      "home_score": 111
+    },
+    {
+      "day": "DAY 4",
+      "away": "HOU",
+      "home": "SAS",
+      "kst": "10.24 (토) 10:30",
+      "tv": "PRIME VIDEO",
+      "tag": "종료 · HOU 114–110 SAS · 오스틴 개최",
+      "result": "HOU 114–110 SAS",
+      "away_score": 114,
+      "home_score": 110
+    },
+    {
+      "day": "DAY 4",
+      "away": "NOP",
+      "home": "UTA",
+      "kst": "10.24 (토) 10:30",
+      "tv": "NBA",
+      "tag": "종료 · NOP 119–120 UTA",
+      "result": "NOP 119–120 UTA",
+      "away_score": 119,
+      "home_score": 120
+    },
+    {
+      "day": "DAY 4",
+      "away": "MEM",
+      "home": "GSW",
+      "kst": "10.24 (토) 11:00",
+      "tv": "NBA",
+      "tag": "종료 · MEM 111–108 GSW",
+      "result": "MEM 111–108 GSW",
+      "away_score": 111,
+      "home_score": 108
+    },
+    {
+      "day": "DAY 4",
+      "away": "LAC",
+      "home": "LAL",
+      "kst": "10.24 (토) 11:00",
+      "tv": "NBA",
+      "tag": "종료 · LAC 117–125 LAL",
+      "result": "LAC 117–125 LAL",
+      "away_score": 117,
+      "home_score": 125
+    },
+    {
+      "day": "DAY 4",
+      "away": "POR",
+      "home": "SAC",
+      "kst": "10.24 (토) 11:00",
+      "tv": "NBA",
+      "tag": "종료 · POR 128–120 SAC",
+      "result": "POR 128–120 SAC",
+      "away_score": 128,
+      "home_score": 120
+    },
+    {
+      "day": "DAY 5",
+      "away": "MIA",
+      "home": "CHA",
+      "kst": "10.25 (일) 07:00",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 5",
+      "away": "BKN",
+      "home": "CLE",
+      "kst": "10.25 (일) 08:30",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 5",
+      "away": "MIL",
+      "home": "PHI",
+      "kst": "10.25 (일) 08:30",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 5",
+      "away": "WAS",
+      "home": "CHI",
+      "kst": "10.25 (일) 09:00",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 5",
+      "away": "SAS",
+      "home": "DAL",
+      "kst": "10.25 (일) 09:00",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 5",
+      "away": "HOU",
+      "home": "ATL",
+      "kst": "10.25 (일) 09:30",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 5",
+      "away": "NOP",
+      "home": "DEN",
+      "kst": "10.25 (일) 10:00",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 5",
+      "away": "GSW",
+      "home": "PHX",
+      "kst": "10.25 (일) 11:00",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 6",
+      "away": "LAL",
+      "home": "UTA",
+      "kst": "10.26 (월) 06:00",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 6",
+      "away": "IND",
+      "home": "BKN",
+      "kst": "10.26 (월) 07:00",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 6",
+      "away": "ORL",
+      "home": "NYK",
+      "kst": "10.26 (월) 08:00",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 6",
+      "away": "TOR",
+      "home": "MIN",
+      "kst": "10.26 (월) 08:00",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 6",
+      "away": "LAC",
+      "home": "OKC",
+      "kst": "10.26 (월) 08:00",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 6",
+      "away": "DET",
+      "home": "PHI",
+      "kst": "10.26 (월) 08:30",
+      "tv": "NBA"
+    },
+    {
+      "day": "DAY 6",
+      "away": "MEM",
+      "home": "SAC",
+      "kst": "10.26 (월) 10:00",
+      "tv": "NBA"
     }
   ],
   "colors": {
