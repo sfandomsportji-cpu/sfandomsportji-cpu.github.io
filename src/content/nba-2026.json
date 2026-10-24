@@ -78,7 +78,11 @@
       "away": "NYK",
       "home": "BOS",
       "kst": "10.24 (토) 08:00",
-      "tv": "PRIME VIDEO"
+      "tv": "PRIME VIDEO",
+      "tag": "종료 · NYK 103–107 BOS",
+      "result": "NYK 103–107 BOS",
+      "away_score": 103,
+      "home_score": 107
     },
     {
       "day": "DAY 4",
@@ -86,7 +90,10 @@
       "home": "SAS",
       "kst": "10.24 (토) 10:30",
       "tv": "PRIME VIDEO",
-      "tag": "오스틴 개최"
+      "tag": "종료 · HOU 114–110 SAS · 오스틴 개최",
+      "result": "HOU 114–110 SAS",
+      "away_score": 114,
+      "home_score": 110
     },
     {
       "day": "DAY 2",
@@ -300,7 +307,7 @@
     ]
   ],
   "home_mode": "tipoff",
-  "preseason_note": "2026년 10월 24일 09:01 KST 확인: 프리시즌 종료 47경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
+  "preseason_note": "2026년 10월 24일 13:34 KST 확인: 프리시즌 종료 47경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
   "preseason_games": [
     {
       "day": "FINAL",
