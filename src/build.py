@@ -77,6 +77,12 @@ class Article:
         self.sources = fm.get('sources', []) or []
         self.subtitle = fm.get('subtitle', '')
         self.image = fm.get('image', '')  # 일부 기사에 이미지가 없어도 빌드 유지
+        # KAIRO 전망·분석 기사처럼 에디션/사진 출처 머리말이 없는 글도 빌드가 멈추지 않게 기본값을 둔다
+        self.credit = fm.get('credit', '')
+        self.image_alt = fm.get('image_alt', '')
+        self.edition = fm.get('edition', '')
+        self.kicker = fm.get('kicker', '')
+        self.meta = fm.get('meta', '')
         self.url = ''
 
     @property
@@ -1271,7 +1277,7 @@ def build_home():
 
 # ───────────────────────── 글 상세 ─────────────────────────
 def related(a: Article, n: int = 5) -> list[Article]:
-    same = [x for x in ARTICLES if x is not a and x.edition == a.edition]
+    same = [x for x in ARTICLES if x is not a and a.edition and x.edition == a.edition]
     others = [x for x in ARTICLES if x is not a and x not in same]
     return (same + others)[:n]
 
