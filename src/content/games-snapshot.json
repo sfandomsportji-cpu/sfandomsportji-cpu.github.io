@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-25T19:09+09:00",
+  "updated_at": "2026-10-25T23:22+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-25T19:09+09:00",
+      "checked_at": "2026-10-25T23:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -49,7 +49,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-25T19:09+09:00",
+      "checked_at": "2026-10-25T23:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -420,7 +420,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-25T19:09+09:00",
+      "checked_at": "2026-10-25T23:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -432,10 +432,10 @@
           "home": "NO",
           "away_name": "Pittsburgh Steelers",
           "home_name": "New Orleans Saints",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873011/steelers-saints"
+          "status": "live",
+          "away_score": 3,
+          "home_score": 3,
+          "source_url": "https://www.espn.com/nfl/game?gameId=401873011"
         },
         {
           "id": "NFL-401873012",
@@ -596,7 +596,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-25T19:09+09:00",
+      "checked_at": "2026-10-25T23:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
