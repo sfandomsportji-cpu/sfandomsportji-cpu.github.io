@@ -1,7 +1,7 @@
 {
   "season": "2026-27",
   "opening_kst": "2026-10-21T04:00:00+09:00",
-  "note": "시간은 한국시간(KST). 2026년 10월 24일(토) 종료 경기까지 결과를 확인해 표시했습니다. 이후 예정 경기는 경기 완료 전 결과를 표시하지 않음.",
+  "note": "시간은 한국시간(KST). 2026년 10월 25일(일) 종료 경기까지 결과 반영. 10월 26일 이후 경기는 예정으로 표시하며, 종료 확인 전 점수를 입력하지 않습니다.",
   "games": [
     {
       "day": "OPENING NIGHT",
@@ -447,6 +447,78 @@
       "home": "SAC",
       "kst": "10.26 (월) 10:00",
       "tv": "NBA"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "WAS",
+      "home": "CHA",
+      "kst": "10.27 (화) 08:00",
+      "tv": "KST",
+      "tag": "예정 · 한국시간"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "MIN",
+      "home": "CLE",
+      "kst": "10.27 (화) 08:00",
+      "tv": "KST",
+      "tag": "예정 · 한국시간"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "DAL",
+      "home": "MIA",
+      "kst": "10.27 (화) 08:30",
+      "tv": "KST",
+      "tag": "예정 · 한국시간"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "CHI",
+      "home": "BOS",
+      "kst": "10.27 (화) 08:30",
+      "tv": "KST",
+      "tag": "예정 · 한국시간"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "IND",
+      "home": "MIL",
+      "kst": "10.27 (화) 09:00",
+      "tv": "KST",
+      "tag": "예정 · 한국시간"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "PHX",
+      "home": "OKC",
+      "kst": "10.27 (화) 09:00",
+      "tv": "KST",
+      "tag": "예정 · 한국시간"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "ATL",
+      "home": "HOU",
+      "kst": "10.27 (화) 09:30",
+      "tv": "KST",
+      "tag": "예정 · 한국시간"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "MEM",
+      "home": "UTA",
+      "kst": "10.27 (화) 10:00",
+      "tv": "KST",
+      "tag": "예정 · 한국시간"
+    },
+    {
+      "day": "UPCOMING",
+      "away": "GSW",
+      "home": "DEN",
+      "kst": "10.27 (화) 11:00",
+      "tv": "KST",
+      "tag": "예정 · 한국시간"
     }
   ],
   "colors": {
