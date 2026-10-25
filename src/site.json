@@ -31,9 +31,9 @@
     "link": "/nba/",
     "use_latest_google_post": false,
     "video": {
-      "src": "/assets/nba-hero-clip.mp4",
-      "poster": "/assets/nba-hero-poster.jpg",
-      "label": "NBA 경기 영상 (첫 화면)"
+      "src": "/assets/main-background.mp4",
+      "poster": "/assets/main-background-poster.jpg",
+      "label": "코비 브라이언트 영상 (메인 배경)"
     }
   },
   "ads": {
