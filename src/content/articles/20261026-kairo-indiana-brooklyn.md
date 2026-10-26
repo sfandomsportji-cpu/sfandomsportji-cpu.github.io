@@ -7,6 +7,7 @@ league: "NBA"
 priority: 100
 away: "IND"
 home: "BKN"
+game: "NBA-401909862"
 kst: "10.26 07:00"
 pick: "away"
 verdict: "인디애나 승리"

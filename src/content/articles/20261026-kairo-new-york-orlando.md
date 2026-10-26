@@ -7,6 +7,7 @@ league: "NBA"
 priority: 99
 away: "ORL"
 home: "NYK"
+game: "NBA-401909863"
 kst: "10.26 08:00"
 pick: "home"
 verdict: "뉴욕 승리"

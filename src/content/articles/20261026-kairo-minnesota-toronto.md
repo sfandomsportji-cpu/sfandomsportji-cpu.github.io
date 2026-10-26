@@ -7,6 +7,7 @@ league: "NBA"
 priority: 98
 away: "TOR"
 home: "MIN"
+game: "NBA-401909864"
 kst: "10.26 08:00"
 pick: "home"
 verdict: "미네소타 승리"
