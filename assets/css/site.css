@@ -1498,3 +1498,7 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 .win-band .wb-sub{font-family:var(--head);font-size:15px;color:#A7B4C7;margin-left:auto}
 .win-band:hover .wb-sub{color:#fff}
 @media(max-width:760px){.win-band{padding:18px 16px}.win-band .wb-sub{margin-left:0;width:100%}}
+
+/* Home analysis section: the empty-state and footer hints must be readable (white, bold, larger). */
+#today-analysis .sc-hint{color:#fff;font-weight:700;font-size:17px;line-height:1.55}
+@media(max-width:760px){#today-analysis .sc-hint{font-size:15px}}
