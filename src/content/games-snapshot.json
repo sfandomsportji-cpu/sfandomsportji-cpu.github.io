@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-26T12:54+09:00",
+  "updated_at": "2026-10-26T14:17+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-26T12:54+09:00",
+      "checked_at": "2026-10-26T14:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-26T12:54+09:00",
+      "checked_at": "2026-10-26T14:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -299,11 +299,63 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909880/trail-blazers-lakers"
+        },
+        {
+          "id": "NBA-401909881",
+          "league": "NBA",
+          "start_kst": "2026-10-29T08:00+09:00",
+          "away": "MIA",
+          "home": "ATL",
+          "away_name": "Miami Heat",
+          "home_name": "Atlanta Hawks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909881/heat-hawks"
+        },
+        {
+          "id": "NBA-401909882",
+          "league": "NBA",
+          "start_kst": "2026-10-29T08:00+09:00",
+          "away": "WSH",
+          "home": "CLE",
+          "away_name": "Washington Wizards",
+          "home_name": "Cleveland Cavaliers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909882/wizards-cavaliers"
+        },
+        {
+          "id": "NBA-401909883",
+          "league": "NBA",
+          "start_kst": "2026-10-29T08:00+09:00",
+          "away": "CHA",
+          "home": "DET",
+          "away_name": "Charlotte Hornets",
+          "home_name": "Detroit Pistons",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909883/hornets-pistons"
+        },
+        {
+          "id": "NBA-401909884",
+          "league": "NBA",
+          "start_kst": "2026-10-29T08:00+09:00",
+          "away": "PHI",
+          "home": "IND",
+          "away_name": "Philadelphia 76ers",
+          "home_name": "Indiana Pacers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909884/76ers-pacers"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-26T12:54+09:00",
+      "checked_at": "2026-10-26T14:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -479,7 +531,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-26T12:54+09:00",
+      "checked_at": "2026-10-26T14:17+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -543,10 +595,10 @@
           "home": "VAN",
           "away_name": "Minnesota Wild",
           "home_name": "Vancouver Canucks",
-          "status": "live",
-          "away_score": 3,
-          "home_score": 0,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892581"
+          "status": "final",
+          "away_score": 4,
+          "home_score": 2,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892581/wild-canucks"
         },
         {
           "id": "NHL-401892582",
