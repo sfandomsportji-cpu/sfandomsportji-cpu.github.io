@@ -1142,6 +1142,9 @@ def build_home():
     if hero.get('use_latest_google_post') and g:
         hero_title, hero_text, hero_link = esc(g[0]['title']), g[0]['summary'], g[0]['link']
     wb_hit, wb_total = hit_rate()  # 리뉴얼 이후 pick을 남긴 분석과 종료 결과의 자동 대조만 센다(이전 복기 기록은 제외)
+    _base = SITE.get('analysis_record_base') or {}  # 운영자가 직접 집계한 이전 누적 기록 + 이후 자동 대조
+    wb_hit += int(_base.get('hit', 0))
+    wb_total += int(_base.get('total', 0))
     win_band = (f'<a class="win-band" href="/analysis/review/" aria-label="분석 성공 {wb_hit}회, 전체 {wb_total}경기. 분석 기록 보기">'
                 f'<span class="wb-label">ANALYSIS</span><b class="wb-main">분석 성공 <em>{wb_hit}</em><i>/{wb_total}</i></b>'
                 f'<span class="wb-sub">경기 전에 남긴 전망과 실제 결과 기록 · 복기 리포트 →</span></a>') if wb_total else ''
