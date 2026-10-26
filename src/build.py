@@ -1581,32 +1581,40 @@ def ds_next(d: dict):
 
 
 def world_series():
-    """월드시리즈: 두 챔피언십시리즈 우승팀의 경기를 ESPN 스냅샷에서 모아 시리즈 카드 한 장으로 만든다. 없으면 None."""
-    lcs = PS.get('lcs', [])
+    """월드시리즈: 두 챔피언십시리즈 우승팀의 시리즈 카드. 이미 끝난 경기는 postseason-2026.json의 ws.games(확인된 결과),
+    앞으로의 경기는 ESPN 스냅샷에서 가져온다. 시리즈 전적은 결과 문구에서 센다."""
     champs = []
-    for d in lcs:
+    for d in PS.get('lcs', []):
         if d['hw'] == 4 or d['aw'] == 4:
-            champs.append((d['league'], d['home'] if d['hw'] == 4 else d['away'],
-                           d['home_kr'] if d['hw'] == 4 else d['away_kr'],
-                           d['home_color'] if d['hw'] == 4 else d['away_color']))
+            w_home = d['hw'] == 4
+            champs.append((d['league'], d['home'] if w_home else d['away'], d['home_kr'] if w_home else d['away_kr'],
+                           d['home_color'] if w_home else d['away_color']))
     if len(champs) != 2:
         return None
     names = {c[1] for c in champs}
-    games = sorted([g for g in game_snapshot().get('leagues', {}).get('MLB', {}).get('games', [])
-                    if {g.get('away'), g.get('home')} == names], key=lambda g: g['start_kst'])
-    if not games:
-        return None
+    wsd = PS.get('ws') or {}
+    rows = [dict(r) for r in wsd.get('games', [])]
     wd = '월화수목금토일'
-    wins = {c[1]: 0 for c in champs}
-    rows = []
-    for i, g in enumerate(games, 1):
-        t = dt.datetime.fromisoformat(g['start_kst'])
-        row = {'g': i, 'kst': f"{t.month:02d}.{t.day:02d} ({wd[t.weekday()]}) {t:%H:%M}"}
+    fmt = lambda t: f"{t.month:02d}.{t.day:02d} ({wd[t.weekday()]}) {t:%H:%M}"
+    seen = {r['kst'] for r in rows}
+    snap = sorted([g for g in game_snapshot().get('leagues', {}).get('MLB', {}).get('games', [])
+                   if {g.get('away'), g.get('home')} == names], key=lambda g: g['start_kst'])
+    for g in snap:
+        k = fmt(dt.datetime.fromisoformat(g['start_kst']))
+        if k in seen:
+            continue
+        row = {'g': len(rows) + 1, 'kst': k}
         if g.get('status') == 'final' and isinstance(g.get('away_score'), int) and isinstance(g.get('home_score'), int):
             row['result'] = f"{g['away']} {g['away_score']}–{g['home_score']} {g['home']}"
-            wins[g['away'] if g['away_score'] > g['home_score'] else g['home']] += 1
         rows.append(row)
-    home = games[0]['home']
+    if not rows:
+        return None
+    wins = {n: 0 for n in names}
+    for r in rows:
+        m = re.match(r'(\w+) (\d+)[–-](\d+) (\w+)', r.get('result', ''))
+        if m:
+            wins[m.group(1) if int(m.group(2)) > int(m.group(3)) else m.group(4)] += 1
+    home = wsd.get('home') or (snap[0]['home'] if snap else champs[0][1])
     hc = next(c for c in champs if c[1] == home)
     ac = next(c for c in champs if c[1] != home)
     return {'league': 'WS', 'tag': 'WORLD SERIES · 7전 4선승', 'home': hc[1], 'away': ac[1], 'home_kr': hc[2], 'away_kr': ac[2],
