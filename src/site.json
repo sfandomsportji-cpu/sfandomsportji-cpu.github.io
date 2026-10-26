@@ -55,7 +55,11 @@
       "feed": "https://rss.blog.naver.com/sfandomsport.xml"
     }
   },
-  "analysis_record_base": {"hit": 68, "total": 73, "note": "10.26 이전까지 사이트 운영자가 직접 집계한 누적 기록(합계 70/76 중 10.26 자동 대조분 2/3 제외)"},
+  "analysis_record_base": {
+    "hit": 68,
+    "total": 73,
+    "note": "10.26 이전까지 사이트 운영자가 직접 집계한 누적 기록(합계 70/76 중 10.26 자동 대조분 2/3 제외)"
+  },
   "community_video": {
     "eyebrow": "SFANDOM REELS · @sportsfandom",
     "title": "FAN ZONE.",
