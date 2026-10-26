@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-26T14:17+09:00",
+  "updated_at": "2026-10-26T14:38+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-26T14:17+09:00",
+      "checked_at": "2026-10-26T14:38+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-26T14:17+09:00",
+      "checked_at": "2026-10-26T14:38+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -351,11 +351,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909884/76ers-pacers"
+        },
+        {
+          "id": "NBA-401909885",
+          "league": "NBA",
+          "start_kst": "2026-10-29T08:30+09:00",
+          "away": "ORL",
+          "home": "TOR",
+          "away_name": "Orlando Magic",
+          "home_name": "Toronto Raptors",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909885/magic-raptors"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-26T14:17+09:00",
+      "checked_at": "2026-10-26T14:38+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -531,7 +544,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-26T14:17+09:00",
+      "checked_at": "2026-10-26T14:38+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -781,6 +794,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892595/sabres-sharks"
+        },
+        {
+          "id": "NHL-401892596",
+          "league": "NHL",
+          "start_kst": "2026-10-29T08:30+09:00",
+          "away": "PHI",
+          "home": "WSH",
+          "away_name": "Philadelphia Flyers",
+          "home_name": "Washington Capitals",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892596/flyers-capitals"
         }
       ]
     }
