@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-26T09:10+09:00",
+  "updated_at": "2026-10-26T09:39+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-26T09:10+09:00",
+      "checked_at": "2026-10-26T09:39+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-26T09:10+09:00",
+      "checked_at": "2026-10-26T09:39+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -61,10 +61,10 @@
           "home": "BKN",
           "away_name": "Indiana Pacers",
           "home_name": "Brooklyn Nets",
-          "status": "live",
-          "away_score": 109,
-          "home_score": 87,
-          "source_url": "https://www.espn.com/nba/game?gameId=401909862"
+          "status": "final",
+          "away_score": 136,
+          "home_score": 109,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909862/pacers-nets"
         },
         {
           "id": "NBA-401909863",
@@ -75,8 +75,8 @@
           "away_name": "Orlando Magic",
           "home_name": "New York Knicks",
           "status": "live",
-          "away_score": 48,
-          "home_score": 52,
+          "away_score": 63,
+          "home_score": 69,
           "source_url": "https://www.espn.com/nba/game?gameId=401909863"
         },
         {
@@ -88,8 +88,8 @@
           "away_name": "Toronto Raptors",
           "home_name": "Minnesota Timberwolves",
           "status": "live",
-          "away_score": 40,
-          "home_score": 51,
+          "away_score": 51,
+          "home_score": 66,
           "source_url": "https://www.espn.com/nba/game?gameId=401909864"
         },
         {
@@ -101,8 +101,8 @@
           "away_name": "LA Clippers",
           "home_name": "Oklahoma City Thunder",
           "status": "live",
-          "away_score": 46,
-          "home_score": 43,
+          "away_score": 74,
+          "home_score": 71,
           "source_url": "https://www.espn.com/nba/game?gameId=401909865"
         },
         {
@@ -114,8 +114,8 @@
           "away_name": "Detroit Pistons",
           "home_name": "Philadelphia 76ers",
           "status": "live",
-          "away_score": 32,
-          "home_score": 20,
+          "away_score": 50,
+          "home_score": 35,
           "source_url": "https://www.espn.com/nba/game?gameId=401909866"
         },
         {
@@ -303,7 +303,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-26T09:10+09:00",
+      "checked_at": "2026-10-26T09:39+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -458,10 +458,10 @@
           "home": "SEA",
           "away_name": "Kansas City Chiefs",
           "home_name": "Seattle Seahawks",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873022/chiefs-seahawks"
+          "status": "live",
+          "away_score": 0,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nfl/game?gameId=401873022"
         },
         {
           "id": "NFL-401873009",
@@ -479,7 +479,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-26T09:10+09:00",
+      "checked_at": "2026-10-26T09:39+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -504,10 +504,10 @@
           "home": "DAL",
           "away_name": "New York Islanders",
           "home_name": "Dallas Stars",
-          "status": "live",
+          "status": "final",
           "away_score": 3,
-          "home_score": 4,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892579"
+          "home_score": 6,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892579/islanders-stars"
         },
         {
           "id": "NHL-401891807",
@@ -518,7 +518,7 @@
           "away_name": "Montreal Canadiens",
           "home_name": "Winnipeg Jets",
           "status": "live",
-          "away_score": 0,
+          "away_score": 1,
           "home_score": 0,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401891807"
         },
@@ -532,7 +532,7 @@
           "home_name": "Nashville Predators",
           "status": "live",
           "away_score": 0,
-          "home_score": 0,
+          "home_score": 2,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892580"
         },
         {
