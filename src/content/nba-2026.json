@@ -426,28 +426,44 @@
       "away": "ORL",
       "home": "NYK",
       "kst": "10.26 (월) 08:00",
-      "tv": "NBA"
+      "tv": "NBA",
+      "tag": "종료 · ORL 111–102 NYK",
+      "result": "ORL 111–102 NYK",
+      "away_score": 111,
+      "home_score": 102
     },
     {
       "day": "DAY 6",
       "away": "TOR",
       "home": "MIN",
       "kst": "10.26 (월) 08:00",
-      "tv": "NBA"
+      "tv": "NBA",
+      "tag": "종료 · TOR 94–117 MIN",
+      "result": "TOR 94–117 MIN",
+      "away_score": 94,
+      "home_score": 117
     },
     {
       "day": "DAY 6",
       "away": "LAC",
       "home": "OKC",
       "kst": "10.26 (월) 08:00",
-      "tv": "NBA"
+      "tv": "NBA",
+      "tag": "종료 · LAC 101–108 OKC",
+      "result": "LAC 101–108 OKC",
+      "away_score": 101,
+      "home_score": 108
     },
     {
       "day": "DAY 6",
       "away": "DET",
       "home": "PHI",
       "kst": "10.26 (월) 08:30",
-      "tv": "NBA"
+      "tv": "NBA",
+      "tag": "종료 · DET 106–93 PHI",
+      "result": "DET 106–93 PHI",
+      "away_score": 106,
+      "home_score": 93
     },
     {
       "day": "DAY 6",
@@ -641,7 +657,7 @@
     ]
   ],
   "home_mode": "tipoff",
-  "preseason_note": "2026년 10월 26일 10:13 KST 확인: 프리시즌 종료 47경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
+  "preseason_note": "2026년 10월 26일 12:01 KST 확인: 프리시즌 종료 47경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
   "preseason_games": [
     {
       "day": "FINAL",
