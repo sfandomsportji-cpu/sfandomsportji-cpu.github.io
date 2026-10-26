@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-26T12:01+09:00",
+  "updated_at": "2026-10-26T12:22+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-26T12:01+09:00",
+      "checked_at": "2026-10-26T12:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-26T12:01+09:00",
+      "checked_at": "2026-10-26T12:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -127,8 +127,8 @@
           "away_name": "Memphis Grizzlies",
           "home_name": "Sacramento Kings",
           "status": "live",
-          "away_score": 96,
-          "home_score": 88,
+          "away_score": 117,
+          "home_score": 110,
           "source_url": "https://www.espn.com/nba/game?gameId=401909867"
         },
         {
@@ -303,7 +303,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-26T12:01+09:00",
+      "checked_at": "2026-10-26T12:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -458,10 +458,10 @@
           "home": "SEA",
           "away_name": "Kansas City Chiefs",
           "home_name": "Seattle Seahawks",
-          "status": "live",
+          "status": "final",
           "away_score": 3,
           "home_score": 20,
-          "source_url": "https://www.espn.com/nfl/game?gameId=401873022"
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873022/chiefs-seahawks"
         },
         {
           "id": "NFL-401873009",
@@ -479,7 +479,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-26T12:01+09:00",
+      "checked_at": "2026-10-26T12:22+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -544,7 +544,7 @@
           "away_name": "Minnesota Wild",
           "home_name": "Vancouver Canucks",
           "status": "live",
-          "away_score": 1,
+          "away_score": 2,
           "home_score": 0,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892581"
         },
