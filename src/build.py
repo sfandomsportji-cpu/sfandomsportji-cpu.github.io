@@ -1152,7 +1152,7 @@ def build_home():
         nba_media = ''
     nba_band = (f'<div class="nba-band{" fill" if "reel-fill" in nba_media else ""}">{nba_media}'
                 f'<div class="nba-copy"><span class="tag red">{esc(cv.get("eyebrow", ""))}</span><h3 class="display">{esc(cv.get("title", ""))}<br><span class="outline">{esc(cv.get("title2", ""))}</span></h3>'
-                f'<p>{esc(cv.get("text", ""))}</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill" href="/community/#write">팬 보드에서 얘기하기</a></div></div></div>') if nba_media else ''
+                f'<p>{esc(cv.get("text", ""))}</p><div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill" href="/community/#write">팬 보드에서 얘기하기</a><a class="pill ghost" href="https://www.instagram.com/sportsfandom/" target="_blank" rel="noopener">인스타 팔로우 @sportsfandom</a></div></div></div>') if nba_media else ''
     v = hero.get('video') or {}
     reel_tag = ''
     art = f'<div class="hero-art" aria-hidden="true"><span>{esc(hero.get("art", ""))}</span></div>'
@@ -1343,6 +1343,7 @@ def build_article(a: Article):
     </article>
     <aside class="article-aside" style="display:flex;flex-direction:column;gap:24px">
       <div class="aside-box"><h2>함께 읽기</h2>{rel}</div>
+      <div class="aside-box"><h2>인스타그램</h2><a href="https://www.instagram.com/sportsfandom/" target="_blank" rel="noopener">경기 전후 핵심 한 줄과 릴스는 @sportsfandom에서 →</a></div>
     </aside>
   </div>
 </div>'''
