@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-26T12:22+09:00",
+  "updated_at": "2026-10-26T12:42+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-26T12:22+09:00",
+      "checked_at": "2026-10-26T12:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-26T12:22+09:00",
+      "checked_at": "2026-10-26T12:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -126,10 +126,10 @@
           "home": "SAC",
           "away_name": "Memphis Grizzlies",
           "home_name": "Sacramento Kings",
-          "status": "live",
-          "away_score": 117,
-          "home_score": 110,
-          "source_url": "https://www.espn.com/nba/game?gameId=401909867"
+          "status": "final",
+          "away_score": 123,
+          "home_score": 112,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909867/grizzlies-kings"
         },
         {
           "id": "NBA-401909868",
@@ -303,7 +303,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-26T12:22+09:00",
+      "checked_at": "2026-10-26T12:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -479,7 +479,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-26T12:22+09:00",
+      "checked_at": "2026-10-26T12:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -544,7 +544,7 @@
           "away_name": "Minnesota Wild",
           "home_name": "Vancouver Canucks",
           "status": "live",
-          "away_score": 2,
+          "away_score": 3,
           "home_score": 0,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892581"
         },
