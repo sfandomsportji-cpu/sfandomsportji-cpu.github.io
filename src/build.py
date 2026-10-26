@@ -1496,7 +1496,11 @@ def build_hubs():
     sec = lambda kind, title, kr, anchor: (f'<section id="{anchor}" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:52px">{title} <span class="kr">{kr}</span></h2></div>'
                                            + item_list([a for a in mlb if a.kind == kind][:8]) + '</section>')
     t = tabs([('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('포스트시즌', '/special/postseason-2026/')], '')
-    live_mlb = ('<section id="lcs" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:42px">LEAGUE CHAMPIONSHIP <span class="kr">최신 전적 · 다음 경기</span></h2></div><div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">'
+    ws = world_series()
+    ws_html = ('<section id="worldseries" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:42px">WORLD SERIES <span class="kr">최신 전적 · 다음 경기</span></h2></div><div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">'
+               + lcs_card(ws) + '</div></section>') if ws else ''
+    lcs_title = ('LEAGUE CHAMPIONSHIP <span class="kr">최종 결과</span>' if ws else 'LEAGUE CHAMPIONSHIP <span class="kr">최신 전적 · 다음 경기</span>')
+    live_mlb = (ws_html + f'<section id="lcs" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:42px">{lcs_title}</h2></div><div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">'
                 + ''.join(lcs_card(d) for d in PS.get('lcs', [])) + '</div></section>')
     main = live_mlb + sec('news', 'NEWS', 'MLB 뉴스', 'news') + sec('analysis', 'ANALYSIS', '경기 프리뷰', 'analysis') + sec('magazine', 'MAGAZINE', '기획 · 스포트라이트', 'magazine')
     write('/mlb/', layout('MLB · 메이저리그', page_head('MLB<span class="accent">.</span> <span class="kr">메이저리그</span>', '포스트시즌, 모닝 에디션, 선발 매치업까지 — MLB 이야기는 여기서 시작합니다.', [('MLB', '')], t)
@@ -1576,6 +1580,40 @@ def ds_next(d: dict):
 
 
 
+def world_series():
+    """월드시리즈: 두 챔피언십시리즈 우승팀의 경기를 ESPN 스냅샷에서 모아 시리즈 카드 한 장으로 만든다. 없으면 None."""
+    lcs = PS.get('lcs', [])
+    champs = []
+    for d in lcs:
+        if d['hw'] == 4 or d['aw'] == 4:
+            champs.append((d['league'], d['home'] if d['hw'] == 4 else d['away'],
+                           d['home_kr'] if d['hw'] == 4 else d['away_kr'],
+                           d['home_color'] if d['hw'] == 4 else d['away_color']))
+    if len(champs) != 2:
+        return None
+    names = {c[1] for c in champs}
+    games = sorted([g for g in game_snapshot().get('leagues', {}).get('MLB', {}).get('games', [])
+                    if {g.get('away'), g.get('home')} == names], key=lambda g: g['start_kst'])
+    if not games:
+        return None
+    wd = '월화수목금토일'
+    wins = {c[1]: 0 for c in champs}
+    rows = []
+    for i, g in enumerate(games, 1):
+        t = dt.datetime.fromisoformat(g['start_kst'])
+        row = {'g': i, 'kst': f"{t.month:02d}.{t.day:02d} ({wd[t.weekday()]}) {t:%H:%M}"}
+        if g.get('status') == 'final' and isinstance(g.get('away_score'), int) and isinstance(g.get('home_score'), int):
+            row['result'] = f"{g['away']} {g['away_score']}–{g['home_score']} {g['home']}"
+            wins[g['away'] if g['away_score'] > g['home_score'] else g['home']] += 1
+        rows.append(row)
+    home = games[0]['home']
+    hc = next(c for c in champs if c[1] == home)
+    ac = next(c for c in champs if c[1] != home)
+    return {'league': 'WS', 'tag': 'WORLD SERIES · 7전 4선승', 'home': hc[1], 'away': ac[1], 'home_kr': hc[2], 'away_kr': ac[2],
+            'home_color': hc[3], 'away_color': ac[3], 'hs': 0, 'as': 0, 'hw': wins[hc[1]], 'aw': wins[ac[1]],
+            'home_sub': f"{hc[0]} 챔피언 · 홈 어드밴티지", 'away_sub': f"{ac[0]} 챔피언", 'games': rows}
+
+
 def lcs_card(d: dict, link: bool = True, full: bool = False) -> str:
     """챔피언십시리즈 최신 전적·확정 결과·앞으로의 한국시간 일정."""
     done = [g for g in d['games'] if g.get('result')]
@@ -1587,9 +1625,9 @@ def lcs_card(d: dict, link: bool = True, full: bool = False) -> str:
     when = ('G' + str(future[0]['g']) + ' · ' + esc(future[0]['kst']) + ' KST') if future else '시리즈 종료'
     tag = 'a' if link else 'div'
     href = ' href="/special/postseason-2026/#lcs"' if link else ''
-    return (f'<{tag} class="matchup ds {lead}{" lift" if link else ""}"{href}><span class="tag">{esc(d["league"])}CS · 7전 4선승</span>'
-            f'<div class="row">{badge(d["home"], d["home_color"], "lg")}<span class="ds-name">{esc(d["home_kr"])}<small>#{d["hs"]} · 홈 어드밴티지</small></span><span class="ds-w h">{d["hw"]}</span></div>'
-            f'<div class="row">{badge(d["away"], d["away_color"], "lg")}<span class="ds-name">{esc(d["away_kr"])}<small>#{d["as"]}</small></span><span class="ds-w a">{d["aw"]}</span></div>'
+    return (f'<{tag} class="matchup ds {lead}{" lift" if link else ""}"{href}><span class="tag">{esc(d.get("tag") or (d["league"] + "CS · 7전 4선승"))}</span>'
+            f'<div class="row">{badge(d["home"], d["home_color"], "lg")}<span class="ds-name">{esc(d["home_kr"])}<small>{esc(d.get("home_sub") or ("#" + str(d["hs"]) + " · 홈 어드밴티지"))}</small></span><span class="ds-w h">{d["hw"]}</span></div>'
+            f'<div class="row">{badge(d["away"], d["away_color"], "lg")}<span class="ds-name">{esc(d["away_kr"])}<small>{esc(d.get("away_sub") or ("#" + str(d["as"])))}</small></span><span class="ds-w a">{d["aw"]}</span></div>'
             f'<div class="ds-log">{last}{rest}</div><span class="when">{when}</span></{tag}>')
 
 
