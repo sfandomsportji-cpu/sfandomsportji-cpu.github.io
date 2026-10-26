@@ -45,7 +45,7 @@ def main():
     draw.line((422, 405, 1103, 405), fill=(245, 245, 245, 60), width=2)
     draw.text((423, 426), 'SPORTS  |  ANALYSIS  |  COMMUNITY', font=font(23, True), fill=(213, 222, 238, 255))
     draw.text((423, 479), 'PLAY FIRST. ANALYSIS NEXT.', font=font(22), fill=(167, 180, 199, 255))
-    draw.text((71, 558), 'sfandom.com', font=font(22, True), fill=(224, 228, 237, 255))
+    draw.text((71, 558), 'sfandom.com  |  IG @sportsfandom', font=font(22, True), fill=(224, 228, 237, 255))
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     im.save(OUTPUT, 'PNG', optimize=True)
     print(f'Built {OUTPUT} ({W}x{H}, {OUTPUT.stat().st_size} bytes)')

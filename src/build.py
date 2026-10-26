@@ -38,7 +38,7 @@ def av(rel: str) -> str:
 
 # 빌더가 만드는 최상위 경로 (다시 빌드할 때 지우고 새로 씀)
 GENERATED_DIRS = ['news', 'special', 'mlb', 'kbo', 'nba', 'soccer', 'analysis', 'community', 'magazine',
-                  'about', 'contact', 'sitemap', 'feed', 'weekly', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search', 'games']
+                  'about', 'contact', 'sitemap', 'feed', 'weekly', 'privacy', 'terms', 'rules', 'legal', 'ads-cookies', 'search', 'games', 'links']
 
 esc = lambda s: html.escape(str(s or ''), quote=True)
 
@@ -1779,6 +1779,25 @@ def build_community():
     write('/community/', layout('FAN BOARD · 팬 게시판', body, path='/community/', description='SFANDOM 팬 보드 — 가입 없이 쓰는 스포츠 팬 게시판', active='/community/', noindex=True), index=False)
 
 
+def build_links():
+    """인스타그램 프로필 링크용 한 화면 모음: 오늘 일정 · 최신 분석 · 팬 보드. 검색 색인에는 넣지 않는다."""
+    def prio(a):
+        try:
+            return int(getattr(a, 'priority', 0) or 0)
+        except (TypeError, ValueError):
+            return 0
+    latest = sorted([a for a in ARTICLES if a.kind == 'analysis'], key=lambda a: (a.date, prio(a)), reverse=True)[:6]
+    ig = 'https://www.instagram.com/sportsfandom/'
+    btn = lambda href, label, cls='pill': f'<a class="{cls}" href="{href}" style="height:54px;padding:0 28px;justify-content:center">{label}</a>'
+    body = page_head('LINKS<span class="accent">.</span> <span class="kr">오늘 볼 것</span>',
+                     'NBA·MLB·KBO 일정과 결과, 최신 경기 분석, 팬 보드를 한 곳에 모았습니다.', [('LINKS', '')]) + \
+        '<div class="wrap sec" style="padding-top:28px;max-width:720px;margin-left:0">' \
+        '<div style="display:grid;gap:12px">' + btn('/games/', '오늘 경기 일정·결과') + btn('/analysis/', '최신 경기 분석 전체', 'pill ghost') + \
+        btn('/community/#write', '팬 보드에서 얘기하기', 'pill ghost') + btn(ig, '인스타 @sportsfandom', 'pill ghost') + '</div>' \
+        '<h2 class="sec-title" style="font-size:32px;margin:40px 0 12px">LATEST <span class="kr">최신 분석</span></h2>' + item_list(latest) + '</div>'
+    write('/links/', layout('LINKS 오늘 볼 것', body, path='/links/', description='SFANDOM 오늘 경기 일정, 최신 분석, 팬 보드 바로가기', noindex=True), index=False)
+
+
 def build_static():
     pages = [
         ('about', 'ABOUT', '소개', 'SFANDOM 소개'),
@@ -2182,6 +2201,7 @@ def main():
     build_community()
     build_sitemap()
     build_static()
+    build_links()
     build_feeds()
     build_weekly()
     build_meta_files()

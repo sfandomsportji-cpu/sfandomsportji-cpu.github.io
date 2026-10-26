@@ -59,7 +59,7 @@ def card_key(fm):
     extra = ''
     if is_match_card(fm):
         extra = f"|{fm.get('away')}|{fm.get('home')}|{fm.get('kst', '')}|{json.dumps(fm.get('glance', ''), ensure_ascii=False)}|v2"
-    return hashlib.sha1(f"{headline}|{fm.get('league', 'MLB')}|{fm.get('kind', 'news')}{extra}".encode()).hexdigest()[:6]
+    return hashlib.sha1(f"{headline}|{fm.get('league', 'MLB')}|{fm.get('kind', 'news')}{extra}|ig1".encode()).hexdigest()[:6]
 
 
 def card_name(stem, fm):
@@ -129,7 +129,7 @@ def render_match(fm, dest):
             d.text((190, y + 6), line, font=vf, fill=(249, 250, 253, 255))
         y += 66
     d.line((70, 548, 1130, 548), fill=(245, 245, 245, 50), width=2)
-    d.text((70, 563), 'sfandom.com', font=load_font(26), fill=(224, 228, 237, 255))
+    d.text((70, 563), 'sfandom.com  ·  IG @sportsfandom', font=load_font(26), fill=(224, 228, 237, 255))
     d.text((1130 - d.textlength('Play First. Analysis Next.', font=load_font(26, bold=False)), 563), 'Play First. Analysis Next.',
            font=load_font(26, bold=False), fill=(167, 180, 199, 255))
     im.save(dest, 'PNG', optimize=True)
@@ -168,7 +168,7 @@ def render(fm, dest):
     for line in wrap(d, sub, sf, 1060, 2 if len(tl) < 2 else 1):
         d.text((70, y), line, font=sf, fill=(245, 65, 85, 255)); y += 56
     d.line((70, 548, 1130, 548), fill=(245, 245, 245, 50), width=2)
-    d.text((70, 563), 'sfandom.com', font=load_font(26), fill=(224, 228, 237, 255))
+    d.text((70, 563), 'sfandom.com  ·  IG @sportsfandom', font=load_font(26), fill=(224, 228, 237, 255))
     date = str(fm.get('date', '')).replace('-', '.')
     dw = d.textlength(date, font=load_font(26, bold=False))
     d.text((1130 - dw, 563), date, font=load_font(26, bold=False), fill=(167, 180, 199, 255))
