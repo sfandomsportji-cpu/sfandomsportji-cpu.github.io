@@ -1488,3 +1488,13 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 .top-stories .top-stories-more{flex:none;margin:0;align-self:flex-end}
 .hero .hero-mute-toggle{top:136px!important;bottom:auto!important;right:460px!important}
 }
+
+/* Home: verified analysis record band under the hero (links to /analysis/). */
+.win-band{display:flex;align-items:center;gap:20px;flex-wrap:wrap;max-width:1320px;margin:0 auto;padding:22px 24px;background:#0B0C11;border-bottom:1px solid var(--line);color:#fff}
+.win-band .wb-label{font-family:var(--head);font-size:14px;letter-spacing:.14em;color:var(--red)}
+.win-band .wb-main{font-family:var(--display);font-weight:600;font-size:clamp(34px,6vw,64px);line-height:1;letter-spacing:.01em}
+.win-band .wb-main em{font-style:normal;color:var(--red)}
+.win-band .wb-main i{font-style:normal;font-size:.55em;color:#A7B4C7}
+.win-band .wb-sub{font-family:var(--head);font-size:15px;color:#A7B4C7;margin-left:auto}
+.win-band:hover .wb-sub{color:#fff}
+@media(max-width:760px){.win-band{padding:18px 16px}.win-band .wb-sub{margin-left:0;width:100%}}

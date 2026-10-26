@@ -1141,6 +1141,12 @@ def build_home():
         hero_cta = "경기 일정·결과 보기"
     if hero.get('use_latest_google_post') and g:
         hero_title, hero_text, hero_link = esc(g[0]['title']), g[0]['summary'], g[0]['link']
+    wb_hit, wb_total = hit_rate()  # 복기 리포트와 같은 기준: 자동 대조 기록 + 손으로 남긴 기록
+    wb_hit += sum(bool(r['matched']) for r in RECORDS['records'])
+    wb_total += len(RECORDS['records'])
+    win_band = (f'<a class="win-band" href="/analysis/review/" aria-label="분석 성공 {wb_hit}회, 전체 {wb_total}경기. 복기 리포트 보기">'
+                f'<span class="wb-label">ANALYSIS</span><b class="wb-main">분석 성공 <em>{wb_hit}</em><i>/{wb_total}</i></b>'
+                f'<span class="wb-sub">경기 전에 남긴 전망과 실제 결과 기록 · 복기 리포트 →</span></a>') if wb_total else ''
     cv = SITE.get('community_video') or {}
     if cv.get('instagram_reel'):
         r = cv['instagram_reel']
@@ -1218,6 +1224,8 @@ def build_home():
   {credit}{reel_tag}
   <aside class="top-stories" aria-label="{home_aria}"><h2>{home_heading} <span class="nba-dday">{home_status}</span></h2><div class="tip-rail">{tip}</div><a class="more top-stories-more" href="/nba/">NBA 허브 →</a></aside>
 </section>
+
+{win_band}
 
 {sc_html}
 
