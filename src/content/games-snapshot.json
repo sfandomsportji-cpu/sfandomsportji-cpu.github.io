@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-26T09:39+09:00",
+  "updated_at": "2026-10-26T10:13+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-26T09:39+09:00",
+      "checked_at": "2026-10-26T10:13+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-26T09:39+09:00",
+      "checked_at": "2026-10-26T10:13+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -75,8 +75,8 @@
           "away_name": "Orlando Magic",
           "home_name": "New York Knicks",
           "status": "live",
-          "away_score": 63,
-          "home_score": 69,
+          "away_score": 91,
+          "home_score": 91,
           "source_url": "https://www.espn.com/nba/game?gameId=401909863"
         },
         {
@@ -88,8 +88,8 @@
           "away_name": "Toronto Raptors",
           "home_name": "Minnesota Timberwolves",
           "status": "live",
-          "away_score": 51,
-          "home_score": 66,
+          "away_score": 69,
+          "home_score": 90,
           "source_url": "https://www.espn.com/nba/game?gameId=401909864"
         },
         {
@@ -101,8 +101,8 @@
           "away_name": "LA Clippers",
           "home_name": "Oklahoma City Thunder",
           "status": "live",
-          "away_score": 74,
-          "home_score": 71,
+          "away_score": 96,
+          "home_score": 101,
           "source_url": "https://www.espn.com/nba/game?gameId=401909865"
         },
         {
@@ -114,8 +114,8 @@
           "away_name": "Detroit Pistons",
           "home_name": "Philadelphia 76ers",
           "status": "live",
-          "away_score": 50,
-          "home_score": 35,
+          "away_score": 61,
+          "home_score": 54,
           "source_url": "https://www.espn.com/nba/game?gameId=401909866"
         },
         {
@@ -126,10 +126,10 @@
           "home": "SAC",
           "away_name": "Memphis Grizzlies",
           "home_name": "Sacramento Kings",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909867/grizzlies-kings"
+          "status": "live",
+          "away_score": 5,
+          "home_score": 3,
+          "source_url": "https://www.espn.com/nba/game?gameId=401909867"
         },
         {
           "id": "NBA-401909868",
@@ -303,7 +303,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-26T09:39+09:00",
+      "checked_at": "2026-10-26T10:13+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -460,7 +460,7 @@
           "home_name": "Seattle Seahawks",
           "status": "live",
           "away_score": 0,
-          "home_score": 0,
+          "home_score": 3,
           "source_url": "https://www.espn.com/nfl/game?gameId=401873022"
         },
         {
@@ -479,7 +479,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-26T09:39+09:00",
+      "checked_at": "2026-10-26T10:13+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -518,7 +518,7 @@
           "away_name": "Montreal Canadiens",
           "home_name": "Winnipeg Jets",
           "status": "live",
-          "away_score": 1,
+          "away_score": 2,
           "home_score": 0,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401891807"
         },
