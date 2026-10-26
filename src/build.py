@@ -1485,10 +1485,15 @@ def build_lists():
     updated = TODAY if auto_recs else RECORDS['updated']
     recs = ''.join(f'''<div class="record"><span class="no">{r["no"]}</span><div><span class="tag red">{r["league"]} · {r["date"].replace("-", ".")} · {esc(r["venue"])}</span><h3>{esc(r["match"])}</h3>
 <p>경기 전 · {esc(r["outlook"])} → 결과 · {esc(r["result"])}. {esc(r["detail"])}</p></div><span class="verdict {"ok" if r["matched"] else "no"}">{"MATCHED" if r["matched"] else "NOT MATCHED"}</span></div>''' for r in all_recs)
-    ok = sum(r['matched'] for r in all_recs)
+    # 상단 집계는 홈 '분석 성공'과 같은 누적 기준(운영자 집계 + 자동 대조)으로 맞춘다. 아래 목록은 상세 공개분만 보여준다.
+    _rb = SITE.get('analysis_record_base') or {}
+    cum_total = int(_rb.get('total', 0)) + len(auto_recs)
+    cum_ok = int(_rb.get('hit', 0)) + sum(r['matched'] for r in auto_recs)
+    if not _rb:
+        cum_total, cum_ok = len(all_recs), sum(r['matched'] for r in all_recs)
     write('/analysis/review/', layout('복기 리포트 · 경기 전 전망과 결과', page_head('REVIEW <span class="accent">/</span> <span class="kr">복기 리포트</span>', RECORDS['note'],
           [('ANALYSIS', '/analysis/'), ('REVIEW', '')], tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/review/'))
-          + preserved_component('review-cycle-guide') + editorial_index(EDITORIAL_PATHS, BY_KEY, esc, 'before-after') + two_col(f'<div class="stats" style="margin:0 0 12px"><div class="stat"><b>{len(all_recs)}</b><span>RECORDS</span></div><div class="stat"><b>{ok}</b><span>MATCHED</span></div><div class="stat"><b>{len(all_recs) - ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{updated[5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
+          + preserved_component('review-cycle-guide') + editorial_index(EDITORIAL_PATHS, BY_KEY, esc, 'before-after') + two_col(f'<div class="stats" style="margin:0 0 12px"><div class="stat"><b>{cum_total}</b><span>RECORDS</span></div><div class="stat"><b>{cum_ok}</b><span>MATCHED</span></div><div class="stat"><b>{cum_total - cum_ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{updated[5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
                     + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다른 결과도 지우지 않습니다. 어떤 전제가 틀렸는지 다음 분석에서 다시 확인합니다.</p>'),
           path='/analysis/review/', description=RECORDS['note'], active='/analysis/'))
 
