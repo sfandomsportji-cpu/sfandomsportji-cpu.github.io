@@ -482,7 +482,10 @@
       "home": "CHA",
       "kst": "10.27 (화) 08:00",
       "tv": "KST",
-      "tag": "예정 · 한국시간"
+      "tag": "종료 · WAS 103–110 CHA · 예정 · 한국시간",
+      "result": "WAS 103–110 CHA",
+      "away_score": 103,
+      "home_score": 110
     },
     {
       "day": "UPCOMING",
@@ -490,7 +493,10 @@
       "home": "CLE",
       "kst": "10.27 (화) 08:00",
       "tv": "KST",
-      "tag": "예정 · 한국시간"
+      "tag": "종료 · MIN 125–127 CLE · 예정 · 한국시간",
+      "result": "MIN 125–127 CLE",
+      "away_score": 125,
+      "home_score": 127
     },
     {
       "day": "UPCOMING",
@@ -498,7 +504,10 @@
       "home": "MIA",
       "kst": "10.27 (화) 08:30",
       "tv": "KST",
-      "tag": "예정 · 한국시간"
+      "tag": "종료 · DAL 113–109 MIA · 예정 · 한국시간",
+      "result": "DAL 113–109 MIA",
+      "away_score": 113,
+      "home_score": 109
     },
     {
       "day": "UPCOMING",
@@ -506,7 +515,10 @@
       "home": "BOS",
       "kst": "10.27 (화) 08:30",
       "tv": "KST",
-      "tag": "예정 · 한국시간"
+      "tag": "종료 · CHI 99–134 BOS · 예정 · 한국시간",
+      "result": "CHI 99–134 BOS",
+      "away_score": 99,
+      "home_score": 134
     },
     {
       "day": "UPCOMING",
@@ -514,7 +526,10 @@
       "home": "MIL",
       "kst": "10.27 (화) 09:00",
       "tv": "KST",
-      "tag": "예정 · 한국시간"
+      "tag": "종료 · IND 102–110 MIL · 예정 · 한국시간",
+      "result": "IND 102–110 MIL",
+      "away_score": 102,
+      "home_score": 110
     },
     {
       "day": "UPCOMING",
@@ -522,7 +537,10 @@
       "home": "OKC",
       "kst": "10.27 (화) 09:00",
       "tv": "KST",
-      "tag": "예정 · 한국시간"
+      "tag": "종료 · PHX 114–125 OKC · 예정 · 한국시간",
+      "result": "PHX 114–125 OKC",
+      "away_score": 114,
+      "home_score": 125
     },
     {
       "day": "UPCOMING",
@@ -530,7 +548,10 @@
       "home": "HOU",
       "kst": "10.27 (화) 09:30",
       "tv": "KST",
-      "tag": "예정 · 한국시간"
+      "tag": "종료 · ATL 110–120 HOU · 예정 · 한국시간",
+      "result": "ATL 110–120 HOU",
+      "away_score": 110,
+      "home_score": 120
     },
     {
       "day": "UPCOMING",
@@ -538,7 +559,10 @@
       "home": "UTA",
       "kst": "10.27 (화) 10:00",
       "tv": "KST",
-      "tag": "예정 · 한국시간"
+      "tag": "종료 · MEM 110–105 UTA · 예정 · 한국시간",
+      "result": "MEM 110–105 UTA",
+      "away_score": 110,
+      "home_score": 105
     },
     {
       "day": "UPCOMING",
@@ -546,7 +570,10 @@
       "home": "DEN",
       "kst": "10.27 (화) 11:00",
       "tv": "KST",
-      "tag": "예정 · 한국시간"
+      "tag": "종료 · GSW 134–114 DEN · 예정 · 한국시간",
+      "result": "GSW 134–114 DEN",
+      "away_score": 134,
+      "home_score": 114
     }
   ],
   "colors": {
@@ -661,7 +688,7 @@
     ]
   ],
   "home_mode": "tipoff",
-  "preseason_note": "2026년 10월 27일 08:21 KST 확인: 프리시즌 종료 47경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
+  "preseason_note": "2026년 10월 27일 17:22 KST 확인: 프리시즌 종료 47경기 반영. 최종 결과는 ESPN 스코어보드 기준이며, 예정 경기는 경기 전 상태 유지. 경기 시간은 한국시간(KST).",
   "preseason_games": [
     {
       "day": "FINAL",

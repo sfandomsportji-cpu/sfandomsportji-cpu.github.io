@@ -3,24 +3,10 @@
   "leagues": {
     "NPB": {
       "checked_at": "2026-10-21T20:46+09:00",
-      "last_attempt_at": "2026-10-27T08:21+09:00",
+      "last_attempt_at": "2026-10-27T17:22+09:00",
       "coverage": "partial",
       "failed_dates": [],
-      "games": [
-        {
-          "id": "NPB-scores-2026-1017-t-db-04",
-          "league": "NPB",
-          "start_kst": "2026-10-17T14:00+09:00",
-          "away": "DeNA",
-          "home": "HAN",
-          "away_name": "Yokohama DeNA BayStars",
-          "home_name": "Hanshin Tigers",
-          "status": "final",
-          "away_score": 8,
-          "home_score": 5,
-          "source_url": "https://npb.jp/scores/2026/1017/t-db-04/"
-        }
-      ],
+      "games": [],
       "no_games_today": false,
       "error": "<urlopen error timed out>"
     }
