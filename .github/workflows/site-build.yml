@@ -29,6 +29,9 @@ jobs:
       - name: Install social preview image dependency
         run: python3 -m pip install Pillow==11.3.0
       - name: Korean font for article share cards
+        # apt 설치가 멈추면 10분 제한에 걸려 빌드 전체(네이버 새 글·영상 키 갱신 포함)가 취소됐다. 3분 안에 끝나지 않으면 건너뛴다(카드 이미지는 대표 카드로 대체됨).
+        timeout-minutes: 3
+        continue-on-error: true
         run: |
           fc-list | grep -qi "Noto Sans CJK KR" || (sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-cjk)
       - name: Team logos (없는 것만 받아 저장소에 보관)
