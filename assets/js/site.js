@@ -403,7 +403,7 @@
       a.append(el('span', 'post-no', String(Math.max(1, total - ((page - 1) * size + i)))));
       const b = el('div', 'post-body');
       const meta = el('span', 'post-meta');
-      meta.append(el('b', null, '#' + tag), document.createTextNode(` · ${p.nickname || 'ANON'} · ${fmtTime(p.created_at)}`));
+      meta.append(el('b', null, '#' + tag), document.createTextNode(` · ${p.nickname || 'ANON'} · ${fmtTime(p.created_at)}` + (typeof p._cc === 'number' ? ` · 댓글 ${p._cc}` : '')));
       b.append(meta, el('strong', null, title || '(제목 없음)'), el('p', null, p.body || ''));
       if (typeof p.source_url === 'string' && /^\/news\/\d{4}\/\d{2}\/[a-z0-9-]+\/$/.test(p.source_url)) {
         const source = el('a', 'news-discussion-source', '원문 기사 보기 ↗');
@@ -460,6 +460,15 @@
     const status = $('[data-board-status]');
     const scope = onBoardPage ? (thread || channel) : '';
     let page = 1, total = 0, busy = false;
+    // 홈 팬 보드의 정렬 탭: 실시간(최근 활동순) · 투데이(오늘 올라온 글) · 댓글순(최근 글 중 댓글 많은 순)
+    let mode = 'live';
+    const kstDayStart = () => { const n = new Date(Date.now() + 9 * 3600e3); return new Date(Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate()) - 9 * 3600e3).toISOString(); };
+    $$('[data-board-tab]', board).forEach(tab => tab.addEventListener('click', () => {
+      if (busy || tab.dataset.boardTab === mode) return;
+      mode = tab.dataset.boardTab; page = 1;
+      $$('[data-board-tab]', board).forEach(t => t.setAttribute('aria-selected', t === tab ? 'true' : 'false'));
+      load();
+    }));
 
     const head = $('[data-thread-head]', board);
     if (head && thread) { head.hidden = false; $('[data-thread-name]', head).textContent = thread.replace('@', ' @ '); }
@@ -490,13 +499,28 @@
       // 한 줄 평은 QUICK TALK에만 보이게 일반 목록에서 뺍니다. '자유'는 머리말이 없는 글도 포함합니다.
       const filter = scope === '자유' ? '&title=not.like.' + encodeURIComponent('[') + '*'
         : scope ? '&title=' + likeTag(scope) : '&title=not.' + likeTag(QUICK);
+      const today = mode === 'today', byComments = mode === 'comments';
+      const order = today ? 'created_at.desc' : 'updated_at.desc';
+      const since = today ? '&created_at=gte.' + encodeURIComponent(kstDayStart()) : '';
+      const last = byComments ? from + 29 : from + size - 1;  // 댓글순은 최근 글 30개 안에서 정렬합니다.
       try {
-        const res = await request('/rest/v1/posts?select=id,title,body,nickname,created_at,updated_at,source_url&status=eq.published&order=updated_at.desc' + filter, {
-          headers: { Prefer: 'count=exact', 'Range-Unit': 'items', Range: `${from}-${from + size - 1}` }
+        const res = await request('/rest/v1/posts?select=id,title,body,nickname,created_at,updated_at,source_url&status=eq.published&order=' + order + filter + since, {
+          headers: { Prefer: 'count=exact', 'Range-Unit': 'items', Range: `${from}-${last}` }
         });
-        const rows = await res.json();
+        let rows = await res.json();
         const m = (res.headers.get('content-range') || '').match(/\/(\d+)$/);
         total = m ? Number(m[1]) : rows.length;
+        if (byComments && rows.length) {
+          try {
+            const ids = rows.map(p => p.id).filter(id => /^[0-9a-zA-Z-]{1,40}$/.test(String(id)));
+            const cr = await request('/rest/v1/comments?select=post_id&status=eq.published&limit=1000&post_id=in.(' + ids.join(',') + ')');
+            const cs = await cr.json();
+            const cnt = {};
+            if (Array.isArray(cs)) cs.forEach(c => { cnt[c.post_id] = (cnt[c.post_id] || 0) + 1; });
+            rows = rows.map((p, i) => ({ p, i, n: cnt[p.id] || 0 })).sort((a, b) => b.n - a.n || a.i - b.i).map(x => Object.assign({}, x.p, { _cc: x.n }));
+          } catch (_) { /* 댓글 수를 못 불러오면 최근 활동순 그대로 보여 줍니다. */ }
+          rows = rows.slice(0, size); total = rows.length;
+        } else if (today) { total = rows.length; }
         renderPosts(list, rows, total, page, size);
         renderPager();
         previewComments(list, rows);

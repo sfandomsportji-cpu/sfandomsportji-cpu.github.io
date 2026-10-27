@@ -1258,8 +1258,8 @@ def build_home():
       {quick_box(4)}
       <div class="box"><span class="box-title">HOUSE RULES</span><ul class="rules"><li>욕설 · 비하 금지</li><li>도배 · 광고 링크 금지</li><li>불법 도박 사이트 홍보 금지</li><li>개인정보 올리지 않기</li></ul><a class="more" href="/rules/">커뮤니티 규칙 →</a></div>
     </aside>
-    <div class="fan-main" data-board data-size="5">
-      <div class="sec-head" style="margin:0"><span class="box-title">NEW POSTS · 최신 글</span><a class="more accent" href="/community/">전체 글 보기 →</a></div>
+    <div class="fan-main" data-board data-size="5" data-board-tabs>
+      <div class="sec-head" style="margin:0"><div class="board-tabs" role="tablist" aria-label="팬 보드 글 정렬"><button type="button" role="tab" data-board-tab="live" aria-selected="true">실시간</button><button type="button" role="tab" data-board-tab="today" aria-selected="false">투데이</button><button type="button" role="tab" data-board-tab="comments" aria-selected="false">댓글순</button></div><a class="more accent" href="/community/">전체 글 보기 →</a></div>
       <div data-board-list><div class="empty">스포츠 팬들의 경기·선수 토론을 확인할 수 있습니다. <a href="/community/">팬 보드에서 최신 글 보기 →</a></div></div>
       <a class="fan-write" href="/community/#write"><span class="fan-write-ph">오늘 경기, 무슨 얘기 하고 싶어요?</span><span class="pill">글쓰기</span></a>
     </div>
