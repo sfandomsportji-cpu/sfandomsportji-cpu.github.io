@@ -156,9 +156,9 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
   .sf-scores--preview.is-tabbed .sf-scores__teams b{font-size:26px}
 }
 
-/* 게임센터 폰트·크기 상향 · 2026-10-28: 귀엽고 두꺼운 Do Hyeon을 제목·시간·팀·버튼에 사용 */
+/* 게임센터 폰트·크기 상향 · 2026-10-28: 귀엽고 두꺼운 Jua을 제목·시간·팀·버튼에 사용 */
 .sf-scores--preview .sf-scores__heading h2,.sf-scores--preview .sf-scores__eyebrow,.sf-scores--preview .sf-scores__tabs button,.sf-scores--preview .sf-scores__league-head h3,
-.sf-scores--preview .sf-scores__time time,.sf-scores--preview .sf-scores__time small,.sf-scores--preview .sf-scores__teams b,.sf-scores--preview .sf-scores__teams i,.sf-scores--preview .sf-scores__numbers,.sf-scores--preview .sf-scores__heading .pill{font-family:'Do Hyeon','Noto Sans KR',sans-serif;font-weight:400;letter-spacing:.01em}
+.sf-scores--preview .sf-scores__time time,.sf-scores--preview .sf-scores__time small,.sf-scores--preview .sf-scores__teams b,.sf-scores--preview .sf-scores__teams i,.sf-scores--preview .sf-scores__numbers,.sf-scores--preview .sf-scores__heading .pill{font-family:'Jua','Noto Sans KR',sans-serif;font-weight:400;letter-spacing:.01em}
 .sf-scores--preview .sf-scores__heading h2{font-size:clamp(40px,3.2vw,58px)}
 .sf-scores--preview .sf-scores__heading p{font-size:19px}
 .sf-scores--preview .sf-scores__eyebrow{font-size:18px}

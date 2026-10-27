@@ -1508,9 +1508,9 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 .board-tabs button[aria-selected="true"]{background:var(--red);border-color:var(--red);color:#fff}
 .board-tabs+.more{align-self:center}
 
-/* 분석 성공 띠 · 2026-10-28: 귀엽고 두꺼운 Do Hyeon, 글씨 확대 */
+/* 분석 성공 띠 · 2026-10-28: 귀엽고 두꺼운 Jua, 글씨 확대 */
 .win-band{gap:24px;padding:26px 24px}
-.win-band .wb-label{font-family:'Do Hyeon','Noto Sans KR',sans-serif;font-weight:400;font-size:20px;letter-spacing:.12em}
-.win-band .wb-main{font-family:'Do Hyeon','Noto Sans KR',sans-serif;font-weight:400;font-size:clamp(44px,7vw,84px);letter-spacing:.01em}
+.win-band .wb-label{font-family:'Jua','Noto Sans KR',sans-serif;font-weight:400;font-size:20px;letter-spacing:.12em}
+.win-band .wb-main{font-family:'Jua','Noto Sans KR',sans-serif;font-weight:400;font-size:clamp(44px,7vw,84px);letter-spacing:.01em}
 .win-band .wb-main i{font-size:.6em}
 .win-band .wb-sub{font-size:19px}
