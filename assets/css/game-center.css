@@ -1,7 +1,7 @@
 /* SFANDOM item 03 — league scoreboard (isolated classes only) */
 .sf-scores{padding-top:23px;padding-bottom:26px}
 .sf-scores__heading{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:20px}
-.sf-scores__eyebrow{display:block;color:#f48494;font-weight:400;letter-spacing:1.7px;font-size:14px;font-family:var(--head)}
+.sf-scores__eyebrow{display:block;color:#f48494;font-weight:700;letter-spacing:1.7px;font-size:14px;font-family:var(--head)}
 .sf-scores__heading h2{font-size:clamp(27px,2.5vw,37px);letter-spacing:-1.2px;margin:8px 0 5px;line-height:1.3}
 .sf-scores__heading h2 span{color:#e16575}
 .sf-scores__heading p{color:#c7c7d0;margin:0;font-size:14px;line-height:1.7}
@@ -9,7 +9,7 @@
 .sf-scores__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
 .sf-scores__league{min-width:0;background:#1b1c24;border:1px solid #353640;border-radius:13px;overflow:hidden}
 .sf-scores__league-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px;padding:15px 15px 12px;border-bottom:1px solid #363641}
-.sf-scores__league-head h3{font-size:18px;font-weight:400;margin:0;font-family:var(--head)}
+.sf-scores__league-head h3{font-size:18px;font-weight:700;margin:0;font-family:var(--head)}
 .sf-scores__league-head small{color:#c0bfcd;font-size:14px}
 .sf-scores__rows{display:grid}
 .sf-scores__game{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:10px;row-gap:7px;border-bottom:1px solid #2e2e38;padding:13px 14px;align-items:center;color:#fff}
@@ -17,12 +17,12 @@
 a.sf-scores__game:hover{background:#29242f;color:#fff}
 .sf-scores__game:focus-visible{outline:2px solid #f98a9a;outline-offset:-2px}
 .sf-scores__time{display:flex;align-items:center;gap:8px;grid-column:1/-1;justify-content:space-between}
-.sf-scores__time time{color:#f69bad;font-size:14px;font-variant-numeric:tabular-nums;font-weight:400;font-family:var(--head)}
+.sf-scores__time time{color:#f69bad;font-size:14px;font-variant-numeric:tabular-nums;font-weight:700;font-family:var(--head)}
 .sf-scores__time small{color:#d0cfdb;font-size:14px;text-align:right}
 .sf-scores__teams{display:flex;gap:6px;align-items:center;min-width:0;flex-wrap:wrap}
 .sf-scores__teams b{display:inline-block;color:#fff;font-size:15px;letter-spacing:.4px}
-.sf-scores__teams i{font-style:normal;font-size:14px;color:#afafbb;font-weight:400;font-family:var(--head)}
-.sf-scores__numbers{font-size:16px;letter-spacing:.5px;font-weight:400;color:#fff;font-variant-numeric:tabular-nums;font-family:var(--head)}
+.sf-scores__teams i{font-style:normal;font-size:14px;color:#afafbb;font-weight:700;font-family:var(--head)}
+.sf-scores__numbers{font-size:16px;letter-spacing:.5px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;font-family:var(--head)}
 .sf-scores__numbers span{padding:0 3px;color:#9b9eac}
 .sf-scores__tag{grid-column:1/-1;color:#bfbfca;font-size:14px;letter-spacing:.4px}
 .sf-scores__empty{padding:18px;margin:0;font-size:14px;color:#c9c9d2;line-height:1.7}
@@ -56,7 +56,7 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 .sf-scores--preview{padding-top:38px;padding-bottom:42px}
 .sf-scores--preview .sf-scores__heading{margin-bottom:26px;align-items:center}
 .sf-scores--preview .sf-scores__eyebrow{font-size:15px;letter-spacing:2px;color:#f28fa1}
-.sf-scores--preview .sf-scores__heading h2{font-size:clamp(35px,2.5vw,48px);line-height:1.18;margin:11px 0 8px;font-weight:400;font-family:var(--head)}
+.sf-scores--preview .sf-scores__heading h2{font-size:clamp(35px,2.5vw,48px);line-height:1.18;margin:11px 0 8px;font-weight:700;font-family:var(--head)}
 .sf-scores--preview .sf-scores__heading p{font-size:17px;color:#c8cbd6;line-height:1.7}
 .sf-scores--preview .sf-scores__heading .pill{min-height:50px;padding:0 23px;font-size:17px}
 .sf-scores--preview .sf-scores__grid{gap:19px;align-items:start}
@@ -69,7 +69,7 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 .sf-scores--preview .sf-scores__game{min-height:128px;padding:18px 21px 17px;row-gap:9px;column-gap:12px;border-bottom:1px solid #3c3945}
 .sf-scores--preview a.sf-scores__game:hover{background:#2b2632}
 .sf-scores--preview .sf-scores__time time{font-size:16px;line-height:1.45;color:#ffb0c1}
-.sf-scores--preview .sf-scores__time small{font-size:14px;line-height:1.35;font-weight:400;color:#efedf4;border:1px solid #66505e;border-radius:999px;padding:4px 9px;background:#30232f;max-width:48%;text-align:center;font-family:var(--head)}
+.sf-scores--preview .sf-scores__time small{font-size:14px;line-height:1.35;font-weight:700;color:#efedf4;border:1px solid #66505e;border-radius:999px;padding:4px 9px;background:#30232f;max-width:48%;text-align:center;font-family:var(--head)}
 .sf-scores--preview .sf-scores__teams{gap:9px;flex-wrap:nowrap}
 .sf-scores--preview .sf-scores__teams b{font-size:23px;line-height:1.2}
 .sf-scores--preview .sf-scores__teams i{font-size:15px}
@@ -121,7 +121,7 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 /* 홈 경기 센터 종목 탭 · 2026-10-17 */
 .sf-scores__tabs{display:flex;gap:8px;margin:0 0 16px;overflow-x:auto;scrollbar-width:none}
 .sf-scores__tabs[hidden]{display:none}
-.sf-scores__tabs button{flex:0 0 auto;height:40px;padding:0 20px;border-radius:20px;border:1px solid #353640;background:#1b1c24;color:#d7d7e0;font:inherit;font-weight:400;letter-spacing:.06em;cursor:pointer;font-family:var(--head)}
+.sf-scores__tabs button{flex:0 0 auto;height:40px;padding:0 20px;border-radius:20px;border:1px solid #353640;background:#1b1c24;color:#d7d7e0;font:inherit;font-weight:700;letter-spacing:.06em;cursor:pointer;font-family:var(--head)}
 .sf-scores__tabs button[aria-selected="true"]{background:#c8102e;border-color:#c8102e;color:#fff}
 .sf-scores__tabs button:focus-visible{outline:2px solid #f98a9a;outline-offset:2px}
 .is-tabbed .sf-scores__grid{grid-template-columns:1fr}
