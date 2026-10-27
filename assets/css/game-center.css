@@ -128,3 +128,4 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 .is-tabbed .sf-scores__league[hidden]{display:none}
 .sf-scores--preview.is-tabbed .sf-scores__rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));flex:none}
 .is-tabbed .sf-scores__game{border-right:1px solid #2e2e38}
+.sf-scores__logo{display:inline-flex;align-items:center;flex-shrink:0}
