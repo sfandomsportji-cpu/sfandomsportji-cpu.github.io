@@ -2085,6 +2085,9 @@ def score_team(g: dict, side: str, state: str) -> str:
     """경기 행의 팀 표시. 예정 경기는 저장소에 로고가 있는 리그(NBA·MLB)에 한해 팀 로고로, 나머지는 약자 글자로 보여 준다."""
     abbr, name = str(g.get(side, '?')), g.get(f'{side}_name', '')
     league = str(g.get('league', '')).lower()
+    if league == 'nba':
+        # ESPN 약자(NY·GS·NO·SA·UTAH·WSH)를 저장소 로고 파일 이름과 맞춘다.
+        abbr = {'NY': 'NYK', 'GS': 'GSW', 'NO': 'NOP', 'SA': 'SAS', 'UTAH': 'UTA', 'WSH': 'WAS'}.get(abbr.upper(), abbr)
     if state == 'scheduled' and league in ('nba', 'mlb') and league in LOGO_SOURCES and (ROOT / 'assets' / 'teams' / league / f'{abbr.lower()}.svg').exists():
         return f'<span class="sf-scores__logo" title="{esc(name)}">{badge(abbr, team_color(abbr, league), "", league=league)}</span>'
     return f'<b title="{esc(name)}">{esc(abbr)}</b>'

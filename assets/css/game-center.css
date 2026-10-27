@@ -129,3 +129,29 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 .sf-scores--preview.is-tabbed .sf-scores__rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));flex:none}
 .is-tabbed .sf-scores__game{border-right:1px solid #2e2e38}
 .sf-scores__logo{display:inline-flex;align-items:center;flex-shrink:0}
+
+/* 홈 경기 센터 가독성 개편 · 2026-10-28
+   종목 탭 화면: 경기 카드를 한 장씩 분리해 크게 보여주고, 카드 수가 적어도 오른쪽이 비지 않게 늘어난다. */
+.sf-scores--preview.is-tabbed .sf-scores__rows{display:flex;flex-direction:row;flex-wrap:wrap;align-items:stretch;gap:14px;padding:16px;flex:none}
+.sf-scores--preview.is-tabbed .sf-scores__game{flex:1 1 340px;min-width:0;min-height:0;padding:20px 22px;row-gap:14px;border:1px solid #3c3945;border-radius:14px;background:#1d1e27;grid-template-columns:minmax(0,1fr)}
+.sf-scores--preview.is-tabbed .sf-scores__game:last-child{border-bottom:1px solid #3c3945}
+.sf-scores--preview.is-tabbed .sf-scores__time{grid-column:1/-1}
+.sf-scores--preview.is-tabbed .sf-scores__time time{font-size:19px;font-weight:800;color:#ffc0cd}
+.sf-scores--preview.is-tabbed .sf-scores__time small{font-size:15px;padding:5px 12px;max-width:none}
+.sf-scores--preview.is-tabbed .sf-scores__teams{justify-content:center;gap:18px;padding:6px 0}
+.sf-scores--preview.is-tabbed .sf-scores__teams i{font-size:17px;color:#cfd2dd}
+.sf-scores--preview.is-tabbed .sf-scores__teams b{font-size:30px;font-weight:800;letter-spacing:.02em}
+.sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap{width:64px;height:64px;min-width:64px}
+.sf-scores--preview.is-tabbed .sf-scores__logo .tchip{font-size:18px}
+.sf-scores--preview.is-tabbed .sf-scores__numbers{justify-self:center;font-size:30px}
+.sf-scores--preview.is-tabbed .sf-scores__tag{font-size:15px;text-align:center;color:#cdd1dd}
+.sf-scores--preview.is-tabbed .sf-scores__league-head h3{font-size:28px}
+.sf-scores--preview.is-tabbed .sf-scores__league-head small{font-size:15px;color:#d2d5e0}
+.sf-scores--preview .sf-scores__tabs button{height:46px;padding:0 24px;font-size:17px;letter-spacing:.04em}
+.sf-scores--preview .sf-scores__heading p{font-size:17px;color:#d3d6e0}
+@media(max-width:700px){
+  .sf-scores--preview.is-tabbed .sf-scores__rows{padding:12px;gap:12px}
+  .sf-scores--preview.is-tabbed .sf-scores__game{flex-basis:100%;padding:18px}
+  .sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap{width:56px;height:56px;min-width:56px}
+  .sf-scores--preview.is-tabbed .sf-scores__teams b{font-size:26px}
+}
