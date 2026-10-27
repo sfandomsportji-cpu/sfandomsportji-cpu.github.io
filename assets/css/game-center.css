@@ -155,3 +155,28 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
   .sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap{width:56px;height:56px;min-width:56px}
   .sf-scores--preview.is-tabbed .sf-scores__teams b{font-size:26px}
 }
+
+/* 게임센터 폰트·크기 상향 · 2026-10-28: 귀엽고 두꺼운 Do Hyeon을 제목·시간·팀·버튼에 사용 */
+.sf-scores--preview .sf-scores__heading h2,.sf-scores--preview .sf-scores__eyebrow,.sf-scores--preview .sf-scores__tabs button,.sf-scores--preview .sf-scores__league-head h3,
+.sf-scores--preview .sf-scores__time time,.sf-scores--preview .sf-scores__time small,.sf-scores--preview .sf-scores__teams b,.sf-scores--preview .sf-scores__teams i,.sf-scores--preview .sf-scores__numbers,.sf-scores--preview .sf-scores__heading .pill{font-family:'Do Hyeon','Noto Sans KR',sans-serif;font-weight:400;letter-spacing:.01em}
+.sf-scores--preview .sf-scores__heading h2{font-size:clamp(40px,3.2vw,58px)}
+.sf-scores--preview .sf-scores__heading p{font-size:19px}
+.sf-scores--preview .sf-scores__eyebrow{font-size:18px}
+.sf-scores--preview .sf-scores__tabs button{height:52px;font-size:21px;padding:0 28px}
+.sf-scores--preview .sf-scores__heading .pill{font-size:20px}
+.sf-scores--preview.is-tabbed .sf-scores__league-head h3{font-size:34px}
+.sf-scores--preview.is-tabbed .sf-scores__league-head small{font-size:17px}
+.sf-scores--preview.is-tabbed .sf-scores__time time{font-size:26px;font-weight:400}
+.sf-scores--preview.is-tabbed .sf-scores__time small{font-size:19px;font-weight:400}
+.sf-scores--preview.is-tabbed .sf-scores__teams i{font-size:24px}
+.sf-scores--preview.is-tabbed .sf-scores__teams b{font-size:38px;font-weight:400}
+.sf-scores--preview.is-tabbed .sf-scores__numbers{font-size:38px;font-weight:400}
+.sf-scores--preview.is-tabbed .sf-scores__tag{font-size:18px;font-weight:500}
+.sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap{width:72px;height:72px;min-width:72px}
+@media(max-width:700px){
+ .sf-scores--preview .sf-scores__heading h2{font-size:38px}
+ .sf-scores--preview .sf-scores__tabs button{height:48px;font-size:19px}
+ .sf-scores--preview.is-tabbed .sf-scores__time time{font-size:23px}
+ .sf-scores--preview.is-tabbed .sf-scores__teams b{font-size:32px}
+ .sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap{width:60px;height:60px;min-width:60px}
+}
