@@ -795,6 +795,47 @@ def soccer_today() -> str:
             f'<p class="sc-hint">옆으로 밀어서 전체 경기 보기 · 킥오프는 한국시간 · 확정 라인업 발표 후 분석에 반영</p></section>')
 
 
+def ta_mark(a: Article, name: str) -> str:
+    """홈 분석 카드용 팀 로고. 로고 파일이 없으면 이름 앞 3글자 칩."""
+    lg = getattr(a, 'league', '')
+    if lg == 'SOCCER' and soccer_badge(name):
+        return soccer_badge(name, 'lg')
+    if lg in ('NBA', 'MLB') and (ROOT / 'assets' / 'teams' / lg.lower() / f'{name.lower()}.svg').exists():
+        return badge(name, team_color(name, lg.lower()), 'lg', league=lg.lower())
+    if lg == 'KBO' and kbo_logo(name):
+        p = kbo_logo(name)
+        return (f'<span class="tlogo-wrap lg"><img class="tlogo" src="{p}" alt="{esc(name)}" '
+                f'style="{logo_style(p.removeprefix("/assets/teams/"), LOGO_FIT_PLAIN)}" width="40" height="40" loading="lazy" decoding="async"></span>')
+    return f'<span class="tchip lg" style="--c:#444" title="{esc(name)}">{esc(name[:3].upper())}</span>'
+
+
+def ta_when(a: Article) -> str:
+    day, _, clock = (getattr(a, 'kst', '') or '').partition(' ')
+    return f'{day} 종료' if clock == 'final' else f'{day} {clock}'.strip()
+
+
+def ta_board(picks: list) -> str:
+    """홈 분석 구역: 큰 카드 1개 + 옆에 클릭해서 들어가는 항목 3개."""
+    def key(a):
+        return dict(getattr(a, 'glance', None) or []).get('핵심', '')
+    feat, rest = picks[0], picks[1:4]
+    photo = (f'<img class="ta-feat-img" src="{esc(feat.image)}" alt="{esc(feat.image_alt)}" loading="lazy" decoding="async">'
+             if feat.image.startswith('/assets/photos/') and (ROOT / feat.image.lstrip('/')).is_file() else '')
+    big = (f'<a class="ta-feat" href="{feat.url}">{photo}'
+           f'<span class="ta-stage">{ta_mark(feat, feat.away)}<i>VS</i>{ta_mark(feat, feat.home)}</span>'
+           f'<span class="ta-meta"><em>{esc(feat.league)}</em><time>{esc(ta_when(feat))}</time></span>'
+           f'<b class="ta-title">{esc(feat.title)}</b>'
+           + (f'<span class="ta-key"><small>핵심</small>{esc(key(feat))}</span>' if key(feat) else '')
+           + '<span class="ta-go">분석 읽기 →</span></a>')
+    items = ''.join(
+        f'<a class="ta-item" href="{a.url}"><span class="ta-pair">{ta_mark(a, a.away)}{ta_mark(a, a.home)}</span>'
+        f'<span class="ta-tx"><span class="ta-meta"><em>{esc(a.league)}</em><time>{esc(ta_when(a))}</time></span>'
+        f'<b>{esc(a.title)}</b>'
+        + (f'<small>{esc(key(a))}</small>' if key(a) else '') + '</span><span class="ta-arrow" aria-hidden="true">→</span></a>'
+        for a in rest)
+    return f'<div class="ta-wrap">{big}<div class="ta-list">{items}</div></div>'
+
+
 def today_analysis() -> str:
     """Keep the approved morning edition and surface newer analysis on home."""
     ed_latest = max(EDITIONS)
@@ -823,26 +864,20 @@ def today_analysis() -> str:
     if any(a.file not in in_special for a in pool):  # 특집 경기는 아래 특집 블록에 있으므로 위 3칸에서는 겹치지 않게 뺀다
         pool = [a for a in pool if a.file not in in_special]
     upcoming = sorted([a for a in pool if start_kst(a) and start_kst(a) >= now_kst - dt.timedelta(hours=1)], key=start_kst)
-    if upcoming:  # 진행 예정 경기만 홈에 노출하고, 지난 프리뷰는 목록에 보존한다.
-        picks = upcoming[:4]
-        display_date = start_kst(picks[0]).date().isoformat()
-    else:
-        picks = []
-        display_date = now_kst.date().isoformat()
+    # 예정 경기를 먼저, 모자라면 가장 최근 분석으로 채워 항상 4편(큰 카드 1 + 옆 3)을 보여 준다.
+    picks = (upcoming[:4] + [a for a in pool if a not in upcoming])[:4]
+    display_date = start_kst(upcoming[0]).date().isoformat() if upcoming else now_kst.date().isoformat()
     all_href = '/analysis/'
     all_label = '최신 분석 전체 →'
-    feature_count = len(picks)
-    header_sub = (f'{display_date.replace("-", ".")} 최신 분석 {feature_count}편' if picks
-                  else '새 경기 분석 준비 중')
+    header_sub = f'{display_date.replace("-", ".")} 경기 분석' if upcoming else '최근 경기 분석'
+
     hit, total = hit_rate()
     rate = f'<span data-rate title="경기 전에 남긴 예측과 실제 결과 기록">예측 {hit}/{total}</span>' if total else ''
     # 직접 받은 자료사진이 있는 글(오늘의 메인 특집)을 맨 위로 — 모든 줄은 접어 두고 사진 띠만 보이게
     picks = sorted(picks, key=lambda a: not (a.image.startswith('/assets/photos/') and (ROOT / a.image.lstrip('/')).is_file()))
-    cards = ''.join(analysis_row(a, bool(upcoming) and getattr(a, 'league', '') == 'SOCCER') for a in picks)
     head = ('<div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
             '<span>핵심</span><span>변수</span><span>시선</span><span></span></div>')
-    board = (f'<div class="an-board">{head}{cards}</div>' if picks else
-             '<div class="an-board"><p class="sc-hint" style="padding:24px;margin:0">예정된 경기 프리뷰가 등록되면 이곳에 표시됩니다. 이전 경기 분석은 전체 목록과 복기 리포트에서 확인할 수 있습니다.</p></div>')
+    board = ta_board(picks)
     special_blocks = ''.join(
         f'<div class="sec-head" style="margin-top:40px"><h2 class="sec-title">{esc(f["title_a"])} <span class="outline">{esc(f["title_b"])}</span> '
         f'<span class="kr">{esc(f["kr"])} {len(ps)}경기</span></h2><a class="more" href="/special/{f["id"]}/">특집 전체 →</a></div>'
