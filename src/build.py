@@ -1078,7 +1078,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
-{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261027-scores-logo-v1">' if path in ('/', '/games/') else '')}
+{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261028-scores-scroll-v2">' if path in ('/', '/games/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/editorial-links.css?v={av("/assets/css/editorial-links.css")}">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}
@@ -2230,17 +2230,91 @@ def game_sections(brief: bool = False) -> str:
     return ''.join(output)
 
 
+def art_start(a: Article):
+    """분석글 머리말 kst('10.27 18:30' / '10.20 final')를 한국시간 datetime으로. 시각이 없으면 None."""
+    m = re.match(r'(\d{1,2})\.(\d{1,2})\s+(\d{1,2}):(\d{2})', getattr(a, 'kst', '') or '')
+    if not m:
+        return None
+    return dt.datetime(int(a.date[:4]), int(m[1]), int(m[2]), int(m[3]), int(m[4]), tzinfo=dt.timezone(dt.timedelta(hours=9)))
+
+
+def art_game_card(a: Article) -> str:
+    """홈 경기 패널에서 외부 기록이 없는 종목(KBO·축구)을 분석글로 잇는 카드."""
+    day, _, clock = (getattr(a, 'kst', '') or '').partition(' ')
+    final = clock == 'final'
+    start = art_start(a)
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    when = day if final else f'{day} {clock}'.strip()
+    label = '종료 · 복기' if final else ('지난 경기 · 분석' if start and start < now - dt.timedelta(hours=3) else '예정 · 분석')
+    return (f'<a class="sf-scores__game" href="{a.url}">'
+            f'<span class="sf-scores__time"><time>{esc(when)}</time><small>{esc(label)}</small></span>'
+            f'<span class="sf-scores__teams"><span class="sf-scores__logo" title="{esc(a.away)}">{ta_mark(a, a.away)}</span>'
+            f'<i aria-hidden="true">VS</i><span class="sf-scores__logo" title="{esc(a.home)}">{ta_mark(a, a.home)}</span></span>'
+            f'<span class="sf-scores__tag">분석 보기</span></a>')
+
+
+def art_cards(league: str, limit: int) -> str:
+    pool = [a for a in ARTICLES if a.kind == 'analysis' and a.league == league and getattr(a, 'away', '') and getattr(a, 'home', '')
+            and not getattr(a, 'hide_home', False)]
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    ahead = sorted([a for a in pool if art_start(a) and art_start(a) >= now - dt.timedelta(hours=1)], key=art_start)
+    rest = sorted([a for a in pool if a not in ahead], key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
+    fresh = (now - dt.timedelta(days=3)).date().isoformat()  # 최근 3일 이내 경기만 먼저 보여 주고, 하나도 없을 때만 가장 최근 3경기로 채운다
+    chosen = ahead + [a for a in rest if a.date >= fresh]
+    if not chosen:
+        chosen = rest[:3]
+    return ''.join(art_game_card(a) for a in chosen[:limit])
+
+
+def game_scroll() -> tuple[str, list]:
+    """홈 경기 패널: 야구·농구·축구를 한 스크롤 안에 종목별 구간으로 나눠 보여 준다."""
+    snapshot = game_snapshot()
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+
+    def snap_cards(league: str, limit: int) -> tuple[str, str]:
+        details = snapshot.get('leagues', {}).get(league) or {}
+        verified, stale = game_age(details.get('checked_at', ''))
+        games = sorted([g for g in details.get('games', []) if game_clock(g.get('start_kst', ''))],
+                       key=lambda g: (g.get('start_kst', ''), g.get('id', '')))
+        cutoff = now - dt.timedelta(minutes=20)
+        ahead = [g for g in games if g.get('status') in ('scheduled', 'live') and game_clock(g['start_kst']) >= cutoff]
+        behind = [g for g in games if g not in ahead]
+        picked = ahead[:limit] + (behind[-(limit - len(ahead[:limit])):] if len(ahead) < limit else [])
+        picked.sort(key=lambda g: g['start_kst'])
+        return ''.join(game_card(g, stale, details.get('checked_at', '')) for g in picked), verified
+
+    base_cards, base_ver = '', ''
+    for lg in (('NPB',) if HOME_HIDE_MLB else ('MLB', 'NPB')):
+        c, v = snap_cards(lg, 4)
+        base_cards, base_ver = base_cards + c, base_ver or v
+    base_cards += art_cards('KBO', 4)
+    hoops_cards, hoops_ver = snap_cards('NBA', 8)
+    groups = (
+        ('야구', '⚾', base_cards, 'NPB · KBO 포스트시즌'),
+        ('농구', '🏀', hoops_cards, f'NBA · 확인 {hoops_ver}'),
+        ('축구', '⚽', art_cards('SOCCER', 6), '해외·국내 축구 · SFANDOM 분석 경기'),
+    )
+    out = []
+    for name, icon, cards, note in groups:
+        if not cards:
+            cards = '<p class="sf-scores__empty">이 시간대 확인된 경기 정보가 없습니다. 다음 자료 갱신을 기다려 주세요.</p>'
+        out.append(f'<section class="sf-scores__league" data-league="{name}" aria-label="{name} 경기 결과와 일정">'
+                   f'<div class="sf-scores__league-head"><h3>{icon} {name}</h3><small>{esc(note)}</small></div>'
+                   f'<div class="sf-scores__rows">{cards}</div></section>')
+    return ''.join(out), [g[0] for g in groups]
+
+
 def game_preview() -> str:
-    # 종목 탭: 자바스크립트가 켜지면 NBA부터 한 종목씩 보여주고, 꺼져 있으면 전 종목을 그대로 펼쳐 둡니다.
-    order = ('NBA', 'NPB', 'NFL', 'NHL') if HOME_HIDE_MLB else ('NBA', 'MLB', 'NPB', 'NFL', 'NHL')
+    # 종목 탭: 자바스크립트가 켜지면 탭이 구간 이동 단추가 되고, 꺼져 있으면 세 종목이 그대로 이어서 보입니다.
+    sections, order = game_scroll()
     tabs_html = ''.join(f'<button type="button" role="tab" data-score-tab="{lg}" aria-selected="{"true" if lg == order[0] else "false"}">{lg}</button>' for lg in order)
     return (f'<section class="wrap sf-scores sf-scores--preview" aria-labelledby="scorePreviewTitle" data-score-tabs>'
             f'<div class="sf-scores__heading"><div><span class="sf-scores__eyebrow">GAME CENTER · KST</span>'
             f'<h2 id="scorePreviewTitle">경기 일정 <span>·</span> 최종 결과</h2>'
-            f'<p>{"NBA·NFL·NHL·NPB" if HOME_HIDE_MLB else "MLB·NBA·NFL·NHL·NPB"} · 외부 기록 제공처 확인 시각 기준</p></div>'
+            f'<p>야구 · 농구 · 축구 · 외부 기록 제공처 확인 시각 기준</p></div>'
             f'<a class="pill" href="/games/">전체 경기 보기 →</a></div>'
             f'<div class="sf-scores__tabs" role="tablist" aria-label="종목" hidden>{tabs_html}</div>'
-            f'<div class="sf-scores__grid">{game_sections(True)}</div></section>')
+            f'<div class="sf-scores__scroll" tabindex="0" aria-label="종목별 경기 목록 스크롤">{sections}</div></section>')
 
 
 def build_games() -> None:

@@ -59,20 +59,36 @@
     if (!document.hidden) refreshRecordedScores();
   });
 
-  /* ── 경기 센터 종목 탭: 스크립트가 켜질 때만 탭으로 바꾸고, 꺼져 있으면 전 종목이 그대로 보입니다 ── */
+  /* ── 경기 센터: 야구·농구·축구가 한 스크롤 안에 이어지고, 탭은 해당 구간으로 이동합니다(스크립트가 꺼져 있어도 전부 보입니다) ── */
   $$('[data-score-tabs]').forEach(box => {
     const bar = $('.sf-scores__tabs', box);
     const tabs = $$('[data-score-tab]', box);
     const panels = $$('.sf-scores__league[data-league]', box);
-    if (!bar || !tabs.length || !panels.length) return;
-    const show = league => {
-      tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.scoreTab === league)));
-      panels.forEach(p => { p.hidden = p.dataset.league !== league; });
-    };
+    const scroller = $('.sf-scores__scroll', box);
+    if (!bar || !tabs.length || !panels.length || !scroller) return;
+    const mark = league => tabs.forEach(t => t.setAttribute('aria-selected', String(t.dataset.scoreTab === league)));
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     bar.hidden = false;
-    box.classList.add('is-tabbed');
-    tabs.forEach(t => t.addEventListener('click', () => show(t.dataset.scoreTab)));
-    show(tabs[0].dataset.scoreTab);
+    box.classList.add('is-tabbed', 'is-scroll');
+    tabs.forEach(t => t.addEventListener('click', () => {
+      const p = panels.find(x => x.dataset.league === t.dataset.scoreTab);
+      if (!p) return;
+      mark(t.dataset.scoreTab);
+      scroller.scrollTo({ top: p.offsetTop, behavior: reduce ? 'auto' : 'smooth' });
+    }));
+    let tick = false;
+    scroller.addEventListener('scroll', () => {
+      if (tick) return;
+      tick = true;
+      requestAnimationFrame(() => {
+        tick = false;
+        const atEnd = scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 2;
+        let cur = panels[0];
+        panels.forEach(p => { if (p.offsetTop <= scroller.scrollTop + 24) cur = p; });
+        if (atEnd) cur = panels[panels.length - 1];
+        mark(cur.dataset.league);
+      });
+    }, { passive: true });
   });
 
   /* ── 전체 메뉴 · 검색 ── */
