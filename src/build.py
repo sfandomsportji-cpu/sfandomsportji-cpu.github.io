@@ -1084,7 +1084,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
-{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261028-kbo-crest-v1">' if path in ('/', '/games/') else '')}
+{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261028-kbo-bracket-v1">' if path in ('/', '/games/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/editorial-links.css?v={av("/assets/css/editorial-links.css")}">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}
@@ -2299,6 +2299,38 @@ def art_cards(league: str, limit: int) -> str:
     return ''.join(art_game_card(a) for a in chosen[:limit])
 
 
+def kbo_bracket() -> str:
+    """홈 야구 구간 상단: KBO 포스트시즌 대진표 카드. 숫자는 src/content/kbo_postseason.json에서만 읽는다."""
+    try:
+        d = json.loads((ROOT / 'src' / 'content' / 'kbo_postseason.json').read_text(encoding='utf-8'))
+    except Exception:
+        return ''
+    from types import SimpleNamespace
+    kb = SimpleNamespace(league='KBO')
+    mark = lambda n: ta_mark(kb, n)
+
+    def mini(stage):
+        rows = ''.join(f'<li{" class=win" if r[3] else ""}><span class="kb-lg">{mark(r[0])}</span><b>{esc(r[1])}</b><em>{r[2]}</em></li>' for r in stage['rows'])
+        return (f'<div class="kb-stage"><h4>{esc(stage["title"])}</h4><small>({esc(stage["sub"])})</small>'
+                f'<ul class="kb-box">{rows}</ul><p>{esc(stage["caption"])}</p></div>')
+    po = d['po']
+    cands = sorted([a for a in ARTICLES if a.kind == 'analysis' and a.league == 'KBO' and getattr(a, 'away', '')],
+                   key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
+    link = f'<a class="kb-go" href="{cands[0].url}">분석 보기 <span aria-hidden="true">›</span></a>' if cands else ''
+    a_, b_ = po['rows']
+    center = (f'<div class="kb-stage kb-main"><h4>{esc(po["title"])}</h4><small>({esc(po["sub"])})</small>'
+              f'<div class="kb-duel"><span class="kb-big">{mark(a_[0])}</span><span class="kb-score"><b>{a_[2]}</b><i>VS</i><b>{b_[2]}</b></span>'
+              f'<span class="kb-big">{mark(b_[0])}</span></div><p>{esc(po["caption"])}</p>{link}</div>')
+    ks = d['ks']
+    kt = ks['team']
+    right = (f'<div class="kb-stage"><h4>{esc(ks["title"])}</h4><small>({esc(ks["sub"])})</small>'
+             f'<ul class="kb-box"><li class=win><span class="kb-lg">{mark(kt[0])}</span><b>{esc(kt[1])}</b><em>직행</em></li>'
+             f'<li class=wait><span class="kb-lg kb-q">?</span><b>{esc(ks["wait"])}</b><em>&ndash;</em></li></ul><p>{esc(kt[2])}</p></div>')
+    return (f'<div class="kb-bracket" aria-label="KBO 포스트시즌 대진표"><div class="kb-top"><strong>KBO 포스트시즌</strong>'
+            f'<span class="kb-date">{esc(d["updated"])} 기준</span></div>'
+            f'<div class="kb-grid">{mini(d["wildcard"])}{mini(d["semi"])}{center}{right}</div></div>')
+
+
 def game_scroll() -> tuple[str, list]:
     """홈 경기 패널: 야구·농구·축구를 한 스크롤 안에 종목별 구간으로 나눠 보여 준다."""
     snapshot = game_snapshot()
@@ -2320,7 +2352,7 @@ def game_scroll() -> tuple[str, list]:
     for lg in (('NPB',) if HOME_HIDE_MLB else ('MLB', 'NPB')):
         c, v = snap_cards(lg, 4)
         base_cards, base_ver = base_cards + c, base_ver or v
-    base_cards += art_cards('KBO', 4)
+    base_cards = kbo_bracket() + base_cards
     hoops_cards, hoops_ver = snap_cards('NBA', 8)
     groups = (
         ('야구', '⚾', base_cards, 'NPB · KBO 포스트시즌'),
