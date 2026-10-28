@@ -1553,3 +1553,16 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 #today-analysis .ta-meta time{white-space:nowrap}
 /* Home analysis: KBO logos fill their tile (same tile size as every other logo). */
 #today-analysis .ta-stage .tlogo-wrap.kbo{padding:5px}
+
+/* Home FAN ZONE: topic block under the board so the column never ends in empty space. */
+.ft-box{margin-top:20px}
+.ft-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
+.ft-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ft-list li{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.02)}
+.ft-main{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
+.ft-lg{font-size:11px;font-weight:800;letter-spacing:.08em;color:var(--red)}
+.ft-vs{font-weight:800;font-size:16px;overflow-wrap:anywhere}
+.ft-vs i{font-style:normal;color:var(--red);margin:0 4px}
+.ft-q{font-size:14px;color:var(--muted,#b9b9c4)}
+.ft-go{flex:none;font-size:13px;font-weight:700;color:var(--red);white-space:nowrap}
+@media (max-width:600px){.ft-list li{flex-direction:column;align-items:flex-start;gap:8px}}

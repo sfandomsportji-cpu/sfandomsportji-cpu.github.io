@@ -1141,6 +1141,32 @@ def channel_chips() -> str:
     return f'<nav class="chips" aria-label="채널" data-chips>{chips}</nav>'
 
 
+def fan_topics(limit: int = 3) -> str:
+    """FAN ZONE 아래쪽 콘텐츠: 오늘 경기(없으면 최근 분석) 기준 토론 주제 카드. 예측·결과 단정 없이 질문만 던진다."""
+    kst = dt.timezone(dt.timedelta(hours=9))
+    now = dt.datetime.now(kst)
+    def start(a):
+        m = re.match(r'(\d{1,2})\.(\d{1,2})\s+(\d{1,2}):(\d{2})', getattr(a, 'kst', '') or '')
+        return dt.datetime(int(a.date[:4]), int(m[1]), int(m[2]), int(m[3]), int(m[4]), tzinfo=kst) if m else None
+    pool = [a for a in ARTICLES if a.kind == 'analysis' and getattr(a, 'away', '') and getattr(a, 'home', '')
+            and not getattr(a, 'hide_home', False)]
+    up = sorted([a for a in pool if start(a) and start(a) >= now - dt.timedelta(hours=1)], key=start)
+    rec = sorted([a for a in pool if a not in up], key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
+    picks = (up + rec)[:limit]
+    if not picks:
+        return ''
+    qs = ['이 경기, 가장 눈여겨볼 선수는 누구?', '승부를 가를 변수는 뭘까?', '내가 먼저 볼 포인트는?']
+    qs_done = ['가장 인상 깊었던 장면은?', '이 경기의 MVP를 꼽는다면?', '다음 경기에서 달라져야 할 점은?']
+    rows = ''.join(
+        f'<li><a class="ft-main" href="{a.url}"><span class="ft-lg">{esc(a.league)}</span>'
+        f'<span class="ft-vs">{esc(a.away)} <i>VS</i> {esc(a.home)}</span>'
+        f'<span class="ft-q">{esc((qs_done if (getattr(a, 'kst', '') or '').endswith('final') else qs)[i % 3])}</span></a>'
+        f'<a class="ft-go" href="/community/#write">의견 남기기 →</a></li>' for i, a in enumerate(picks))
+    sub = '오늘 경기 얘기' if up else '최근 경기 얘기'
+    return (f'<div class="box ft-box"><div class="ft-head"><span class="display" style="font-size:26px">TODAY&#39;S TALK</span>'
+            f'<span class="muted" style="font-size:12px">{sub}, 한마디씩</span></div><ul class="ft-list">{rows}</ul></div>')
+
+
 def game_threads(limit: int = 7, hide_mlb: bool = False) -> str:
     """경기 스레드: NBA 예정 경기와 MLB 챔피언십시리즈를 연결합니다."""
     rows = []
@@ -1320,6 +1346,7 @@ def build_home():
       <div class="sec-head" style="margin:0"><div class="board-tabs" role="tablist" aria-label="팬 보드 글 정렬"><button type="button" role="tab" data-board-tab="live" aria-selected="true">실시간</button><button type="button" role="tab" data-board-tab="today" aria-selected="false">투데이</button><button type="button" role="tab" data-board-tab="comments" aria-selected="false">댓글순</button></div><a class="more accent" href="/community/">전체 글 보기 →</a></div>
       <div data-board-list><div class="empty">스포츠 팬들의 경기·선수 토론을 확인할 수 있습니다. <a href="/community/">팬 보드에서 최신 글 보기 →</a></div></div>
       <a class="fan-write" href="/community/#write"><span class="fan-write-ph">오늘 경기, 무슨 얘기 하고 싶어요?</span><span class="pill">글쓰기</span></a>
+      {fan_topics()}
     </div>
     <aside class="fan-side">
       {game_threads(hide_mlb=HOME_HIDE_MLB)}
