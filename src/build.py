@@ -1204,6 +1204,56 @@ def game_threads(limit: int = 7, hide_mlb: bool = False) -> str:
     return f'<div class="box"><span class="box-title">GAME THREADS · 경기 스레드</span>{out}</div>'
 
 
+HOT_NBA = ('LAL', 'GSW', 'NYK', 'BOS', 'MIA', 'OKC', 'DAL', 'DEN', 'MIL', 'PHI')  # 관심이 몰리는 팀(편집 기준, 예측 아님)
+
+
+def game_threads_wide() -> str:
+    """홈 FAN ZONE 아래 넓은 경기 스레드: 맨 위 주요 경기 3개(빨간 표시) + 예정 경기 / 이전 경기 반반.
+    주요 경기는 SFANDOM 분석글이 있는 경기를 먼저, 그다음 관심 팀이 걸린 경기 순으로 가린다."""
+    snap = game_snapshot().get('leagues', {}).get('NBA', {})
+    now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
+    abbr = {'NY': 'NYK', 'GS': 'GSW', 'NO': 'NOP', 'SA': 'SAS', 'UTAH': 'UTA', 'WSH': 'WAS'}
+    games = []
+    for x in snap.get('games', []):
+        when = game_clock(x.get('start_kst', ''))
+        if not when:
+            continue
+        games.append(dict(x, away=abbr.get(x['away'], x['away']), home=abbr.get(x['home'], x['home']), _t=when))
+    ahead = sorted([g for g in games if g.get('status') in ('scheduled', 'live') and g['_t'] >= now - dt.timedelta(minutes=20)], key=lambda g: g['_t'])
+    done = sorted([g for g in games if g.get('status') == 'final'], key=lambda g: g['_t'], reverse=True)
+    if not ahead and not done:
+        return game_threads(hide_mlb=HOME_HIDE_MLB)
+    covered = {(a.away, a.home) for a in ARTICLES if a.kind == 'analysis' and a.league == 'NBA' and getattr(a, 'away', '')}
+    soon = [g for g in ahead if g['_t'] <= ahead[0]['_t'] + dt.timedelta(hours=30)] if ahead else []
+    def heat(g):
+        return (3 if (g['away'], g['home']) in covered else 0) + (g['away'] in HOT_NBA) + (g['home'] in HOT_NBA)
+    hot = sorted(sorted(soon, key=lambda g: g['_t']), key=heat, reverse=True)[:3]
+    hot = sorted(hot, key=lambda g: g['_t'])
+    hot_ids = {id(g) for g in hot}
+    logos = lambda g: (badge(g['away'], NBA['colors'].get(g['away'], '#444'), league='nba') + '<i class="thread-vs">VS</i>'
+                       + badge(g['home'], NBA['colors'].get(g['home'], '#444'), league='nba'))
+    stamp = lambda g: g['_t'].strftime('%m.%d') + f' ({"월화수목금토일"[g["_t"].weekday()]}) ' + g['_t'].strftime('%H:%M')
+    href = lambda g: f'/community/?thread={quote(g["away"] + "@" + g["home"])}'
+    hot_html = ''.join(
+        f'<a class="gtw-card hot" href="{href(g)}"><em class="gtw-tag">주요경기</em><small>NBA · {esc(stamp(g))}</small>'
+        f'<b class="vsline">{logos(g)}</b><span class="gt-in"><span class="gt-dot"></span>입장</span></a>' for g in hot)
+    def row(g, final):
+        right = (f'<span class="gtw-score">{g["away_score"]}<i>:</i>{g["home_score"]}</span>' if final
+                 else '<span class="gt-in"><span class="gt-dot"></span>입장</span>')
+        return (f'<a class="gtw-row" href="{href(g)}"><small>{esc(stamp(g))}</small><b class="vsline">{logos(g)}</b>{right}</a>')
+    up_all = [x for x in ahead if id(x) not in hot_ids]
+    n = min(6, max(3, min(len(up_all), len(done))))  # 예정·이전을 같은 줄 수로 맞춰 반반
+    up = ''.join(row(g, False) for g in up_all[:n])
+    prev = ''.join(row(g, True) for g in done[:n])
+    empty = lambda t: f'<p class="gtw-empty">{t}</p>'
+    return (f'<div class="gtw-wrap"><div class="box gtw"><div class="gtw-head"><span class="box-title">GAME THREADS · 경기 스레드</span>'
+            f'</div>'
+            f'<h3 class="gtw-hothead"><em>HOT {len(hot)}</em> 오늘의 핫 경기</h3>'
+            f'<div class="gtw-hot">{hot_html}</div>'
+            f'<div class="gtw-cols"><div><h4>예정 경기</h4>{up or empty("예정된 경기가 아직 없어요.")}</div>'
+            f'<div><h4>이전 경기</h4>{prev or empty("끝난 경기가 아직 없어요.")}</div></div></div></div>')
+
+
 def quick_box(size: int = 4) -> str:
     return (f'<div class="box quick" data-quick data-size="{size}"><div class="quick-head"><span class="display" style="font-size:26px">QUICK TALK</span><span class="muted" style="font-size:12px">한 줄로 가볍게</span></div>'
             f'<form class="quick-form" data-quick-form novalidate><label class="sr-only" for="qt">지금 경기 한 줄 평 (최대 60자)</label>'
@@ -1374,7 +1424,7 @@ def build_home():
       {fan_topics()}
     </div>
     <aside class="fan-side">
-      {game_threads(hide_mlb=HOME_HIDE_MLB)}
+      {game_threads_wide()}
     </aside>
   </div>
 </section>
