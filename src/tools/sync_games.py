@@ -231,7 +231,9 @@ def refresh_nba_cards(snapshot: dict, now: dt.datetime) -> None:
 def refresh() -> None:
     now = dt.datetime.now(KST)
     prior = read_previous()
-    days = [now.date() + dt.timedelta(days=d) for d in (-1, 0, 1, 2)]
+    # ESPN 날짜는 미국 현지 기준이라, 한국시간 오전에 끝난 경기는 전날(-2일) 날짜에 들어 있다.
+    # -1일부터 받으면 최근 36시간 안의 끝난 경기가 빠져 홈 '이전 경기' 칸이 비어 보인다.
+    days = [now.date() + dt.timedelta(days=d) for d in (-2, -1, 0, 1, 2)]
     jobs = [(lg, endpoint, day) for lg, endpoint in SOURCES.items() for day in days]
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         answers = list(pool.map(lambda j: fetch_one(*j), jobs))
