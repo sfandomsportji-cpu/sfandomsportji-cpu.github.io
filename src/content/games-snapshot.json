@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-28T16:34+09:00",
+  "updated_at": "2026-10-28T17:29+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-28T16:34+09:00",
+      "checked_at": "2026-10-28T17:29+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -49,7 +49,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-28T16:34+09:00",
+      "checked_at": "2026-10-28T17:29+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -403,11 +403,37 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909284/clippers-timberwolves"
+        },
+        {
+          "id": "NBA-401909285",
+          "league": "NBA",
+          "start_kst": "2026-10-31T11:00+09:00",
+          "away": "LAL",
+          "home": "GS",
+          "away_name": "Los Angeles Lakers",
+          "home_name": "Golden State Warriors",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909285/lakers-warriors"
+        },
+        {
+          "id": "NBA-401909286",
+          "league": "NBA",
+          "start_kst": "2026-10-31T11:00+09:00",
+          "away": "DEN",
+          "home": "PHX",
+          "away_name": "Denver Nuggets",
+          "home_name": "Phoenix Suns",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909286/nuggets-suns"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-28T16:34+09:00",
+      "checked_at": "2026-10-28T17:29+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -427,7 +453,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-28T16:34+09:00",
+      "checked_at": "2026-10-28T17:29+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
