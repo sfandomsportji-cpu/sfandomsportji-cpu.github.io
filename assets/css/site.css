@@ -1608,3 +1608,13 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 .gtw-hothead em{font-style:normal;font-weight:800;font-size:14px;color:#fff;background:var(--red);border-radius:6px;padding:3px 9px;letter-spacing:.06em}
 .gtw .gtw-card .vsline .tlogo-wrap:not(.nologo){width:64px;height:64px;flex:0 0 64px}
 @media (max-width:900px){.gtw-row{grid-template-columns:minmax(0,1fr) auto;row-gap:2px}.gtw-row small{grid-column:1/-1}.gtw .gtw-row .vsline{min-width:0}.gtw .gtw-row .vsline .tlogo-wrap:not(.nologo){width:44px;height:44px;flex-basis:44px}}
+/* GAME THREADS (wide): center the matchup inside each card/row instead of leaving it packed to the left. */
+.gtw .gtw-card{align-items:center;text-align:center;gap:10px}
+.gtw .gtw-card .vsline{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;justify-items:center;width:100%;max-width:340px;gap:14px;margin:4px 0}
+.gtw .gtw-card .gt-in{align-self:center}
+.gtw .gtw-row .vsline{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);align-items:center;justify-items:center;width:100%;max-width:300px;justify-self:center;gap:10px}
+.gtw .gtw-row .vsline .thread-vs,.gtw .gtw-card .vsline .thread-vs{min-width:0;flex:none;text-align:center}
+.gtw .gtw-row .gt-in,.gtw .gtw-score{justify-self:end}
+@media (max-width:900px){.gtw .gtw-row .vsline{grid-column:1;justify-self:start;max-width:260px}.gtw .gtw-row .gt-in,.gtw .gtw-score{grid-column:2}}
+section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gtw-card .gt-in{align-self:center;margin:2px auto 0}
+section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{color:#fff}
