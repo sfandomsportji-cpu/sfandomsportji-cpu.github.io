@@ -804,8 +804,13 @@ def ta_mark(a: Article, name: str) -> str:
         return badge(name, team_color(name, lg.lower()), 'lg', league=lg.lower())
     if lg == 'KBO' and kbo_logo(name):
         p = kbo_logo(name)
-        return (f'<span class="tlogo-wrap lg"><img class="tlogo" src="{p}" alt="{esc(name)}" '
-                f'style="{logo_style(p.removeprefix("/assets/teams/"), LOGO_FIT_PLAIN)}" width="40" height="40" loading="lazy" decoding="async"></span>')
+        inset, asp = logo_box(p.removeprefix('/assets/teams/'))
+        g = 0.98  # 가로세로 비율이 달라도 보이는 면적을 같게 맞추되, 긴 변은 칸 안에 가득(100%) 채운다
+        w, h = g * math.sqrt(asp), g / math.sqrt(asp)
+        k = min(1.0, 1.0 / max(w, h))
+        st = f'object-view-box:inset({" ".join(f"{v:g}%" for v in inset)});width:{w * k * 100:.1f}%;height:{h * k * 100:.1f}%'
+        return (f'<span class="tlogo-wrap lg kbo"><img class="tlogo" src="{p}" alt="{esc(name)}" '
+                f'style="{st}" width="40" height="40" loading="lazy" decoding="async"></span>')
     return f'<span class="tchip lg" style="--c:#444" title="{esc(name)}">{esc(name[:3].upper())}</span>'
 
 
@@ -865,7 +870,11 @@ def today_analysis() -> str:
         pool = [a for a in pool if a.file not in in_special]
     upcoming = sorted([a for a in pool if start_kst(a) and start_kst(a) >= now_kst - dt.timedelta(hours=1)], key=start_kst)
     # 예정 경기를 먼저, 모자라면 가장 최근 분석으로 채워 항상 4편(큰 카드 1 + 옆 3)을 보여 준다.
-    picks = (upcoming[:4] + [a for a in pool if a not in upcoming])[:4]
+    rest = [a for a in pool if a not in upcoming]
+    is_final = lambda a: (getattr(a, 'kst', '') or '').endswith('final')
+    prev_, fin_ = [a for a in rest if not is_final(a)], [a for a in rest if is_final(a)]
+    # 프리뷰 3편 + 가장 최근 종료 복기 1편(맨 아래) 순서 — 큰 카드는 가장 새 프리뷰
+    picks = (upcoming[:4] + prev_[:3] + fin_[:1] + prev_[3:] + fin_[1:])[:4]
     display_date = start_kst(upcoming[0]).date().isoformat() if upcoming else now_kst.date().isoformat()
     all_href = '/analysis/'
     all_label = '최신 분석 전체 →'
