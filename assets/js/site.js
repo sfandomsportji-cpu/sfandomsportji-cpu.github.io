@@ -719,3 +719,31 @@
   openFromHash();
   window.addEventListener('hashchange', openFromHash);
 })();
+
+/* FAN ZONE: 왼쪽 칸 '오늘의 숫자' 카드를 옆 게시판 칸 높이에 맞춘다 (줄 수를 줄이고 남는 높이는 줄 간격으로 채움). */
+(function(){
+  const box = document.querySelector('[data-fit]');
+  if (!box) return;
+  const aside = box.parentElement, main = aside.nextElementSibling;
+  if (!main) return;
+  const rows = Array.from(box.querySelectorAll('.fn-list li'));
+  let busy = false;
+  const fit = () => {
+    if (busy) return; busy = true;
+    try {
+      aside.style.minHeight = ''; box.style.flex = ''; box.hidden = false;
+      const show = n => rows.forEach((r, i) => r.classList.toggle('is-off', i >= n));
+      show(rows.length);
+      if (main.offsetTop !== aside.offsetTop) { show(Math.min(3, rows.length)); return; }  // 세로로 쌓인 화면
+      const target = main.getBoundingClientRect().height;
+      let n = rows.length;
+      while (n > 2) { show(n); if (aside.getBoundingClientRect().height <= target) break; n--; }
+      show(n);
+      if (aside.getBoundingClientRect().height <= target) { aside.style.minHeight = target + 'px'; box.style.flex = '1'; }
+    } finally { busy = false; }
+  };
+  fit();
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  try { new ResizeObserver(fit).observe(main); } catch (e) {}
+})();

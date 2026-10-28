@@ -1566,3 +1566,15 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 .ft-q{font-size:14px;color:var(--muted,#b9b9c4)}
 .ft-go{flex:none;font-size:13px;font-weight:700;color:var(--red);white-space:nowrap}
 @media (max-width:600px){.ft-list li{flex-direction:column;align-items:flex-start;gap:8px}}
+
+/* Home FAN ZONE left column: numbers card that fills the height of the board column (rows trimmed by site.js). */
+.fn-box{display:flex;flex-direction:column;gap:0}
+.fn-list{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;flex:1;justify-content:space-between}
+.fn-list li{border-bottom:1px solid var(--line);flex:1;display:flex}
+.fn-list li:last-child{border-bottom:0}
+.fn-list a{display:flex;flex-direction:column;justify-content:center;gap:3px;width:100%;padding:12px 0 12px 14px;border-left:3px solid var(--red);margin:10px 0;color:inherit;text-decoration:none}
+.fn-list small{color:var(--red);font-size:12px;font-weight:800;letter-spacing:.06em}
+.fn-list b{font-size:17px;line-height:1.3}
+.fn-list span{color:var(--muted,#a9a8b8);font-size:14px;line-height:1.4}
+.fn-box .more{margin-top:8px;align-self:flex-start}
+.fn-list li.is-off{display:none}

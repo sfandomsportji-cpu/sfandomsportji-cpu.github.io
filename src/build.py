@@ -1167,6 +1167,30 @@ def fan_topics(limit: int = 3) -> str:
             f'<span class="muted" style="font-size:12px">{sub}, 한마디씩</span></div><ul class="ft-list">{rows}</ul></div>')
 
 
+def fan_numbers(limit: int = 8) -> str:
+    """FAN ZONE 왼쪽 칸 콘텐츠: 최근 끝난 경기 복기글의 '::: stats' 숫자를 모아 보여 준다. 줄 수는 site.js가 옆 칸 높이에 맞춰 줄인다."""
+    pool = sorted([a for a in ARTICLES if a.kind == 'analysis' and (getattr(a, 'kst', '') or '').endswith('final')
+                   and not getattr(a, 'hide_home', False)], key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)[:6]
+    per = []
+    for a in pool:
+        m = re.search(r'::: stats\n(.*?)\n:::', a.body, re.S)
+        rows = []
+        for ln in (m.group(1).splitlines() if m else []):
+            if '|' in ln:
+                head, _, sub = ln.partition('|')
+                if head.strip() and sub.strip():
+                    rows.append((a, head.strip(), sub.strip()))
+        per.append(rows)
+    ordered = [r for i in (1, 2, 3, 0) for rows in per for r in rows[i:i + 1]]
+    items = ''.join(
+        f'<li><a href="{a.url}"><small>{esc(a.league)} · {esc(a.date[5:].replace("-", "."))}</small><b>{esc(head)}</b><span>{esc(sub)}</span></a></li>'
+        for a, head, sub in ordered[:limit])
+    if not items:
+        return ''
+    return (f'<div class="box fn-box" data-fit><span class="box-title">TODAY&#39;S NUMBERS</span><ul class="fn-list">{items}</ul>'
+            f'<a class="more" href="/analysis/">분석 전체 보기 →</a></div>')
+
+
 def game_threads(limit: int = 7, hide_mlb: bool = False) -> str:
     """경기 스레드: NBA 예정 경기와 MLB 챔피언십시리즈를 연결합니다."""
     rows = []
@@ -1341,6 +1365,7 @@ def build_home():
     <aside class="fan-side">
       {quick_box(4)}
       <div class="box"><span class="box-title">HOUSE RULES</span><ul class="rules"><li>욕설 · 비하 금지</li><li>도배 · 광고 링크 금지</li><li>불법 도박 사이트 홍보 금지</li><li>개인정보 올리지 않기</li></ul><a class="more" href="/rules/">커뮤니티 규칙 →</a></div>
+      {fan_numbers()}
     </aside>
     <div class="fan-main" data-board data-size="5" data-board-tabs>
       <div class="sec-head" style="margin:0"><div class="board-tabs" role="tablist" aria-label="팬 보드 글 정렬"><button type="button" role="tab" data-board-tab="live" aria-selected="true">실시간</button><button type="button" role="tab" data-board-tab="today" aria-selected="false">투데이</button><button type="button" role="tab" data-board-tab="comments" aria-selected="false">댓글순</button></div><a class="more accent" href="/community/">전체 글 보기 →</a></div>
