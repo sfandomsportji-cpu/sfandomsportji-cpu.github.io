@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-28T13:14+09:00",
+  "updated_at": "2026-10-28T13:41+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-28T13:14+09:00",
+      "checked_at": "2026-10-28T13:41+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -15,10 +15,10 @@
           "home": "TB",
           "away_name": "Milwaukee Brewers",
           "home_name": "Tampa Bay Rays",
-          "status": "live",
+          "status": "final",
           "away_score": 3,
-          "home_score": 2,
-          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908045"
+          "home_score": 4,
+          "source_url": "https://www.espn.com/mlb/game/_/gameId/401908045/brewers-rays"
         },
         {
           "id": "MLB-401908046",
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-28T13:14+09:00",
+      "checked_at": "2026-10-28T13:41+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -88,8 +88,8 @@
           "away_name": "Portland Trail Blazers",
           "home_name": "Los Angeles Lakers",
           "status": "live",
-          "away_score": 63,
-          "home_score": 62,
+          "away_score": 68,
+          "home_score": 73,
           "source_url": "https://www.espn.com/nba/game?gameId=401909880"
         },
         {
@@ -290,7 +290,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-28T13:14+09:00",
+      "checked_at": "2026-10-28T13:41+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -310,7 +310,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-28T13:14+09:00",
+      "checked_at": "2026-10-28T13:41+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -428,7 +428,7 @@
           "home_name": "Vegas Golden Knights",
           "status": "live",
           "away_score": 1,
-          "home_score": 1,
+          "home_score": 4,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892593"
         },
         {
@@ -440,8 +440,8 @@
           "away_name": "Vancouver Canucks",
           "home_name": "Anaheim Ducks",
           "status": "live",
-          "away_score": 1,
-          "home_score": 4,
+          "away_score": 5,
+          "home_score": 5,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892594"
         },
         {
