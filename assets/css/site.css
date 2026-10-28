@@ -1578,3 +1578,8 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 .fn-list span{color:var(--muted,#a9a8b8);font-size:14px;line-height:1.4}
 .fn-box .more{margin-top:8px;align-self:flex-start}
 .fn-list li.is-off{display:none}
+
+/* Postseason series cards (division / LCS / World Series): larger shared logo box so round crests and wide wordmarks read at the same size. */
+.matchup.ds .row .tlogo-wrap.lg:not(.nologo){width:88px;height:88px;padding:0;display:flex;align-items:center;justify-content:center}
+.matchup.ds .row .tlogo-wrap.lg .tlogo{display:block;flex:none;object-fit:contain;object-position:center}
+@media (max-width:700px){.matchup.ds .row .tlogo-wrap.lg:not(.nologo){width:68px;height:68px}}
