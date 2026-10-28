@@ -1084,7 +1084,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
-{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261028-kbo-bracket-v1">' if path in ('/', '/games/') else '')}
+{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261028-crests-v1">' if path in ('/', '/games/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/editorial-links.css?v={av("/assets/css/editorial-links.css")}">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}
@@ -2166,6 +2166,20 @@ def game_clock(kst: str) -> dt.datetime | None:
         return None
 
 
+CREST_DIRS = {'nfl': ('nfl/2026', 'png'), 'nhl': ('nhl/2026-27', 'svg')}
+CREST_ALIAS = {'nhl': {'LA': 'lak', 'NJ': 'njd', 'SJ': 'sjs', 'TB': 'tbl'}, 'nfl': {'WAS': 'wsh', 'JAC': 'jax', 'LAC': 'lac'}}
+
+
+def crest_url(league: str, abbr: str) -> str:
+    """NFL·NHL 로고 파일(assets/teams/nfl/2026, nhl/2026-27)의 사이트 경로. 파일이 없으면 빈 문자열."""
+    d = CREST_DIRS.get(league)
+    if not d:
+        return ''
+    key = CREST_ALIAS.get(league, {}).get(abbr.upper(), abbr.lower())
+    rel = f'assets/teams/{d[0]}/{key}.{d[1]}'
+    return f'/{rel}' if (ROOT / rel).is_file() else ''
+
+
 def score_team(g: dict, side: str, state: str) -> str:
     """경기 행의 팀 표시. 예정 경기는 저장소에 로고가 있는 리그(NBA·MLB)에 한해 팀 로고로, 나머지는 약자 글자로 보여 준다."""
     abbr, name = str(g.get(side, '?')), g.get(f'{side}_name', '')
@@ -2175,6 +2189,10 @@ def score_team(g: dict, side: str, state: str) -> str:
         abbr = {'NY': 'NYK', 'GS': 'GSW', 'NO': 'NOP', 'SA': 'SAS', 'UTAH': 'UTA', 'WSH': 'WAS'}.get(abbr.upper(), abbr)
     if state == 'scheduled' and league in ('nba', 'mlb') and league in LOGO_SOURCES and (ROOT / 'assets' / 'teams' / league / f'{abbr.lower()}.svg').exists():
         return f'<span class="sf-scores__logo" title="{esc(name)}">{badge(abbr, team_color(abbr, league), "", league=league)}</span>'
+    crest = crest_url(league, abbr) if state == 'scheduled' else ''
+    if crest:
+        return (f'<span class="sf-scores__logo" title="{esc(name)}"><span class="tlogo-wrap crest" title="{esc(abbr)}">'
+                f'<img class="tlogo" src="{crest}" alt="{esc(name or abbr)}" width="64" height="64" loading="lazy" decoding="async"></span></span>')
     return f'<b title="{esc(name)}">{esc(abbr)}</b>'
 
 

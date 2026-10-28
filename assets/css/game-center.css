@@ -225,3 +225,7 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 @media (max-width:520px){.kb-bracket{margin:10px;padding:14px}.kb-grid{grid-template-columns:1fr}.kb-big{width:60px;height:60px}}
 .kb-stage:not(.kb-main) .kb-box{margin:auto 0}
 .kb-top strong,.kb-date{white-space:nowrap}
+
+/* NFL / NHL crests: centered inside the same square box as the other leagues, never stretched. */
+.tlogo-wrap.crest{display:inline-flex;align-items:center;justify-content:center;padding:0}
+.tlogo-wrap.crest .tlogo{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
