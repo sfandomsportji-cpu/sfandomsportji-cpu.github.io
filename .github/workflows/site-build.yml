@@ -55,6 +55,8 @@ jobs:
           fi
       - name: Sync postseason / NBA / hero from verified scores
         run: python3 src/tools/sync_postseason.py
+      - name: Prepare transparent KBO team logos (Pillow)
+        run: python3 src/tools/prepare_kbo_logos.py
       - name: Build
         run: python3 src/build.py
       # Automatic article drafting/Telegram alerts are disabled. Editorial publication requires approval.

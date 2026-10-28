@@ -811,6 +811,12 @@ def ta_mark(a: Article, name: str) -> str:
         return badge(name, team_color(name, lg.lower()), 'lg', league=lg.lower())
     if lg == 'KBO' and kbo_logo(name):
         p = kbo_logo(name)
+        # Prefer transparent, locally prepared KIA/Samsung crests.
+        clean = ROOT / 'assets' / 'teams' / 'kbo' / 'clean' / pathlib.Path(p).name
+        if clean.is_file():
+            return (f'<span class="tlogo-wrap lg kbo"><img class="tlogo" src="/assets/teams/kbo/clean/{clean.name}" '
+                    f'alt="{esc(name)}" style="width:100%;height:100%;object-fit:contain;object-position:center" '
+                    f'width="72" height="72" loading="lazy" decoding="async"></span>')
         kkey = p.removeprefix('/assets/teams/')
         inset, asp = KBO_ART.get(kkey) or logo_box(kkey)
         g = 0.98  # 가로세로 비율이 달라도 보이는 면적을 같게 맞추되, 긴 변은 칸 안에 가득(100%) 채운다
@@ -1078,7 +1084,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
-{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261028-scores-scroll-v2">' if path in ('/', '/games/') else '')}
+{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261028-kbo-crest-v1">' if path in ('/', '/games/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/editorial-links.css?v={av("/assets/css/editorial-links.css")}">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}

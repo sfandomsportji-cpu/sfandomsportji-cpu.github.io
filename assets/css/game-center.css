@@ -186,5 +186,10 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 .sf-scores__scroll .sf-scores__league{flex:none;align-self:stretch;scroll-snap-align:start}
 .sf-scores__scroll::-webkit-scrollbar{width:8px}
 .sf-scores__scroll::-webkit-scrollbar-thumb{background:#6a3a48;border-radius:8px}
-.sf-scores--preview.is-scroll .sf-scores__logo .kbo{padding:6px}
+/* Bigger KBO crests in the game center, without white squares or stretch. */
+.sf-scores--preview .sf-scores__logo .tlogo-wrap.kbo{width:84px;height:84px;min-width:84px;min-height:84px;padding:0;overflow:visible}
+.sf-scores--preview .sf-scores__logo .tlogo-wrap.kbo .tlogo{display:block;object-fit:contain;object-position:center}
+@media(max-width:700px){
+  .sf-scores--preview .sf-scores__logo .tlogo-wrap.kbo{width:64px;height:64px;min-width:64px;min-height:64px}
+}
 @media(max-width:700px){.sf-scores__scroll{max-height:520px;padding-right:4px}}
