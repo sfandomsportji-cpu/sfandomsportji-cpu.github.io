@@ -1,1871 +1,1885 @@
 {
-"kbo/KIA.png": [
-0,
-0,
-0,
-0,
-1.345
-],
-"kbo/KT.png": [
-0,
-0,
-0,
-0,
-1
-],
-"kbo/LG.png": [
-11.67,
-1.83,
-11.67,
-0.83,
-1.27
-],
-"kbo/NC.png": [
-0.97,
-0,
-0.97,
-0,
-1.481
-],
-"kbo/SSG.png": [
-11.21,
-1.5,
-9.84,
-1,
-1.696
-],
-"kbo/doosan.png": [
-6.62,
-2.5,
-4.96,
-2.67,
-1.183
-],
-"kbo/hanwha.png": [
-0,
-0,
-0,
-0,
-1.613
-],
-"kbo/kiwoom.png": [
-0,
-0,
-0,
-0,
-1
-],
-"kbo/lotte.png": [
-0,
-0,
-0,
-0,
-1
-],
-"kbo/samsung.png": [
-0,
-0,
-0,
-0,
-1
-],
-"mlb/ari.svg": [
-0,
-0,
-0,
-0,
-1.266
-],
-"mlb/ath.svg": [
-0,
-0,
-0,
-0,
-1.212
-],
-"mlb/atl.svg": [
-0,
-0,
-0,
-0,
-2.727
-],
-"mlb/bal.svg": [
-0,
-0,
-0,
-0,
-1.053
-],
-"mlb/bos.svg": [
-0,
-0,
-0,
-0,
-1.02
-],
-"mlb/chc.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"mlb/cin.svg": [
-0,
-0,
-0,
-0,
-1.46
-],
-"mlb/cle.svg": [
-0,
-0,
-0,
-0,
-1.2
-],
-"mlb/col.svg": [
-0,
-0,
-0,
-0,
-0.927
-],
-"mlb/cws.svg": [
-0,
-0,
-0,
-0,
-0.747
-],
-"mlb/det.svg": [
-0,
-0,
-0,
-0,
-0.78
-],
-"mlb/hou.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"mlb/kc.svg": [
-0,
-0,
-0,
-0,
-1.066
-],
-"mlb/laa.svg": [
-0,
-0,
-0,
-0,
-0.747
-],
-"mlb/lad.svg": [
-0,
-0,
-0,
-0,
-0.967
-],
-"mlb/mia.svg": [
-0,
-1.33,
-0.33,
-1.17,
-0.978
-],
-"mlb/mil.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"mlb/min.svg": [
-0,
-3.17,
-0,
-3.33,
-0.954
-],
-"mlb/nym.svg": [
-0,
-0,
-0,
-0,
-1.911
-],
-"mlb/nyy.svg": [
-0,
-0,
-0,
-0,
-0.907
-],
-"mlb/phi.svg": [
-0,
-0,
-0,
-0,
-1.113
-],
-"mlb/pit.svg": [
-0,
-0,
-0,
-0,
-0.713
-],
-"mlb/sd.svg": [
-0,
-0,
-0,
-0,
-0.8
-],
-"mlb/sea.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"mlb/sf.svg": [
-0,
-0,
-0,
-0,
-0.72
-],
-"mlb/stl.svg": [
-0,
-0,
-0,
-0,
-1.047
-],
-"mlb/tb.svg": [
-1.03,
-1,
-0,
-0,
-2.07
-],
-"mlb/tex.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"mlb/tor.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"mlb/wsh.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"nba/atl.svg": [
-7,
-7.33,
-7.5,
-7.17,
-1
-],
-"nba/bkn.svg": [
-7.33,
-7.17,
-7.17,
-7.33,
-1
-],
-"nba/bos.svg": [
-8.33,
-9.67,
-2.5,
-10,
-0.901
-],
-"nba/cha.svg": [
-5.33,
-1.33,
-1.33,
-1.83,
-1.038
-],
-"nba/chi.svg": [
-10.83,
-7.33,
-11.67,
-6.67,
-1.11
-],
-"nba/cle.svg": [
-13.17,
-6.5,
-12,
-6.5,
-1.163
-],
-"nba/dal.svg": [
-8.17,
-7.67,
-8.83,
-9.17,
-1.002
-],
-"nba/den.svg": [
-8.33,
-8.33,
-8.17,
-8.17,
-1
-],
-"nba/det.svg": [
-8.33,
-8.33,
-8.17,
-8.17,
-1
-],
-"nba/gsw.svg": [
-3,
-3,
-3.17,
-3,
-1.002
-],
-"nba/hou.svg": [
-0,
-0,
-0,
-0,
-0.755
-],
-"nba/ind.svg": [
-8.33,
-5,
-8.33,
-5.17,
-1.078
-],
-"nba/lac.svg": [
-5.67,
-5.5,
-5.33,
-5.5,
-1
-],
-"nba/lal.svg": [
-16.83,
-0,
-16.33,
-0,
-1.496
-],
-"nba/mem.svg": [
-12,
-7.83,
-8.5,
-7.67,
-1.063
-],
-"nba/mia.svg": [
-0,
-7,
-10,
-7,
-0.956
-],
-"nba/mil.svg": [
-1.83,
-14.17,
-2.17,
-13.5,
-0.753
-],
-"nba/min.svg": [
-6.17,
-6.17,
-6.17,
-6.17,
-1
-],
-"nba/nop.svg": [
-29.33,
-0,
-28,
-0,
-2.344
-],
-"nba/nyk.svg": [
-9.67,
-0.5,
-9.67,
-0.33,
-1.229
-],
-"nba/okc.svg": [
-21.67,
-0,
-15.17,
-0,
-1.583
-],
-"nba/orl.svg": [
-18,
-6,
-18,
-6,
-1.375
-],
-"nba/phi.svg": [
-6.67,
-15.17,
-7.83,
-15.17,
-0.815
-],
-"nba/phx.svg": [
-8,
-3,
-11.17,
-0.17,
-1.198
-],
-"nba/por.svg": [
-8.67,
-13,
-8.83,
-12.5,
-0.903
-],
-"nba/sac.svg": [
-6.67,
-12.83,
-8.83,
-13.17,
-0.876
-],
-"nba/sas.svg": [
-9.17,
-16,
-5.67,
-15.17,
-0.808
-],
-"nba/tor.svg": [
-8.5,
-8.33,
-8.5,
-8.33,
-1.004
-],
-"nba/uta.svg": [
-19.83,
-5.5,
-19.67,
-5.5,
-1.471
-],
-"nba/was.svg": [
-8.33,
-8.33,
-8.17,
-8.33,
-0.998
-],
-"npb/chiba-lotte-marines.png": [
-0,
-1.67,
-0,
-1,
-0.973
-],
-"npb/chunichi-dragons.png": [
-5.17,
-0,
-6.33,
-0,
-1.13
-],
-"npb/fukuoka-softbank-hawks.png": [
-0,
-1,
-0,
-0.33,
-0.987
-],
-"npb/hanshin-tigers.png": [
-0,
-0,
-0,
-0,
-1
-],
-"npb/hiroshima-toyo-carp.png": [
-0,
-1.67,
-0,
-2.33,
-0.96
-],
-"npb/hokkaido-nippon-ham-fighters.png": [
-9.67,
-2.33,
-9.67,
-2.33,
-1.182
-],
-"npb/orix-buffaloes.png": [
-7.67,
-0,
-7.67,
-0,
-1.181
-],
-"npb/saitama-seibu-lions.png": [
-0,
-2.33,
-0,
-1.67,
-0.96
-],
-"npb/tohoku-rakuten-golden-eagles.png": [
-0,
-0,
-0.5,
-0,
-1.005
-],
-"npb/tokyo-yakult-swallows.png": [
-0,
-13,
-0.33,
-12.67,
-0.746
-],
-"npb/yokohama-dena-baystars.png": [
-1.17,
-0,
-1,
-0,
-1.022
-],
-"npb/yomiuri-giants.png": [
-0,
-0,
-0,
-0,
-1
-],
-"soccer/2026-27/bundesliga/1-fc-koln.png": [
-5.83,
-0,
-6.33,
-0,
-0.875
-],
-"soccer/2026-27/bundesliga/1-fc-union-berlin.png": [
-35.17,
-0,
-35.17,
-0,
-2.59
-],
-"soccer/2026-27/bundesliga/1-fsv-mainz-05.png": [
-14.17,
-0,
-14.17,
-0,
-1.072
-],
-"soccer/2026-27/bundesliga/bayer-04-leverkusen.png": [
-20,
-0,
-19.67,
-0.43,
-1.268
-],
-"soccer/2026-27/bundesliga/bayern-munich.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/bundesliga/borussia-dortmund.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/bundesliga/borussia-monchengladbach.png": [
-0,
-8.89,
-0,
-9.11,
-0.63
-],
-"soccer/2026-27/bundesliga/eintracht-frankfurt.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/bundesliga/fc-augsburg.png": [
-0,
-0,
-0.33,
-0,
-0.771
-],
-"soccer/2026-27/bundesliga/fc-schalke-04.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/bundesliga/hamburger-sv.png": [
-21.33,
-0,
-21.33,
-0,
-1.34
-],
-"soccer/2026-27/bundesliga/rb-leipzig.png": [
-24.67,
-0,
-25.17,
-0,
-1.532
-],
-"soccer/2026-27/bundesliga/sc-freiburg.png": [
-0,
-3.9,
-0,
-3.9,
-0.708
-],
-"soccer/2026-27/bundesliga/sc-paderborn-07.png": [
-23.5,
-0,
-23.5,
-0,
-1.45
-],
-"soccer/2026-27/bundesliga/sv-07-elversberg.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/bundesliga/sv-werder-bremen.png": [
-0,
-6.94,
-0,
-6.07,
-0.668
-],
-"soccer/2026-27/bundesliga/tsg-1899-hoffenheim.png": [
-3.67,
-0,
-4.17,
-0,
-0.834
-],
-"soccer/2026-27/bundesliga/vfb-stuttgart.png": [
-7.5,
-0,
-7.5,
-0,
-0.904
-],
-"soccer/2026-27/j1-league/avispa-fukuoka.svg": [
-0,
-0,
-0,
-0,
-0.78
-],
-"soccer/2026-27/j1-league/cerezo-osaka.svg": [
-0,
-0,
-0,
-0,
-0.947
-],
-"soccer/2026-27/j1-league/fagiano-okayama.svg": [
-0,
-0,
-0,
-0,
-0.653
-],
-"soccer/2026-27/j1-league/fc-tokyo.svg": [
-0,
-0,
-0,
-0,
-0.7
-],
-"soccer/2026-27/j1-league/gamba-osaka.svg": [
-0,
-0,
-0,
-0,
-0.78
-],
-"soccer/2026-27/j1-league/jef-united-chiba.svg": [
-0,
-0,
-0,
-0,
-0.98
-],
-"soccer/2026-27/j1-league/kashima-antlers.svg": [
-0,
-0,
-0,
-0,
-0.96
-],
-"soccer/2026-27/j1-league/kashiwa-reysol.svg": [
-0,
-0,
-0,
-0,
-1.161
-],
-"soccer/2026-27/j1-league/kawasaki-frontale.svg": [
-0,
-0,
-0,
-0,
-0.94
-],
-"soccer/2026-27/j1-league/kyoto-sanga.svg": [
-0,
-0,
-0,
-0,
-0.713
-],
-"soccer/2026-27/j1-league/machida-zelvia.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"soccer/2026-27/j1-league/mito-hollyhock.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"soccer/2026-27/j1-league/nagoya-grampus.svg": [
-0,
-0,
-0,
-0,
-0.813
-],
-"soccer/2026-27/j1-league/sanfrecce-hiroshima.svg": [
-0,
-0,
-0,
-0,
-0.907
-],
-"soccer/2026-27/j1-league/shimizu-s-pulse.svg": [
-0,
-0,
-0,
-0,
-0.78
-],
-"soccer/2026-27/j1-league/tokyo-verdy.svg": [
-0,
-0,
-0,
-0,
-0.773
-],
-"soccer/2026-27/j1-league/urawa-red-diamonds.svg": [
-0,
-0,
-0,
-0,
-0.773
-],
-"soccer/2026-27/j1-league/v-varen-nagasaki.svg": [
-0,
-0,
-0,
-0,
-0.713
-],
-"soccer/2026-27/j1-league/vissel-kobe.svg": [
-0,
-0,
-0,
-0,
-0.78
-],
-"soccer/2026-27/j1-league/yokohama-f-marinos.svg": [
-0,
-0,
-0,
-0,
-1.405
-],
-"soccer/2026-27/j2-league/albirex-niigata.svg": [
-0,
-0,
-0,
-0,
-0.727
-],
-"soccer/2026-27/j2-league/blaublitz-akita.svg": [
-0,
-0,
-0,
-0,
-0.933
-],
-"soccer/2026-27/j2-league/fc-imabari.svg": [
-0,
-0,
-0,
-0,
-1.261
-],
-"soccer/2026-27/j2-league/fujieda-myfc.svg": [
-0,
-0,
-0,
-0,
-0.987
-],
-"soccer/2026-27/j2-league/hokkaido-consadole-sapporo.svg": [
-0,
-0,
-0,
-0,
-0.857
-],
-"soccer/2026-27/j2-league/iwaki-fc.svg": [
-0,
-0,
-0,
-0,
-0.787
-],
-"soccer/2026-27/j2-league/jubilo-iwata.svg": [
-0,
-0,
-0,
-0,
-0.873
-],
-"soccer/2026-27/j2-league/kataller-toyama.svg": [
-0,
-0,
-0,
-0,
-0.907
-],
-"soccer/2026-27/j2-league/montedio-yamagata.svg": [
-0,
-0,
-0,
-0,
-0.787
-],
-"soccer/2026-27/j2-league/oita-trinita.svg": [
-0,
-0,
-0,
-0,
-0.853
-],
-"soccer/2026-27/j2-league/rb-omiya-ardija.svg": [
-0,
-0,
-0,
-0,
-1.538
-],
-"soccer/2026-27/j2-league/sagan-tosu.svg": [
-21,
-4,
-21,
-4,
-1.586
-],
-"soccer/2026-27/j2-league/shonan-bellmare.svg": [
-0,
-0,
-0,
-0,
-0.747
-],
-"soccer/2026-27/j2-league/tegevajaro-miyazaki.svg": [
-0,
-0,
-0,
-0,
-0.753
-],
-"soccer/2026-27/j2-league/tochigi-city.svg": [
-0,
-0,
-0,
-0,
-0.927
-],
-"soccer/2026-27/j2-league/tokushima-vortis.svg": [
-0,
-0,
-0,
-0,
-0.92
-],
-"soccer/2026-27/j2-league/vanraure-hachinohe.svg": [
-0,
-0,
-0,
-0,
-0.9
-],
-"soccer/2026-27/j2-league/vegalta-sendai.svg": [
-0,
-0,
-0,
-0,
-1.087
-],
-"soccer/2026-27/j2-league/ventforet-kofu.svg": [
-0,
-0,
-0,
-0,
-0.893
-],
-"soccer/2026-27/j2-league/yokohama-fc.svg": [
-0,
-0,
-0,
-0,
-0.807
-],
-"soccer/2026-27/j3-league/ac-nagano-parceiro.svg": [
-0,
-0,
-0,
-0,
-0.827
-],
-"soccer/2026-27/j3-league/ehime-fc.svg": [
-0,
-0,
-0,
-0,
-0.853
-],
-"soccer/2026-27/j3-league/fc-gifu.svg": [
-0,
-0,
-0,
-0,
-0.967
-],
-"soccer/2026-27/j3-league/fc-osaka.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"soccer/2026-27/j3-league/fc-ryukyu.svg": [
-0,
-0,
-0,
-0,
-0.86
-],
-"soccer/2026-27/j3-league/fukushima-united.svg": [
-0,
-0,
-0,
-0,
-1.027
-],
-"soccer/2026-27/j3-league/gainare-tottori.svg": [
-0,
-0,
-0,
-0,
-1.354
-],
-"soccer/2026-27/j3-league/giravanz-kitakyushu.svg": [
-0,
-0,
-0,
-0,
-0.993
-],
-"soccer/2026-27/j3-league/kagoshima-united.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"soccer/2026-27/j3-league/kamatamare-sanuki.svg": [
-0,
-0,
-0,
-0,
-0.927
-],
-"soccer/2026-27/j3-league/kochi-united.svg": [
-0,
-0,
-0,
-0,
-0.767
-],
-"soccer/2026-27/j3-league/matsumoto-yamaga.svg": [
-0,
-0,
-0,
-0,
-1.053
-],
-"soccer/2026-27/j3-league/nara-club.svg": [
-0,
-0,
-0,
-0,
-0.913
-],
-"soccer/2026-27/j3-league/reilac-shiga.svg": [
-0,
-0,
-0,
-0,
-0.753
-],
-"soccer/2026-27/j3-league/renofa-yamaguchi.svg": [
-0,
-0,
-0,
-0,
-0.767
-],
-"soccer/2026-27/j3-league/roasso-kumamoto.svg": [
-0,
-0,
-0,
-0,
-0.867
-],
-"soccer/2026-27/j3-league/sc-sagamihara.svg": [
-0,
-0,
-0,
-0,
-1.154
-],
-"soccer/2026-27/j3-league/thespa-gunma.svg": [
-0,
-0,
-0,
-0,
-0.733
-],
-"soccer/2026-27/j3-league/tochigi-sc.svg": [
-0,
-0,
-0,
-0,
-0.807
-],
-"soccer/2026-27/j3-league/zweigen-kanazawa.svg": [
-0,
-0,
-0,
-0,
-0.78
-],
-"soccer/2026-27/k-league-1/bucheon-1995.svg": [
-0,
-0,
-0,
-0,
-0.807
-],
-"soccer/2026-27/k-league-1/daejeon-hana-citizen.svg": [
-0,
-0,
-0,
-0,
-0.647
-],
-"soccer/2026-27/k-league-1/fc-anyang.svg": [
-0,
-0,
-0,
-0,
-0.993
-],
-"soccer/2026-27/k-league-1/fc-seoul.svg": [
-0,
-0,
-0,
-0,
-0.847
-],
-"soccer/2026-27/k-league-1/gangwon-fc.svg": [
-0,
-0,
-0,
-0,
-0.973
-],
-"soccer/2026-27/k-league-1/gimcheon-sangmu.svg": [
-0,
-0,
-0,
-0,
-0.86
-],
-"soccer/2026-27/k-league-1/gwangju-fc.svg": [
-0,
-0,
-0,
-0,
-0.733
-],
-"soccer/2026-27/k-league-1/incheon-united.svg": [
-0,
-0,
-0,
-0,
-0.727
-],
-"soccer/2026-27/k-league-1/jeju-united.svg": [
-0,
-0,
-0,
-0,
-0.86
-],
-"soccer/2026-27/k-league-1/jeonbuk-hyundai-motors.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"soccer/2026-27/k-league-1/pohang-steelers.svg": [
-0,
-0,
-0,
-0,
-0.94
-],
-"soccer/2026-27/k-league-1/ulsan-hd.svg": [
-0,
-0,
-0,
-0,
-0.667
-],
-"soccer/2026-27/k-league-2/ansan-greeners-fc.svg": [
-0,
-0,
-0,
-0,
-1.227
-],
-"soccer/2026-27/k-league-2/busan-ipark.svg": [
-0,
-0,
-0,
-0,
-0.873
-],
-"soccer/2026-27/k-league-2/cheonan-city-fc.svg": [
-0,
-0,
-0,
-0,
-0.7
-],
-"soccer/2026-27/k-league-2/chungbuk-cheongju-fc.svg": [
-0,
-0,
-0,
-0,
-1.154
-],
-"soccer/2026-27/k-league-2/chungnam-asan-fc.svg": [
-0,
-0,
-0,
-0,
-0.86
-],
-"soccer/2026-27/k-league-2/daegu-fc.svg": [
-0,
-0,
-0,
-0,
-1.053
-],
-"soccer/2026-27/k-league-2/gimhae-fc2008.svg": [
-0,
-0,
-0,
-0,
-1.027
-],
-"soccer/2026-27/k-league-2/gimpo-fc.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"soccer/2026-27/k-league-2/gyeongnam-fc.svg": [
-0,
-0,
-0,
-0,
-0.673
-],
-"soccer/2026-27/k-league-2/hwaseong-fc.svg": [
-0,
-0,
-0,
-0,
-0.72
-],
-"soccer/2026-27/k-league-2/jeonnam-dragons.svg": [
-0,
-0,
-0,
-0,
-0.8
-],
-"soccer/2026-27/k-league-2/paju-frontier-fc.svg": [
-0,
-0,
-0,
-0,
-0.847
-],
-"soccer/2026-27/k-league-2/seongnam-fc.svg": [
-0,
-0,
-0,
-0,
-1.007
-],
-"soccer/2026-27/k-league-2/seoul-e-land-fc.svg": [
-0,
-0,
-0,
-0,
-0.793
-],
-"soccer/2026-27/k-league-2/suwon-fc.svg": [
-0,
-0,
-0,
-0,
-1.113
-],
-"soccer/2026-27/k-league-2/suwon-samsung-bluewings.svg": [
-0,
-0,
-0,
-0,
-0.767
-],
-"soccer/2026-27/k-league-2/yongin-fc.svg": [
-0,
-0,
-0,
-0,
-1
-],
-"soccer/2026-27/la-liga/athletic-bilbao.png": [
-12.5,
-7.16,
-12.5,
-7.16,
-0.878
-],
-"soccer/2026-27/la-liga/atletico-de-madrid.png": [
-13.67,
-12.58,
-13.17,
-12.8,
-0.784
-],
-"soccer/2026-27/la-liga/ca-osasuna.png": [
-0,
-1.08,
-0,
-1.08,
-0.752
-],
-"soccer/2026-27/la-liga/celta-de-vigo.png": [
-0,
-13.45,
-0,
-12.8,
-0.567
-],
-"soccer/2026-27/la-liga/deportivo-a-coruna.png": [
-14.67,
-12.58,
-19,
-16.92,
-0.817
-],
-"soccer/2026-27/la-liga/deportivo-alaves.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/la-liga/elche-cf.png": [
-2.5,
-0,
-3,
-0,
-0.813
-],
-"soccer/2026-27/la-liga/fc-barcelona.png": [
-10.83,
-0,
-10.83,
-0,
-0.981
-],
-"soccer/2026-27/la-liga/getafe-cf.png": [
-9.67,
-0,
-9.67,
-0,
-0.952
-],
-"soccer/2026-27/la-liga/levante-ud.png": [
-3,
-0,
-3,
-0,
-0.817
-],
-"soccer/2026-27/la-liga/malaga-cf.png": [
-12,
-7.59,
-12.17,
-6.29,
-0.873
-],
-"soccer/2026-27/la-liga/racing-santander.png": [
-0,
-2.6,
-0,
-2.6,
-0.728
-],
-"soccer/2026-27/la-liga/rayo-vallecano.png": [
-15.83,
-0,
-16,
-0,
-1.127
-],
-"soccer/2026-27/la-liga/rcd-espanyol-barcelona.png": [
-0,
-4.77,
-0,
-4.77,
-0.695
-],
-"soccer/2026-27/la-liga/real-betis-balompie.png": [
-16.83,
-0,
-16.83,
-0,
-1.158
-],
-"soccer/2026-27/la-liga/real-madrid.png": [
-1.83,
-2.6,
-1.33,
-3.25,
-0.747
-],
-"soccer/2026-27/la-liga/real-sociedad.png": [
-6.5,
-3.47,
-9.67,
-1.74,
-0.869
-],
-"soccer/2026-27/la-liga/sevilla-fc.png": [
-3.17,
-0,
-3,
-0,
-0.819
-],
-"soccer/2026-27/la-liga/valencia-cf.png": [
-0,
-0.43,
-0,
-0,
-0.765
-],
-"soccer/2026-27/la-liga/villarreal-cf.png": [
-1.33,
-0,
-2,
-0,
-0.795
-],
-"soccer/2026-27/ligue-1/aj-auxerre.png": [
-1.33,
-0.43,
-2,
-0.43,
-0.788
-],
-"soccer/2026-27/ligue-1/angers-sco.png": [
-4.17,
-0,
-4.17,
-0,
-0.838
-],
-"soccer/2026-27/ligue-1/as-monaco.png": [
-0,
-11.93,
-0,
-11.93,
-0.585
-],
-"soccer/2026-27/ligue-1/estac-troyes.png": [
-3.67,
-0,
-3.67,
-0,
-0.829
-],
-"soccer/2026-27/ligue-1/fc-lorient.png": [
-0,
-4.77,
-0,
-3.9,
-0.702
-],
-"soccer/2026-27/ligue-1/fc-toulouse.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/ligue-1/le-havre-ac.png": [
-3,
-0,
-3,
-0,
-0.817
-],
-"soccer/2026-27/ligue-1/le-mans-fc.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/ligue-1/losc-lille.png": [
-13,
-0,
-13.5,
-0,
-1.045
-],
-"soccer/2026-27/ligue-1/ogc-nice.png": [
-2,
-0,
-2.5,
-0,
-0.805
-],
-"soccer/2026-27/ligue-1/olympique-lyon.png": [
-4.67,
-0,
-5.17,
-0,
-0.852
-],
-"soccer/2026-27/ligue-1/olympique-marseille.png": [
-11.5,
-0,
-11.33,
-0,
-0.996
-],
-"soccer/2026-27/ligue-1/paris-fc.png": [
-4.17,
-0,
-4.17,
-0,
-0.838
-],
-"soccer/2026-27/ligue-1/paris-saint-germain.png": [
-12.5,
-1.08,
-12.67,
-1.3,
-1.002
-],
-"soccer/2026-27/ligue-1/rc-lens.png": [
-0,
-1.74,
-0,
-1.74,
-0.742
-],
-"soccer/2026-27/ligue-1/rc-strasbourg-alsace.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/ligue-1/stade-brestois-29.png": [
-3,
-0,
-3,
-0,
-0.817
-],
-"soccer/2026-27/ligue-1/stade-rennais-fc.png": [
-3,
-0,
-3.17,
-0,
-0.819
-],
-"soccer/2026-27/premier-league/afc-bournemouth.png": [
-0,
-0.43,
-0,
-0,
-0.765
-],
-"soccer/2026-27/premier-league/arsenal-fc.png": [
-4.17,
-0,
-4.67,
-0,
-0.843
-],
-"soccer/2026-27/premier-league/aston-villa.png": [
-0,
-1.74,
-0,
-1.08,
-0.747
-],
-"soccer/2026-27/premier-league/brentford-fc.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/premier-league/brighton-hove-albion.png": [
-10.83,
-0,
-11.67,
-0,
-0.991
-],
-"soccer/2026-27/premier-league/chelsea-fc.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/premier-league/coventry-city.png": [
-0,
-0,
-0,
-0,
-0.768
-],
-"soccer/2026-27/premier-league/crystal-palace.png": [
-2,
-0,
-2,
-0,
-0.8
-],
-"soccer/2026-27/premier-league/everton-fc.png": [
-10.33,
-0,
-10.83,
-0,
-0.975
-],
-"soccer/2026-27/premier-league/fulham-fc.png": [
-0,
-1.08,
-0,
-0.43,
-0.757
-],
-"soccer/2026-27/premier-league/hull-city.png": [
-0.83,
-0,
-0.83,
-0,
-0.781
-],
-"soccer/2026-27/premier-league/ipswich-town.png": [
-1.5,
-0,
-1.33,
-0,
-0.791
-],
-"soccer/2026-27/premier-league/leeds-united.png": [
-2,
-0,
-2.5,
-0,
-0.805
-],
-"soccer/2026-27/premier-league/liverpool-fc.png": [
-5.33,
-17.57,
-4.83,
-18.22,
-0.549
-],
-"soccer/2026-27/premier-league/manchester-city.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/premier-league/manchester-united.png": [
-10.83,
-0,
-11.33,
-0,
-0.987
-],
-"soccer/2026-27/premier-league/newcastle-united.png": [
-11.33,
-0,
-11.5,
-0,
-0.996
-],
-"soccer/2026-27/premier-league/nottingham-forest.png": [
-0,
-19.09,
-0,
-18.44,
-0.48
-],
-"soccer/2026-27/premier-league/sunderland-afc.png": [
-17.5,
-0,
-18,
-0,
-1.191
-],
-"soccer/2026-27/premier-league/tottenham-hotspur.png": [
-3.17,
-25.6,
-3.67,
-24.95,
-0.408
-],
-"soccer/2026-27/serie-a/ac-milan.png": [
-0,
-8.24,
-0,
-8.24,
-0.642
-],
-"soccer/2026-27/serie-a/ac-monza.png": [
-0.33,
-3.9,
-0.33,
-3.9,
-0.713
-],
-"soccer/2026-27/serie-a/acf-fiorentina.png": [
-11.5,
-0,
-11.33,
-0,
-0.996
-],
-"soccer/2026-27/serie-a/as-roma.png": [
-0,
-0,
-0.33,
-0,
-0.771
-],
-"soccer/2026-27/serie-a/atalanta-bc.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/serie-a/bologna-fc-1909.png": [
-0,
-7.59,
-0,
-6.94,
-0.657
-],
-"soccer/2026-27/serie-a/cagliari-calcio.png": [
-3.67,
-0,
-3.67,
-0,
-0.829
-],
-"soccer/2026-27/serie-a/como-1907.png": [
-9.67,
-0,
-10.17,
-0,
-0.958
-],
-"soccer/2026-27/serie-a/frosinone-calcio.png": [
-5.83,
-0,
-5.83,
-0,
-0.87
-],
-"soccer/2026-27/serie-a/genoa-cfc.png": [
-0,
-1.08,
-0,
-1.08,
-0.752
-],
-"soccer/2026-27/serie-a/inter-milan.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/serie-a/juventus-fc.png": [
-0,
-8.24,
-0,
-8.24,
-0.642
-],
-"soccer/2026-27/serie-a/parma-calcio-1913.png": [
-2.5,
-0,
-2.5,
-0,
-0.809
-],
-"soccer/2026-27/serie-a/ss-lazio.png": [
-24,
-0,
-24,
-0,
-1.478
-],
-"soccer/2026-27/serie-a/ssc-napoli.png": [
-11.33,
-0,
-11.33,
-0,
-0.994
-],
-"soccer/2026-27/serie-a/torino-fc.png": [
-3.67,
-0,
-3.67,
-0,
-0.829
-],
-"soccer/2026-27/serie-a/udinese-calcio.png": [
-12.5,
-0,
-13,
-0,
-1.031
-],
-"soccer/2026-27/serie-a/us-lecce.png": [
-1.33,
-0,
-2,
-0,
-0.795
-],
-"soccer/2026-27/serie-a/us-sassuolo.png": [
-7.5,
-0,
-8,
-0,
-0.909
-],
-"soccer/2026-27/serie-a/venezia-fc.png": [
-20.17,
-0,
-20.17,
-0,
-1.288
-]
+  "kbo/KIA.png": [
+    0,
+    0,
+    0,
+    0,
+    1.345
+  ],
+  "kbo/KT.png": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "kbo/LG.png": [
+    11.67,
+    1.83,
+    11.67,
+    0.83,
+    1.27
+  ],
+  "kbo/NC.png": [
+    0.97,
+    0,
+    0.97,
+    0,
+    1.481
+  ],
+  "kbo/SSG.png": [
+    11.21,
+    1.5,
+    9.84,
+    1,
+    1.696
+  ],
+  "kbo/doosan.png": [
+    6.62,
+    2.5,
+    4.96,
+    2.67,
+    1.183
+  ],
+  "kbo/hanwha.png": [
+    0,
+    0,
+    0,
+    0,
+    1.613
+  ],
+  "kbo/kiwoom.png": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "kbo/lotte.png": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "kbo/samsung.png": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "mlb/ari.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.266
+  ],
+  "mlb/ath.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.212
+  ],
+  "mlb/atl.svg": [
+    0,
+    0,
+    0,
+    0,
+    2.727
+  ],
+  "mlb/bal.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.053
+  ],
+  "mlb/bos.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.02
+  ],
+  "mlb/chc.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "mlb/cin.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.46
+  ],
+  "mlb/cle.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.2
+  ],
+  "mlb/col.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.927
+  ],
+  "mlb/cws.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.747
+  ],
+  "mlb/det.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.78
+  ],
+  "mlb/hou.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "mlb/kc.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.066
+  ],
+  "mlb/laa.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.747
+  ],
+  "mlb/lad.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.967
+  ],
+  "mlb/mia.svg": [
+    0,
+    1.33,
+    0.33,
+    1.17,
+    0.978
+  ],
+  "mlb/mil.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "mlb/min.svg": [
+    0,
+    3.17,
+    0,
+    3.33,
+    0.954
+  ],
+  "mlb/nym.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.911
+  ],
+  "mlb/nyy.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.907
+  ],
+  "mlb/phi.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.113
+  ],
+  "mlb/pit.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.713
+  ],
+  "mlb/sd.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.8
+  ],
+  "mlb/sea.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "mlb/sf.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.72
+  ],
+  "mlb/stl.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.047
+  ],
+  "mlb/tb.svg": [
+    1.03,
+    1,
+    0,
+    0,
+    2.07
+  ],
+  "mlb/tex.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "mlb/tor.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "mlb/wsh.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "nba/atl.svg": [
+    7,
+    7.33,
+    7.5,
+    7.17,
+    1
+  ],
+  "nba/bkn.svg": [
+    7.33,
+    7.17,
+    7.17,
+    7.33,
+    1
+  ],
+  "nba/bos.svg": [
+    8.33,
+    9.67,
+    2.5,
+    10,
+    0.901
+  ],
+  "nba/cha.svg": [
+    5.33,
+    1.33,
+    1.33,
+    1.83,
+    1.038
+  ],
+  "nba/chi.svg": [
+    10.83,
+    7.33,
+    11.67,
+    6.67,
+    1.11
+  ],
+  "nba/cle.svg": [
+    13.17,
+    6.5,
+    12,
+    6.5,
+    1.163
+  ],
+  "nba/dal.svg": [
+    8.17,
+    7.67,
+    8.83,
+    9.17,
+    1.002
+  ],
+  "nba/den.svg": [
+    8.33,
+    8.33,
+    8.17,
+    8.17,
+    1
+  ],
+  "nba/det.svg": [
+    8.33,
+    8.33,
+    8.17,
+    8.17,
+    1
+  ],
+  "nba/gsw.svg": [
+    3,
+    3,
+    3.17,
+    3,
+    1.002
+  ],
+  "nba/hou.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.755
+  ],
+  "nba/ind.svg": [
+    8.33,
+    5,
+    8.33,
+    5.17,
+    1.078
+  ],
+  "nba/lac.svg": [
+    5.67,
+    5.5,
+    5.33,
+    5.5,
+    1
+  ],
+  "nba/lal.svg": [
+    16.83,
+    0,
+    16.33,
+    0,
+    1.496
+  ],
+  "nba/mem.svg": [
+    12,
+    7.83,
+    8.5,
+    7.67,
+    1.063
+  ],
+  "nba/mia.svg": [
+    0,
+    7,
+    10,
+    7,
+    0.956
+  ],
+  "nba/mil.svg": [
+    1.83,
+    14.17,
+    2.17,
+    13.5,
+    0.753
+  ],
+  "nba/min.svg": [
+    6.17,
+    6.17,
+    6.17,
+    6.17,
+    1
+  ],
+  "nba/nop.svg": [
+    29.33,
+    0,
+    28,
+    0,
+    2.344
+  ],
+  "nba/nyk.svg": [
+    9.67,
+    0.5,
+    9.67,
+    0.33,
+    1.229
+  ],
+  "nba/okc.svg": [
+    21.67,
+    0,
+    15.17,
+    0,
+    1.583
+  ],
+  "nba/orl.svg": [
+    18,
+    6,
+    18,
+    6,
+    1.375
+  ],
+  "nba/phi.svg": [
+    6.67,
+    15.17,
+    7.83,
+    15.17,
+    0.815
+  ],
+  "nba/phx.svg": [
+    8,
+    3,
+    11.17,
+    0.17,
+    1.198
+  ],
+  "nba/por.svg": [
+    8.67,
+    13,
+    8.83,
+    12.5,
+    0.903
+  ],
+  "nba/sac.svg": [
+    6.67,
+    12.83,
+    8.83,
+    13.17,
+    0.876
+  ],
+  "nba/sas.svg": [
+    9.17,
+    16,
+    5.67,
+    15.17,
+    0.808
+  ],
+  "nba/tor.svg": [
+    8.5,
+    8.33,
+    8.5,
+    8.33,
+    1.004
+  ],
+  "nba/uta.svg": [
+    19.83,
+    5.5,
+    19.67,
+    5.5,
+    1.471
+  ],
+  "nba/was.svg": [
+    8.33,
+    8.33,
+    8.17,
+    8.33,
+    0.998
+  ],
+  "npb/chiba-lotte-marines.png": [
+    0,
+    1.67,
+    0,
+    1,
+    0.973
+  ],
+  "npb/chunichi-dragons.png": [
+    5.17,
+    0,
+    6.33,
+    0,
+    1.13
+  ],
+  "npb/fukuoka-softbank-hawks.png": [
+    0,
+    1,
+    0,
+    0.33,
+    0.987
+  ],
+  "npb/hanshin-tigers.png": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "npb/hiroshima-toyo-carp.png": [
+    0,
+    1.67,
+    0,
+    2.33,
+    0.96
+  ],
+  "npb/hokkaido-nippon-ham-fighters.png": [
+    9.67,
+    2.33,
+    9.67,
+    2.33,
+    1.182
+  ],
+  "npb/orix-buffaloes.png": [
+    7.67,
+    0,
+    7.67,
+    0,
+    1.181
+  ],
+  "npb/saitama-seibu-lions.png": [
+    0,
+    2.33,
+    0,
+    1.67,
+    0.96
+  ],
+  "npb/tohoku-rakuten-golden-eagles.png": [
+    0,
+    0,
+    0.5,
+    0,
+    1.005
+  ],
+  "npb/tokyo-yakult-swallows.png": [
+    0,
+    13,
+    0.33,
+    12.67,
+    0.746
+  ],
+  "npb/yokohama-dena-baystars.png": [
+    1.17,
+    0,
+    1,
+    0,
+    1.022
+  ],
+  "npb/yomiuri-giants.png": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "soccer/2026-27/bundesliga/1-fc-koln.png": [
+    5.83,
+    0,
+    6.33,
+    0,
+    0.875
+  ],
+  "soccer/2026-27/bundesliga/1-fc-union-berlin.png": [
+    35.17,
+    0,
+    35.17,
+    0,
+    2.59
+  ],
+  "soccer/2026-27/bundesliga/1-fsv-mainz-05.png": [
+    14.17,
+    0,
+    14.17,
+    0,
+    1.072
+  ],
+  "soccer/2026-27/bundesliga/bayer-04-leverkusen.png": [
+    20,
+    0,
+    19.67,
+    0.43,
+    1.268
+  ],
+  "soccer/2026-27/bundesliga/bayern-munich.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/bundesliga/borussia-dortmund.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/bundesliga/borussia-monchengladbach.png": [
+    0,
+    8.89,
+    0,
+    9.11,
+    0.63
+  ],
+  "soccer/2026-27/bundesliga/eintracht-frankfurt.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/bundesliga/fc-augsburg.png": [
+    0,
+    0,
+    0.33,
+    0,
+    0.771
+  ],
+  "soccer/2026-27/bundesliga/fc-schalke-04.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/bundesliga/hamburger-sv.png": [
+    21.33,
+    0,
+    21.33,
+    0,
+    1.34
+  ],
+  "soccer/2026-27/bundesliga/rb-leipzig.png": [
+    24.67,
+    0,
+    25.17,
+    0,
+    1.532
+  ],
+  "soccer/2026-27/bundesliga/sc-freiburg.png": [
+    0,
+    3.9,
+    0,
+    3.9,
+    0.708
+  ],
+  "soccer/2026-27/bundesliga/sc-paderborn-07.png": [
+    23.5,
+    0,
+    23.5,
+    0,
+    1.45
+  ],
+  "soccer/2026-27/bundesliga/sv-07-elversberg.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/bundesliga/sv-werder-bremen.png": [
+    0,
+    6.94,
+    0,
+    6.07,
+    0.668
+  ],
+  "soccer/2026-27/bundesliga/tsg-1899-hoffenheim.png": [
+    3.67,
+    0,
+    4.17,
+    0,
+    0.834
+  ],
+  "soccer/2026-27/bundesliga/vfb-stuttgart.png": [
+    7.5,
+    0,
+    7.5,
+    0,
+    0.904
+  ],
+  "soccer/2026-27/j1-league/avispa-fukuoka.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.78
+  ],
+  "soccer/2026-27/j1-league/cerezo-osaka.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.947
+  ],
+  "soccer/2026-27/j1-league/fagiano-okayama.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.653
+  ],
+  "soccer/2026-27/j1-league/fc-tokyo.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.7
+  ],
+  "soccer/2026-27/j1-league/gamba-osaka.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.78
+  ],
+  "soccer/2026-27/j1-league/jef-united-chiba.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.98
+  ],
+  "soccer/2026-27/j1-league/kashima-antlers.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.96
+  ],
+  "soccer/2026-27/j1-league/kashiwa-reysol.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.161
+  ],
+  "soccer/2026-27/j1-league/kawasaki-frontale.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.94
+  ],
+  "soccer/2026-27/j1-league/kyoto-sanga.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.713
+  ],
+  "soccer/2026-27/j1-league/machida-zelvia.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "soccer/2026-27/j1-league/mito-hollyhock.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "soccer/2026-27/j1-league/nagoya-grampus.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.813
+  ],
+  "soccer/2026-27/j1-league/sanfrecce-hiroshima.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.907
+  ],
+  "soccer/2026-27/j1-league/shimizu-s-pulse.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.78
+  ],
+  "soccer/2026-27/j1-league/tokyo-verdy.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.773
+  ],
+  "soccer/2026-27/j1-league/urawa-red-diamonds.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.773
+  ],
+  "soccer/2026-27/j1-league/v-varen-nagasaki.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.713
+  ],
+  "soccer/2026-27/j1-league/vissel-kobe.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.78
+  ],
+  "soccer/2026-27/j1-league/yokohama-f-marinos.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.405
+  ],
+  "soccer/2026-27/j2-league/albirex-niigata.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.727
+  ],
+  "soccer/2026-27/j2-league/blaublitz-akita.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.933
+  ],
+  "soccer/2026-27/j2-league/fc-imabari.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.261
+  ],
+  "soccer/2026-27/j2-league/fujieda-myfc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.987
+  ],
+  "soccer/2026-27/j2-league/hokkaido-consadole-sapporo.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.857
+  ],
+  "soccer/2026-27/j2-league/iwaki-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.787
+  ],
+  "soccer/2026-27/j2-league/jubilo-iwata.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.873
+  ],
+  "soccer/2026-27/j2-league/kataller-toyama.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.907
+  ],
+  "soccer/2026-27/j2-league/montedio-yamagata.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.787
+  ],
+  "soccer/2026-27/j2-league/oita-trinita.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.853
+  ],
+  "soccer/2026-27/j2-league/rb-omiya-ardija.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.538
+  ],
+  "soccer/2026-27/j2-league/sagan-tosu.svg": [
+    21,
+    4,
+    21,
+    4,
+    1.586
+  ],
+  "soccer/2026-27/j2-league/shonan-bellmare.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.747
+  ],
+  "soccer/2026-27/j2-league/tegevajaro-miyazaki.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.753
+  ],
+  "soccer/2026-27/j2-league/tochigi-city.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.927
+  ],
+  "soccer/2026-27/j2-league/tokushima-vortis.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.92
+  ],
+  "soccer/2026-27/j2-league/vanraure-hachinohe.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.9
+  ],
+  "soccer/2026-27/j2-league/vegalta-sendai.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.087
+  ],
+  "soccer/2026-27/j2-league/ventforet-kofu.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.893
+  ],
+  "soccer/2026-27/j2-league/yokohama-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.807
+  ],
+  "soccer/2026-27/j3-league/ac-nagano-parceiro.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.827
+  ],
+  "soccer/2026-27/j3-league/ehime-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.853
+  ],
+  "soccer/2026-27/j3-league/fc-gifu.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.967
+  ],
+  "soccer/2026-27/j3-league/fc-osaka.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "soccer/2026-27/j3-league/fc-ryukyu.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.86
+  ],
+  "soccer/2026-27/j3-league/fukushima-united.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.027
+  ],
+  "soccer/2026-27/j3-league/gainare-tottori.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.354
+  ],
+  "soccer/2026-27/j3-league/giravanz-kitakyushu.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.993
+  ],
+  "soccer/2026-27/j3-league/kagoshima-united.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "soccer/2026-27/j3-league/kamatamare-sanuki.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.927
+  ],
+  "soccer/2026-27/j3-league/kochi-united.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.767
+  ],
+  "soccer/2026-27/j3-league/matsumoto-yamaga.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.053
+  ],
+  "soccer/2026-27/j3-league/nara-club.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.913
+  ],
+  "soccer/2026-27/j3-league/reilac-shiga.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.753
+  ],
+  "soccer/2026-27/j3-league/renofa-yamaguchi.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.767
+  ],
+  "soccer/2026-27/j3-league/roasso-kumamoto.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.867
+  ],
+  "soccer/2026-27/j3-league/sc-sagamihara.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.154
+  ],
+  "soccer/2026-27/j3-league/thespa-gunma.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.733
+  ],
+  "soccer/2026-27/j3-league/tochigi-sc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.807
+  ],
+  "soccer/2026-27/j3-league/zweigen-kanazawa.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.78
+  ],
+  "soccer/2026-27/k-league-1/bucheon-1995.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.807
+  ],
+  "soccer/2026-27/k-league-1/daejeon-hana-citizen.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.647
+  ],
+  "soccer/2026-27/k-league-1/fc-anyang.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.993
+  ],
+  "soccer/2026-27/k-league-1/fc-seoul.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.847
+  ],
+  "soccer/2026-27/k-league-1/gangwon-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.973
+  ],
+  "soccer/2026-27/k-league-1/gimcheon-sangmu.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.86
+  ],
+  "soccer/2026-27/k-league-1/gwangju-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.733
+  ],
+  "soccer/2026-27/k-league-1/incheon-united.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.727
+  ],
+  "soccer/2026-27/k-league-1/jeju-united.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.86
+  ],
+  "soccer/2026-27/k-league-1/jeonbuk-hyundai-motors.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "soccer/2026-27/k-league-1/pohang-steelers.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.94
+  ],
+  "soccer/2026-27/k-league-1/ulsan-hd.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.667
+  ],
+  "soccer/2026-27/k-league-2/ansan-greeners-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.227
+  ],
+  "soccer/2026-27/k-league-2/busan-ipark.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.873
+  ],
+  "soccer/2026-27/k-league-2/cheonan-city-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.7
+  ],
+  "soccer/2026-27/k-league-2/chungbuk-cheongju-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.154
+  ],
+  "soccer/2026-27/k-league-2/chungnam-asan-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.86
+  ],
+  "soccer/2026-27/k-league-2/daegu-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.053
+  ],
+  "soccer/2026-27/k-league-2/gimhae-fc2008.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.027
+  ],
+  "soccer/2026-27/k-league-2/gimpo-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "soccer/2026-27/k-league-2/gyeongnam-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.673
+  ],
+  "soccer/2026-27/k-league-2/hwaseong-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.72
+  ],
+  "soccer/2026-27/k-league-2/jeonnam-dragons.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.8
+  ],
+  "soccer/2026-27/k-league-2/paju-frontier-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.847
+  ],
+  "soccer/2026-27/k-league-2/seongnam-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.007
+  ],
+  "soccer/2026-27/k-league-2/seoul-e-land-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.793
+  ],
+  "soccer/2026-27/k-league-2/suwon-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.113
+  ],
+  "soccer/2026-27/k-league-2/suwon-samsung-bluewings.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.767
+  ],
+  "soccer/2026-27/k-league-2/yongin-fc.svg": [
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "soccer/2026-27/la-liga/athletic-bilbao.png": [
+    12.5,
+    7.16,
+    12.5,
+    7.16,
+    0.878
+  ],
+  "soccer/2026-27/la-liga/atletico-de-madrid.png": [
+    13.67,
+    12.58,
+    13.17,
+    12.8,
+    0.784
+  ],
+  "soccer/2026-27/la-liga/ca-osasuna.png": [
+    0,
+    1.08,
+    0,
+    1.08,
+    0.752
+  ],
+  "soccer/2026-27/la-liga/celta-de-vigo.png": [
+    0,
+    13.45,
+    0,
+    12.8,
+    0.567
+  ],
+  "soccer/2026-27/la-liga/deportivo-a-coruna.png": [
+    14.67,
+    12.58,
+    19,
+    16.92,
+    0.817
+  ],
+  "soccer/2026-27/la-liga/deportivo-alaves.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/la-liga/elche-cf.png": [
+    2.5,
+    0,
+    3,
+    0,
+    0.813
+  ],
+  "soccer/2026-27/la-liga/fc-barcelona.png": [
+    10.83,
+    0,
+    10.83,
+    0,
+    0.981
+  ],
+  "soccer/2026-27/la-liga/getafe-cf.png": [
+    9.67,
+    0,
+    9.67,
+    0,
+    0.952
+  ],
+  "soccer/2026-27/la-liga/levante-ud.png": [
+    3,
+    0,
+    3,
+    0,
+    0.817
+  ],
+  "soccer/2026-27/la-liga/malaga-cf.png": [
+    12,
+    7.59,
+    12.17,
+    6.29,
+    0.873
+  ],
+  "soccer/2026-27/la-liga/racing-santander.png": [
+    0,
+    2.6,
+    0,
+    2.6,
+    0.728
+  ],
+  "soccer/2026-27/la-liga/rayo-vallecano.png": [
+    15.83,
+    0,
+    16,
+    0,
+    1.127
+  ],
+  "soccer/2026-27/la-liga/rcd-espanyol-barcelona.png": [
+    0,
+    4.77,
+    0,
+    4.77,
+    0.695
+  ],
+  "soccer/2026-27/la-liga/real-betis-balompie.png": [
+    16.83,
+    0,
+    16.83,
+    0,
+    1.158
+  ],
+  "soccer/2026-27/la-liga/real-madrid.png": [
+    1.83,
+    2.6,
+    1.33,
+    3.25,
+    0.747
+  ],
+  "soccer/2026-27/la-liga/real-sociedad.png": [
+    6.5,
+    3.47,
+    9.67,
+    1.74,
+    0.869
+  ],
+  "soccer/2026-27/la-liga/sevilla-fc.png": [
+    3.17,
+    0,
+    3,
+    0,
+    0.819
+  ],
+  "soccer/2026-27/la-liga/valencia-cf.png": [
+    0,
+    0.43,
+    0,
+    0,
+    0.765
+  ],
+  "soccer/2026-27/la-liga/villarreal-cf.png": [
+    1.33,
+    0,
+    2,
+    0,
+    0.795
+  ],
+  "soccer/2026-27/ligue-1/aj-auxerre.png": [
+    1.33,
+    0.43,
+    2,
+    0.43,
+    0.788
+  ],
+  "soccer/2026-27/ligue-1/angers-sco.png": [
+    4.17,
+    0,
+    4.17,
+    0,
+    0.838
+  ],
+  "soccer/2026-27/ligue-1/as-monaco.png": [
+    0,
+    11.93,
+    0,
+    11.93,
+    0.585
+  ],
+  "soccer/2026-27/ligue-1/estac-troyes.png": [
+    3.67,
+    0,
+    3.67,
+    0,
+    0.829
+  ],
+  "soccer/2026-27/ligue-1/fc-lorient.png": [
+    0,
+    4.77,
+    0,
+    3.9,
+    0.702
+  ],
+  "soccer/2026-27/ligue-1/fc-toulouse.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/ligue-1/le-havre-ac.png": [
+    3,
+    0,
+    3,
+    0,
+    0.817
+  ],
+  "soccer/2026-27/ligue-1/le-mans-fc.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/ligue-1/losc-lille.png": [
+    13,
+    0,
+    13.5,
+    0,
+    1.045
+  ],
+  "soccer/2026-27/ligue-1/ogc-nice.png": [
+    2,
+    0,
+    2.5,
+    0,
+    0.805
+  ],
+  "soccer/2026-27/ligue-1/olympique-lyon.png": [
+    4.67,
+    0,
+    5.17,
+    0,
+    0.852
+  ],
+  "soccer/2026-27/ligue-1/olympique-marseille.png": [
+    11.5,
+    0,
+    11.33,
+    0,
+    0.996
+  ],
+  "soccer/2026-27/ligue-1/paris-fc.png": [
+    4.17,
+    0,
+    4.17,
+    0,
+    0.838
+  ],
+  "soccer/2026-27/ligue-1/paris-saint-germain.png": [
+    12.5,
+    1.08,
+    12.67,
+    1.3,
+    1.002
+  ],
+  "soccer/2026-27/ligue-1/rc-lens.png": [
+    0,
+    1.74,
+    0,
+    1.74,
+    0.742
+  ],
+  "soccer/2026-27/ligue-1/rc-strasbourg-alsace.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/ligue-1/stade-brestois-29.png": [
+    3,
+    0,
+    3,
+    0,
+    0.817
+  ],
+  "soccer/2026-27/ligue-1/stade-rennais-fc.png": [
+    3,
+    0,
+    3.17,
+    0,
+    0.819
+  ],
+  "soccer/2026-27/premier-league/afc-bournemouth.png": [
+    0,
+    0.43,
+    0,
+    0,
+    0.765
+  ],
+  "soccer/2026-27/premier-league/arsenal-fc.png": [
+    4.17,
+    0,
+    4.67,
+    0,
+    0.843
+  ],
+  "soccer/2026-27/premier-league/aston-villa.png": [
+    0,
+    1.74,
+    0,
+    1.08,
+    0.747
+  ],
+  "soccer/2026-27/premier-league/brentford-fc.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/premier-league/brighton-hove-albion.png": [
+    10.83,
+    0,
+    11.67,
+    0,
+    0.991
+  ],
+  "soccer/2026-27/premier-league/chelsea-fc.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/premier-league/coventry-city.png": [
+    0,
+    0,
+    0,
+    0,
+    0.768
+  ],
+  "soccer/2026-27/premier-league/crystal-palace.png": [
+    2,
+    0,
+    2,
+    0,
+    0.8
+  ],
+  "soccer/2026-27/premier-league/everton-fc.png": [
+    10.33,
+    0,
+    10.83,
+    0,
+    0.975
+  ],
+  "soccer/2026-27/premier-league/fulham-fc.png": [
+    0,
+    1.08,
+    0,
+    0.43,
+    0.757
+  ],
+  "soccer/2026-27/premier-league/hull-city.png": [
+    0.83,
+    0,
+    0.83,
+    0,
+    0.781
+  ],
+  "soccer/2026-27/premier-league/ipswich-town.png": [
+    1.5,
+    0,
+    1.33,
+    0,
+    0.791
+  ],
+  "soccer/2026-27/premier-league/leeds-united.png": [
+    2,
+    0,
+    2.5,
+    0,
+    0.805
+  ],
+  "soccer/2026-27/premier-league/liverpool-fc.png": [
+    5.33,
+    17.57,
+    4.83,
+    18.22,
+    0.549
+  ],
+  "soccer/2026-27/premier-league/manchester-city.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/premier-league/manchester-united.png": [
+    10.83,
+    0,
+    11.33,
+    0,
+    0.987
+  ],
+  "soccer/2026-27/premier-league/newcastle-united.png": [
+    11.33,
+    0,
+    11.5,
+    0,
+    0.996
+  ],
+  "soccer/2026-27/premier-league/nottingham-forest.png": [
+    0,
+    19.09,
+    0,
+    18.44,
+    0.48
+  ],
+  "soccer/2026-27/premier-league/sunderland-afc.png": [
+    17.5,
+    0,
+    18,
+    0,
+    1.191
+  ],
+  "soccer/2026-27/premier-league/tottenham-hotspur.png": [
+    3.17,
+    25.6,
+    3.67,
+    24.95,
+    0.408
+  ],
+  "soccer/2026-27/serie-a/ac-milan.png": [
+    0,
+    8.24,
+    0,
+    8.24,
+    0.642
+  ],
+  "soccer/2026-27/serie-a/ac-monza.png": [
+    0.33,
+    3.9,
+    0.33,
+    3.9,
+    0.713
+  ],
+  "soccer/2026-27/serie-a/acf-fiorentina.png": [
+    11.5,
+    0,
+    11.33,
+    0,
+    0.996
+  ],
+  "soccer/2026-27/serie-a/as-roma.png": [
+    0,
+    0,
+    0.33,
+    0,
+    0.771
+  ],
+  "soccer/2026-27/serie-a/atalanta-bc.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/serie-a/bologna-fc-1909.png": [
+    0,
+    7.59,
+    0,
+    6.94,
+    0.657
+  ],
+  "soccer/2026-27/serie-a/cagliari-calcio.png": [
+    3.67,
+    0,
+    3.67,
+    0,
+    0.829
+  ],
+  "soccer/2026-27/serie-a/como-1907.png": [
+    9.67,
+    0,
+    10.17,
+    0,
+    0.958
+  ],
+  "soccer/2026-27/serie-a/frosinone-calcio.png": [
+    5.83,
+    0,
+    5.83,
+    0,
+    0.87
+  ],
+  "soccer/2026-27/serie-a/genoa-cfc.png": [
+    0,
+    1.08,
+    0,
+    1.08,
+    0.752
+  ],
+  "soccer/2026-27/serie-a/inter-milan.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/serie-a/juventus-fc.png": [
+    0,
+    8.24,
+    0,
+    8.24,
+    0.642
+  ],
+  "soccer/2026-27/serie-a/parma-calcio-1913.png": [
+    2.5,
+    0,
+    2.5,
+    0,
+    0.809
+  ],
+  "soccer/2026-27/serie-a/ss-lazio.png": [
+    24,
+    0,
+    24,
+    0,
+    1.478
+  ],
+  "soccer/2026-27/serie-a/ssc-napoli.png": [
+    11.33,
+    0,
+    11.33,
+    0,
+    0.994
+  ],
+  "soccer/2026-27/serie-a/torino-fc.png": [
+    3.67,
+    0,
+    3.67,
+    0,
+    0.829
+  ],
+  "soccer/2026-27/serie-a/udinese-calcio.png": [
+    12.5,
+    0,
+    13,
+    0,
+    1.031
+  ],
+  "soccer/2026-27/serie-a/us-lecce.png": [
+    1.33,
+    0,
+    2,
+    0,
+    0.795
+  ],
+  "soccer/2026-27/serie-a/us-sassuolo.png": [
+    7.5,
+    0,
+    8,
+    0,
+    0.909
+  ],
+  "soccer/2026-27/serie-a/venezia-fc.png": [
+    20.17,
+    0,
+    20.17,
+    0,
+    1.288
+  ],
+  "soccer/2026-27/other-europe/slovan-bratislava.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.794
+  ],
+  "soccer/2026-27/other-europe/aek-athens.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.74
+  ]
 }
