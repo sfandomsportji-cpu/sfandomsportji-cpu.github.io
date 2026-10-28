@@ -795,6 +795,13 @@ def soccer_today() -> str:
             f'<p class="sc-hint">옆으로 밀어서 전체 경기 보기 · 킥오프는 한국시간 · 확정 라인업 발표 후 분석에 반영</p></section>')
 
 
+# KBO 로고 파일은 흰 배경이 그림에 구워져 있고 여백이 제각각이다. 파일은 건드리지 않고, 실제 그림 영역만 측정해 둔 값(src/content/kbo_art_boxes.json)으로 맞춘다.
+try:
+    KBO_ART = {k: (tuple(v[:4]), v[4]) for k, v in json.loads((CONTENT / 'kbo_art_boxes.json').read_text(encoding='utf-8')).items()}
+except Exception:
+    KBO_ART = {}
+
+
 def ta_mark(a: Article, name: str) -> str:
     """홈 분석 카드용 팀 로고. 로고 파일이 없으면 이름 앞 3글자 칩."""
     lg = getattr(a, 'league', '')
@@ -804,7 +811,8 @@ def ta_mark(a: Article, name: str) -> str:
         return badge(name, team_color(name, lg.lower()), 'lg', league=lg.lower())
     if lg == 'KBO' and kbo_logo(name):
         p = kbo_logo(name)
-        inset, asp = logo_box(p.removeprefix('/assets/teams/'))
+        kkey = p.removeprefix('/assets/teams/')
+        inset, asp = KBO_ART.get(kkey) or logo_box(kkey)
         g = 0.98  # 가로세로 비율이 달라도 보이는 면적을 같게 맞추되, 긴 변은 칸 안에 가득(100%) 채운다
         w, h = g * math.sqrt(asp), g / math.sqrt(asp)
         k = min(1.0, 1.0 / max(w, h))
