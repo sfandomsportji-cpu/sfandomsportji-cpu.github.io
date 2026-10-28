@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-28T14:09+09:00",
+  "updated_at": "2026-10-28T14:11+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-28T14:09+09:00",
+      "checked_at": "2026-10-28T14:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-28T14:09+09:00",
+      "checked_at": "2026-10-28T14:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -88,8 +88,8 @@
           "away_name": "Portland Trail Blazers",
           "home_name": "Los Angeles Lakers",
           "status": "live",
-          "away_score": 96,
-          "home_score": 101,
+          "away_score": 97,
+          "home_score": 102,
           "source_url": "https://www.espn.com/nba/game?gameId=401909880"
         },
         {
@@ -303,7 +303,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-28T14:09+09:00",
+      "checked_at": "2026-10-28T14:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -323,7 +323,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-28T14:09+09:00",
+      "checked_at": "2026-10-28T14:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
