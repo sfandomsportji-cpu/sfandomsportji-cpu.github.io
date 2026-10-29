@@ -2256,15 +2256,15 @@ def crest_url(league: str, abbr: str) -> str:
 
 
 def score_team(g: dict, side: str, state: str) -> str:
-    """경기 행의 팀 표시. 예정 경기는 저장소에 로고가 있는 리그(NBA·MLB)에 한해 팀 로고로, 나머지는 약자 글자로 보여 준다."""
+    """경기 행의 팀 표시. 저장소에 로고가 있는 리그(NBA·MLB·NFL·NHL)는 예정·진행·종료 모두 팀 로고로, 나머지는 약자 글자로 보여 준다."""
     abbr, name = str(g.get(side, '?')), g.get(f'{side}_name', '')
     league = str(g.get('league', '')).lower()
     if league == 'nba':
         # ESPN 약자(NY·GS·NO·SA·UTAH·WSH)를 저장소 로고 파일 이름과 맞춘다.
         abbr = {'NY': 'NYK', 'GS': 'GSW', 'NO': 'NOP', 'SA': 'SAS', 'UTAH': 'UTA', 'WSH': 'WAS'}.get(abbr.upper(), abbr)
-    if state == 'scheduled' and league in ('nba', 'mlb') and league in LOGO_SOURCES and (ROOT / 'assets' / 'teams' / league / f'{abbr.lower()}.svg').exists():
+    if state in ('scheduled', 'live', 'final') and league in ('nba', 'mlb') and league in LOGO_SOURCES and (ROOT / 'assets' / 'teams' / league / f'{abbr.lower()}.svg').exists():
         return f'<span class="sf-scores__logo" title="{esc(name)}">{badge(abbr, team_color(abbr, league), "", league=league)}</span>'
-    crest = crest_url(league, abbr) if state == 'scheduled' else ''
+    crest = crest_url(league, abbr) if state in ('scheduled', 'live', 'final') else ''
     if crest:
         return (f'<span class="sf-scores__logo" title="{esc(name)}"><span class="tlogo-wrap crest" title="{esc(abbr)}">'
                 f'<img class="tlogo" src="{crest}" alt="{esc(name or abbr)}" width="64" height="64" loading="lazy" decoding="async"></span></span>')
@@ -2431,7 +2431,8 @@ def game_scroll() -> tuple[str, list]:
     snapshot = game_snapshot()
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
 
-    def snap_cards(league: str, limit: int) -> tuple[str, str]:
+    def snap_cards(league: str, limit: int, recent: int = 0) -> tuple[str, str]:
+        """recent>0이면 가장 최근에 끝난 경기 recent개를 먼저 넣고, 나머지는 앞으로 열릴 경기로 채운다(농구: 끝난 결과도 홈에서 보이게)."""
         details = snapshot.get('leagues', {}).get(league) or {}
         verified, stale = game_age(details.get('checked_at', ''))
         games = sorted([g for g in details.get('games', []) if game_clock(g.get('start_kst', ''))],
@@ -2439,7 +2440,11 @@ def game_scroll() -> tuple[str, list]:
         cutoff = now - dt.timedelta(minutes=20)
         ahead = [g for g in games if g.get('status') in ('scheduled', 'live') and game_clock(g['start_kst']) >= cutoff]
         behind = [g for g in games if g not in ahead]
-        picked = ahead[:limit] + (behind[-(limit - len(ahead[:limit])):] if len(ahead) < limit else [])
+        if recent:
+            finals = [g for g in behind if g.get('status') == 'final'][-recent:]
+            picked = finals + ahead[:limit - len(finals)]
+        else:
+            picked = ahead[:limit] + (behind[-(limit - len(ahead[:limit])):] if len(ahead) < limit else [])
         picked.sort(key=lambda g: g['start_kst'])
         return ''.join(game_card(g, stale, details.get('checked_at', '')) for g in picked), verified
 
@@ -2448,7 +2453,7 @@ def game_scroll() -> tuple[str, list]:
         c, v = snap_cards(lg, 4)
         base_cards, base_ver = base_cards + c, base_ver or v
     base_cards = kbo_bracket() + base_cards
-    hoops_cards, hoops_ver = snap_cards('NBA', 8)
+    hoops_cards, hoops_ver = snap_cards('NBA', 8, recent=4)
     groups = (
         ('야구', '⚾', base_cards, 'NPB · KBO 포스트시즌'),
         ('농구', '🏀', hoops_cards, f'NBA · 확인 {hoops_ver}'),
