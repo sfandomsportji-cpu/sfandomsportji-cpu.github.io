@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-29T15:20+09:00",
+  "updated_at": "2026-10-29T16:02+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-29T15:20+09:00",
+      "checked_at": "2026-10-29T16:02+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,9 +36,11 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-29T15:20+09:00",
-      "coverage": "complete",
-      "failed_dates": [],
+      "checked_at": "2026-10-29T16:02+09:00",
+      "coverage": "partial",
+      "failed_dates": [
+        "20261027"
+      ],
       "games": [
         {
           "id": "NBA-401909877",
@@ -494,11 +496,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909901/timberwolves-spurs"
+        },
+        {
+          "id": "NBA-401909902",
+          "league": "NBA",
+          "start_kst": "2026-11-01T09:30+09:00",
+          "away": "OKC",
+          "home": "HOU",
+          "away_name": "Oklahoma City Thunder",
+          "home_name": "Houston Rockets",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909902/thunder-rockets"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-29T15:20+09:00",
+      "checked_at": "2026-10-29T16:02+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -518,7 +533,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-29T15:20+09:00",
+      "checked_at": "2026-10-29T16:02+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
