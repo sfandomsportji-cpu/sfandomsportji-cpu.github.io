@@ -842,7 +842,8 @@ def ta_mark(a: Article, name: str) -> str:
 
 def ta_when(a: Article) -> str:
     day, _, clock = (getattr(a, 'kst', '') or '').partition(' ')
-    return f'{day} 종료' if clock == 'final' else f'{day} {clock}'.strip()
+    # 결과 기사는 front matter ended: true 로 카드 시간 표기만 '종료'로 바꾼다(홈 선정 순서는 kst 값 그대로 유지)
+    return f'{day} 종료' if clock == 'final' or getattr(a, 'ended', False) else f'{day} {clock}'.strip()
 
 
 def ta_side(a: Article, side: str) -> str:

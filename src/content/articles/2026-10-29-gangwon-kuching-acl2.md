@@ -14,6 +14,7 @@ slug: "gangwon-kuching-20261029"
 away: "KUCHING CITY"
 home: "GANGWON FC"
 kst: "10.29 19:00"
+ended: true
 summary: ["강원이 쿠칭 시티를 1–0으로 이기고 ACL2 첫 승을 거뒀다", "최병찬이 전반 28분 오른발 슛으로 결승골을 넣었다", "강원은 1승 1무 1패 승점 4점으로 H조 2위가 됐다"]
 glance: [["핵심", "강원 1–0 · 승점 4 · H조 2위"], ["변수", "후반 추가 득점 실패 · 신민하 중심 무실점 수비"], ["시선", "11월 5일 쿠칭 원정 4차전"]]
 sources: [{"label":"뉴스핌 [ACL2] 최병찬 결승골 강원, 쿠칭 시티 1-0 제압","url":"https://www.newspim.com/news/view/20261029001416"},{"label":"강원일보 최병찬 한 방에 웃었다…강원FC, ACL2 첫 승","url":"https://www.kwnews.co.kr/article/20261029501893"},{"label":"강원FC 경기일정","url":"https://gangwon-fc.com/match/schedule?league=AFC&year=2026&month=10"},{"label":"Bernama: Kuching City 2-1 defeat to Phnom Penh Crown","url":"https://www.bernama.com/en/news.php?id=2608627"}]

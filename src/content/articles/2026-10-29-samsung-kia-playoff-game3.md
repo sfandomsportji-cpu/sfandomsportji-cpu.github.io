@@ -14,6 +14,7 @@ slug: "samsung-kia-playoff-game3-20261029"
 away: "SAMSUNG LIONS"
 home: "KIA TIGERS"
 kst: "10.29 18:30"
+ended: true
 pick: "home"
 verdict: "KIA 승리"
 verdict_sub: "경기 전 전망 · 결과는 삼성 6–4 승"
