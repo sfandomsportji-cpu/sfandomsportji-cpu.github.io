@@ -52,6 +52,16 @@
       "expected": 32,
       "missing": 0
     },
+    "kbl": {
+      "stored": 10,
+      "expected": 10,
+      "missing": 0
+    },
+    "wkbl": {
+      "stored": 6,
+      "expected": 6,
+      "missing": 0
+    },
     "volleyball/men": {
       "stored": 0,
       "expected": 7,
@@ -110,7 +120,7 @@
   },
   "records": [
     {
-      "league": "anyang-jung-kwan-jang.png",
+      "league": "kbl",
       "team": "안양 정관장 레드부스터스",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/kbl/anyang-jung-kwan-jang.png",
@@ -119,7 +129,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/anyang-jung-kwan-jang.png"
     },
     {
-      "league": "asan-woori-bank.png",
+      "league": "wkbl",
       "team": "아산 우리은행 우리WON",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/wkbl/asan-woori-bank.png",
@@ -128,7 +138,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/asan-woori-bank.png"
     },
     {
-      "league": "bucheon-hana-bank.png",
+      "league": "wkbl",
       "team": "부천 하나은행",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/wkbl/bucheon-hana-bank.png",
@@ -137,7 +147,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/bucheon-hana-bank.png"
     },
     {
-      "league": "busan-bnk-sum.png",
+      "league": "wkbl",
       "team": "부산 BNK 썸",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/wkbl/busan-bnk-sum.png",
@@ -146,7 +156,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/busan-bnk-sum.png"
     },
     {
-      "league": "busan-kcc.png",
+      "league": "kbl",
       "team": "부산 KCC 이지스",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/kbl/busan-kcc.png",
@@ -155,7 +165,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/busan-kcc.png"
     },
     {
-      "league": "changwon-lg.png",
+      "league": "kbl",
       "team": "창원 LG 세이커스",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/kbl/changwon-lg.png",
@@ -164,7 +174,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/changwon-lg.png"
     },
     {
-      "league": "cheongju-kb-stars.png",
+      "league": "wkbl",
       "team": "청주 KB스타즈",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/wkbl/cheongju-kb-stars.png",
@@ -173,7 +183,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/cheongju-kb-stars.png"
     },
     {
-      "league": "daegu-kogas.png",
+      "league": "kbl",
       "team": "대구 한국가스공사 페가수스",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/kbl/daegu-kogas.png",
@@ -182,7 +192,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/daegu-kogas.png"
     },
     {
-      "league": "goyang-sono.png",
+      "league": "kbl",
       "team": "고양 소노 스카이거너스",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/kbl/goyang-sono.png",
@@ -191,7 +201,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/goyang-sono.png"
     },
     {
-      "league": "incheon-shinhan-bank.png",
+      "league": "wkbl",
       "team": "인천 신한은행 에스버드",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/wkbl/incheon-shinhan-bank.png",
@@ -1532,7 +1542,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/yomiuri-giants.png"
     },
     {
-      "league": "seoul-samsung.png",
+      "league": "kbl",
       "team": "서울 삼성 썬더스",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/kbl/seoul-samsung.png",
@@ -1541,7 +1551,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/seoul-samsung.png"
     },
     {
-      "league": "seoul-sk.png",
+      "league": "kbl",
       "team": "서울 SK 나이츠",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/kbl/seoul-sk.png",
@@ -3242,7 +3252,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/venezia-fc.png"
     },
     {
-      "league": "suwon-kt.png",
+      "league": "kbl",
       "team": "수원 KT 소닉붐",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/kbl/suwon-kt.png",
@@ -3251,7 +3261,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/suwon-kt.png"
     },
     {
-      "league": "ulsan-hyundai-mobis.png",
+      "league": "kbl",
       "team": "울산 현대모비스 피버스",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/kbl/ulsan-hyundai-mobis.png",
@@ -3386,7 +3396,7 @@
       "url": null
     },
     {
-      "league": "wonju-db.png",
+      "league": "kbl",
       "team": "원주 DB 프로미",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/kbl/wonju-db.png",
@@ -3395,7 +3405,7 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/wonju-db.png"
     },
     {
-      "league": "yongin-samsung-life.png",
+      "league": "wkbl",
       "team": "용인 삼성생명 블루밍스",
       "status": "stored",
       "path": "assets/teams/basketball/2026-27/wkbl/yongin-samsung-life.png",
@@ -3403,5 +3413,6 @@
       "sha": "e0342c8fedf821211ebe61744322266c9f89eb98",
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/yongin-samsung-life.png"
     }
-  ]
+  ],
+  "audit_correction": "Normalized basketball league keys KBL and WKBL"
 }
