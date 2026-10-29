@@ -802,6 +802,9 @@ except Exception:
     KBO_ART = {}
 
 
+KBL_LOGOS = {'삼성': 'basketball/2026-27/kbl/seoul-samsung.png', '소노': 'basketball/2026-27/kbl/goyang-sono.png', 'KCC': 'basketball/2026-27/kbl/busan-kcc.png', '모비스': 'basketball/2026-27/kbl/ulsan-hyundai-mobis.png', 'LG': 'basketball/2026-27/kbl/changwon-lg.png', 'SK': 'basketball/2026-27/kbl/seoul-sk.png', 'DB': 'basketball/2026-27/kbl/wonju-db.png', 'KT': 'basketball/2026-27/kbl/suwon-kt.png', '정관장': 'basketball/2026-27/kbl/anyang-jung-kwan-jang.png', '가스공사': 'basketball/2026-27/kbl/daegu-kogas.png'}  # 홈 분석 카드용 KBL 로고(저장소 보관본, 짧은 팀명 기준)
+
+
 def ta_mark(a: Article, name: str) -> str:
     """홈 분석 카드용 팀 로고. 로고 파일이 없으면 이름 앞 3글자 칩."""
     lg = getattr(a, 'league', '')
@@ -809,6 +812,15 @@ def ta_mark(a: Article, name: str) -> str:
         return soccer_badge(name, 'lg')
     if lg in ('NBA', 'MLB') and (ROOT / 'assets' / 'teams' / lg.lower() / f'{name.lower()}.svg').exists():
         return badge(name, team_color(name, lg.lower()), 'lg', league=lg.lower())
+    if lg == 'KBL' and name in KBL_LOGOS:
+        kkey = KBL_LOGOS[name]
+        inset, asp = logo_box(kkey)
+        g = 0.98  # KBO와 같은 방식: 가로세로 비율이 달라도 보이는 면적을 맞추되 긴 변은 칸 안에 가득
+        w, h = g * math.sqrt(asp), g / math.sqrt(asp)
+        k = min(1.0, 1.0 / max(w, h))
+        st = f'object-view-box:inset({" ".join(f"{v:g}%" for v in inset)});width:{w * k * 100:.1f}%;height:{h * k * 100:.1f}%'
+        return (f'<span class="tlogo-wrap lg kbo"><img class="tlogo" src="/assets/teams/{kkey}" alt="{esc(name)}" '
+                f'style="{st}" width="72" height="72" loading="lazy" decoding="async"></span>')
     if lg == 'KBO' and kbo_logo(name):
         p = kbo_logo(name)
         # Prefer transparent, locally prepared KIA/Samsung crests.
