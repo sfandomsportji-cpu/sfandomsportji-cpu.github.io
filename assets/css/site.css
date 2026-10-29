@@ -1658,3 +1658,36 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 #today-analysis .ta-side.is-pick .tlogo-wrap,#today-analysis .ta-side.is-pick .tchip{box-shadow:0 0 0 2px var(--red),0 0 24px rgba(200,16,46,.35)}
 @media(max-width:900px){#today-analysis .ta-stage{gap:20px}#today-analysis .ta-stage i{margin-top:-22px}#today-analysis .ta-side b{font-size:13px}}
 #today-analysis .ta-stage .tlogo-wrap.kbo{padding:12px}
+
+/* Home analysis "forecast board": one simple row per game. All logos sit in the same plain square, no tile or ring. */
+#today-analysis .tb{display:grid;gap:10px}
+#today-analysis .tb-row{display:grid;grid-template-columns:120px minmax(0,1fr) 200px 24px;align-items:center;gap:24px;padding:16px 24px;border:1px solid var(--line);border-radius:14px;background:#0B0C11;color:#fff;transition:border-color .15s}
+#today-analysis .tb-row:hover{border-color:rgba(255,77,99,.7)}
+#today-analysis .tb-when{display:flex;flex-direction:column;align-items:flex-start;gap:6px;font-family:var(--head);font-weight:700;font-size:15px;color:#A7B4C7}
+#today-analysis .tb-when em{font-style:normal;padding:3px 10px;border-radius:999px;background:var(--red);color:#fff;font-size:13px;letter-spacing:.06em}
+#today-analysis .tb-when time{white-space:nowrap}
+#today-analysis .tb-match{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);align-items:center;gap:14px;width:100%;max-width:560px;justify-self:center}
+#today-analysis .tb-match i{font-style:normal;font-family:var(--display);font-size:18px;color:#6b7280;text-align:center}
+#today-analysis .tb-side{display:flex;align-items:center;gap:12px;min-width:0}
+#today-analysis .tb-side:first-child{justify-content:flex-end}
+#today-analysis .tb-side:last-child{flex-direction:row-reverse;justify-content:flex-end}
+#today-analysis .tb-side .tlogo-wrap,#today-analysis .tb-side .tchip{width:56px;height:56px;padding:0;border-radius:0;background:none;box-shadow:none;flex-shrink:0}
+#today-analysis .tb-side .tchip{font-size:15px;min-width:0}
+#today-analysis .tb-side b{font-family:var(--head);font-weight:700;font-size:15px;color:#8f9bb0;overflow-wrap:anywhere}
+#today-analysis .tb-side.is-pick b{color:#fff}
+#today-analysis .tb-side.is-pick b::after{content:"";display:block;width:100%;height:2px;margin-top:4px;background:var(--red)}
+#today-analysis .tb-pick{display:flex;flex-direction:column;gap:3px}
+#today-analysis .tb-pick small{font-family:var(--head);font-weight:800;font-size:12px;letter-spacing:.08em;color:#ff4d63}
+#today-analysis .tb-pick b{font-family:var(--head);font-weight:800;font-size:21px;line-height:1.25;color:#fff}
+#today-analysis .tb-go{font-size:24px;color:#ff4d63;text-align:right}
+@media(max-width:900px){#today-analysis .tb-row{grid-template-columns:100px minmax(0,1fr) 24px;gap:14px}#today-analysis .tb-pick{display:none}}
+@media(max-width:700px){
+  #today-analysis .tb-row{grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:14px 16px}
+  #today-analysis .tb-when{flex-direction:row;align-items:center;gap:10px}
+  #today-analysis .tb-match{grid-column:1/-1;max-width:none}
+  #today-analysis .tb-side{flex-direction:column !important;justify-content:flex-start !important;gap:6px;text-align:center}
+  #today-analysis .tb-side b{font-size:13px}
+  #today-analysis .tb-pick{display:flex;grid-column:1/-1;flex-direction:row;align-items:baseline;gap:8px}
+  #today-analysis .tb-pick b{font-size:18px}
+  #today-analysis .tb-go{grid-column:2;grid-row:1}
+}

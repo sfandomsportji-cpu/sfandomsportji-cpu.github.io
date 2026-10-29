@@ -834,33 +834,24 @@ def ta_when(a: Article) -> str:
 
 
 def ta_side(a: Article, side: str) -> str:
-    """홈 큰 분석 카드의 한쪽 팀: 로고 + 팀 이름, KAIRO가 고른 쪽에는 'KAIRO PICK' 표시."""
+    """전망 보드의 한쪽 팀: 로고 + 팀 이름. KAIRO가 고른 쪽은 is-pick(붉은 테두리)."""
     name = getattr(a, side, '')
     picked = (getattr(a, 'pick', '') or '') == side
-    return (f'<span class="ta-side{" is-pick" if picked else ""}">{ta_mark(a, name)}'
-            f'<b>{esc(name)}</b>' + ('<em>KAIRO PICK</em>' if picked else '<em class="ph" aria-hidden="true">&nbsp;</em>') + '</span>')
+    return f'<span class="tb-side{" is-pick" if picked else ""}">{ta_mark(a, name)}<b>{esc(name)}</b></span>'
 
 
 def ta_board(picks: list) -> str:
-    """홈 분석 구역: 큰 카드 1개 + 옆에 클릭해서 들어가는 항목 3개."""
+    """홈 분석 구역: 경기별 한 줄 '전망 보드' — 킥오프 · 대진(로고) · KAIRO 전망 · 핵심 한 줄. 줄 전체가 분석 글 링크."""
     def key(a):
         return dict(getattr(a, 'glance', None) or []).get('핵심', '')
-    feat, rest = picks[0], picks[1:4]
-    photo = (f'<img class="ta-feat-img" src="{esc(feat.image)}" alt="{esc(feat.image_alt)}" loading="lazy" decoding="async">'
-             if feat.image.startswith('/assets/photos/') and (ROOT / feat.image.lstrip('/')).is_file() else '')
-    big = (f'<a class="ta-feat" href="{feat.url}">{photo}'
-           f'<span class="ta-stage">{ta_side(feat, "away")}<i>VS</i>{ta_side(feat, "home")}</span>'
-           f'<span class="ta-meta"><em>{esc(feat.league)}</em><time>{esc(ta_when(feat))}</time></span>'
-           f'<b class="ta-title">{esc(feat.title)}</b>'
-           + (f'<span class="ta-key"><small>핵심</small>{esc(key(feat))}</span>' if key(feat) else '')
-           + '<span class="ta-go">분석 읽기 →</span></a>')
-    items = ''.join(
-        f'<a class="ta-item" href="{a.url}"><span class="ta-pair">{ta_mark(a, a.away)}{ta_mark(a, a.home)}</span>'
-        f'<span class="ta-tx"><span class="ta-meta"><em>{esc(a.league)}</em><time>{esc(ta_when(a))}</time></span>'
-        f'<b>{esc(a.title)}</b>'
-        + (f'<small>{esc(key(a))}</small>' if key(a) else '') + '</span><span class="ta-arrow" aria-hidden="true">→</span></a>'
-        for a in rest)
-    return f'<div class="ta-wrap">{big}<div class="ta-list">{items}</div></div>'
+    rows = ''.join(
+        f'<a class="tb-row" href="{a.url}">'
+        f'<span class="tb-when"><em>{esc(a.league)}</em><time>{esc(ta_when(a))}</time></span>'
+        f'<span class="tb-match">{ta_side(a, "away")}<i>VS</i>{ta_side(a, "home")}</span>'
+        f'<span class="tb-pick"><small>KAIRO 전망</small><b>{esc(getattr(a, "verdict", "") or a.title)}</b></span>'
+        f'<span class="tb-go" aria-hidden="true">→</span></a>'
+        for a in picks)
+    return f'<div class="tb">{rows}</div>'
 
 
 def today_analysis() -> str:
