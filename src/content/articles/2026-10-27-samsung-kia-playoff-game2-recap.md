@@ -14,6 +14,7 @@ slug: "kia-samsung-playoff-game2-recap-20261027"
 away: "KIA TIGERS"
 home: "SAMSUNG LIONS"
 kst: "10.27 final"
+hide_home: true
 glance: [["핵심","3회 4득점 역전, 삼성 8–3 승"],["변수","후라도 6⅔이닝 2실점"],["시선","3차전 광주 · 10.29"]]
 sources: [{"label":"미디어파인 삼성, KIA에 8-3 승리…PO 1승 1패 균형","url":"https://www.mediafine.co.kr/news/articleView.html?idxno=93896"},{"label":"이투데이 플레이오프 승부 원점…삼성 vs KIA 1:1","url":"https://www.etoday.co.kr/news/view/2640831"},{"label":"세계일보 PO 1차전 미리보기","url":"https://segye.com/newsView/20261023508437"}]
 ---

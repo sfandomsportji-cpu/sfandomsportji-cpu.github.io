@@ -1618,3 +1618,22 @@ h4,h5,.tag,.chip,.pill,.more,.talk,summary,th,.tabs a,.socials,.post-meta,.li-vs
 @media (max-width:900px){.gtw .gtw-row .vsline{grid-column:1;justify-self:start;max-width:260px}.gtw .gtw-row .gt-in,.gtw .gtw-score{grid-column:2}}
 section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gtw-card .gt-in{align-self:center;margin:2px auto 0}
 section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{color:#fff}
+/* Analysis cards: equalize the visible ink area of both team logos (keeps --oy optical centering). */
+#today-analysis .tlogo{transform:translateY(var(--oy,0%)) scale(var(--ls,1))}
+#today-analysis .tlogo[alt="ATL"]{--ls:0.97}
+#today-analysis .tlogo[alt="BKN"]{--ls:1.03}
+#today-analysis .tlogo[alt="CHA"]{--ls:0.88}
+#today-analysis .tlogo[alt="CHI"]{--ls:1.06}
+#today-analysis .tlogo[alt="GSW"]{--ls:0.9}
+#today-analysis .tlogo[alt="HOU"]{--ls:0.96}
+#today-analysis .tlogo[alt="IND"]{--ls:0.87}
+#today-analysis .tlogo[alt="LAC"]{--ls:0.93}
+#today-analysis .tlogo[alt="MIA"]{--ls:0.97}
+#today-analysis .tlogo[alt="MIN"]{--ls:0.84}
+#today-analysis .tlogo[alt="NYK"]{--ls:0.94}
+#today-analysis .tlogo[alt="PHI"]{--ls:1.1}
+#today-analysis .tlogo[alt="PHX"]{--ls:0.96}
+#today-analysis .tlogo[alt="POR"]{--ls:1.2}
+#today-analysis .tlogo[alt="SAC"]{--ls:1.06}
+#today-analysis .tlogo[alt="SAS"]{--ls:1.09}
+#today-analysis .tlogo[alt="UTA"]{--ls:1.14}
