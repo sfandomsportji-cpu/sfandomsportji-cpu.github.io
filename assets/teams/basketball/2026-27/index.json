@@ -1,0 +1,157 @@
+{
+  "date": "2026-10-30",
+  "status": "stored-not-integrated-in-site",
+  "format": "original-transparent-PNG",
+  "kbl": 10,
+  "wkbl": 6,
+  "provenance": {
+    "kbl": "Daum Sports KBL 2026/27 standings team logo",
+    "wkbl": "WKBL official club directory"
+  },
+  "teamLogos": [
+    {
+      "league": "kbl",
+      "team": "서울 삼성 썬더스",
+      "sourceCode": "35",
+      "file": "kbl/seoul-samsung.png",
+      "width": 300,
+      "height": 300,
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/10/35_300300.png"
+    },
+    {
+      "league": "kbl",
+      "team": "서울 SK 나이츠",
+      "sourceCode": "55",
+      "file": "kbl/seoul-sk.png",
+      "width": 300,
+      "height": 300,
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/10/55_300300.png"
+    },
+    {
+      "league": "kbl",
+      "team": "안양 정관장 레드부스터스",
+      "sourceCode": "70",
+      "file": "kbl/anyang-jung-kwan-jang.png",
+      "width": 300,
+      "height": 300,
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/10/70_300300.png"
+    },
+    {
+      "league": "kbl",
+      "team": "원주 DB 프로미",
+      "sourceCode": "16",
+      "file": "kbl/wonju-db.png",
+      "width": 300,
+      "height": 300,
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/10/16_300300.png"
+    },
+    {
+      "league": "kbl",
+      "team": "고양 소노 스카이거너스",
+      "sourceCode": "66",
+      "file": "kbl/goyang-sono.png",
+      "width": 300,
+      "height": 300,
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/10/66_300300.png"
+    },
+    {
+      "league": "kbl",
+      "team": "창원 LG 세이커스",
+      "sourceCode": "50",
+      "file": "kbl/changwon-lg.png",
+      "width": 300,
+      "height": 300,
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/10/50_300300.png"
+    },
+    {
+      "league": "kbl",
+      "team": "대구 한국가스공사 페가수스",
+      "sourceCode": "64",
+      "file": "kbl/daegu-kogas.png",
+      "width": 300,
+      "height": 300,
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/10/64_300300.png"
+    },
+    {
+      "league": "kbl",
+      "team": "울산 현대모비스 피버스",
+      "sourceCode": "10",
+      "file": "kbl/ulsan-hyundai-mobis.png",
+      "width": 300,
+      "height": 300,
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/10/10_300300.png"
+    },
+    {
+      "league": "kbl",
+      "team": "수원 KT 소닉붐",
+      "sourceCode": "06",
+      "file": "kbl/suwon-kt.png",
+      "width": 300,
+      "height": 300,
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/10/06_300300.png"
+    },
+    {
+      "league": "kbl",
+      "team": "부산 KCC 이지스",
+      "sourceCode": "60",
+      "file": "kbl/busan-kcc.png",
+      "width": 300,
+      "height": 300,
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/10/60_300300.png"
+    },
+    {
+      "league": "wkbl",
+      "team": "용인 삼성생명 블루밍스",
+      "sourceCode": "03",
+      "file": "wkbl/yongin-samsung-life.png",
+      "width": 200,
+      "height": 171,
+      "sourceUrl": "https://www.wkbl.or.kr/static/images/team/teamlogo_03.png"
+    },
+    {
+      "league": "wkbl",
+      "team": "인천 신한은행 에스버드",
+      "sourceCode": "07",
+      "file": "wkbl/incheon-shinhan-bank.png",
+      "width": 200,
+      "height": 171,
+      "sourceUrl": "https://www.wkbl.or.kr/static/images/team/teamlogo_07.png"
+    },
+    {
+      "league": "wkbl",
+      "team": "아산 우리은행 우리WON",
+      "sourceCode": "05",
+      "file": "wkbl/asan-woori-bank.png",
+      "width": 200,
+      "height": 171,
+      "sourceUrl": "https://www.wkbl.or.kr/static/images/team/teamlogo_05.png"
+    },
+    {
+      "league": "wkbl",
+      "team": "부천 하나은행",
+      "sourceCode": "09",
+      "file": "wkbl/bucheon-hana-bank.png",
+      "width": 200,
+      "height": 171,
+      "sourceUrl": "https://www.wkbl.or.kr/static/images/team/teamlogo_09.png"
+    },
+    {
+      "league": "wkbl",
+      "team": "부산 BNK 썸",
+      "sourceCode": "11",
+      "file": "wkbl/busan-bnk-sum.png",
+      "width": 200,
+      "height": 171,
+      "sourceUrl": "https://www.wkbl.or.kr/static/images/team/teamlogo_11.png"
+    },
+    {
+      "league": "wkbl",
+      "team": "청주 KB스타즈",
+      "sourceCode": "01",
+      "file": "wkbl/cheongju-kb-stars.png",
+      "width": 200,
+      "height": 171,
+      "sourceUrl": "https://www.wkbl.or.kr/static/images/team/teamlogo_01.png"
+    }
+  ]
+}
