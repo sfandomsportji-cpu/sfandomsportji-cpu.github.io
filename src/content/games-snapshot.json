@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-29T16:02+09:00",
+  "updated_at": "2026-10-29T16:56+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-29T16:02+09:00",
+      "checked_at": "2026-10-29T16:56+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,11 +36,9 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-29T16:02+09:00",
-      "coverage": "partial",
-      "failed_dates": [
-        "20261027"
-      ],
+      "checked_at": "2026-10-29T16:56+09:00",
+      "coverage": "complete",
+      "failed_dates": [],
       "games": [
         {
           "id": "NBA-401909877",
@@ -513,7 +511,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-29T16:02+09:00",
+      "checked_at": "2026-10-29T16:56+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -533,7 +531,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-29T16:02+09:00",
+      "checked_at": "2026-10-29T16:56+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
