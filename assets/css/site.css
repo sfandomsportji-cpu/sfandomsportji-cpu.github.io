@@ -1646,3 +1646,15 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 /* KAIRO KBO optical logo adjustment: Samsung and KIA (2026-10-29) */
 #today-analysis .ta-stage .tlogo-wrap.kbo .tlogo[alt^="KIA"]{transform:translateY(0) scale(1.10);transform-origin:center}
 #today-analysis .ta-stage .tlogo-wrap.kbo .tlogo[alt^="SAMSUNG"]{transform:translateY(0) scale(1.15);transform-origin:center}
+
+/* Home analysis big card: team name under each logo, KAIRO PICK marker on the picked side. */
+#today-analysis .ta-stage{align-items:flex-start;gap:34px}
+#today-analysis .ta-stage i{align-self:center;margin-top:-26px}
+#today-analysis .ta-side{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0}
+#today-analysis .ta-side b{font-family:var(--head);font-weight:800;font-size:15px;letter-spacing:.04em;color:#cbd1df;text-align:center}
+#today-analysis .ta-side em{font-style:normal;font-family:var(--head);font-weight:800;font-size:12px;letter-spacing:.08em;padding:3px 10px;border-radius:999px;background:var(--red);color:#fff;white-space:nowrap}
+#today-analysis .ta-side em.ph{visibility:hidden}
+#today-analysis .ta-side.is-pick b{color:#fff}
+#today-analysis .ta-side.is-pick .tlogo-wrap,#today-analysis .ta-side.is-pick .tchip{box-shadow:0 0 0 2px var(--red),0 0 24px rgba(200,16,46,.35)}
+@media(max-width:900px){#today-analysis .ta-stage{gap:20px}#today-analysis .ta-stage i{margin-top:-22px}#today-analysis .ta-side b{font-size:13px}}
+#today-analysis .ta-stage .tlogo-wrap.kbo{padding:12px}

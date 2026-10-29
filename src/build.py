@@ -833,6 +833,14 @@ def ta_when(a: Article) -> str:
     return f'{day} 종료' if clock == 'final' else f'{day} {clock}'.strip()
 
 
+def ta_side(a: Article, side: str) -> str:
+    """홈 큰 분석 카드의 한쪽 팀: 로고 + 팀 이름, KAIRO가 고른 쪽에는 'KAIRO PICK' 표시."""
+    name = getattr(a, side, '')
+    picked = (getattr(a, 'pick', '') or '') == side
+    return (f'<span class="ta-side{" is-pick" if picked else ""}">{ta_mark(a, name)}'
+            f'<b>{esc(name)}</b>' + ('<em>KAIRO PICK</em>' if picked else '<em class="ph" aria-hidden="true">&nbsp;</em>') + '</span>')
+
+
 def ta_board(picks: list) -> str:
     """홈 분석 구역: 큰 카드 1개 + 옆에 클릭해서 들어가는 항목 3개."""
     def key(a):
@@ -841,7 +849,7 @@ def ta_board(picks: list) -> str:
     photo = (f'<img class="ta-feat-img" src="{esc(feat.image)}" alt="{esc(feat.image_alt)}" loading="lazy" decoding="async">'
              if feat.image.startswith('/assets/photos/') and (ROOT / feat.image.lstrip('/')).is_file() else '')
     big = (f'<a class="ta-feat" href="{feat.url}">{photo}'
-           f'<span class="ta-stage">{ta_mark(feat, feat.away)}<i>VS</i>{ta_mark(feat, feat.home)}</span>'
+           f'<span class="ta-stage">{ta_side(feat, "away")}<i>VS</i>{ta_side(feat, "home")}</span>'
            f'<span class="ta-meta"><em>{esc(feat.league)}</em><time>{esc(ta_when(feat))}</time></span>'
            f'<b class="ta-title">{esc(feat.title)}</b>'
            + (f'<span class="ta-key"><small>핵심</small>{esc(key(feat))}</span>' if key(feat) else '')
