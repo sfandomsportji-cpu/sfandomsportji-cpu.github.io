@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-29T12:25+09:00",
+  "updated_at": "2026-10-29T12:48+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-29T12:25+09:00",
+      "checked_at": "2026-10-29T12:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-29T12:25+09:00",
+      "checked_at": "2026-10-29T12:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -217,10 +217,10 @@
           "home": "UTAH",
           "away_name": "San Antonio Spurs",
           "home_name": "Utah Jazz",
-          "status": "live",
-          "away_score": 105,
-          "home_score": 105,
-          "source_url": "https://www.espn.com/nba/game?gameId=401909890"
+          "status": "final",
+          "away_score": 117,
+          "home_score": 111,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909890/spurs-jazz"
         },
         {
           "id": "NBA-401909891",
@@ -231,8 +231,8 @@
           "away_name": "Oklahoma City Thunder",
           "home_name": "Dallas Mavericks",
           "status": "live",
-          "away_score": 71,
-          "home_score": 82,
+          "away_score": 89,
+          "home_score": 105,
           "source_url": "https://www.espn.com/nba/game?gameId=401909891"
         },
         {
@@ -244,8 +244,8 @@
           "away_name": "Los Angeles Lakers",
           "home_name": "LA Clippers",
           "status": "live",
-          "away_score": 40,
-          "home_score": 31,
+          "away_score": 56,
+          "home_score": 38,
           "source_url": "https://www.espn.com/nba/game?gameId=401909892"
         },
         {
@@ -433,7 +433,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-29T12:25+09:00",
+      "checked_at": "2026-10-29T12:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -453,7 +453,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-29T12:25+09:00",
+      "checked_at": "2026-10-29T12:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -634,10 +634,10 @@
           "home": "COL",
           "away_name": "New Jersey Devils",
           "home_name": "Colorado Avalanche",
-          "status": "live",
-          "away_score": 1,
-          "home_score": 3,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892598"
+          "status": "final",
+          "away_score": 2,
+          "home_score": 5,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892598/devils-avalanche"
         },
         {
           "id": "NHL-401892599",
@@ -649,7 +649,7 @@
           "home_name": "Seattle Kraken",
           "status": "live",
           "away_score": 2,
-          "home_score": 3,
+          "home_score": 4,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892599"
         },
         {
