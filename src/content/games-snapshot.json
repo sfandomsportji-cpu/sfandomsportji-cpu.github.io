@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-29T12:48+09:00",
+  "updated_at": "2026-10-29T12:58+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-29T12:48+09:00",
+      "checked_at": "2026-10-29T12:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-29T12:48+09:00",
+      "checked_at": "2026-10-29T12:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -231,8 +231,8 @@
           "away_name": "Oklahoma City Thunder",
           "home_name": "Dallas Mavericks",
           "status": "live",
-          "away_score": 89,
-          "home_score": 105,
+          "away_score": 93,
+          "home_score": 113,
           "source_url": "https://www.espn.com/nba/game?gameId=401909891"
         },
         {
@@ -433,7 +433,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-29T12:48+09:00",
+      "checked_at": "2026-10-29T12:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -453,7 +453,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-29T12:48+09:00",
+      "checked_at": "2026-10-29T12:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
