@@ -1190,8 +1190,20 @@ def fan_topics(limit: int = 3) -> str:
 
 def fan_numbers(limit: int = 8) -> str:
     """FAN ZONE 왼쪽 칸 콘텐츠: 최근 끝난 경기 복기글의 '::: stats' 숫자를 모아 보여 준다. 줄 수는 site.js가 옆 칸 높이에 맞춰 줄인다."""
-    pool = sorted([a for a in ARTICLES if a.kind == 'analysis' and (getattr(a, 'kst', '') or '').endswith('final')
-                   and not getattr(a, 'hide_home', False)], key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)[:6]
+    def finished(a):  # 끝난 경기의 복기·결과 기사만 (분석글은 final/ended, 뉴스는 recap 기사)
+        if getattr(a, 'hide_home', False) or not re.search(r'::: stats\n', a.body):
+            return False
+        if a.kind == 'analysis':
+            return (getattr(a, 'kst', '') or '').endswith('final') or bool(getattr(a, 'ended', False))
+        return a.kind == 'news' and 'recap' in a.slug
+    ranked = sorted([a for a in ARTICLES if finished(a)], key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
+    pool, per_league = [], {}
+    for a in ranked:  # 최신순으로 고르되 한 리그가 칸을 독점하지 않게 리그당 2편까지
+        if per_league.get(a.league, 0) < 2:
+            pool.append(a)
+            per_league[a.league] = per_league.get(a.league, 0) + 1
+        if len(pool) == 6:
+            break
     per = []
     for a in pool:
         m = re.search(r'::: stats\n(.*?)\n:::', a.body, re.S)
