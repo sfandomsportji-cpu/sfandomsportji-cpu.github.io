@@ -833,16 +833,11 @@ def ta_when(a: Article) -> str:
     return f'{day} 종료' if clock == 'final' else f'{day} {clock}'.strip()
 
 
-KBO_SHORT = {'SAMSUNG LIONS': '삼성', 'KIA TIGERS': '기아', 'LG TWINS': 'LG', 'DOOSAN BEARS': '두산', 'SSG LANDERS': 'SSG',
-             'LOTTE GIANTS': '롯데', 'HANWHA EAGLES': '한화', 'KT WIZ': 'KT', 'NC DINOS': 'NC', 'KIWOOM HEROES': '키움'}
-
-
 def ta_side(a: Article, side: str) -> str:
     """전망 보드의 한쪽 팀: 로고 + 팀 이름. KAIRO가 고른 쪽은 is-pick(붉은 테두리)."""
     name = getattr(a, side, '')
     picked = (getattr(a, 'pick', '') or '') == side
-    short = KBO_SHORT.get(name, name) if getattr(a, 'league', '') == 'KBO' else name  # 농구 약자처럼 짧게(삼성·기아)
-    return f'<span class="tb-side{" is-pick" if picked else ""}">{ta_mark(a, name)}<b>{esc(short)}</b></span>'
+    return f'<span class="tb-side{" is-pick" if picked else ""}">{ta_mark(a, name)}<b>{esc(name)}</b></span>'
 
 
 def ta_board(picks: list) -> str:
