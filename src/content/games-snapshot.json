@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-29T16:57+09:00",
+  "updated_at": "2026-10-29T17:12+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-29T16:57+09:00",
+      "checked_at": "2026-10-29T17:12+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -36,7 +36,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-29T16:57+09:00",
+      "checked_at": "2026-10-29T17:12+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -511,7 +511,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-29T16:57+09:00",
+      "checked_at": "2026-10-29T17:12+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -531,7 +531,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-29T16:57+09:00",
+      "checked_at": "2026-10-29T17:12+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -1028,6 +1028,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892622/blue-jackets-stars"
+        },
+        {
+          "id": "NHL-401892623",
+          "league": "NHL",
+          "start_kst": "2026-11-01T11:00+09:00",
+          "away": "CGY",
+          "home": "COL",
+          "away_name": "Calgary Flames",
+          "home_name": "Colorado Avalanche",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892623/flames-avalanche"
         }
       ]
     }
