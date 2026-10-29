@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-29T23:15+09:00",
+  "updated_at": "2026-10-30T04:40+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-29T23:15+09:00",
+      "checked_at": "2026-10-30T04:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -23,23 +23,10 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-29T23:15+09:00",
+      "checked_at": "2026-10-30T04:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909880",
-          "league": "NBA",
-          "start_kst": "2026-10-28T12:00+09:00",
-          "away": "POR",
-          "home": "LAL",
-          "away_name": "Portland Trail Blazers",
-          "home_name": "Los Angeles Lakers",
-          "status": "final",
-          "away_score": 136,
-          "home_score": 129,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909880/trail-blazers-lakers"
-        },
         {
           "id": "NBA-401909881",
           "league": "NBA",
@@ -459,7 +446,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-29T23:15+09:00",
+      "checked_at": "2026-10-30T04:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -479,23 +466,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-29T23:15+09:00",
+      "checked_at": "2026-10-30T04:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892595",
-          "league": "NHL",
-          "start_kst": "2026-10-28T11:30+09:00",
-          "away": "BUF",
-          "home": "SJ",
-          "away_name": "Buffalo Sabres",
-          "home_name": "San Jose Sharks",
-          "status": "final",
-          "away_score": 2,
-          "home_score": 0,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892595/sabres-sharks"
-        },
         {
           "id": "NHL-401892596",
           "league": "NHL",
