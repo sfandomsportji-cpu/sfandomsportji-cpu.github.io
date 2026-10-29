@@ -1,11 +1,11 @@
 {
-  "updated": "10.27",
+  "updated": "10.29",
   "note": "경기 결과가 나오면 점수만 고치면 홈 야구 구간 대진표에 반영된다. 출처: 분석글 및 보도(미디어파인·이투데이·세계일보 등).",
   "wildcard": {"title": "와일드카드", "sub": "4위 LG 1승 어드밴티지", "caption": "1차전 4–1로 종료",
     "rows": [["LG TWINS", "LG 트윈스", 4, true], ["DOOSAN BEARS", "두산 베어스", 1, false]]},
   "semi": {"title": "준플레이오프", "sub": "5전 3선승", "caption": "KIA 3–0 승리",
     "rows": [["KIA TIGERS", "KIA 타이거즈", 3, true], ["LG TWINS", "LG 트윈스", 0, false]]},
-  "po": {"title": "플레이오프", "sub": "5전 3선승", "caption": "3차전 10.29 광주",
-    "rows": [["KIA TIGERS", "KIA 타이거즈", 1, false], ["SAMSUNG LIONS", "삼성 라이온즈", 1, false]]},
+  "po": {"title": "플레이오프", "sub": "5전 3선승", "caption": "4차전 10.30 광주",
+    "rows": [["KIA TIGERS", "KIA 타이거즈", 1, false], ["SAMSUNG LIONS", "삼성 라이온즈", 2, false]]},
   "ks": {"title": "한국시리즈", "sub": "7전 4선승", "team": ["KT WIZ", "KT 위즈", "정규시즌 1위 직행"], "wait": "플레이오프 승자"}
 }
