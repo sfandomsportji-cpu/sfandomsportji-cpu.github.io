@@ -2,9 +2,8 @@
   "audited_at": "2026-10-30",
   "base_commit": "b42b665cc555f6cf3e74d86e75563e271f5b5776",
   "status_definition": {
-    "stored": "nonempty GitHub image blob exists",
-    "missing": "no blob exists",
-    "website_rendered": "not checked"
+    "stored": "nonempty GitHub image blob exists; runtime/site integration not necessarily tested",
+    "missing": "team logo file does not exist"
   },
   "stats": {
     "soccer/premier-league": {
@@ -63,14 +62,14 @@
       "missing": 0
     },
     "volleyball/men": {
-      "stored": 0,
       "expected": 7,
-      "missing": 7
+      "stored": 7,
+      "missing": 0
     },
     "volleyball/women": {
-      "stored": 0,
       "expected": 7,
-      "missing": 7
+      "stored": 7,
+      "missing": 0
     },
     "kbo": {
       "stored": 12,
@@ -3272,128 +3271,184 @@
     {
       "league": "volleyball/men",
       "team": "KB손해보험",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/men/kb-insurance.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 51396,
+      "sha": "aaa6d83d7aac63acf0be8dddaaa834b50f7adb61",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/men/kb-insurance.png",
+      "sourceCode": "1004",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/1004_300300.png",
+      "width": 300,
+      "height": 300
     },
     {
       "league": "volleyball/men",
       "team": "OK저축은행",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/men/ok-savings-bank.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 86684,
+      "sha": "210d9397e408737c1746fc059fc800939cdcc712",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/men/ok-savings-bank.png",
+      "sourceCode": "1008",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/1008_300300.png",
+      "width": 300,
+      "height": 300
     },
     {
       "league": "volleyball/men",
       "team": "대한항공",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/men/korean-air.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 22855,
+      "sha": "273b9bb570384363e65e8304b35990217102f896",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/men/korean-air.png",
+      "sourceCode": "1001",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/1001_300300.png",
+      "width": 184,
+      "height": 184
     },
     {
       "league": "volleyball/men",
       "team": "삼성화재",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/men/samsung-fire.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 45966,
+      "sha": "90287d46fb8e3ae7afd90d1802616e9aaf53c697",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/men/samsung-fire.png",
+      "sourceCode": "1002",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/1002_300300.png",
+      "width": 300,
+      "height": 300
     },
     {
       "league": "volleyball/men",
       "team": "우리카드",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/men/woori-card.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 29885,
+      "sha": "5924790b5077b176e5dea6cb48d58f490661c5f8",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/men/woori-card.png",
+      "sourceCode": "1009",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/1009_300300.png",
+      "width": 300,
+      "height": 300
     },
     {
       "league": "volleyball/men",
       "team": "한국전력",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/men/kepco.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 55530,
+      "sha": "afe9dba927e4b6a6e6885da348f084f9ce7951f6",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/men/kepco.png",
+      "sourceCode": "1006",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/1006_300300.png",
+      "width": 300,
+      "height": 300
     },
     {
       "league": "volleyball/men",
       "team": "현대캐피탈",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/men/hyundai-capital.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 31835,
+      "sha": "99c636fc57c3b92340bbccb427d65db67f97352b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/men/hyundai-capital.png",
+      "sourceCode": "1005",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/1005_300300.png",
+      "width": 300,
+      "height": 300
     },
     {
       "league": "volleyball/women",
       "team": "GS칼텍스",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/women/gs-caltex.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 18223,
+      "sha": "d26e7545a45ba2c07bbeea1579e87b0e3c4ada81",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/women/gs-caltex.png",
+      "sourceCode": "2005",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/2005_300300.png",
+      "width": 300,
+      "height": 300
     },
     {
       "league": "volleyball/women",
       "team": "IBK기업은행",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/women/ibk.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 27747,
+      "sha": "b5908c076ed69e373b1947e5bfcdfd0efad00cab",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/women/ibk.png",
+      "sourceCode": "2006",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/2006_300300.png",
+      "width": 300,
+      "height": 300
     },
     {
       "league": "volleyball/women",
       "team": "SOOP 수퍼스",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/women/soop-soopers.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 619690,
+      "sha": "0ef4d733e21da903ff4715f17fdc3db804bcf621",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/women/soop-soopers.png",
+      "sourceCode": "2008",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/2008_300300.png",
+      "width": 992,
+      "height": 992
     },
     {
       "league": "volleyball/women",
       "team": "정관장",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/women/jung-kwan-jang.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 70512,
+      "sha": "d019e77b2017683d9e5330ecc4b0aa982574b519",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/women/jung-kwan-jang.png",
+      "sourceCode": "2003",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/2003_300300.png",
+      "width": 992,
+      "height": 992
     },
     {
       "league": "volleyball/women",
       "team": "한국도로공사",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/women/korea-expressway.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 52141,
+      "sha": "b48e187223c73aa110de335e86e672549e1b750a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/women/korea-expressway.png",
+      "sourceCode": "2002",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/2002_300300.png",
+      "width": 300,
+      "height": 300
     },
     {
       "league": "volleyball/women",
       "team": "현대건설",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/women/hyundai-construction.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 220101,
+      "sha": "4b176b27c50cb9321ad85e321b8ef3198d4e4518",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/women/hyundai-construction.png",
+      "sourceCode": "2001",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/2001_300300.png",
+      "width": 992,
+      "height": 992
     },
     {
       "league": "volleyball/women",
       "team": "흥국생명",
-      "status": "missing",
+      "status": "stored",
       "path": "assets/teams/volleyball/2026-27/women/heungkuk-life.png",
-      "bytes": 0,
-      "sha": null,
-      "url": null
+      "bytes": 293284,
+      "sha": "aa166ab891446cb828a5f15b6086238f404141e4",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/volleyball/2026-27/women/heungkuk-life.png",
+      "sourceCode": "2004",
+      "sourceUrl": "https://t1.daumcdn.net/media/img-section/sports13/logo/team/13/2004_300300.png",
+      "width": 992,
+      "height": 992
     },
     {
       "league": "kbl",
@@ -3414,5 +3469,11 @@
       "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/yongin-samsung-life.png"
     }
   ],
-  "audit_correction": "Normalized basketball league keys KBL and WKBL"
+  "audit_correction": "Normalized basketball league keys KBL and WKBL",
+  "requestedScope": {
+    "expected": 250,
+    "stored": 250,
+    "missing": 0
+  },
+  "audit_update": "2026-10-30: stored 14 transparent PNG assets for KOVO V-League; replaced obsolete 2007 Pepper image with current SOOP 2008"
 }
