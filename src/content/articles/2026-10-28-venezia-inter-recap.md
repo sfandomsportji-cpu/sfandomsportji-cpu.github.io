@@ -5,11 +5,13 @@ priority: 1020
 title: "80분까지 0–0이던 베네치아 원정, 인테르는 2분 만에 두 골로 공동 선두에 올랐다"
 subtitle: "세리에A 9라운드 0–2 … 이탈리아 매체 다수는 두 골을 모두 상대 자책골로 집계했다"
 kicker: "SOCCER · SERIE A RECAP"
-meta: "2026.10.29 KST · 베네치아 0–2 인테르 · 세리에A 9라운드 복기"
+meta: "베네치아 0–2 인테르 · 한국시간 10월 29일 새벽 경기 · 세리에A 9라운드 복기"
 league: "SOCCER"
 image: ""
 image_alt: ""
 credit: ""
+away: "INTER"
+home: "VENEZIA"
 slug: "venezia-inter-recap-20261028"
 sources: [{"label":"Football Italia(라이브스코어) 베네치아 0–2 인테르 경기 기사","url":"https://www.livescore.com/en/news/football/serie-a/serie-a-venezia-0-2-inter-nerazzurri-leave-it-late-and-ride-luck-again-football-italia/"},{"label":"Flashscore 베네치아–인테르 결과","url":"https://www.flashscoreusa.com/game/soccer/inter-Iw7eKK25/venezia-MkPmVv50/"},{"label":"Goalxa 베네치아–인테르 경기 정보(경기 전)","url":"https://futboltotal.futbol/partido/venezia-vs-inter-serie-a-2026-10-28"}]
 ---

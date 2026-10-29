@@ -5,11 +5,13 @@ priority: 1030
 title: "페널티킥 한 개씩 주고받은 안필드, 승부차기 6–5로 리버풀이 첼시를 눌렀다"
 subtitle: "리그컵 4라운드 1–1 … 전반 40분·43분에 나란히 PK, 승부차기에서 5명이 실축했다"
 kicker: "SOCCER · LEAGUE CUP RECAP"
-meta: "2026.10.29 KST · 리버풀 1–1 첼시 (승부차기 6–5) · 잉글랜드 리그컵 4라운드 복기"
+meta: "리버풀 1–1 첼시 (승부차기 6–5) · 한국시간 10월 29일 새벽 경기 · 잉글랜드 리그컵 4라운드 복기"
 league: "SOCCER"
 image: ""
 image_alt: ""
 credit: ""
+away: "CHELSEA"
+home: "LIVERPOOL"
 slug: "liverpool-chelsea-league-cup-recap-20261028"
 sources: [{"label":"Sports Mole 경기 결과 (리버풀 1–1 첼시, 승부차기 6–5)","url":"https://www.sportsmole.co.uk/football/liverpool/league-cup/result/penalties-all-round-liverpool-beat-chelsea-on-spot-kicks-to-book-efl-cup-last-eight-spot_607899.html"},{"label":"beIN SPORTS 리버풀–첼시 경기 전 라이브 블로그","url":"https://www.beinsports.com/en-us/soccer/efl-trophy/articles/live-blog-liverpool-vs-chelsea-efl-cup-2026-10-28"}]
 ---

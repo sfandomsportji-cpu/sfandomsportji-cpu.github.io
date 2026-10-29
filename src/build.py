@@ -1502,7 +1502,7 @@ def build_article(a: Article):
   {preserved_component('nlcs-archived-preview-note') if a.file == '2026-10-11-nlcs-dodgers-brewers-game1.md' else ''}
   <div class="article-grid">
     <article>
-      {matchup_strip(a) if a.kind == 'analysis' else ''}
+      {matchup_strip(a) if a.kind == 'analysis' or (a.kind == 'news' and a.league == 'SOCCER' and getattr(a, 'away', '') and getattr(a, 'home', '')) else ''}
       {fig}
       <div class="prose">{render_body(a)}</div>
       {src_html}{credit}

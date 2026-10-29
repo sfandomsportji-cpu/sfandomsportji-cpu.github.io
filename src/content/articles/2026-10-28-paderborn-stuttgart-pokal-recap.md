@@ -5,11 +5,13 @@ priority: 1010
 title: "10명 파더보른을 끝내 넘었다, 90분 운다브의 한 방으로 슈투트가르트 포칼 16강"
 subtitle: "DFB 포칼 2라운드 0–1 … 상대가 전반에 퇴장당하고도 연장 문턱까지 골이 안 나왔다"
 kicker: "SOCCER · DFB POKAL RECAP"
-meta: "2026.10.29 KST · 파더보른 0–1 슈투트가르트 · DFB 포칼 2라운드 복기"
+meta: "파더보른 0–1 슈투트가르트 · 한국시간 10월 29일 새벽 경기 · DFB 포칼 2라운드 복기"
 league: "SOCCER"
 image: ""
 image_alt: ""
 credit: ""
+away: "STUTTGART"
+home: "PADERBORN"
 slug: "paderborn-stuttgart-pokal-recap-20261028"
 sources: [{"label":"슈투트가르터 차이퉁 파더보른–슈투트가르트 경기 기사·선수 평점","url":"https://www.stuttgarter-zeitung.de/sport/vfb-stuttgart/vfb-stuttgart-im-dfb-pokal-undav-erloest-den-vfb-in-paderborn-unsere-noten-fuer-die-weiss-roten-79620954.html"},{"label":"ARD 스포츠샤우 경기 기사","url":"https://www.sportschau.de/fussball/dfbpokal/90-minute-undav-loest-krampf-beim-vfb-stuttgart,spielbericht-dfb-pokal-paderborn-stuttgart-100.html"},{"label":"BuliNews 경기 기사","url":"https://bulinews.com/dfb-pokal-undav-undone-ten-man-paderborn-send-stuttgart-through"}]
 ---
