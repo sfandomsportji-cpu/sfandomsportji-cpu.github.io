@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-30T05:51+09:00",
+  "updated_at": "2026-10-30T08:08+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-30T05:51+09:00",
+      "checked_at": "2026-10-30T08:08+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -23,7 +23,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-30T05:51+09:00",
+      "checked_at": "2026-10-30T08:08+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -446,7 +446,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-30T05:51+09:00",
+      "checked_at": "2026-10-30T08:08+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -466,7 +466,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-30T05:51+09:00",
+      "checked_at": "2026-10-30T08:08+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -530,10 +530,10 @@
           "home": "TB",
           "away_name": "Winnipeg Jets",
           "home_name": "Tampa Bay Lightning",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892601/jets-lightning"
+          "status": "live",
+          "away_score": 0,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892601"
         },
         {
           "id": "NHL-401892602",
@@ -556,10 +556,10 @@
           "home": "CAR",
           "away_name": "Columbus Blue Jackets",
           "home_name": "Carolina Hurricanes",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892603/blue-jackets-hurricanes"
+          "status": "live",
+          "away_score": 0,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892603"
         },
         {
           "id": "NHL-401892600",
