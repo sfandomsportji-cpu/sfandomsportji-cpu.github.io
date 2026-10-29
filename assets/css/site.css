@@ -1642,3 +1642,7 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 #today-analysis .ta-stage .tlogo-wrap.kbo{width:132px;height:132px;min-width:132px;padding:0;display:flex;align-items:center;justify-content:center;overflow:visible;background:transparent;border:0}
 #today-analysis .ta-stage .tlogo-wrap.kbo .tlogo{display:block;width:100%!important;height:100%!important;max-width:none;max-height:none;object-fit:contain;object-position:center}
 @media(max-width:700px){#today-analysis .ta-stage .tlogo-wrap.kbo{width:96px;height:96px;min-width:96px}#today-analysis .ta-stage{gap:18px}}
+
+/* KAIRO KBO optical logo adjustment: Samsung and KIA (2026-10-29) */
+#today-analysis .ta-stage .tlogo-wrap.kbo .tlogo[alt^="KIA"]{transform:translateY(0) scale(1.10);transform-origin:center}
+#today-analysis .ta-stage .tlogo-wrap.kbo .tlogo[alt^="SAMSUNG"]{transform:translateY(0) scale(1.15);transform-origin:center}
