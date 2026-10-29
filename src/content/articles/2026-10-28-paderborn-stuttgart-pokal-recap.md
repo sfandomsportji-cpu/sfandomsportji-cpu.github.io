@@ -12,6 +12,7 @@ image_alt: ""
 credit: ""
 away: "STUTTGART"
 home: "PADERBORN"
+kst: "10.29 final"
 slug: "paderborn-stuttgart-pokal-recap-20261028"
 sources: [{"label":"슈투트가르터 차이퉁 파더보른–슈투트가르트 경기 기사·선수 평점","url":"https://www.stuttgarter-zeitung.de/sport/vfb-stuttgart/vfb-stuttgart-im-dfb-pokal-undav-erloest-den-vfb-in-paderborn-unsere-noten-fuer-die-weiss-roten-79620954.html"},{"label":"ARD 스포츠샤우 경기 기사","url":"https://www.sportschau.de/fussball/dfbpokal/90-minute-undav-loest-krampf-beim-vfb-stuttgart,spielbericht-dfb-pokal-paderborn-stuttgart-100.html"},{"label":"BuliNews 경기 기사","url":"https://bulinews.com/dfb-pokal-undav-undone-ten-man-paderborn-send-stuttgart-through"}]
 ---

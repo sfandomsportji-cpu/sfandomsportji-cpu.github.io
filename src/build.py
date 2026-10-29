@@ -2376,11 +2376,13 @@ def art_game_card(a: Article) -> str:
             f'<span class="sf-scores__time"><time>{esc(when)}</time><small>{esc(label)}</small></span>'
             f'<span class="sf-scores__teams"><span class="sf-scores__logo" title="{esc(a.away)}">{ta_mark(a, a.away)}</span>'
             f'<i aria-hidden="true">VS</i><span class="sf-scores__logo" title="{esc(a.home)}">{ta_mark(a, a.home)}</span></span>'
-            f'<span class="sf-scores__tag">분석 보기</span></a>')
+            f'<span class="sf-scores__tag">{"복기 보기" if a.kind == "news" else "분석 보기"}</span></a>')
 
 
 def art_cards(league: str, limit: int) -> str:
-    pool = [a for a in ARTICLES if a.kind == 'analysis' and a.league == league and getattr(a, 'away', '') and getattr(a, 'home', '')
+    # 분석글 + 끝난 축구 경기 복기(뉴스, 머리말 kst가 '10.29 final' 꼴)를 함께 홈 경기 카드로 쓴다
+    pool = [a for a in ARTICLES if (a.kind == 'analysis' or (a.kind == 'news' and (getattr(a, 'kst', '') or '').endswith('final')))
+            and a.league == league and getattr(a, 'away', '') and getattr(a, 'home', '')
             and not getattr(a, 'hide_home', False)]
     now = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
     ahead = sorted([a for a in pool if art_start(a) and art_start(a) >= now - dt.timedelta(hours=1)], key=art_start)

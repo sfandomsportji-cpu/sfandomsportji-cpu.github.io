@@ -12,6 +12,7 @@ image_alt: ""
 credit: ""
 away: "CHELSEA"
 home: "LIVERPOOL"
+kst: "10.29 final"
 slug: "liverpool-chelsea-league-cup-recap-20261028"
 sources: [{"label":"Sports Mole 경기 결과 (리버풀 1–1 첼시, 승부차기 6–5)","url":"https://www.sportsmole.co.uk/football/liverpool/league-cup/result/penalties-all-round-liverpool-beat-chelsea-on-spot-kicks-to-book-efl-cup-last-eight-spot_607899.html"},{"label":"beIN SPORTS 리버풀–첼시 경기 전 라이브 블로그","url":"https://www.beinsports.com/en-us/soccer/efl-trophy/articles/live-blog-liverpool-vs-chelsea-efl-cup-2026-10-28"}]
 ---

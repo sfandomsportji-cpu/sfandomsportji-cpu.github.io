@@ -12,6 +12,7 @@ image_alt: ""
 credit: ""
 away: "INTER"
 home: "VENEZIA"
+kst: "10.29 final"
 slug: "venezia-inter-recap-20261028"
 sources: [{"label":"Football Italia(라이브스코어) 베네치아 0–2 인테르 경기 기사","url":"https://www.livescore.com/en/news/football/serie-a/serie-a-venezia-0-2-inter-nerazzurri-leave-it-late-and-ride-luck-again-football-italia/"},{"label":"Flashscore 베네치아–인테르 결과","url":"https://www.flashscoreusa.com/game/soccer/inter-Iw7eKK25/venezia-MkPmVv50/"},{"label":"Goalxa 베네치아–인테르 경기 정보(경기 전)","url":"https://futboltotal.futbol/partido/venezia-vs-inter-serie-a-2026-10-28"}]
 ---
