@@ -1,0 +1,3407 @@
+{
+  "audited_at": "2026-10-30",
+  "base_commit": "b42b665cc555f6cf3e74d86e75563e271f5b5776",
+  "status_definition": {
+    "stored": "nonempty GitHub image blob exists",
+    "missing": "no blob exists",
+    "website_rendered": "not checked"
+  },
+  "stats": {
+    "soccer/premier-league": {
+      "stored": 20,
+      "expected": 20,
+      "missing": 0
+    },
+    "soccer/la-liga": {
+      "stored": 20,
+      "expected": 20,
+      "missing": 0
+    },
+    "soccer/serie-a": {
+      "stored": 20,
+      "expected": 20,
+      "missing": 0
+    },
+    "soccer/bundesliga": {
+      "stored": 18,
+      "expected": 18,
+      "missing": 0
+    },
+    "soccer/ligue-1": {
+      "stored": 18,
+      "expected": 18,
+      "missing": 0
+    },
+    "nba": {
+      "stored": 30,
+      "expected": 30,
+      "missing": 0
+    },
+    "mlb": {
+      "stored": 30,
+      "expected": 30,
+      "missing": 0
+    },
+    "nfl": {
+      "stored": 32,
+      "expected": 32,
+      "missing": 0
+    },
+    "nhl": {
+      "stored": 32,
+      "expected": 32,
+      "missing": 0
+    },
+    "volleyball/men": {
+      "stored": 0,
+      "expected": 7,
+      "missing": 7
+    },
+    "volleyball/women": {
+      "stored": 0,
+      "expected": 7,
+      "missing": 7
+    },
+    "kbo": {
+      "stored": 12,
+      "expected": 10,
+      "missing": 0
+    },
+    "npb": {
+      "stored": 12,
+      "expected": 12,
+      "missing": 0
+    },
+    "soccer/k-league-1": {
+      "stored": 12,
+      "expected": 12,
+      "missing": 0
+    },
+    "soccer/k-league-2": {
+      "stored": 17,
+      "expected": 17,
+      "missing": 0
+    },
+    "soccer/j1-league": {
+      "stored": 20,
+      "expected": 20,
+      "missing": 0
+    },
+    "soccer/j2-league": {
+      "stored": 20,
+      "expected": 20,
+      "missing": 0
+    },
+    "soccer/j3-league": {
+      "stored": 20,
+      "expected": 20,
+      "missing": 0
+    },
+    "soccer/other-asia": {
+      "stored": 1,
+      "expected": 1,
+      "missing": 0
+    },
+    "soccer/other-europe": {
+      "stored": 2,
+      "expected": 2,
+      "missing": 0
+    }
+  },
+  "records": [
+    {
+      "league": "anyang-jung-kwan-jang.png",
+      "team": "안양 정관장 레드부스터스",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/kbl/anyang-jung-kwan-jang.png",
+      "bytes": 9319,
+      "sha": "3b5a106c3a800bbbdac09272f6a56f8813bd603a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/anyang-jung-kwan-jang.png"
+    },
+    {
+      "league": "asan-woori-bank.png",
+      "team": "아산 우리은행 우리WON",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/wkbl/asan-woori-bank.png",
+      "bytes": 31032,
+      "sha": "aac830e95f37b28a928111101e3c81b24fae82bf",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/asan-woori-bank.png"
+    },
+    {
+      "league": "bucheon-hana-bank.png",
+      "team": "부천 하나은행",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/wkbl/bucheon-hana-bank.png",
+      "bytes": 29632,
+      "sha": "af5eb83e63b9b53b70e64abfdee4f5384d3a290e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/bucheon-hana-bank.png"
+    },
+    {
+      "league": "busan-bnk-sum.png",
+      "team": "부산 BNK 썸",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/wkbl/busan-bnk-sum.png",
+      "bytes": 22205,
+      "sha": "62b35a14ca3b9671edee499381c28d45c864fc05",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/busan-bnk-sum.png"
+    },
+    {
+      "league": "busan-kcc.png",
+      "team": "부산 KCC 이지스",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/kbl/busan-kcc.png",
+      "bytes": 24265,
+      "sha": "a5dbcf50282ece608f22ef82f68914a2b30b00c1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/busan-kcc.png"
+    },
+    {
+      "league": "changwon-lg.png",
+      "team": "창원 LG 세이커스",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/kbl/changwon-lg.png",
+      "bytes": 65305,
+      "sha": "3f19f56f3928f9741e13dad58c1ef7e35d73fdbe",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/changwon-lg.png"
+    },
+    {
+      "league": "cheongju-kb-stars.png",
+      "team": "청주 KB스타즈",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/wkbl/cheongju-kb-stars.png",
+      "bytes": 33367,
+      "sha": "6695a011b21a757bf54512dba97baa479c885011",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/cheongju-kb-stars.png"
+    },
+    {
+      "league": "daegu-kogas.png",
+      "team": "대구 한국가스공사 페가수스",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/kbl/daegu-kogas.png",
+      "bytes": 44829,
+      "sha": "efed62e9b8b83036bee4386821bdef8f6f49ba40",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/daegu-kogas.png"
+    },
+    {
+      "league": "goyang-sono.png",
+      "team": "고양 소노 스카이거너스",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/kbl/goyang-sono.png",
+      "bytes": 22854,
+      "sha": "e0276266cfd81f5952f37bb404aa5a5ea5fc775a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/goyang-sono.png"
+    },
+    {
+      "league": "incheon-shinhan-bank.png",
+      "team": "인천 신한은행 에스버드",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/wkbl/incheon-shinhan-bank.png",
+      "bytes": 25520,
+      "sha": "fd5cabd532e31707ad2400f7b02111d0d0346d49",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/incheon-shinhan-bank.png"
+    },
+    {
+      "league": "kbo",
+      "team": "KIA 타이거즈",
+      "status": "stored",
+      "path": "assets/teams/kbo/KIA.png",
+      "bytes": 140165,
+      "sha": "33dd34f5f5c77b95c96e4e1e23c6b54bcd26e64d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/KIA.png"
+    },
+    {
+      "league": "kbo",
+      "team": "KIA 타이거즈 (clean)",
+      "status": "stored",
+      "path": "assets/teams/kbo/clean/KIA.png",
+      "bytes": 102878,
+      "sha": "1ef2d9b356be1353ec88c76089b50acb1a9867cb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/clean/KIA.png"
+    },
+    {
+      "league": "kbo",
+      "team": "KT 위즈",
+      "status": "stored",
+      "path": "assets/teams/kbo/KT.png",
+      "bytes": 52399,
+      "sha": "b3bbe24e6f630767605487d62a776bf00790085f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/KT.png"
+    },
+    {
+      "league": "kbo",
+      "team": "LG 트윈스",
+      "status": "stored",
+      "path": "assets/teams/kbo/LG.png",
+      "bytes": 23216,
+      "sha": "5313f21c11c0e7a09965a17163e0ca1f5de02af1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/LG.png"
+    },
+    {
+      "league": "kbo",
+      "team": "NC 다이노스",
+      "status": "stored",
+      "path": "assets/teams/kbo/NC.png",
+      "bytes": 105362,
+      "sha": "d86ed111024cf55ef6a75f423633f3be6c87d56b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/NC.png"
+    },
+    {
+      "league": "kbo",
+      "team": "SSG 랜더스",
+      "status": "stored",
+      "path": "assets/teams/kbo/SSG.png",
+      "bytes": 226815,
+      "sha": "231d3043d2cd372acbadda918a3e5f0e89e10a1e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/SSG.png"
+    },
+    {
+      "league": "kbo",
+      "team": "두산 베어스",
+      "status": "stored",
+      "path": "assets/teams/kbo/doosan.png",
+      "bytes": 114388,
+      "sha": "262198b9a36a5d5146b23dd12a8ce26a60291fd7",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/doosan.png"
+    },
+    {
+      "league": "kbo",
+      "team": "롯데 자이언츠",
+      "status": "stored",
+      "path": "assets/teams/kbo/lotte.png",
+      "bytes": 408262,
+      "sha": "6f0916834f68db68c16ff6ef0c43f8cd77bd7ba3",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/lotte.png"
+    },
+    {
+      "league": "kbo",
+      "team": "삼성 라이온즈",
+      "status": "stored",
+      "path": "assets/teams/kbo/samsung.png",
+      "bytes": 186894,
+      "sha": "934582309b0955972d556f2767ce01636c7213e5",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/samsung.png"
+    },
+    {
+      "league": "kbo",
+      "team": "삼성 라이온즈 (clean)",
+      "status": "stored",
+      "path": "assets/teams/kbo/clean/samsung.png",
+      "bytes": 218192,
+      "sha": "f7f313a130cd38bde739cafd52da3ba63cf1fb05",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/clean/samsung.png"
+    },
+    {
+      "league": "kbo",
+      "team": "키움 히어로즈",
+      "status": "stored",
+      "path": "assets/teams/kbo/kiwoom.png",
+      "bytes": 16971,
+      "sha": "23b15fc2ad67081021af4785e4e3aaf36ac31e98",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/kiwoom.png"
+    },
+    {
+      "league": "kbo",
+      "team": "한화 이글스",
+      "status": "stored",
+      "path": "assets/teams/kbo/hanwha.png",
+      "bytes": 39688,
+      "sha": "58c0785d49bceac7ec21d483759766f27a3999e9",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/kbo/hanwha.png"
+    },
+    {
+      "league": "mlb",
+      "team": "Arizona Diamondbacks",
+      "status": "stored",
+      "path": "assets/teams/mlb/ari.svg",
+      "bytes": 2560,
+      "sha": "60e22177617ec87061af56d65a872d9395c1937a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/ari.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Athletics",
+      "status": "stored",
+      "path": "assets/teams/mlb/ath.svg",
+      "bytes": 1518,
+      "sha": "3fd81083d0ab0c4a521ef37d382aaa95acf7d63e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/ath.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Atlanta Braves",
+      "status": "stored",
+      "path": "assets/teams/mlb/atl.svg",
+      "bytes": 22860,
+      "sha": "7b9e33d7de8e9737859daa96743eeecbbe62abb0",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/atl.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Baltimore Orioles",
+      "status": "stored",
+      "path": "assets/teams/mlb/bal.svg",
+      "bytes": 4811,
+      "sha": "dbe51d13ee1064a64005e39554cf4caec4693a02",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/bal.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Boston Red Sox",
+      "status": "stored",
+      "path": "assets/teams/mlb/bos.svg",
+      "bytes": 4894,
+      "sha": "fa8f60dc4db8ba9344142956d5ce09189e62d607",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/bos.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Chicago Cubs",
+      "status": "stored",
+      "path": "assets/teams/mlb/chc.svg",
+      "bytes": 2431,
+      "sha": "315e8f01030abdfc99e5f2eb38256bf51b0bc489",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/chc.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Chicago White Sox",
+      "status": "stored",
+      "path": "assets/teams/mlb/cws.svg",
+      "bytes": 2887,
+      "sha": "21c6cb748f4d15d60fdbb36d769e2c034aae3adb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/cws.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Cincinnati Reds",
+      "status": "stored",
+      "path": "assets/teams/mlb/cin.svg",
+      "bytes": 3893,
+      "sha": "667d38601923dabbb281ce59b830fae15fb31b0c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/cin.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Cleveland Guardians",
+      "status": "stored",
+      "path": "assets/teams/mlb/cle.svg",
+      "bytes": 10061,
+      "sha": "108ea02807f0bf962486ad1f80b0631d2d236504",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/cle.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Colorado Rockies",
+      "status": "stored",
+      "path": "assets/teams/mlb/col.svg",
+      "bytes": 2758,
+      "sha": "b35046568fb71c1092e8ffc0108c38c2d5d81b6d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/col.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Detroit Tigers",
+      "status": "stored",
+      "path": "assets/teams/mlb/det.svg",
+      "bytes": 2052,
+      "sha": "3bf3a070c47cf71fcb6450fa58382390b2d43818",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/det.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Houston Astros",
+      "status": "stored",
+      "path": "assets/teams/mlb/hou.svg",
+      "bytes": 14117,
+      "sha": "7425eb24221867d8fa7ebb8f090a072f37ccafc9",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/hou.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Kansas City Royals",
+      "status": "stored",
+      "path": "assets/teams/mlb/kc.svg",
+      "bytes": 1318,
+      "sha": "8bf1f9d69f28ae03847258ec5e08b969aea0fb8c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/kc.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Los Angeles Angels",
+      "status": "stored",
+      "path": "assets/teams/mlb/laa.svg",
+      "bytes": 3777,
+      "sha": "4e14d19dcfa6c84efa45704d72e32882fcc1941b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/laa.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Los Angeles Dodgers",
+      "status": "stored",
+      "path": "assets/teams/mlb/lad.svg",
+      "bytes": 7972,
+      "sha": "7aab747d922c5595ac68fd4fd93ff71d9a2557ab",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/lad.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Miami Marlins",
+      "status": "stored",
+      "path": "assets/teams/mlb/mia.svg",
+      "bytes": 29981,
+      "sha": "2e90503689c54e7e4bdff1dc32219a026e4b3eab",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/mia.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Milwaukee Brewers",
+      "status": "stored",
+      "path": "assets/teams/mlb/mil.svg",
+      "bytes": 8224,
+      "sha": "81dd5f3349feb862a9a9629868b56ca88eceb397",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/mil.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Minnesota Twins",
+      "status": "stored",
+      "path": "assets/teams/mlb/min.svg",
+      "bytes": 1267,
+      "sha": "97f8e3653360a824c9149767520fbf961b32fc57",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/min.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "New York Mets",
+      "status": "stored",
+      "path": "assets/teams/mlb/nym.svg",
+      "bytes": 4578,
+      "sha": "48dc1b400929d21b2c3848a369d0864c54387c5a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/nym.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "New York Yankees",
+      "status": "stored",
+      "path": "assets/teams/mlb/nyy.svg",
+      "bytes": 39727,
+      "sha": "7f1f895276914b93446d484284a1053e76216995",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/nyy.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Philadelphia Phillies",
+      "status": "stored",
+      "path": "assets/teams/mlb/phi.svg",
+      "bytes": 17900,
+      "sha": "0919f8dd27697956fb646dd4e83740c1f6455f78",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/phi.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Pittsburgh Pirates",
+      "status": "stored",
+      "path": "assets/teams/mlb/pit.svg",
+      "bytes": 951,
+      "sha": "ac099cdf1eb571ae1ca27d5bdfdd1e37d6a653b7",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/pit.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "San Diego Padres",
+      "status": "stored",
+      "path": "assets/teams/mlb/sd.svg",
+      "bytes": 1385,
+      "sha": "b9ec840f49aa1fc8c4a0a1a1e520df7ce40f175e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/sd.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "San Francisco Giants",
+      "status": "stored",
+      "path": "assets/teams/mlb/sf.svg",
+      "bytes": 1645,
+      "sha": "8a3cac19b2862852cf99f1bc078a7faef0c6fe13",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/sf.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Seattle Mariners",
+      "status": "stored",
+      "path": "assets/teams/mlb/sea.svg",
+      "bytes": 18335,
+      "sha": "64a11e9678ccaed5ce740e14b64a2ac1a1ac0c03",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/sea.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "St. Louis Cardinals",
+      "status": "stored",
+      "path": "assets/teams/mlb/stl.svg",
+      "bytes": 18825,
+      "sha": "62b6dd259eb501a01cf830f5b06c347a22428518",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/stl.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Tampa Bay Rays",
+      "status": "stored",
+      "path": "assets/teams/mlb/tb.svg",
+      "bytes": 7930,
+      "sha": "2c804c42952b1bed9b37f54ac8fe5ad1ef6a0643",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/tb.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Texas Rangers",
+      "status": "stored",
+      "path": "assets/teams/mlb/tex.svg",
+      "bytes": 16254,
+      "sha": "9ebbe1216bbf88f0334eb8c175a8cd8ba28b7d5e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/tex.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Toronto Blue Jays",
+      "status": "stored",
+      "path": "assets/teams/mlb/tor.svg",
+      "bytes": 39163,
+      "sha": "2ce1324e90b52ee93bcbca1658c62f75d93046e4",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/tor.svg"
+    },
+    {
+      "league": "mlb",
+      "team": "Washington Nationals",
+      "status": "stored",
+      "path": "assets/teams/mlb/wsh.svg",
+      "bytes": 1978,
+      "sha": "e86e902550f36ab77f96db8f2a934aa828818a3f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/mlb/wsh.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Atlanta Hawks",
+      "status": "stored",
+      "path": "assets/teams/nba/atl.svg",
+      "bytes": 1989,
+      "sha": "7cdd947407e2b360f01231af44aaf356046821ce",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/atl.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Boston Celtics",
+      "status": "stored",
+      "path": "assets/teams/nba/bos.svg",
+      "bytes": 31533,
+      "sha": "343ec4e7c2b8d77239e9adf026b67742189d1563",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/bos.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Brooklyn Nets",
+      "status": "stored",
+      "path": "assets/teams/nba/bkn.svg",
+      "bytes": 6314,
+      "sha": "873e252dd1c81feb41dbe4db7ac263393af9dac4",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/bkn.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Charlotte Hornets",
+      "status": "stored",
+      "path": "assets/teams/nba/cha.svg",
+      "bytes": 9202,
+      "sha": "47812e347bad14db7b7425a4b7e800908ca7a6c9",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/cha.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Chicago Bulls",
+      "status": "stored",
+      "path": "assets/teams/nba/chi.svg",
+      "bytes": 8983,
+      "sha": "d03c3afd1879233b0cb30f80043659efd517dfcd",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/chi.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Cleveland Cavaliers",
+      "status": "stored",
+      "path": "assets/teams/nba/cle.svg",
+      "bytes": 1319,
+      "sha": "a0e5903b9e085c9d9c5e808d01fc78e322e63ca3",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/cle.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Dallas Mavericks",
+      "status": "stored",
+      "path": "assets/teams/nba/dal.svg",
+      "bytes": 12038,
+      "sha": "0451c2871258847874c4016c3799ae6c3b26badb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/dal.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Denver Nuggets",
+      "status": "stored",
+      "path": "assets/teams/nba/den.svg",
+      "bytes": 3023,
+      "sha": "7e0e4715cc3860f37b4c9e230e8194efe9cdcfad",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/den.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Detroit Pistons",
+      "status": "stored",
+      "path": "assets/teams/nba/det.svg",
+      "bytes": 5730,
+      "sha": "1015adc0ac2918743a770b5ccead34d2e72acaf1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/det.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Golden State Warriors",
+      "status": "stored",
+      "path": "assets/teams/nba/gsw.svg",
+      "bytes": 3280,
+      "sha": "53ec3e872824d6e4a5bbd69470bab18570b58432",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/gsw.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Houston Rockets",
+      "status": "stored",
+      "path": "assets/teams/nba/hou.svg",
+      "bytes": 4557,
+      "sha": "b77750c7b84d17ffe51fab326869b8969389c417",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/hou.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Indiana Pacers",
+      "status": "stored",
+      "path": "assets/teams/nba/ind.svg",
+      "bytes": 4238,
+      "sha": "0371d3a5c85f1cae023baa91e082ab19626b2450",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/ind.svg"
+    },
+    {
+      "league": "nba",
+      "team": "LA Clippers",
+      "status": "stored",
+      "path": "assets/teams/nba/lac.svg",
+      "bytes": 4369,
+      "sha": "292c4d8a1d83bff55eb202497f0a3100ac7962f2",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/lac.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Los Angeles Lakers",
+      "status": "stored",
+      "path": "assets/teams/nba/lal.svg",
+      "bytes": 12403,
+      "sha": "088cb7e07bc1e6865c2b34508a0de159f133b726",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/lal.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Memphis Grizzlies",
+      "status": "stored",
+      "path": "assets/teams/nba/mem.svg",
+      "bytes": 3389,
+      "sha": "f8924b3e5ab5e90088d2ee1defaa136b7e5e1842",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/mem.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Miami Heat",
+      "status": "stored",
+      "path": "assets/teams/nba/mia.svg",
+      "bytes": 6266,
+      "sha": "67c52bfd5e121a7829d3e35cea201cd634a5b02b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/mia.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Milwaukee Bucks",
+      "status": "stored",
+      "path": "assets/teams/nba/mil.svg",
+      "bytes": 5443,
+      "sha": "06ad3c1eafcf057e9394c3aff7e21e9dcb0e672f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/mil.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Minnesota Timberwolves",
+      "status": "stored",
+      "path": "assets/teams/nba/min.svg",
+      "bytes": 7022,
+      "sha": "e95457b42ab76570a0fb6d2cb949c4dfc565ccfc",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/min.svg"
+    },
+    {
+      "league": "nba",
+      "team": "New Orleans Pelicans",
+      "status": "stored",
+      "path": "assets/teams/nba/nop.svg",
+      "bytes": 15702,
+      "sha": "d9e510066c647a967317dd774796cf12a630ba08",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/nop.svg"
+    },
+    {
+      "league": "nba",
+      "team": "New York Knicks",
+      "status": "stored",
+      "path": "assets/teams/nba/nyk.svg",
+      "bytes": 7578,
+      "sha": "a49e30f5138e5f5ebf98a6dd232fdfa4d5d149ff",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/nyk.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Oklahoma City Thunder",
+      "status": "stored",
+      "path": "assets/teams/nba/okc.svg",
+      "bytes": 8992,
+      "sha": "737bf53f24b88792d25de578685acf549b528dbd",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/okc.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Orlando Magic",
+      "status": "stored",
+      "path": "assets/teams/nba/orl.svg",
+      "bytes": 5260,
+      "sha": "a806fc8a16e009ca2b759a1e86e5b4b4c2e240a0",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/orl.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Philadelphia 76ers",
+      "status": "stored",
+      "path": "assets/teams/nba/phi.svg",
+      "bytes": 3507,
+      "sha": "f0debe7938a216e7972cb9e906d64e7eac7f76e2",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/phi.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Phoenix Suns",
+      "status": "stored",
+      "path": "assets/teams/nba/phx.svg",
+      "bytes": 2566,
+      "sha": "81a38c72e26e72c6a96edfba1c0c39a8aee11450",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/phx.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Portland Trail Blazers",
+      "status": "stored",
+      "path": "assets/teams/nba/por.svg",
+      "bytes": 2158,
+      "sha": "fd3664285dcd3ed0851bdbda8b69ae29e28f03f5",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/por.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Sacramento Kings",
+      "status": "stored",
+      "path": "assets/teams/nba/sac.svg",
+      "bytes": 3776,
+      "sha": "8cc714cf21a4a16c8bec35d2fce7220b36f0fccf",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/sac.svg"
+    },
+    {
+      "league": "nba",
+      "team": "San Antonio Spurs",
+      "status": "stored",
+      "path": "assets/teams/nba/sas.svg",
+      "bytes": 2019,
+      "sha": "9f759fa3f92ab4ba53f78aab377be5cd4c501add",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/sas.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Toronto Raptors",
+      "status": "stored",
+      "path": "assets/teams/nba/tor.svg",
+      "bytes": 10130,
+      "sha": "fa8d7384ebcc8ad6aadd5d802e224f3a019cab88",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/tor.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Utah Jazz",
+      "status": "stored",
+      "path": "assets/teams/nba/uta.svg",
+      "bytes": 1597,
+      "sha": "a5997e669f1377ea66b6b84359c996c7842add64",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/uta.svg"
+    },
+    {
+      "league": "nba",
+      "team": "Washington Wizards",
+      "status": "stored",
+      "path": "assets/teams/nba/was.svg",
+      "bytes": 3263,
+      "sha": "1a4d58dc30c298e5dfc96669e759479a9042f0cb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nba/was.svg"
+    },
+    {
+      "league": "nfl",
+      "team": "Arizona Cardinals",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/ari.png",
+      "bytes": 41994,
+      "sha": "2c4cb0f3b1c14e6a19f7917a3521a49a073966f3",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/ari.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Atlanta Falcons",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/atl.png",
+      "bytes": 51781,
+      "sha": "03c2111b09773d001639c4416796191a133c1d17",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/atl.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Baltimore Ravens",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/bal.png",
+      "bytes": 55985,
+      "sha": "8c7e69773cef1779b3a591231cd288c6a91c6b3b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/bal.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Buffalo Bills",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/buf.png",
+      "bytes": 38004,
+      "sha": "5fb86c3c9b0011065d0941b3c2dbb70a44baa0e1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/buf.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Carolina Panthers",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/car.png",
+      "bytes": 36636,
+      "sha": "6fa7bcca6804d1ea66153b93bf18093d85cad8fa",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/car.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Chicago Bears",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/chi.png",
+      "bytes": 93593,
+      "sha": "2d08f6cf36962e5846023d5113d972e34c959ea9",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/chi.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Cincinnati Bengals",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/cin.png",
+      "bytes": 26628,
+      "sha": "f687adc72d8e541add6d2ea166bdf70e21f3dbc8",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/cin.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Cleveland Browns",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/cle.png",
+      "bytes": 94482,
+      "sha": "4207d05eb1e285079c7b8b81834c7d99fd926c7c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/cle.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Dallas Cowboys",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/dal.png",
+      "bytes": 32372,
+      "sha": "575f75a9ee3d0ffe40f041128a4a794123af0461",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/dal.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Denver Broncos",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/den.png",
+      "bytes": 40948,
+      "sha": "2774fabdbeafd4264c3cdcf2b19f22e01ea6f04e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/den.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Detroit Lions",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/det.png",
+      "bytes": 57465,
+      "sha": "3ba94fb252654aff73de01f049950e945656487c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/det.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Green Bay Packers",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/gb.png",
+      "bytes": 39188,
+      "sha": "2a413fe5f8bcbfe9af13ce28083f715e9de48176",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/gb.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Houston Texans",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/hou.png",
+      "bytes": 35767,
+      "sha": "3ec3d3bf61fba3da0d2ced4e0c655a30040a0541",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/hou.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Indianapolis Colts",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/ind.png",
+      "bytes": 42083,
+      "sha": "12c80e04199bd9392d3f3cab64cf9af0ada7b236",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/ind.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Jacksonville Jaguars",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/jax.png",
+      "bytes": 78814,
+      "sha": "0c018748bac02c2f9b9e7206a403ba4e7c70a426",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/jax.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Kansas City Chiefs",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/kc.png",
+      "bytes": 40228,
+      "sha": "7bfaec55e245936f6fcd89e5e550f3fd1f7d68c4",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/kc.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Las Vegas Raiders",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/lv.png",
+      "bytes": 77766,
+      "sha": "5cd7e287455cc971b16da1c8aeeb1d7eae2bc973",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/lv.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Los Angeles Chargers",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/lac.png",
+      "bytes": 32850,
+      "sha": "c29759c6fa7268bbfb9b27a7fff48509cc0a9194",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/lac.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Los Angeles Rams",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/lar.png",
+      "bytes": 38707,
+      "sha": "d3efc9ab3647eb1a45aff579362b03889562c1e3",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/lar.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Miami Dolphins",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/mia.png",
+      "bytes": 64408,
+      "sha": "69afec689f62429fd54108064e1bad0d123d4151",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/mia.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Minnesota Vikings",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/min.png",
+      "bytes": 69686,
+      "sha": "760bae2c7dc2914a0d362bac5179f75089025475",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/min.png"
+    },
+    {
+      "league": "nfl",
+      "team": "New England Patriots",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/ne.png",
+      "bytes": 32083,
+      "sha": "cc46492d93efc041f919623ea3c6e9771dcfa37f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/ne.png"
+    },
+    {
+      "league": "nfl",
+      "team": "New Orleans Saints",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/no.png",
+      "bytes": 52016,
+      "sha": "5431de55b6baf1917b03c7050e3d91b99009645f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/no.png"
+    },
+    {
+      "league": "nfl",
+      "team": "New York Giants",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/nyg.png",
+      "bytes": 7574,
+      "sha": "ad9aba137511ddd8444195d095cddf4367717793",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/nyg.png"
+    },
+    {
+      "league": "nfl",
+      "team": "New York Jets",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/nyj.png",
+      "bytes": 130614,
+      "sha": "1a36173cfca6ac8edf2ff01d868ee43788e0b2cd",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/nyj.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Philadelphia Eagles",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/phi.png",
+      "bytes": 70332,
+      "sha": "96a84315ec543084bc2d9a61342c203fa7f10171",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/phi.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Pittsburgh Steelers",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/pit.png",
+      "bytes": 56620,
+      "sha": "06d888a26041817a68b3687a50df124e6c64c9d6",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/pit.png"
+    },
+    {
+      "league": "nfl",
+      "team": "San Francisco 49ers",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/sf.png",
+      "bytes": 48699,
+      "sha": "9312119e8698847f4b32b7bd5f52cf2076f2e704",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/sf.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Seattle Seahawks",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/sea.png",
+      "bytes": 32081,
+      "sha": "7ce146657f3b5286528feda6ca8b51650f96d003",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/sea.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Tampa Bay Buccaneers",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/tb.png",
+      "bytes": 96110,
+      "sha": "a26f41e9fdd1711b23e6e058f7a78d9bc3006c38",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/tb.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Tennessee Titans",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/ten.png",
+      "bytes": 50732,
+      "sha": "ce633778eda478257c1a4d3c374860b9c6e11935",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/ten.png"
+    },
+    {
+      "league": "nfl",
+      "team": "Washington Commanders",
+      "status": "stored",
+      "path": "assets/teams/nfl/2026/wsh.png",
+      "bytes": 30416,
+      "sha": "826978dd774fbb204e2e0f518749a1ab3bcb480c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nfl/2026/wsh.png"
+    },
+    {
+      "league": "nhl",
+      "team": "Anaheim Ducks",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/ana.svg",
+      "bytes": 15448,
+      "sha": "d1bde813167c172f432bfedc481f2cb2e15f4a90",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/ana.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Boston Bruins",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/bos.svg",
+      "bytes": 2370,
+      "sha": "2349ee4099c571c8d442b62f34d81653d93a3f44",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/bos.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Buffalo Sabres",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/buf.svg",
+      "bytes": 9192,
+      "sha": "f9988e8c48e1653b84e51a43cbec09a879548dee",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/buf.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Calgary Flames",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/cgy.svg",
+      "bytes": 5147,
+      "sha": "f497b981c7cd44cfd60f10e5bee3428e91267302",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/cgy.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Carolina Hurricanes",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/car.svg",
+      "bytes": 2879,
+      "sha": "6eff6dedbb621e38e3b297613508118649e614d8",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/car.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Chicago Blackhawks",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/chi.svg",
+      "bytes": 25990,
+      "sha": "a4013aedf0f4f878285048d70395503da7616289",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/chi.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Colorado Avalanche",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/col.svg",
+      "bytes": 6025,
+      "sha": "601d211c830fa3b5821f48b2a8f7ee1bcdc56688",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/col.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Columbus Blue Jackets",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/cbj.svg",
+      "bytes": 5922,
+      "sha": "1cc24ec103fbe8444c03f297a3df56545f10f34f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/cbj.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Dallas Stars",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/dal.svg",
+      "bytes": 4044,
+      "sha": "5ee18caf931c7e437fade980633928406f56228d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/dal.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Detroit Red Wings",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/det.svg",
+      "bytes": 15649,
+      "sha": "426d9632eefe9ee4daabf350676cfbbfb53f8184",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/det.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Edmonton Oilers",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/edm.svg",
+      "bytes": 4475,
+      "sha": "edf6dc470ea65f845cf628ecd4ff25568359fece",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/edm.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Florida Panthers",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/fla.svg",
+      "bytes": 13453,
+      "sha": "bb482d9d2dce27f7c4290d741b6ae78f1b79ca04",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/fla.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Los Angeles Kings",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/lak.svg",
+      "bytes": 35145,
+      "sha": "8782b426a4e8288503977fa3ec7a4f67097fcfc5",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/lak.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Minnesota Wild",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/min.svg",
+      "bytes": 4223,
+      "sha": "fc0e9cee87d4eef9bbc975892daf35ada3e38591",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/min.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Montreal Canadiens",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/mtl.svg",
+      "bytes": 2500,
+      "sha": "cab0075d63ab9313e43af733f472266f10166d99",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/mtl.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Nashville Predators",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/nsh.svg",
+      "bytes": 7808,
+      "sha": "a81305110306be62a76b67479f44e5d32ca9b672",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/nsh.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "New Jersey Devils",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/njd.svg",
+      "bytes": 3687,
+      "sha": "ad19cea9489feebb4478a2262342092c3b2b5092",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/njd.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "New York Islanders",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/nyi.svg",
+      "bytes": 9965,
+      "sha": "7d2caf5c27c047069bd3241d0eab1baa9ee0da0b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/nyi.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "New York Rangers",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/nyr.svg",
+      "bytes": 5123,
+      "sha": "9794b7c0f87da32732ba549282b75a1cba1ed939",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/nyr.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Ottawa Senators",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/ott.svg",
+      "bytes": 24171,
+      "sha": "b657670951ff90ead855b0308c0f91a7eff72ed9",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/ott.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Philadelphia Flyers",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/phi.svg",
+      "bytes": 2279,
+      "sha": "444e1eaed449ac98ffc06346af661b3d6c20733d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/phi.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Pittsburgh Penguins",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/pit.svg",
+      "bytes": 9479,
+      "sha": "a73a22398cf2867724bffce2c06f9e6412321564",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/pit.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "San Jose Sharks",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/sjs.svg",
+      "bytes": 9671,
+      "sha": "335ca3dbfc0022afea3d4b645caf5b6caf401b09",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/sjs.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Seattle Kraken",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/sea.svg",
+      "bytes": 4486,
+      "sha": "9927ddfc66eb81571867f0c710e00674567f7a2a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/sea.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "St. Louis Blues",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/stl.svg",
+      "bytes": 2693,
+      "sha": "5a05aeb06b021e96ad02f83889a6db0f61f26a9c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/stl.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Tampa Bay Lightning",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/tbl.svg",
+      "bytes": 1369,
+      "sha": "09ab6bb814b61ddccd80dc99dccd6f3cccb8d046",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/tbl.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Toronto Maple Leafs",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/tor.svg",
+      "bytes": 20146,
+      "sha": "8e16ff57dc4be441dd3ab6561d2674a1be22f222",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/tor.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Utah Mammoth",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/uta.svg",
+      "bytes": 4590,
+      "sha": "6292849cc9108b3bbafb78c9c82d2c8cbd6e01c2",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/uta.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Vancouver Canucks",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/van.svg",
+      "bytes": 7020,
+      "sha": "17d3d82219a14b3c2d9972f4a36ddca4d6ed7ff7",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/van.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Vegas Golden Knights",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/vgk.svg",
+      "bytes": 2194,
+      "sha": "c857e4066de63124dbedfd960dbec4d15e4290cb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/vgk.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Washington Capitals",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/wsh.svg",
+      "bytes": 5811,
+      "sha": "275bbd4c405876ff9e6440d2ea5b00f50d19279d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/wsh.svg"
+    },
+    {
+      "league": "nhl",
+      "team": "Winnipeg Jets",
+      "status": "stored",
+      "path": "assets/teams/nhl/2026-27/wpg.svg",
+      "bytes": 3669,
+      "sha": "da0f542440bf39467938bbf67926e3a485faf963",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/nhl/2026-27/wpg.svg"
+    },
+    {
+      "league": "npb",
+      "team": "chiba lotte marines",
+      "status": "stored",
+      "path": "assets/teams/npb/chiba-lotte-marines.png",
+      "bytes": 35434,
+      "sha": "dcdfe3c7cdb497f4c655e2f4f53ac8ab7b087584",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/chiba-lotte-marines.png"
+    },
+    {
+      "league": "npb",
+      "team": "chunichi dragons",
+      "status": "stored",
+      "path": "assets/teams/npb/chunichi-dragons.png",
+      "bytes": 24993,
+      "sha": "25cdef0d7425e8427c182eae3dae214e4f3be422",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/chunichi-dragons.png"
+    },
+    {
+      "league": "npb",
+      "team": "fukuoka softbank hawks",
+      "status": "stored",
+      "path": "assets/teams/npb/fukuoka-softbank-hawks.png",
+      "bytes": 29334,
+      "sha": "206fc1ba2a0b4d1d3106970104f356b642b53489",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/fukuoka-softbank-hawks.png"
+    },
+    {
+      "league": "npb",
+      "team": "hanshin tigers",
+      "status": "stored",
+      "path": "assets/teams/npb/hanshin-tigers.png",
+      "bytes": 29249,
+      "sha": "591b222556f0e2fceeae55a7bdce3923ceae879d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/hanshin-tigers.png"
+    },
+    {
+      "league": "npb",
+      "team": "hiroshima toyo carp",
+      "status": "stored",
+      "path": "assets/teams/npb/hiroshima-toyo-carp.png",
+      "bytes": 33093,
+      "sha": "1613f6708272e07a41209539e94474a1e3d3c534",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/hiroshima-toyo-carp.png"
+    },
+    {
+      "league": "npb",
+      "team": "hokkaido nippon ham fighters",
+      "status": "stored",
+      "path": "assets/teams/npb/hokkaido-nippon-ham-fighters.png",
+      "bytes": 16370,
+      "sha": "b355b5af98c9eb0e370268d4c4ed1a7cdf09e32a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/hokkaido-nippon-ham-fighters.png"
+    },
+    {
+      "league": "npb",
+      "team": "orix buffaloes",
+      "status": "stored",
+      "path": "assets/teams/npb/orix-buffaloes.png",
+      "bytes": 37481,
+      "sha": "c67ed5b2dec2a7ecae50bf20f3974bdfc6d0dd83",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/orix-buffaloes.png"
+    },
+    {
+      "league": "npb",
+      "team": "saitama seibu lions",
+      "status": "stored",
+      "path": "assets/teams/npb/saitama-seibu-lions.png",
+      "bytes": 30937,
+      "sha": "8e43a056456a226fb436313c23bcbf2c85562567",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/saitama-seibu-lions.png"
+    },
+    {
+      "league": "npb",
+      "team": "tohoku rakuten golden eagles",
+      "status": "stored",
+      "path": "assets/teams/npb/tohoku-rakuten-golden-eagles.png",
+      "bytes": 46046,
+      "sha": "fc1a39cbbbb5ad4ea0ab0895561c2076aeeeaf21",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/tohoku-rakuten-golden-eagles.png"
+    },
+    {
+      "league": "npb",
+      "team": "tokyo yakult swallows",
+      "status": "stored",
+      "path": "assets/teams/npb/tokyo-yakult-swallows.png",
+      "bytes": 30058,
+      "sha": "df8270cd287d09ccd53c304dc8cbbb9d7acd14f0",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/tokyo-yakult-swallows.png"
+    },
+    {
+      "league": "npb",
+      "team": "yokohama dena baystars",
+      "status": "stored",
+      "path": "assets/teams/npb/yokohama-dena-baystars.png",
+      "bytes": 31590,
+      "sha": "0e445b9759dab9f8370b8a6f72710cf444d896aa",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/yokohama-dena-baystars.png"
+    },
+    {
+      "league": "npb",
+      "team": "yomiuri giants",
+      "status": "stored",
+      "path": "assets/teams/npb/yomiuri-giants.png",
+      "bytes": 19209,
+      "sha": "c2e93e41fb9e00677e59511c3e9ffafd12f8f245",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/npb/yomiuri-giants.png"
+    },
+    {
+      "league": "seoul-samsung.png",
+      "team": "서울 삼성 썬더스",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/kbl/seoul-samsung.png",
+      "bytes": 11669,
+      "sha": "a2a440106e96744878afc63b490785b6efd968bb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/seoul-samsung.png"
+    },
+    {
+      "league": "seoul-sk.png",
+      "team": "서울 SK 나이츠",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/kbl/seoul-sk.png",
+      "bytes": 53394,
+      "sha": "4ef420e689b5972ef52d6bb22070e764f15bea17",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/seoul-sk.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "1.FC Köln",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/1-fc-koln.png",
+      "bytes": 24913,
+      "sha": "f945bc1a23480dd7292ca572173231d378541855",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/1-fc-koln.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "1.FC Union Berlin",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/1-fc-union-berlin.png",
+      "bytes": 9510,
+      "sha": "d3936bf1d8d13aca786c2164c6e61b34cfb1e3a1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/1-fc-union-berlin.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "1.FSV Mainz 05",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/1-fsv-mainz-05.png",
+      "bytes": 18851,
+      "sha": "a556faf3c101728ed9c84f0be9b1856fbb80b9ed",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/1-fsv-mainz-05.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "Bayer 04 Leverkusen",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/bayer-04-leverkusen.png",
+      "bytes": 20552,
+      "sha": "22cef703c4bb657a60d874d4b62f0a6b35ce3e93",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/bayer-04-leverkusen.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "Bayern Munich",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/bayern-munich.png",
+      "bytes": 24597,
+      "sha": "499ce6f97c63f974b5b439eb977377e127f71a34",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/bayern-munich.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "Borussia Dortmund",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/borussia-dortmund.png",
+      "bytes": 16017,
+      "sha": "2dc4b0289782930c6b81b40309e81039928225fc",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/borussia-dortmund.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "Borussia Mönchengladbach",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/borussia-monchengladbach.png",
+      "bytes": 9887,
+      "sha": "288e9b7ac204e28518e388634297f21fc53dcf00",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/borussia-monchengladbach.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "Eintracht Frankfurt",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/eintracht-frankfurt.png",
+      "bytes": 21922,
+      "sha": "6818579c2b9af420c5078682b778426016f880b1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/eintracht-frankfurt.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "FC Augsburg",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/fc-augsburg.png",
+      "bytes": 22691,
+      "sha": "36b56e0cecd48142d28862d884a3006a03f403ae",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/fc-augsburg.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "FC Schalke 04",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/fc-schalke-04.png",
+      "bytes": 14704,
+      "sha": "de20ad7334c3f2acb1371fde8a50e24b94365b80",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/fc-schalke-04.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "Hamburger SV",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/hamburger-sv.png",
+      "bytes": 11028,
+      "sha": "1f6063acd89667fd816a23a3fe2cd6008d630186",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/hamburger-sv.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "RB Leipzig",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/rb-leipzig.png",
+      "bytes": 14090,
+      "sha": "06a031c8920a0f0dcd3df6b2e95629fa8b99ced9",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/rb-leipzig.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "SC Freiburg",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/sc-freiburg.png",
+      "bytes": 18342,
+      "sha": "426f9fb8812522675b06025adb48857e3b94e090",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/sc-freiburg.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "SC Paderborn 07",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/sc-paderborn-07.png",
+      "bytes": 10378,
+      "sha": "c0209f09a60e9dbadfcf9a5787439b207d74cceb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/sc-paderborn-07.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "SV 07 Elversberg",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/sv-07-elversberg.png",
+      "bytes": 16723,
+      "sha": "6f398372139851d542f18a8363d2e28fd6ca5c3a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/sv-07-elversberg.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "SV Werder Bremen",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/sv-werder-bremen.png",
+      "bytes": 20811,
+      "sha": "5bcd74dddcff71fbe8cd7de60baae2b926e35ba1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/sv-werder-bremen.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "TSG 1899 Hoffenheim",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/tsg-1899-hoffenheim.png",
+      "bytes": 24296,
+      "sha": "dc5fe98029eededad6268a654625eff99a8a364d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/tsg-1899-hoffenheim.png"
+    },
+    {
+      "league": "soccer/bundesliga",
+      "team": "VfB Stuttgart",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/bundesliga/vfb-stuttgart.png",
+      "bytes": 26905,
+      "sha": "c42c4eccbc2c63925567801ce896ef659e143881",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/bundesliga/vfb-stuttgart.png"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Avispa Fukuoka (アビスパ福岡)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/avispa-fukuoka.svg",
+      "bytes": 19953,
+      "sha": "98984e21c91a630e7e6507b1e5afa4968dc96c7b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/avispa-fukuoka.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Cerezo Osaka (セレッソ大阪)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/cerezo-osaka.svg",
+      "bytes": 31068,
+      "sha": "2cea482e1a506a96e59682c33dfe0743e8e6b701",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/cerezo-osaka.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Fagiano Okayama (ファジアーノ岡山)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/fagiano-okayama.svg",
+      "bytes": 11311,
+      "sha": "0fbe9a623b939f0dd8bb07fa58cd8a9946a81755",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/fagiano-okayama.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "FC Tokyo (FC東京)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/fc-tokyo.svg",
+      "bytes": 2009,
+      "sha": "8f4494d2ed4e10fbeec7958156d8778d3c40916d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/fc-tokyo.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Gamba Osaka (ガンバ大阪)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/gamba-osaka.svg",
+      "bytes": 563,
+      "sha": "f8cb193412311dd3a0fd0a94a2fb9c5fd67b6a26",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/gamba-osaka.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "JEF United Chiba (ジェフユナイテッド千葉)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/jef-united-chiba.svg",
+      "bytes": 13241,
+      "sha": "1c11c2d3c04228a9a09ff30f2cdc60e742a2b695",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/jef-united-chiba.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Kashima Antlers (鹿島アントラーズ)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/kashima-antlers.svg",
+      "bytes": 7164,
+      "sha": "14aa05a6697e1e96778e7b96d49e71fe3be31234",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/kashima-antlers.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Kashiwa Reysol (柏レイソル)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/kashiwa-reysol.svg",
+      "bytes": 18353,
+      "sha": "a9c11177865fe3334ee1631ebcba817b60f5f0f8",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/kashiwa-reysol.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Kawasaki Frontale (川崎フロンターレ)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/kawasaki-frontale.svg",
+      "bytes": 50908,
+      "sha": "27f8c9f43f27694ba89d89bb62a420408ea768f0",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/kawasaki-frontale.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Kyoto Sanga (京都サンガF.C.)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/kyoto-sanga.svg",
+      "bytes": 13211,
+      "sha": "813f5a857a808a0337b7837748d88dc2c149e0e1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/kyoto-sanga.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Machida Zelvia (FC町田ゼルビア)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/machida-zelvia.svg",
+      "bytes": 18776,
+      "sha": "4dae907a1a4b4904d9a3e554367a204c13812dee",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/machida-zelvia.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Mito Hollyhock (水戸ホーリーホック)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/mito-hollyhock.svg",
+      "bytes": 21620,
+      "sha": "3bda83a6dd747377ea10186296a4a10fe1fa1392",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/mito-hollyhock.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Nagoya Grampus (名古屋グランパス)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/nagoya-grampus.svg",
+      "bytes": 5311,
+      "sha": "dcbe7c5b3f59083afab83d1dc420d0ba38b494ac",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/nagoya-grampus.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Sanfrecce Hiroshima (サンフレッチェ広島)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/sanfrecce-hiroshima.svg",
+      "bytes": 23123,
+      "sha": "10e8cd1c24e393596b4096db09aee695f74ea1a7",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/sanfrecce-hiroshima.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Shimizu S-Pulse (清水エスパルス)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/shimizu-s-pulse.svg",
+      "bytes": 14577,
+      "sha": "ef52612b9b1f85d5c87832cc517d4ed92d96b1a9",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/shimizu-s-pulse.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Tokyo Verdy (東京ヴェルディ)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/tokyo-verdy.svg",
+      "bytes": 4586,
+      "sha": "41f0d9e9940812c5f4c403cecf11bc6bcbdcda45",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/tokyo-verdy.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Urawa Red Diamonds (浦和レッズ)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/urawa-red-diamonds.svg",
+      "bytes": 97979,
+      "sha": "840b579f927ecf7620fdb99195c0a2025212804b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/urawa-red-diamonds.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "V-Varen Nagasaki (V・ファーレン長崎)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/v-varen-nagasaki.svg",
+      "bytes": 3886,
+      "sha": "1d3c94f6c883f1027693f07b83c6fa8ae67f1acc",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/v-varen-nagasaki.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Vissel Kobe (ヴィッセル神戸)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/vissel-kobe.svg",
+      "bytes": 4487,
+      "sha": "e0da62fa9dd2bd6df922c6c5f84a7b728d5bd623",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/vissel-kobe.svg"
+    },
+    {
+      "league": "soccer/j1-league",
+      "team": "Yokohama F. Marinos (横浜F・マリノス)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j1-league/yokohama-f-marinos.svg",
+      "bytes": 22907,
+      "sha": "aa924448772371c56bcaa693df2a766b36ec3339",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j1-league/yokohama-f-marinos.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Albirex Niigata (アルビレックス新潟)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/albirex-niigata.svg",
+      "bytes": 13482,
+      "sha": "44fbc250f70c2a6ba3046bc34d160dfc11a657bb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/albirex-niigata.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Blaublitz Akita (ブラウブリッツ秋田)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/blaublitz-akita.svg",
+      "bytes": 19809,
+      "sha": "8e49703a03b77f4fe84d6fe4a9d276a945cbcf91",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/blaublitz-akita.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "FC Imabari (FC今治)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/fc-imabari.svg",
+      "bytes": 19838,
+      "sha": "c09e8d0c578710b18e5cb8bb12e6b45abf2f73d0",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/fc-imabari.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Fujieda MYFC (藤枝MYFC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/fujieda-myfc.svg",
+      "bytes": 28851,
+      "sha": "c45610654ee6d3ce7990da8dfab3c4a0998d2de1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/fujieda-myfc.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Hokkaido Consadole Sapporo (北海道コンサドーレ札幌)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/hokkaido-consadole-sapporo.svg",
+      "bytes": 31397,
+      "sha": "e4822042b063303e000547b6e813b6f04b0fcf33",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/hokkaido-consadole-sapporo.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Iwaki FC (いわきFC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/iwaki-fc.svg",
+      "bytes": 10325,
+      "sha": "4a859c41f8f469e0d531c17d7fee17752435d727",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/iwaki-fc.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Júbilo Iwata (ジュビロ磐田)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/jubilo-iwata.svg",
+      "bytes": 15526,
+      "sha": "0c4cd04a4f31cbdad280dc0bf9957836039e404a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/jubilo-iwata.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Kataller Toyama (カターレ富山)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/kataller-toyama.svg",
+      "bytes": 23700,
+      "sha": "378e7b616f18570ff41291e1a3466c1d65207978",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/kataller-toyama.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Montedio Yamagata (モンテディオ山形)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/montedio-yamagata.svg",
+      "bytes": 3224,
+      "sha": "730ff26bd0f53e1fa27e6293e46b8aa4b2b73bdb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/montedio-yamagata.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Oita Trinita (大分トリニータ)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/oita-trinita.svg",
+      "bytes": 11912,
+      "sha": "3aab6a1c84201144d14dbc6a88f3485b8d7759d9",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/oita-trinita.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "RB Omiya Ardija (RB大宮アルディージャ)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/rb-omiya-ardija.svg",
+      "bytes": 17994,
+      "sha": "e2e53989b7d178b7f8b5067b0e445d0c399509f8",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/rb-omiya-ardija.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Sagan Tosu (サガン鳥栖)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/sagan-tosu.svg",
+      "bytes": 35085,
+      "sha": "efcbb94e582e9b815fe98bea9dfac2d737df288f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/sagan-tosu.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Shonan Bellmare (湘南ベルマーレ)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/shonan-bellmare.svg",
+      "bytes": 13931,
+      "sha": "22b3a7fb86043bdf304455d1a000598d92e4632f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/shonan-bellmare.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Tegevajaro Miyazaki (テゲバジャーロ宮崎)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/tegevajaro-miyazaki.svg",
+      "bytes": 12206,
+      "sha": "0c1bd51ce75993c337476541478af66fd48e4d49",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/tegevajaro-miyazaki.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Tochigi City (栃木シティ)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/tochigi-city.svg",
+      "bytes": 1265,
+      "sha": "a58907147e500ccd1d749c28bf9154b464cc7b8e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/tochigi-city.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Tokushima Vortis (徳島ヴォルティス)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/tokushima-vortis.svg",
+      "bytes": 3695,
+      "sha": "3ab90e1365907dfaa4ff9365f53543c75b9babeb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/tokushima-vortis.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Vanraure Hachinohe (ヴァンラーレ八戸)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/vanraure-hachinohe.svg",
+      "bytes": 35535,
+      "sha": "8a119f17670c56b210c9e9bf124f9c390cb3e5cf",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/vanraure-hachinohe.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Vegalta Sendai (ベガルタ仙台)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/vegalta-sendai.svg",
+      "bytes": 10693,
+      "sha": "75c70887c21b0333c4b7f01998a0f130d2561225",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/vegalta-sendai.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Ventforet Kofu (ヴァンフォーレ甲府)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/ventforet-kofu.svg",
+      "bytes": 12867,
+      "sha": "5ba84bad08acb5c1f114e04dd1b7ba52bc7f0a22",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/ventforet-kofu.svg"
+    },
+    {
+      "league": "soccer/j2-league",
+      "team": "Yokohama FC (横浜FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j2-league/yokohama-fc.svg",
+      "bytes": 31843,
+      "sha": "782057088a8edcda60082ab75d78030682633bf3",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j2-league/yokohama-fc.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "AC Nagano Parceiro (AC長野パルセイロ)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/ac-nagano-parceiro.svg",
+      "bytes": 15586,
+      "sha": "3bb92dd462e844c2846e749aa2019c18dda258f2",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/ac-nagano-parceiro.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Ehime FC (愛媛FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/ehime-fc.svg",
+      "bytes": 13807,
+      "sha": "d5fe6403901e126b2f697acd2449d1f9c60dfa83",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/ehime-fc.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "FC Gifu (FC岐阜)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/fc-gifu.svg",
+      "bytes": 33747,
+      "sha": "613a03509bfd37bf1a2b1ba7ebe9e0a7996334de",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/fc-gifu.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "FC Osaka (FC大阪)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/fc-osaka.svg",
+      "bytes": 12418,
+      "sha": "addfc21bdf40c529faa76996db1ee191e17198f7",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/fc-osaka.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "FC Ryukyu (FC琉球)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/fc-ryukyu.svg",
+      "bytes": 7252,
+      "sha": "038528c9f8a10c6c7840e804f1bd0ac50170d98f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/fc-ryukyu.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Fukushima United FC (福島ユナイテッドFC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/fukushima-united.svg",
+      "bytes": 25427,
+      "sha": "c9d071eef338a5fc7c98437b1f6f16cf0f1feb32",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/fukushima-united.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Gainare Tottori (ガイナーレ鳥取)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/gainare-tottori.svg",
+      "bytes": 78147,
+      "sha": "f66a231b8b7cdd352170215213ea6fddaeb278cb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/gainare-tottori.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Giravanz Kitakyushu (ギラヴァンツ北九州)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/giravanz-kitakyushu.svg",
+      "bytes": 14732,
+      "sha": "ac599c7db405b8af00634b9b3d257b20ee6be01c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/giravanz-kitakyushu.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Kagoshima United FC (鹿児島ユナイテッドFC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/kagoshima-united.svg",
+      "bytes": 45499,
+      "sha": "5d0e95680fe1f7b531fe8ea15bd4ea3982dfaa5e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/kagoshima-united.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Kamatamare Sanuki (カマタマーレ讃岐)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/kamatamare-sanuki.svg",
+      "bytes": 21782,
+      "sha": "cf421c6d3fafd81ed770393cc62788843efba7ee",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/kamatamare-sanuki.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Kochi United SC (高知ユナイテッドSC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/kochi-united.svg",
+      "bytes": 27525,
+      "sha": "c80b8faea8ca804af472e4e643e8b0305d24b450",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/kochi-united.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Matsumoto Yamaga FC (松本山雅FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/matsumoto-yamaga.svg",
+      "bytes": 35173,
+      "sha": "ca96727dc0e806440feab9148de25ced3a122635",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/matsumoto-yamaga.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Nara Club (奈良クラブ)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/nara-club.svg",
+      "bytes": 562056,
+      "sha": "a5ae58f68994e7c0402802fdcca1824e13f082e5",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/nara-club.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Reilac Shiga FC (レイラック滋賀FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/reilac-shiga.svg",
+      "bytes": 17865,
+      "sha": "5ddb4fd9f4e3faebe8f235b31567313ad0d72316",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/reilac-shiga.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Renofa Yamaguchi FC (レノファ山口FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/renofa-yamaguchi.svg",
+      "bytes": 7609,
+      "sha": "3de05487cc79116e78b42a910f0f1a736f68134f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/renofa-yamaguchi.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Roasso Kumamoto (ロアッソ熊本)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/roasso-kumamoto.svg",
+      "bytes": 22735,
+      "sha": "53dfe8f8036018d45e12c3e662f367e72b2e6b88",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/roasso-kumamoto.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "S.C. Sagamihara (SC相模原)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/sc-sagamihara.svg",
+      "bytes": 16036,
+      "sha": "192c0c0e3bb89a9185a0316d4fd6b12fcac74f04",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/sc-sagamihara.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Thespa Gunma (ザスパ群馬)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/thespa-gunma.svg",
+      "bytes": 4519,
+      "sha": "1d6d58ed1e402443bb58091f04ac6db603bb6c49",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/thespa-gunma.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Tochigi SC (栃木SC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/tochigi-sc.svg",
+      "bytes": 12582,
+      "sha": "e58c51ef662a111a52a855419b0dced07e6358f0",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/tochigi-sc.svg"
+    },
+    {
+      "league": "soccer/j3-league",
+      "team": "Zweigen Kanazawa (ツエーゲン金沢)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/j3-league/zweigen-kanazawa.svg",
+      "bytes": 25311,
+      "sha": "d7537dbd428ae7e3cad32e72c7ec30c0ff05770b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/j3-league/zweigen-kanazawa.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "Bucheon FC 1995",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/bucheon-1995.svg",
+      "bytes": 43060,
+      "sha": "c510a0b26a1988fcef2a575e0dbc23af9d1dbb2f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/bucheon-1995.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "Daejeon Hana Citizen (대전 하나 시티즌 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/daejeon-hana-citizen.svg",
+      "bytes": 4138,
+      "sha": "29e8083b44e57ce538fb56e4ff2eda0c4ca30e68",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/daejeon-hana-citizen.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "FC Anyang (FC 안양)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/fc-anyang.svg",
+      "bytes": 43893,
+      "sha": "9b1052081dd83f53f000cfd2cc4f13a9d48b1895",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/fc-anyang.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "FC Seoul (FC 서울)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/fc-seoul.svg",
+      "bytes": 23653,
+      "sha": "58e93b42b27e872ad9da1f79ea9ba43e6bdd278a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/fc-seoul.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "Gangwon FC (강원 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/gangwon-fc.svg",
+      "bytes": 10978,
+      "sha": "5adc5123d220a17b3cbcd759a0369f89c8e50ca4",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/gangwon-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "Gimcheon Sangmu (김천 상무 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/gimcheon-sangmu.svg",
+      "bytes": 17137,
+      "sha": "6fea1dc197b52c72b29603cf96bc481282fdd004",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/gimcheon-sangmu.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "Gwangju FC (광주 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/gwangju-fc.svg",
+      "bytes": 18577,
+      "sha": "d1003a63bb78dbea428644bdbd16fb19ce41fc62",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/gwangju-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "Incheon United",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/incheon-united.svg",
+      "bytes": 43343,
+      "sha": "1a54bfacb47af1e42ec236276e003a21eff2844f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/incheon-united.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "Jeju United (제주 SK 축구단)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/jeju-united.svg",
+      "bytes": 6969,
+      "sha": "e5e4a2075dfbf2776d4e68a907d97fc46b29cd2a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/jeju-united.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "Jeonbuk Hyundai Motors (전북 현대 모터스)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/jeonbuk-hyundai-motors.svg",
+      "bytes": 10675,
+      "sha": "2eb6eb6250cf6dd5bfa8a8d77d5bd8048cbbb8a9",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/jeonbuk-hyundai-motors.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "Pohang Steelers (포항 스틸러스)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/pohang-steelers.svg",
+      "bytes": 9118,
+      "sha": "5091fed1d53cee1d3ce82832bf80c44174c02703",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/pohang-steelers.svg"
+    },
+    {
+      "league": "soccer/k-league-1",
+      "team": "Ulsan HD (울산 HD FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-1/ulsan-hd.svg",
+      "bytes": 7180,
+      "sha": "1a32e51be829e82e1ea061f8dbf3a78a175e463e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-1/ulsan-hd.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Ansan Greeners FC (안산 그리너스 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/ansan-greeners-fc.svg",
+      "bytes": 44829,
+      "sha": "e4b8e4feb3f21805d9fb4652240b3df45d4e12a6",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/ansan-greeners-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Busan IPark (부산 아이파크)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/busan-ipark.svg",
+      "bytes": 5041,
+      "sha": "d1b5cbe27f8e5e03b930a7d5e1dbf43c9b635b35",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/busan-ipark.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Cheonan City FC (천안 시티 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/cheonan-city-fc.svg",
+      "bytes": 7197,
+      "sha": "6e5649ba26c56683a8c7e7c17528e1b4d0f1c223",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/cheonan-city-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Chungbuk Cheongju FC (충북청주 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/chungbuk-cheongju-fc.svg",
+      "bytes": 1714,
+      "sha": "0612dc2b4476befc7694a7465989c120dd621554",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/chungbuk-cheongju-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Chungnam Asan FC (충남아산 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/chungnam-asan-fc.svg",
+      "bytes": 24166,
+      "sha": "aa19384b9f71908d9eca8947d94cd9c77c9c7631",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/chungnam-asan-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Daegu FC (대구 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/daegu-fc.svg",
+      "bytes": 22024,
+      "sha": "be02f40a8049b90b3214c9b802fc739d8bb1f6f3",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/daegu-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Gimhae FC2008 (김해 FC2008)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/gimhae-fc2008.svg",
+      "bytes": 18794,
+      "sha": "325dac586f7dbeed8ef692c7c0870abe8132d387",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/gimhae-fc2008.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Gimpo FC (김포 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/gimpo-fc.svg",
+      "bytes": 44241,
+      "sha": "77350b285f815623cf94d4eb1d10037bef953cf2",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/gimpo-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Gyeongnam FC (경남 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/gyeongnam-fc.svg",
+      "bytes": 41842,
+      "sha": "71f7c50aa32c32cf19441e3581d6318368d7175e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/gyeongnam-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Hwaseong FC (화성 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/hwaseong-fc.svg",
+      "bytes": 6938,
+      "sha": "c71a9c6dd4f120b50a77116b27b58aa31a2eebeb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/hwaseong-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Jeonnam Dragons (전남 드래곤즈)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/jeonnam-dragons.svg",
+      "bytes": 3305,
+      "sha": "fe3f13b01816cd3140b2c27901773cd25483be16",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/jeonnam-dragons.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Paju Frontier FC (파주 프런티어 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/paju-frontier-fc.svg",
+      "bytes": 38941,
+      "sha": "57e16c35dacdcc6b0fa1796fa3c666cdf98d73b1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/paju-frontier-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Seongnam FC (성남 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/seongnam-fc.svg",
+      "bytes": 37781,
+      "sha": "bfd35be923a6c3c00e10c638920e26b5ba215106",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/seongnam-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Seoul E-Land FC (서울 이랜드 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/seoul-e-land-fc.svg",
+      "bytes": 321054,
+      "sha": "7d141d60365a988988e1914700a272af95bd09ef",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/seoul-e-land-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Suwon FC (수원 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/suwon-fc.svg",
+      "bytes": 22129,
+      "sha": "4cac40971bf44e41b92b4baed9bfad61283fe9d8",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/suwon-fc.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Suwon Samsung Bluewings (수원 삼성 블루윙즈)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/suwon-samsung-bluewings.svg",
+      "bytes": 10672,
+      "sha": "a4ef295fd7356bbc99c7bfc4f77fa3fde0fc53bd",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/suwon-samsung-bluewings.svg"
+    },
+    {
+      "league": "soccer/k-league-2",
+      "team": "Yongin FC (용인 FC)",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/k-league-2/yongin-fc.svg",
+      "bytes": 12020,
+      "sha": "736d2ff4b9b29b9018ac5af48b95859bb7b5af24",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/k-league-2/yongin-fc.svg"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Athletic Bilbao",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/athletic-bilbao.png",
+      "bytes": 17513,
+      "sha": "624b9ea0c3115b4c2326726934401a4cf05f5de0",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/athletic-bilbao.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Atlético de Madrid",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/atletico-de-madrid.png",
+      "bytes": 19328,
+      "sha": "7398c88ac9e34f7bb7df9207802bffe07db5d560",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/atletico-de-madrid.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "CA Osasuna",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/ca-osasuna.png",
+      "bytes": 21727,
+      "sha": "ab981326964f8b753c78dd48d1b9d1a1ec48104d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/ca-osasuna.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Celta de Vigo",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/celta-de-vigo.png",
+      "bytes": 12178,
+      "sha": "323bf79463695cde7b996fa4dd3cefa6c0ba1dd0",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/celta-de-vigo.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Deportivo A Coruña",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/deportivo-a-coruna.png",
+      "bytes": 20249,
+      "sha": "16c57d3baaa40bbc48d7604e32a8729b35e3b3b8",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/deportivo-a-coruna.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Deportivo Alavés",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/deportivo-alaves.png",
+      "bytes": 31032,
+      "sha": "e1464ddf254e17f7747a31bef6f744486c1169fa",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/deportivo-alaves.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Elche CF",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/elche-cf.png",
+      "bytes": 25343,
+      "sha": "739cdce299d3fc7b329b0111d1fe0fddae704a1b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/elche-cf.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "FC Barcelona",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/fc-barcelona.png",
+      "bytes": 16512,
+      "sha": "bfaffd03668480678408bc5021e592de8f2b8d4e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/fc-barcelona.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Getafe CF",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/getafe-cf.png",
+      "bytes": 32235,
+      "sha": "3140071b8720fab7a36115f9ce63229d938db751",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/getafe-cf.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Levante UD",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/levante-ud.png",
+      "bytes": 22298,
+      "sha": "5a79a4981eca1b864ed07e50a4fd8e52b900abb3",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/levante-ud.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Málaga CF",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/malaga-cf.png",
+      "bytes": 32183,
+      "sha": "4cfbf6eca31f9af03656ab939ec455afa07e9433",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/malaga-cf.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Racing Santander",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/racing-santander.png",
+      "bytes": 34644,
+      "sha": "998ead86932993257da4fc7ca2f4b60fb55ed39e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/racing-santander.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Rayo Vallecano",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/rayo-vallecano.png",
+      "bytes": 21504,
+      "sha": "86f27a83668e0f7f00c8cc53f6d0bb66b6e17ad8",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/rayo-vallecano.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "RCD Espanyol Barcelona",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/rcd-espanyol-barcelona.png",
+      "bytes": 29805,
+      "sha": "a012d08c45880195db1c0a4f67f695a36767aa30",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/rcd-espanyol-barcelona.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Real Betis Balompié",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/real-betis-balompie.png",
+      "bytes": 13390,
+      "sha": "8e3808a0788aa8f7ae7915265544774c9317518d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/real-betis-balompie.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Real Madrid",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/real-madrid.png",
+      "bytes": 36650,
+      "sha": "e713ce0470f9673294c374596889a659b2624dcf",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/real-madrid.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Real Sociedad",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/real-sociedad.png",
+      "bytes": 26395,
+      "sha": "b1d8bcdf54803231b466a3b698549eecd55270d2",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/real-sociedad.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Sevilla FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/sevilla-fc.png",
+      "bytes": 27453,
+      "sha": "a7d6232baa28c7e439287352286162b858ef3cdb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/sevilla-fc.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Valencia CF",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/valencia-cf.png",
+      "bytes": 21439,
+      "sha": "0ff1356ce991a5f3c5a8f044d6118377ceb9d95f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/valencia-cf.png"
+    },
+    {
+      "league": "soccer/la-liga",
+      "team": "Villarreal CF",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/la-liga/villarreal-cf.png",
+      "bytes": 30704,
+      "sha": "f750f3e8ceb5613d439ece556ad6a0edf7a187d0",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/la-liga/villarreal-cf.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "AJ Auxerre",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/aj-auxerre.png",
+      "bytes": 19770,
+      "sha": "2feebe80cf78d7ee47682471c9ccc754865302ff",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/aj-auxerre.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "Angers SCO",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/angers-sco.png",
+      "bytes": 20322,
+      "sha": "f99ba73cbf3f5151d6637ff9095b7ed24078cb19",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/angers-sco.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "AS Monaco",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/as-monaco.png",
+      "bytes": 17992,
+      "sha": "710f2c985001b3cd2b0e6048fe756e69c4fd391c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/as-monaco.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "ESTAC Troyes",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/estac-troyes.png",
+      "bytes": 34571,
+      "sha": "a531b3ededb1c4437f2e2b95d337975bcc5cd1ea",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/estac-troyes.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "FC Lorient",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/fc-lorient.png",
+      "bytes": 26425,
+      "sha": "aa56ddc5d138b2322d88f87fb0a1e10eb0b8779e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/fc-lorient.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "FC Toulouse",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/fc-toulouse.png",
+      "bytes": 30735,
+      "sha": "f6ea1dcf309724d70d56a4a78e77633f56365862",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/fc-toulouse.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "Le Havre AC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/le-havre-ac.png",
+      "bytes": 24840,
+      "sha": "ed84cadf001e8916c6bd097ed17701a4c45122e8",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/le-havre-ac.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "Le Mans FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/le-mans-fc.png",
+      "bytes": 24882,
+      "sha": "ebf224d1666b00a3e4ccf339cff3ce42edb514de",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/le-mans-fc.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "LOSC Lille",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/losc-lille.png",
+      "bytes": 18715,
+      "sha": "318a01561441fae398ba9c90775fe05a60903a1f",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/losc-lille.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "OGC Nice",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/ogc-nice.png",
+      "bytes": 42256,
+      "sha": "e9d7cff9366b8fdc9b29fd00edc1d098050296c3",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/ogc-nice.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "Olympique Lyon",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/olympique-lyon.png",
+      "bytes": 17832,
+      "sha": "7390f0bd833cb2a7072cae62a1fe2f59276682a6",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/olympique-lyon.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "Olympique Marseille",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/olympique-marseille.png",
+      "bytes": 23256,
+      "sha": "499c1c14e743ccda34191faa42c536b5f89228fb",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/olympique-marseille.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "Paris FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/paris-fc.png",
+      "bytes": 24851,
+      "sha": "9989259f9bd5b69d16700d016dc2f32ceb35bf5b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/paris-fc.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "Paris Saint-Germain",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/paris-saint-germain.png",
+      "bytes": 22525,
+      "sha": "823a6035ccfc9a6f120d6fa8c91e0b86a68c0793",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/paris-saint-germain.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "RC Lens",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/rc-lens.png",
+      "bytes": 23826,
+      "sha": "eea54b4f024c3c3cf0baee558823579e6f7df612",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/rc-lens.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "RC Strasbourg Alsace",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/rc-strasbourg-alsace.png",
+      "bytes": 25057,
+      "sha": "e4e96a58efb8329dc2d80867e05cb6ebc9295f17",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/rc-strasbourg-alsace.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "Stade Brestois 29",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/stade-brestois-29.png",
+      "bytes": 29274,
+      "sha": "2a699842d47dde1e9073fcff17b1be16165ba9dc",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/stade-brestois-29.png"
+    },
+    {
+      "league": "soccer/ligue-1",
+      "team": "Stade Rennais FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/ligue-1/stade-rennais-fc.png",
+      "bytes": 21365,
+      "sha": "8d8f6dc72967d38b80ae257380e0cf13fd270028",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/ligue-1/stade-rennais-fc.png"
+    },
+    {
+      "league": "soccer/other-asia",
+      "team": "kuching city fc",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/other-asia/kuching-city-fc.png",
+      "bytes": 133979,
+      "sha": "f99f9b1e16d01b42dc823e3eaf01b381c0fb7673",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/other-asia/kuching-city-fc.png"
+    },
+    {
+      "league": "soccer/other-europe",
+      "team": "aek athens",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/other-europe/aek-athens.svg",
+      "bytes": 10116,
+      "sha": "7a16e3f931dd0282fe13a91f833c81c49eced03c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/other-europe/aek-athens.svg"
+    },
+    {
+      "league": "soccer/other-europe",
+      "team": "slovan bratislava",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/other-europe/slovan-bratislava.svg",
+      "bytes": 13310,
+      "sha": "5c0181903560c4d532017e802537c8fb1e719ce4",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/other-europe/slovan-bratislava.svg"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "AFC Bournemouth",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/afc-bournemouth.png",
+      "bytes": 26146,
+      "sha": "14810679717c6be956912126c4ab8bd6341971c4",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/afc-bournemouth.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Arsenal FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/arsenal-fc.png",
+      "bytes": 28744,
+      "sha": "24f24c15aa0e0094cbb54fab4c7fc82407b6a0ff",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/arsenal-fc.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Aston Villa",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/aston-villa.png",
+      "bytes": 29845,
+      "sha": "f1081b911ae6592533eeb92f0f1cddd661b8e03b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/aston-villa.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Brentford FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/brentford-fc.png",
+      "bytes": 29398,
+      "sha": "637597914e0f2dde5f3b93f930e990930c76700c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/brentford-fc.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Brighton & Hove Albion",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/brighton-hove-albion.png",
+      "bytes": 24561,
+      "sha": "da0c49418ff7d70e68fb26e40b4ea5538aeded3b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/brighton-hove-albion.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Chelsea FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/chelsea-fc.png",
+      "bytes": 25350,
+      "sha": "d02c01d8217fe02343489fc29d36ef555def4ace",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/chelsea-fc.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Coventry City",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/coventry-city.png",
+      "bytes": 46471,
+      "sha": "085eb2bc2b8ba0b53beb30c3a8d68d88dfb8a8e5",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/coventry-city.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Crystal Palace",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/crystal-palace.png",
+      "bytes": 34635,
+      "sha": "2653b2a05078e9d0c21a26a449e0ff469e67f5b1",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/crystal-palace.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Everton FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/everton-fc.png",
+      "bytes": 28489,
+      "sha": "96518ec7b0ab58ccabc056f2e80e7a4a92a76027",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/everton-fc.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Fulham FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/fulham-fc.png",
+      "bytes": 12525,
+      "sha": "700ca4f84c96d479a7cd577e0015174638a0ace3",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/fulham-fc.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Hull City",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/hull-city.png",
+      "bytes": 36190,
+      "sha": "102cc3343443e5d0648e746a93d8b8ef63e43790",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/hull-city.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Ipswich Town",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/ipswich-town.png",
+      "bytes": 29373,
+      "sha": "3c82fdcb8bef0d9b7168542bf5880e91963eaf20",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/ipswich-town.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Leeds United",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/leeds-united.png",
+      "bytes": 29564,
+      "sha": "01b01a101f2eced1234ab17b8402ecc3b2708cd4",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/leeds-united.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Liverpool FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/liverpool-fc.png",
+      "bytes": 15244,
+      "sha": "654691d267680a6683fe58c55619de0684185404",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/liverpool-fc.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Manchester City",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/manchester-city.png",
+      "bytes": 30312,
+      "sha": "b55d4568ad21f2c3bd09805a666b3252eda0595a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/manchester-city.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Manchester United",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/manchester-united.png",
+      "bytes": 26455,
+      "sha": "4e2a112b088c67916aaf973d4eb1a6dfbdb38b88",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/manchester-united.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Newcastle United",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/newcastle-united.png",
+      "bytes": 30961,
+      "sha": "aaf463cb8a15982bb5a1e0c598a69545b94b6b9d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/newcastle-united.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Nottingham Forest",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/nottingham-forest.png",
+      "bytes": 9995,
+      "sha": "a42f47452d42200a0bdea083f09e486155e274fe",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/nottingham-forest.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Sunderland AFC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/sunderland-afc.png",
+      "bytes": 20952,
+      "sha": "af221f2cd30474564b0b4c9690e397fc1aaf03e9",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/sunderland-afc.png"
+    },
+    {
+      "league": "soccer/premier-league",
+      "team": "Tottenham Hotspur",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/premier-league/tottenham-hotspur.png",
+      "bytes": 7692,
+      "sha": "319fef3bdd51435c92dd8a3c35ce8014b88cd1ae",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/premier-league/tottenham-hotspur.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "AC Milan",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/ac-milan.png",
+      "bytes": 24439,
+      "sha": "e6209230efa5637278c47ba989f57c60e7fc0b66",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/ac-milan.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "AC Monza",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/ac-monza.png",
+      "bytes": 20888,
+      "sha": "ab048b64648968d458825891ea031120c914342c",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/ac-monza.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "ACF Fiorentina",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/acf-fiorentina.png",
+      "bytes": 19091,
+      "sha": "563b3b9aebac8570f21d5c760c8fe40071583e8e",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/acf-fiorentina.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "AS Roma",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/as-roma.png",
+      "bytes": 27674,
+      "sha": "29eb52986c5a31579b6b73ba16ebb6f3d3597554",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/as-roma.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Atalanta BC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/atalanta-bc.png",
+      "bytes": 18571,
+      "sha": "82ff5039e80c07462e3aa571f72c2c6326ced52d",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/atalanta-bc.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Bologna FC 1909",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/bologna-fc-1909.png",
+      "bytes": 18922,
+      "sha": "4d365db8c83e28692456e4f0af6f315455e7644b",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/bologna-fc-1909.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Cagliari Calcio",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/cagliari-calcio.png",
+      "bytes": 30733,
+      "sha": "fe3af34527dc2a2ddf37a592a7a7da71565f90ae",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/cagliari-calcio.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Como 1907",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/como-1907.png",
+      "bytes": 20047,
+      "sha": "e2e17a77263e709c88215a02a170b31ac10457bc",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/como-1907.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Frosinone Calcio",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/frosinone-calcio.png",
+      "bytes": 25796,
+      "sha": "9927deb1f5b13614a08085a9506f8cb4f0106912",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/frosinone-calcio.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Genoa CFC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/genoa-cfc.png",
+      "bytes": 15917,
+      "sha": "07ced06487a192fec58ab3a58a3494b0feaf64d7",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/genoa-cfc.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Inter Milan",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/inter-milan.png",
+      "bytes": 13799,
+      "sha": "3749aa06618e3946683484d069a9ef9a87e52341",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/inter-milan.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Juventus FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/juventus-fc.png",
+      "bytes": 3955,
+      "sha": "89d23971e016e5ffc61c6bf86d0b2c1bce887b4a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/juventus-fc.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Parma Calcio 1913",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/parma-calcio-1913.png",
+      "bytes": 17161,
+      "sha": "f8b4278bda6cb4d4f09dbc9d989a6f3c7e84196a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/parma-calcio-1913.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "SS Lazio",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/ss-lazio.png",
+      "bytes": 10087,
+      "sha": "8692b46c3e61cad208042f55199336d7a4a5c5e2",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/ss-lazio.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "SSC Napoli",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/ssc-napoli.png",
+      "bytes": 15716,
+      "sha": "31c5cd81086c54d5150b4b767e7d2761dfa4d7c8",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/ssc-napoli.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Torino FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/torino-fc.png",
+      "bytes": 27264,
+      "sha": "b45412aae91d51741984ea6bcb04bc254649b1ea",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/torino-fc.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Udinese Calcio",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/udinese-calcio.png",
+      "bytes": 23784,
+      "sha": "56d2ff97960d742c09508e4fafa8e1ed260d0f51",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/udinese-calcio.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "US Lecce",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/us-lecce.png",
+      "bytes": 26965,
+      "sha": "c80a4578262c3e419540ca4fb37cc77d5d150a84",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/us-lecce.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "US Sassuolo",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/us-sassuolo.png",
+      "bytes": 22569,
+      "sha": "1df7050fdf1372cdd702d75d4e23a876800662e2",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/us-sassuolo.png"
+    },
+    {
+      "league": "soccer/serie-a",
+      "team": "Venezia FC",
+      "status": "stored",
+      "path": "assets/teams/soccer/2026-27/serie-a/venezia-fc.png",
+      "bytes": 5749,
+      "sha": "3d4a450766a897d0efc7eb5c7f6dbe35bc20338a",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/soccer/2026-27/serie-a/venezia-fc.png"
+    },
+    {
+      "league": "suwon-kt.png",
+      "team": "수원 KT 소닉붐",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/kbl/suwon-kt.png",
+      "bytes": 114989,
+      "sha": "7843e96cbd2a1ba822ca4c7b409662173f724549",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/suwon-kt.png"
+    },
+    {
+      "league": "ulsan-hyundai-mobis.png",
+      "team": "울산 현대모비스 피버스",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/kbl/ulsan-hyundai-mobis.png",
+      "bytes": 91445,
+      "sha": "f2188090a1a21f2125e16a6fdca92511d3550e82",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/ulsan-hyundai-mobis.png"
+    },
+    {
+      "league": "volleyball/men",
+      "team": "KB손해보험",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/men/kb-insurance.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/men",
+      "team": "OK저축은행",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/men/ok-savings-bank.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/men",
+      "team": "대한항공",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/men/korean-air.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/men",
+      "team": "삼성화재",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/men/samsung-fire.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/men",
+      "team": "우리카드",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/men/woori-card.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/men",
+      "team": "한국전력",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/men/kepco.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/men",
+      "team": "현대캐피탈",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/men/hyundai-capital.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/women",
+      "team": "GS칼텍스",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/women/gs-caltex.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/women",
+      "team": "IBK기업은행",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/women/ibk.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/women",
+      "team": "SOOP 수퍼스",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/women/soop-soopers.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/women",
+      "team": "정관장",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/women/jung-kwan-jang.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/women",
+      "team": "한국도로공사",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/women/korea-expressway.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/women",
+      "team": "현대건설",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/women/hyundai-construction.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "volleyball/women",
+      "team": "흥국생명",
+      "status": "missing",
+      "path": "assets/teams/volleyball/2026-27/women/heungkuk-life.png",
+      "bytes": 0,
+      "sha": null,
+      "url": null
+    },
+    {
+      "league": "wonju-db.png",
+      "team": "원주 DB 프로미",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/kbl/wonju-db.png",
+      "bytes": 45679,
+      "sha": "82273df585df3e90aef063516aa8fc7762fbd803",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/kbl/wonju-db.png"
+    },
+    {
+      "league": "yongin-samsung-life.png",
+      "team": "용인 삼성생명 블루밍스",
+      "status": "stored",
+      "path": "assets/teams/basketball/2026-27/wkbl/yongin-samsung-life.png",
+      "bytes": 44262,
+      "sha": "e0342c8fedf821211ebe61744322266c9f89eb98",
+      "url": "https://github.com/sfandomsportji-cpu/sfandomsportji-cpu.github.io/blob/main/assets/teams/basketball/2026-27/wkbl/yongin-samsung-life.png"
+    }
+  ]
+}
