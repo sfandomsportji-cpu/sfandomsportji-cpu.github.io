@@ -395,7 +395,8 @@ main{display:block}
   .card-grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-right:calc(-1 * var(--gut));padding-right:var(--gut);padding-bottom:6px}
   .card-grid{align-items:start}
   .card-grid>*{scroll-snap-align:start}
-  .card-grid .mag .art-thumb{display:none}
+  .card-grid .mag .art-thumb,.card-grid .mag .thumb{display:none}
+  .card-grid{align-items:stretch}
   .card-grid .mag .body{padding:16px;gap:6px}
   .card-grid .mag h3{font-size:19px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
   .card-grid .mag p{font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
