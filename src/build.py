@@ -149,7 +149,7 @@ def auto_editions() -> None:
     """손으로 쓴 에디션이 없는 날짜는, 그날 `edition` 값을 가진 글을 묶어 에디션을 자동으로 만든다(분석 먼저, 우선순위 순)."""
     days = sorted({getattr(a, 'edition', '') for a in ARTICLES if getattr(a, 'edition', '')})
     for d in days:
-        if d in EDITIONS or d < max(EDITIONS):
+        if d in EDITIONS or d < max(EDITIONS, default=""):
             continue
         group = sorted([a for a in ARTICLES if getattr(a, 'edition', '') == d],
                        key=lambda a: (a.kind != 'analysis', -getattr(a, 'priority', 0), a.file))
