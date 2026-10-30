@@ -172,6 +172,7 @@ EDITORIAL_PATHS = json.loads((CONTENT / 'editorial-paths.json').read_text(encodi
 
 # ───────────────────────── 블로그 연동 (구글 · 네이버) ─────────────────────────
 BLOG_CACHE = CONTENT / 'blog-feed.json'
+BLOG_MAX_AGE_DAYS = {'naver': 7}   # 이 일수가 지난 네이버 글은 화면에서 뺀다
 
 
 def _strip(t: str) -> str:
@@ -272,7 +273,9 @@ def load_blogs() -> dict:
         except Exception as e:  # 네트워크가 막혀도 빌드는 계속, 지난번 캐시 사용
             print(f'blog {key}: 피드를 못 읽음 ({e.__class__.__name__}) — 캐시 사용')
     BLOG_CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding='utf-8')
-    return cache
+    # 네이버 영상 카드는 일주일이 지나면 홈·매거진에서 내린다 (캐시 파일은 그대로 두고 화면에 쓰는 목록만 거른다)
+    cutoff = (dt.datetime.utcnow() + dt.timedelta(hours=9) - dt.timedelta(days=BLOG_MAX_AGE_DAYS['naver'])).strftime('%Y-%m-%d')
+    return {k: ([p for p in v if p.get('date', '') >= cutoff] if k in BLOG_MAX_AGE_DAYS else v) for k, v in cache.items()}
 
 
 BLOGS = load_blogs()
