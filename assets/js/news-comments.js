@@ -55,7 +55,7 @@
     form.noValidate = true;
     form.setAttribute("data-news-comment-form", "");
     const nick = el("input"); nick.name = "nickname"; nick.maxLength = 30; nick.placeholder = "닉네임 (선택)"; nick.setAttribute("aria-label", "닉네임");
-    const body = el("textarea"); body.name = "body"; body.maxLength = 2000; body.required = true; body.setAttribute("aria-label", "댓글 내용"); body.placeholder = "이 글에 대한 생각을 남겨 주세요.";
+    const body = el("textarea"); body.name = "body"; body.maxLength = 2000; body.required = true; body.setAttribute("aria-label", "댓글 내용"); body.placeholder = box.dataset.question ? box.dataset.question + " 한 줄이면 충분해요." : "이 글에 대한 생각을 남겨 주세요.";
     const hp = el("label", "hp"); hp.setAttribute("aria-hidden", "true"); hp.append("website");
     const hpIn = el("input"); hpIn.name = "website"; hpIn.tabIndex = -1; hpIn.autocomplete = "off"; hp.append(hpIn);
     const act = el("div", "nc-actions");

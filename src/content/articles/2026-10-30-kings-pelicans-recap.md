@@ -11,6 +11,7 @@ image: ""
 image_alt: ""
 credit: ""
 slug: "kings-pelicans-recap-20261030"
+question: "애커프 34점 14어시스트, 0승 5패 팀에서 가장 인상 깊었던 건?"
 teams: ["SAC","NO"]
 sources: [{"label":"Field Level Media 피어스를 앞세운 펠리컨스, 승리 없는 킹스 상대로 첫 승","url":"https://fieldlevelmedia.com/nba/jeremiah-fears-pelicans-earn-first-victory-over-still-winless-kings/"},{"label":"ESPN 경기 페이지 (Pelicans 132-120 Kings)","url":"https://www.espn.com/nba/game/_/gameId/401909894/kings-pelicans"},{"label":"The Kings Herald 킹스 0-5, 애커프 34점","url":"https://kingsherald.com/articles/acuff-erupts-for-34-but-kings-fall-to-0-5-in-132-120-loss-to-pelicans/"}]
 ---

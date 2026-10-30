@@ -83,6 +83,7 @@ class Article:
         self.edition = fm.get('edition', '')
         self.kicker = fm.get('kicker', '')
         self.meta = fm.get('meta', '')
+        self.question = fm.get('question', '')  # 기사 끝 토론 질문 한 줄(없으면 경기 복기 글에 기본 질문)
         self.url = ''
 
     @property
@@ -1066,10 +1067,10 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
     on_article = path in ARTICLE_URLS
     thread_css = (f'<link rel="stylesheet" href="/assets/css/community-thread.css?v={VER}-v3">'
                   + (f'<link rel="stylesheet" href="/assets/css/community-admin.css?v={VER}-v1">' if on_board else '') if (on_board or on_article) else '')
-    news_comments_css = (f'<link rel="stylesheet" href="/assets/css/news-comments.css?v={VER}-v2">' if on_article else '')
+    news_comments_css = (f'<link rel="stylesheet" href="/assets/css/news-comments.css?v={VER}-v3">' if on_article else '')
     thread_js = (f'<script src="/assets/js/community-thread.js?v={VER}-v6" defer></script>'
                  + (f'<script src="/assets/js/community-admin.js?v={VER}-v1" defer></script>' if on_board else '') if (on_board or on_article) else '')
-    news_comments_js = (f'<script src="/assets/js/news-comments.js?v={VER}-v2" defer></script>' if on_article else '')
+    news_comments_js = (f'<script src="/assets/js/news-comments.js?v={VER}-v3" defer></script>' if on_article else '')
     vote_js = (f'<script src="/assets/js/game-vote.js?v={av("/assets/js/game-vote.js")}" defer></script><script src="/assets/js/my-team.js?v={av("/assets/js/my-team.js")}" defer></script>' if path == '/' else '')
     return f'''<!doctype html>
 <html lang="ko">
@@ -1515,8 +1516,12 @@ def build_article(a: Article):
     ed = f'<a class="more" href="/news/morning/{a.edition}/">{a.edition.replace("-", ".")} 모닝 에디션 전체 →</a>' if a.edition in EDITIONS else ''
     topic = quote(f'[토론] {a.title.rstrip(",.")}')
     anchor_title = f'[분석 토론] {a.title.rstrip(",.")[:100]}'
-    discussion_html = f'''<section class="news-comment-box" data-news-comments data-article-path="{esc(a.url)}" data-article-kind="{'news' if a.kind == 'news' else 'article'}" data-article-title="{esc(anchor_title)}" aria-label="토론">
+    is_recap = any(w in (a.kicker or '').upper() for w in ('RECAP', 'RESULT'))
+    question = a.question or ('이 경기에서 가장 기억에 남는 장면은?' if is_recap else '')
+    question_html = f'<p class="nc-question">{esc(question)} <small>한 줄이면 충분해요.</small></p>' if question else ''
+    discussion_html = f'''<section class="news-comment-box" data-news-comments data-article-path="{esc(a.url)}" data-article-kind="{'news' if a.kind == 'news' else 'article'}" data-article-title="{esc(anchor_title)}" data-question="{esc(question)}" aria-label="토론">
           <h2>이 글 이야기하기</h2>
+          {question_html}
           <p class="nc-intro">이 글에 남긴 댓글과 답글은 이 아래에 바로 보이고, FAN BOARD의 전체 이야기에도 함께 표시됩니다.</p>
           <div data-discussion-mount><p class="news-comment-empty">댓글을 불러오는 중…</p></div>
           <noscript><a class="pill" href="/community/?topic={topic}#write">{talk_icon()}팬 보드에 글쓰기</a></noscript>

@@ -11,6 +11,7 @@ image: ""
 image_alt: ""
 credit: ""
 slug: "cavaliers-hawks-recap-20261030"
+question: "마지막 공격에서 미첼이 놓친 두 번, 어떻게 보셨나요?"
 teams: ["CLE","ATL"]
 sources: [{"label":"TSN 오콩우 29점 12리바운드, 호크스가 캐벌리어스를 꺾고 연패 탈출","url":"https://www.tsn.ca/nba/article/okongwu-has-29-points-12-rebounds-as-hawks-beat-cavaliers-to-snap-skid/"},{"label":"Fox 8 캐벌리어스 114–111 패","url":"https://fox8.com/sports/cavaliers-fall-to-hawks-in-114-111-loss/"},{"label":"Yahoo 스포츠 하든 24점에도 캐벌리어스 패배","url":"https://sports.yahoo.com/articles/cavaliers-fall-hawks-despite-24-023926266.html"}]
 ---

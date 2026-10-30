@@ -9,3 +9,5 @@
 .news-comment-box .at-card{margin-top:4px}
 .news-comment-box .nc-status{color:var(--muted,#b4b7c0);font-size:14px}
 .news-discussion-source{font-size:14px;color:var(--red,#ed4252);font-weight:700;display:inline-block;margin-top:6px;font-family:var(--head)}
+.news-comment-box .nc-question{font-size:17px;font-weight:700;margin:0 0 8px}
+.news-comment-box .nc-question small{font-size:13px;font-weight:400;color:var(--muted,#b4b7c0)}

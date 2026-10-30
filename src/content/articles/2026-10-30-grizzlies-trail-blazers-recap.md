@@ -11,6 +11,7 @@ image: ""
 image_alt: ""
 credit: ""
 slug: "grizzlies-trail-blazers-recap-20261030"
+question: "부저의 첫 트리플더블, 오늘 MVP로 꼽으시나요?"
 teams: ["MEM","POR"]
 sources: [{"label":"Field Level Media 부저 첫 트리플더블, 무패 이어간 그리즐리스","url":"https://fieldlevelmedia.com/nba/cameron-boozer-tallies-first-triple-double-grizzlies-remain-unbeaten/"},{"label":"TSN 부저 첫 트리플더블, 그리즐리스가 트레일블레이저스 격파","url":"https://www.tsn.ca/nba/article/boozer-posts-first-career-triple-double-in-grizzlies-win-over-trail-blazers/"}]
 ---
