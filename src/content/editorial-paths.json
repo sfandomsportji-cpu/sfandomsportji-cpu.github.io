@@ -41,25 +41,6 @@
       ]
     },
     {
-      "id": "nlcs1",
-      "kind": "distinct-angle",
-      "league": "MLB",
-      "title": "NLCS 1차전 · 사전 배경과 경기 전 집중 분석",
-      "description": "두 글 모두 프리뷰입니다. 먼저 작성한 글은 초기 분석 맥락, 나중 글은 경기 직전 관전 항목으로 구분합니다. 복기로 오인하지 않습니다.",
-      "items": [
-        {
-          "file": "2026-10-10-mlb-nlcs-dodgers-brewers.md",
-          "role": "CONTEXT",
-          "label": "초기 분석 · 시리즈 전체 구조"
-        },
-        {
-          "file": "2026-10-11-nlcs-dodgers-brewers-game1.md",
-          "role": "PREVIEW",
-          "label": "후속 프리뷰 · 선발·불펜 변수"
-        }
-      ]
-    },
-    {
       "id": "kbo-weekend",
       "kind": "distinct-angle",
       "league": "KBO",

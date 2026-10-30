@@ -7,7 +7,6 @@
       "2026-09-16-tampa-bay-rays-al-east",
       "2026-09-16-philadelphia-phillies-nl-wild-card-race",
       "2026-09-16-two-runs",
-      "2026-09-16-perez-vs-gausman",
       "2026-09-16-vladimir-guerrero-jr"
     ]
   },
@@ -19,7 +18,6 @@
       "2026-09-18-los-angeles-dodgers-nl-west-champions",
       "2026-09-18-tampa-bay-rays-six-game-win-streak",
       "2026-09-18-one-inning-two-extra-base-hits",
-      "2026-09-18-cole-vs-rodriguez",
       "2026-09-18-kyle-tucker"
     ]
   },
@@ -31,7 +29,6 @@
       "2026-09-19-atlanta-braves-postseason-clinched",
       "2026-09-19-los-angeles-dodgers-nl-west-champions",
       "2026-09-19-trade-deadline-turnaround",
-      "2026-09-19-holmes-vs-wesneski",
       "2026-09-19-mookie-betts"
     ]
   },
@@ -41,8 +38,7 @@
     "intro": "오늘은 AL East 결전, 20–20 기록, 와일드카드 흐름, 다음 선발 매치업을 중심으로 봅니다. 단순한 결과 나열이 아니라 순위표의 압박, 선수 기록의 의미, 선발 매치업이 만들어내는 경기 구조를 함께 읽습니다. 결과를 예측하기보다 공식 기록과 현재 맥락을 연결하고, 독자가 다음 경기를 볼 때 무엇을 체크해야 하는지까지 이어지는 편집을 지향합니다.",
     "items": [
       "2026-09-22-tampa-bay-new-york-yankees-doubleheader",
-      "2026-09-22-milwaukee-jackson-chourio",
-      "2026-09-22-may-vs-wheeler"
+      "2026-09-22-milwaukee-jackson-chourio"
     ]
   },
   "2026-09-24": {
@@ -64,7 +60,6 @@
       "2026-09-26-milwaukee-brewers-mlb-best-record",
       "2026-09-26-rays-vs-phillies",
       "2026-09-26-the-final-48-hours",
-      "2026-09-26-dodgers-at-giants",
       "2026-09-26-freddy-peralta"
     ]
   },
@@ -76,7 +71,6 @@
       "2026-09-27-dodgers-vs-giants",
       "2026-09-27-braves-vs-marlins",
       "2026-09-27-the-al-west-paradox",
-      "2026-09-27-rays-at-phillies",
       "2026-09-27-michael-harris-ii"
     ]
   },
@@ -115,9 +109,6 @@
     "items": [
       "2026-10-07-warriors-lakers-preseason",
       "2026-10-07-76ers-knicks-preseason",
-      "2026-10-07-sixers-at-nets",
-      "2026-10-07-dodgers-at-braves-game4",
-      "2026-10-07-warriors-at-trail-blazers",
       "2026-10-07-stephen-curry-preseason"
     ]
   },
@@ -128,10 +119,7 @@
     "items": [
       "2026-10-08-dodgers-clinch-nlcs",
       "2026-10-08-guardians-force-game4",
-      "2026-10-08-brewers-at-padres-game4",
-      "2026-10-08-nba-preseason-watch",
-      "2026-10-07-warriors-at-trail-blazers",
-      "2026-10-07-sixers-at-nets"
+      "2026-10-08-nba-preseason-watch"
     ]
   },
   "2026-10-10": {
@@ -147,7 +135,6 @@
       "2026-10-10-lg-at-lotte",
       "2026-10-10-kbo-weekend-feature",
       "2026-10-10-mlb-alds-game5",
-      "2026-10-10-mlb-nlcs-dodgers-brewers",
       "2026-10-10-nba-preseason-seven",
       "2026-10-10-kleague-saturday"
     ]
@@ -157,10 +144,6 @@
     "subtitle": "SFANDOM × KAIRO · MLB · NFL · MLS · NBA · FAN BOARD",
     "intro": "10월 11일 일요일 오전 에디션. 다저스–밀워키 NLCS 1차전, 필라델피아–잭슨빌 런던전, MLS 주말 세 경기, 마카오 NBA 재대결과 오늘의 팬보드 주제까지 다섯 편을 묶었습니다. 한국시간으로 이미 시작된 MLS 경기는 프리뷰 작성 시점을 명시하며 완료 전 결과를 추정하지 않습니다.",
     "items": [
-      "2026-10-11-nlcs-dodgers-brewers-game1",
-      "2026-10-11-eagles-jaguars-london",
-      "2026-10-11-mls-weekend-watch",
-      "2026-10-11-mavericks-rockets-macao-rematch",
       "2026-10-11-fanboard-sunday-questions"
     ]
   }
