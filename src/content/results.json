@@ -1,3 +1,12 @@
 {
-  "2026-10-29-samsung-kia-playoff-game3": {"status": "final", "away": 6, "home": 4}
+  "2026-10-29-samsung-kia-playoff-game3": {
+    "status": "final",
+    "away": 6,
+    "home": 4
+  },
+  "2026-10-30-sono-samsung": {
+    "status": "final",
+    "away": 95,
+    "home": 87
+  }
 }

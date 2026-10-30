@@ -1340,6 +1340,15 @@ def build_home():
     win_band = (f'<a class="win-band" href="/analysis/review/" aria-label="분석 성공 {wb_hit}회, 전체 {wb_total}경기. 분석 기록 보기">'
                 f'<span class="wb-label">ANALYSIS</span><b class="wb-main">분석 성공 <em>{wb_hit}</em><i>/{wb_total}</i></b>'
                 f'<span class="wb-sub">경기 전에 남긴 전망과 실제 결과 기록 · 복기 리포트 →</span></a>') if wb_total else ''
+    ce = SITE.get('celebration') or {}
+    win_cele = ''
+    if ce.get('title'):
+        trophy = ('<svg class="wc-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M18 8h28v4h10v8c0 7-5 12-12 13a15 15 0 0 1-9 8v7h8v6H21v-6h8v-7a15 15 0 0 1-9-8C13 32 8 27 8 20v-8h10zm-4 8v4c0 3 2 6 5 7a30 30 0 0 1-1-11zm36 0h-4a30 30 0 0 1-1 11c3-1 5-4 5-7z"/></svg>')
+        win_cele = (f'<a class="win-cele" href="{esc(ce.get("link", "/analysis/review/"))}">'
+                    f'<span class="wc-confetti" aria-hidden="true"><i>🎉</i><i>🏆</i><i>🔥</i><i>🎊</i><i>⭐</i></span>'
+                    f'<span class="wc-badge">{trophy}</span>'
+                    f'<span class="wc-copy"><small>{esc(ce.get("kicker", ""))}</small><b>{esc(ce["title"])}</b><em>{esc(ce.get("text", ""))}</em></span>'
+                    f'<span class="wc-badge wc-right">{trophy}</span></a>')
     cv = SITE.get('community_video') or {}
     if cv.get('instagram_reel'):
         r = cv['instagram_reel']
@@ -1405,6 +1414,7 @@ def build_home():
     # 홈 '오늘 SOCCER' 줄: 카드가 클릭되지 않아 일단 홈에서만 내림(삭제 아님). 다시 올리려면 True로.
     sc_html = soccer_today() if (SHOW_HOME_SOCCER and soccer_today_active()) else ''
     body = f'''
+{win_cele}
 <section class="hero" aria-labelledby="heroTitle">
   <div class="hero-media">{media}</div>
   <div class="hero-shade" aria-hidden="true"></div>

@@ -55,6 +55,13 @@
       "feed": "https://rss.blog.naver.com/sfandomsport.xml"
     }
   },
+  "celebration": {
+    "icon": "trophy",
+    "kicker": "ANALYSIS SUCCESS",
+    "title": "축하합니다! 삼성 승리 분석 성공",
+    "text": "10.30 서울 삼성 95–87 고양 소노 · KBL 사상 첫 개막 9연승",
+    "link": "/analysis/review/"
+  },
   "analysis_record_base": {
     "hit": 68,
     "total": 73,
