@@ -15,8 +15,8 @@ slug: "villarreal-espanyol-20261030"
 away: "ESPANYOL"
 home: "VILLARREAL"
 kst: "10.31 05:00"
-glance: [["핵심", "비야레알 10위 승점 12 · 에스파뇰 18위 승점 8"], ["전적", "최근 두 경기 비야레알 승"], ["시선", "에스파뇰의 원정 득점"]]
-sources: [{"label":"Football Fixtures 비야레알","url":"https://footballfixtures.org/team/villarreal"},{"label":"APWin 비야레알","url":"https://www.apwin.com/team/villarreal-cf/"}]
+glance: [["핵심", "비야레알 10위 승점 12 · 에스파뇰 18위 승점 8"], ["전적", "최근 두 경기 비야레알 승"], ["시선", "챔스 PSG전(11.3)을 앞둔 비야레알의 선발"]]
+sources: [{"label":"UEFA 2026/27 챔피언스리그 리그 페이즈 일정","url":"https://www.uefa.com/uefachampionsleague/news/02a8-2174c9e9019d-f909a77bd77a-1000--2026-27-champions-league-all-the-league-phase-fixtures-a/"},{"label":"Football Fixtures 비야레알","url":"https://footballfixtures.org/team/villarreal"},{"label":"APWin 비야레알","url":"https://www.apwin.com/team/villarreal-cf/"}]
 ---
 라리가 11라운드에서 비야레알이 에스파뇰을 맞는다. 킥오프는 한국시간 10월 31일 새벽 5시다. 비야레알은 3승 3무 4패, 15득점 14실점으로 10위(승점 12)이고, 에스파뇰은 2승 2무 6패, 12득점 14실점으로 18위(승점 8)다. 에스파뇰은 이번에도 원정이다.
 
@@ -41,6 +41,10 @@ sources: [{"label":"Football Fixtures 비야레알","url":"https://footballfixtu
 2025.04.27 | 비야레알 1–0
 에스파뇰 | 리그 2승 2무 6패
 :::
+
+## 비야레알의 다음 일정
+
+비야레알은 11월 3일(현지 21시) 챔피언스리그 4라운드에서 PSG를 홈으로 맞는다(한국시간 11월 4일 새벽 5시). 이번 경기 4일 뒤다. PSG는 같은 날 밤 르아브르 원정을 치른다.
 
 ::: angle KAIRO VIEW
 순위표에는 4점 차이가 있지만 득실은 비슷하다. 누가 먼저 득점하는지, 한 골 차 경기가 될지를 가볍게 지켜본다. 선발은 킥오프 전에 확정된다.

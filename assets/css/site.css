@@ -1657,4 +1657,4 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 #today-analysis .ta-side em.ph{visibility:hidden}
 #today-analysis .ta-side.is-pick b{color:#fff}
 @media(max-width:900px){#today-analysis .ta-stage{gap:20px}#today-analysis .ta-stage i{margin-top:-22px}#today-analysis .ta-side b{font-size:13px}}
-#today-analysis .ta-stage .tlogo-wrap.kbo{padding:12px}
+#today-analysis .ta-stage .tlogo-wrap.kbo{padding:3px}

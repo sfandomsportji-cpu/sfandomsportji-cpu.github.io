@@ -16,7 +16,7 @@ away: "MAINZ"
 home: "ELVERSBERG"
 kst: "10.31 04:30"
 glance: [["핵심", "마인츠 7위 · 엘버스베르크 8위 · 모두 승점 10"], ["흐름", "두 팀 모두 직전 리그전 패배"], ["시선", "고득점 경기가 이어질지"]]
-sources: [{"label":"분데스리가 8라운드 순위","url":"https://www.bundesliga.com/jp/bundesliga/matchday/2026-2027/8/sv-elversberg-vs-1-fsv-mainz-05/table"},{"label":"Sports Mole 엘버스베르크–마인츠 경기 정보","url":"https://www.sportsmole.co.uk/football/bundesliga/elversberg-vs-mainz-05_game_260723.html"},{"label":"FotMob 엘버스베르크","url":"https://www.fotmob.com/teams/8232/overview"}]
+sources: [{"label":"분데스리가 8라운드 예상 선발","url":"https://www.bundesliga.com/de/bundesliga/spieltag/2026-2027/8/sv-elversberg-vs-1-fsv-mainz-05/lineup"},{"label":"BuliNews 마인츠 시즌 프리뷰","url":"https://bulinews.com/1-fsv-mainz-05-2026/27-season-preview-transfers-pre-season-predicted-lineup-and-predictions"},{"label":"hessenschau 엘버스베르크 경기 기록","url":"https://www.hessenschau.de/sport/ergebnisse-tabellen/fussball-1bl100~team_id-1205.html"},{"label":"분데스리가 8라운드 순위","url":"https://www.bundesliga.com/jp/bundesliga/matchday/2026-2027/8/sv-elversberg-vs-1-fsv-mainz-05/table"},{"label":"Sports Mole 엘버스베르크–마인츠 경기 정보","url":"https://www.sportsmole.co.uk/football/bundesliga/elversberg-vs-mainz-05_game_260723.html"},{"label":"FotMob 엘버스베르크","url":"https://www.fotmob.com/teams/8232/overview"}]
 ---
 분데스리가 8라운드에서 엘버스베르크가 마인츠를 홈으로 맞는다. 킥오프는 한국시간 10월 31일 새벽 4시 30분이다. 7경기를 치른 두 팀 모두 3승 1무 3패, 승점 10으로 같다. 마인츠가 득실 16–13으로 7위, 엘버스베르크가 12–15로 8위에 있다.
 
@@ -41,6 +41,21 @@ sources: [{"label":"분데스리가 8라운드 순위","url":"https://www.bundes
 바이에른 | 1–2 패
 아우크스부르크 | 4–3 승
 :::
+
+## 엘버스베르크: 터지면 이기고, 막히면 못 이겼다
+
+7경기 12득점 15실점으로 경기당 득점 약 1.7골, 실점 약 2.1골이다. 3골 이상 넣은 3경기(레버쿠젠, 묀헨글라트바흐, 아우크스부르크)는 모두 이겼고, 1골 이하로 막힌 4경기는 1무 3패였다. 2골을 넣은 경기는 아직 없다. 무실점 경기는 샬케전 0–0 한 번이다.
+
+::: stats
+3골 이상 득점 | 3경기 3승
+1골 이하 득점 | 4경기 1무 3패
+경기당 득점 | 약 1.7골
+경기당 실점 | 약 2.1골
+:::
+
+## 마인츠: 골이 많이 오가는 경기가 늘었다
+
+마인츠는 7경기 16득점 13실점이다. 확인된 최근 리그 5경기 중 4경기가 3골 이상 실점이었다(프랑크푸르트 1–3, 묀헨글라트바흐 4–3, 레버쿠젠 3–4, 브레멘 2–3). 샬케전은 1–0이었다. 우르스 피셔 감독 체제의 올 시즌 마인츠는 시즌 전 프리뷰에서 이전보다 능동적인 팀으로 평가됐다. 분데스리가 공식 페이지의 예상 선발에는 이재성이 올라 있다. 확정 선발은 킥오프 약 1시간 전에 나온다.
 
 ## 맞대결은 많지 않다
 
