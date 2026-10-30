@@ -1,9 +1,9 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-30T16:22+09:00",
+  "updated_at": "2026-10-30T18:58+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-30T16:22+09:00",
+      "checked_at": "2026-10-30T18:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -23,7 +23,7 @@
       ]
     },
     "NBA": {
-      "checked_at": "2026-10-30T16:22+09:00",
+      "checked_at": "2026-10-30T18:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -468,11 +468,37 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909904/nets-pacers"
+        },
+        {
+          "id": "NBA-401909905",
+          "league": "NBA",
+          "start_kst": "2026-11-02T10:30+09:00",
+          "away": "LAC",
+          "home": "GS",
+          "away_name": "LA Clippers",
+          "home_name": "Golden State Warriors",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909905/clippers-warriors"
+        },
+        {
+          "id": "NBA-401909906",
+          "league": "NBA",
+          "start_kst": "2026-11-02T11:00+09:00",
+          "away": "TOR",
+          "home": "LAL",
+          "away_name": "Toronto Raptors",
+          "home_name": "Los Angeles Lakers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909906/raptors-lakers"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-30T16:22+09:00",
+      "checked_at": "2026-10-30T18:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -648,7 +674,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-30T16:22+09:00",
+      "checked_at": "2026-10-30T18:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
