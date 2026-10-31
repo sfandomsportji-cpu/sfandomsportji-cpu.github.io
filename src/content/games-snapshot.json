@@ -1,44 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-10-31T20:30+09:00",
+  "updated_at": "2026-10-31T22:04+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-10-31T20:30+09:00",
+      "checked_at": "2026-10-31T22:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-10-31T20:30+09:00",
+      "checked_at": "2026-10-31T22:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909893",
-          "league": "NBA",
-          "start_kst": "2026-10-30T09:00+09:00",
-          "away": "CLE",
-          "home": "ATL",
-          "away_name": "Cleveland Cavaliers",
-          "home_name": "Atlanta Hawks",
-          "status": "final",
-          "away_score": 111,
-          "home_score": 114,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909893/cavaliers-hawks"
-        },
-        {
-          "id": "NBA-401909894",
-          "league": "NBA",
-          "start_kst": "2026-10-30T09:00+09:00",
-          "away": "SAC",
-          "home": "NO",
-          "away_name": "Sacramento Kings",
-          "home_name": "New Orleans Pelicans",
-          "status": "final",
-          "away_score": 120,
-          "home_score": 132,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909894/kings-pelicans"
-        },
         {
           "id": "NBA-401909895",
           "league": "NBA",
@@ -523,23 +497,10 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-10-31T20:30+09:00",
+      "checked_at": "2026-10-31T22:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NFL-401873023",
-          "league": "NFL",
-          "start_kst": "2026-10-30T09:15+09:00",
-          "away": "CAR",
-          "home": "GB",
-          "away_name": "Carolina Panthers",
-          "home_name": "Green Bay Packers",
-          "status": "final",
-          "away_score": 19,
-          "home_score": 27,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873023/panthers-packers"
-        },
         {
           "id": "NFL-401873024",
           "league": "NFL",
@@ -712,62 +673,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-10-31T20:30+09:00",
+      "checked_at": "2026-10-31T22:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892604",
-          "league": "NHL",
-          "start_kst": "2026-10-30T09:00+09:00",
-          "away": "BOS",
-          "home": "STL",
-          "away_name": "Boston Bruins",
-          "home_name": "St. Louis Blues",
-          "status": "final",
-          "away_score": 1,
-          "home_score": 4,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892604/bruins-blues"
-        },
-        {
-          "id": "NHL-401892605",
-          "league": "NHL",
-          "start_kst": "2026-10-30T09:00+09:00",
-          "away": "WSH",
-          "home": "NSH",
-          "away_name": "Washington Capitals",
-          "home_name": "Nashville Predators",
-          "status": "final",
-          "away_score": 4,
-          "home_score": 3,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892605/capitals-predators"
-        },
-        {
-          "id": "NHL-401892606",
-          "league": "NHL",
-          "start_kst": "2026-10-30T09:00+09:00",
-          "away": "MTL",
-          "home": "DAL",
-          "away_name": "Montreal Canadiens",
-          "home_name": "Dallas Stars",
-          "status": "final",
-          "away_score": 5,
-          "home_score": 2,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892606/canadiens-stars"
-        },
-        {
-          "id": "NHL-401892607",
-          "league": "NHL",
-          "start_kst": "2026-10-30T09:00+09:00",
-          "away": "NYI",
-          "home": "MIN",
-          "away_name": "New York Islanders",
-          "home_name": "Minnesota Wild",
-          "status": "final",
-          "away_score": 4,
-          "home_score": 3,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892607/islanders-wild"
-        },
         {
           "id": "NHL-401892608",
           "league": "NHL",
