@@ -56,9 +56,8 @@
     }
   },
   "celebration": {
-    "icon": "trophy",
-    "kicker": "ANALYSIS SUCCESS",
-    "title": "축하합니다! 3연속 올킬",
+    "kicker": "ANALYSIS · 3 IN A ROW",
+    "title": "분석 3연속 성공, 삼성이 두 번 웃었다",
     "text": "KBO 플레이오프 3차전 삼성 승 · KBL 서울 삼성 승 · 여자배구 GS칼텍스 승",
     "link": "/analysis/review/"
   },

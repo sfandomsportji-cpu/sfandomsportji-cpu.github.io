@@ -1349,12 +1349,17 @@ def build_home():
     ce = SITE.get('celebration') or {}
     win_cele = ''
     if ce.get('title'):
-        trophy = ('<svg class="wc-icon" viewBox="0 0 64 64" aria-hidden="true"><path fill="currentColor" d="M18 8h28v4h10v8c0 7-5 12-12 13a15 15 0 0 1-9 8v7h8v6H21v-6h8v-7a15 15 0 0 1-9-8C13 32 8 27 8 20v-8h10zm-4 8v4c0 3 2 6 5 7a30 30 0 0 1-1-11zm36 0h-4a30 30 0 0 1-1 11c3-1 5-4 5-7z"/></svg>')
+        _chk = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M3 8.5l3.2 3.2L13 4.8"/></svg>'
+        _items = ''
+        for t in (x.strip() for x in (ce.get('text') or '').split('·')):
+            if t:
+                lg, _, rest = t.partition(' ')
+                _items += f'<li>{_chk}<small>{esc(lg)}</small><span>{esc(rest)}</span></li>'
         win_cele = (f'<a class="win-cele" href="{esc(ce.get("link", "/analysis/review/"))}">'
-                    f'<span class="wc-confetti" aria-hidden="true"><i>🎉</i><i>🏆</i><i>🔥</i><i>🎊</i><i>⭐</i></span>'
-                    f'<span class="wc-badge">{trophy}</span>'
-                    f'<span class="wc-copy"><small>{esc(ce.get("kicker", ""))}</small><b>{esc(ce["title"])}</b><em>{esc(ce.get("text", ""))}</em></span>'
-                    f'<span class="wc-badge wc-right">{trophy}</span></a>')
+                    f'<span class="wc-main"><span class="wc-tag">{esc(ce.get("kicker", ""))}</span>'
+                    f'<b class="wc-title">{esc(ce["title"])}</b></span>'
+                    f'<ul class="wc-results">{_items}</ul>'
+                    f'<span class="wc-go">분석 기록 보기 →</span></a>')
     cv = SITE.get('community_video') or {}
     if cv.get('instagram_reel'):
         r = cv['instagram_reel']
