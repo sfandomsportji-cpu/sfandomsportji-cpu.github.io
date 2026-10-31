@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-01T02:53+09:00",
+  "updated_at": "2026-11-01T05:40+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-01T02:53+09:00",
+      "checked_at": "2026-11-01T05:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-01T02:53+09:00",
+      "checked_at": "2026-11-01T05:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -151,10 +151,10 @@
           "home": "UTAH",
           "away_name": "Portland Trail Blazers",
           "home_name": "Utah Jazz",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909896/trail-blazers-jazz"
+          "status": "live",
+          "away_score": 68,
+          "home_score": 48,
+          "source_url": "https://www.espn.com/nba/game?gameId=401909896"
         },
         {
           "id": "NBA-401909897",
@@ -484,7 +484,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-01T02:53+09:00",
+      "checked_at": "2026-11-01T05:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -660,7 +660,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-01T02:53+09:00",
+      "checked_at": "2026-11-01T05:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -711,10 +711,10 @@
           "home": "BOS",
           "away_name": "Chicago Blackhawks",
           "home_name": "Boston Bruins",
-          "status": "live",
-          "away_score": 1,
-          "home_score": 1,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892614"
+          "status": "final",
+          "away_score": 4,
+          "home_score": 5,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892614/blackhawks-bruins"
         },
         {
           "id": "NHL-401892615",
@@ -724,10 +724,10 @@
           "home": "DET",
           "away_name": "St. Louis Blues",
           "home_name": "Detroit Red Wings",
-          "status": "live",
-          "away_score": 1,
-          "home_score": 1,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892615"
+          "status": "final",
+          "away_score": 5,
+          "home_score": 4,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892615/blues-red-wings"
         },
         {
           "id": "NHL-401892616",
@@ -737,10 +737,10 @@
           "home": "NSH",
           "away_name": "Tampa Bay Lightning",
           "home_name": "Nashville Predators",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892616/lightning-predators"
+          "status": "live",
+          "away_score": 4,
+          "home_score": 4,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892616"
         },
         {
           "id": "NHL-401892617",
@@ -750,9 +750,9 @@
           "home": "NYI",
           "away_name": "Edmonton Oilers",
           "home_name": "New York Islanders",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
+          "status": "final",
+          "away_score": 4,
+          "home_score": 0,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892617/oilers-islanders"
         },
         {
@@ -763,10 +763,10 @@
           "home": "LA",
           "away_name": "Buffalo Sabres",
           "home_name": "Los Angeles Kings",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892618/sabres-kings"
+          "status": "live",
+          "away_score": 1,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892618"
         },
         {
           "id": "NHL-401892619",
@@ -776,10 +776,10 @@
           "home": "SJ",
           "away_name": "Ottawa Senators",
           "home_name": "San Jose Sharks",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892619/senators-sharks"
+          "status": "live",
+          "away_score": 1,
+          "home_score": 1,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892619"
         },
         {
           "id": "NHL-401892620",
