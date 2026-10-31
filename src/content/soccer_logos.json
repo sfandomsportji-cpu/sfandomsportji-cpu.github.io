@@ -141,5 +141,12 @@
   "KUCHING CITY FC": "other-asia/kuching-city-fc.png",
   "LE HAVRE": "ligue-1/le-havre-ac.png",
   "MAINZ": "bundesliga/1-fsv-mainz-05.png",
-  "ELVERSBERG": "bundesliga/sv-07-elversberg.png"
+  "ELVERSBERG": "bundesliga/sv-07-elversberg.png",
+  "BRIGHTON": "premier-league/brighton-hove-albion.png",
+  "UDINESE": "serie-a/udinese-calcio.png",
+  "DORTMUND": "bundesliga/borussia-dortmund.png",
+  "MÁLAGA": "la-liga/malaga-cf.png",
+  "CRYSTAL PALACE": "premier-league/crystal-palace.png",
+  "MILAN": "serie-a/ac-milan.png",
+  "ALAVÉS": "la-liga/deportivo-alaves.png"
 }

@@ -700,13 +700,16 @@ def analysis_row(a: Article, opened: bool = False) -> str:
 
 # 오늘 축구 — 홈 가로 카드 줄 (편집부 일정표. 배당·확률 표기 없음, 킥오프는 한국시간)
 SOCCER_TODAY = {
-    'label': '10.20 (화) 새벽',
-    'until': '2026-10-20T05:00:00+09:00',  # 이 시각(한국시간)이 지나면 홈에서 자동으로 내림. 새 일정은 label·matches·until 을 함께 갱신
+    'label': '11.01 (일) 새벽',
+    'until': '2026-11-01T06:00:00+09:00',  # 이 시각(한국시간)이 지나면 홈에서 자동으로 내림. 새 일정은 label·matches·until 을 함께 갱신
     'matches': [
-        ('01:30', '세리에 A', 'serie-a/ac-monza.png', '몬자', 'serie-a/cagliari-calcio.png', '칼리아리'),
-        ('03:45', '세리에 A', 'serie-a/parma-calcio-1913.png', '파르마', 'serie-a/torino-fc.png', '토리노'),
-        ('04:00', '프리미어리그', 'premier-league/tottenham-hotspur.png', '토트넘', 'premier-league/coventry-city.png', '코벤트리'),
-        ('04:00', '라리가', 'la-liga/getafe-cf.png', '헤타페', 'la-liga/rayo-vallecano.png', '라요 바예카노'),
+        ('00:00', '프리미어리그', 'premier-league/manchester-city.png', '맨시티', 'premier-league/brighton-hove-albion.png', '브라이튼'),
+        ('02:00', '세리에 A', 'serie-a/udinese-calcio.png', '우디네세', 'serie-a/as-roma.png', '로마'),
+        ('02:30', '분데스리가', 'bundesliga/bayern-munich.png', '바이에른', 'bundesliga/borussia-dortmund.png', '도르트문트'),
+        ('02:30', '라리가', 'la-liga/real-betis-balompie.png', '베티스', 'la-liga/malaga-cf.png', '말라가'),
+        ('02:30', '프리미어리그', 'premier-league/tottenham-hotspur.png', '토트넘', 'premier-league/crystal-palace.png', '팰리스'),
+        ('04:45', '세리에 A', 'serie-a/ac-milan.png', '밀란', 'serie-a/inter-milan.png', '인테르'),
+        ('05:00', '라리가', 'la-liga/fc-barcelona.png', '바르셀로나', 'la-liga/deportivo-alaves.png', '알라베스'),
     ],
 }
 
@@ -776,7 +779,7 @@ def soccer_today_active() -> bool:
 
 SOCCER_LINKS = {}
 for _a in ARTICLES:
-    _m = {'monza-cagliari-20261019': '몬자', 'parma-torino-20261019': '파르마', 'tottenham-coventry-20261019': '토트넘', 'getafe-rayo-20261019': '헤타페'}
+    _m = {'monza-cagliari-20261019': '몬자', 'parma-torino-20261019': '파르마', 'tottenham-coventry-20261019': '토트넘', 'getafe-rayo-20261019': '헤타페', 'mancity-brighton-20261031': '맨시티', 'udinese-roma-20261031': '우디네세', 'bayern-dortmund-20261031': '바이에른', 'betis-malaga-20261031': '베티스', 'tottenham-palace-20261031': '토트넘', 'milan-inter-20261031': '밀란', 'barcelona-alaves-20261031': '바르셀로나'}
     if getattr(_a, 'slug', '') in _m:
         SOCCER_LINKS[_m[_a.slug]] = _a.url
 
