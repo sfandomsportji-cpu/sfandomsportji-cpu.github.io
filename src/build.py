@@ -1112,7 +1112,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
-{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261028-crests-v2">' if path in ('/', '/games/') else '')}
+{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261102-ks-v1">' if path in ('/', '/games/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/editorial-links.css?v={av("/assets/css/editorial-links.css")}">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}
@@ -2467,22 +2467,18 @@ def kbo_bracket() -> str:
         rows = ''.join(f'<li{" class=win" if r[3] else ""}><span class="kb-lg">{mark(r[0])}</span><b>{esc(r[1])}</b><em>{r[2]}</em></li>' for r in stage['rows'])
         return (f'<div class="kb-stage"><h4>{esc(stage["title"])}</h4><small>({esc(stage["sub"])})</small>'
                 f'<ul class="kb-box">{rows}</ul><p>{esc(stage["caption"])}</p></div>')
-    po = d['po']
+    ks = d['ks']
     cands = sorted([a for a in ARTICLES if a.kind == 'analysis' and a.league == 'KBO' and getattr(a, 'away', '')],
                    key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
     link = f'<a class="kb-go" href="{cands[0].url}">분석 보기 <span aria-hidden="true">›</span></a>' if cands else ''
-    a_, b_ = po['rows']
-    center = (f'<div class="kb-stage kb-main"><h4>{esc(po["title"])}</h4><small>({esc(po["sub"])})</small>'
+    a_, b_ = ks['rows']
+    # 가장 마지막 단계(한국시리즈)를 크게 보여 주고, 앞 단계는 작은 상자로 이어 붙인다.
+    center = (f'<div class="kb-stage kb-main"><h4>{esc(ks["title"])}</h4><small>({esc(ks["sub"])})</small>'
               f'<div class="kb-duel"><span class="kb-big">{mark(a_[0])}</span><span class="kb-score"><b>{a_[2]}</b><i>VS</i><b>{b_[2]}</b></span>'
-              f'<span class="kb-big">{mark(b_[0])}</span></div><p>{esc(po["caption"])}</p>{link}</div>')
-    ks = d['ks']
-    kt = ks['team']
-    right = (f'<div class="kb-stage"><h4>{esc(ks["title"])}</h4><small>({esc(ks["sub"])})</small>'
-             f'<ul class="kb-box"><li class=win><span class="kb-lg">{mark(kt[0])}</span><b>{esc(kt[1])}</b><em>직행</em></li>'
-             f'<li class=wait><span class="kb-lg kb-q">?</span><b>{esc(ks["wait"])}</b><em>&ndash;</em></li></ul><p>{esc(kt[2])}</p></div>')
-    return (f'<div class="kb-bracket" aria-label="KBO 포스트시즌 대진표"><div class="kb-top"><strong>KBO 포스트시즌</strong>'
+              f'<span class="kb-big">{mark(b_[0])}</span></div><p>{esc(ks["caption"])}</p>{link}</div>')
+    return (f'<div class="kb-bracket" aria-label="KBO 포스트시즌 대진표"><div class="kb-top"><strong>KBO 한국시리즈</strong>'
             f'<span class="kb-date">{esc(d["updated"])} 기준</span></div>'
-            f'<div class="kb-grid">{mini(d["wildcard"])}{mini(d["semi"])}{center}{right}</div></div>')
+            f'<div class="kb-grid">{mini(d["wildcard"])}{mini(d["semi"])}{mini(d["po"])}{center}</div></div>')
 
 
 def game_scroll() -> tuple[str, list]:
