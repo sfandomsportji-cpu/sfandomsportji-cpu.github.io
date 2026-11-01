@@ -487,13 +487,18 @@ def team_badge(a: Article, i: int, size: str = 'lg') -> str:
     return badge(teams[i], team_color(teams[i], lg), size, league=lg if lg in LOGO_SOURCES else 'mlb')
 
 
+def soccer_logo_url(rel: str) -> str:
+    """soccer_logos.json 값 → 사이트 경로. 'conference-league/…'는 assets/teams/conference-league/, 그 밖은 soccer/2026-27/."""
+    return f'/assets/teams/{rel}' if rel.startswith('conference-league/') else f'/assets/teams/soccer/2026-27/{rel}'
+
+
 def soccer_badge(name: str, size: str = '') -> str:
     """축구 구단 로고(assets/teams/soccer/2026-27). soccer_logos.json에 없는 팀은 빈 문자열."""
     rel = SOCCER_LOGOS.get(name.upper().strip())
     if not rel:
         return ''
     return (f'<span class="tlogo-wrap {size}" data-abbr="{esc(name)}" style="--c:#444" title="{esc(name)}">'
-            f'<img class="tlogo" src="/assets/teams/soccer/2026-27/{rel}" alt="{esc(name)}" style="{soccer_logo_style(rel, LOGO_FIT_PLAIN)}" width="40" height="40" '
+            f'<img class="tlogo" src="{soccer_logo_url(rel)}" alt="{esc(name)}" style="{soccer_logo_style(rel, LOGO_FIT_PLAIN)}" width="40" height="40" '
             f'loading="lazy" decoding="async"></span>')
 
 
@@ -762,7 +767,7 @@ def logo_style(key: str, fit: tuple) -> str:
 
 
 def soccer_logo_style(rel: str, fit: tuple) -> str:
-    return logo_style(f'soccer/2026-27/{rel}', fit)
+    return logo_style(rel if rel.startswith('conference-league/') else f'soccer/2026-27/{rel}', fit)
 
 
 HOME_HIDE_MLB = True  # 홈에서만 MLB 노출 숨김 (False면 복원). /mlb/ 등 다른 페이지는 그대로
@@ -786,7 +791,7 @@ for _a in ARTICLES:
 
 def soccer_today() -> str:
     def logo(rel, name):
-        return (f'<span class="sc-team"><span class="sc-logo"><img src="/assets/teams/soccer/2026-27/{rel}" alt="{esc(name)}" '
+        return (f'<span class="sc-team"><span class="sc-logo"><img src="{soccer_logo_url(rel)}" alt="{esc(name)}" '
                 f'style="{soccer_logo_style(rel, LOGO_FIT_BADGE)}" width="64" height="64" loading="lazy" decoding="async"></span><b>{esc(name)}</b></span>')
     cards = ''.join(
         f'<a class="sc-card" role="listitem" href="{SOCCER_LINKS.get(h, "/analysis/")}" aria-label="{esc(h)} 대 {esc(a)} {t} 킥오프, 분석 보기">'

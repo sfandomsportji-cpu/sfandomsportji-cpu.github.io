@@ -1958,5 +1958,453 @@
     0,
     0,
     0.74
+  ],
+  "conference-league/aek-athens.png": [
+    0.0,
+    1.74,
+    0.0,
+    1.74,
+    0.742
+  ],
+  "conference-league/aek-larnaca.png": [
+    0.0,
+    10.33,
+    0.0,
+    10.33,
+    0.793
+  ],
+  "conference-league/apoel.png": [
+    0.0,
+    13.33,
+    0.0,
+    13.17,
+    0.735
+  ],
+  "conference-league/az-alkmaar.png": [
+    30.33,
+    0.0,
+    30.83,
+    0.0,
+    1.979
+  ],
+  "conference-league/aberdeen.png": [
+    0.0,
+    0.0,
+    0.33,
+    0.0,
+    0.771
+  ],
+  "conference-league/astana.png": [
+    14.0,
+    0.0,
+    17.5,
+    0.5,
+    1.453
+  ],
+  "conference-league/borac-banja-luka.png": [
+    3.33,
+    2.5,
+    0.0,
+    2.5,
+    0.983
+  ],
+  "conference-league/breidablik.png": [
+    0.33,
+    10.33,
+    0.33,
+    10.33,
+    0.799
+  ],
+  "conference-league/celje.png": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "conference-league/cercle-brugge.png": [
+    0.0,
+    8.33,
+    0.0,
+    9.0,
+    0.827
+  ],
+  "conference-league/chelsea.png": [
+    11.33,
+    0.0,
+    11.33,
+    0.0,
+    0.994
+  ],
+  "conference-league/copenhagen.png": [
+    11.33,
+    0.0,
+    11.33,
+    0.0,
+    0.994
+  ],
+  "conference-league/crystal-palace.png": [
+    2.0,
+    0.0,
+    2.0,
+    0.0,
+    0.8
+  ],
+  "conference-league/dinamo-minsk.png": [
+    0.0,
+    9.0,
+    0.0,
+    8.33,
+    0.827
+  ],
+  "conference-league/djurgarden.png": [
+    0.0,
+    8.33,
+    0.0,
+    8.33,
+    0.833
+  ],
+  "conference-league/drita.png": [
+    0.0,
+    20.5,
+    0.0,
+    21.17,
+    0.583
+  ],
+  "conference-league/dynamo-kyiv.png": [
+    0.0,
+    14.75,
+    0.0,
+    14.75,
+    0.542
+  ],
+  "conference-league/fiorentina.png": [
+    11.33,
+    0.0,
+    11.33,
+    0.0,
+    0.994
+  ],
+  "conference-league/gent.png": [
+    14.67,
+    3.9,
+    14.67,
+    3.9,
+    1.002
+  ],
+  "conference-league/hjk-helsinki.png": [
+    0.0,
+    7.5,
+    0.0,
+    7.5,
+    0.85
+  ],
+  "conference-league/hacken.png": [
+    0.33,
+    0.0,
+    0.83,
+    0.0,
+    0.777
+  ],
+  "conference-league/hamrun-spartans.png": [
+    0.0,
+    19.0,
+    0.0,
+    19.67,
+    0.613
+  ],
+  "conference-league/hearts.png": [
+    1.83,
+    0.33,
+    1.83,
+    0.0,
+    1.035
+  ],
+  "conference-league/heidenheim.png": [
+    0.0,
+    9.67,
+    0.0,
+    9.0,
+    0.813
+  ],
+  "conference-league/istanbul-basaksehir.png": [
+    0.0,
+    11.17,
+    0.0,
+    11.83,
+    0.77
+  ],
+  "conference-league/jagiellonia-bialystok.png": [
+    0.0,
+    18.33,
+    0.0,
+    18.33,
+    0.633
+  ],
+  "conference-league/kups.png": [
+    1.17,
+    21.17,
+    0.0,
+    21.83,
+    0.577
+  ],
+  "conference-league/lask.png": [
+    0.0,
+    9.67,
+    0.0,
+    9.67,
+    0.807
+  ],
+  "conference-league/larne.png": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "conference-league/lausanne-sport.png": [
+    0.0,
+    13.33,
+    0.0,
+    13.17,
+    0.735
+  ],
+  "conference-league/lech-poznan.png": [
+    0.0,
+    5.42,
+    0.0,
+    4.77,
+    0.69
+  ],
+  "conference-league/legia-warsaw.png": [
+    0.83,
+    0.0,
+    1.5,
+    0.0,
+    0.787
+  ],
+  "conference-league/lincoln-red-imps.png": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "conference-league/lugano.png": [
+    11.33,
+    0.0,
+    11.33,
+    0.0,
+    0.994
+  ],
+  "conference-league/mainz.png": [
+    3.33,
+    0.0,
+    3.33,
+    0.0,
+    1.071
+  ],
+  "conference-league/mlada-boleslav.png": [
+    0.0,
+    18.33,
+    0.0,
+    18.33,
+    0.633
+  ],
+  "conference-league/molde.png": [
+    29.0,
+    0.0,
+    29.5,
+    0.0,
+    1.851
+  ],
+  "conference-league/noah.png": [
+    0.0,
+    19.0,
+    0.0,
+    19.67,
+    0.613
+  ],
+  "conference-league/olimpija-ljubljana.png": [
+    0.0,
+    9.0,
+    0.0,
+    11.17,
+    0.798
+  ],
+  "conference-league/omonia-nicosia.png": [
+    0.0,
+    7.83,
+    0.0,
+    8.33,
+    0.838
+  ],
+  "conference-league/panathinaikos.png": [
+    11.33,
+    0.0,
+    11.33,
+    0.0,
+    0.994
+  ],
+  "conference-league/petrocub.png": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "conference-league/rakow-czestochowa.png": [
+    0.0,
+    7.5,
+    0.0,
+    7.5,
+    0.85
+  ],
+  "conference-league/rapid-wien.png": [
+    0.5,
+    10.33,
+    0.0,
+    9.67,
+    0.804
+  ],
+  "conference-league/rayo-vallecano.png": [
+    15.83,
+    0.0,
+    16.0,
+    0.0,
+    1.127
+  ],
+  "conference-league/real-betis.png": [
+    16.83,
+    0.0,
+    16.83,
+    0.0,
+    1.158
+  ],
+  "conference-league/rijeka.png": [
+    0.0,
+    8.33,
+    0.0,
+    8.33,
+    0.833
+  ],
+  "conference-league/samsunspor.png": [
+    0.0,
+    9.33,
+    0.0,
+    9.17,
+    0.815
+  ],
+  "conference-league/shamrock-rovers.png": [
+    0.0,
+    4.0,
+    0.0,
+    4.0,
+    0.92
+  ],
+  "conference-league/shelbourne.png": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "conference-league/shkendija.png": [
+    0.0,
+    14.67,
+    0.0,
+    14.67,
+    0.707
+  ],
+  "conference-league/sigma-olomouc.png": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "conference-league/sparta-prague.png": [
+    11.33,
+    1.08,
+    11.33,
+    1.3,
+    0.97
+  ],
+  "conference-league/st-gallen.png": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "conference-league/strasbourg.png": [
+    11.33,
+    0.0,
+    11.33,
+    0.0,
+    0.994
+  ],
+  "conference-league/tsc-backa-topola.png": [
+    0.0,
+    1.83,
+    0.0,
+    1.83,
+    0.963
+  ],
+  "conference-league/the-new-saints.png": [
+    0.0,
+    7.5,
+    0.0,
+    7.5,
+    0.85
+  ],
+  "conference-league/universitatea-craiova.png": [
+    0.0,
+    14.67,
+    0.0,
+    14.67,
+    0.707
+  ],
+  "conference-league/vikingur-reykjavik.png": [
+    0.0,
+    5.33,
+    0.0,
+    5.33,
+    0.893
+  ],
+  "conference-league/vitoria-guimaraes.png": [
+    0.0,
+    17.5,
+    0.0,
+    17.5,
+    0.65
+  ],
+  "conference-league/zrinjski-mostar.png": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0
+  ],
+  "conference-league/pafos.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.787
+  ],
+  "conference-league/shakhtar-donetsk.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.647
+  ],
+  "conference-league/slovan-bratislava.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.793
   ]
 }
