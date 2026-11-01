@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-02T05:50+09:00",
+  "updated_at": "2026-11-02T05:58+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-02T05:50+09:00",
+      "checked_at": "2026-11-02T05:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-02T05:50+09:00",
+      "checked_at": "2026-11-02T05:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -113,8 +113,8 @@
           "away_name": "Boston Celtics",
           "home_name": "Orlando Magic",
           "status": "live",
-          "away_score": 11,
-          "home_score": 13,
+          "away_score": 19,
+          "home_score": 20,
           "source_url": "https://www.espn.com/nba/game?gameId=401909903"
         },
         {
@@ -354,7 +354,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-02T05:50+09:00",
+      "checked_at": "2026-11-02T05:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -379,10 +379,10 @@
           "home": "TB",
           "away_name": "Atlanta Falcons",
           "home_name": "Tampa Bay Buccaneers",
-          "status": "live",
+          "status": "final",
           "away_score": 0,
           "home_score": 16,
-          "source_url": "https://www.espn.com/nfl/game?gameId=401873025"
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873025/falcons-buccaneers"
         },
         {
           "id": "NFL-401873026",
@@ -394,7 +394,7 @@
           "home_name": "Buffalo Bills",
           "status": "live",
           "away_score": 10,
-          "home_score": 23,
+          "home_score": 29,
           "source_url": "https://www.espn.com/nfl/game?gameId=401873026"
         },
         {
@@ -432,7 +432,7 @@
           "away_name": "Las Vegas Raiders",
           "home_name": "New York Jets",
           "status": "live",
-          "away_score": 35,
+          "away_score": 38,
           "home_score": 33,
           "source_url": "https://www.espn.com/nfl/game?gameId=401873029"
         },
@@ -446,7 +446,7 @@
           "home_name": "Detroit Lions",
           "status": "live",
           "away_score": 15,
-          "home_score": 12,
+          "home_score": 19,
           "source_url": "https://www.espn.com/nfl/game?gameId=401873030"
         },
         {
@@ -459,7 +459,7 @@
           "home_name": "Cincinnati Bengals",
           "status": "live",
           "away_score": 28,
-          "home_score": 23,
+          "home_score": 29,
           "source_url": "https://www.espn.com/nfl/game?gameId=401873031"
         },
         {
@@ -530,7 +530,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-02T05:50+09:00",
+      "checked_at": "2026-11-02T05:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
