@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-02T01:24+09:00",
+  "updated_at": "2026-11-02T05:50+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-02T01:24+09:00",
+      "checked_at": "2026-11-02T05:50+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-02T01:24+09:00",
+      "checked_at": "2026-11-02T05:50+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -112,10 +112,10 @@
           "home": "ORL",
           "away_name": "Boston Celtics",
           "home_name": "Orlando Magic",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909903/celtics-magic"
+          "status": "live",
+          "away_score": 11,
+          "home_score": 13,
+          "source_url": "https://www.espn.com/nba/game?gameId=401909903"
         },
         {
           "id": "NBA-401909904",
@@ -354,7 +354,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-02T01:24+09:00",
+      "checked_at": "2026-11-02T05:50+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -366,10 +366,10 @@
           "home": "DAL",
           "away_name": "Arizona Cardinals",
           "home_name": "Dallas Cowboys",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873024/cardinals-cowboys"
+          "status": "live",
+          "away_score": 17,
+          "home_score": 27,
+          "source_url": "https://www.espn.com/nfl/game?gameId=401873024"
         },
         {
           "id": "NFL-401873025",
@@ -379,10 +379,10 @@
           "home": "TB",
           "away_name": "Atlanta Falcons",
           "home_name": "Tampa Bay Buccaneers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873025/falcons-buccaneers"
+          "status": "live",
+          "away_score": 0,
+          "home_score": 16,
+          "source_url": "https://www.espn.com/nfl/game?gameId=401873025"
         },
         {
           "id": "NFL-401873026",
@@ -392,10 +392,10 @@
           "home": "BUF",
           "away_name": "Baltimore Ravens",
           "home_name": "Buffalo Bills",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873026/ravens-bills"
+          "status": "live",
+          "away_score": 10,
+          "home_score": 23,
+          "source_url": "https://www.espn.com/nfl/game?gameId=401873026"
         },
         {
           "id": "NFL-401873027",
@@ -405,10 +405,10 @@
           "home": "PIT",
           "away_name": "Cleveland Browns",
           "home_name": "Pittsburgh Steelers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873027/browns-steelers"
+          "status": "live",
+          "away_score": 6,
+          "home_score": 27,
+          "source_url": "https://www.espn.com/nfl/game?gameId=401873027"
         },
         {
           "id": "NFL-401873028",
@@ -418,10 +418,10 @@
           "home": "JAX",
           "away_name": "Indianapolis Colts",
           "home_name": "Jacksonville Jaguars",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873028/colts-jaguars"
+          "status": "live",
+          "away_score": 7,
+          "home_score": 42,
+          "source_url": "https://www.espn.com/nfl/game?gameId=401873028"
         },
         {
           "id": "NFL-401873029",
@@ -431,10 +431,10 @@
           "home": "NYJ",
           "away_name": "Las Vegas Raiders",
           "home_name": "New York Jets",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873029/raiders-jets"
+          "status": "live",
+          "away_score": 35,
+          "home_score": 33,
+          "source_url": "https://www.espn.com/nfl/game?gameId=401873029"
         },
         {
           "id": "NFL-401873030",
@@ -444,10 +444,10 @@
           "home": "DET",
           "away_name": "Minnesota Vikings",
           "home_name": "Detroit Lions",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873030/vikings-lions"
+          "status": "live",
+          "away_score": 15,
+          "home_score": 12,
+          "source_url": "https://www.espn.com/nfl/game?gameId=401873030"
         },
         {
           "id": "NFL-401873031",
@@ -457,10 +457,10 @@
           "home": "CIN",
           "away_name": "Tennessee Titans",
           "home_name": "Cincinnati Bengals",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873031/titans-bengals"
+          "status": "live",
+          "away_score": 28,
+          "home_score": 23,
+          "source_url": "https://www.espn.com/nfl/game?gameId=401873031"
         },
         {
           "id": "NFL-401873032",
@@ -530,7 +530,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-02T01:24+09:00",
+      "checked_at": "2026-11-02T05:50+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -672,9 +672,9 @@
           "home": "CAR",
           "away_name": "Winnipeg Jets",
           "home_name": "Carolina Hurricanes",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
+          "status": "final",
+          "away_score": 0,
+          "home_score": 7,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892624/jets-hurricanes"
         },
         {
@@ -685,10 +685,10 @@
           "home": "WSH",
           "away_name": "Minnesota Wild",
           "home_name": "Washington Capitals",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892625/wild-capitals"
+          "status": "live",
+          "away_score": 2,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892625"
         },
         {
           "id": "NHL-401892626",
