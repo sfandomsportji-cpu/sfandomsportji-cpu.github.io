@@ -487,9 +487,12 @@ def team_badge(a: Article, i: int, size: str = 'lg') -> str:
     return badge(teams[i], team_color(teams[i], lg), size, league=lg if lg in LOGO_SOURCES else 'mlb')
 
 
+UEFA_LOGO_DIRS = ('conference-league/', 'champions-league/', 'europa-league/')
+
+
 def soccer_logo_url(rel: str) -> str:
-    """soccer_logos.json 값 → 사이트 경로. 'conference-league/…'는 assets/teams/conference-league/, 그 밖은 soccer/2026-27/."""
-    return f'/assets/teams/{rel}' if rel.startswith('conference-league/') else f'/assets/teams/soccer/2026-27/{rel}'
+    """soccer_logos.json 값 → 사이트 경로. 'conference-league/·champions-league/·europa-league/…'는 assets/teams/ 아래 해당 폴더, 그 밖은 soccer/2026-27/."""
+    return f'/assets/teams/{rel}' if rel.startswith(UEFA_LOGO_DIRS) else f'/assets/teams/soccer/2026-27/{rel}'
 
 
 def soccer_badge(name: str, size: str = '') -> str:
@@ -767,7 +770,7 @@ def logo_style(key: str, fit: tuple) -> str:
 
 
 def soccer_logo_style(rel: str, fit: tuple) -> str:
-    return logo_style(rel if rel.startswith('conference-league/') else f'soccer/2026-27/{rel}', fit)
+    return logo_style(rel if rel.startswith(UEFA_LOGO_DIRS) else f'soccer/2026-27/{rel}', fit)
 
 
 HOME_HIDE_MLB = True  # 홈에서만 MLB 노출 숨김 (False면 복원). /mlb/ 등 다른 페이지는 그대로
