@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-02T05:58+09:00",
+  "updated_at": "2026-11-02T06:02+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-02T05:58+09:00",
+      "checked_at": "2026-11-02T06:02+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-02T05:58+09:00",
+      "checked_at": "2026-11-02T06:02+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -114,7 +114,7 @@
           "home_name": "Orlando Magic",
           "status": "live",
           "away_score": 19,
-          "home_score": 20,
+          "home_score": 23,
           "source_url": "https://www.espn.com/nba/game?gameId=401909903"
         },
         {
@@ -354,7 +354,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-02T05:58+09:00",
+      "checked_at": "2026-11-02T06:02+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -367,7 +367,7 @@
           "away_name": "Arizona Cardinals",
           "home_name": "Dallas Cowboys",
           "status": "live",
-          "away_score": 17,
+          "away_score": 23,
           "home_score": 27,
           "source_url": "https://www.espn.com/nfl/game?gameId=401873024"
         },
@@ -530,7 +530,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-02T05:58+09:00",
+      "checked_at": "2026-11-02T06:02+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
