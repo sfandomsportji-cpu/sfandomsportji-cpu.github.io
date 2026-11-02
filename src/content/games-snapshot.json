@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-02T18:14+09:00",
+  "updated_at": "2026-11-02T18:44+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-02T18:14+09:00",
+      "checked_at": "2026-11-02T18:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-02T18:14+09:00",
+      "checked_at": "2026-11-02T18:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -506,11 +506,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909934/lakers-kings"
+        },
+        {
+          "id": "NBA-401909935",
+          "league": "NBA",
+          "start_kst": "2026-11-05T12:30+09:00",
+          "away": "MIA",
+          "home": "LAC",
+          "away_name": "Miami Heat",
+          "home_name": "LA Clippers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909935/heat-clippers"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-02T18:14+09:00",
+      "checked_at": "2026-11-02T18:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -686,7 +699,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-02T18:14+09:00",
+      "checked_at": "2026-11-02T18:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
