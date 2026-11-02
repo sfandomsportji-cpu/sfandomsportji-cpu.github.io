@@ -1,31 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-02T15:52+09:00",
+  "updated_at": "2026-11-02T16:00+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-02T15:52+09:00",
+      "checked_at": "2026-11-02T16:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-02T15:52+09:00",
+      "checked_at": "2026-11-02T16:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909896",
-          "league": "NBA",
-          "start_kst": "2026-11-01T04:00+09:00",
-          "away": "POR",
-          "home": "UTAH",
-          "away_name": "Portland Trail Blazers",
-          "home_name": "Utah Jazz",
-          "status": "final",
-          "away_score": 112,
-          "home_score": 90,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909896/trail-blazers-jazz"
-        },
         {
           "id": "NBA-401909897",
           "league": "NBA",
@@ -415,11 +402,50 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909926/bulls-knicks"
+        },
+        {
+          "id": "NBA-401909927",
+          "league": "NBA",
+          "start_kst": "2026-11-05T10:00+09:00",
+          "away": "IND",
+          "home": "MEM",
+          "away_name": "Indiana Pacers",
+          "home_name": "Memphis Grizzlies",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909927/pacers-grizzlies"
+        },
+        {
+          "id": "NBA-401909928",
+          "league": "NBA",
+          "start_kst": "2026-11-05T10:00+09:00",
+          "away": "UTAH",
+          "home": "NO",
+          "away_name": "Utah Jazz",
+          "home_name": "New Orleans Pelicans",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909928/jazz-pelicans"
+        },
+        {
+          "id": "NBA-401909929",
+          "league": "NBA",
+          "start_kst": "2026-11-05T10:00+09:00",
+          "away": "CLE",
+          "home": "OKC",
+          "away_name": "Cleveland Cavaliers",
+          "home_name": "Oklahoma City Thunder",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909929/cavaliers-thunder"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-02T15:52+09:00",
+      "checked_at": "2026-11-02T16:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -595,7 +621,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-02T15:52+09:00",
+      "checked_at": "2026-11-02T16:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
