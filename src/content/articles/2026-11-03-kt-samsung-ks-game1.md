@@ -14,7 +14,6 @@ slug: "kt-samsung-ks-game1-20261103"
 away: "SAMSUNG LIONS"
 home: "KT WIZ"
 kst: "11.03 18:30"
-hide_home: true
 summary: ["KT는 데이비스 대니엘, 삼성은 최원태가 1차전 선발로 나선다", "대니엘은 7월 말 합류해 정규시즌 5승 2패 ERA 2.13, 수원에서는 ERA 1.16을 남겼다", "최원태는 시즌 ERA 4.68, KT전 2경기 ERA 6.94이고 플레이오프 3차전에서는 1⅔이닝 만에 내려갔다"]
 glance: [["핵심", "KT 대니엘 vs 삼성 최원태 · 수원 1차전"], ["변수", "대니엘 삼성전 등판 없음 · 최원태 PO 3차전 1⅔이닝 강판"], ["시선", "역대 한국시리즈 1차전 승리 팀이 우승한 비율 42회 중 31회(73.8%)"]]
 sources: [{"label":"[스경X현장] KS 1차전 선발 나왔다… KT 대니엘-삼성 최원태 (스포츠경향)","url":"https://sports.khan.co.kr/article/202611021416003/"},{"label":"kt 대니엘 vs 삼성 최원태, 한국시리즈 1차전 선발 격돌 (톱스타뉴스)","url":"https://www.topstarnews.net/news/articleView.html?idxno=16266168"},{"label":"KBO 공식 경기일정·결과","url":"https://www.koreabaseball.com/Schedule/Schedule.aspx"}]
