@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-02T15:22+09:00",
+  "updated_at": "2026-11-02T15:34+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-02T15:22+09:00",
+      "checked_at": "2026-11-02T15:34+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-02T15:22+09:00",
+      "checked_at": "2026-11-02T15:34+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -376,11 +376,50 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909923/hawks-wizards"
+        },
+        {
+          "id": "NBA-401909924",
+          "league": "NBA",
+          "start_kst": "2026-11-05T09:30+09:00",
+          "away": "MIL",
+          "home": "BOS",
+          "away_name": "Milwaukee Bucks",
+          "home_name": "Boston Celtics",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909924/bucks-celtics"
+        },
+        {
+          "id": "NBA-401909925",
+          "league": "NBA",
+          "start_kst": "2026-11-05T09:30+09:00",
+          "away": "CHA",
+          "home": "BKN",
+          "away_name": "Charlotte Hornets",
+          "home_name": "Brooklyn Nets",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909925/hornets-nets"
+        },
+        {
+          "id": "NBA-401909926",
+          "league": "NBA",
+          "start_kst": "2026-11-05T09:30+09:00",
+          "away": "CHI",
+          "home": "NY",
+          "away_name": "Chicago Bulls",
+          "home_name": "New York Knicks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909926/bulls-knicks"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-02T15:22+09:00",
+      "checked_at": "2026-11-02T15:34+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -556,7 +595,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-02T15:22+09:00",
+      "checked_at": "2026-11-02T15:34+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -897,6 +936,32 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892643/ducks-canucks"
+        },
+        {
+          "id": "NHL-401892644",
+          "league": "NHL",
+          "start_kst": "2026-11-05T09:30+09:00",
+          "away": "OTT",
+          "home": "BUF",
+          "away_name": "Ottawa Senators",
+          "home_name": "Buffalo Sabres",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892644/senators-sabres"
+        },
+        {
+          "id": "NHL-401892645",
+          "league": "NHL",
+          "start_kst": "2026-11-05T09:30+09:00",
+          "away": "CHI",
+          "home": "FLA",
+          "away_name": "Chicago Blackhawks",
+          "home_name": "Florida Panthers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892645/blackhawks-panthers"
         }
       ]
     }
