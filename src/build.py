@@ -2482,7 +2482,7 @@ def kbo_bracket() -> str:
     ks = d['ks']
     cands = sorted([a for a in ARTICLES if a.kind == 'analysis' and a.league == 'KBO' and getattr(a, 'away', '')],
                    key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
-    link = f'<a class="kb-go" href="{cands[0].url}">분석 보기 <span aria-hidden="true">›</span></a>' if cands else ''
+    link = f'<a class="kb-go" href="{cands[0].url}">분석 보기 <span aria-hidden="true">›</span></a>' if cands and not getattr(cands[0], 'hide_home', False) else ''  # hide_home 글이 가장 최신이면 홈 링크를 두지 않는다
     a_, b_ = ks['rows']
     # 가장 마지막 단계(한국시리즈)를 크게 보여 주고, 앞 단계는 작은 상자로 이어 붙인다.
     center = (f'<div class="kb-stage kb-main"><h4>{esc(ks["title"])}</h4><small>({esc(ks["sub"])})</small>'
