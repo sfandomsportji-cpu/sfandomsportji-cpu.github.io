@@ -143,17 +143,17 @@ def draft(feature_id, g, day):
     t, h, a = g['start'], g['home'], g['away']
     kst = t.strftime('%m.%d %H:%M')
     slug = f"{slugify(h['name'])}-{slugify(a['name'])}-{day.replace('-', '')}"
-    lines = [f"{wa(ko(h['name']))} {ko(a['name'])}의 {g['label'].title()} 경기가 한국시간 {t.month}월 {t.day}일 {t.strftime('%H:%M')}에 열린다."]
+    lines = [f"{wa(ko(h['name']))} {ko(a['name'])}의 {g['label'].title()} 경기가 한국시간 {t.month}월 {t.day}일 {t.strftime('%H:%M')}에 열려요."]
     if g['venue']:
-        lines[0] += f" 경기장은 {g['venue']}."
+        lines[0] = lines[0].replace('에 열려요.', f"에 {g['venue']}에서 열려요.")
     if h['rec'] and a['rec']:
-        lines.append(f"ESPN 집계 전적은 {ko(h['name'])} {rec_text(h['rec'])}, {ko(a['name'])} {rec_text(a['rec'])}다.")
+        lines.append(f"ESPN 집계 전적은 {ko(h['name'])} {rec_text(h['rec'])}, {ko(a['name'])} {rec_text(a['rec'])}예요.")
     stats = [f"{t.strftime('%H:%M')} KST | {t.month}월 {t.day}일 · {g['venue'] or '경기장 확인 중'}"]
     if h['rec'] and a['rec']:
         stats.append(f"{h['rec'][0]}점 vs {a['rec'][0]}점 | 홈 · 원정 승점(ESPN 전적)")
     body = '\n\n'.join(lines) + '\n\n::: stats\n' + '\n'.join(stats) + '\n:::\n\n'
-    body += ("::: angle KAIRO VIEW\n선발 명단·부상·최근 흐름은 공식 발표와 신뢰할 수 있는 자료를 확인한 뒤 덧붙인다. "
-             "확정되지 않은 선수 이름은 적지 않는다.\n:::\n\n")
+    body += ("::: angle KAIRO VIEW\n선발 명단·부상·최근 흐름은 공식 발표와 믿을 만한 자료를 확인한 뒤에 덧붙일게요. "
+             "확정되지 않은 선수 이름은 적지 않아요.\n:::\n\n")
     if g['url']:
         body += f"일정 확인: [ESPN 경기 페이지]({g['url']})."
     fm = ['---', 'kind: "analysis"', f'date: "{day}"', f'edition: "{day}"', 'priority: 500',

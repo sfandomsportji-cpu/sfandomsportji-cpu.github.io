@@ -75,7 +75,7 @@ def build(g, ps, nba):
     else:
         sub = f"{ws - ls}점 차 승리"
     title = f"{W} {ws}–{ls} {L}"
-    lines = [f"{josa(W, '이가')} 한국시간 {t.month}월 {t.day}일 {t.strftime('%H:%M')} 열린 경기에서 {josa(L, '을를')} 꺾었다. 최종 스코어는 {W} {ws}, {L} {ls}."]
+    lines = [f"{josa(W, '이가')} 한국시간 {t.month}월 {t.day}일 {t.strftime('%H:%M')} 열린 경기에서 {josa(L, '을를')} 꺾었어요. 최종 스코어는 {W} {ws}, {L} {ls}. 이렇게 끝났어요."]
     stats = [f"{ws}–{ls} | {W} 승리", f"{ws - ls}점 차 | {'프리시즌' if pre else '최종'}"]
     if sn:
         la, lw, ll = sn['lead']
@@ -84,7 +84,7 @@ def build(g, ps, nba):
             stats.append(f"다음 경기 | {sn['next']} KST")
     src = g.get('source_url', '')
     body = '\n'.join(lines) + '\n\n::: stats\n' + '\n'.join(stats) + '\n:::\n\n'
-    body += "::: angle SFANDOM 체크\n이닝별·쿼터별 점수, 선수 기록, 투수 기록은 공식 박스스코어 확인 뒤 이 기사에 덧붙인다.\n:::\n\n"
+    body += "::: angle SFANDOM 체크\n이닝별·쿼터별 점수, 선수 기록, 투수 기록은 공식 박스스코어를 확인한 뒤에 이 기사에 덧붙일게요.\n:::\n\n"
     body += f"공식 자료: [ESPN 경기 페이지]({src})." if src else ''
     slug = f"{win.lower()}-{lose.lower()}-{t.strftime('%Y%m%d')}-recap"
     fm = ['---', 'kind: "news"', f'date: "{t.strftime("%Y-%m-%d")}"', 'priority: 900', f'title: "{title}"', f'subtitle: "{sub}"',
@@ -116,8 +116,8 @@ def preview(g, ps):
         stats.append(f"{sn[3]}–{sn[4]} | {sn[2]} 시리즈 리드")
         if sn[5]:
             stats.append("이전 경기 | " + ' · '.join(sn[5]))
-    body = f"{A} 대 {H} 경기가 한국시간 {t.month}월 {t.day}일 {t.strftime('%H:%M')}에 시작한다.\n\n::: stats\n" + '\n'.join(stats) + "\n:::\n\n"
-    body += "::: angle SFANDOM 체크\n선발 투수·출전 명단·부상 정보는 공식 발표를 확인한 뒤 반영한다. 확정되지 않은 선수는 적지 않는다.\n:::\n\n"
+    body = f"{A} 대 {H} 경기가 한국시간 {t.month}월 {t.day}일 {t.strftime('%H:%M')}에 시작해요.\n\n::: stats\n" + '\n'.join(stats) + "\n:::\n\n"
+    body += "::: angle SFANDOM 체크\n선발 투수·출전 명단·부상 정보는 공식 발표를 확인한 뒤에 반영할게요. 확정되지 않은 선수는 적지 않아요.\n:::\n\n"
     src = g.get('source_url', '')
     body += f"공식 자료: [ESPN 경기 페이지]({src})." if src else ''
     slug = f"{a.lower()}-{h.lower()}-{t.strftime('%Y%m%d')}-preview"
