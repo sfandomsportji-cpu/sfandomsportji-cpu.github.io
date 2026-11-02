@@ -1347,25 +1347,6 @@ def build_home():
         hero_cta = "경기 일정·결과 보기"
     if hero.get('use_latest_google_post') and g:
         hero_title, hero_text, hero_link = esc(g[0]['title']), g[0]['summary'], g[0]['link']
-    wb_hit, wb_total = hit_rate()  # 리뉴얼 이후 pick을 남긴 분석과 종료 결과의 자동 대조만 센다(이전 복기 기록은 제외)
-    _base = SITE.get('analysis_record_base') or {}  # 운영자가 직접 집계한 이전 누적 기록 + 이후 자동 대조
-    wb_hit += int(_base.get('hit', 0))
-    wb_total += int(_base.get('total', 0))
-    win_band = ''  # 2026-11-03 사용자 요청으로 홈 '분석 성공' 빨간 띠를 내림(분석 기록 페이지·집계는 그대로)
-    ce = SITE.get('celebration') or {}
-    win_cele = ''
-    if ce.get('title'):
-        _chk = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M3 8.5l3.2 3.2L13 4.8"/></svg>'
-        _items = ''
-        for t in (x.strip() for x in (ce.get('text') or '').split('·')):
-            if t:
-                lg, _, rest = t.partition(' ')
-                _items += f'<li>{_chk}<small>{esc(lg)}</small><span>{esc(rest)}</span></li>'
-        win_cele = (f'<a class="win-cele" href="{esc(ce.get("link", "/analysis/review/"))}">'
-                    f'<span class="wc-main"><span class="wc-tag">{esc(ce.get("kicker", ""))}</span>'
-                    f'<b class="wc-title">{esc(ce["title"])}</b></span>'
-                    f'<ul class="wc-results">{_items}</ul>'
-                    f'<span class="wc-go">분석 기록 보기 →</span></a>')
     cv = SITE.get('community_video') or {}
     if cv.get('instagram_reel'):
         r = cv['instagram_reel']
@@ -1431,7 +1412,6 @@ def build_home():
     # 홈 '오늘 SOCCER' 줄: 카드가 클릭되지 않아 일단 홈에서만 내림(삭제 아님). 다시 올리려면 True로.
     sc_html = soccer_today() if (SHOW_HOME_SOCCER and soccer_today_active()) else ''
     body = f'''
-{win_cele}
 <section class="hero" aria-labelledby="heroTitle">
   <div class="hero-media">{media}</div>
   <div class="hero-shade" aria-hidden="true"></div>
@@ -1445,7 +1425,6 @@ def build_home():
   <aside class="top-stories" aria-label="{home_aria}"><h2>{home_heading} <span class="nba-dday">{home_status}</span></h2><div class="tip-rail">{tip}</div><a class="more top-stories-more" href="/nba/">NBA 허브 →</a></aside>
 </section>
 
-{win_band}
 
 {sc_html}
 
