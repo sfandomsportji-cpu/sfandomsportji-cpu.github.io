@@ -1351,9 +1351,7 @@ def build_home():
     _base = SITE.get('analysis_record_base') or {}  # 운영자가 직접 집계한 이전 누적 기록 + 이후 자동 대조
     wb_hit += int(_base.get('hit', 0))
     wb_total += int(_base.get('total', 0))
-    win_band = (f'<a class="win-band" href="/analysis/review/" aria-label="분석 성공 {wb_hit}회, 전체 {wb_total}경기. 분석 기록 보기">'
-                f'<span class="wb-label">ANALYSIS</span><b class="wb-main">분석 성공 <em>{wb_hit}</em><i>/{wb_total}</i></b>'
-                f'<span class="wb-sub">경기 전에 남긴 전망과 실제 결과 기록 · 복기 리포트 →</span></a>') if wb_total else ''
+    win_band = ''  # 2026-11-03 사용자 요청으로 홈 '분석 성공' 빨간 띠를 내림(분석 기록 페이지·집계는 그대로)
     ce = SITE.get('celebration') or {}
     win_cele = ''
     if ce.get('title'):

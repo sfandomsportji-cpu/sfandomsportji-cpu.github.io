@@ -55,12 +55,6 @@
       "feed": "https://rss.blog.naver.com/sfandomsport.xml"
     }
   },
-  "celebration": {
-    "kicker": "ANALYSIS · 11.03 PREVIEW",
-    "title": "3경기 확실분석!! 함께 하시죠!!",
-    "text": "EPL 뉴캐슬–에버턴 11.03 05:00 · KBO 한국시리즈 1차전 삼성–KT 11.03 18:30 · UCL 아틀레티코–바이에른 11.04 05:00",
-    "link": "/analysis/"
-  },
   "analysis_record_base": {
     "hit": 68,
     "total": 73,
