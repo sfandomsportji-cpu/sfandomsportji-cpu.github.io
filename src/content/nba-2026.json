@@ -1199,7 +1199,7 @@
     }
   ],
   "season_results": {
-    "note": "현지 10.27~10.31 종료 경기 36개 · 한국시간 날짜 기준(10.28~11.01), 시각은 확인된 경기만 표기. 점수는 외부 기록 사이트와 SFANDOM 자동 확인 데이터를 대조했습니다.",
+    "note": "현지 10.27~11.01 종료 경기 40개 · 한국시간 날짜 기준(10.28~11.02), 시각은 확인된 경기만 표기. 점수는 외부 기록 사이트와 SFANDOM 자동 확인 데이터를 대조했습니다.",
     "games": [
       {
         "day": "FINAL",
@@ -1596,6 +1596,50 @@
         "result": "OKC 98–119 HOU",
         "away_score": 98,
         "home_score": 119
+      },
+      {
+        "day": "FINAL",
+        "away": "BOS",
+        "home": "ORL",
+        "kst": "11.02 (월) 05:30",
+        "tv": "KST",
+        "tag": "종료 · BOS 108–97 ORL",
+        "result": "BOS 108–97 ORL",
+        "away_score": 108,
+        "home_score": 97
+      },
+      {
+        "day": "FINAL",
+        "away": "BKN",
+        "home": "IND",
+        "kst": "11.02 (월) 07:00",
+        "tv": "KST",
+        "tag": "종료 · BKN 98–90 IND",
+        "result": "BKN 98–90 IND",
+        "away_score": 98,
+        "home_score": 90
+      },
+      {
+        "day": "FINAL",
+        "away": "LAC",
+        "home": "GSW",
+        "kst": "11.02 (월) 10:30",
+        "tv": "KST",
+        "tag": "종료 · LAC 112–124 GSW",
+        "result": "LAC 112–124 GSW",
+        "away_score": 112,
+        "home_score": 124
+      },
+      {
+        "day": "FINAL",
+        "away": "TOR",
+        "home": "LAL",
+        "kst": "11.02 (월) 11:00",
+        "tv": "KST",
+        "tag": "종료 · TOR 125–131 LAL",
+        "result": "TOR 125–131 LAL",
+        "away_score": 125,
+        "home_score": 131
       }
     ]
   }
