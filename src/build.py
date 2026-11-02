@@ -97,6 +97,7 @@ class Article:
         for block in self.body.split('\n\n'):
             if block.startswith(':::') or block.startswith('#'):
                 continue
+            block = re.sub(r'\[([^\]]+)\]\([^)]*\)', r'\1', block).replace('**', '')
             out = (out + ' ' + re.sub(r'\s+', ' ', block).strip()).strip()
             if len(out) >= 280:
                 break
@@ -162,7 +163,7 @@ def auto_editions() -> None:
         EDITIONS[d] = {
             'title': f'{m}월 {dd}일, 오늘의 분석 {len(games)}경기',
             'subtitle': f'SFANDOM × KAIRO · {leagues}',
-            'intro': f'{m}월 {dd}일 에디션. {names} 경기의 분석과 어제 경기 결과를 묶었습니다. 모든 시간은 한국시간(KST)입니다.',
+            'intro': f'{m}월 {dd}일 에디션. {names} 경기 분석과 어제 경기 결과를 한데 모았어요. 시간은 모두 한국시간(KST)이에요.',
             'items': [a.file[:-3] for a in group], 'auto': True}
 
 
@@ -335,7 +336,7 @@ def blog_grid(limit: int, home: bool = False) -> str:
     core = f' data-core="{esc(CORE_RE)}"' if home else ''
     return (f'<div class="card-grid blog-grid{" home" if home else ""}" data-blog-grid data-limit="{limit}"{core} data-blogger="{esc(g.get("url", ""))}" '
             f'data-label="{esc(g.get("label", "GOOGLE BLOG"))}">{cards}</div>'
-            + ('' if cards else '<p class="muted blog-empty" style="font-size:14px">외부 연재 목록을 가져오지 못했습니다. 블로그 채널에서 확인해 주세요.</p>'))
+            + ('' if cards else '<p class="muted blog-empty" style="font-size:14px">연재 목록을 아직 불러오지 못했어요. 블로그에서 바로 확인해 주세요.</p>'))
 
 
 def preserved_component(name: str) -> str:
@@ -956,10 +957,10 @@ def today_analysis() -> str:
             f'<div class="an-my" data-my hidden><b>MY TEAM</b><span data-my-chips></span></div>'
             f'{board}'
             f'{special_blocks}'
-            f'<p class="sc-hint">경기 분석에 궁금한 점은 쪽지나 댓글로 남겨 주세요 · 킥오프는 한국시간 · 확정 라인업 발표 후 반영</p>'
+            f'<p class="sc-hint">궁금한 점은 쪽지나 댓글로 편하게 남겨 주세요 · 킥오프는 한국시간 · 라인업이 확정되면 다시 반영할게요</p>'
             f'<div class="ta-foot"{foot_style}><a class="review-link" href="/analysis/review/">'
             f'<span class="display" style="font-size:24px">REVIEW <span class="accent">/</span> 복기 리포트</span>'
-            f'<span class="muted" style="font-size:14px">경기 결과와 분석 과정을 비교합니다</span></a>'
+            f'<span class="muted" style="font-size:14px">결과와 우리 분석을 솔직하게 맞춰 봤어요</span></a>'
             f'{edition_card}</div></section>')
 
 def talk_icon() -> str:
@@ -1317,12 +1318,12 @@ def message_box() -> str:
         return ''
     return (f'<section class="wrap sec" id="message" aria-labelledby="msgTitle"><form class="composer msg-box" data-message data-endpoint="{esc(ep)}" novalidate>'
             f'<div class="msg-head"><h2 class="display" id="msgTitle">MESSAGE</h2><span class="kr">SFANDOM과 대화하기</span></div>'
-            f'<p class="muted" style="margin:0">제보, 제안, 문의 모두 좋아요. 운영자에게 바로 전달됩니다.</p>'
+            f'<p class="muted" style="margin:0">제보도, 제안도, 문의도 좋아요. 운영자에게 바로 전달돼요.</p>'
             f'<div class="msg-row"><div><label class="sr-only" for="msgNick">닉네임</label><input id="msgNick" name="name" type="text" maxlength="40" placeholder="닉네임 (선택)"></div>'
             f'<div><label class="sr-only" for="msgMail">답장 받을 이메일</label><input id="msgMail" name="reply" type="email" maxlength="120" placeholder="답장 받을 이메일 (선택)" autocomplete="email"></div></div>'
             f'<label class="sr-only" for="msgBody">쪽지 내용</label><textarea id="msgBody" name="body" maxlength="1000" required placeholder="하고 싶은 이야기를 적어주세요 (최대 1,000자)"></textarea>'
             f'<label class="hp" aria-hidden="true">website<input name="website" tabindex="-1" autocomplete="off"></label>'
-            f'<div class="composer-foot"><span class="status" data-message-status role="status" aria-live="polite">보낸 내용은 운영자만 볼 수 있습니다. 이메일은 답장이 필요할 때만 적어주세요. <a href="/privacy/" class="accent">개인정보처리방침</a></span>'
+            f'<div class="composer-foot"><span class="status" data-message-status role="status" aria-live="polite">보내 주신 내용은 운영자만 볼 수 있어요. 이메일은 답장이 필요할 때만 적어 주세요. <a href="/privacy/" class="accent">개인정보처리방침</a></span>'
             f'<button class="pill" type="submit">쪽지 보내기</button></div></form></section>')
 
 
@@ -1342,7 +1343,7 @@ def build_home():
         hero_badge_en = "NBA · 2026-27 REGULAR SEASON"
         hero_badge_kr = "최신 경기 일정과 확정 결과 · 한국시간"
         hero_title = "NBA 정규시즌<br>경기 일정과 결과"
-        hero_text = "오늘 확인된 경기 결과와 다가오는 일정을 함께 확인하세요. 경기 정보는 외부 제공처의 마지막 확인 시각을 표시합니다."
+        hero_text = "오늘 끝난 경기 결과와 곧 열릴 일정을 한눈에 볼 수 있어요. 점수는 외부 기록 제공처가 마지막으로 확인한 시각을 기준으로 보여 드려요."
         hero_link = "/games/"
         hero_cta = "경기 일정·결과 보기"
     if hero.get('use_latest_google_post') and g:
@@ -1459,7 +1460,7 @@ def build_home():
     </aside>
     <div class="fan-main" data-board data-size="5" data-board-tabs>
       <div class="sec-head" style="margin:0"><div class="board-tabs" role="tablist" aria-label="팬 보드 글 정렬"><button type="button" role="tab" data-board-tab="live" aria-selected="true">실시간</button><button type="button" role="tab" data-board-tab="today" aria-selected="false">투데이</button><button type="button" role="tab" data-board-tab="comments" aria-selected="false">댓글순</button></div><a class="more accent" href="/community/">전체 글 보기 →</a></div>
-      <div data-board-list><div class="empty">스포츠 팬들의 경기·선수 토론을 확인할 수 있습니다. <a href="/community/">팬 보드에서 최신 글 보기 →</a></div></div>
+      <div data-board-list><div class="empty">팬들이 나누는 경기·선수 이야기를 여기서 만나 보세요. <a href="/community/">팬 보드에서 최신 글 보기 →</a></div></div>
       <a class="fan-write" href="/community/#write"><span class="fan-write-ph">오늘 경기, 무슨 얘기 하고 싶어요?</span><span class="pill">글쓰기</span></a>
       {fan_topics()}
     </div>
@@ -1528,7 +1529,7 @@ def build_article(a: Article):
     discussion_html = f'''<section class="news-comment-box" data-news-comments data-article-path="{esc(a.url)}" data-article-kind="{'news' if a.kind == 'news' else 'article'}" data-article-title="{esc(anchor_title)}" data-question="{esc(question)}" aria-label="토론">
           <h2>이 글 이야기하기</h2>
           {question_html}
-          <p class="nc-intro">이 글에 남긴 댓글과 답글은 이 아래에 바로 보이고, FAN BOARD의 전체 이야기에도 함께 표시됩니다.</p>
+          <p class="nc-intro">이 글에 남긴 댓글과 답글은 바로 아래에서 볼 수 있고, FAN BOARD에도 함께 올라가요.</p>
           <div data-discussion-mount><p class="news-comment-empty">댓글을 불러오는 중…</p></div>
           <noscript><a class="pill" href="/community/?topic={topic}#write">{talk_icon()}팬 보드에 글쓰기</a></noscript>
           <div class="nc-actions"><a class="more" href="/community/" data-news-comment-link hidden>전체 이야기에서 보기 →</a></div>
@@ -1608,7 +1609,7 @@ def build_lists():
     write('/news/', layout('NEWS · 스포츠 뉴스', page_head('NEWS<span class="accent">.</span> <span class="kr">오늘의 이야기, 함께 읽고 토론</span>',
           '공식 기록으로 확인한 경기 소식. 모든 뉴스는 팬 보드 토론으로 이어집니다.', [('NEWS', '')], news_tabs)
           + two_col(item_list(news), latest_box('news')),
-          path='/news/', description='NBA 새 시즌과 MLB 포스트시즌 소식을 공식 기록 기준으로 정리합니다.', active='/news/',
+          path='/news/', description='NBA 새 시즌과 MLB 포스트시즌 소식을 공식 기록을 바탕으로 정리했어요.', active='/news/',
           ld=[breadcrumb_ld([('NEWS', '/news/')])]))
 
     # 모닝 에디션
@@ -1628,7 +1629,7 @@ def build_lists():
         write(f'/news/morning/{d}/', layout(f'모닝 에디션 {d.replace("-", ".")} · {e.get("title", "")}', ebody, path=f'/news/morning/{d}/',
               description=e.get('intro', ''), active='/news/', ld=[breadcrumb_ld([('NEWS', '/news/'), ('MORNING EDITION', '/news/morning/'), (d, '')])]), lastmod=d)
     write('/news/morning/', layout('MORNING EDITION · 모닝 에디션', page_head('MORNING <span class="accent">EDITION</span>',
-          '어제 경기에서 오늘까지 남는 것만 골라 매일 아침 정리합니다.', [('NEWS', '/news/'), ('MORNING EDITION', '')],
+          '어제 경기 중 오늘까지 이야기할 만한 것만 골라 매일 아침 정리해요.', [('NEWS', '/news/'), ('MORNING EDITION', '')],
           tabs([('전체 뉴스', '/news/'), ('모닝 에디션', '/news/morning/')], '/news/morning/'))
           + two_col('<div class="list">' + ''.join(rows) + '</div>'), path='/news/morning/',
           description='SFANDOM 모닝 에디션 전체 목록', active='/news/'))
@@ -1639,7 +1640,7 @@ def build_lists():
     naver_mag = render_naver_magazine(BLOGS.get('naver', []), esc, naver_player)
     write('/magazine/', layout('MAGAZINE · SFANDOM 네이버 블로그', page_head(
           'MAGAZINE<span class="accent">.</span> <span class="kr">NAVER BLOG</span>',
-          'SFANDOM 네이버 블로그에 직접 게시한 최근 글과 선정 특집을 모았습니다. 글은 네이버 원문에서 읽습니다.',
+          'SFANDOM 네이버 블로그에 올린 최근 글과 특집을 모아 뒀어요. 글은 네이버에서 읽을 수 있어요.',
           [('MAGAZINE', '')])
           + naver_mag,
           path='/magazine/', description='SFANDOM 네이버 블로그 최근 글과 NBA 심층 특집. 외부 사진 없는 원문 바로가기.',
@@ -1648,7 +1649,7 @@ def build_lists():
 
     # 연결된 원문을 한눈에 보는 독립 페이지 · 콘텐츠는 중복 재발행하지 않습니다.
     reading_body = (page_head('EDITORIAL <span class="accent">PATHS.</span>',
-        '다른 시점과 관점으로 작성된 글은 합치지 않고, 연결해서 읽습니다.',
+        '시점과 관점이 다른 글은 하나로 합치지 않고, 이어서 읽을 수 있게 연결해 뒀어요.',
         [('ANALYSIS', '/analysis/'), ('연결 읽기', '')])
         + editorial_index(EDITORIAL_PATHS, BY_KEY, esc))
     write('/analysis/reading-paths/', layout('경기 기사 연결 읽기 | SFANDOM', reading_body,
@@ -1683,7 +1684,7 @@ def build_lists():
         auto_recs.append({'no': f'#A{len(auto_recs) + 1:02d}', 'date': a.date, 'league': a.league, 'match': f'{a.away} vs {a.home}',
                           'venue': f'{getattr(a, "kst", "")} KST', 'outlook': f'{side} 우세 전망',
                           'result': f'{a.away} {r["away"]}–{r["home"]} {a.home}',
-                          'detail': f'경기 전 글에 남긴 예측과 종료 결과를 자동으로 대조했습니다. 분석: {a.headline}',
+                          'detail': f'경기 전에 남긴 전망과 끝난 뒤 결과를 그대로 맞춰 봤어요. 분석: {a.headline}',
                           'matched': r['verdict'] == 'hit'})
     all_recs = auto_recs[::-1] + RECORDS['records']
     updated = TODAY if auto_recs else RECORDS['updated']
@@ -1698,7 +1699,7 @@ def build_lists():
     write('/analysis/review/', layout('복기 리포트 · 경기 전 전망과 결과', page_head('REVIEW <span class="accent">/</span> <span class="kr">복기 리포트</span>', RECORDS['note'],
           [('ANALYSIS', '/analysis/'), ('REVIEW', '')], tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/review/'))
           + preserved_component('review-cycle-guide') + editorial_index(EDITORIAL_PATHS, BY_KEY, esc, 'before-after') + two_col(f'<div class="stats" style="margin:0 0 12px"><div class="stat"><b>{cum_total}</b><span>RECORDS</span></div><div class="stat"><b>{cum_ok}</b><span>MATCHED</span></div><div class="stat"><b>{cum_total - cum_ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{updated[5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
-                    + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다른 결과도 지우지 않습니다. 어떤 전제가 틀렸는지 다음 분석에서 다시 확인합니다.</p>'),
+                    + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다르게 끝난 경기도 지우지 않아요. 어떤 생각이 빗나갔는지 다음 분석 때 다시 짚어 볼게요.</p>'),
           path='/analysis/review/', description=RECORDS['note'], active='/analysis/'))
 
 
@@ -1715,7 +1716,7 @@ def build_hubs():
     live_mlb = (ws_html + f'<section id="lcs" class="sec" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title" style="font-size:42px">{lcs_title}</h2></div><div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">'
                 + ''.join(lcs_card(d) for d in PS.get('lcs', [])) + '</div></section>')
     main = live_mlb + sec('news', 'NEWS', 'MLB 뉴스', 'news') + sec('analysis', 'ANALYSIS', '경기 프리뷰', 'analysis') + sec('magazine', 'MAGAZINE', '기획 · 스포트라이트', 'magazine')
-    write('/mlb/', layout('MLB · 메이저리그', page_head('MLB<span class="accent">.</span> <span class="kr">메이저리그</span>', '포스트시즌, 모닝 에디션, 선발 매치업까지 — MLB 이야기는 여기서 시작합니다.', [('MLB', '')], t)
+    write('/mlb/', layout('MLB · 메이저리그', page_head('MLB<span class="accent">.</span> <span class="kr">메이저리그</span>', '포스트시즌, 모닝 에디션, 선발 매치업까지 — MLB 이야기는 여기서 시작해요.', [('MLB', '')], t)
           + two_col(main, '<div class="aside-box" style="margin-top:24px"><h2>POSTSEASON</h2><a href="/special/postseason-2026/">2026 포스트시즌 대진표 · 일정 →</a><a href="/community/">경기 얘기는 팬 보드에서 →</a></div>'),
           path='/mlb/', description='MLB 뉴스·경기 분석·매거진', active='/mlb/'))
     # NBA 허브
@@ -1730,7 +1731,7 @@ def build_hubs():
     past_html = (f'<details class="past-games"><summary>지난 경기 결과 {len(pre_done)}개 보기</summary><div class="nba-rail preseason-list">'
                  + nba_cards(pre_done, preseason_anchors=True) + '</div></details>') if pre_done else ''
     preseason_title = "ARCHIVE" if preseason_finished else "GAME CENTER"
-    preseason_note = ("프리시즌 종료 · 확인된 결과를 기록으로 보관합니다 · 한국시간" if preseason_finished
+    preseason_note = ("프리시즌이 끝났어요 · 확인된 결과를 기록으로 남겨 뒀어요 · 한국시간" if preseason_finished
                       else "확인된 종료 경기와 예정·확인 중 경기 구분 · 한국시간")
     preseason_block = (f'<section class="sec" id="preseason"><div class="sec-head"><h2 class="sec-title">PRESEASON <span class="outline">{preseason_title}</span></h2><span class="muted">{preseason_note}</span></div><div class="nba-stage solo"><div class="nba-rail preseason-list">{preseason_rows}</div>{past_html}</div></section>') if (preseason_rows or past_html) else ''
     season = NBA.get('season_results') or {}
@@ -1745,8 +1746,8 @@ def build_hubs():
                 + '</div>' + ''.join(h for k, t, h in _arts) + '</div>') if _arts else ''
     nba_tabs = tabs([('프리시즌 기록' if preseason_finished else '프리시즌', '#preseason'), ('개막 주간', '#tipoff'), ] + ([('정규시즌 결과', '#results')] if season.get('games') else []) + [('뉴스', '#news'), ('분석', '#analysis'), ('매거진', '#magazine'), ('주요 날짜', '#dates')], '')
     opening_started = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))) >= dt.datetime.fromisoformat(NBA["opening_kst"])
-    nba_description = ('2026-27 정규시즌 진행 중. 최신 경기 일정·결과, 개막 주간 기록, 시즌 분석을 한국시간으로 확인합니다.'
-                       if opening_started else '새 시즌 개막까지 ' + nba_dday() + '. 개막 주간 일정과 프리뷰를 한국시간으로 확인합니다.')
+    nba_description = ('2026-27 정규시즌이 한창이에요. 최신 경기 일정과 결과, 개막 주간 기록, 시즌 분석을 한국시간으로 볼 수 있어요.'
+                       if opening_started else '새 시즌 개막까지 ' + nba_dday() + '. 개막 주간 일정과 프리뷰를 한국시간으로 미리 볼 수 있어요.')
     nba_body = (page_head('NBA <span class="accent">2026-27</span>', nba_description, [('NBA', '')], nba_tabs)
                 + f'''<div class="wrap">
 {preseason_block}
@@ -1756,7 +1757,7 @@ def build_hubs():
 {art_tabs}
 <section class="sec" id="christmas"><div class="sec-head"><h2 class="sec-title">CHRISTMAS <span class="outline">DAY</span></h2><span class="muted">현지 12.25 · 한국시간 12.26</span></div><div class="nba-stage solo"><div class="nba-rail five">{nba_cards(NBA["christmas"])}</div></div></section>
 <section class="sec" id="dates"><div class="bracket"><div class="bracket-head"><h2>KEY DATES</h2><span class="muted">{esc(NBA["note"])}</span></div><div class="rounds">{kd}</div></div></section>
-<section class="discuss"><div><h2>새 시즌 얘기는 팬 보드에서</h2><p>우승 후보, 기대되는 팀, 개막전 예상 모두 환영합니다.</p></div><a class="pill" href="/community/?topic={quote("[NBA] ")}#write">{talk_icon()}글쓰기</a></section>
+<section class="discuss"><div><h2>새 시즌 얘기는 팬 보드에서</h2><p>우승 후보, 기대되는 팀, 개막전 예상까지 편하게 얘기해 봐요.</p></div><a class="pill" href="/community/?topic={quote("[NBA] ")}#write">{talk_icon()}글쓰기</a></section>
 </div>''')
     write('/nba/', layout('NBA 프리시즌 최종 결과·다음 경기 일정 (한국시간)', nba_body, path='/nba/', description='NBA 2026-27 프리시즌 결과와 다음 일정, 개막 주간 경기 정보를 한국시간으로 정리.', active='/nba/',
           ld=[breadcrumb_ld([('NBA', '/nba/')])]),
@@ -1772,7 +1773,7 @@ def build_hubs():
     rounds = ''.join(f'<div class="round"><span class="display">{r["name"]}</span><span>{esc(r["kr"])}</span><span class="tag red">{esc(r["dates"])}</span></div>' for r in PS['rounds'])
     srcs = ''.join(f'<span>{esc(s["label"])}</span>' for s in PS['source'])
     rel = [a for a in ARTICLES if a.league == 'MLB' and a.date >= '2026-09-24'][:6]
-    body = (page_head('POSTSEASON <span class="accent">2026</span>', '정규시즌 2,430경기가 끝났습니다. 챔피언십시리즈에 4개 팀이 남았습니다. NLCS·ALCS 최신 전적과 다음 경기, 지난 라운드 결과를 한국시간으로 확인합니다.',
+    body = (page_head('POSTSEASON <span class="accent">2026</span>', '정규시즌 2,430경기가 끝났어요. 챔피언십시리즈에는 4개 팀이 남았어요. NLCS·ALCS 최신 전적과 다음 경기, 지난 라운드 결과를 한국시간으로 볼 수 있어요.',
                       [('POSTSEASON', '')])
             + f'''<div class="wrap">
 <section class="sec" id="lcs" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title">LEAGUE <span class="outline">CHAMPIONSHIP</span></h2><span class="muted">7전 4선승 · 한국시간 · {PS["updated"].replace("-", ".")} 기준</span></div><div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))">{lcsf}</div></section>
@@ -1781,7 +1782,7 @@ def build_hubs():
 <section class="sec" id="bracket"><div class="bracket"><div class="bracket-head"><h2>SEEDS<span class="accent">.</span></h2><span class="muted">정규시즌 최종 성적 · {PS["updated"].replace("-", ".")} 확인</span></div><div class="seeds">{seeds}</div><div class="rounds">{rounds}</div>
 <div class="sources" style="border:0;padding-bottom:0"><strong>출처</strong>{srcs}</div></div></section>
 <section class="sec"><div class="sec-head"><h2 class="sec-title">ROAD TO <span class="accent">OCTOBER</span> <span class="kr">가을로 가는 길</span></h2><a class="more" href="/news/morning/">모닝 에디션 전체 →</a></div><div class="card-grid">{"".join(mag_card(a) for a in rel)}</div></section>
-<section class="discuss"><div><h2>경기 얘기는 팬 보드에서</h2><p>예상, 복기, 한 줄 평 모두 환영합니다.</p></div><a class="pill" href="/community/?topic={quote("[챔피언십시리즈] ")}#write">{talk_icon()}글쓰기</a></section>
+<section class="discuss"><div><h2>경기 얘기는 팬 보드에서</h2><p>예상도, 복기도, 한 줄 평도 편하게 남겨 주세요.</p></div><a class="pill" href="/community/?topic={quote("[챔피언십시리즈] ")}#write">{talk_icon()}글쓰기</a></section>
 </div>''')
     ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': '2026 MLB 포스트시즌 대진표·일정', 'url': BASE + '/special/postseason-2026/', 'inLanguage': 'ko-KR'}
     write('/special/postseason-2026/', layout('2026 MLB 포스트시즌 · 챔피언십시리즈 최신 일정 (한국시간)', body, path='/special/postseason-2026/',
@@ -1993,7 +1994,7 @@ def build_sitemap():
         rows = ''.join(f'<a class="sm-row" href="{a.url}"><time datetime="{a.date}">{a.date_dot}</time><span>{esc(a.headline)}</span><small>{esc(a.league)}</small></a>' for a in items)
         return f'<section class="sm-group"><h2 class="sec-title" style="font-size:44px">{title} <span class="kr">{kr} · {len(items)}편</span></h2><div class="sm-rows">{rows}</div></section>'
     body = (page_head(f'SITEMAP<span class="accent">.</span> <span class="kr motto-en">{esc(SITE["motto"])}</span>',
-                      f'SFANDOM의 모든 페이지를 한곳에 모았습니다. 메뉴 {len(NAV)}개, 글 {len(ARTICLES)}편.', [('사이트맵', '')])
+                      f'SFANDOM의 모든 페이지를 한곳에 모아 뒀어요. 메뉴 {len(NAV)}개, 글 {len(ARTICLES)}편.', [('사이트맵', '')])
             + f'''<div class="wrap sec" style="padding-top:36px">
   <div class="sm-legend"><span><i class="sw red"></i>상단 메뉴</span><span><i class="sw blue"></i>토론이 붙는 페이지</span><span><i class="sw gray"></i>하위 페이지</span></div>
   <div class="sm-grid">{col_html}</div>
@@ -2017,7 +2018,7 @@ def fan_creed() -> str:
 
 
 def build_community():
-    body = (page_head('FAN BOARD<span class="accent">.</span> <span class="kr">먼저 놀고</span>', '가입 없이 닉네임만으로 쓰는 팬 게시판. 경기 얘기, 직관 후기, 반론 모두 환영합니다.', [('FAN BOARD', '')])
+    body = (page_head('FAN BOARD<span class="accent">.</span> <span class="kr">먼저 놀고</span>', '가입 없이 닉네임만 있으면 쓸 수 있는 팬 게시판이에요. 경기 얘기, 직관 후기, 반론까지 다 환영해요.', [('FAN BOARD', '')])
             + f'''<div class="wrap" style="padding-top:28px">{fan_creed()}</div>
 <div class="wrap" style="padding-top:28px">{channel_chips()}</div>
 <div class="wrap sec board-grid" style="padding-top:24px">
@@ -2026,7 +2027,7 @@ def build_community():
       <div data-admin-panel hidden><form data-admin-form><input name="email" type="email" placeholder="관리자 이메일" aria-label="관리자 이메일" required><button type="submit">이메일 인증</button></form><p data-admin-status role="status"></p></div>
     </div>
     <div class="thread-head" data-thread-head hidden><span class="box-title">GAME THREAD</span><strong data-thread-name></strong><a class="more" href="/community/">전체 글로 돌아가기 →</a></div>
-    <div data-board-list><div class="empty">스포츠 팬들의 경기·선수 토론을 확인할 수 있습니다. <a href="/community/">팬 보드에서 최신 글 보기 →</a></div></div>
+    <div data-board-list><div class="empty">팬들이 나누는 경기·선수 이야기를 여기서 만나 보세요. <a href="/community/">팬 보드에서 최신 글 보기 →</a></div></div>
     <div class="pager" data-board-pager></div>
     <form class="composer" id="write" data-board-form style="margin-top:32px" novalidate>
       <span class="box-title">WRITE · 글쓰기</span>
@@ -2035,7 +2036,7 @@ def build_community():
       <div><label for="ttl">제목</label><input id="ttl" name="title" maxlength="100" required placeholder="오늘 경기, 무슨 얘기 하고 싶어요?"></div></div>
       <div><label for="bdy">내용</label><textarea id="bdy" name="body" maxlength="2000" required></textarea></div>
       <label class="hp" aria-hidden="true">website<input name="website" tabindex="-1" autocomplete="off"></label>
-      <div class="composer-foot"><p class="status" data-board-status role="status">작성한 글은 바로 공개됩니다. 게시 전 <a href="/rules/" class="accent">커뮤니티 규칙</a>을 확인해 주세요.</p><button class="pill" type="submit">게시하기</button></div>
+      <div class="composer-foot"><p class="status" data-board-status role="status">쓰신 글은 바로 공개돼요. 올리기 전에 <a href="/rules/" class="accent">커뮤니티 규칙</a>도 한 번 봐 주세요.</p><button class="pill" type="submit">게시하기</button></div>
     </form>
   </div>
   <aside style="display:flex;flex-direction:column;gap:20px">
@@ -2058,7 +2059,7 @@ def build_links():
     ig = 'https://www.instagram.com/sportsfandom/'
     btn = lambda href, label, cls='pill': f'<a class="{cls}" href="{href}" style="height:54px;padding:0 28px;justify-content:center">{label}</a>'
     body = page_head('LINKS<span class="accent">.</span> <span class="kr">오늘 볼 것</span>',
-                     'NBA·MLB·KBO 일정과 결과, 최신 경기 분석, 팬 보드를 한 곳에 모았습니다.', [('LINKS', '')]) + \
+                     'NBA·MLB·KBO 일정과 결과, 최신 경기 분석, 팬 보드를 한 곳에 모아 뒀어요.', [('LINKS', '')]) + \
         '<div class="wrap sec" style="padding-top:28px;max-width:720px;margin-left:0">' \
         '<div style="display:grid;gap:12px">' + btn('/games/', '오늘 경기 일정·결과') + btn('/analysis/', '최신 경기 분석 전체', 'pill ghost') + \
         btn('/community/#write', '팬 보드에서 얘기하기', 'pill ghost') + btn(ig, '인스타 @sportsfandom', 'pill ghost') + '</div>' \
@@ -2101,10 +2102,10 @@ def build_static():
     <div><label for="cName">이름 또는 닉네임 <span class="opt">선택</span></label><input id="cName" name="name" type="text" maxlength="40" autocomplete="name"></div>
     <div><label for="cReply">답변 받을 이메일 <span class="opt">답변이 필요할 때만</span></label><input id="cReply" name="reply" type="email" maxlength="120" autocomplete="email" placeholder="name@example.com"></div>
   </div>
-  <div><label for="cBody">내용</label><textarea id="cBody" name="body" maxlength="850" required placeholder="글 주소, 게시물 번호, 확인할 수 있는 출처를 함께 적어 주시면 빠르게 확인할 수 있습니다."></textarea></div>
+  <div><label for="cBody">내용</label><textarea id="cBody" name="body" maxlength="850" required placeholder="글 주소나 게시물 번호, 출처를 같이 적어 주시면 더 빨리 확인할 수 있어요."></textarea></div>
   <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
   <label class="check"><input type="checkbox" name="agree" required> 문의 처리를 위해 위 내용을 수집·보관하는 데 동의합니다. <a href="/privacy/">개인정보처리방침</a></label>
-  <div class="composer-foot"><span class="muted" data-contact-msg role="status" aria-live="polite">{"" if ep else "쪽지함을 준비하고 있습니다. 곧 이 양식으로 보내실 수 있습니다."}</span>
+  <div class="composer-foot"><span class="muted" data-contact-msg role="status" aria-live="polite">{"" if ep else "쪽지함을 준비하고 있어요. 곧 이 양식으로 보내실 수 있어요."}</span>
     <button class="pill" type="submit"{"" if ep else " disabled"}>쪽지 보내기</button></div>
 </form>
 <div class="prose" style="margin-top:36px">
@@ -2189,7 +2190,7 @@ def build_weekly():
     for sn in snaps:
         label = f'{sn["start"][5:].replace("-", ".")} ~ {sn["end"][5:].replace("-", ".")}'
         body = page_head(f'WEEKLY<span class="accent">.</span> <span class="kr">{label} 팬 보드 베스트</span>',
-                         '지난 한 주 팬 보드에서 가장 많은 이야기가 오간 글입니다. 순위는 댓글 수로만 정합니다.',
+                         '지난 한 주 팬 보드에서 이야기가 가장 많이 오간 글이에요. 순위는 댓글 수로만 정해요.',
                          [('주간 베스트', '/weekly/'), (label, '')]) + issue_body(sn)
         write(f'/weekly/{sn["id"]}/', layout(f'주간 팬 보드 베스트 {label}', body, path=f'/weekly/{sn["id"]}/',
                                           description=f'{label} 팬 보드 인기 글', noindex=True), index=False, lastmod=sn['end'])
@@ -2391,9 +2392,9 @@ def game_sections(brief: bool = False) -> str:
             games = games[-50:]
         cards = ''.join(game_card(g, stale, details.get('checked_at', '')) for g in games)
         if details.get('no_games_today') and league == 'NPB' and details.get('checked_at', '')[:10] == TODAY:
-            cards = '<p class="sf-scores__empty">오늘 NPB 공식 일정에 경기가 없습니다. 아래는 이전 경기 기록입니다.</p>' + cards
+            cards = '<p class="sf-scores__empty">오늘은 NPB 공식 일정에 경기가 없어요. 아래는 지난 경기 기록이에요.</p>' + cards
         if not cards:
-            cards = '<p class="sf-scores__empty">이 시간대 확인된 경기 정보가 없습니다. 다음 자료 갱신을 기다려 주세요.</p>'
+            cards = '<p class="sf-scores__empty">이 시간대에 확인된 경기 정보가 아직 없어요. 다음 자료 갱신을 조금만 기다려 주세요.</p>'
         note = ' · 일부 날짜 확인 지연' if details.get('coverage') == 'partial' else ''
         if details.get('error'):
             note += ' · 외부 자료 확인 지연'
@@ -2506,7 +2507,7 @@ def game_scroll() -> tuple[str, list]:
     out = []
     for name, icon, cards, note in groups:
         if not cards:
-            cards = '<p class="sf-scores__empty">이 시간대 확인된 경기 정보가 없습니다. 다음 자료 갱신을 기다려 주세요.</p>'
+            cards = '<p class="sf-scores__empty">이 시간대에 확인된 경기 정보가 아직 없어요. 다음 자료 갱신을 조금만 기다려 주세요.</p>'
         out.append(f'<section class="sf-scores__league" data-league="{name}" aria-label="{name} 경기 결과와 일정">'
                    f'<div class="sf-scores__league-head"><h3>{icon} {name}</h3><small>{esc(note)}</small></div>'
                    f'<div class="sf-scores__rows">{cards}</div></section>')
@@ -2530,16 +2531,16 @@ def build_games() -> None:
     snapshot = game_snapshot()
     updated, _stale = game_age(snapshot.get('updated_at', ''))
     intro = page_head('GAME <span class="accent">CENTER.</span>',
-        'MLB·NBA·NFL·NHL 경기 일정과 결과를 한국시간으로 확인합니다. 실시간 중계가 아닌 외부 기록 제공처 확인 시각 기준입니다.',
+        'MLB·NBA·NFL·NHL 경기 일정과 결과를 한국시간으로 볼 수 있어요. 실시간 중계가 아니라, 외부 기록 제공처가 마지막으로 확인한 시각을 기준으로 해요.',
         [('GAME CENTER', '')])
     body = (intro + f'<div class="wrap sf-scores sf-scores--page">'
             f'<div class="sf-scores__heading"><div><span class="sf-scores__eyebrow">SCORES & FIXTURES · KST</span>'
             f'<h2>종목별 경기 현황</h2><p>최종 수집 시각 {esc(updated)} · ESPN 경기 기록 보조 자료. '
-            f'점수와 경기 상태는 출처 페이지에서 다시 확인할 수 있습니다.</p></div></div>'
+            f'점수와 경기 상태는 출처 페이지에서 다시 확인할 수 있어요.</p></div></div>'
             f'<div class="sf-scores__grid">{game_sections()}</div>'
-            f'<p class="sf-scores__foot">※ 예정 시간이 지났다고 종료로 표시하지 않습니다. '
-            f'기록 제공처가 확정한 점수만 FINAL로 표시하며, 자료 수집이 지연되면 마지막 확인 시각을 함께 표시합니다. '
-            f'NPB는 npb.jp 첫 화면 속보 기준이며 오늘 경기 위주로 갱신됩니다. KBO는 공식 사이트가 자동 수집을 허용하지 않아 이 페이지에서 제외합니다.</p></div>')
+            f'<p class="sf-scores__foot">※ 예정 시간이 지났다고 끝난 경기로 치지 않아요. '
+            f'기록 제공처가 확정한 점수만 FINAL로 보여 드리고, 자료가 늦어지면 마지막으로 확인한 시각을 같이 적어요. '
+            f'NPB는 npb.jp 첫 화면 속보 기준이라 오늘 경기 위주로 갱신돼요. KBO는 공식 사이트가 자동 수집을 허용하지 않아 이 페이지에서는 빠져 있어요.</p></div>')
     write('/games/', layout('경기 일정·결과 | SFANDOM', body, path='/games/',
          description='MLB NBA NFL NHL 경기 일정과 결과, KST 시간 및 마지막 확인 시각.'),
          search={'u': '/games/', 't': '경기 일정·결과', 's': 'MLB NBA NFL NHL', 'k': 'GAME CENTER',
@@ -2586,7 +2587,7 @@ def build_specials():
                           [('SPECIAL', ''), (f['title_b'], '')])
                 + f'<div class="wrap"><section class="sec" id="board" style="padding-top:40px"><div class="sec-head"><h2 class="sec-title">{day.replace("-", ".")} '
                   f'<span class="kr">{len(picks)}경기 · 한국시간</span></h2><a class="more" href="/analysis/">분석 전체 →</a></div>{board}</section>'
-                  f'<section class="discuss"><div><h2>오늘 밤 경기 얘기는 팬 보드에서</h2><p>응원하는 팀, 기대되는 경기, 한 줄 평 모두 환영합니다.</p></div>'
+                  f'<section class="discuss"><div><h2>오늘 밤 경기 얘기는 팬 보드에서</h2><p>응원하는 팀, 기대되는 경기, 한 줄 평까지 편하게 남겨 주세요.</p></div>'
                   f'<a class="pill" href="/community/?topic={quote("[축구] ")}#write">{talk_icon()}글쓰기</a></section></div>')
         ld = {'@context': 'https://schema.org', '@type': 'CollectionPage', 'name': f'{f["title_a"]} {f["title_b"]} · {f["kr"]}', 'url': BASE + url, 'inLanguage': 'ko-KR'}
         write(url, layout(f'{f["title_a"]} {f["title_b"]} · {f["kr"]} ({day.replace("-", ".")})', body, path=url, description=f['lede'],
