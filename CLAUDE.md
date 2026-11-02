@@ -54,7 +54,7 @@
 ## 2026-11-02 변경: 홈 야구 구간 KBO 대진표를 한국시리즈 중심으로
 - 홈 야구 구간 카드(`kbo_bracket()`, 데이터 `src/content/kbo_postseason.json`)는 마지막 단계인 한국시리즈를 오른쪽 큰 칸(`.kb-main`)으로 보여 주고, 와일드카드·준PO·PO는 왼쪽 작은 상자로 이어 붙인다. 격자는 `1fr 1fr 1fr 1.5fr`.
 - 플레이오프는 삼성 3–2 KIA로 종료, 한국시리즈는 KT–삼성(0–0). 경기 결과가 나오면 `ks.rows`의 점수만 고친다.
-- 팀 로고 파일은 건드리지 않았고, KT 큰 로고만 CSS로 모서리를 둥글게 했다(`.kb-big .tlogo[alt^="KT"]`).
+- 2026-11-02 정리: `assets/teams/kbo/KT.png`의 바깥 흰 배경을 투명으로 바꿨다(410×410 캔버스·로고 위치는 그대로라 `logo_boxes.json`·`kbo_art_boxes.json` 값은 유지). 그래서 KT 큰 로고용 모서리 CSS(`.kb-big .tlogo[alt^="KT"]`)는 삭제했다.
 
 ## 2026-11-02 추가: /nba/ 정규시즌 결과 구간
 - `src/content/nba-2026.json`의 `season_results`(현지 10.27~10.31 종료 36경기)를 `/nba/`의 `#results` 구간(접이식, 프리시즌 기록과 같은 `.nba-stage.solo` 구조)으로 보여 준다. 탭에도 "정규시즌 결과"가 추가됐다.
