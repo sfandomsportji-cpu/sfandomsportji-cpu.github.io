@@ -894,7 +894,7 @@ def ta_board(picks: list) -> str:
 
 def today_analysis() -> str:
     """Keep the approved morning edition and surface newer analysis on home."""
-    ed_latest = max(EDITIONS)
+    ed_latest = max(EDITIONS, default='')
     pool = sorted([a for a in ARTICLES if a.kind == 'analysis' and getattr(a, 'away', '') and getattr(a, 'home', '')],
                   key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
     pool = [a for a in pool if not getattr(a, 'hide_home', False)]  # front matter hide_home: true → 홈 분석 줄에서만 내림(글·목록은 유지)
@@ -944,7 +944,7 @@ def today_analysis() -> str:
         f'<div class="an-board">{head}{"".join(analysis_row(a, False) for a in ps)}</div>'
         for f, _, ps in live_specials)
     # 모닝 에디션 카드는 오늘(한국시간) 에디션일 때만 홈에 둔다 — 지난 에디션은 홈에서 내림(에디션 페이지·목록은 유지)
-    show_edition = ed_latest >= now_kst.date().isoformat()
+    show_edition = bool(ed_latest) and ed_latest >= now_kst.date().isoformat()
     edition_card = (f'<a class="review-link" href="/news/morning/{ed_latest}/">'
                     f'<span class="display" style="font-size:24px">MORNING EDITION</span>'
                     f'<span class="muted" style="font-size:14px">{ed_latest.replace("-", ".")} 에디션 · 전체 읽기 →</span></a>') if show_edition else ''
