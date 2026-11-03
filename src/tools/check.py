@@ -125,7 +125,10 @@ warn('23 중복 선언 검토가 필요한 스타일 규칙', sorted({s for s in
 js_sel = set(re.findall(r"\$\$?\('([^']+)'", JS))
 miss = []
 allhtml = ' '.join(H.values())
+OPTIONAL_JS_SEL = {'[data-score-state]', '[data-art-tabs]'}  # 외부 점수·뉴스 글이 없을 때는 화면에 없을 수 있다(스크립트는 null을 처리한다)
 for s in js_sel:
+    if s in OPTIONAL_JS_SEL:
+        continue
     for tok in re.findall(r'[#.][A-Za-z_][\w-]*|\[data-[\w-]+', s):
         key = tok[1:] if tok[0] in '#.' else tok[1:]
         if key not in allhtml and key not in JS.replace(s, ''):

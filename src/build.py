@@ -1396,9 +1396,9 @@ def build_home():
     _today_feed = [a for a in home_feed if a.date >= today_kst]
     _fill = [a for a in home_feed if a not in _today_feed]
     home_feed = ((_today_feed + _fill)[:5]) or home_feed
-    lead = home_feed[0]
+    lead = home_feed[0] if home_feed else None  # 뉴스 글이 하나도 없으면 홈 NEWS 구역을 통째로 뺀다
     rest = home_feed[1:5]
-    lead_summary = lead.excerpt
+    lead_summary = lead.excerpt if lead else ''
     lead_label = 'LEAD'
 
     nl = ''.join(f'<a class="nl" href="{a.url}">{home_news_thumb(a)}<span class="t"><span class="tag">{esc(a.league)} · {a.date_dot}</span><strong>{esc(a.headline)}</strong></span><span class="talk">{talk_icon()}토론</span></a>' for a in rest)
@@ -1409,6 +1409,13 @@ def build_home():
 </section>'''
     if HOME_HIDE_MLB:
         lcs_html = ''
+    news_section = (f'''<section class="wrap sec" aria-labelledby="newsTitle">
+  <div class="sec-head"><h2 class="sec-title" id="newsTitle">NEWS<span class="accent">.</span> <span class="kr">오늘의 이야기, 함께 읽고 토론</span></h2><a class="more" href="/news/">뉴스 전체 →</a></div>
+  <div class="news-grid">
+    <a class="news-lead lift" href="{lead.url}">{home_news_thumb(lead, lead=True)}<div class="body"><span class="tag red">{esc(lead_label)} · {esc(lead.league)} · {lead.date_dot}</span><h3>{esc(lead.headline)}</h3><p>{esc(lead_summary)}</p><span class="talk">{talk_icon()}읽고 함께 이야기하기 →</span></div></a>
+    <div class="news-list">{nl}</div>
+  </div>
+</section>''') if lead else ''
     ta_html = today_analysis()
     # 홈 '오늘 SOCCER' 줄: 카드가 클릭되지 않아 일단 홈에서만 내림(삭제 아님). 다시 올리려면 True로.
     sc_html = soccer_today() if (SHOW_HOME_SOCCER and soccer_today_active()) else ''
@@ -1435,13 +1442,7 @@ def build_home():
 
 {lcs_html}
 
-<section class="wrap sec" aria-labelledby="newsTitle">
-  <div class="sec-head"><h2 class="sec-title" id="newsTitle">NEWS<span class="accent">.</span> <span class="kr">오늘의 이야기, 함께 읽고 토론</span></h2><a class="more" href="/news/">뉴스 전체 →</a></div>
-  <div class="news-grid">
-    <a class="news-lead lift" href="{lead.url}">{home_news_thumb(lead, lead=True)}<div class="body"><span class="tag red">{esc(lead_label)} · {esc(lead.league)} · {lead.date_dot}</span><h3>{esc(lead.headline)}</h3><p>{esc(lead_summary)}</p><span class="talk">{talk_icon()}읽고 함께 이야기하기 →</span></div></a>
-    <div class="news-list">{nl}</div>
-  </div>
-</section>
+{news_section}
 
 <section class="wrap sec" aria-labelledby="magTitle">
   <div class="sec-head"><h2 class="sec-title" id="magTitle">MAGAZINE<span class="accent">.</span></h2><a class="more" href="/magazine/">매거진 전체 →</a></div>
