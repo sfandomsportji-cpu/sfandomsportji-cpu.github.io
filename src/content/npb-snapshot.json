@@ -1,4 +1,14 @@
 {
- "provider": "npb.jp 첫 화면 속보",
- "leagues": {}
+  "provider": "npb.jp 첫 화면 속보",
+  "leagues": {
+    "NPB": {
+      "checked_at": "",
+      "last_attempt_at": "2026-11-04T06:07+09:00",
+      "coverage": "partial",
+      "failed_dates": [],
+      "games": [],
+      "no_games_today": false,
+      "error": "HTTP Error 404: Not Found"
+    }
+  }
 }
