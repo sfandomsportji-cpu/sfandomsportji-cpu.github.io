@@ -501,7 +501,7 @@ def soccer_badge(name: str, size: str = '') -> str:
     rel = SOCCER_LOGOS.get(name.upper().strip())
     if not rel:
         return ''
-    return (f'<span class="tlogo-wrap {size}" data-abbr="{esc(name)}" style="--c:#444" title="{esc(name)}">'
+    return (f'<span class="tlogo-wrap {size}{" sc" if size == "lg" else ""}" data-abbr="{esc(name)}" style="--c:#444" title="{esc(name)}">'
             f'<img class="tlogo" src="{soccer_logo_url(rel)}" alt="{esc(name)}" style="{soccer_logo_style(rel, LOGO_FIT_PLAIN)}" width="40" height="40" '
             f'loading="lazy" decoding="async"></span>')
 
