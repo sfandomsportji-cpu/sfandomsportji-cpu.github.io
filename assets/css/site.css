@@ -1651,3 +1651,6 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
   #today-analysis .ta-stage .tlogo-wrap.sc{width:96px;height:96px}
   #today-analysis .ta-pair .tlogo-wrap.sc{width:60px;height:60px}
 }
+
+/* Fenerbahce crest: nudged slightly down */
+.tlogo[alt="FENERBAHCE"]{--oy:4%}
