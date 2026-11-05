@@ -506,6 +506,66 @@ def soccer_badge(name: str, size: str = '') -> str:
             f'loading="lazy" decoding="async"></span>')
 
 
+PRO_LOGO_DIRS = {'NHL': 'nhl/2026-27', 'NFL': 'nfl/2026'}  # 저장소에 보관한 NHL·NFL 구단 로고 폴더 (assets/teams/ 아래)
+PRO_LOGO_ALIAS = {'JAC': 'JAX', 'NJ': 'NJD', 'TB': 'TBL', 'LA': 'LAK', 'SJ': 'SJS', 'LAR': 'LA'}  # 자료 제공처 약자 → 로고 약자
+NBA_TEAM_NAMES = {
+    'ATL': 'Atlanta Hawks', 'BKN': 'Brooklyn Nets', 'BOS': 'Boston Celtics', 'CHA': 'Charlotte Hornets', 'CHI': 'Chicago Bulls',
+    'CLE': 'Cleveland Cavaliers', 'DAL': 'Dallas Mavericks', 'DEN': 'Denver Nuggets', 'DET': 'Detroit Pistons', 'GSW': 'Golden State Warriors',
+    'HOU': 'Houston Rockets', 'IND': 'Indiana Pacers', 'LAC': 'LA Clippers', 'LAL': 'Los Angeles Lakers', 'MEM': 'Memphis Grizzlies',
+    'MIA': 'Miami Heat', 'MIL': 'Milwaukee Bucks', 'MIN': 'Minnesota Timberwolves', 'NOP': 'New Orleans Pelicans', 'NYK': 'New York Knicks',
+    'OKC': 'Oklahoma City Thunder', 'ORL': 'Orlando Magic', 'PHI': 'Philadelphia 76ers', 'PHX': 'Phoenix Suns', 'POR': 'Portland Trail Blazers',
+    'SAC': 'Sacramento Kings', 'SAS': 'San Antonio Spurs', 'TOR': 'Toronto Raptors', 'UTA': 'Utah Jazz', 'WAS': 'Washington Wizards'}
+_PRO_INDEX: dict = {}
+
+
+def pro_logo_file(league: str, name: str) -> str:
+    """NHL·NFL 구단 이름(영문 전체 이름 또는 약자) → 로고 파일명. 없으면 빈 문자열."""
+    if league not in PRO_LOGO_DIRS:
+        return ''
+    if league not in _PRO_INDEX:
+        try:
+            teams = json.loads((ROOT / 'assets' / 'teams' / PRO_LOGO_DIRS[league] / 'index.json').read_text(encoding='utf-8'))['teams']
+        except (OSError, ValueError, KeyError):
+            teams = []
+        m = {}
+        for t in teams:
+            m[t['abbr'].upper()] = t['file']
+            m[t['name'].upper()] = t['file']
+        _PRO_INDEX[league] = m
+    key = (name or '').upper().strip()
+    return _PRO_INDEX[league].get(key) or _PRO_INDEX[league].get(PRO_LOGO_ALIAS.get(key, ''), '')
+
+
+def nba_abbr(name: str) -> str:
+    """NBA 팀 이름(영문 전체 이름 또는 약자) → 약자. 저장소에 로고가 없으면 빈 문자열."""
+    key = (name or '').upper().strip()
+    for abbr, full in NBA_TEAM_NAMES.items():
+        if key in (abbr, full.upper()):
+            return abbr if (ROOT / 'assets' / 'teams' / 'nba' / f'{abbr.lower()}.svg').exists() else ''
+    return ''
+
+
+def pro_badge(league: str, name: str, size: str = '') -> str:
+    """NHL·NFL 구단 로고 (soccer_badge와 같은 칸 규칙: 보이는 면적을 맞추고 긴 변은 칸 안에). 없으면 빈 문자열."""
+    f = pro_logo_file(league, name)
+    if not f:
+        return ''
+    key = f'{PRO_LOGO_DIRS[league]}/{f}'
+    return (f'<span class="tlogo-wrap {size}{" sc" if size == "lg" else ""}" data-abbr="{esc(name)}" style="--c:#444" title="{esc(name)}">'
+            f'<img class="tlogo" src="/assets/teams/{key}" alt="{esc(name)}" style="{logo_style(key, LOGO_FIT_PLAIN)}" width="40" height="40" '
+            f'loading="lazy" decoding="async"></span>')
+
+
+def team_mark(league: str, name: str, size: str = '') -> str:
+    """분석 대진용 팀 로고 한 개 (NHL·NFL·NBA). 로고가 없으면 빈 문자열."""
+    if league in PRO_LOGO_DIRS:
+        return pro_badge(league, name, size)
+    if league == 'NBA' and nba_abbr(name):
+        ab = nba_abbr(name)
+        return badge(ab, team_color(ab, 'nba'), size, league='nba')
+    return ''
+
+
 def split_teams(a: Article) -> tuple[str, str]:
     t = re.split(r'\s+(?:at|vs\.?|@)\s+', a.title.rstrip('.'), maxsplit=1, flags=re.I)
     return (t[0], t[1]) if len(t) > 1 else (a.title.rstrip('.'), '')
@@ -516,6 +576,11 @@ def matchup_strip(a: Article) -> str:
     if a.league == 'SOCCER' and soccer_badge(getattr(a, 'away', '')) and soccer_badge(getattr(a, 'home', '')):
         return (f'<div class="mc-stage in-article"><div class="mc-team">{soccer_badge(a.away, "lg")}<small>AWAY</small><span class="display">{esc(a.away.upper())}</span></div>'
                 f'<span class="mc-vs">VS</span><div class="mc-team r">{soccer_badge(a.home, "lg")}<small>HOME</small><span class="display">{esc(a.home.upper())}</span></div></div>')
+    if a.league in ('NHL', 'NFL', 'NBA') and not getattr(a, 'teams', None):  # 영문 팀 이름(away/home)으로 로고를 찾는다
+        la, lh = team_mark(a.league, getattr(a, 'away', ''), 'lg'), team_mark(a.league, getattr(a, 'home', ''), 'lg')
+        if la and lh:
+            return (f'<div class="mc-stage in-article"><div class="mc-team">{la}<small>AWAY</small><span class="display">{esc(a.away.upper())}</span></div>'
+                    f'<span class="mc-vs">VS</span><div class="mc-team r">{lh}<small>HOME</small><span class="display">{esc(a.home.upper())}</span></div></div>')
     if not getattr(a, 'teams', None):
         return ''
     left, right = split_teams(a)
@@ -826,6 +891,10 @@ def ta_mark(a: Article, name: str) -> str:
     lg = getattr(a, 'league', '')
     if lg == 'SOCCER' and soccer_badge(name):
         return soccer_badge(name, 'lg')
+    if lg in ('NHL', 'NFL') and pro_badge(lg, name):
+        return pro_badge(lg, name, 'lg')
+    if lg == 'NBA' and nba_abbr(name):
+        return badge(nba_abbr(name), team_color(nba_abbr(name), 'nba'), 'lg', league='nba')
     if lg in ('NBA', 'MLB') and (ROOT / 'assets' / 'teams' / lg.lower() / f'{name.lower()}.svg').exists():
         return badge(name, team_color(name, lg.lower()), 'lg', league=lg.lower())
     if lg == 'KBL' and name in KBL_LOGOS:
