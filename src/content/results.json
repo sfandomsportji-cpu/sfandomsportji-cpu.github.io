@@ -33,5 +33,55 @@
     "status": "final",
     "away": 3,
     "home": 0
+  },
+  "2026-11-04-leipzig-mancity": {
+    "status": "final",
+    "away": 3,
+    "home": 2
+  },
+  "2026-11-05-leipzig-mancity-recap": {
+    "status": "final",
+    "away": 3,
+    "home": 2
+  },
+  "2026-11-04-slavia-arsenal": {
+    "status": "final",
+    "away": 2,
+    "home": 1
+  },
+  "2026-11-05-slavia-arsenal-recap": {
+    "status": "final",
+    "away": 2,
+    "home": 1
+  },
+  "2026-11-04-fenerbahce-liverpool": {
+    "status": "final",
+    "away": 2,
+    "home": 3
+  },
+  "2026-11-05-fenerbahce-liverpool-recap": {
+    "status": "final",
+    "away": 2,
+    "home": 3
+  },
+  "2026-11-04-porto-napoli": {
+    "status": "final",
+    "away": 1,
+    "home": 4
+  },
+  "2026-11-05-porto-napoli-recap": {
+    "status": "final",
+    "away": 1,
+    "home": 4
+  },
+  "2026-11-04-lens-como": {
+    "status": "final",
+    "away": 9,
+    "home": 1
+  },
+  "2026-11-05-lens-como-recap": {
+    "status": "final",
+    "away": 9,
+    "home": 1
   }
 }
