@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-05T16:12+09:00",
+  "updated_at": "2026-11-05T16:44+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-05T16:12+09:00",
+      "checked_at": "2026-11-05T16:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-05T16:12+09:00",
+      "checked_at": "2026-11-05T16:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -389,11 +389,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909941/wizards-thunder"
+        },
+        {
+          "id": "NBA-401909942",
+          "league": "NBA",
+          "start_kst": "2026-11-08T10:30+09:00",
+          "away": "ORL",
+          "home": "GS",
+          "away_name": "Orlando Magic",
+          "home_name": "Golden State Warriors",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909942/magic-warriors"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-05T16:12+09:00",
+      "checked_at": "2026-11-05T16:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -413,7 +426,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-05T16:12+09:00",
+      "checked_at": "2026-11-05T16:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
