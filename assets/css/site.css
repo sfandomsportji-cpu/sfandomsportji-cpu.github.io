@@ -1654,3 +1654,6 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 
 /* Fenerbahce crest: nudged slightly down */
 .tlogo[alt="FENERBAHCE"]{--oy:4%}
+
+/* Juventus crest is solid black, so it vanishes on the dark cards. Show it white (CSS only, the logo file is untouched; size and position stay the same). */
+.tlogo[alt="JUVENTUS"]{filter:invert(1) drop-shadow(0 0 1px rgba(255,255,255,.18))}
