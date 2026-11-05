@@ -1231,8 +1231,11 @@ def fan_numbers(limit: int = 8) -> str:
                     rows.append((a, head.strip(), sub.strip()))
         per.append(rows)
     ordered = [r for i in (1, 2, 3, 0) for rows in per for r in rows[i:i + 1]]
+    def match_line(a):  # 어느 경기 숫자인지 한 줄로 (away/home가 있는 기사만)
+        away, home = str(getattr(a, 'away', '') or '').strip(), str(getattr(a, 'home', '') or '').strip()
+        return f'<em>{esc(away)} <i>VS</i> {esc(home)}</em>' if away and home else ''
     items = ''.join(
-        f'<li><a href="{a.url}"><small>{esc(a.league)} · {esc(a.date[5:].replace("-", "."))}</small><b>{esc(head)}</b><span>{esc(sub)}</span></a></li>'
+        f'<li><a href="{a.url}"><small>{esc(a.league)} · {esc(a.date[5:].replace("-", "."))}</small><b>{esc(head)}</b><span>{esc(sub)}</span>{match_line(a)}</a></li>'
         for a, head, sub in ordered[:limit])
     if not items:
         return ''
