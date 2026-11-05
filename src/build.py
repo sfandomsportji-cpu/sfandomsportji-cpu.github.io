@@ -345,6 +345,28 @@ def render_split(b: str) -> str:
     return f'<section class="split" aria-label="{esc(label)}">{html}</section>'
 
 
+def render_photo(b: str) -> str:
+    """본문 사진 블록(::: photo). 줄마다 `키: 값` — src, alt, caption, credit, source, license, license_url. 자료사진은 출처·라이선스 링크를 함께 적는다."""
+    kv = {}
+    for ln in b.splitlines()[1:]:
+        if ln.strip() == ':::' or ':' not in ln:
+            continue
+        k, v = ln.split(':', 1)
+        kv[k.strip()] = v.strip()
+    src = kv.get('src', '')
+    if not src or not (ROOT / src.lstrip('/')).is_file():
+        return ''
+    cap = esc(kv.get('caption', ''))
+    if kv.get('credit'):
+        cap += f' <span class="ph-credit">{esc(kv["credit"])}</span>'
+    if kv.get('source'):
+        cap += f' · <a href="{esc(kv["source"])}" target="_blank" rel="noopener noreferrer">원본 사진</a>'
+    if kv.get('license') and kv.get('license_url'):
+        cap += f' · <a href="{esc(kv["license_url"])}" target="_blank" rel="noopener noreferrer">{esc(kv["license"])}</a>'
+    return (f'<figure class="figure inline-photo"><img src="{esc(src)}" alt="{esc(kv.get("alt", ""))}" loading="lazy" decoding="async">'
+            f'<figcaption>{cap}</figcaption></figure>')
+
+
 def render_body(a: Article) -> str:
     out = []
     for block in re.split(r'\n{2,}', a.body):
@@ -355,6 +377,8 @@ def render_body(a: Article) -> str:
             rows = [r.split('|', 1) for r in b.splitlines()[1:-1] if '|' in r]
             cells = ''.join(f'<div class="stat"><b>{esc(v.strip())}</b><span>{esc(l.strip())}</span></div>' for v, l in rows)
             out.append(f'<div class="stats">{cells}</div>')
+        elif b.startswith('::: photo'):
+            out.append(render_photo(b))
         elif b.startswith('::: split'):
             out.append(render_split(b))
         elif b.startswith('::: angle'):

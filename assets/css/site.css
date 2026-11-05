@@ -218,6 +218,10 @@ main{display:block}
 .figure.logo img{max-height:360px;padding:40px;object-fit:contain}
 .figure.photo img{aspect-ratio:16/9;max-height:none;object-fit:cover;object-position:center 22%}
 .figure.photo-sm img{width:auto;max-width:min(100%,var(--pw));max-height:520px;margin:0 auto;display:block;object-fit:contain}
+.figure.inline-photo{margin:28px 0 34px}
+.figure.inline-photo img{max-height:none;height:auto;object-fit:contain;display:block}
+.figure figcaption .ph-credit{display:block;margin-top:2px;font-size:13px}
+.figure figcaption a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 .figure figcaption{font-size:14px;color:var(--faint);padding:10px 16px;background:var(--panel)}
 .prose{font-size:18px;line-height:1.85;color:#EDEDF2}
 .prose p{margin:0 0 1.35em}
