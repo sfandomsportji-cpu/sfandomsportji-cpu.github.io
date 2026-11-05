@@ -49,7 +49,6 @@ import feeds  # noqa: E402  (RSS 피드 생성)
 import weekly  # noqa: E402  (주간 인기 글 스냅샷)
 from build_article_cards import card_name, is_match_card  # noqa: E402  (글별 공유 카드 파일명)
 from editorial_paths import related as editorial_related, index as editorial_index
-from naver_magazine import render as render_naver_magazine
 
 
 # ───────────────────────── 콘텐츠 읽기 ─────────────────────────
@@ -288,55 +287,6 @@ def blog_posts(limit: int = 6, core: bool = False) -> list[dict]:
 
 
 _NAVER_PLAYER_KEYS: dict[str, tuple[str, str, int]] = {}
-
-
-def naver_player(item: dict) -> tuple[str, str, int]:
-    """내 네이버 블로그 영상 글의 (영상 번호, 재생 키, 키를 받은 시각). 빌드 때 글 페이지에서 받아 오며, 못 받으면 ('', '', 0).
-
-    재생 키는 오래 쓰면 만료되므로 받은 시각(초)을 카드에 함께 적어 두고, 브라우저가 30분이 지난 키는 쓰지 않고 네이버 원문으로 엽니다.
-
-    못 받은 카드는 지금처럼 네이버 원문 링크로만 열립니다. 이 값은 공개 영상의 재생용 값이라 HTML에 들어가도 됩니다.
-    """
-    m = re.fullmatch(r'https://blog\.naver\.com/sfandomsport/(\d{8,20})', str(item.get('link') or '').split('?', 1)[0])
-    if not m:
-        return ('', '', 0)
-    no = m.group(1)
-    if no not in _NAVER_PLAYER_KEYS:
-        found = ('', '', 0)
-        try:
-            req = urllib.request.Request(f'https://m.blog.naver.com/sfandomsport/{no}',
-                                         headers={'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)'})
-            page = urllib.request.urlopen(req, timeout=6).read(700_000).decode('utf-8', 'replace')
-            vid = re.search(r'"vid"\s*:\s*"([A-Z0-9]{20,64})"', page)
-            key = re.search(r'"inkey"\s*:\s*"(V[A-Za-z0-9_.=-]{30,300})"', page)
-            if vid and key:
-                found = (vid.group(1), key.group(1), int(time.time()))
-        except Exception as exc:  # 네트워크 실패는 조용히: 카드는 원문 링크로 동작
-            print(f'naver player key {no}: {exc.__class__.__name__}')
-        _NAVER_PLAYER_KEYS[no] = found
-    return _NAVER_PLAYER_KEYS[no]
-
-
-def blog_card(p: dict) -> str:
-    label = SITE['blogs'][p['source']]['label']
-    img = f'<div class="thumb"><img src="{esc(blog_img(p["image"]))}" alt="" loading="lazy" referrerpolicy="no-referrer"></div>' if p.get('image') else '<div class="thumb blog-thumb" aria-hidden="true"><span>' + ('G' if p['source'] == 'google' else 'N') + '</span></div>'
-    vid, inkey, got = naver_player(p) if p['source'] == 'naver' else ('', '', 0)
-    player = f' data-vid="{esc(vid)}" data-inkey="{esc(inkey)}" data-inkey-at="{got}"' if vid and inkey else ''
-    if player:
-        img = img[:-len('</div>')] + '<span class="play-badge" aria-hidden="true">▶</span></div>'
-    return (f'<a class="mag lift" data-date="{esc(p.get("date", ""))}" data-src="{p["source"]}" href="{esc(p["link"])}" target="_blank" rel="noopener"{player}>{img}<div class="body">'
-            f'<span class="tag red">{label}</span><h3>{esc(p["title"])}</h3><p>{esc(_clip(p.get("summary", ""), 180))}</p>'
-            f'<span class="tag">{p.get("date", "").replace("-", ".")} · {"▶ 바로 재생" if player else "블로그에서 읽기 ↗"}</span></div></a>')
-
-
-def blog_grid(limit: int, home: bool = False) -> str:
-    """블로그 카드 격자. 빌드 때 받은 글(네이버·구글)을 먼저 그리고, 브라우저에서 구글 블로그 최신 글을 한 번 더 받아 합칩니다."""
-    g = SITE['blogs'].get('google', {})
-    cards = ''.join(blog_card(p) for p in blog_posts(limit, core=home))
-    core = f' data-core="{esc(CORE_RE)}"' if home else ''
-    return (f'<div class="card-grid blog-grid{" home" if home else ""}" data-blog-grid data-limit="{limit}"{core} data-blogger="{esc(g.get("url", ""))}" '
-            f'data-label="{esc(g.get("label", "GOOGLE BLOG"))}">{cards}</div>'
-            + ('' if cards else '<p class="muted blog-empty" style="font-size:14px">연재 목록을 아직 불러오지 못했어요. 블로그에서 바로 확인해 주세요.</p>'))
 
 
 def preserved_component(name: str) -> str:
@@ -1189,7 +1139,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <link rel="stylesheet" href="/assets/css/site.css?v={av("/assets/css/site.css")}">
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
-{('<link rel="stylesheet" href="/assets/css/naver-magazine.css?v=20261012-restored-thumbnails">' if path == '/magazine/' else '')}
+{''}
 {('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261102-ks-v2">' if path in ('/', '/games/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/editorial-links.css?v={av("/assets/css/editorial-links.css")}">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
@@ -1401,6 +1351,9 @@ def message_box() -> str:
 
 # ───────────────────────── 홈 ─────────────────────────
 def build_home():
+    _mags = [a for a in ARTICLES if a.kind == 'magazine'][:3]
+    home_magazine = ('<section class="wrap sec" aria-labelledby="magTitle">\n  <div class="sec-head"><h2 class="sec-title" id="magTitle">MAGAZINE<span class="accent">.</span></h2>'
+                     '<a class="more" href="/magazine/">매거진 전체 →</a></div>\n  ' + item_list(_mags) + '\n</section>') if _mags else ''
     news = [a for a in ARTICLES if a.kind == 'news' and not (HOME_HIDE_MLB and a.league == 'MLB') and 'preseason' not in a.slug]  # 홈에서 프리시즌 기사 제외(글·목록은 유지)
     analysis = [a for a in ARTICLES if a.kind == 'analysis']
     hero = SITE['hero']
@@ -1516,10 +1469,7 @@ def build_home():
 
 {news_section}
 
-<section class="wrap sec" aria-labelledby="magTitle">
-  <div class="sec-head"><h2 class="sec-title" id="magTitle">MAGAZINE<span class="accent">.</span></h2><a class="more" href="/magazine/">매거진 전체 →</a></div>
-  {blog_grid(3, home=True)}
-</section>
+{home_magazine}
 
 <section class="wrap sec" aria-labelledby="fanTitle">
   <div class="sec-head"><h2 class="sec-title" id="fanTitle">FAN ZONE<span class="accent">.</span> <span class="kr">먼저 놀고</span></h2><a class="pill" href="/community/#write">+ 글쓰기</a></div>
@@ -1707,16 +1657,16 @@ def build_lists():
           + two_col('<div class="list">' + ''.join(rows) + '</div>'), path='/news/morning/',
           description='SFANDOM 모닝 에디션 전체 목록', active='/news/'))
 
-    # 매거진: sfandomsport 네이버 블로그 최근 글 링크 전용 화면.
-    # 사진/영상 썸네일 외부 URL을 렌더링하거나 Google Blogger를 동적으로 스크랩하지 않습니다.
-    # 과거 SFANDOM 원문은 /analysis/ 및 개별 기사 경로에 그대로 보존합니다.
-    naver_mag = render_naver_magazine(BLOGS.get('naver', []), esc, naver_player)
-    write('/magazine/', layout('MAGAZINE · SFANDOM 네이버 블로그', page_head(
-          'MAGAZINE<span class="accent">.</span> <span class="kr">NAVER BLOG</span>',
-          'SFANDOM 네이버 블로그에 올린 최근 글과 특집을 모아 뒀어요. 글은 네이버에서 읽을 수 있어요.',
+    # 매거진: 사이트 자체 글(kind: magazine)만 보여 준다. 네이버·구글 블로그 연동은 쓰지 않는다(2026-11-06).
+    mags = [a for a in ARTICLES if a.kind == 'magazine']
+    mag_body = (two_col(item_list(mags), latest_box('magazine')) if mags else
+                '<div class="wrap sec" style="padding-top:32px"><p class="muted" style="font-size:15px">첫 매거진을 준비하고 있어요. 그동안은 <a href="/analysis/">분석</a>과 <a href="/news/">뉴스</a>에서 매일 새 글을 만나 보세요.</p></div>')
+    write('/magazine/', layout('MAGAZINE · SFANDOM 매거진', page_head(
+          'MAGAZINE<span class="accent">.</span> <span class="kr">숫자로 읽는 한 주</span>',
+          'SFANDOM이 직접 쓴 긴 글과 기획을 모아 뒀어요.',
           [('MAGAZINE', '')])
-          + naver_mag,
-          path='/magazine/', description='SFANDOM 네이버 블로그 최근 글과 NBA 심층 특집. 외부 사진 없는 원문 바로가기.',
+          + mag_body,
+          path='/magazine/', description='SFANDOM이 직접 쓴 긴 글과 기획, 시즌 가이드를 모아 둔 매거진.',
           active='/magazine/'))
 
 
