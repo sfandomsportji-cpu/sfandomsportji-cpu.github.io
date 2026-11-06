@@ -1,161 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-06T20:30+09:00",
+  "updated_at": "2026-11-06T23:00+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-06T20:30+09:00",
+      "checked_at": "2026-11-06T23:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-06T20:30+09:00",
+      "checked_at": "2026-11-06T23:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909922",
-          "league": "NBA",
-          "start_kst": "2026-11-05T09:00+09:00",
-          "away": "PHI",
-          "home": "DET",
-          "away_name": "Philadelphia 76ers",
-          "home_name": "Detroit Pistons",
-          "status": "final",
-          "away_score": 112,
-          "home_score": 106,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909922/76ers-pistons"
-        },
-        {
-          "id": "NBA-401909923",
-          "league": "NBA",
-          "start_kst": "2026-11-05T09:00+09:00",
-          "away": "ATL",
-          "home": "WSH",
-          "away_name": "Atlanta Hawks",
-          "home_name": "Washington Wizards",
-          "status": "final",
-          "away_score": 120,
-          "home_score": 105,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909923/hawks-wizards"
-        },
-        {
-          "id": "NBA-401909924",
-          "league": "NBA",
-          "start_kst": "2026-11-05T09:30+09:00",
-          "away": "MIL",
-          "home": "BOS",
-          "away_name": "Milwaukee Bucks",
-          "home_name": "Boston Celtics",
-          "status": "final",
-          "away_score": 102,
-          "home_score": 109,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909924/bucks-celtics"
-        },
-        {
-          "id": "NBA-401909925",
-          "league": "NBA",
-          "start_kst": "2026-11-05T09:30+09:00",
-          "away": "CHA",
-          "home": "BKN",
-          "away_name": "Charlotte Hornets",
-          "home_name": "Brooklyn Nets",
-          "status": "final",
-          "away_score": 104,
-          "home_score": 114,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909925/hornets-nets"
-        },
-        {
-          "id": "NBA-401909926",
-          "league": "NBA",
-          "start_kst": "2026-11-05T09:30+09:00",
-          "away": "CHI",
-          "home": "NY",
-          "away_name": "Chicago Bulls",
-          "home_name": "New York Knicks",
-          "status": "final",
-          "away_score": 105,
-          "home_score": 135,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909926/bulls-knicks"
-        },
-        {
-          "id": "NBA-401909927",
-          "league": "NBA",
-          "start_kst": "2026-11-05T10:00+09:00",
-          "away": "IND",
-          "home": "MEM",
-          "away_name": "Indiana Pacers",
-          "home_name": "Memphis Grizzlies",
-          "status": "final",
-          "away_score": 107,
-          "home_score": 103,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909927/pacers-grizzlies"
-        },
-        {
-          "id": "NBA-401909928",
-          "league": "NBA",
-          "start_kst": "2026-11-05T10:00+09:00",
-          "away": "UTAH",
-          "home": "NO",
-          "away_name": "Utah Jazz",
-          "home_name": "New Orleans Pelicans",
-          "status": "final",
-          "away_score": 113,
-          "home_score": 120,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909928/jazz-pelicans"
-        },
-        {
-          "id": "NBA-401909929",
-          "league": "NBA",
-          "start_kst": "2026-11-05T10:00+09:00",
-          "away": "CLE",
-          "home": "OKC",
-          "away_name": "Cleveland Cavaliers",
-          "home_name": "Oklahoma City Thunder",
-          "status": "final",
-          "away_score": 116,
-          "home_score": 124,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909929/cavaliers-thunder"
-        },
-        {
-          "id": "NBA-401909930",
-          "league": "NBA",
-          "start_kst": "2026-11-05T10:30+09:00",
-          "away": "MIN",
-          "home": "HOU",
-          "away_name": "Minnesota Timberwolves",
-          "home_name": "Houston Rockets",
-          "status": "final",
-          "away_score": 117,
-          "home_score": 107,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909930/timberwolves-rockets"
-        },
-        {
-          "id": "NBA-401909931",
-          "league": "NBA",
-          "start_kst": "2026-11-05T11:00+09:00",
-          "away": "TOR",
-          "home": "DEN",
-          "away_name": "Toronto Raptors",
-          "home_name": "Denver Nuggets",
-          "status": "final",
-          "away_score": 109,
-          "home_score": 128,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909931/raptors-nuggets"
-        },
-        {
-          "id": "NBA-401909932",
-          "league": "NBA",
-          "start_kst": "2026-11-05T11:00+09:00",
-          "away": "POR",
-          "home": "PHX",
-          "away_name": "Portland Trail Blazers",
-          "home_name": "Phoenix Suns",
-          "status": "final",
-          "away_score": 132,
-          "home_score": 119,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909932/trail-blazers-suns"
-        },
         {
           "id": "NBA-401909933",
           "league": "NBA",
@@ -523,7 +380,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-06T20:30+09:00",
+      "checked_at": "2026-11-06T23:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -712,36 +569,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-06T20:30+09:00",
+      "checked_at": "2026-11-06T23:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892644",
-          "league": "NHL",
-          "start_kst": "2026-11-05T09:30+09:00",
-          "away": "OTT",
-          "home": "BUF",
-          "away_name": "Ottawa Senators",
-          "home_name": "Buffalo Sabres",
-          "status": "final",
-          "away_score": 2,
-          "home_score": 1,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892644/senators-sabres"
-        },
-        {
-          "id": "NHL-401892645",
-          "league": "NHL",
-          "start_kst": "2026-11-05T09:30+09:00",
-          "away": "CHI",
-          "home": "FLA",
-          "away_name": "Chicago Blackhawks",
-          "home_name": "Florida Panthers",
-          "status": "final",
-          "away_score": 3,
-          "home_score": 5,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892645/blackhawks-panthers"
-        },
         {
           "id": "NHL-401892646",
           "league": "NHL",
