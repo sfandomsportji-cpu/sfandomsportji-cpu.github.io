@@ -1,57 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-06T23:06+09:00",
+  "updated_at": "2026-11-07T00:40+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-06T23:06+09:00",
+      "checked_at": "2026-11-07T00:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-06T23:06+09:00",
+      "checked_at": "2026-11-07T00:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909933",
-          "league": "NBA",
-          "start_kst": "2026-11-05T11:30+09:00",
-          "away": "DAL",
-          "home": "SA",
-          "away_name": "Dallas Mavericks",
-          "home_name": "San Antonio Spurs",
-          "status": "final",
-          "away_score": 111,
-          "home_score": 112,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909933/mavericks-spurs"
-        },
-        {
-          "id": "NBA-401909934",
-          "league": "NBA",
-          "start_kst": "2026-11-05T12:00+09:00",
-          "away": "LAL",
-          "home": "SAC",
-          "away_name": "Los Angeles Lakers",
-          "home_name": "Sacramento Kings",
-          "status": "final",
-          "away_score": 116,
-          "home_score": 103,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909934/lakers-kings"
-        },
-        {
-          "id": "NBA-401909935",
-          "league": "NBA",
-          "start_kst": "2026-11-05T12:30+09:00",
-          "away": "MIA",
-          "home": "LAC",
-          "away_name": "Miami Heat",
-          "home_name": "LA Clippers",
-          "status": "final",
-          "away_score": 117,
-          "home_score": 116,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909935/heat-clippers"
-        },
         {
           "id": "NBA-401909936",
           "league": "NBA",
@@ -380,7 +341,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-06T23:06+09:00",
+      "checked_at": "2026-11-07T00:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -569,36 +530,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-06T23:06+09:00",
+      "checked_at": "2026-11-07T00:40+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892646",
-          "league": "NHL",
-          "start_kst": "2026-11-05T12:00+09:00",
-          "away": "SJ",
-          "home": "LA",
-          "away_name": "San Jose Sharks",
-          "home_name": "Los Angeles Kings",
-          "status": "final",
-          "away_score": 2,
-          "home_score": 7,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892646/sharks-kings"
-        },
-        {
-          "id": "NHL-401892647",
-          "league": "NHL",
-          "start_kst": "2026-11-05T12:00+09:00",
-          "away": "CGY",
-          "home": "SEA",
-          "away_name": "Calgary Flames",
-          "home_name": "Seattle Kraken",
-          "status": "final",
-          "away_score": 1,
-          "home_score": 2,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892647/flames-kraken"
-        },
         {
           "id": "NHL-401892648",
           "league": "NHL",
