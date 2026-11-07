@@ -710,9 +710,11 @@ def recap_for(a: Article):
 
 def hit_rate():
     """pick을 남긴 분석 중 끝난 경기의 (맞힌 수, 전체)."""
-    done = [game_result(a) for a in ARTICLES if a.kind == 'analysis' and getattr(a, 'pick', '')]
+    _from = (SITE.get('analysis_record_base') or {}).get('auto_from', '')
+    done = [game_result(a) for a in ARTICLES if a.kind == 'analysis' and getattr(a, 'pick', '') and a.date >= _from]
     done = [r for r in done if r and r['verdict']]
-    return sum(r['verdict'] == 'hit' for r in done), len(done)
+    _rb = SITE.get('analysis_record_base') or {}
+    return int(_rb.get('hit', 0)) + sum(r['verdict'] == 'hit' for r in done), int(_rb.get('total', 0)) + len(done)
 
 
 def an_team(name: str, league: str) -> str:
@@ -1724,7 +1726,8 @@ def build_lists():
           path='/analysis/nba/', description='NBA 경기 프리뷰와 분석', active='/analysis/'))
     # 자동 복기: 경기 전에 pick을 남긴 분석 중 끝난 경기를 결과와 대조해 덧붙인다(손으로 쓴 기록은 그대로 유지).
     auto_recs = []
-    for a in sorted([x for x in ARTICLES if x.kind == 'analysis' and getattr(x, 'pick', '')], key=lambda x: (x.date, x.file)):
+    _af = (SITE.get('analysis_record_base') or {}).get('auto_from', '')
+    for a in sorted([x for x in ARTICLES if x.kind == 'analysis' and getattr(x, 'pick', '') and x.date >= _af], key=lambda x: (x.date, x.file)):
         r = game_result(a)
         if not r or not r['verdict']:
             continue
