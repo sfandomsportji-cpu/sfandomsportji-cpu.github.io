@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-08T08:18+09:00",
+  "updated_at": "2026-11-08T08:58+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-08T08:18+09:00",
+      "checked_at": "2026-11-08T08:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-08T08:18+09:00",
+      "checked_at": "2026-11-08T08:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -139,8 +139,8 @@
           "away_name": "Denver Nuggets",
           "home_name": "Indiana Pacers",
           "status": "live",
-          "away_score": 64,
-          "home_score": 41,
+          "away_score": 90,
+          "home_score": 78,
           "source_url": "https://www.espn.com/nba/game?gameId=401909938"
         },
         {
@@ -419,7 +419,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-08T08:18+09:00",
+      "checked_at": "2026-11-08T08:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -608,7 +608,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-08T08:18+09:00",
+      "checked_at": "2026-11-08T08:58+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -686,7 +686,7 @@
           "away_name": "New York Rangers",
           "home_name": "Seattle Kraken",
           "status": "live",
-          "away_score": 3,
+          "away_score": 4,
           "home_score": 0,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892664"
         },
