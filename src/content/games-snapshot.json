@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-07T16:22+09:00",
+  "updated_at": "2026-11-07T19:08+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-07T16:22+09:00",
+      "checked_at": "2026-11-07T19:08+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-07T16:22+09:00",
+      "checked_at": "2026-11-07T19:08+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -402,11 +402,50 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909956/pacers-mavericks"
+        },
+        {
+          "id": "NBA-401909957",
+          "league": "NBA",
+          "start_kst": "2026-11-10T10:30+09:00",
+          "away": "DEN",
+          "home": "HOU",
+          "away_name": "Denver Nuggets",
+          "home_name": "Houston Rockets",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909957/nuggets-rockets"
+        },
+        {
+          "id": "NBA-401909958",
+          "league": "NBA",
+          "start_kst": "2026-11-10T11:00+09:00",
+          "away": "SA",
+          "home": "PHX",
+          "away_name": "San Antonio Spurs",
+          "home_name": "Phoenix Suns",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909958/spurs-suns"
+        },
+        {
+          "id": "NBA-401909959",
+          "league": "NBA",
+          "start_kst": "2026-11-10T12:00+09:00",
+          "away": "NO",
+          "home": "GS",
+          "away_name": "New Orleans Pelicans",
+          "home_name": "Golden State Warriors",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909959/pelicans-warriors"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-07T16:22+09:00",
+      "checked_at": "2026-11-07T19:08+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -608,7 +647,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-07T16:22+09:00",
+      "checked_at": "2026-11-07T19:08+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -1040,6 +1079,32 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892680/rangers-oilers"
+        },
+        {
+          "id": "NHL-401892681",
+          "league": "NHL",
+          "start_kst": "2026-11-10T11:30+09:00",
+          "away": "PHI",
+          "home": "VAN",
+          "away_name": "Philadelphia Flyers",
+          "home_name": "Vancouver Canucks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892681/flyers-canucks"
+        },
+        {
+          "id": "NHL-401892682",
+          "league": "NHL",
+          "start_kst": "2026-11-10T12:00+09:00",
+          "away": "NYI",
+          "home": "SJ",
+          "away_name": "New York Islanders",
+          "home_name": "San Jose Sharks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892682/islanders-sharks"
         }
       ]
     }
