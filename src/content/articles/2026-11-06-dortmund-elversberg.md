@@ -1,6 +1,6 @@
 ---
 kind: "analysis"
-date: "2026-11-06"
+date: "2026-11-07"
 priority: 743
 title: "무패로 2위인 도르트문트가 홈에서 7위 엘버스베르크를 만나요"
 subtitle: "도르트문트 5승 3무, 엘버스베르크 4승 1무 3패 — 승점은 18점과 13점이에요"
@@ -14,6 +14,9 @@ slug: "dortmund-elversberg-20261106"
 away: "ELVERSBERG"
 home: "DORTMUND"
 kst: "11.07 23:30"
+pick: "home"
+verdict: "도르트문트 승"
+verdict_sub: "승리 방향 전망 · 경기 전 분석"
 summary: ["도르트문트는 5승 3무로 지지 않았고 승점 18점으로 2위예요. 14골을 넣고 6골만 내줬어요", "엘버스베르크는 4승 1무 3패로 7위(승점 13)이고, 16골을 넣고 16골을 내줬어요", "도르트문트는 Lerma·Konstantelias·Can이 빠지고, 엘버스베르크는 4명이 빠져요"]
 glance: [["핵심", "도르트문트 2위 승점 18 · 엘버스베르크 7위 승점 13"], ["변수", "도르트문트 Prates·Bensebaïni·Karetsas 출전 불투명"], ["시선", "도르트문트 8경기 6실점 · 엘버스베르크 득실 0"]]
 sources: [{"label":"Bundesliga 2026-27 Table (Sports Mole)","url":"https://www.sportsmole.co.uk/football/Bundesliga/table.html"},{"label":"Borussia Dortmund vs SV Elversberg (Starting11)","url":"https://starting11.com/fixtures/borussia-dortmund-vs-sv-elversberg"},{"label":"Bundesliga 2026-27 Matchday 9 (Fifplay)","url":"https://www.fifplay.com/bundesliga-2026-2027-matchday-9/"}]
@@ -37,9 +40,9 @@ sources: [{"label":"Bundesliga 2026-27 Table (Sports Mole)","url":"https://www.s
 
 ## 오늘 경기 전망
 
-도르트문트는 8경기 6실점으로 수비가 단단하고 홈에서 치러요. 엘버스베르크는 득점은 16골로 적지 않은데 실점도 같은 수라서 골이 오가는 편이에요. 도르트문트 수비 자원 몇 명이 불투명하다는 점이 변수고요. 그래서 도르트문트가 우세하다고 보지만, 엘버스베르크가 한 골은 넣을 수 있는 경기라고 봐요.
+도르트문트는 8경기 6실점으로 수비가 단단하고 홈에서 치러요. 엘버스베르크는 득점은 16골로 적지 않은데 실점도 같은 수라서 골이 오가는 편이에요. 도르트문트 수비 자원 몇 명이 불투명하다는 점이 변수고요. 그래서 도르트문트 쪽으로 기운다고 보지만, 엘버스베르크가 한 골은 넣을 수 있는 경기라고 봐요.
 
-승부 예측으로 집계하는 건 아니고, 지금까지 확인한 숫자로 가볍게 짚어 본 전망이에요.
+이번 경기 SFANDOM 픽은 도르트문트 승이에요. 지금까지 확인한 숫자를 근거로 한 전망이고, 결과는 경기 뒤 승률에 반영돼요.
 
 순위와 승점은 2026년 11월 6일 기준 8라운드까지의 표예요. 킥오프는 독일 현지 15시 30분이고, 시각은 모두 한국시간으로 적었어요. 결장 정보는 경기 당일 공식 발표가 가장 정확해요.
 
