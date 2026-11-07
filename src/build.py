@@ -1390,11 +1390,11 @@ def build_home():
     # 이전 경기 날짜를 고정 노출하지 않도록 시즌 진행 상태를 빌드 시점에 반영한다.
     if hero.get("auto") and dt.datetime.now(dt.timezone(dt.timedelta(hours=9))) >= dt.datetime.fromisoformat(NBA["opening_kst"]):
         hero_badge_en = "NBA · 2026-27 REGULAR SEASON"
-        hero_badge_kr = "최신 경기 일정과 확정 결과 · 한국시간"
-        hero_title = "NBA 정규시즌<br>경기 일정과 결과"
-        hero_text = "오늘 끝난 경기 결과와 곧 열릴 일정을 한눈에 볼 수 있어요. 점수는 외부 기록 제공처가 마지막으로 확인한 시각을 기준으로 보여 드려요."
+        hero_badge_kr = "오늘의 농구 소식 · 한국시간"
+        hero_title = "오늘 농구, 뭐 볼까요?<br>결과도 일정도 여기 있어요"
+        hero_text = "끝난 경기 점수부터 곧 시작할 경기까지, 한국시간으로 쏙 모아 뒀어요. 점수는 마지막으로 확인한 시각 기준이라 조금 늦을 수도 있어요, 너그럽게 봐주세요!"
         hero_link = "/games/"
-        hero_cta = "경기 일정·결과 보기"
+        hero_cta = "오늘 경기 보러 가기"
     if hero.get('use_latest_google_post') and g:
         hero_title, hero_text, hero_link = esc(g[0]['title']), g[0]['summary'], g[0]['link']
     cv = SITE.get('community_video') or {}
@@ -1476,7 +1476,7 @@ def build_home():
     <span class="hero-badge">{esc(hero_badge_en)}<b>{esc(hero_badge_kr)}</b></span>
     <h1 id="heroTitle">{hero_title}</h1>
     <p>{esc(hero_text)}</p>
-    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill white" href="{esc(hero_link or '/nba/')}" style="height:54px;padding:0 28px">{hero_cta if hero_link else home_cta}</a><a class="pill ghost" href="/community/#write" style="height:54px;padding:0 28px">팬 보드에서 얘기하기</a></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill white" href="{esc(hero_link or '/nba/')}" style="height:54px;padding:0 28px">{hero_cta if hero_link else home_cta}</a><a class="pill ghost" href="/community/#write" style="height:54px;padding:0 28px">팬 보드에서 수다 떨기</a></div>
   </article>
   {credit}{reel_tag}
   <aside class="top-stories" aria-label="{home_aria}"><h2>{home_heading} <span class="nba-dday">{home_status}</span></h2><div class="tip-rail">{tip}</div><a class="more top-stories-more" href="/nba/">NBA 허브 →</a></aside>

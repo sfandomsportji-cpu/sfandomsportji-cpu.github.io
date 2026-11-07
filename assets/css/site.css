@@ -1665,3 +1665,8 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 
 /* Juventus crest is solid black, so it vanishes on the dark cards. Show it white (CSS only, the logo file is untouched; size and position stay the same). */
 .tlogo[alt="JUVENTUS"]{filter:invert(1) drop-shadow(0 0 1px rgba(255,255,255,.18))}
+
+/* 2026-11-07 홈 첫 화면 문구만 귀여운 글꼴(Jua)로 · 다른 구역은 그대로 */
+.hero h1,.hero-badge b,.hero p,.hero .pill{font-family:'Jua','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-weight:400;letter-spacing:0}
+@media (min-width:761px){.hero h1{font-size:64px;line-height:1.2}.hero p{font-size:20px;line-height:1.6}.hero .pill{font-size:17px}}
+@media (max-width:760px){.hero h1{font-size:34px;line-height:1.25}}
