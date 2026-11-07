@@ -1,44 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-07T21:24+09:00",
+  "updated_at": "2026-11-08T01:25+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-07T21:24+09:00",
+      "checked_at": "2026-11-08T01:25+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-07T21:24+09:00",
+      "checked_at": "2026-11-08T01:25+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909936",
-          "league": "NBA",
-          "start_kst": "2026-11-06T11:00+09:00",
-          "away": "ORL",
-          "home": "PHX",
-          "away_name": "Orlando Magic",
-          "home_name": "Phoenix Suns",
-          "status": "final",
-          "away_score": 104,
-          "home_score": 117,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909936/magic-suns"
-        },
-        {
-          "id": "NBA-401909937",
-          "league": "NBA",
-          "start_kst": "2026-11-06T12:00+09:00",
-          "away": "MIA",
-          "home": "GS",
-          "away_name": "Miami Heat",
-          "home_name": "Golden State Warriors",
-          "status": "final",
-          "away_score": 100,
-          "home_score": 120,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909937/heat-warriors"
-        },
         {
           "id": "NBA-401909287",
           "league": "NBA",
@@ -445,23 +419,10 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-07T21:24+09:00",
+      "checked_at": "2026-11-08T01:25+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NFL-401873037",
-          "league": "NFL",
-          "start_kst": "2026-11-06T10:15+09:00",
-          "away": "JAX",
-          "home": "BAL",
-          "away_name": "Jacksonville Jaguars",
-          "home_name": "Baltimore Ravens",
-          "status": "final",
-          "away_score": 33,
-          "home_score": 10,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873037/jaguars-ravens"
-        },
         {
           "id": "NFL-401873038",
           "league": "NFL",
@@ -647,36 +608,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-07T21:24+09:00",
+      "checked_at": "2026-11-08T01:25+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892657",
-          "league": "NHL",
-          "start_kst": "2026-11-06T10:00+09:00",
-          "away": "ANA",
-          "home": "EDM",
-          "away_name": "Anaheim Ducks",
-          "home_name": "Edmonton Oilers",
-          "status": "final",
-          "away_score": 5,
-          "home_score": 4,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892657/ducks-oilers"
-        },
-        {
-          "id": "NHL-401892658",
-          "league": "NHL",
-          "start_kst": "2026-11-06T11:30+09:00",
-          "away": "NSH",
-          "home": "COL",
-          "away_name": "Nashville Predators",
-          "home_name": "Colorado Avalanche",
-          "status": "final",
-          "away_score": 3,
-          "home_score": 2,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892658/predators-avalanche"
-        },
         {
           "id": "NHL-401892659",
           "league": "NHL",
