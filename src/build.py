@@ -932,7 +932,8 @@ def ta_board(picks: list) -> str:
         f'<a class="ta-item" href="{a.url}"><span class="ta-pair">{ta_mark(a, a.away)}{ta_mark(a, a.home)}</span>'
         f'<span class="ta-tx"><span class="ta-meta"><em>{esc(a.league)}</em><time>{esc(ta_when(a))}</time></span>'
         f'<b>{esc(a.title)}</b>'
-        + (f'<small>{esc(key(a))}</small>' if key(a) else '') + '</span><span class="ta-arrow" aria-hidden="true">→</span></a>'
+        + (f'<small>{esc(key(a))}</small>' if key(a) else '')
+        + (f'<small class="ta-pk">KAIRO PICK · {esc(a.verdict)}</small>' if getattr(a, 'pick', '') and getattr(a, 'verdict', '') else '') + '</span><span class="ta-arrow" aria-hidden="true">→</span></a>'
         for a in rest)
     return f'<div class="ta-wrap">{big}<div class="ta-list">{items}</div></div>'
 
@@ -964,7 +965,8 @@ def today_analysis() -> str:
     in_special = {a.file for _, _, ps in live_specials for a in ps}
     if any(a.file not in in_special for a in pool):  # 특집 경기는 아래 특집 블록에 있으므로 위 3칸에서는 겹치지 않게 뺀다
         pool = [a for a in pool if a.file not in in_special]
-    upcoming = sorted([a for a in pool if start_kst(a) and start_kst(a) >= now_kst - dt.timedelta(hours=1)], key=start_kst)
+    upcoming = sorted([a for a in pool if start_kst(a) and start_kst(a) >= now_kst - dt.timedelta(hours=1)], key=lambda a: (not getattr(a, 'pick', ''), start_kst(a)))
+    # 픽이 있는 글을 먼저 보여 준다
     # 예정 경기를 먼저, 모자라면 가장 최근 분석으로 채워 항상 4편(큰 카드 1 + 옆 3)을 보여 준다.
     rest = [a for a in pool if a not in upcoming]
     is_final = lambda a: (getattr(a, 'kst', '') or '').endswith('final')

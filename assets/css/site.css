@@ -1680,3 +1680,6 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 @media (prefers-reduced-motion:no-preference){.hero .hero-play span{animation:heroBob 3.2s ease-in-out infinite}.hero .hero-play span:nth-child(2){animation-delay:.4s}.hero .hero-play span:nth-child(3){animation-delay:.8s}}
 @keyframes heroBob{0%,100%{translate:0 0}50%{translate:0 -4px}}
 @media (max-width:760px){.hero .hero-play{gap:8px}.hero .hero-play span{font-size:19px;padding:8px 14px 9px}.hero .hero-play span:nth-child(3){padding:6px 12px 7px}}
+
+/* Home analysis small items: show the picked side too. */
+.ta-item small.ta-pk{display:block;margin-top:4px;color:#e10600;font-weight:800;letter-spacing:.02em}

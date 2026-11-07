@@ -290,5 +290,11 @@
   "RFS": "europa-league/rfs.svg",
   "SALZBURG": "europa-league/salzburg.svg",
   "HAMBURG": "bundesliga/hamburger-sv.png",
-  "GLADBACH": "bundesliga/borussia-monchengladbach.png"
+  "GLADBACH": "bundesliga/borussia-monchengladbach.png",
+  "OSASUNA": "la-liga/ca-osasuna.png",
+  "ATHLETIC CLUB": "la-liga/athletic-bilbao.png",
+  "VALENCIA": "la-liga/valencia-cf.png",
+  "TROYES": "ligue-1/estac-troyes.png",
+  "FULHAM": "premier-league/fulham-fc.png",
+  "HULL CITY": "premier-league/hull-city.png"
 }
