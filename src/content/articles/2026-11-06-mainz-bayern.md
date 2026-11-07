@@ -1,6 +1,6 @@
 ---
 kind: "analysis"
-date: "2026-11-06"
+date: "2026-11-07"
 priority: 744
 title: "선두 바이에른이 9위 마인츠 원정을 가요, 지난 시즌 맞대결은 3–4였어요"
 subtitle: "바이에른 승점 18점 선두, 마인츠 승점 10점 9위 — 마인츠는 징계로 2명이 빠져요"
@@ -14,6 +14,9 @@ slug: "mainz-bayern-20261106"
 away: "BAYERN"
 home: "MAINZ"
 kst: "11.07 23:30"
+pick: "away"
+verdict: "바이에른 승"
+verdict_sub: "승리 방향 전망 · 경기 전 분석"
 summary: ["바이에른은 5승 3무 무패로 승점 18점 1위이고, 27골을 넣고 8골만 내줬어요", "마인츠는 3승 1무 4패로 9위(승점 10)이고, 17골을 넣고 17골을 내줬어요", "지난 4월 맞대결은 마인츠 3–4 바이에른이었고, 통산 34번 만나 바이에른이 24승을 거뒀어요"]
 glance: [["핵심", "바이에른 1위 승점 18 · 마인츠 9위 승점 10"], ["변수", "마인츠 Mwene·Posch 징계 · 바이에른 Musiala·Neuer 등 결장"], ["시선", "바이에른 8경기 27득점 · 마인츠 8경기 17실점"]]
 sources: [{"label":"Bundesliga 2026-27 Table (Sports Mole)","url":"https://www.sportsmole.co.uk/football/Bundesliga/table.html"},{"label":"FSV Mainz 05 vs Bayern München (Starting11)","url":"https://starting11.com/fixtures/fsv-mainz-05-vs-bayern-munich"},{"label":"Bundesliga 2026-27 Matchday 9 (Fifplay)","url":"https://www.fifplay.com/bundesliga-2026-2027-matchday-9/"}]
@@ -51,7 +54,7 @@ sources: [{"label":"Bundesliga 2026-27 Table (Sports Mole)","url":"https://www.s
 
 숫자만 보면 바이에른이 훨씬 앞서요. 8경기 27골에 8실점이고 지지 않았으니까요. 다만 주전 여럿이 빠진다는 보도가 있고, 마인츠도 지난 시즌 맞대결에서 세 골을 넣었던 팀이에요. 마인츠 징계 2명으로 수비가 흔들릴 수 있다는 점도 있어서, 바이에른이 우세한 가운데 골이 여러 개 나오는 경기가 될 수 있다고 봐요.
 
-승부 예측으로 집계하는 건 아니고, 지금까지 확인한 숫자로 가볍게 짚어 본 전망이에요.
+이번 경기 SFANDOM 픽은 바이에른 승이에요. 지금까지 확인한 숫자를 근거로 한 전망이고, 결과는 경기 뒤 승률에 반영돼요.
 
 순위와 승점은 2026년 11월 6일 기준 8라운드까지의 표예요. 킥오프는 독일 현지 15시 30분이고, 시각은 모두 한국시간으로 적었어요. 결장 정보는 경기 당일 공식 발표가 가장 정확해요.
 
