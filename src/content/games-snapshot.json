@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-07T14:00+09:00",
+  "updated_at": "2026-11-07T14:48+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-07T14:00+09:00",
+      "checked_at": "2026-11-07T14:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-07T14:00+09:00",
+      "checked_at": "2026-11-07T14:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -139,8 +139,8 @@
           "away_name": "Portland Trail Blazers",
           "home_name": "Los Angeles Lakers",
           "status": "live",
-          "away_score": 68,
-          "home_score": 73,
+          "away_score": 103,
+          "home_score": 110,
           "source_url": "https://www.espn.com/nba/game?gameId=401909294"
         },
         {
@@ -151,10 +151,10 @@
           "home": "SAC",
           "away_name": "San Antonio Spurs",
           "home_name": "Sacramento Kings",
-          "status": "live",
-          "away_score": 86,
-          "home_score": 71,
-          "source_url": "https://www.espn.com/nba/game?gameId=401909295"
+          "status": "final",
+          "away_score": 124,
+          "home_score": 109,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909295/spurs-kings"
         },
         {
           "id": "NBA-401909938",
@@ -341,7 +341,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-07T14:00+09:00",
+      "checked_at": "2026-11-07T14:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -530,7 +530,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-07T14:00+09:00",
+      "checked_at": "2026-11-07T14:48+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
