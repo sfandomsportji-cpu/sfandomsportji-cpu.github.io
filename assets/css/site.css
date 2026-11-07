@@ -1683,3 +1683,6 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 
 /* Home analysis small items: show the picked side too. */
 .ta-item small.ta-pk{display:block;margin-top:4px;color:#e10600;font-weight:800;letter-spacing:.02em}
+
+/* Review page: five stat tiles (incl. rate) on one row on desktop. */
+@media (min-width:761px){.stats.rv5{grid-template-columns:repeat(5,minmax(0,1fr))}}

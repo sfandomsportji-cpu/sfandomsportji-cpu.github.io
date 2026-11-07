@@ -979,7 +979,7 @@ def today_analysis() -> str:
     header_sub = f'{display_date.replace("-", ".")} 경기 분석' if upcoming else '최근 경기 분석'
 
     hit, total = hit_rate()
-    rate = f'<span data-rate title="경기 전에 남긴 예측과 실제 결과 기록">예측 {hit}/{total}</span>' if total else ''
+    rate = f'<span data-rate title="경기 전에 남긴 예측과 실제 결과 기록">예측 {hit}/{total} · {hit / total * 100:.1f}%</span>' if total else ''
     # 직접 받은 자료사진이 있는 글(오늘의 메인 특집)을 맨 위로 — 모든 줄은 접어 두고 사진 띠만 보이게
     picks = sorted(picks, key=lambda a: not (a.image.startswith('/assets/photos/') and (ROOT / a.image.lstrip('/')).is_file()))
     head = ('<div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
@@ -1740,7 +1740,7 @@ def build_lists():
                           'detail': f'경기 전에 남긴 전망과 끝난 뒤 결과를 그대로 맞춰 봤어요. 분석: {a.headline}',
                           'matched': r['verdict'] == 'hit'})
     all_recs = auto_recs[::-1] + RECORDS['records']
-    updated = TODAY if auto_recs else RECORDS['updated']
+    updated = TODAY
     recs = ''.join(f'''<div class="record"><span class="no">{r["no"]}</span><div><span class="tag red">{r["league"]} · {r["date"].replace("-", ".")} · {esc(r["venue"])}</span><h3>{esc(r["match"])}</h3>
 <p>경기 전 · {esc(r["outlook"])} → 결과 · {esc(r["result"])}. {esc(r["detail"])}</p></div><span class="verdict {"ok" if r["matched"] else "no"}">{"MATCHED" if r["matched"] else "NOT MATCHED"}</span></div>''' for r in all_recs)
     # 상단 집계는 홈 '분석 성공'과 같은 누적 기준(운영자 집계 + 자동 대조)으로 맞춘다. 아래 목록은 상세 공개분만 보여준다.
@@ -1751,7 +1751,7 @@ def build_lists():
         cum_total, cum_ok = len(all_recs), sum(r['matched'] for r in all_recs)
     write('/analysis/review/', layout('복기 리포트 · 경기 전 전망과 결과', page_head('REVIEW <span class="accent">/</span> <span class="kr">복기 리포트</span>', RECORDS['note'],
           [('ANALYSIS', '/analysis/'), ('REVIEW', '')], tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/review/'))
-          + preserved_component('review-cycle-guide') + editorial_index(EDITORIAL_PATHS, BY_KEY, esc, 'before-after') + two_col(f'<div class="stats" style="margin:0 0 12px"><div class="stat"><b>{cum_total}</b><span>RECORDS</span></div><div class="stat"><b>{cum_ok}</b><span>MATCHED</span></div><div class="stat"><b>{cum_total - cum_ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{updated[5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
+          + preserved_component('review-cycle-guide') + editorial_index(EDITORIAL_PATHS, BY_KEY, esc, 'before-after') + two_col(f'<div class="stats rv5" style="margin:0 0 12px"><div class="stat"><b>{cum_total}</b><span>RECORDS</span></div><div class="stat"><b>{cum_ok}</b><span>MATCHED</span></div><div class="stat"><b>{cum_total - cum_ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{(cum_ok / cum_total * 100 if cum_total else 0):.1f}%</b><span>RATE</span></div><div class="stat"><b>{updated[5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
                     + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다르게 끝난 경기도 지우지 않아요. 어떤 생각이 빗나갔는지 다음 분석 때 다시 짚어 볼게요.</p>'),
           path='/analysis/review/', description=RECORDS['note'], active='/analysis/'))
 
