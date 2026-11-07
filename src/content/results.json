@@ -73,5 +73,25 @@
     "status": "final",
     "away": 9,
     "home": 1
+  },
+  "2026-11-06-dortmund-elversberg": {
+    "status": "final",
+    "away": 1,
+    "home": 2
+  },
+  "2026-11-06-mainz-bayern": {
+    "status": "final",
+    "away": 2,
+    "home": 1
+  },
+  "2026-11-07-arsenal-hull": {
+    "status": "final",
+    "away": 0,
+    "home": 1
+  },
+  "2026-11-07-fulham-newcastle": {
+    "status": "final",
+    "away": 1,
+    "home": 1
   }
 }

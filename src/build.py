@@ -693,8 +693,11 @@ def game_result(a: Article):
         return None
     res['verdict'] = ''
     pick = getattr(a, 'pick', '')
-    if pick in ('away', 'home') and res['status'] == 'final' and res['away'] != res['home']:
-        res['verdict'] = 'hit' if (res['away'] > res['home']) == (pick == 'away') else 'miss'
+    if pick in ('away', 'home') and res['status'] == 'final':
+        if res['away'] == res['home']:  # 승리 방향 분석인데 무승부로 끝난 경기는 빗나간 것으로 센다(승·패 집계에서 빠지지 않게)
+            res['verdict'] = 'miss'
+        else:
+            res['verdict'] = 'hit' if (res['away'] > res['home']) == (pick == 'away') else 'miss'
     return res
 
 
