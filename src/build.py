@@ -1474,6 +1474,7 @@ def build_home():
   <div class="hero-shade" aria-hidden="true"></div>
   <article class="hero-copy">
     <span class="hero-badge">{esc(hero_badge_en)}<b>{esc(hero_badge_kr)}</b></span>
+    <p class="hero-play" aria-label="놀러와 함께 놀아보자"><span>놀러와</span><span>함께</span><span>놀아보자</span></p>
     <h1 id="heroTitle">{hero_title}</h1>
     <p>{esc(hero_text)}</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill white" href="{esc(hero_link or '/nba/')}" style="height:54px;padding:0 28px">{hero_cta if hero_link else home_cta}</a><a class="pill ghost" href="/community/#write" style="height:54px;padding:0 28px">팬 보드에서 수다 떨기</a></div>
