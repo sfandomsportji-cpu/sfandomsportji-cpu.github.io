@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-07T13:56+09:00",
+  "updated_at": "2026-11-07T14:00+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-07T13:56+09:00",
+      "checked_at": "2026-11-07T14:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-07T13:56+09:00",
+      "checked_at": "2026-11-07T14:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -140,7 +140,7 @@
           "home_name": "Los Angeles Lakers",
           "status": "live",
           "away_score": 68,
-          "home_score": 68,
+          "home_score": 73,
           "source_url": "https://www.espn.com/nba/game?gameId=401909294"
         },
         {
@@ -341,7 +341,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-07T13:56+09:00",
+      "checked_at": "2026-11-07T14:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -530,7 +530,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-07T13:56+09:00",
+      "checked_at": "2026-11-07T14:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
