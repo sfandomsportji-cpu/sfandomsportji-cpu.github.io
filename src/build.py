@@ -908,11 +908,11 @@ def ta_when(a: Article) -> str:
 
 
 def ta_side(a: Article, side: str) -> str:
-    """홈 큰 분석 카드의 한쪽 팀: 로고 + 팀 이름, KAIRO가 고른 쪽에는 'KAIRO PICK' 표시."""
+    """홈 큰 분석 카드의 한쪽 팀: 로고 + 팀 이름, KAIRO가 고른 쪽에는 'KAIRO ANALYSIS' 표시."""
     name = getattr(a, side, '')
     picked = (getattr(a, 'pick', '') or '') == side
     return (f'<span class="ta-side{" is-pick" if picked else ""}">{ta_mark(a, name)}'
-            f'<b>{esc(name)}</b>' + ('<em>KAIRO PICK</em>' if picked else '<em class="ph" aria-hidden="true">&nbsp;</em>') + '</span>')
+            f'<b>{esc(name)}</b>' + ('<em>KAIRO ANALYSIS</em>' if picked else '<em class="ph" aria-hidden="true">&nbsp;</em>') + '</span>')
 
 
 def ta_board(picks: list) -> str:
@@ -933,7 +933,7 @@ def ta_board(picks: list) -> str:
         f'<span class="ta-tx"><span class="ta-meta"><em>{esc(a.league)}</em><time>{esc(ta_when(a))}</time></span>'
         f'<b>{esc(a.title)}</b>'
         + (f'<small>{esc(key(a))}</small>' if key(a) else '')
-        + (f'<small class="ta-pk">KAIRO PICK · {esc(a.verdict)}</small>' if getattr(a, 'pick', '') and getattr(a, 'verdict', '') else '') + '</span><span class="ta-arrow" aria-hidden="true">→</span></a>'
+        + (f'<small class="ta-pk">분석 · {esc(a.verdict)}</small>' if getattr(a, 'pick', '') and getattr(a, 'verdict', '') else '') + '</span><span class="ta-arrow" aria-hidden="true">→</span></a>'
         for a in rest)
     return f'<div class="ta-wrap">{big}<div class="ta-list">{items}</div></div>'
 

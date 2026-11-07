@@ -35,4 +35,4 @@ sources: [{"label":"Champions League round-up: PSG hit Villarreal for six as Bay
 무득점 | 아틀레티코
 :::
 
-이 경기는 경기 전에 픽을 정하지 않았어요. 그래서 맞고 틀림은 따지지 않고 경기 흐름만 돌아봤어요.
+이 경기는 경기 전에 분석 방향을 정하지 않았어요. 그래서 맞고 틀림은 따지지 않고 경기 흐름만 돌아봤어요.

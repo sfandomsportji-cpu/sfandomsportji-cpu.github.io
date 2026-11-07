@@ -35,4 +35,4 @@ sources: [{"label":"Ligue des Champions : Les résultats de la soirée (Footeo)"
 빌라 | 챔스 첫 패배
 :::
 
-이 경기는 경기 전에 픽을 정하지 않았어요. 그래서 맞고 틀림은 따지지 않고 경기 흐름만 돌아봤어요.
+이 경기는 경기 전에 분석 방향을 정하지 않았어요. 그래서 맞고 틀림은 따지지 않고 경기 흐름만 돌아봤어요.
