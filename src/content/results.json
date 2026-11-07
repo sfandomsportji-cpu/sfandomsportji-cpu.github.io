@@ -93,5 +93,20 @@
     "status": "final",
     "away": 1,
     "home": 1
+  },
+  "2026-11-07-osasuna-athletic": {
+    "status": "final",
+    "away": 1,
+    "home": 1
+  },
+  "2026-11-07-valencia-realmadrid": {
+    "status": "final",
+    "away": 3,
+    "home": 0
+  },
+  "2026-11-07-psg-troyes": {
+    "status": "final",
+    "away": 0,
+    "home": 1
   }
 }
