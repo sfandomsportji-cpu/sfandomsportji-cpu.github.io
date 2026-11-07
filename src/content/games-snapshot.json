@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-08T01:25+09:00",
+  "updated_at": "2026-11-08T03:35+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-08T01:25+09:00",
+      "checked_at": "2026-11-08T03:35+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-08T01:25+09:00",
+      "checked_at": "2026-11-08T03:35+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -419,7 +419,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-08T01:25+09:00",
+      "checked_at": "2026-11-08T03:35+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -608,7 +608,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-08T01:25+09:00",
+      "checked_at": "2026-11-08T03:35+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -659,10 +659,10 @@
           "home": "WSH",
           "away_name": "Florida Panthers",
           "home_name": "Washington Capitals",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892662/panthers-capitals"
+          "status": "live",
+          "away_score": 2,
+          "home_score": 1,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892662"
         },
         {
           "id": "NHL-401892663",
@@ -672,10 +672,10 @@
           "home": "NSH",
           "away_name": "St. Louis Blues",
           "home_name": "Nashville Predators",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892663/blues-predators"
+          "status": "live",
+          "away_score": 1,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892663"
         },
         {
           "id": "NHL-401892664",
