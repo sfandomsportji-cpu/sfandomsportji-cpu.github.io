@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-08T05:30+09:00",
+  "updated_at": "2026-11-08T07:31+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-08T05:30+09:00",
+      "checked_at": "2026-11-08T07:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-08T05:30+09:00",
+      "checked_at": "2026-11-08T07:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -138,10 +138,10 @@
           "home": "IND",
           "away_name": "Denver Nuggets",
           "home_name": "Indiana Pacers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909938/nuggets-pacers"
+          "status": "live",
+          "away_score": 21,
+          "home_score": 13,
+          "source_url": "https://www.espn.com/nba/game?gameId=401909938"
         },
         {
           "id": "NBA-401909939",
@@ -419,7 +419,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-08T05:30+09:00",
+      "checked_at": "2026-11-08T07:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -608,7 +608,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-08T05:30+09:00",
+      "checked_at": "2026-11-08T07:31+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -672,10 +672,10 @@
           "home": "NSH",
           "away_name": "St. Louis Blues",
           "home_name": "Nashville Predators",
-          "status": "live",
+          "status": "final",
           "away_score": 1,
-          "home_score": 2,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892663"
+          "home_score": 3,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892663/blues-predators"
         },
         {
           "id": "NHL-401892664",
@@ -685,10 +685,10 @@
           "home": "SEA",
           "away_name": "New York Rangers",
           "home_name": "Seattle Kraken",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892664/rangers-kraken"
+          "status": "live",
+          "away_score": 2,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892664"
         },
         {
           "id": "NHL-401892665",
