@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-07T12:41+09:00",
+  "updated_at": "2026-11-07T12:42+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-07T12:41+09:00",
+      "checked_at": "2026-11-07T12:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-07T12:41+09:00",
+      "checked_at": "2026-11-07T12:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -139,7 +139,7 @@
           "away_name": "Portland Trail Blazers",
           "home_name": "Los Angeles Lakers",
           "status": "live",
-          "away_score": 27,
+          "away_score": 28,
           "home_score": 19,
           "source_url": "https://www.espn.com/nba/game?gameId=401909294"
         },
@@ -152,7 +152,7 @@
           "away_name": "San Antonio Spurs",
           "home_name": "Sacramento Kings",
           "status": "live",
-          "away_score": 21,
+          "away_score": 24,
           "home_score": 22,
           "source_url": "https://www.espn.com/nba/game?gameId=401909295"
         },
@@ -341,7 +341,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-07T12:41+09:00",
+      "checked_at": "2026-11-07T12:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -530,7 +530,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-07T12:41+09:00",
+      "checked_at": "2026-11-07T12:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -685,10 +685,10 @@
           "home": "BUF",
           "away_name": "Columbus Blue Jackets",
           "home_name": "Buffalo Sabres",
-          "status": "final",
+          "status": "live",
           "away_score": 2,
           "home_score": 5,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892659/blue-jackets-sabres"
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892659"
         },
         {
           "id": "NHL-401892660",
