@@ -638,12 +638,6 @@ def an_banner(a: Article) -> str:
     return ''
 
 
-def an_verdict_chip(a: Article) -> str:
-    if not getattr(a, 'verdict', ''):
-        return ''
-    return f'<span class="an-vchip"><b>최종 전망</b> {esc(a.verdict)} · {esc(getattr(a, "verdict_sub", "").replace("예상 스코어 ", ""))}</span>'
-
-
 def an_detail(a: Article) -> str:
     """펼쳤을 때 보이는 상세: 경기 숫자(stats 블록)와 KAIRO VIEW(angle 블록), 전문 링크."""
     stats, view_title, view = [], 'KAIRO VIEW', ''
@@ -660,12 +654,7 @@ def an_detail(a: Article) -> str:
     ph = ''
     if a.image.startswith('/assets/photos/') and (ROOT / a.image.lstrip('/')).is_file():  # 직접 받은 자료사진만(3일 보관) — 홈에서도 펼치면 보이게
         ph = f'<span class="an-media"><span class="an-photo{" sm" if photo_small(a) else ""}" role="img" aria-label="{esc(a.image_alt)}" style="background-image:url({esc(a.image)})"></span>{an_logos(a)}</span>'
-    vd = ''
-    if getattr(a, 'verdict', ''):  # 사람이 확정한 최종 전망 — 펼친 칸 사진 옆에 한눈에
-        sm = ''.join(f'<li>{esc(x)}</li>' for x in (getattr(a, 'summary', None) or []))
-        vd = (f'<div class="an-verdict"><b>SFANDOM 최종 전망</b><strong>{esc(a.verdict)}</strong>'
-              f'<em>{esc(getattr(a, "verdict_sub", ""))}</em>' + (f'<ul>{sm}</ul>' if sm else '') + '</div>')
-    return (f'<div class="an-open{" has-verdict" if vd else ""}">{ph}{vd}<ul class="an-stats">{items}</ul>'
+    return (f'<div class="an-open">{ph}<ul class="an-stats">{items}</ul>'
             f'<p class="an-view"><b>{esc(view_title)}</b>{esc(view)}</p>{an_vote(a)}'
             f'<div class="an-links"><a class="an-read" href="{a.url}">분석 전문 읽기 →</a>{an_recap_link(a)}</div></div>')
 
@@ -744,7 +733,7 @@ def analysis_row(a: Article, opened: bool = False) -> str:
         mark = {'hit': ' ✔', 'miss': ' ✘'}.get(res['verdict'], '')
         label = '종료' if res['status'] == 'final' else 'LIVE'
         state = (f'<em class="an-state" data-s="{res["status"]}" data-v="{res["verdict"]}">{label} {res["away"]}–{res["home"]}{mark}</em>')
-    return (f'<details class="an-item" data-final="{1 if res and res["status"] == "final" else 0}" data-teams="{esc(away)}|{esc(home)}"{" open" if opened else ""}><summary class="an-row">{an_banner(a)}{an_verdict_chip(a)}'
+    return (f'<details class="an-item" data-final="{1 if res and res["status"] == "final" else 0}" data-teams="{esc(away)}|{esc(home)}"{" open" if opened else ""}><summary class="an-row">{an_banner(a)}'
             f'<span class="an-time"><b>{esc(clock or "-")}</b><small>{esc(day)} {esc(a.league)}</small>{state}</span>'
             f'<span class="an-match"><span class="an-names"><small>{esc(tag)}</small>'
             f'<span class="an-teams">{an_team(away, a.league)} <i>VS</i> {an_team(home, a.league)}</span></span></span>'
@@ -911,11 +900,10 @@ def ta_when(a: Article) -> str:
 
 
 def ta_side(a: Article, side: str) -> str:
-    """홈 큰 분석 카드의 한쪽 팀: 로고 + 팀 이름, KAIRO가 고른 쪽에는 'KAIRO ANALYSIS' 표시."""
+    """홈 큰 분석 카드의 한쪽 팀: 로고 + 팀 이름. 분석 방향은 겉에 드러내지 않고 글 안에서만 보여 준다."""
     name = getattr(a, side, '')
-    picked = (getattr(a, 'pick', '') or '') == side
-    return (f'<span class="ta-side{" is-pick" if picked else ""}">{ta_mark(a, name)}'
-            f'<b>{esc(name)}</b>' + ('<em>KAIRO ANALYSIS</em>' if picked else '<em class="ph" aria-hidden="true">&nbsp;</em>') + '</span>')
+    return (f'<span class="ta-side">{ta_mark(a, name)}'
+            f'<b>{esc(name)}</b><em class="ph" aria-hidden="true">&nbsp;</em></span>')
 
 
 def ta_board(picks: list) -> str:
@@ -936,7 +924,7 @@ def ta_board(picks: list) -> str:
         f'<span class="ta-tx"><span class="ta-meta"><em>{esc(a.league)}</em><time>{esc(ta_when(a))}</time></span>'
         f'<b>{esc(a.title)}</b>'
         + (f'<small>{esc(key(a))}</small>' if key(a) else '')
-        + (f'<small class="ta-pk">분석 · {esc(a.verdict)}</small>' if getattr(a, 'pick', '') and getattr(a, 'verdict', '') else '') + '</span><span class="ta-arrow" aria-hidden="true">→</span></a>'
+        + (f'<small class="ta-pk">SFANDOM 분석은 글 안에서 확인해요</small>' if getattr(a, 'pick', '') and getattr(a, 'verdict', '') else '') + '</span><span class="ta-arrow" aria-hidden="true">→</span></a>'
         for a in rest)
     return f'<div class="ta-wrap">{big}<div class="ta-list">{items}</div></div>'
 
@@ -1571,6 +1559,10 @@ def build_article(a: Article):
             fallback_attr = f' onerror="this.onerror=null;this.src=\'{esc(a.photo_fallback)}\'"'
         fallback = '<div class="feature-fallback">DODGERS · NLCS</div>' if feature else ''
         fig = f'<figure class="figure {logo}{feature}{photo_cls(a)}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" fetchpriority="high"{fallback_attr}>{fallback}{an_logos(a) if a.image.startswith('/assets/photos/') else ''}{cap}</figure>'
+    verdict_html = (f'<aside class="an-verdict art-verdict" aria-label="SFANDOM 분석"><b>SFANDOM 분석</b><strong>{esc(a.verdict)}</strong>'
+                    f'<em>{esc(getattr(a, "verdict_sub", ""))}</em>'
+                    '<p>더 자세한 내용이 궁금하시면 <a href="/contact/">쪽지</a>나 아래 댓글로 편하게 문의해 주세요.</p></aside>'
+                    ) if a.kind == 'analysis' and getattr(a, 'pick', '') and getattr(a, 'verdict', '') else ''
     srcs = ''.join(f'<span>{esc(s["label"])}</span>' for s in a.sources if s.get('label'))
     src_html = f'<div class="sources"><strong>출처</strong>{srcs}</div>' if srcs else ''
     credit = f'<p class="credit">{esc(a.credit)}</p>' if a.credit and not a.credit.startswith('PHOTO') else ''
@@ -1605,6 +1597,7 @@ def build_article(a: Article):
       {matchup_strip(a) if a.kind == 'analysis' or (a.kind == 'news' and a.league == 'SOCCER' and getattr(a, 'away', '') and getattr(a, 'home', '')) else ''}
       {fig}
       <div class="prose">{render_body(a)}</div>
+      {verdict_html}
       {src_html}{credit}
       {editorial_related(a, EDITORIAL_PATHS, BY_KEY, esc)}
       {discussion_html}

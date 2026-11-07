@@ -255,15 +255,14 @@ main{display:block}
 .an-logos>span{display:flex;align-items:center;justify-content:center;height:84px;background:#fff}
 .an-logos>span:first-child{border-bottom-left-radius:6px}.an-logos>span:last-child{border-bottom-right-radius:6px}
 .an-logos img{height:76px;width:auto;max-width:70%;object-fit:contain}
-.an-vchip{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:14px 18px;font-weight:600;background:rgba(200,16,46,.14);border-left:3px solid var(--red);border-radius:6px;font-size:24px;line-height:1.3;font-family:var(--display)}
-.an-vchip b{font-size:14px;font-weight:700;font-family:var(--head);letter-spacing:.1em;color:var(--red)}
-.an-item[open] .an-vchip{display:none}
 .an-verdict{display:flex;flex-direction:column;gap:6px;padding:16px 18px;background:rgba(200,16,46,.12);border-left:4px solid var(--red);border-radius:6px}
 .an-verdict b{font-size:13px;letter-spacing:.12em;color:var(--red)}
 .an-verdict strong{font-family:var(--display);font-weight:600;font-size:30px;line-height:1.15}
 .an-verdict em{font-style:normal;font-size:18px;color:var(--text)}
+.art-verdict{margin:32px 0 8px}
+.art-verdict p{margin:10px 0 0;font-size:16px;line-height:1.7;color:var(--text-2)}
+.art-verdict a{color:var(--red);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .an-verdict ul{margin:8px 0 0;padding-left:18px;font-size:16px;line-height:1.7;color:var(--text-2)}
-.an-open.has-verdict .an-stats,.an-open.has-verdict .an-view,.an-open.has-verdict .an-vote,.an-open.has-verdict .an-links{grid-column:1/-1}
 .an-photo{display:block;width:100%;aspect-ratio:16/9;background-size:cover;background-position:center 22%;border-radius:8px 8px 0 0}
 .an-open>.an-media{grid-column:auto}
 .an-open .an-media .an-logos>span{height:66px}
@@ -1645,7 +1644,6 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 #today-analysis .ta-side b{font-family:var(--head);font-weight:800;font-size:15px;letter-spacing:.04em;color:#cbd1df;text-align:center}
 #today-analysis .ta-side em{font-style:normal;font-family:var(--head);font-weight:800;font-size:12px;letter-spacing:.08em;padding:3px 10px;border-radius:999px;background:var(--red);color:#fff;white-space:nowrap}
 #today-analysis .ta-side em.ph{visibility:hidden}
-#today-analysis .ta-side.is-pick b{color:#fff}
 @media(max-width:900px){#today-analysis .ta-stage{gap:20px}#today-analysis .ta-stage i{margin-top:-22px}#today-analysis .ta-side b{font-size:13px}}
 #today-analysis .ta-stage .tlogo-wrap.kbo{padding:3px}
 
