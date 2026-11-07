@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-07T12:03+09:00",
+  "updated_at": "2026-11-07T12:06+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-07T12:03+09:00",
+      "checked_at": "2026-11-07T12:06+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-07T12:03+09:00",
+      "checked_at": "2026-11-07T12:06+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -74,8 +74,8 @@
           "away_name": "Philadelphia 76ers",
           "home_name": "Cleveland Cavaliers",
           "status": "live",
-          "away_score": 85,
-          "home_score": 105,
+          "away_score": 88,
+          "home_score": 109,
           "source_url": "https://www.espn.com/nba/game?gameId=401909289"
         },
         {
@@ -87,8 +87,8 @@
           "away_name": "Utah Jazz",
           "home_name": "Dallas Mavericks",
           "status": "live",
-          "away_score": 88,
-          "home_score": 100,
+          "away_score": 91,
+          "home_score": 102,
           "source_url": "https://www.espn.com/nba/game?gameId=401909290"
         },
         {
@@ -101,7 +101,7 @@
           "home_name": "Memphis Grizzlies",
           "status": "live",
           "away_score": 103,
-          "home_score": 78,
+          "home_score": 80,
           "source_url": "https://www.espn.com/nba/game?gameId=401909291"
         },
         {
@@ -126,8 +126,8 @@
           "away_name": "Minnesota Timberwolves",
           "home_name": "New Orleans Pelicans",
           "status": "live",
-          "away_score": 77,
-          "home_score": 79,
+          "away_score": 80,
+          "home_score": 81,
           "source_url": "https://www.espn.com/nba/game?gameId=401909293"
         },
         {
@@ -341,7 +341,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-07T12:03+09:00",
+      "checked_at": "2026-11-07T12:06+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -530,7 +530,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-07T12:03+09:00",
+      "checked_at": "2026-11-07T12:06+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
