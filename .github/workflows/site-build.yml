@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - "src/**"
+      - "assets/css/site.css"
       - ".github/workflows/site-build.yml"
       - "!src/content/games-snapshot.json" # bot-updated snapshot must not recursively retrigger
   workflow_dispatch:
