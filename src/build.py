@@ -774,8 +774,8 @@ def logo_box(key: str) -> tuple:
 # (기준 크기, 한 변 최대, 대각선 최대) — 상자 한 변을 1로 본 비율. 가로·세로 비율이 달라도 눈에 보이는 크기가 비슷하도록
 # 가로세로의 기하평균을 맞추고, 상자(원형 배지 등)를 넘지 않게 제한한다.
 LOGO_FIT_BADGE = (0.66, 0.80, 0.92)  # 홈 '오늘 SOCCER' 원형 배지
-LOGO_FIT_PLAIN = (0.80, 0.96, 0.0)  # 글 안 대진·분석 목록·홈 카드: 눈에 보이는 면적(가로×세로)을 같게 맞추되 긴 변은 칸의 96% 이내, 가운데 정렬
-LOGO_FIT_NBA = (0.88, 0.98, 0.0)  # NBA 로고(홈 일정·NBA 허브·글 머리): PLAIN과 같은 면적 통일 방식. NBA 칸은 작아서 기본 크기만 조금 키웠다(2026-11-08)
+LOGO_FIT_PLAIN = (0.80, 1.0, 0.0)  # 글 안 대진·분석 목록·홈 카드: 눈에 보이는 면적(가로×세로)을 같게 맞추되 긴 변은 칸의 96% 이내, 가운데 정렬
+LOGO_FIT_NBA = (0.88, 1.0, 0.0)  # NBA 로고(홈 일정·NBA 허브·글 머리): PLAIN과 같은 면적 통일 방식. NBA 칸은 작아서 기본 크기만 조금 키웠다(2026-11-08)
 
 
 try:  # 글자 위주의 가로로 긴 로고(레이커스 등)는 로고별 배율을 따로 보관 (src/content/logo_scale.json)
@@ -2365,8 +2365,10 @@ def score_team(g: dict, side: str, state: str) -> str:
         return f'<span class="sf-scores__logo" title="{esc(name)}">{badge(abbr, team_color(abbr, league), "", league=league)}</span>'
     crest = crest_url(league, abbr) if state in ('scheduled', 'live', 'final') else ''
     if crest:
+        ckey = crest.removeprefix('/assets/teams/')  # 다른 리그 로고와 같은 면적 통일 방식으로 크기를 맞춘다(2026-11-08)
+        cst = f' style="{logo_style(ckey, LOGO_FIT_PLAIN)}"' if ckey in LOGO_BOXES else ''
         return (f'<span class="sf-scores__logo" title="{esc(name)}"><span class="tlogo-wrap crest" title="{esc(abbr)}">'
-                f'<img class="tlogo" src="{crest}" alt="{esc(name or abbr)}" width="64" height="64" loading="lazy" decoding="async"></span></span>')
+                f'<img class="tlogo" src="{crest}" alt="{esc(name or abbr)}"{cst} width="64" height="64" loading="lazy" decoding="async"></span></span>')
     return f'<b title="{esc(name)}">{esc(abbr)}</b>'
 
 
