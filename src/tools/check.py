@@ -188,7 +188,7 @@ check('33 대표 주소(canonical)가 실제 경로와 일치', canon)
 bad_out = re.compile(r'\bNone\b|\bundefined\b|\{[a-z_]+\}|\bnull\b')
 check('34 화면에 None · undefined · 치환 안 된 자리표시 없음', [(p, m.group(0)) for p, t in H.items() for m in bad_out.finditer(visible(t))])
 check('35 빈 제목 · 빈 문단 없음', [(p, m.group(0)) for p, t in H.items() for m in re.finditer(r'<h[1-4][^>]*>\s*</h[1-4]>|<p>\s*</p>', t)])
-check('36 금지어(베팅 관련) 없음', [(p, m.group(0)) for p, t in H.items() for m in re.finditer(r'배당|베팅|적중|픽스터|토토|wager|\bodds\b', visible(t), re.I)])
+check('36 금지어(베팅 관련) 없음', [(p, m.group(0)) for p, t in H.items() for m in re.finditer(r'배당|베팅|적중|픽스터|토토|wager|\bodds\b|(?<![가-힣])픽|\bpicks?\b', visible(t), re.I)])
 
 # ── 사이트맵 · 검색 · 설정 ──
 sm = re.findall(r'<loc>https://sfandom\.com(/[^<]*)</loc>', ALL.get('sitemap.xml', ''))

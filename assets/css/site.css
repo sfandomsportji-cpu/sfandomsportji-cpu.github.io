@@ -1637,7 +1637,7 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 #today-analysis .ta-stage .tlogo-wrap.kbo .tlogo[alt^="KIA"]{transform:translateY(0) scale(1.10);transform-origin:center}
 #today-analysis .ta-stage .tlogo-wrap.kbo .tlogo[alt^="SAMSUNG"]{transform:translateY(0) scale(1.15);transform-origin:center}
 
-/* Home analysis big card: team name under each logo, KAIRO PICK marker on the picked side. */
+/* Home analysis big card: team name under each logo (분석 방향은 겉에 표시하지 않는다). */
 #today-analysis .ta-stage{align-items:flex-start;gap:34px}
 #today-analysis .ta-stage i{align-self:center;margin-top:-26px}
 #today-analysis .ta-side{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0}
@@ -1679,8 +1679,6 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 @keyframes heroBob{0%,100%{translate:0 0}50%{translate:0 -4px}}
 @media (max-width:760px){.hero .hero-play{gap:8px}.hero .hero-play span{font-size:19px;padding:8px 14px 9px}.hero .hero-play span:nth-child(3){padding:6px 12px 7px}}
 
-/* Home analysis small items: show the picked side too. */
-.ta-item small.ta-pk{display:block;margin-top:4px;color:#e10600;font-weight:800;letter-spacing:.02em}
 
 /* Review page: five stat tiles (incl. rate) on one row on desktop. */
 @media (min-width:761px){.stats.rv5{grid-template-columns:repeat(5,minmax(0,1fr))}}

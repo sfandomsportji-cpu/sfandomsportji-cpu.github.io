@@ -924,7 +924,7 @@ def ta_board(picks: list) -> str:
         f'<span class="ta-tx"><span class="ta-meta"><em>{esc(a.league)}</em><time>{esc(ta_when(a))}</time></span>'
         f'<b>{esc(a.title)}</b>'
         + (f'<small>{esc(key(a))}</small>' if key(a) else '')
-        + (f'<small class="ta-pk">SFANDOM 분석은 글 안에서 확인해요</small>' if getattr(a, 'pick', '') and getattr(a, 'verdict', '') else '') + '</span><span class="ta-arrow" aria-hidden="true">→</span></a>'
+        + '</span><span class="ta-arrow" aria-hidden="true">→</span></a>'
         for a in rest)
     return f'<div class="ta-wrap">{big}<div class="ta-list">{items}</div></div>'
 
