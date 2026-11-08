@@ -431,13 +431,13 @@ def badge(abbr: str, color: str, size: str = '', league: str = 'mlb') -> str:
     로고를 못 불러오면 site.js가 팀 색 약자 칩으로 바꿉니다."""
     f = ROOT / 'assets' / 'teams' / league / f'{abbr.lower()}.svg'
     if f.exists():
-        src = f'/assets/teams/{league}/{abbr.lower()}.svg?v=all-team-marks-20261009'
+        src = f'/assets/teams/{league}/{abbr.lower()}.svg?v=all-team-marks-20261108'
     else:
         ids, pattern = LOGO_SOURCES[league]
         src = pattern.format(id=ids[abbr]) if abbr in ids else ''
     if not src:
         return f'<span class="tchip {size}" style="--c:{color}" title="{esc(abbr)}">{esc(abbr)}</span>'
-    st = f' style="{logo_style(f"{league}/{abbr.lower()}.svg", LOGO_FIT_PLAIN)}"' if f.exists() else ''
+    st = f' style="{logo_style(f"{league}/{abbr.lower()}.svg", LOGO_FIT_NBA if league == "nba" else LOGO_FIT_PLAIN)}"' if f.exists() else ''
     return (f'<span class="tlogo-wrap {size}" data-abbr="{esc(abbr)}" style="--c:{color}" title="{esc(abbr)}">'
             f'<img class="tlogo" src="{src}" alt="{esc(abbr)}"{st} width="40" height="40" loading="lazy" decoding="async" referrerpolicy="no-referrer"></span>')
 
@@ -775,6 +775,7 @@ def logo_box(key: str) -> tuple:
 # 가로세로의 기하평균을 맞추고, 상자(원형 배지 등)를 넘지 않게 제한한다.
 LOGO_FIT_BADGE = (0.66, 0.80, 0.92)  # 홈 '오늘 SOCCER' 원형 배지
 LOGO_FIT_PLAIN = (0.80, 0.96, 0.0)  # 글 안 대진·분석 목록·홈 카드: 눈에 보이는 면적(가로×세로)을 같게 맞추되 긴 변은 칸의 96% 이내, 가운데 정렬
+LOGO_FIT_NBA = (0.88, 0.98, 0.0)  # NBA 로고(홈 일정·NBA 허브·글 머리): PLAIN과 같은 면적 통일 방식. NBA 칸은 작아서 기본 크기만 조금 키웠다(2026-11-08)
 
 
 try:  # 글자 위주의 가로로 긴 로고(레이커스 등)는 로고별 배율을 따로 보관 (src/content/logo_scale.json)
@@ -787,7 +788,7 @@ def logo_size(key: str, fit: tuple) -> tuple:
     """상자 한 변을 1로 했을 때 보여 줄 (가로, 세로)."""
     _, asp = logo_box(key)
     g, cap, diag = fit
-    if fit is LOGO_FIT_PLAIN:  # 면적 통일 + 긴 변 상한: 가로형·세로형·원형이 비슷한 크기로 보이게(로고별 배율 없음)
+    if fit is LOGO_FIT_PLAIN or fit is LOGO_FIT_NBA:  # 면적 통일 + 긴 변 상한: 가로형·세로형·원형이 비슷한 크기로 보이게(로고별 배율 없음)
         w, h = g * math.sqrt(asp), g / math.sqrt(asp)
         k = min(1.0, cap / max(w, h))
         return w * k, h * k
