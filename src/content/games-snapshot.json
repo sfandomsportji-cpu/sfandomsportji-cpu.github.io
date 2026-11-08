@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-08T12:52+09:00",
+  "updated_at": "2026-11-08T13:21+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-08T12:52+09:00",
+      "checked_at": "2026-11-08T13:21+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-08T12:52+09:00",
+      "checked_at": "2026-11-08T13:21+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -191,8 +191,8 @@
           "away_name": "Orlando Magic",
           "home_name": "Golden State Warriors",
           "status": "live",
-          "away_score": 98,
-          "home_score": 98,
+          "away_score": 118,
+          "home_score": 122,
           "source_url": "https://www.espn.com/nba/game?gameId=401909942"
         },
         {
@@ -204,8 +204,8 @@
           "away_name": "Houston Rockets",
           "home_name": "Phoenix Suns",
           "status": "live",
-          "away_score": 75,
-          "home_score": 76,
+          "away_score": 99,
+          "home_score": 104,
           "source_url": "https://www.espn.com/nba/game?gameId=401909943"
         },
         {
@@ -217,8 +217,8 @@
           "away_name": "San Antonio Spurs",
           "home_name": "Portland Trail Blazers",
           "status": "live",
-          "away_score": 30,
-          "home_score": 25,
+          "away_score": 64,
+          "home_score": 49,
           "source_url": "https://www.espn.com/nba/game?gameId=401909944"
         },
         {
@@ -419,7 +419,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-08T12:52+09:00",
+      "checked_at": "2026-11-08T13:21+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -608,7 +608,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-08T12:52+09:00",
+      "checked_at": "2026-11-08T13:21+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -778,7 +778,7 @@
           "home_name": "Colorado Avalanche",
           "status": "live",
           "away_score": 0,
-          "home_score": 2,
+          "home_score": 4,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892671"
         },
         {
