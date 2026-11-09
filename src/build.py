@@ -1160,7 +1160,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {''}
-{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261102-ks-v2">' if path in ('/', '/games/') else '')}
+{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261109-kbo-removed">' if path in ('/', '/games/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/editorial-links.css?v={av("/assets/css/editorial-links.css")}">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}
@@ -2495,34 +2495,6 @@ def art_cards(league: str, limit: int) -> str:
     return ''.join(art_game_card(a) for a in chosen[:limit])
 
 
-def kbo_bracket() -> str:
-    """홈 야구 구간 상단: KBO 포스트시즌 대진표 카드. 숫자는 src/content/kbo_postseason.json에서만 읽는다."""
-    try:
-        d = json.loads((ROOT / 'src' / 'content' / 'kbo_postseason.json').read_text(encoding='utf-8'))
-    except Exception:
-        return ''
-    from types import SimpleNamespace
-    kb = SimpleNamespace(league='KBO')
-    mark = lambda n: ta_mark(kb, n)
-
-    def mini(stage):
-        rows = ''.join(f'<li{" class=win" if r[3] else ""}><span class="kb-lg">{mark(r[0])}</span><b>{esc(r[1])}</b><em>{r[2]}</em></li>' for r in stage['rows'])
-        return (f'<div class="kb-stage"><h4>{esc(stage["title"])}</h4><small>({esc(stage["sub"])})</small>'
-                f'<ul class="kb-box">{rows}</ul><p>{esc(stage["caption"])}</p></div>')
-    ks = d['ks']
-    cands = sorted([a for a in ARTICLES if a.kind == 'analysis' and a.league == 'KBO' and getattr(a, 'away', '')],
-                   key=lambda a: (a.date, getattr(a, 'priority', 0)), reverse=True)
-    link = f'<a class="kb-go" href="{cands[0].url}">분석 보기 <span aria-hidden="true">›</span></a>' if cands and not getattr(cands[0], 'hide_home', False) else ''  # hide_home 글이 가장 최신이면 홈 링크를 두지 않는다
-    a_, b_ = ks['rows']
-    # 가장 마지막 단계(한국시리즈)를 크게 보여 주고, 앞 단계는 작은 상자로 이어 붙인다.
-    center = (f'<div class="kb-stage kb-main"><h4>{esc(ks["title"])}</h4><small>({esc(ks["sub"])})</small>'
-              f'<div class="kb-duel"><span class="kb-big">{mark(a_[0])}</span><span class="kb-score"><b>{a_[2]}</b><i>VS</i><b>{b_[2]}</b></span>'
-              f'<span class="kb-big">{mark(b_[0])}</span></div><p>{esc(ks["caption"])}</p>{link}</div>')
-    return (f'<div class="kb-bracket" aria-label="KBO 포스트시즌 대진표"><div class="kb-top"><strong>KBO 한국시리즈</strong>'
-            f'<span class="kb-date">{esc(d["updated"])} 기준</span></div>'
-            f'<div class="kb-grid">{mini(d["wildcard"])}{mini(d["semi"])}{mini(d["po"])}{center}</div></div>')
-
-
 def game_scroll() -> tuple[str, list]:
     """홈 경기 패널: 야구·농구·축구를 한 스크롤 안에 종목별 구간으로 나눠 보여 준다."""
     snapshot = game_snapshot()
@@ -2549,14 +2521,16 @@ def game_scroll() -> tuple[str, list]:
     for lg in (('NPB',) if HOME_HIDE_MLB else ('MLB', 'NPB')):
         c, v = snap_cards(lg, 4)
         base_cards, base_ver = base_cards + c, base_ver or v
-    base_cards = kbo_bracket() + base_cards
     hoops_cards, hoops_ver = snap_cards('NBA', 8, recent=4)
     groups = (
-        ('야구', '⚾', base_cards, 'NPB · KBO 포스트시즌'),
+        ('야구', '⚾', base_cards, 'NPB'),
         ('농구', '🏀', hoops_cards, f'NBA · 확인 {hoops_ver}'),
         ('축구', '⚽', art_cards('SOCCER', 6), '해외·국내 축구 · SFANDOM 분석 경기'),
     )
     out = []
+    filled = tuple(g for g in groups if g[2])
+    if filled:  # 보여 줄 경기가 없는 종목(예: 비시즌 야구)은 구간과 탭을 함께 숨긴다
+        groups = filled
     for name, icon, cards, note in groups:
         if not cards:
             cards = '<p class="sf-scores__empty">이 시간대에 확인된 경기 정보가 아직 없어요. 다음 자료 갱신을 조금만 기다려 주세요.</p>'
@@ -2573,7 +2547,7 @@ def game_preview() -> str:
     return (f'<section class="wrap sf-scores sf-scores--preview" aria-labelledby="scorePreviewTitle" data-score-tabs>'
             f'<div class="sf-scores__heading"><div><span class="sf-scores__eyebrow">GAME CENTER · KST</span>'
             f'<h2 id="scorePreviewTitle">경기 일정 <span>·</span> 최종 결과</h2>'
-            f'<p>야구 · 농구 · 축구 · 외부 기록 제공처 확인 시각 기준</p></div>'
+            f'<p>{" · ".join(order)} · 외부 기록 제공처 확인 시각 기준</p></div>'
             f'<a class="pill" href="/games/">전체 경기 보기 →</a></div>'
             f'<div class="sf-scores__tabs" role="tablist" aria-label="종목" hidden>{tabs_html}</div>'
             f'<div class="sf-scores__scroll" tabindex="0" aria-label="종목별 경기 목록 스크롤">{sections}</div></section>')
