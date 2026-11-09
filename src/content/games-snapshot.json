@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-09T12:31+09:00",
+  "updated_at": "2026-11-09T12:47+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-09T12:31+09:00",
+      "checked_at": "2026-11-09T12:47+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-09T12:31+09:00",
+      "checked_at": "2026-11-09T12:47+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -178,8 +178,8 @@
           "away_name": "New Orleans Pelicans",
           "home_name": "LA Clippers",
           "status": "live",
-          "away_score": 60,
-          "home_score": 67,
+          "away_score": 86,
+          "home_score": 82,
           "source_url": "https://www.espn.com/nba/game?gameId=401909950"
         },
         {
@@ -191,8 +191,8 @@
           "away_name": "Miami Heat",
           "home_name": "Sacramento Kings",
           "status": "live",
-          "away_score": 75,
-          "home_score": 59,
+          "away_score": 83,
+          "home_score": 76,
           "source_url": "https://www.espn.com/nba/game?gameId=401909951"
         },
         {
@@ -380,7 +380,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-09T12:31+09:00",
+      "checked_at": "2026-11-09T12:47+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -550,7 +550,7 @@
           "home_name": "Chicago Bears",
           "status": "live",
           "away_score": 13,
-          "home_score": 17,
+          "home_score": 24,
           "source_url": "https://www.espn.com/nfl/game?gameId=401873050"
         },
         {
@@ -569,7 +569,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-09T12:31+09:00",
+      "checked_at": "2026-11-09T12:47+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -802,10 +802,10 @@
           "home": "ANA",
           "away_name": "Pittsburgh Penguins",
           "home_name": "Anaheim Ducks",
-          "status": "live",
+          "status": "final",
           "away_score": 2,
-          "home_score": 4,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892679"
+          "home_score": 5,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892679/penguins-ducks"
         },
         {
           "id": "NHL-401892680",
