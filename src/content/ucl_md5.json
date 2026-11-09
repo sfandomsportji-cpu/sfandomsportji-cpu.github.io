@@ -1,0 +1,221 @@
+{
+  "title": "챔피언스리그",
+  "sub": "리그 페이즈 5차전",
+  "updated": "11.09",
+  "hide_after": "2026-11-29",
+  "note": "시각은 한국시간이에요. 킥오프는 UEFA 공식 일정 기준이며 경기 직전에 한 번 더 확인해 주세요.",
+  "days": [
+    {
+      "label": "11.25(수)",
+      "note": "현지 11.24(화)",
+      "slots": [
+        {
+          "time": "02:45",
+          "matches": [
+            {
+              "h": [
+                "BODO/GLIMT",
+                "보되/글림트"
+              ],
+              "a": [
+                "LASK",
+                "LASK"
+              ]
+            },
+            {
+              "h": [
+                "GALATASARAY",
+                "갈라타사라이"
+              ],
+              "a": [
+                "ASTON VILLA",
+                "애스턴 빌라"
+              ]
+            }
+          ]
+        },
+        {
+          "time": "05:00",
+          "matches": [
+            {
+              "h": [
+                "ARSENAL",
+                "아스널"
+              ],
+              "a": [
+                "BORUSSIA DORTMUND",
+                "도르트문트"
+              ]
+            },
+            {
+              "h": [
+                "COMO",
+                "코모"
+              ],
+              "a": [
+                "AEK ATHENS",
+                "AEK 아테네"
+              ]
+            },
+            {
+              "h": [
+                "FEYENOORD",
+                "페예노르트"
+              ],
+              "a": [
+                "PORTO",
+                "포르투"
+              ]
+            },
+            {
+              "h": [
+                "MANCHESTER CITY",
+                "맨체스터 시티"
+              ],
+              "a": [
+                "NAPOLI",
+                "나폴리"
+              ]
+            },
+            {
+              "h": [
+                "RB LEIPZIG",
+                "라이프치히"
+              ],
+              "a": [
+                "LENS",
+                "랑스"
+              ]
+            },
+            {
+              "h": [
+                "REAL MADRID",
+                "레알 마드리드"
+              ],
+              "a": [
+                "PSV EINDHOVEN",
+                "PSV 에인트호번"
+              ]
+            },
+            {
+              "h": [
+                "SLOVAN BRATISLAVA",
+                "슬로반 브라티슬라바"
+              ],
+              "a": [
+                "REAL BETIS",
+                "레알 베티스"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "11.26(목)",
+      "note": "현지 11.25(수)",
+      "slots": [
+        {
+          "time": "02:45",
+          "matches": [
+            {
+              "h": [
+                "SABAH",
+                "사바"
+              ],
+              "a": [
+                "BARCELONA",
+                "바르셀로나"
+              ]
+            },
+            {
+              "h": [
+                "SLAVIA PRAGUE",
+                "슬라비아 프라하"
+              ],
+              "a": [
+                "VILLARREAL",
+                "비야레알"
+              ]
+            }
+          ]
+        },
+        {
+          "time": "05:00",
+          "matches": [
+            {
+              "h": [
+                "ATLÉTICO",
+                "아틀레티코 마드리드"
+              ],
+              "a": [
+                "VIKING",
+                "비킹"
+              ]
+            },
+            {
+              "h": [
+                "CLUB BRUGGE",
+                "클럽 브뤼헤"
+              ],
+              "a": [
+                "LIVERPOOL",
+                "리버풀"
+              ]
+            },
+            {
+              "h": [
+                "INTER MILAN",
+                "인터"
+              ],
+              "a": [
+                "STUTTGART",
+                "슈투트가르트"
+              ]
+            },
+            {
+              "h": [
+                "SHAKHTAR DONETSK",
+                "샤흐타르 도네츠크"
+              ],
+              "a": [
+                "FENERBAHÇE",
+                "페네르바체"
+              ]
+            },
+            {
+              "h": [
+                "LILLE",
+                "릴"
+              ],
+              "a": [
+                "BAYERN MUNICH",
+                "바이에른 뮌헨"
+              ]
+            },
+            {
+              "h": [
+                "PSG",
+                "파리 생제르맹"
+              ],
+              "a": [
+                "ROMA",
+                "로마"
+              ]
+            },
+            {
+              "h": [
+                "SPORTING CP",
+                "스포르팅 CP"
+              ],
+              "a": [
+                "MANCHESTER UNITED",
+                "맨체스터 유나이티드"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

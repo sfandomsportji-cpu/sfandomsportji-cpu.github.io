@@ -197,3 +197,31 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 /* NFL / NHL crests: centered inside the same square box as the other leagues, never stretched. */
 .tlogo-wrap.crest{display:inline-flex;align-items:center;justify-content:center;padding:0}
 .tlogo-wrap.crest .tlogo{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+
+/* Home soccer: Champions League schedule card (data: src/content/ucl_md5.json). */
+.ucl-card{margin:14px;padding:18px;border:1px solid #363641;border-radius:14px;background:radial-gradient(ellipse at 50% 0,rgba(33,71,184,.22),rgba(20,20,28,.4) 60%),#16161d}
+.sf-scores__rows>.ucl-card{flex:1 1 100%;width:100%;max-width:none;margin:0;box-sizing:border-box}
+.ucl-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.ucl-top strong{font-family:var(--head);font-size:20px;letter-spacing:.02em;white-space:nowrap}
+.ucl-date{font-size:13px;font-weight:700;color:#fff;background:#2147b8;border-radius:4px;padding:3px 8px;white-space:nowrap}
+.ucl-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+.ucl-day{min-width:0}
+.ucl-day h4{display:flex;align-items:baseline;gap:8px;margin:0 0 8px;padding-bottom:8px;border-bottom:1px solid #363641;font-size:17px;color:#f4c542}
+.ucl-day h4 small{color:#a9a8b8;font-size:12px;font-weight:600}
+.ucl-slot{margin-bottom:10px}
+.ucl-time{display:inline-block;margin:6px 0 4px;padding:2px 9px;border-radius:999px;background:#cc102e;color:#fff;font-size:13px;letter-spacing:.02em}
+.ucl-slot ul{list-style:none;margin:0;padding:0}
+.ucl-slot li{display:grid;grid-template-columns:minmax(0,1fr) 30px 44px 30px minmax(0,1fr);align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px;color:#e9e8f2}
+.ucl-slot li:last-child{border-bottom:0}
+.ucl-nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+.ucl-nm.l{text-align:right}
+.ucl-lg{display:block;width:30px;height:30px}
+.ucl-lg .tlogo-wrap{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.ucl-lg .tlogo{display:block;flex:none;object-fit:contain;object-position:center}
+.ucl-chip{display:grid;place-items:center;width:100%;height:100%;border:1px dashed #666;border-radius:50%;color:#c0bfcd;font-size:11px;font-weight:800}
+.ucl-vs{font-style:normal;font-weight:800;color:#cc102e;font-size:13px;text-align:center}
+.ucl-score{font-family:var(--head);font-size:18px;text-align:center;line-height:1}
+.ucl-score i{font-style:normal;color:#cc102e;margin:0 2px}
+.ucl-note{margin:12px 0 0;color:#a9a8b8;font-size:12px}
+@media (max-width:900px){.ucl-grid{grid-template-columns:1fr}}
+@media (max-width:520px){.ucl-card{margin:10px;padding:14px}.ucl-top{flex-wrap:wrap}.ucl-top strong{font-size:18px}.ucl-slot li{grid-template-columns:minmax(0,1fr) 26px 34px 26px minmax(0,1fr);gap:5px;font-size:12.5px}.ucl-lg{width:26px;height:26px}.ucl-nm{white-space:normal;line-height:1.2}}

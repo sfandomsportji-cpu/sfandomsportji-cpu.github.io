@@ -1160,7 +1160,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {('<link rel="stylesheet" href="/assets/css/brand-story.css?v=20261013-identity-polish-v2">' if path == '/' else '')}
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {''}
-{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261109-kbo-removed">' if path in ('/', '/games/') else '')}
+{('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261109-ucl-md5">' if path in ('/', '/games/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/editorial-links.css?v={av("/assets/css/editorial-links.css")}">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}
@@ -2495,6 +2495,38 @@ def art_cards(league: str, limit: int) -> str:
     return ''.join(art_game_card(a) for a in chosen[:limit])
 
 
+def ucl_card() -> str:
+    """홈 축구 구간 상단: 챔피언스리그 리그 페이즈 일정 카드. 경기·시각·점수는 src/content/ucl_md5.json에서만 읽는다.
+    점수는 경기가 끝난 뒤 해당 경기에 "s": [홈, 원정]을 넣으면 VS 자리에 표시된다(반자동)."""
+    try:
+        d = json.loads((ROOT / 'src' / 'content' / 'ucl_md5.json').read_text(encoding='utf-8'))
+    except Exception:
+        return ''
+    today = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
+    if today > d.get('hide_after', '9999-12-31'):
+        return ''
+
+    def mark(name_key: str, ko: str) -> str:
+        b = soccer_badge(name_key)
+        return b if b else f'<span class="ucl-chip" title="{esc(ko)}">{esc(ko[:2])}</span>'
+
+    def row(m: dict) -> str:
+        (hk, hn), (ak, an) = m['h'], m['a']
+        sc = m.get('s')
+        mid = f'<b class="ucl-score">{sc[0]}<i>:</i>{sc[1]}</b>' if sc else '<i class="ucl-vs">VS</i>'
+        return (f'<li><span class="ucl-nm l">{esc(hn)}</span><span class="ucl-lg">{mark(hk, hn)}</span>{mid}'
+                f'<span class="ucl-lg">{mark(ak, an)}</span><span class="ucl-nm r">{esc(an)}</span></li>')
+
+    cols = ''
+    for day in d['days']:
+        slots = ''.join(f'<div class="ucl-slot"><b class="ucl-time">{esc(s["time"])}</b>'
+                        f'<ul>{"".join(row(m) for m in s["matches"])}</ul></div>' for s in day['slots'])
+        cols += f'<div class="ucl-day"><h4>{esc(day["label"])}<small>{esc(day["note"])}</small></h4>{slots}</div>'
+    return (f'<div class="ucl-card" aria-label="UEFA 챔피언스리그 {esc(d["sub"])} 일정"><div class="ucl-top"><strong>UEFA {esc(d["title"])}</strong>'
+            f'<span class="ucl-date">{esc(d["sub"])}</span></div><div class="ucl-grid">{cols}</div>'
+            f'<p class="ucl-note">{esc(d["note"])}</p></div>')
+
+
 def game_scroll() -> tuple[str, list]:
     """홈 경기 패널: 야구·농구·축구를 한 스크롤 안에 종목별 구간으로 나눠 보여 준다."""
     snapshot = game_snapshot()
@@ -2525,7 +2557,7 @@ def game_scroll() -> tuple[str, list]:
     groups = (
         ('야구', '⚾', base_cards, 'NPB'),
         ('농구', '🏀', hoops_cards, f'NBA · 확인 {hoops_ver}'),
-        ('축구', '⚽', art_cards('SOCCER', 6), '해외·국내 축구 · SFANDOM 분석 경기'),
+        ('축구', '⚽', ucl_card() + art_cards('SOCCER', 6), 'UEFA 챔피언스리그 · 해외·국내 축구 · SFANDOM 분석 경기'),
     )
     out = []
     filled = tuple(g for g in groups if g[2])
