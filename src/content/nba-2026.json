@@ -1199,7 +1199,7 @@
     }
   ],
   "season_results": {
-    "note": "현지 10.27~11.06 종료 경기 80개 · 한국시간 날짜 기준(10.28~11.07), 시각은 확인된 경기만 표기. 점수는 외부 기록 사이트와 SFANDOM 자동 확인 데이터를 대조했습니다.",
+    "note": "현지 10.27~11.08 종료 경기 90개 · 한국시간 날짜 기준(10.28~11.09), 시각은 확인된 경기만 표기. 점수는 외부 기록 사이트와 SFANDOM 자동 확인 데이터를 대조했습니다.",
     "games": [
       {
         "day": "FINAL",
@@ -2080,6 +2080,116 @@
         "result": "SAS 124–109 SAC",
         "away_score": 124,
         "home_score": 109
+      },
+      {
+        "day": "FINAL",
+        "away": "DEN",
+        "home": "IND",
+        "kst": "11.08 (일) 07:00",
+        "tv": "KST",
+        "tag": "종료 · DEN 114–102 IND",
+        "result": "DEN 114–102 IND",
+        "away_score": 114,
+        "home_score": 102
+      },
+      {
+        "day": "FINAL",
+        "away": "BKN",
+        "home": "ATL",
+        "kst": "11.08 (일) 09:30",
+        "tv": "KST",
+        "tag": "종료 · BKN 121–124 ATL",
+        "result": "BKN 121–124 ATL",
+        "away_score": 121,
+        "home_score": 124
+      },
+      {
+        "day": "FINAL",
+        "away": "NYK",
+        "home": "CLE",
+        "kst": "11.08 (일) 10:00",
+        "tv": "KST",
+        "tag": "종료 · NYK 109–97 CLE",
+        "result": "NYK 109–97 CLE",
+        "away_score": 109,
+        "home_score": 97
+      },
+      {
+        "day": "FINAL",
+        "away": "WAS",
+        "home": "OKC",
+        "kst": "11.08 (일) 10:00",
+        "tv": "KST",
+        "tag": "종료 · WAS 75–114 OKC",
+        "result": "WAS 75–114 OKC",
+        "away_score": 75,
+        "home_score": 114
+      },
+      {
+        "day": "FINAL",
+        "away": "ORL",
+        "home": "GSW",
+        "kst": "11.08 (일) 10:30",
+        "tv": "KST",
+        "tag": "종료 · ORL 119–126 GSW",
+        "result": "ORL 119–126 GSW",
+        "away_score": 119,
+        "home_score": 126
+      },
+      {
+        "day": "FINAL",
+        "away": "HOU",
+        "home": "PHX",
+        "kst": "11.08 (일) 11:00",
+        "tv": "KST",
+        "tag": "종료 · HOU 99–102 PHX",
+        "result": "HOU 99–102 PHX",
+        "away_score": 99,
+        "home_score": 102
+      },
+      {
+        "day": "FINAL",
+        "away": "SAS",
+        "home": "POR",
+        "kst": "11.08 (일) 12:00",
+        "tv": "KST",
+        "tag": "종료 · SAS 125–103 POR",
+        "result": "SAS 125–103 POR",
+        "away_score": 125,
+        "home_score": 103
+      },
+      {
+        "day": "FINAL",
+        "away": "PHI",
+        "home": "CHI",
+        "kst": "11.09 (월) 05:30",
+        "tv": "KST",
+        "tag": "종료 · PHI 127–121 CHI",
+        "result": "PHI 127–121 CHI",
+        "away_score": 127,
+        "home_score": 121
+      },
+      {
+        "day": "FINAL",
+        "away": "LAL",
+        "home": "DET",
+        "kst": "11.09 (월) 08:00",
+        "tv": "KST",
+        "tag": "종료 · LAL 121–116 DET",
+        "result": "LAL 121–116 DET",
+        "away_score": 121,
+        "home_score": 116
+      },
+      {
+        "day": "FINAL",
+        "away": "UTA",
+        "home": "MIN",
+        "kst": "11.09 (월) 09:00",
+        "tv": "KST",
+        "tag": "종료 · UTA 100–115 MIN",
+        "result": "UTA 100–115 MIN",
+        "away_score": 100,
+        "home_score": 115
       }
     ]
   }
