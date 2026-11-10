@@ -409,10 +409,15 @@ def poster_hero(a: Article) -> str:
     bl, br, tl, tr = p['colors']
     bigl, bigr = p['big']
     ll, lr = p.get('labels', ['', ''])
+    nl, nr = p.get('names', [a.away.upper(), a.home.upper()])
+    if a.league == 'SOCCER':
+        mk_l, mk_r = soccer_badge(a.away, 'lg'), soccer_badge(a.home, 'lg')
+    else:
+        mk_l, mk_r = team_mark(a.league, a.away, 'lg'), team_mark(a.league, a.home, 'lg')
     return (f'<div class="poster-hero" style="--bl:{bl};--br:{br};--tl:{tl};--tr:{tr}">'
-            f'<div class="poster-duel"><div class="poster-team l">{soccer_badge(a.away, "lg")}<span class="pt-name">{esc(a.away.upper())}</span>'
+            f'<div class="poster-duel"><div class="poster-team l">{mk_l}<span class="pt-name">{esc(nl)}</span>'
             f'<span class="pt-big">{esc(bigl)}</span><small>{esc(ll)}</small></div><div class="poster-vs">VS</div>'
-            f'<div class="poster-team r">{soccer_badge(a.home, "lg")}<span class="pt-name">{esc(a.home.upper())}</span>'
+            f'<div class="poster-team r">{mk_r}<span class="pt-name">{esc(nr)}</span>'
             f'<span class="pt-big">{esc(bigr)}</span><small>{esc(lr)}</small></div></div>'
             f'<div class="poster-kick">{esc(p.get("kick", ""))}</div></div>')
 
