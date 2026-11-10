@@ -297,5 +297,14 @@
   "TROYES": "ligue-1/estac-troyes.png",
   "FULHAM": "premier-league/fulham-fc.png",
   "HULL CITY": "premier-league/hull-city.png",
-  "FENERBAHÇE": "europa-league/fenerbahce.png"
+  "FENERBAHÇE": "europa-league/fenerbahce.png",
+  "CZECHIA": "euro/czechia.png",
+  "SPAIN": "euro/spain.png",
+  "CROATIA": "euro/croatia.png",
+  "ENGLAND": "euro/england.png",
+  "ITALY": "euro/italy.png",
+  "FRANCE": "euro/france.png",
+  "ARGENTINA": "euro/argentina.png",
+  "URUGUAY": "euro/uruguay.png",
+  "CZECH REPUBLIC": "euro/czechia.png"
 }

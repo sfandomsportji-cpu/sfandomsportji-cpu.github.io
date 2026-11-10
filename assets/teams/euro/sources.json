@@ -1,0 +1,58 @@
+[
+  {
+    "team": "argentina",
+    "file": "argentina.png",
+    "source_url": "https://assets.footylogos.com/logos/argentina-national-team/argentina-national-team-logo-footylogos.svg",
+    "retrieved_kst": "2026-11-10",
+    "sha256": "d96ad13a2ce855d6a61f57c4b8f526f3de4df57e3af6f0855969d3c9eb941f6b"
+  },
+  {
+    "team": "croatia",
+    "file": "croatia.png",
+    "source_url": "https://cdn.englandfootball.com/-/jssmedia/EnglandFootball/Global/Nations/Crests-USE-THIS/croatia-150.png?h=150&iar=0&w=150&rev=2f50dc19e4cb4eb68881f8e29551a03c&hash=61D81F2AC35B1882E0D2F5B52BC88F38",
+    "retrieved_kst": "2026-11-10",
+    "sha256": "82414129034efebe95b50c61a010556cf39e047c85f7bb3bc686b0c7e9362acf"
+  },
+  {
+    "team": "czechia",
+    "file": "czechia.png",
+    "source_url": "https://cdn.englandfootball.com/-/jssmedia/EnglandFootball/Global/Nations/Crests-USE-THIS/czechia-150.png?h=150&iar=0&w=150&rev=c52ba1fad1cb4b149b5250ae6e14faa4&hash=330FA2CF5376D01B0CB134B6E4C40047",
+    "retrieved_kst": "2026-11-10",
+    "sha256": "bda05c0b2b6640622e75186e377ff28f928848e0a9965623ea52695d31de74cd"
+  },
+  {
+    "team": "england",
+    "file": "england.png",
+    "source_url": "https://cdn.englandfootball.com/-/jssmedia/EnglandFootball/Global/Nations/Crests-USE-THIS/ENGLAND_CREST-STAR_BLUE_RGB.png?h=960&iar=0&w=750&rev=b9e79376c63746b59919feed0cf24628&hash=944CF918AD77769A4CC78C0CEBFC81E7",
+    "retrieved_kst": "2026-11-10",
+    "sha256": "03943a230c68c90f45b796b7d5fbf7b04c1045c8055aaf42672eac2e3c2981a5"
+  },
+  {
+    "team": "france",
+    "file": "france.png",
+    "source_url": "https://web-statics.fff.fr/img/logo.png",
+    "retrieved_kst": "2026-11-10",
+    "sha256": "48209a72a86f62ae0bc815ea2c6609c0f884d76b1bb19b16116f3a5c03a3db46"
+  },
+  {
+    "team": "italy",
+    "file": "italy.png",
+    "source_url": "https://www.figc.it/logos/nazionali.svg",
+    "retrieved_kst": "2026-11-10",
+    "sha256": "08cac9372ee2c04504e8f3426d04f32ed9a86e16cdb050a60a538a360d9764a7"
+  },
+  {
+    "team": "spain",
+    "file": "spain.png",
+    "source_url": "https://cdn.englandfootball.com/-/jssmedia/EnglandFootball/Global/Nations/Crests-USE-THIS/spain-150.png?h=150&iar=0&w=150&rev=b4b8dd920f1b45878b3c4f405071ad32&hash=21D59C9833A6AE30E27C00AC822013FF",
+    "retrieved_kst": "2026-11-10",
+    "sha256": "b64f9705b581bbebc3b8ec8d124ed30d954eda4a7db65cebd258dc6a06ae1f8e"
+  },
+  {
+    "team": "uruguay",
+    "file": "uruguay.png",
+    "source_url": "https://www.auf.org.uy/imagenes/img_presentacion/logo.svg",
+    "retrieved_kst": "2026-11-10",
+    "sha256": "fb55f7574246221b108472e262d33ff748f7c388f81965014cd6669c7ae82b95"
+  }
+]
