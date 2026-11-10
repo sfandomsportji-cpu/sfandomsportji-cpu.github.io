@@ -367,6 +367,56 @@ def render_photo(b: str) -> str:
             f'<figcaption>{cap}</figcaption></figure>')
 
 
+def render_poster_block(b: str) -> str:
+    """포스터형 글(front matter `poster`)용 블록. 블록 안은 한 줄 JSON이다. compare=좌우 비교 막대, forms=최근 경기 두 줄, table=조 순위표, stakes=동기 카드."""
+    lines = b.splitlines()
+    kind = lines[0][4:].strip().split()[0]
+    try:
+        d = json.loads(' '.join(lines[1:-1]))
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f'포스터 블록 JSON 오류({kind}): {exc}')
+    if kind == 'compare':
+        rows = []
+        for label, lv, rv, lt, rt in d['rows']:
+            lv, rv = float(lv), float(rv)
+            m = max(lv, rv) or 1
+            rows.append(f'<div class="pb-row"><b class="pb-val l">{esc(lt)}</b><div class="pb-mid"><span>{esc(label)}</span>'
+                        f'<div class="pb-track"><div class="pb-half l"><i style="width:{round(lv / m * 100, 1)}%"></i></div>'
+                        f'<div class="pb-half r"><i style="width:{round(rv / m * 100, 1)}%"></i></div></div></div><b class="pb-val r">{esc(rt)}</b></div>')
+        gd = ''.join(f'<div class="pb-gd {c}"><span>{esc(t)}</span><b>{esc(v)}</b></div>' for c, (t, v) in zip('lr', d.get('gd', [])))
+        return f'<div class="pb-panel"><div class="pb-bars">{"".join(rows)}</div>{f"<div class=pb-gds>{gd}</div>" if gd else ""}</div>'
+    if kind == 'forms':
+        def col(c, title, ms):
+            items = ''.join(f'<div class="pb-m {k}"><em>{esc(r)}</em><span>{esc(o)}</span><b>{esc(sc)}</b></div>' for r, o, sc, k in ms)
+            return f'<div class="pb-form {c}"><h3>{esc(title)}</h3>{items}</div>'
+        return f'<div class="pb-forms">{col("l", *d["l"])}{col("r", *d["r"])}</div>'
+    if kind == 'table':
+        head = ''.join(f'<th>{esc(h)}</th>' for h in d.get('head', ['#', '팀', '경기', '승', '무', '패', '득실', '승점', '상황']))
+        body = []
+        for i, (rk, team, pl, w, dr, l, gf, pts, chip, ck, hl) in enumerate(d['rows']):
+            cls = ' '.join(x for x in (['hl'] if hl else []) + (['cut'] if i + 1 == d.get('cut', 0) else []))
+            body.append(f'<tr{f" class={chr(34)}{cls}{chr(34)}" if cls else ""}><td>{rk}</td><td class="t">{esc(team)}</td><td>{pl}</td><td>{w}</td><td>{dr}</td>'
+                        f'<td>{l}</td><td>{esc(str(gf))}</td><td class="pts">{pts}</td><td><span class="pb-chip {ck}">{esc(chip)}</span></td></tr>')
+        note = f'<p class="pb-note">{esc(d["note"])}</p>' if d.get('note') else ''
+        return f'<div class="pb-table"><table><thead><tr>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>{note}'
+    cards = ''.join(f'<div class="pb-stake {c}"><small>{esc(who)}</small><strong>{esc(hd)}</strong><p>{esc(tx)}</p></div>' for c, who, hd, tx in d['cards'])
+    return f'<div class="pb-stakes">{cards}</div>'
+
+
+def poster_hero(a: Article) -> str:
+    """포스터형 글 상단: 팀 색 반반 + 엠블럼 + 큰 숫자. front matter `poster` = {colors:[왼쪽바탕,오른쪽바탕,왼쪽글자,오른쪽글자], big:[원정,홈], labels:[원정,홈], kick}."""
+    p = a.poster
+    bl, br, tl, tr = p['colors']
+    bigl, bigr = p['big']
+    ll, lr = p.get('labels', ['', ''])
+    return (f'<div class="poster-hero" style="--bl:{bl};--br:{br};--tl:{tl};--tr:{tr}">'
+            f'<div class="poster-duel"><div class="poster-team l">{soccer_badge(a.away, "lg")}<span class="pt-name">{esc(a.away.upper())}</span>'
+            f'<span class="pt-big">{esc(bigl)}</span><small>{esc(ll)}</small></div><div class="poster-vs">VS</div>'
+            f'<div class="poster-team r">{soccer_badge(a.home, "lg")}<span class="pt-name">{esc(a.home.upper())}</span>'
+            f'<span class="pt-big">{esc(bigr)}</span><small>{esc(lr)}</small></div></div>'
+            f'<div class="poster-kick">{esc(p.get("kick", ""))}</div></div>')
+
+
 def render_body(a: Article) -> str:
     out = []
     for block in re.split(r'\n{2,}', a.body):
@@ -377,6 +427,8 @@ def render_body(a: Article) -> str:
             rows = [r.split('|', 1) for r in b.splitlines()[1:-1] if '|' in r]
             cells = ''.join(f'<div class="stat"><b>{esc(v.strip())}</b><span>{esc(l.strip())}</span></div>' for v, l in rows)
             out.append(f'<div class="stats">{cells}</div>')
+        elif re.match(r'::: (compare|forms|table|stakes)\b', b):
+            out.append(render_poster_block(b))
         elif b.startswith('::: photo'):
             out.append(render_photo(b))
         elif b.startswith('::: split'):
@@ -547,6 +599,8 @@ def split_teams(a: Article) -> tuple[str, str]:
 
 def matchup_strip(a: Article) -> str:
     """분석 글 상단의 대진 표시 (팀 로고 + 팀 이름)."""
+    if isinstance(getattr(a, 'poster', None), dict):
+        return poster_hero(a)
     if a.league == 'SOCCER' and soccer_badge(getattr(a, 'away', '')) and soccer_badge(getattr(a, 'home', '')):
         return (f'<div class="mc-stage in-article"><div class="mc-team">{soccer_badge(a.away, "lg")}<small>AWAY</small><span class="display">{esc(a.away.upper())}</span></div>'
                 f'<span class="mc-vs">VS</span><div class="mc-team r">{soccer_badge(a.home, "lg")}<small>HOME</small><span class="display">{esc(a.home.upper())}</span></div></div>')
