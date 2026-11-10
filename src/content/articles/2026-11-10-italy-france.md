@@ -16,6 +16,7 @@ home: "ITALY"
 kst: "11.13 04:45"
 summary: ["프랑스는 4경기 무패(3승 1무)로 A1조 선두, 7득점 2실점이에요", "이탈리아는 2승 1무 1패로 2위, 8득점 5실점이에요", "이탈리아가 이기면 승점이 10점으로 같아지고, 프랑스가 이기면 6점 차가 돼요"]
 glance: [["핵심", "프랑스 승점 10 · 이탈리아 승점 7 · 벨기에 승점 6"], ["변수", "이탈리아의 밀라노 홈 최근 3경기는 모두 패배예요"], ["시선", "10월 2일 파리 1–1 · 2024년 맞대결은 한 번씩 승리"]]
+poster: {"colors":["#1c2a6b","#0e7a5a","#8fa6ff","#7fe0b8"],"big":["10","7"],"labels":["승점","승점"],"kick":"11월 13일(금) 04:45 KST · 밀라노 주세페 메차 · 네이션스리그 5R"}
 sources: [{"label": "Italy to face France in Milan on 12 November (FIGC)", "url": "https://www.figc.it/en/national-teams/news/uefa-nations-league-italy-to-face-france-in-milan-on-12-november-as-the-azzurri-return-to-the-meazza-lw3kmp7p"}, {"label": "Nations League permutations (Sports Mole, 11.09)", "url": "https://www.sportsmole.co.uk/football/england/uefa-nations-league/feature/nations-league-permutations-who-needs-what-to-qualify_608775.html"}, {"label": "France-Italy matches 1910-2024 (RSSSF)", "url": "https://rsssf.org/tablesf/franitares.html"}, {"label": "France routs Belgium (Shafaq News)", "url": "https://shafaq.com/en/sport/Nations-League-France-routs-Belgium"}]
 ---
 금요일 새벽 4시 45분(한국시간이에요), 이탈리아가 밀라노의 주세페 메차에서 프랑스를 맞아요. 네이션스리그 A1조 5라운드인데, 선두와 2위가 맞붙는 경기라서 이 조의 흐름이 여기서 크게 갈려요.
@@ -31,9 +32,17 @@ sources: [{"label": "Italy to face France in Milan on 12 November (FIGC)", "url"
 
 **프랑스**는 4경기에서 3승 1무로 지지 않았고, 7골을 넣고 2골을 내줬어요. 경기당 평균 1.75골을 넣고 0.5골을 내준 셈이에요. **이탈리아**는 2승 1무 1패, 8골을 넣고 5골을 내줬어요. 평균으로 계산하면 2골을 넣고 1.25골을 내준 셈이에요. 득점은 이탈리아가 한 골 더 많은데, 수비에서 차이가 났어요. 3위 벨기에는 승점 6점이라서 이탈리아와는 1점 차이예요.
 
+::: compare
+{"rows":[["승","3","2","3승","2승"],["득점","7","8","7골","8골"],["실점","2","5","2골","5골"],["승점","10","7","10점","7점"]],"gd":[["프랑스 득실","+5"],["이탈리아 득실","+3"]]}
+:::
+
 ## 최근 경기는 이랬어요
 
 이탈리아는 벨기에에 0–2로 진 뒤 튀르키예 원정에서 4–1, 프랑스와 1–1, 튀르키예 홈에서 3–1로 이겼어요. 프랑스는 튀르키예를 1–0, 벨기에를 1–0, 이탈리아와 1–1, 그리고 10월 5일 벨기에를 4–1로 이겼어요. 벨기에에 먼저 한 골을 내주고도 후반에 네 골을 몰아넣은 경기였어요.
+
+::: forms
+{"l":["프랑스",[["1R","튀르키예","1–0","w"],["2R","벨기에","1–0","w"],["3R","이탈리아","1–1","d"],["4R","벨기에","4–1","w"]]],"r":["이탈리아",[["1R","벨기에","0–2","l"],["2R","튀르키예","4–1","w"],["3R","프랑스","1–1","d"],["4R","튀르키예","3–1","w"]]]}
+:::
 
 ## 맞대결 기록
 
@@ -42,6 +51,10 @@ sources: [{"label": "Italy to face France in Milan on 12 November (FIGC)", "url"
 ## 동기는 어떨까요
 
 이탈리아가 이기면 승점이 10점으로 같아지고, 프랑스가 이기면 13점이 되면서 6점 차로 벌어져요. 이탈리아에게는 밀라노 홈 최근 3경기를 모두 졌다는 숙제도 있어요. 이 경기 뒤 11월 15일에는 이탈리아가 벨기에 원정, 프랑스가 튀르키예와 경기를 해서 2위 경쟁도 같이 이어져요.
+
+::: stakes
+{"cards":[["l","프랑스","이기면 6점 차","승점 13점으로 벌려요"],["x","변수","밀라노 홈 3연패","이탈리아의 숙제예요"],["r","이탈리아","이기면 승점 동률","10점으로 같아져요"]]}
+:::
 
 ## 아직 모르는 것들
 

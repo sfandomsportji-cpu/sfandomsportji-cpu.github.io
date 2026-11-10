@@ -16,6 +16,7 @@ home: "CROATIA"
 kst: "11.13 04:45"
 summary: ["잉글랜드는 4경기에서 14골을 넣고 3골만 내줘서 득실 차이가 +11이에요", "크로아티아는 4골을 넣고 14골을 내줘서 득실 차이가 -10이에요", "10월 3일 7–0, 6월 월드컵 4–2로 잉글랜드가 최근 두 번의 맞대결을 모두 이겼어요"]
 glance: [["핵심", "잉글랜드 2위 승점 9 · 크로아티아 3위 승점 3"], ["변수", "잉글랜드는 승점 1점이면 8강, 크로아티아는 다득점 승리가 필요해요"], ["시선", "최근 두 번의 맞대결 합계 2–11"]]
+poster: {"colors":["#1c2a55","#c8102e","#9fb4ff","#ff9aa8"],"big":["9","3"],"labels":["승점","승점"],"kick":"11월 13일(금) 04:45 KST · 크로아티아 홈 · 네이션스리그 5R"}
 sources: [{"label": "Nations League permutations (Sports Mole, 11.09)", "url": "https://www.sportsmole.co.uk/football/england/uefa-nations-league/feature/nations-league-permutations-who-needs-what-to-qualify_608775.html"}, {"label": "Croatia 0-7 England (Al Jazeera, 10.03)", "url": "https://www.aljazeera.com/amp/sports/liveblog/2026/10/3/live-croatia-vs-england-uefa-nations-league"}, {"label": "England vs Croatia head-to-head record (FourFourTwo)", "url": "https://www.fourfourtwo.com/team/england-vs-croatia-head-to-head-record-as-thomas-tuchel-looks-to-maintain-three-lions-dominance"}, {"label": "Croatia Nations League 2026 fixtures (Croatia Week)", "url": "https://www.croatiaweek.com/croatia-uefa-nations-league-2026-fixtures-spain-england-no-fans/"}]
 ---
 금요일 새벽 4시 45분(한국시간이에요), 크로아티아가 홈에서 잉글랜드를 맞아요. 네이션스리그 A3조 5라운드예요. 한 달 전 맞대결이 7–0이었으니, 크로아티아에게는 되갚아야 할 경기이기도 해요.
@@ -31,9 +32,17 @@ sources: [{"label": "Nations League permutations (Sports Mole, 11.09)", "url": "
 
 **잉글랜드**는 4경기에서 3승 1패, 승점 9점으로 2위예요. 14골을 넣고 3골만 내줬어요. 득실 차이가 +11이니까, 지난 한 경기만 스페인에 2–3으로 졌을 뿐이에요. **크로아티아**는 1승 3패, 승점 3점으로 3위예요. 4골을 넣고 14골을 내줘서 득실 차이가 -10이에요. 경기당 평균으로 계산하면 잉글랜드는 3.5골을 넣고 0.75골을 내준 셈이고, 크로아티아는 1골을 넣고 3.5골을 내준 셈이에요.
 
+::: compare
+{"rows":[["승","3","1","3승","1승"],["득점","14","4","14골","4골"],["실점","3","14","3골","14골"],["승점","9","3","9점","3점"]],"gd":[["잉글랜드 득실","+11"],["크로아티아 득실","-10"]]}
+:::
+
 ## 최근 경기는 이랬어요
 
 잉글랜드는 스페인에 2–3으로 지고 체코를 2–0, 크로아티아를 7–0, 체코를 3–0으로 이겼어요. 크로아티아는 체코를 2–1로 이겼지만 스페인에 1–4, 잉글랜드에 0–7, 스페인에 1–2로 졌어요. 이긴 건 첫 경기 한 번뿐이고, 최근 세 경기에서는 합계 2골을 넣고 13골을 내줬어요.
+
+::: forms
+{"l":["잉글랜드",[["1R","스페인","2–3","l"],["2R","체코","2–0","w"],["3R","크로아티아","7–0","w"],["4R","체코","3–0","w"]]],"r":["크로아티아",[["1R","체코","2–1","w"],["2R","스페인","1–4","l"],["3R","잉글랜드","0–7","l"],["4R","스페인","1–2","l"]]]}
+:::
 
 ## 맞대결 기록
 
@@ -42,6 +51,10 @@ sources: [{"label": "Nations League permutations (Sports Mole, 11.09)", "url": "
 ## 동기는 어떨까요
 
 Sports Mole의 계산으로는 잉글랜드가 승점 1점만 더하면 8강에 갈 수 있어요. 크로아티아는 가능성이 아주 낮아요. 이 경기를 8–0으로 이긴 뒤 체코를 이기고, 마지막 라운드에서 스페인이 잉글랜드를 꺾어야 한다는 계산이에요. 잉글랜드는 이 경기 뒤 11월 15일에 이미 8강을 확정한 스페인과 마지막 경기를 해요.
+
+::: stakes
+{"cards":[["l","잉글랜드","승점 1점이면 8강","마지막 라운드는 스페인전이에요"],["x","변수","7–0, 4–2의 기억","최근 두 번 합계 2–11이에요"],["r","크로아티아","다득점 승리 필요","8–0 승리 등 조건이 아주 까다로워요"]]}
+:::
 
 ## 아직 모르는 것들
 

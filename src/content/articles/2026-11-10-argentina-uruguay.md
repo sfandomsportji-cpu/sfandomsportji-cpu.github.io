@@ -18,6 +18,7 @@ verdict: "아르헨티나 승"
 verdict_sub: "경기 전 분석 · 국가대표 친선"
 summary: ["부에노스아이레스 라 봄보네라에서 열리는 친선경기예요", "아르헨티나는 레안드로 파레데스가 징계로 빠지고, 라우타로 마르티네스는 부상으로 출전이 불투명해요", "가장 최근 맞대결은 몬테비데오 월드컵 예선에서 아르헨티나가 1–0으로 이겼어요"]
 glance: [["핵심", "라 봄보네라 친선경기 · 현지 11월 13일(금)"], ["변수", "파레데스 징계, 라우타로 부상 · 친선이라 선발 변화 폭이 커요"], ["시선", "직전 맞대결 아르헨티나 1–0 · 2023년 11월에는 우루과이 2–0"]]
+poster: {"colors":["#12306b","#4aa3df","#7fa6ff","#bfe3ff"],"big":["0","1"],"labels":["직전 맞대결","직전 맞대결"],"kick":"11월 13일(금) 현지 · 라 봄보네라 · 국가대표 친선"}
 sources: [{"label": "Argentina ya tiene fecha para enfrentar a Uruguay (Vanguardia, 10.30)", "url": "https://www.vanguardia.com/deportes/futbol/2026/10/30/argentina-ya-tiene-fecha-para-enfrentar-a-uruguay-donde-jugara-el-clasico/"}, {"label": "La Selección jugará en La Bombonera frente a Uruguay (Noticias NQN, 10.30)", "url": "https://www.noticiasnqn.com.ar/noticias/2026/10/30/358842-la-seleccion-argentina-jugara-en-la-bombonera-frente-a-uruguay"}]
 ---
 11월 13일 금요일(현지 기준이에요), 아르헨티나가 부에노스아이레스의 라 봄보네라에서 우루과이를 맞아요. 월드컵 예선이 아니라 친선경기라서, 순위표가 아니라 누가 나오느냐를 보고 읽어야 하는 경기예요.
@@ -36,6 +37,10 @@ sources: [{"label": "Argentina ya tiene fecha para enfrentar a Uruguay (Vanguard
 ## 결장 소식은 이래요
 
 아르헨티나는 레안드로 파레데스가 징계로 출전할 수 없어요. 라우타로 마르티네스는 인테르에서 입은 근육 부상 때문에 출전이 불확실하고, 에밀리아노 마르티네스는 턱 부상에서 회복해 출전할 수 있다고 알려졌어요. 우루과이의 소집 명단과 결장 정보는 아직 확인하지 못했어요.
+
+::: stakes
+{"cards":[["r","아르헨티나","파레데스 징계","출전할 수 없어요"],["x","변수","라우타로 불투명","인테르에서 입은 근육 부상이에요"],["l","우루과이","명단 미확인","소집·결장 정보를 못 찾았어요"]]}
+:::
 
 ## 친선경기라서 더 조심스러워요
 
