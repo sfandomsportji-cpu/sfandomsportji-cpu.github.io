@@ -664,7 +664,7 @@ def photo_small(a):
 
 
 def photo_cls(a):
-    """직접 받은 사진: 가로 1000px 이상이면 16:9 꽉 채움, 작으면 원본 크기를 넘겨 키우지 않고 가운데 배치."""
+    """직접 받은 사진: 가로 1000px 이상이면 16:9 꽉 채움, 작으면 원본 크기를 넘겨 키우지 않고 가운데 배치하고, 양옆 빈 곳은 같은 사진을 흐리게 깔아 채운다."""
     if not a.image.startswith('/assets/photos/'):
         return ''
     try:
@@ -672,7 +672,7 @@ def photo_cls(a):
         w = Image.open(ROOT / a.image.lstrip('/')).size[0]
     except Exception:
         return ' photo'
-    return ' photo' if w >= 1000 else f' photo-sm" style="--pw:{w}px'
+    return ' photo' if w >= 1000 else f' photo-sm" style="--pw:{w}px;--pb:url({a.image})'
 
 
 def an_logos(a: Article) -> str:
