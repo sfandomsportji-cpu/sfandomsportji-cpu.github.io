@@ -14,9 +14,6 @@ slug: "czechia-spain-20261113"
 away: "SPAIN"
 home: "CZECHIA"
 kst: "11.13 04:45"
-pick: "draw"
-verdict: "무승부"
-verdict_sub: "경기 전 분석 · 네이션스리그 A3조 5라운드"
 summary: ["스페인은 4전 전승(12득점 5실점)으로 승점 12점, 8강은 이미 확정했어요", "체코는 4전 전패(2득점 10실점)로 승점 0점, 8강 진출이 불가능해요", "스페인은 이 경기를 이기면 조 1위가 확정되고, 사흘 뒤 잉글랜드와 마지막 경기를 해요"]
 glance: [["핵심", "스페인 4승 승점 12 · 체코 4패 승점 0"], ["변수", "스페인은 8강 확정 상태, 11월 15일 잉글랜드전이 남아 있어요"], ["시선", "10월 3일 스페인 홈 맞대결 3–1"]]
 sources: [{"label": "Nations League permutations (Sports Mole, 11.09)", "url": "https://www.sportsmole.co.uk/football/england/uefa-nations-league/feature/nations-league-permutations-who-needs-what-to-qualify_608775.html"}, {"label": "Spain vs Czech Republic preview (Sports Mole)", "url": "https://www.sportsmole.co.uk/football/spain/uefa-nations-league/preview/spain-vs-czech-republic-prediction-team-news-lineups_606066.html"}, {"label": "2026 UEFA Nations League tables and results (NotJustOk)", "url": "https://notjustok.com/sports/2026-uefa-nations-league-group-table-standings-fixtures-and-results/"}]
