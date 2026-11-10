@@ -1,31 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-10T19:48+09:00",
+  "updated_at": "2026-11-10T20:12+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-10T19:48+09:00",
+      "checked_at": "2026-11-10T20:12+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-10T19:48+09:00",
+      "checked_at": "2026-11-10T20:12+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909946",
-          "league": "NBA",
-          "start_kst": "2026-11-09T08:00+09:00",
-          "away": "LAL",
-          "home": "DET",
-          "away_name": "Los Angeles Lakers",
-          "home_name": "Detroit Pistons",
-          "status": "final",
-          "away_score": 121,
-          "home_score": 116,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909946/lakers-pistons"
-        },
         {
           "id": "NBA-401909947",
           "league": "NBA",
@@ -458,7 +445,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-10T19:48+09:00",
+      "checked_at": "2026-11-10T20:12+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -504,23 +491,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-10T19:48+09:00",
+      "checked_at": "2026-11-10T20:12+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892677",
-          "league": "NHL",
-          "start_kst": "2026-11-09T08:00+09:00",
-          "away": "TB",
-          "home": "WPG",
-          "away_name": "Tampa Bay Lightning",
-          "home_name": "Winnipeg Jets",
-          "status": "final",
-          "away_score": 3,
-          "home_score": 4,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892677/lightning-jets"
-        },
         {
           "id": "NHL-401892676",
           "league": "NHL",
