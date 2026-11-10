@@ -1297,6 +1297,43 @@ def fan_topics(limit: int = 3) -> str:
             f'<span class="muted" style="font-size:12px">{sub}, 한마디씩</span></div><ul class="ft-list">{rows}</ul></div>')
 
 
+def fan_numbers_games(need: int) -> list:
+    """TODAY'S NUMBERS 보충: 가장 최근 날짜에 끝난 NBA 경기에서 접전·큰 점수 차·최다 득점 합계를 뽑는다(자동 갱신 스냅샷 기준)."""
+    try:
+        games = game_snapshot().get('leagues', {}).get('NBA', {}).get('games', [])
+        names = json.loads((CONTENT / 'team-names-ko.json').read_text(encoding='utf-8')).get('NBA', {})
+    except (OSError, ValueError, TypeError, AttributeError):
+        return []
+    done = [g for g in games if g.get('status') == 'final' and isinstance(g.get('away_score'), int) and isinstance(g.get('home_score'), int)]
+    if not done:
+        return []
+    day = max(str(g.get('start_kst', ''))[:10] for g in done)
+    done = [g for g in done if str(g.get('start_kst', ''))[:10] == day]
+    nm = lambda ab: names.get(ab, ab)
+    def line(g):
+        return f'<em>{esc(g["away"])} <i>VS</i> {esc(g["home"])}</em>'
+    def row(g, head, sub):
+        small = f'NBA · {day[5:].replace("-", ".")}'
+        return f'<li><a href="/nba/"><small>{esc(small)}</small><b>{esc(head)}</b><span>{esc(sub)}</span>{line(g)}</a></li>'
+    margin = lambda g: abs(g['away_score'] - g['home_score'])
+    total = lambda g: g['away_score'] + g['home_score']
+    win = lambda g: nm(g['home'] if g['home_score'] > g['away_score'] else g['away'])
+    ga = lambda w: w + ('이' if (ord(w[-1]) - 0xAC00) % 28 else '가') if '가' <= w[-1] <= '힣' else w + '가'
+    picks, used = [], set()
+    def take(g, head, sub):
+        if g is not None and id(g) not in used:
+            used.add(id(g)); picks.append(row(g, head, sub))
+    close = min(done, key=lambda g: (margin(g), -total(g)))
+    take(close, f'{margin(close)}점 차 접전', f'{ga(win(close))} 끝까지 버텼어요')
+    big = max(done, key=lambda g: (margin(g), total(g)))
+    take(big, f'{margin(big)}점 차 대승', f'{ga(win(big))} 크게 앞서갔어요')
+    high = max(done, key=lambda g: (total(g), margin(g)))
+    take(high, f'합계 {total(high)}점', '이날 두 팀 점수를 합치면 제일 많아요')
+    low = min(done, key=lambda g: (total(g), margin(g)))
+    take(low, f'합계 {total(low)}점', '이날 합계가 가장 낮았어요')
+    return picks[:need]
+
+
 def fan_numbers(limit: int = 8) -> str:
     """FAN ZONE 왼쪽 칸 콘텐츠: 최근 끝난 경기 복기글의 '::: stats' 숫자를 모아 보여 준다. 줄 수는 site.js가 옆 칸 높이에 맞춰 줄인다."""
     def finished(a):  # 끝난 경기의 복기·결과 기사만 (분석글은 final/ended, 뉴스는 recap 기사)
@@ -1327,9 +1364,11 @@ def fan_numbers(limit: int = 8) -> str:
     def match_line(a):  # 어느 경기 숫자인지 한 줄로 (away/home가 있는 기사만)
         away, home = str(getattr(a, 'away', '') or '').strip(), str(getattr(a, 'home', '') or '').strip()
         return f'<em>{esc(away)} <i>VS</i> {esc(home)}</em>' if away and home else ''
-    items = ''.join(
-        f'<li><a href="{a.url}"><small>{esc(a.league)} · {esc(a.date[5:].replace("-", "."))}</small><b>{esc(head)}</b><span>{esc(sub)}</span>{match_line(a)}</a></li>'
-        for a, head, sub in ordered[:limit])
+    li = [f'<li><a href="{a.url}"><small>{esc(a.league)} · {esc(a.date[5:].replace("-", "."))}</small><b>{esc(head)}</b><span>{esc(sub)}</span>{match_line(a)}</a></li>'
+          for a, head, sub in ordered[:limit]]
+    if len(li) < 4:  # 복기 글이 모자랄 때는 최근 끝난 NBA 경기 기록에서 숫자를 뽑아 칸을 채운다
+        li += fan_numbers_games(4 - len(li))
+    items = ''.join(li[:limit])
     if not items:
         return ''
     return (f'<div class="box fn-box" data-fit><span class="box-title">TODAY&#39;S NUMBERS</span><ul class="fn-list">{items}</ul>'
