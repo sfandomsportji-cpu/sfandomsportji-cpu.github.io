@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-10T16:44+09:00",
+  "updated_at": "2026-11-10T17:14+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-10T16:44+09:00",
+      "checked_at": "2026-11-10T17:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-10T16:44+09:00",
+      "checked_at": "2026-11-10T17:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -454,11 +454,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909978/mavericks-timberwolves"
+        },
+        {
+          "id": "NBA-401909979",
+          "league": "NBA",
+          "start_kst": "2026-11-13T11:00+09:00",
+          "away": "CHA",
+          "home": "PHX",
+          "away_name": "Charlotte Hornets",
+          "home_name": "Phoenix Suns",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909979/hornets-suns"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-10T16:44+09:00",
+      "checked_at": "2026-11-10T17:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -556,7 +569,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-10T16:44+09:00",
+      "checked_at": "2026-11-10T17:14+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -949,6 +962,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892703/jets-stars"
+        },
+        {
+          "id": "NHL-401892704",
+          "league": "NHL",
+          "start_kst": "2026-11-13T11:00+09:00",
+          "away": "STL",
+          "home": "UTA",
+          "away_name": "St. Louis Blues",
+          "home_name": "Utah Mammoth",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892704/blues-mammoth"
         }
       ]
     }
