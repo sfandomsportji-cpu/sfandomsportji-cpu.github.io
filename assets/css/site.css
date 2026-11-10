@@ -218,9 +218,6 @@ main{display:block}
 .figure.logo img{max-height:360px;padding:40px;object-fit:contain}
 .figure.photo img{aspect-ratio:16/9;max-height:none;object-fit:cover;object-position:center 22%}
 .figure.photo-sm img{width:auto;max-width:min(100%,var(--pw));max-height:520px;margin:0 auto;display:block;object-fit:contain}
-.figure.photo-sm{position:relative;isolation:isolate}
-.figure.photo-sm::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--pb) center/cover no-repeat;filter:blur(26px) brightness(.5) saturate(1.1);transform:scale(1.25)}
-.figure.photo-sm img{position:relative}
 .figure.inline-photo{margin:28px 0 34px}
 .figure.inline-photo img{max-height:none;height:auto;object-fit:contain;display:block}
 .figure figcaption .ph-credit{display:block;margin-top:2px;font-size:13px}
