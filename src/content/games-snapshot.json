@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-13T02:05+09:00",
+  "updated_at": "2026-11-13T07:43+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-13T02:05+09:00",
+      "checked_at": "2026-11-13T07:43+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-13T02:05+09:00",
+      "checked_at": "2026-11-13T07:43+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -380,7 +380,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-13T02:05+09:00",
+      "checked_at": "2026-11-13T07:43+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -396,11 +396,24 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nfl/game/_/gameId/401873052/commanders-giants"
+        },
+        {
+          "id": "NFL-401873053",
+          "league": "NFL",
+          "start_kst": "2026-11-15T23:30+09:00",
+          "away": "NE",
+          "home": "DET",
+          "away_name": "New England Patriots",
+          "home_name": "Detroit Lions",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873053/patriots-lions"
         }
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-13T02:05+09:00",
+      "checked_at": "2026-11-13T07:43+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -490,9 +503,9 @@
           "home": "SEA",
           "away_name": "Carolina Hurricanes",
           "home_name": "Seattle Kraken",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
+          "status": "final",
+          "away_score": 4,
+          "home_score": 1,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401891808/hurricanes-kraken"
         },
         {
