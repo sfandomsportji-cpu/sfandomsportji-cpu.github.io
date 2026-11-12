@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-12T03:41+09:00",
+  "updated_at": "2026-11-12T10:00+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-12T03:41+09:00",
+      "checked_at": "2026-11-12T10:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-12T03:41+09:00",
+      "checked_at": "2026-11-12T10:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -99,10 +99,10 @@
           "home": "IND",
           "away_name": "Washington Wizards",
           "home_name": "Indiana Pacers",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909966/wizards-pacers"
+          "status": "live",
+          "away_score": 47,
+          "home_score": 46,
+          "source_url": "https://www.espn.com/nba/game?gameId=401909966"
         },
         {
           "id": "NBA-401909967",
@@ -112,10 +112,10 @@
           "home": "NY",
           "away_name": "Cleveland Cavaliers",
           "home_name": "New York Knicks",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909967/cavaliers-knicks"
+          "status": "live",
+          "away_score": 41,
+          "home_score": 40,
+          "source_url": "https://www.espn.com/nba/game?gameId=401909967"
         },
         {
           "id": "NBA-401909968",
@@ -125,10 +125,10 @@
           "home": "TOR",
           "away_name": "Boston Celtics",
           "home_name": "Toronto Raptors",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909968/celtics-raptors"
+          "status": "live",
+          "away_score": 35,
+          "home_score": 54,
+          "source_url": "https://www.espn.com/nba/game?gameId=401909968"
         },
         {
           "id": "NBA-401909969",
@@ -393,7 +393,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-12T03:41+09:00",
+      "checked_at": "2026-11-12T10:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -413,7 +413,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-12T03:41+09:00",
+      "checked_at": "2026-11-12T10:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -516,10 +516,10 @@
           "home": "BUF",
           "away_name": "Tampa Bay Lightning",
           "home_name": "Buffalo Sabres",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892690/lightning-sabres"
+          "status": "live",
+          "away_score": 2,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892690"
         },
         {
           "id": "NHL-401892691",
@@ -529,10 +529,10 @@
           "home": "CGY",
           "away_name": "New York Rangers",
           "home_name": "Calgary Flames",
-          "status": "scheduled",
-          "away_score": null,
-          "home_score": null,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892691/rangers-flames"
+          "status": "live",
+          "away_score": 0,
+          "home_score": 0,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892691"
         },
         {
           "id": "NHL-401892692",
@@ -754,6 +754,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892707/predators-golden-knights"
+        },
+        {
+          "id": "NHL-401891809",
+          "league": "NHL",
+          "start_kst": "2026-11-15T03:00+09:00",
+          "away": "SEA",
+          "home": "CAR",
+          "away_name": "Seattle Kraken",
+          "home_name": "Carolina Hurricanes",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401891809/kraken-hurricanes"
         }
       ]
     }
