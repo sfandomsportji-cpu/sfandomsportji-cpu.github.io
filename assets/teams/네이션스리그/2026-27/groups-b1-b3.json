@@ -1,0 +1,74 @@
+[
+  {
+    "group": "B1",
+    "team": "scotland",
+    "file": "scotland.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/scotland/Scotland_National_Team.svg"
+  },
+  {
+    "group": "B1",
+    "team": "switzerland",
+    "file": "switzerland.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/switzerland/Switzerland_National_Team.svg"
+  },
+  {
+    "group": "B1",
+    "team": "slovenia",
+    "file": "slovenia.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/slovenia/Slovenia_National_Team.svg"
+  },
+  {
+    "group": "B1",
+    "team": "north-macedonia",
+    "file": "north-macedonia.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/north-macedonia/North_Macedonia_National_Team.svg"
+  },
+  {
+    "group": "B2",
+    "team": "hungary",
+    "file": "hungary.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/hungary/Hungary_National_Team.svg"
+  },
+  {
+    "group": "B2",
+    "team": "ukraine",
+    "file": "ukraine.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/ukraine/Ukraine_National_Team.svg"
+  },
+  {
+    "group": "B2",
+    "team": "georgia",
+    "file": "georgia.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/georgia/Georgia_National_Team.svg"
+  },
+  {
+    "group": "B2",
+    "team": "northern-ireland",
+    "file": "northern-ireland.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/northern-ireland/Northern_Ireland_National_Team.svg"
+  },
+  {
+    "group": "B3",
+    "team": "israel",
+    "file": "israel.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/israel/Israel_National_Team.svg"
+  },
+  {
+    "group": "B3",
+    "team": "austria",
+    "file": "austria.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/austria/Austria_National_Team.svg"
+  },
+  {
+    "group": "B3",
+    "team": "republic-of-ireland",
+    "file": "republic-of-ireland.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/republic-of-ireland/Republic_of_Ireland_National_Team.svg"
+  },
+  {
+    "group": "B3",
+    "team": "kosovo",
+    "file": "kosovo.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/kosovo/Kosovo_National_Team.svg"
+  }
+]
