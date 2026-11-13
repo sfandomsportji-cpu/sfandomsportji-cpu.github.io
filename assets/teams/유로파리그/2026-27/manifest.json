@@ -1,0 +1,189 @@
+{
+  "competition": "UEFA Europa League",
+  "season": "2026-27",
+  "stage": "league phase",
+  "count": 36,
+  "roster_source": "https://www.uefa.com/uefaeuropaleague/clubs/",
+  "teams": [
+    {
+      "team": "anderlecht",
+      "file": "anderlecht.png",
+      "source": "assets/teams/europa-league/anderlecht.png"
+    },
+    {
+      "team": "ararat-armenia",
+      "file": "ararat-armenia.svg",
+      "source": "assets/teams/euro/2026-27/ararat-armenia.svg"
+    },
+    {
+      "team": "az-alkmaar",
+      "file": "az-alkmaar.png",
+      "source": "assets/teams/europa-league/az-alkmaar.png"
+    },
+    {
+      "team": "benfica",
+      "file": "benfica.svg",
+      "source": "assets/teams/champions-league/benfica.svg"
+    },
+    {
+      "team": "besiktas",
+      "file": "besiktas.png",
+      "source": "assets/teams/europa-league/besiktas.png"
+    },
+    {
+      "team": "bournemouth",
+      "file": "bournemouth.png",
+      "source": "assets/teams/soccer/2026-27/premier-league/afc-bournemouth.png"
+    },
+    {
+      "team": "celje",
+      "file": "celje.png",
+      "source": "assets/teams/conference-league/celje.png"
+    },
+    {
+      "team": "celta-vigo",
+      "file": "celta-vigo.svg",
+      "source": "assets/teams/europa-league/celta-vigo.svg"
+    },
+    {
+      "team": "celtic",
+      "file": "celtic.svg",
+      "source": "assets/teams/europa-league/celtic.svg"
+    },
+    {
+      "team": "crystal-palace",
+      "file": "crystal-palace.png",
+      "source": "assets/teams/conference-league/crystal-palace.png"
+    },
+    {
+      "team": "ferencvaros",
+      "file": "ferencvaros.svg",
+      "source": "assets/teams/europa-league/ferencvaros.svg"
+    },
+    {
+      "team": "dinamo-zagreb",
+      "file": "dinamo-zagreb.png",
+      "source": "assets/teams/europa-league/dinamo-zagreb.png"
+    },
+    {
+      "team": "hapoel-beer-sheva",
+      "file": "hapoel-beer-sheva.svg",
+      "source": "assets/teams/euro/2026-27/hapoel-beer-sheva.svg"
+    },
+    {
+      "team": "hoffenheim",
+      "file": "hoffenheim.png",
+      "source": "assets/teams/europa-league/hoffenheim.png"
+    },
+    {
+      "team": "jagiellonia",
+      "file": "jagiellonia.png",
+      "source": "assets/teams/conference-league/jagiellonia-bialystok.png"
+    },
+    {
+      "team": "juventus",
+      "file": "juventus.png",
+      "source": "assets/teams/champions-league/juventus.png"
+    },
+    {
+      "team": "lech-poznan",
+      "file": "lech-poznan.png",
+      "source": "assets/teams/conference-league/lech-poznan.png"
+    },
+    {
+      "team": "bayer-leverkusen",
+      "file": "bayer-leverkusen.png",
+      "source": "assets/teams/champions-league/bayer-leverkusen.png"
+    },
+    {
+      "team": "levski-sofia",
+      "file": "levski-sofia.svg",
+      "source": "assets/teams/euro/2026-27/levski-sofia.svg"
+    },
+    {
+      "team": "lillestrom",
+      "file": "lillestrom.svg",
+      "source": "assets/teams/euro/2026-27/lillestrom.svg"
+    },
+    {
+      "team": "lyon",
+      "file": "lyon.png",
+      "source": "assets/teams/europa-league/lyon.png"
+    },
+    {
+      "team": "marseille",
+      "file": "marseille.png",
+      "source": "assets/teams/champions-league/marseille.png"
+    },
+    {
+      "team": "ac-milan",
+      "file": "ac-milan.png",
+      "source": "assets/teams/champions-league/ac-milan.png"
+    },
+    {
+      "team": "nec-nijmegen",
+      "file": "nec-nijmegen.svg",
+      "source": "assets/teams/euro/2026-27/nec-nijmegen.svg"
+    },
+    {
+      "team": "ofi-crete",
+      "file": "ofi-crete.svg",
+      "source": "assets/teams/euro/2026-27/ofi-crete.svg"
+    },
+    {
+      "team": "olympiacos",
+      "file": "olympiacos.svg",
+      "source": "assets/teams/europa-league/olympiacos.svg"
+    },
+    {
+      "team": "omonia",
+      "file": "omonia.png",
+      "source": "assets/teams/conference-league/omonia-nicosia.png"
+    },
+    {
+      "team": "real-sociedad",
+      "file": "real-sociedad.png",
+      "source": "assets/teams/europa-league/real-sociedad.png"
+    },
+    {
+      "team": "rennes",
+      "file": "rennes.svg",
+      "source": "assets/teams/euro/2026-27/rennes.svg"
+    },
+    {
+      "team": "salzburg",
+      "file": "salzburg.svg",
+      "source": "assets/teams/europa-league/salzburg.svg"
+    },
+    {
+      "team": "sparta-prague",
+      "file": "sparta-prague.png",
+      "source": "assets/teams/champions-league/sparta-prague.png"
+    },
+    {
+      "team": "sturm-graz",
+      "file": "sturm-graz.png",
+      "source": "assets/teams/europa-league/sturm-graz.png"
+    },
+    {
+      "team": "sunderland",
+      "file": "sunderland.png",
+      "source": "assets/teams/soccer/2026-27/premier-league/sunderland-afc.png"
+    },
+    {
+      "team": "torreense",
+      "file": "torreense.svg",
+      "source": "assets/teams/euro/2026-27/torreense.svg"
+    },
+    {
+      "team": "union-saint-gilloise",
+      "file": "union-saint-gilloise.png",
+      "source": "assets/teams/europa-league/union-saint-gilloise.png"
+    },
+    {
+      "team": "viktoria-plzen",
+      "file": "viktoria-plzen.png",
+      "source": "assets/teams/europa-league/viktoria-plzen.png"
+    }
+  ]
+}
