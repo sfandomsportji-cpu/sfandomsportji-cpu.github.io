@@ -914,6 +914,30 @@ except Exception:
 KBL_LOGOS = {'삼성': 'basketball/2026-27/kbl/seoul-samsung.png', '소노': 'basketball/2026-27/kbl/goyang-sono.png', 'KCC': 'basketball/2026-27/kbl/busan-kcc.png', '모비스': 'basketball/2026-27/kbl/ulsan-hyundai-mobis.png', 'LG': 'basketball/2026-27/kbl/changwon-lg.png', 'SK': 'basketball/2026-27/kbl/seoul-sk.png', 'DB': 'basketball/2026-27/kbl/wonju-db.png', 'KT': 'basketball/2026-27/kbl/suwon-kt.png', '정관장': 'basketball/2026-27/kbl/anyang-jung-kwan-jang.png', '가스공사': 'basketball/2026-27/kbl/daegu-kogas.png'}  # 홈 분석 카드용 KBL 로고(저장소 보관본, 짧은 팀명 기준)
 
 
+try:  # 여자농구(WKBL)·남녀배구(KOVO_M/KOVO_W)·NPB 팀 이름 → 로고 (src/content/team_logos.json)
+    TEAM_LOGOS = {lg: {re.sub(r'\s+', '', k).upper(): v for k, v in m.items()} for lg, m in json.loads((CONTENT / 'team_logos.json').read_text(encoding='utf-8')).items() if not lg.startswith('_')}
+except Exception:
+    TEAM_LOGOS = {}
+
+
+def team_logo_rel(lg: str, name: str) -> str:
+    """리그(WKBL·KOVO_M·KOVO_W·NPB)와 팀 이름으로 assets/teams/ 아래 로고 경로를 찾는다(공백·대소문자 무시). 없으면 빈 문자열."""
+    m = TEAM_LOGOS.get((lg or '').upper(), {})
+    key = re.sub(r'\s+', '', name or '').upper()
+    return m.get(key, '')
+
+
+def square_logo(rel: str, name: str) -> str:
+    """정사각 칸 안에 가로세로 비율과 상관없이 같은 면적으로 보이게 맞춘 로고(KBL·KBO와 같은 방식)."""
+    inset, asp = logo_box(rel)
+    g = 0.98
+    w, h = g * math.sqrt(asp), g / math.sqrt(asp)
+    k = min(1.0, 1.0 / max(w, h))
+    st = f'object-view-box:inset({" ".join(f"{v:g}%" for v in inset)});width:{w * k * 100:.1f}%;height:{h * k * 100:.1f}%'
+    return (f'<span class="tlogo-wrap lg kbo"><img class="tlogo" src="/assets/teams/{rel}" alt="{esc(name)}" '
+            f'style="{st}" width="72" height="72" loading="lazy" decoding="async"></span>')
+
+
 def ta_mark(a: Article, name: str) -> str:
     """홈 분석 카드용 팀 로고. 로고 파일이 없으면 이름 앞 3글자 칩."""
     lg = getattr(a, 'league', '')
@@ -950,6 +974,8 @@ def ta_mark(a: Article, name: str) -> str:
         st = f'object-view-box:inset({" ".join(f"{v:g}%" for v in inset)});width:{w * k * 100:.1f}%;height:{h * k * 100:.1f}%'
         return (f'<span class="tlogo-wrap lg kbo"><img class="tlogo" src="{p}" alt="{esc(name)}" '
                 f'style="{st}" width="40" height="40" loading="lazy" decoding="async"></span>')
+    if lg.upper() in TEAM_LOGOS and team_logo_rel(lg, name):
+        return square_logo(team_logo_rel(lg, name), name)
     return f'<span class="tchip lg" style="--c:#444" title="{esc(name)}">{esc(name[:3].upper())}</span>'
 
 

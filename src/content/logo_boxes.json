@@ -3862,5 +3862,145 @@
     0,
     0,
     1
+  ],
+  "basketball/2026-27/wkbl/asan-woori-bank.png": [
+    7.99,
+    0.83,
+    5.65,
+    5.33,
+    1.271
+  ],
+  "basketball/2026-27/wkbl/bucheon-hana-bank.png": [
+    5.65,
+    12.83,
+    5.65,
+    12.83,
+    0.98
+  ],
+  "basketball/2026-27/wkbl/busan-bnk-sum.png": [
+    2.73,
+    1.83,
+    2.14,
+    2.33,
+    1.178
+  ],
+  "basketball/2026-27/wkbl/cheongju-kb-stars.png": [
+    0.97,
+    7.83,
+    0.97,
+    8.33,
+    1
+  ],
+  "basketball/2026-27/wkbl/incheon-shinhan-bank.png": [
+    9.16,
+    7.83,
+    9.75,
+    8.33,
+    1.209
+  ],
+  "basketball/2026-27/wkbl/yongin-samsung-life.png": [
+    10.33,
+    4.33,
+    9.75,
+    4.33,
+    1.337
+  ],
+  "volleyball/2026-27/men/hyundai-capital.png": [
+    9.83,
+    3.17,
+    7.17,
+    3.5,
+    1.124
+  ],
+  "volleyball/2026-27/men/kb-insurance.png": [
+    19.83,
+    5.83,
+    14.5,
+    6.17,
+    1.34
+  ],
+  "volleyball/2026-27/men/kepco.png": [
+    16.83,
+    6.17,
+    16.83,
+    6.83,
+    1.312
+  ],
+  "volleyball/2026-27/men/korean-air.png": [
+    27.5,
+    4.67,
+    27.5,
+    5.17,
+    2.004
+  ],
+  "volleyball/2026-27/men/ok-savings-bank.png": [
+    7.83,
+    13.17,
+    7.5,
+    11.17,
+    0.894
+  ],
+  "volleyball/2026-27/men/samsung-fire.png": [
+    6.83,
+    17.17,
+    6.5,
+    17.5,
+    0.754
+  ],
+  "volleyball/2026-27/men/woori-card.png": [
+    11.83,
+    0,
+    11.17,
+    0.17,
+    1.297
+  ],
+  "volleyball/2026-27/women/gs-caltex.png": [
+    21.5,
+    1.83,
+    21.5,
+    2.17,
+    1.684
+  ],
+  "volleyball/2026-27/women/heungkuk-life.png": [
+    25.83,
+    7.5,
+    25.83,
+    7.5,
+    1.759
+  ],
+  "volleyball/2026-27/women/hyundai-construction.png": [
+    7.83,
+    0.67,
+    7.83,
+    0.83,
+    1.168
+  ],
+  "volleyball/2026-27/women/ibk.png": [
+    2.17,
+    3.5,
+    1.83,
+    3.33,
+    0.97
+  ],
+  "volleyball/2026-27/women/jung-kwan-jang.png": [
+    13,
+    29.17,
+    13.17,
+    29.17,
+    0.564
+  ],
+  "volleyball/2026-27/women/korea-expressway.png": [
+    0,
+    16.17,
+    0,
+    16.17,
+    0.677
+  ],
+  "volleyball/2026-27/women/soop-soopers.png": [
+    7.17,
+    7.83,
+    7.33,
+    8,
+    0.984
   ]
 }
