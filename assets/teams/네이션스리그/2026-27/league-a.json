@@ -1,0 +1,98 @@
+[
+  {
+    "group": "A1",
+    "team": "france",
+    "file": "france.png",
+    "source": "assets/teams/euro/france.png"
+  },
+  {
+    "group": "A1",
+    "team": "italy",
+    "file": "italy.png",
+    "source": "assets/teams/euro/italy.png"
+  },
+  {
+    "group": "A1",
+    "team": "belgium",
+    "file": "belgium.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/belgium/Belgium_National_Team.svg"
+  },
+  {
+    "group": "A1",
+    "team": "turkey",
+    "file": "turkey.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/turkey/Turkey_National_Team.svg"
+  },
+  {
+    "group": "A2",
+    "team": "germany",
+    "file": "germany.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/germany/Germany_National_Team.svg"
+  },
+  {
+    "group": "A2",
+    "team": "netherlands",
+    "file": "netherlands.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/netherlands/Dutch_National_Team.svg"
+  },
+  {
+    "group": "A2",
+    "team": "serbia",
+    "file": "serbia.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/serbia/Serbia_National_Team.svg"
+  },
+  {
+    "group": "A2",
+    "team": "greece",
+    "file": "greece.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/greece/Greece_National_Team.svg"
+  },
+  {
+    "group": "A3",
+    "team": "spain",
+    "file": "spain.png",
+    "source": "assets/teams/euro/spain.png"
+  },
+  {
+    "group": "A3",
+    "team": "croatia",
+    "file": "croatia.png",
+    "source": "assets/teams/euro/croatia.png"
+  },
+  {
+    "group": "A3",
+    "team": "england",
+    "file": "england.png",
+    "source": "assets/teams/euro/england.png"
+  },
+  {
+    "group": "A3",
+    "team": "czechia",
+    "file": "czechia.png",
+    "source": "assets/teams/euro/czechia.png"
+  },
+  {
+    "group": "A4",
+    "team": "portugal",
+    "file": "portugal.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/portugal/Portuguese_Football_Federation.svg"
+  },
+  {
+    "group": "A4",
+    "team": "denmark",
+    "file": "denmark.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/denmark/Denmark_National_Team.svg"
+  },
+  {
+    "group": "A4",
+    "team": "norway",
+    "file": "norway.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/norway/Norway_National_Team.svg"
+  },
+  {
+    "group": "A4",
+    "team": "wales",
+    "file": "wales.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/wales/Wales_National_Team.svg"
+  }
+]
