@@ -519,7 +519,7 @@ def team_badge(a: Article, i: int, size: str = 'lg') -> str:
     return badge(teams[i], team_color(teams[i], lg), size, league=lg if lg in LOGO_SOURCES else 'mlb')
 
 
-UEFA_LOGO_DIRS = ('conference-league/', 'champions-league/', 'europa-league/', 'euro/')
+UEFA_LOGO_DIRS = ('conference-league/', 'champions-league/', 'europa-league/', 'euro/', '네이션스리그/')
 
 
 def soccer_logo_url(rel: str) -> str:
@@ -1067,7 +1067,7 @@ def list_item(a: Article, h: str = 'h2') -> str:
         media, cls = '', 'li no-thumb'
         away, home = getattr(a, 'away', ''), getattr(a, 'home', '')
         vs = f'<span class="li-vs">{esc(away)} <i>VS</i> {esc(home)}</span>' if away and home else ''
-        if a.league == 'SOCCER' and all(SOCCER_LOGOS.get(n.upper().strip(), '').startswith('euro/') for n in (away, home)):
+        if a.league == 'SOCCER' and all(SOCCER_LOGOS.get(n.upper().strip(), '').startswith(('euro/', '네이션스리그/')) for n in (away, home)):
             vs = f'<span class="li-vs">{soccer_badge(away)} {esc(away)} <i>VS</i> {soccer_badge(home)} {esc(home)}</span>' 
     return (f'<a class="{cls}" href="{a.url}">{media}<div><span class="tag red">{esc(a.section)} · {esc(a.league)}</span>{vs}'
             f'<{h}>{esc(a.headline)}</{h}><p>{esc(a.excerpt)}</p>'
