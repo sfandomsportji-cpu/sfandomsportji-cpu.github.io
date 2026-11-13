@@ -368,7 +368,7 @@ def render_photo(b: str) -> str:
 
 
 def render_poster_block(b: str) -> str:
-    """포스터형 글(front matter `poster`)용 블록. 블록 안은 한 줄 JSON이다. compare=좌우 비교 막대, forms=최근 경기 두 줄, table=조 순위표, stakes=동기 카드."""
+    """포스터형 글(front matter `poster`)용 블록. 블록 안은 한 줄 JSON이다. compare=좌우 비교 막대, forms=최근 경기 두 줄, table=조 순위표, stakes=동기 카드, motive=동기부여 칸(앞은 데이터 표, 끝에 유리한 점 한 줄)."""
     lines = b.splitlines()
     kind = lines[0][4:].strip().split()[0]
     try:
@@ -399,6 +399,13 @@ def render_poster_block(b: str) -> str:
                         f'<td>{l}</td><td>{esc(str(gf))}</td><td class="pts">{pts}</td><td><span class="pb-chip {ck}">{esc(chip)}</span></td></tr>')
         note = f'<p class="pb-note">{esc(d["note"])}</p>' if d.get('note') else ''
         return f'<div class="pb-table"><table><thead><tr>{head}</tr></thead><tbody>{"".join(body)}</tbody></table></div>{note}'
+    if kind == 'motive':
+        lt_, rt_ = d['l'], d['r']
+        head = f'<div class="pb-mv-head"><span></span><b class="l">{esc(lt_)}</b><b class="r">{esc(rt_)}</b></div>'
+        rows = ''.join(f'<div class="pb-mv-row"><span>{esc(lb)}</span><p class="l" data-t="{esc(lt_)}">{esc(lx)}</p><p class="r" data-t="{esc(rt_)}">{esc(rx)}</p></div>'
+                       for lb, lx, rx in d['rows'])
+        edge = f'<p class="pb-mv-edge"><small>유리한 점</small>{esc(d["edge"])}</p>' if d.get('edge') else ''
+        return f'<div class="pb-motive">{head}{rows}{edge}</div>'
     cards = ''.join(f'<div class="pb-stake {c}"><small>{esc(who)}</small><strong>{esc(hd)}</strong><p>{esc(tx)}</p></div>' for c, who, hd, tx in d['cards'])
     return f'<div class="pb-stakes">{cards}</div>'
 
@@ -432,7 +439,7 @@ def render_body(a: Article) -> str:
             rows = [r.split('|', 1) for r in b.splitlines()[1:-1] if '|' in r]
             cells = ''.join(f'<div class="stat"><b>{esc(v.strip())}</b><span>{esc(l.strip())}</span></div>' for v, l in rows)
             out.append(f'<div class="stats">{cells}</div>')
-        elif re.match(r'::: (compare|forms|table|stakes)\b', b):
+        elif re.match(r'::: (compare|forms|table|stakes|motive)\b', b):
             out.append(render_poster_block(b))
         elif b.startswith('::: photo'):
             out.append(render_photo(b))
