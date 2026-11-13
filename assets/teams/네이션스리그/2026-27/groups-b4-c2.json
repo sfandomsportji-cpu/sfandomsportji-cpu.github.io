@@ -1,0 +1,74 @@
+[
+  {
+    "group": "B4",
+    "team": "poland",
+    "file": "poland.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/poland/Poland_National_Team.svg"
+  },
+  {
+    "group": "B4",
+    "team": "bosnia-and-herzegovina",
+    "file": "bosnia-and-herzegovina.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/bosnia-and-herzegovina/Bosnia_and_Herzegovina_National_Team.svg"
+  },
+  {
+    "group": "B4",
+    "team": "romania",
+    "file": "romania.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/romania/Romania_National_Team.svg"
+  },
+  {
+    "group": "B4",
+    "team": "sweden",
+    "file": "sweden.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/sweden/Sweden_National_Team.svg"
+  },
+  {
+    "group": "C1",
+    "team": "albania",
+    "file": "albania.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/albania/Albania_National_Team.svg"
+  },
+  {
+    "group": "C1",
+    "team": "finland",
+    "file": "finland.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/finland/Finland_National_Team.svg"
+  },
+  {
+    "group": "C1",
+    "team": "belarus",
+    "file": "belarus.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/belarus/Belarus_National_Team.svg"
+  },
+  {
+    "group": "C1",
+    "team": "san-marino",
+    "file": "san-marino.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/san-marino/San_Marino_National_Team.svg"
+  },
+  {
+    "group": "C2",
+    "team": "montenegro",
+    "file": "montenegro.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/montenegro/Montenegro_National_Team.svg"
+  },
+  {
+    "group": "C2",
+    "team": "armenia",
+    "file": "armenia.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/armenia/Armenia_National_Team.svg"
+  },
+  {
+    "group": "C2",
+    "team": "cyprus",
+    "file": "cyprus.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/cyprus/Cyprus_National_Team.svg"
+  },
+  {
+    "group": "C2",
+    "team": "latvia",
+    "file": "latvia.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/latvia/Latvia_National_Team.svg"
+  }
+]
