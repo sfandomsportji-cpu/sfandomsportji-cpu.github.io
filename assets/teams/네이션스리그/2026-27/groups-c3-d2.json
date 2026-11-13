@@ -1,0 +1,86 @@
+[
+  {
+    "group": "C3",
+    "team": "kazakhstan",
+    "file": "kazakhstan.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/kazakhstan/Kazakhstan_National_Team.svg"
+  },
+  {
+    "group": "C3",
+    "team": "slovakia",
+    "file": "slovakia.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/slovakia/Slovakia_National_Team.svg"
+  },
+  {
+    "group": "C3",
+    "team": "faroe-islands",
+    "file": "faroe-islands.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/faroe-islands/Faroe_Islands_National_Team.svg"
+  },
+  {
+    "group": "C3",
+    "team": "moldova",
+    "file": "moldova.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/moldova/Moldova_National_Team.svg"
+  },
+  {
+    "group": "C4",
+    "team": "iceland",
+    "file": "iceland.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/iceland/Iceland_National_Team.svg"
+  },
+  {
+    "group": "C4",
+    "team": "bulgaria",
+    "file": "bulgaria.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/bulgaria/Bulgaria_National_Team.svg"
+  },
+  {
+    "group": "C4",
+    "team": "estonia",
+    "file": "estonia.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/estonia/Estonia_National_Team.svg"
+  },
+  {
+    "group": "C4",
+    "team": "luxembourg",
+    "file": "luxembourg.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/luxembourg/Luxembourg_National_Team.svg"
+  },
+  {
+    "group": "D1",
+    "team": "gibraltar",
+    "file": "gibraltar.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/gibraltar/Gibraltar_National_Team.svg"
+  },
+  {
+    "group": "D1",
+    "team": "malta",
+    "file": "malta.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/malta/Malta_National_Team.svg"
+  },
+  {
+    "group": "D1",
+    "team": "andorra",
+    "file": "andorra.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/andorra/Andorra_National_Team.svg"
+  },
+  {
+    "group": "D2",
+    "team": "lithuania",
+    "file": "lithuania.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/lithuania/Lithuania_National_Team.svg"
+  },
+  {
+    "group": "D2",
+    "team": "azerbaijan",
+    "file": "azerbaijan.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/azerbaijan/Azerbaijan_National_Team.svg"
+  },
+  {
+    "group": "D2",
+    "team": "liechtenstein",
+    "file": "liechtenstein.svg",
+    "source": "https://raw.githubusercontent.com/JoseArroyave/football-logos/main/logos/liechtenstein/Liechtenstein_National_Team.svg"
+  }
+]
