@@ -319,7 +319,16 @@
     "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/spain/Real_Betis.svg",
     "source_git_blob_sha": "c462f1c1215c534251f13f114b4e091b0b2521d9",
     "format": "SVG",
-    "box_status": "measured alpha bounds at max side 600px"
+    "box_status": "600px alpha bounds measured; full crest visually compared against prior PNG",
+    "original_git_blob_sha": "c462f1c1215c534251f13f114b4e091b0b2521d9",
+    "corrected_git_blob_sha": "6515dc02c6c2990e7b453f9422d6dec4360b0931",
+    "correction": "Root SVG viewBox and intrinsic dimensions corrected to fit complete original artwork; path geometry unchanged",
+    "viewBox": [
+      -195,
+      -1,
+      569,
+      467
+    ]
   },
   "rijeka.svg": {
     "source": "https://football-logos.cc/",

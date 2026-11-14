@@ -3234,11 +3234,11 @@
     0.977
   ],
   "europa-league/celta-vigo.svg": [
-    0,
-    0,
-    0,
-    0,
-    0.563
+    0.17,
+    0.59,
+    0.17,
+    0.59,
+    0.564
   ],
   "europa-league/celtic.svg": [
     0,
@@ -4200,11 +4200,11 @@
     0.747
   ],
   "soccer/2026-27/la-liga/celta-de-vigo.svg": [
-    0,
-    0,
-    0,
-    0,
-    0.05
+    0.17,
+    0.59,
+    0.17,
+    0.59,
+    0.564
   ],
   "soccer/2026-27/la-liga/deportivo-a-coruna.svg": [
     0,
@@ -4270,11 +4270,11 @@
     0.694
   ],
   "soccer/2026-27/la-liga/real-betis-balompie.svg": [
-    0,
-    0,
-    0,
-    0,
-    0.385
+    0.2,
+    0.33,
+    0.2,
+    0.17,
+    1.218
   ],
   "soccer/2026-27/la-liga/real-madrid.svg": [
     0,
@@ -4984,11 +4984,11 @@
     1.075
   ],
   "conference-league/real-betis.svg": [
-    0,
-    0,
-    0,
-    0,
-    0.385
+    0.2,
+    0.33,
+    0.2,
+    0.17,
+    1.218
   ],
   "conference-league/rijeka.svg": [
     0,
@@ -5691,11 +5691,11 @@
     0.75
   ],
   "europa-league/real-betis.svg": [
-    0,
-    0,
-    0,
-    0,
-    0.385
+    0.2,
+    0.33,
+    0.2,
+    0.17,
+    1.218
   ],
   "europa-league/real-sociedad.svg": [
     0.83,
@@ -5843,5 +5843,19 @@
     0,
     0,
     1
+  ],
+  "euro/2026-27/celta-vigo.svg": [
+    0.17,
+    0.59,
+    0.17,
+    0.59,
+    0.564
+  ],
+  "유로파리그/2026-27/celta-vigo.svg": [
+    0.17,
+    0.59,
+    0.17,
+    0.59,
+    0.564
   ]
 }

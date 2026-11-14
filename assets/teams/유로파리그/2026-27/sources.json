@@ -1,0 +1,15 @@
+{
+  "celta-vigo.svg": {
+    "source": "https://football-logos.cc/",
+    "original_git_blob_sha": "b1a57c2620a8c8cc657d488781c3903701810526",
+    "corrected_git_blob_sha": "5ca3191ef6223b7a30ecbb42d48b699cee181372",
+    "correction": "Root SVG viewBox and intrinsic dimensions corrected to fit complete original artwork; path geometry unchanged",
+    "viewBox": [
+      -126,
+      -1,
+      276,
+      486
+    ],
+    "box_status": "600px alpha bounds measured; full crest visually compared against prior PNG"
+  }
+}
