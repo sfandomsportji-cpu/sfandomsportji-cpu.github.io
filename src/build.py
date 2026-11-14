@@ -531,7 +531,12 @@ UEFA_LOGO_DIRS = ('conference-league/', 'champions-league/', 'europa-league/', '
 
 def soccer_logo_url(rel: str) -> str:
     """soccer_logos.json 값 → 사이트 경로. 'conference-league/·champions-league/·europa-league/·euro/…'는 assets/teams/ 아래 해당 폴더, 그 밖은 soccer/2026-27/."""
-    return f'/assets/teams/{rel}' if rel.startswith(UEFA_LOGO_DIRS) else f'/assets/teams/soccer/2026-27/{rel}'
+    key = rel if rel.startswith(UEFA_LOGO_DIRS) else f'soccer/2026-27/{rel}'
+    if key.endswith('.png'):
+        vector = key[:-4] + '.svg'
+        if (ROOT / 'assets' / 'teams' / vector).is_file():
+            key = vector
+    return f'/assets/teams/{key}'
 
 
 def soccer_badge(name: str, size: str = '') -> str:
@@ -855,7 +860,7 @@ def logo_size(key: str, fit: tuple) -> tuple:
     g, cap, diag = fit
     w, h = g * math.sqrt(asp), g / math.sqrt(asp)
     # Apply the optical scale, then clamp to the approved square/circular slot.
-    m = LOGO_SCALE.get(key, 1.0)
+    m = LOGO_SCALE.get(key, LOGO_SCALE.get(key[:-4] + '.png', 1.0) if key.endswith('.svg') else 1.0)
     w, h = w * m, h * m
     k = min(1.0, cap / w, cap / h)
     if diag:
@@ -870,7 +875,7 @@ def logo_style(key: str, fit: tuple) -> str:
 
 
 def soccer_logo_style(rel: str, fit: tuple) -> str:
-    return logo_style(rel if rel.startswith(UEFA_LOGO_DIRS) else f'soccer/2026-27/{rel}', fit)
+    return logo_style(soccer_logo_url(rel).removeprefix('/assets/teams/'), fit)
 
 
 HOME_HIDE_MLB = True  # 홈에서만 MLB 노출 숨김 (False면 복원). /mlb/ 등 다른 페이지는 그대로

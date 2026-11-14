@@ -1,0 +1,32 @@
+{
+  "arsenal-fc.svg": {
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/england/Arsenal.svg",
+    "git_blob_sha": "09d8d921c8533800a4d1b3be2c641b3554a6fe6e",
+    "source": "https://football-logos.cc/",
+    "box_status": "viewBox ratio; actual alpha bounds pending"
+  },
+  "chelsea-fc.svg": {
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/england/Chelsea.svg",
+    "git_blob_sha": "df6156ab1b7c92c05db3052fef084ad9f0b8178c",
+    "source": "https://football-logos.cc/",
+    "box_status": "viewBox ratio; actual alpha bounds pending"
+  },
+  "manchester-city.svg": {
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/england/Manchester_City.svg",
+    "git_blob_sha": "999b93a75f72169ad51214de7a9be72005b82b3a",
+    "source": "https://football-logos.cc/",
+    "box_status": "viewBox ratio; actual alpha bounds pending"
+  },
+  "manchester-united.svg": {
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/england/Manchester_United.svg",
+    "git_blob_sha": "e682df65bd8bdb96b2119c7a98ad90ba06c99e38",
+    "source": "https://football-logos.cc/",
+    "box_status": "viewBox ratio; actual alpha bounds pending"
+  },
+  "aston-villa.svg": {
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/england/Aston_Villa.svg",
+    "git_blob_sha": "343eca36377419050e08d9262e4eb6006abdba55",
+    "source": "https://football-logos.cc/",
+    "box_status": "viewBox ratio; actual alpha bounds pending"
+  }
+}
