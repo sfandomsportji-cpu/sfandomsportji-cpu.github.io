@@ -531,7 +531,14 @@ UEFA_LOGO_DIRS = ('conference-league/', 'champions-league/', 'europa-league/', '
 
 def soccer_logo_url(rel: str) -> str:
     """soccer_logos.json 값 → 사이트 경로. 'conference-league/·champions-league/·europa-league/·euro/…'는 assets/teams/ 아래 해당 폴더, 그 밖은 soccer/2026-27/."""
-    return f'/assets/teams/{rel}' if rel.startswith(UEFA_LOGO_DIRS) else f'/assets/teams/soccer/2026-27/{rel}'
+    key = rel if rel.startswith(UEFA_LOGO_DIRS) else f'soccer/2026-27/{rel}'
+    if key.endswith('.png'):
+        vector = key[:-4] + '.svg'
+        if (ROOT / 'assets' / 'teams' / vector).is_file():
+            key = vector
+        elif (ROOT / 'assets' / 'teams' / (key[:-4] + '-hd.png')).is_file():
+            key = key[:-4] + '-hd.png'
+    return f'/assets/teams/{key}'
 
 
 def soccer_badge(name: str, size: str = '') -> str:
@@ -682,7 +689,13 @@ def an_logos(a: Article) -> str:
     la, lh = kbo_logo(getattr(a, 'away', '')), kbo_logo(getattr(a, 'home', ''))
     if not (la and lh):
         return ''
+    def preferred(p):
+        clean = ROOT / 'assets' / 'teams' / 'kbo' / 'clean' / pathlib.Path(p).name
+        return f'/assets/teams/kbo/clean/{clean.name}' if clean.is_file() else p
+    la, lh = preferred(la), preferred(lh)
     def st(p):
+        if '/kbo/clean/' in p:
+            return ' style="width:auto;max-width:70%;object-fit:contain"'
         key = p.removeprefix('/assets/teams/')
         return f' style="{logo_style(key, LOGO_FIT_PLAIN).split(";width")[0]};height:{logo_size(key, LOGO_FIT_PLAIN)[1] * 100:.1f}%;width:auto"'
     return (f'<span class="an-logos"><span><img src="{la}" alt="{esc(a.away)}"{st(la)} loading="lazy"></span>'
@@ -847,14 +860,14 @@ def logo_size(key: str, fit: tuple) -> tuple:
     """상자 한 변을 1로 했을 때 보여 줄 (가로, 세로)."""
     _, asp = logo_box(key)
     g, cap, diag = fit
-    if fit is LOGO_FIT_PLAIN or fit is LOGO_FIT_NBA:  # 면적 통일 + 긴 변 상한: 가로형·세로형·원형이 비슷한 크기로 보이게(로고별 배율 없음)
-        w, h = g * math.sqrt(asp), g / math.sqrt(asp)
-        k = min(1.0, cap / max(w, h))
-        return w * k, h * k
     w, h = g * math.sqrt(asp), g / math.sqrt(asp)
-    k = min(1.0, cap / w, cap / h, diag / math.hypot(w, h))
-    m = LOGO_SCALE.get(key, 1.0) if fit is not LOGO_FIT_BADGE else 1.0
-    return w * k * m, h * k * m
+    # Apply the optical scale, then clamp to the approved square/circular slot.
+    m = LOGO_SCALE.get(key, LOGO_SCALE.get(key[:-4] + '.png', 1.0) if key.endswith('.svg') else 1.0)
+    w, h = w * m, h * m
+    k = min(1.0, cap / w, cap / h)
+    if diag:
+        k = min(k, diag / math.hypot(w, h))
+    return w * k, h * k
 
 
 def logo_style(key: str, fit: tuple) -> str:
@@ -864,7 +877,7 @@ def logo_style(key: str, fit: tuple) -> str:
 
 
 def soccer_logo_style(rel: str, fit: tuple) -> str:
-    return logo_style(rel if rel.startswith(UEFA_LOGO_DIRS) else f'soccer/2026-27/{rel}', fit)
+    return logo_style(soccer_logo_url(rel).removeprefix('/assets/teams/'), fit)
 
 
 HOME_HIDE_MLB = True  # 홈에서만 MLB 노출 숨김 (False면 복원). /mlb/ 등 다른 페이지는 그대로
@@ -929,11 +942,7 @@ def team_logo_rel(lg: str, name: str) -> str:
 
 def square_logo(rel: str, name: str) -> str:
     """정사각 칸 안에 가로세로 비율과 상관없이 같은 면적으로 보이게 맞춘 로고(KBL·KBO와 같은 방식)."""
-    inset, asp = logo_box(rel)
-    g = 0.98
-    w, h = g * math.sqrt(asp), g / math.sqrt(asp)
-    k = min(1.0, 1.0 / max(w, h))
-    st = f'object-view-box:inset({" ".join(f"{v:g}%" for v in inset)});width:{w * k * 100:.1f}%;height:{h * k * 100:.1f}%'
+    st = logo_style(rel, (0.98, 1.0, 0.0))
     return (f'<span class="tlogo-wrap lg kbo"><img class="tlogo" src="/assets/teams/{rel}" alt="{esc(name)}" '
             f'style="{st}" width="72" height="72" loading="lazy" decoding="async"></span>')
 
@@ -950,14 +959,7 @@ def ta_mark(a: Article, name: str) -> str:
     if lg in ('NBA', 'MLB') and (ROOT / 'assets' / 'teams' / lg.lower() / f'{name.lower()}.svg').exists():
         return badge(name, team_color(name, lg.lower()), 'lg', league=lg.lower())
     if lg == 'KBL' and name in KBL_LOGOS:
-        kkey = KBL_LOGOS[name]
-        inset, asp = logo_box(kkey)
-        g = 0.98  # KBO와 같은 방식: 가로세로 비율이 달라도 보이는 면적을 맞추되 긴 변은 칸 안에 가득
-        w, h = g * math.sqrt(asp), g / math.sqrt(asp)
-        k = min(1.0, 1.0 / max(w, h))
-        st = f'object-view-box:inset({" ".join(f"{v:g}%" for v in inset)});width:{w * k * 100:.1f}%;height:{h * k * 100:.1f}%'
-        return (f'<span class="tlogo-wrap lg kbo"><img class="tlogo" src="/assets/teams/{kkey}" alt="{esc(name)}" '
-                f'style="{st}" width="72" height="72" loading="lazy" decoding="async"></span>')
+        return square_logo(KBL_LOGOS[name], name)
     if lg == 'KBO' and kbo_logo(name):
         p = kbo_logo(name)
         # Prefer transparent, locally prepared KIA/Samsung crests.

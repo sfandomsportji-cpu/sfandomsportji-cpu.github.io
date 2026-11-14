@@ -1,0 +1,128 @@
+{
+  "1-fc-koln.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Cologne.svg",
+    "source_git_blob_sha": "72230f18df489d8ced08de87e4aea7b82ef590c5",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "1-fc-union-berlin.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Union_Berlin.svg",
+    "source_git_blob_sha": "9cbb283e70faad9059c9626d2a2e5a22c645df71",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "1-fsv-mainz-05.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Mainz_05.svg",
+    "source_git_blob_sha": "73fe0bfb31e4e7fda8fa58ded887b3d8b42bcdf0",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "bayer-04-leverkusen.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Bayer_Leverkusen.svg",
+    "source_git_blob_sha": "e7ddb37ff466624b47de5116b9d0c2f6fec871df",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "bayern-munich.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Bayern_Munich.svg",
+    "source_git_blob_sha": "1e2dda0173faf699ecbd392416a7292e10497520",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "borussia-dortmund.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Borussia_Dortmund.svg",
+    "source_git_blob_sha": "0d7aae80bc558f55a458d7042c58b580ea647ef3",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "borussia-monchengladbach.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Borussia_Mönchengladbach.svg",
+    "source_git_blob_sha": "b8b76a6c0e2bf35277a970c2f17dcdf9856a2fb1",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "eintracht-frankfurt.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Eintracht_Frankfurt.svg",
+    "source_git_blob_sha": "27f7511dc0eb80079101e25474d0aa7a643fa56a",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "fc-augsburg.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Augsburg.svg",
+    "source_git_blob_sha": "34180fae280e9f86c7039ecec48227efb2d988cc",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "fc-schalke-04.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Schalke_04.svg",
+    "source_git_blob_sha": "2cffdee5431afcd844bf7f21c06f6163e370e078",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "hamburger-sv.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Hamburger_SV.svg",
+    "source_git_blob_sha": "93e3f7088054d82ea0a4619a8bf59dc5481236fb",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "rb-leipzig.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/RB_Leipzig.svg",
+    "source_git_blob_sha": "3b0b8d81f5691f7fea8801ab5a6da18d4561db63",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "sc-freiburg.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Freiburg.svg",
+    "source_git_blob_sha": "015d023de9d08b70253a965fb851ddbc8f81caa0",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "sc-paderborn-07.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/SC_Paderborn.svg",
+    "source_git_blob_sha": "0d87834b0f69a6b7edbd1c9d01fe1e52e47af205",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "sv-07-elversberg.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/SV_Elversberg.svg",
+    "source_git_blob_sha": "c75f6c9e5dca16dea24c1b43171924baa46e590c",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "sv-werder-bremen.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Werder_Bremen.svg",
+    "source_git_blob_sha": "7a51a9ad5f911fa725468b1b2c64d431295b7e35",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "tsg-1899-hoffenheim.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Hoffenheim.svg",
+    "source_git_blob_sha": "cc8f2d0750744560e898a3b57104a6f5b288c102",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "vfb-stuttgart.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/VfB_Stuttgart.svg",
+    "source_git_blob_sha": "825847f5011b036c0dbdf02a873ef7e1e76ddb0f",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  }
+}
