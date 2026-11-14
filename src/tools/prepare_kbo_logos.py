@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create transparent KIA/Samsung logos; retain original source files unchanged."""
+"""Create transparent KBO logos; retain original source files unchanged."""
 from collections import deque
 from pathlib import Path
 from PIL import Image
@@ -60,5 +60,5 @@ def prepare(name):
     print(name, "crest", result.size, "outside background removed", sum(outside))
 
 if __name__ == "__main__":
-    for club in ("KIA", "samsung"):
+    for club in ("KIA", "samsung", "kiwoom", "lotte"):
         prepare(club)
