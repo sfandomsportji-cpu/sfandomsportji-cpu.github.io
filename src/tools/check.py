@@ -29,7 +29,7 @@ def sh(*a, cwd=R):
     return subprocess.run(a, cwd=cwd, capture_output=True, text=True)
 
 
-tracked = sh('git', 'ls-files').stdout.split('\n')[:-1]
+tracked = sh('git', '-c', 'core.quotepath=false', 'ls-files').stdout.split('\n')[:-1]
 pages = [p for p in tracked if p.endswith('.html') and not p.startswith('src/')]
 H = {p: (R / p).read_text(encoding='utf-8') for p in pages}
 SRC = (R / 'src/build.py').read_text(encoding='utf-8')
@@ -58,7 +58,7 @@ mail += sorted({x for x in sh('git', 'log', '--all', '--format=%ae %ce').stdout.
 check('07b 메일 주소가 파일과 커밋 기록 어디에도 없음 (커밋은 noreply 주소만)', mail)
 check('07c 글 대표 이미지는 저장소 안 파일만 (외부 사진 링크 없음)', [p for p in tracked if p.startswith('src/content/articles/') and p.endswith('.md')
       and re.search(r'^image:\s*"https?://', ALL.get(p, ''), re.M)])
-check('08 추적되지 않은 잉여 파일 없음', [x for x in sh('git', 'ls-files', '--others', '--exclude-standard').stdout.split('\n') if x.strip()])
+check('08 추적되지 않은 잉여 파일 없음', [x for x in sh('git', '-c', 'core.quotepath=false', 'ls-files', '--others', '--exclude-standard').stdout.split('\n') if x.strip()])
 
 # ── 빌더 코드 ──
 try:
