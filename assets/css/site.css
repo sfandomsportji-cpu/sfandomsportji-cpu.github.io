@@ -794,6 +794,8 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gt-in{align-
 .mc-team .tlogo-wrap.lg:not(.nologo){width:84px;height:84px}
 .nba-card .tlogo-wrap:not(.nologo){width:58px;height:58px}
 .top-stories .ts.tip .vsline .tlogo-wrap:not(.nologo){width:72px;height:72px;min-width:72px;min-height:72px;background:transparent;box-shadow:none;border-radius:0;padding:1px}
+/* 2026-11-14: 홈 일정의 어두운 NBA 로고(유타·필라델피아)만 밝은 판을 깐다. 크기·위치는 그대로(둥근 사각 판). */
+.top-stories .ts.tip .vsline .tlogo-wrap:not(.nologo):has(> :is(img[src*="/teams/nba/uta.svg"],img[src*="/teams/nba/phi.svg"])){background:#e6e9ef;border-radius:16px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
 
 @media(max-width:760px){
   .tlogo-wrap:not(.nologo){width:50px;height:50px}
