@@ -747,12 +747,13 @@ def game_result(a: Article):
         except (OSError, ValueError):
             m = None
         if isinstance(m, dict):
-            res = {'status': m.get('status', 'final'), 'away': m.get('away'), 'home': m.get('home')}
+            res = {'status': m.get('status', 'final'), 'away': m.get('away'), 'home': m.get('home'), 'reason': m.get('reason', '')}
     if not res or res['status'] not in ('live', 'final'):
         return None
     if not all(isinstance(res[k], int) for k in ('away', 'home')):
         return None
     res['verdict'] = ''
+    res.setdefault('reason', '')
     pick = getattr(a, 'pick', '')
     if pick in ('away', 'home') and res['status'] == 'final':
         if res['away'] == res['home']:  # 승리 방향 분석인데 무승부로 끝난 경기는 빗나간 것으로 센다(승·패 집계에서 빠지지 않게)
@@ -1863,11 +1864,11 @@ def build_lists():
                           'venue': f'{getattr(a, "kst", "")} KST', 'outlook': f'{side} 우세 전망',
                           'result': f'{a.away} {r["away"]}–{r["home"]} {a.home}',
                           'detail': f'경기 전에 남긴 전망과 끝난 뒤 결과를 그대로 맞춰 봤어요. 분석: {a.headline}',
-                          'matched': r['verdict'] == 'hit'})
+                          'matched': r['verdict'] == 'hit', 'reason': '' if r['verdict'] == 'hit' else r.get('reason', '')})
     all_recs = auto_recs[::-1] + RECORDS['records']
     updated = TODAY
     recs = ''.join(f'''<div class="record"><span class="no">{r["no"]}</span><div><span class="tag red">{r["league"]} · {r["date"].replace("-", ".")} · {esc(r["venue"])}</span><h3>{esc(r["match"])}</h3>
-<p>경기 전 · {esc(r["outlook"])} → 결과 · {esc(r["result"])}. {esc(r["detail"])}</p></div><span class="verdict {"ok" if r["matched"] else "no"}">{"MATCHED" if r["matched"] else "NOT MATCHED"}</span></div>''' for r in all_recs)
+<p>경기 전 · {esc(r["outlook"])} → 결과 · {esc(r["result"])}. {esc(r["detail"])}</p>{(f'<p class="rec-why">{esc(r["reason"])}</p>' if r.get('reason') and not r['matched'] else '')}</div><span class="verdict {"ok" if r["matched"] else "no"}">{"MATCHED" if r["matched"] else "NOT MATCHED"}</span></div>''' for r in all_recs)
     # 상단 집계는 홈 '분석 성공'과 같은 누적 기준(운영자 집계 + 자동 대조)으로 맞춘다. 아래 목록은 상세 공개분만 보여준다.
     _rb = SITE.get('analysis_record_base') or {}
     cum_total = int(_rb.get('total', 0)) + len(auto_recs)
