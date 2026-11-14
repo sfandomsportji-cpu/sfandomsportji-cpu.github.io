@@ -292,5 +292,25 @@
     "source_git_blob_sha": "e26d678aad55f6be20e7d3a0dbc814eeac052224",
     "format": "SVG",
     "box_status": "measured alpha bounds at max side 600px"
+  },
+  "fcsb-hd.png": {
+    "source": "https://a.espncdn.com/i/teamlogos/soccer/500/484.png",
+    "sha256": "7aceced57eb28e1a0546086bc6175340257c77411e0b8408010fca654ea7e2dd",
+    "format": "PNG",
+    "dimensions": [
+      500,
+      500
+    ],
+    "box_status": "measured alpha bounds"
+  },
+  "midtjylland-hd.png": {
+    "source": "https://a.espncdn.com/i/teamlogos/soccer/500/572.png",
+    "sha256": "112887e15a5617bfb510adf07d0a8477b2351f74c38fcf9a825818ae2531653e",
+    "format": "PNG",
+    "dimensions": [
+      500,
+      500
+    ],
+    "box_status": "measured alpha bounds"
   }
 }

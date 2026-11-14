@@ -117,5 +117,15 @@
     "source_git_blob_sha": "e4aa1f0b749b05f5259f5d2f8bb7b39f4fc885fb",
     "format": "SVG",
     "box_status": "measured alpha bounds at max side 600px"
+  },
+  "estac-troyes-hd.png": {
+    "source": "https://a.espncdn.com/i/teamlogos/soccer/500/170.png",
+    "sha256": "34049d3fb98cc26bde433a4f28a0ebfb584a8e3b8d770eb6bc03f2cef06e08ad",
+    "format": "PNG",
+    "dimensions": [
+      500,
+      500
+    ],
+    "box_status": "measured alpha bounds"
   }
 }

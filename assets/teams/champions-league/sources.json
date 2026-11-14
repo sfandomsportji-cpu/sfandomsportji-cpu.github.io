@@ -390,5 +390,15 @@
     "source_git_blob_sha": "e26d678aad55f6be20e7d3a0dbc814eeac052224",
     "format": "SVG",
     "box_status": "measured alpha bounds at max side 600px"
+  },
+  "sevilla-hd.png": {
+    "source": "https://a.espncdn.com/i/teamlogos/soccer/500/243.png",
+    "sha256": "992624b39a65ae153e9754ba302596d234faafe95062ca5d9b3095ac56211988",
+    "format": "PNG",
+    "dimensions": [
+      500,
+      500
+    ],
+    "box_status": "measured alpha bounds"
   }
 }

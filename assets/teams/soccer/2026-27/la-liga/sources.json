@@ -124,5 +124,25 @@
     "source_git_blob_sha": "5f63b72efa934988fa52a939237c227690e0d9d0",
     "format": "SVG",
     "box_status": "measured alpha bounds at max side 600px"
+  },
+  "getafe-cf-hd.png": {
+    "source": "https://a.espncdn.com/i/teamlogos/soccer/500/2922.png",
+    "sha256": "24aa11bf23482930aa446cc8a60961dc2fa1a8efb21c89f51b0b866c6bd68ff8",
+    "format": "PNG",
+    "dimensions": [
+      500,
+      500
+    ],
+    "box_status": "measured alpha bounds"
+  },
+  "sevilla-fc-hd.png": {
+    "source": "https://a.espncdn.com/i/teamlogos/soccer/500/243.png",
+    "sha256": "992624b39a65ae153e9754ba302596d234faafe95062ca5d9b3095ac56211988",
+    "format": "PNG",
+    "dimensions": [
+      500,
+      500
+    ],
+    "box_status": "measured alpha bounds"
   }
 }

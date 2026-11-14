@@ -5766,5 +5766,47 @@
     0,
     0,
     1
+  ],
+  "europa-league/fcsb-hd.png": [
+    4.2,
+    13.6,
+    4.2,
+    13.6,
+    0.795
+  ],
+  "europa-league/midtjylland-hd.png": [
+    3.4,
+    3.2,
+    3.2,
+    3.6,
+    0.998
+  ],
+  "soccer/2026-27/la-liga/getafe-cf-hd.png": [
+    4.2,
+    6,
+    4.2,
+    6,
+    0.961
+  ],
+  "soccer/2026-27/la-liga/sevilla-fc-hd.png": [
+    3.4,
+    10.4,
+    2.6,
+    11.6,
+    0.83
+  ],
+  "champions-league/sevilla-hd.png": [
+    3.4,
+    10.4,
+    2.6,
+    11.6,
+    0.83
+  ],
+  "soccer/2026-27/ligue-1/estac-troyes-hd.png": [
+    4,
+    13,
+    4.2,
+    12.6,
+    0.81
   ]
 }

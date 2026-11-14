@@ -536,6 +536,8 @@ def soccer_logo_url(rel: str) -> str:
         vector = key[:-4] + '.svg'
         if (ROOT / 'assets' / 'teams' / vector).is_file():
             key = vector
+        elif (ROOT / 'assets' / 'teams' / (key[:-4] + '-hd.png')).is_file():
+            key = key[:-4] + '-hd.png'
     return f'/assets/teams/{key}'
 
 
