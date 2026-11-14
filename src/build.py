@@ -495,7 +495,7 @@ def badge(abbr: str, color: str, size: str = '', league: str = 'mlb') -> str:
     로고를 못 불러오면 site.js가 팀 색 약자 칩으로 바꿉니다."""
     f = ROOT / 'assets' / 'teams' / league / f'{abbr.lower()}.svg'
     if f.exists():
-        src = f'/assets/teams/{league}/{abbr.lower()}.svg?v=all-team-marks-20261108'
+        src = f'/assets/teams/{league}/{abbr.lower()}.svg?v=all-team-marks-20261114'
     else:
         ids, pattern = LOGO_SOURCES[league]
         src = pattern.format(id=ids[abbr]) if abbr in ids else ''
