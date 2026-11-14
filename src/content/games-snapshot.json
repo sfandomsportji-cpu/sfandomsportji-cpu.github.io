@@ -1,31 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-14T22:47+09:00",
+  "updated_at": "2026-11-15T02:27+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-14T22:47+09:00",
+      "checked_at": "2026-11-15T02:27+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-14T22:47+09:00",
+      "checked_at": "2026-11-15T02:27+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909979",
-          "league": "NBA",
-          "start_kst": "2026-11-13T11:00+09:00",
-          "away": "CHA",
-          "home": "PHX",
-          "away_name": "Charlotte Hornets",
-          "home_name": "Phoenix Suns",
-          "status": "final",
-          "away_score": 96,
-          "home_score": 101,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909979/hornets-suns"
-        },
         {
           "id": "NBA-401909296",
           "league": "NBA",
@@ -432,7 +419,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-14T22:47+09:00",
+      "checked_at": "2026-11-15T02:27+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -608,36 +595,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-14T22:47+09:00",
+      "checked_at": "2026-11-15T02:27+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892704",
-          "league": "NHL",
-          "start_kst": "2026-11-13T11:00+09:00",
-          "away": "STL",
-          "home": "UTA",
-          "away_name": "St. Louis Blues",
-          "home_name": "Utah Mammoth",
-          "status": "final",
-          "away_score": 1,
-          "home_score": 0,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892704/blues-mammoth"
-        },
-        {
-          "id": "NHL-401892705",
-          "league": "NHL",
-          "start_kst": "2026-11-13T12:00+09:00",
-          "away": "NYI",
-          "home": "LA",
-          "away_name": "New York Islanders",
-          "home_name": "Los Angeles Kings",
-          "status": "final",
-          "away_score": 5,
-          "home_score": 2,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892705/islanders-kings"
-        },
         {
           "id": "NHL-401892706",
           "league": "NHL",
