@@ -1,32 +1,142 @@
 {
   "arsenal-fc.svg": {
-    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/england/Arsenal.svg",
-    "git_blob_sha": "09d8d921c8533800a4d1b3be2c641b3554a6fe6e",
     "source": "https://football-logos.cc/",
-    "box_status": "viewBox ratio; actual alpha bounds pending"
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Arsenal.svg",
+    "source_git_blob_sha": "09d8d921c8533800a4d1b3be2c641b3554a6fe6e",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
   },
   "chelsea-fc.svg": {
-    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/england/Chelsea.svg",
-    "git_blob_sha": "df6156ab1b7c92c05db3052fef084ad9f0b8178c",
     "source": "https://football-logos.cc/",
-    "box_status": "viewBox ratio; actual alpha bounds pending"
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Chelsea.svg",
+    "source_git_blob_sha": "df6156ab1b7c92c05db3052fef084ad9f0b8178c",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
   },
   "manchester-city.svg": {
-    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/england/Manchester_City.svg",
-    "git_blob_sha": "999b93a75f72169ad51214de7a9be72005b82b3a",
     "source": "https://football-logos.cc/",
-    "box_status": "viewBox ratio; actual alpha bounds pending"
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Manchester_City.svg",
+    "source_git_blob_sha": "999b93a75f72169ad51214de7a9be72005b82b3a",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
   },
   "manchester-united.svg": {
-    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/england/Manchester_United.svg",
-    "git_blob_sha": "e682df65bd8bdb96b2119c7a98ad90ba06c99e38",
     "source": "https://football-logos.cc/",
-    "box_status": "viewBox ratio; actual alpha bounds pending"
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Manchester_United.svg",
+    "source_git_blob_sha": "e682df65bd8bdb96b2119c7a98ad90ba06c99e38",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
   },
   "aston-villa.svg": {
-    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/england/Aston_Villa.svg",
-    "git_blob_sha": "343eca36377419050e08d9262e4eb6006abdba55",
     "source": "https://football-logos.cc/",
-    "box_status": "viewBox ratio; actual alpha bounds pending"
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Aston_Villa.svg",
+    "source_git_blob_sha": "343eca36377419050e08d9262e4eb6006abdba55",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "afc-bournemouth.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Bournemouth.svg",
+    "source_git_blob_sha": "8e2d52e1107e998fa14c32108f7eeb5f65747011",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "brentford-fc.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Brentford.svg",
+    "source_git_blob_sha": "ee292543a2ea9ea7beeb95e620bb7436c4226e46",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "brighton-hove-albion.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Brighton.svg",
+    "source_git_blob_sha": "43cd0df8e26c0739a8682f3ff73d7261a168301c",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "coventry-city.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Coventry_City.svg",
+    "source_git_blob_sha": "a76e7f7f70c844624d3e38eab791db8abba3eda4",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "crystal-palace.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Crystal_Palace.svg",
+    "source_git_blob_sha": "0f63943bd8fed9ceb5328f5702ab1df66f0173a0",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "everton-fc.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Everton.svg",
+    "source_git_blob_sha": "52c42d8ddd1ba1783249a16fbaebd2fccca3d995",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "fulham-fc.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Fulham.svg",
+    "source_git_blob_sha": "010887d351d94bf907522cbdb720579a0ff79657",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "hull-city.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Hull_City.svg",
+    "source_git_blob_sha": "d07f0de3a3e21e3b05609a2ac225372d012a5299",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "ipswich-town.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Ipswich.svg",
+    "source_git_blob_sha": "358245eefa496b058829e600d1e7c84e781cc321",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "leeds-united.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Leeds_United.svg",
+    "source_git_blob_sha": "abd4e830b1bff00ce1a7a2926468225f6762ec4f",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "liverpool-fc.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Liverpool_FC.svg",
+    "source_git_blob_sha": "3820de6aea079a0f476e6efdc38c4c0c777f04ec",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "newcastle-united.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Newcastle_United.svg",
+    "source_git_blob_sha": "90fe108ddf53b71c4226e13d4357ffee109bf100",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "nottingham-forest.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Nottingham_Forest.svg",
+    "source_git_blob_sha": "ee90f5dc401b42eb2cb48d9025331b2e74610bd2",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "sunderland-afc.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Sunderland.svg",
+    "source_git_blob_sha": "d11a076b3bc7c6c98977674864b6a0e6ed830373",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "tottenham-hotspur.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Tottenham.svg",
+    "source_git_blob_sha": "9a2c2d1305a2cc5f141cf002d50a433d37cb34e9",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
   }
 }

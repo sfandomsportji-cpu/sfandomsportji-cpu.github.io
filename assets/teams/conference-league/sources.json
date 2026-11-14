@@ -1,0 +1,429 @@
+{
+  "aek-athens.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/greece/AEK_Athens.svg",
+    "source_git_blob_sha": "d80b46cddcbf31fae2f5163c5119d38c8631c3ff",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "aek-larnaca.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/cyprus/AEK_Larnaca.svg",
+    "source_git_blob_sha": "7b988b77f454da76bc06d887e95b1be1fc900202",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "apoel.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/cyprus/APOEL.svg",
+    "source_git_blob_sha": "66a092d6fe78da8e876e30ba16f5aea1921e546e",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "az-alkmaar.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/netherlands/AZ_Alkmaar.svg",
+    "source_git_blob_sha": "c5ca6f592b78701fa261a80d84acea64bed8da26",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "aberdeen.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/scotland/Aberdeen.svg",
+    "source_git_blob_sha": "3b320f594ea56a9ed7a19d65bfeb7f2f4ccfe079",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "astana.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/kazakhstan/Astana.svg",
+    "source_git_blob_sha": "e42ed8d8e1e7a266c1a3d60e9685fc01051055c9",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "borac-banja-luka.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/bosnia-and-herzegovina/Borac_Banja_Luka.svg",
+    "source_git_blob_sha": "18c385061440bbe0f1abf6c44214ba8f9429ffdd",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "breidablik.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/iceland/Breidablik.svg",
+    "source_git_blob_sha": "c1bb40a9f6bd632ae92e6cfc15873f013e2a7b58",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "celje.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/slovenia/Celje.svg",
+    "source_git_blob_sha": "a4cd43725a87a078525e85a45898b3fcc5cd1a52",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "cercle-brugge.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/belgium/Cercle_Brugge_KSV.svg",
+    "source_git_blob_sha": "3801a127e71273cb870512afca98329b6b43b8fb",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "chelsea.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Chelsea.svg",
+    "source_git_blob_sha": "df6156ab1b7c92c05db3052fef084ad9f0b8178c",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "copenhagen.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/denmark/F.C._Copenhagen.svg",
+    "source_git_blob_sha": "13a7a16c634d0f6791139ddb5284745caca46511",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "crystal-palace.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/england/Crystal_Palace.svg",
+    "source_git_blob_sha": "0f63943bd8fed9ceb5328f5702ab1df66f0173a0",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "dinamo-minsk.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/belarus/Dinamo-Minsk.svg",
+    "source_git_blob_sha": "1a660c1d9ede0810b1e4676e91e510a16274a3e8",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "djurgarden.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/sweden/Djurgården.svg",
+    "source_git_blob_sha": "cf83d51e34bd9781d4df5e8162239015f2b45052",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "drita.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/kosovo/Drita.svg",
+    "source_git_blob_sha": "968ce71b1f1230430118ec223d0a7aaa96acbd95",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "dynamo-kyiv.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/ukraine/Dynamo_Kyiv.svg",
+    "source_git_blob_sha": "0ba780b2f72130ef1a0963a7ee657d421ec63b45",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "fiorentina.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/italy/Fiorentina.svg",
+    "source_git_blob_sha": "1aebbd451170a6481b21393a174aa3bc4672fadc",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "gent.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/belgium/KAA_Gent.svg",
+    "source_git_blob_sha": "fc93f9aeecb65a1588caab57f6d8ef4c126c897c",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "hjk-helsinki.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/finland/HJK_Helsinki.svg",
+    "source_git_blob_sha": "ff6c279da63dd0252aef40006f532f27345aa204",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "hacken.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/sweden/Häcken.svg",
+    "source_git_blob_sha": "8175813190bb5e9ad7dedcbbc0508cc902b40aad",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "hamrun-spartans.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/malta/Hamrun_Spartans.svg",
+    "source_git_blob_sha": "a181a911e29b358e0696b7d41346d0ed8cd81b89",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "hearts.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/scotland/Hearts.svg",
+    "source_git_blob_sha": "2e7e5499972c756938455e1f4a678c05e899cab2",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "heidenheim.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/FC_Heidenheim.svg",
+    "source_git_blob_sha": "3ca55adb7f015577e4d7e02a12b846faeb5d5d40",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "istanbul-basaksehir.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/turkey/Başakşehir.svg",
+    "source_git_blob_sha": "2e998004113e764afc482bf2d351dd818c02ab6f",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "jagiellonia-bialystok.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/poland/Jagiellonia_Białystok.svg",
+    "source_git_blob_sha": "b73375ed013d991b92cc110af65c8b3ca67e35ea",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "kups.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/finland/KuPS.svg",
+    "source_git_blob_sha": "57bcef594a91726358be83807c7ed5c37aa13398",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "lask.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/austria/LASK.svg",
+    "source_git_blob_sha": "33fb4ca8e012174a03189653b87a82df457b59ed",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "larne.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/northern-ireland/Larne.svg",
+    "source_git_blob_sha": "1d47e985d65e5011e7b8324f70fffc79f7fadcb1",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "lausanne-sport.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/switzerland/Lausanne-Sport.svg",
+    "source_git_blob_sha": "2b6d2f7f838ba0c94feea3278ff1a87503af4e3d",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "lech-poznan.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/poland/Lech_Poznań.svg",
+    "source_git_blob_sha": "dadcab7686b2280b4d6f50976d36759c76bad086",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "legia-warsaw.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/poland/Legia_Warszawa.svg",
+    "source_git_blob_sha": "679c0f0b3b45808feb99a3e7985d429f28fba250",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "lincoln-red-imps.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/gibraltar/Lincoln_Red_Imps.svg",
+    "source_git_blob_sha": "4cbe6553940fa148129b242f7691d10ea2f8ae15",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "lugano.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/switzerland/Lugano.svg",
+    "source_git_blob_sha": "bce078d27003a10e6c7e13ab1675134ae74a7ab9",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "mainz.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/germany/Mainz_05.svg",
+    "source_git_blob_sha": "73fe0bfb31e4e7fda8fa58ded887b3d8b42bcdf0",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "mlada-boleslav.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/czech-republic/Mladá_Boleslav.svg",
+    "source_git_blob_sha": "56e34b5dd58ba4cde7d239411f35fa1e74a851d4",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "molde.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/norway/Molde.svg",
+    "source_git_blob_sha": "25c918755e94a64f39719c4e89b051881be58246",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "noah.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/armenia/Noah.svg",
+    "source_git_blob_sha": "b437741b1ce8473643fc354c764d602f246270ea",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "olimpija-ljubljana.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/slovenia/Olimpija.svg",
+    "source_git_blob_sha": "808763f9c6d9b384901da3bfd595f1e5ceced529",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "omonia-nicosia.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/cyprus/Omonoia_Nicosia.svg",
+    "source_git_blob_sha": "1999a1d31f63c8f58254e0483918c46d74f6335b",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "panathinaikos.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/greece/Panathinaikos.svg",
+    "source_git_blob_sha": "ca4195ac7b401076d883259f2023095aa553fb5a",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "petrocub.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/moldova/Petrocub.svg",
+    "source_git_blob_sha": "d3d6d0118abcef9b2136a8785ad3b49346664280",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "rakow-czestochowa.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/poland/Raków_Częstochowa.svg",
+    "source_git_blob_sha": "e383ca96acd1f42632a89b42d34baca6a4691a78",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "rapid-wien.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/austria/Rapid_Vienna.svg",
+    "source_git_blob_sha": "8f0f30b5cac5fbb79be8f7a6425a2fd3fea09008",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "rayo-vallecano.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/spain/Rayo_Vallecano.svg",
+    "source_git_blob_sha": "bd1191e482941c3adf44290f0ba94af9dcd8cf2e",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "real-betis.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/spain/Real_Betis.svg",
+    "source_git_blob_sha": "c462f1c1215c534251f13f114b4e091b0b2521d9",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "rijeka.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/croatia/Rijeka.svg",
+    "source_git_blob_sha": "4a1e424a5b6c83e03e9aed8fa923b16a3aadada6",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "samsunspor.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/turkey/Samsunspor.svg",
+    "source_git_blob_sha": "eab98d5978f0e912e4fa93d964af93f91bf38ee8",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "shamrock-rovers.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/republic-of-ireland/Shamrock_Rovers.svg",
+    "source_git_blob_sha": "3da137a0aa20d1a172950a1bd0bce6f34152f566",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "shelbourne.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/republic-of-ireland/Shelbourne.svg",
+    "source_git_blob_sha": "9ca2df7f8b94193258c04bc1784be38d0dbb9c5c",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "shkendija.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/north-macedonia/Shkëndija.svg",
+    "source_git_blob_sha": "58e45543e4c95d98f610b87942d41428a8b92d00",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "sigma-olomouc.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/czech-republic/Sigma_Olomouc.svg",
+    "source_git_blob_sha": "bcde44fb5119817ff9e6c4d43364a4b0ebe729b2",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "sparta-prague.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/czech-republic/AC_Sparta_Praha.svg",
+    "source_git_blob_sha": "c38a141ecdf2dd691cbb19af538b7a0c908a1ea9",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "st-gallen.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/switzerland/St._Gallen.svg",
+    "source_git_blob_sha": "bda7579d1ac1806bc627b745255cba86ee7a6d67",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "strasbourg.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/france/RC_Strasbourg_Alsace.svg",
+    "source_git_blob_sha": "983ef60e522258157c3e71cf2b8594f8481572a0",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "tsc-backa-topola.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/serbia/FK_TSC.svg",
+    "source_git_blob_sha": "97e81ccec10b61361b53f90ce30d9cf2d740da7e",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "the-new-saints.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/wales/The_New_Saints.svg",
+    "source_git_blob_sha": "58d293d2148d173721d366c8a513ba4a6d298190",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "universitatea-craiova.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/romania/Universitatea_Craiova.svg",
+    "source_git_blob_sha": "bc5f1c2080b4924f7ed17c861fd1f8e736d6464c",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "vikingur-reykjavik.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/iceland/Víkingur_R..svg",
+    "source_git_blob_sha": "e18ef03030901ca6c3649de5686e47d1df126b06",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "vitoria-guimaraes.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/portugal/Vitória_de_Guimarães.svg",
+    "source_git_blob_sha": "d2770518217621122778190410635ec2ad8ac354",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  },
+  "zrinjski-mostar.svg": {
+    "source": "https://football-logos.cc/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/5ab11fed47427b3003f4b276554491fe683387b1/logos/bosnia-and-herzegovina/Zrinjski_Mostar.svg",
+    "source_git_blob_sha": "009cf9d493991d74ff312a76092d604d42f5f4e4",
+    "format": "SVG",
+    "box_status": "measured alpha bounds at max side 600px"
+  }
+}
