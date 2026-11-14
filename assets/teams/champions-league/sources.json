@@ -1,0 +1,16 @@
+{
+  "sabah.svg": {
+    "source": "https://football-logos.cc/azerbaijan/sabah/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/azerbaijan/Sabah.svg",
+    "git_blob_sha": "489d51bec56c48ee7463b4c198b6f381bb7c2683",
+    "format": "SVG",
+    "box_status": "viewBox ratio; visual measurement pending"
+  },
+  "viking-fk.svg": {
+    "source": "https://football-logos.cc/norway/viking/",
+    "mirror": "https://github.com/JoseArroyave/football-logos/blob/main/logos/norway/Viking_FK.svg",
+    "git_blob_sha": "080ed81e2ee422a73657feac6cffbb0346947401",
+    "format": "SVG",
+    "box_status": "viewBox ratio; visual measurement pending"
+  }
+}

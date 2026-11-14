@@ -3,14 +3,14 @@
     6.67,
     20.67,
     6.33,
-    21.0,
+    21,
     0.67
   ],
   "basketball/2026-27/kbl/busan-kcc.png": [
     23.33,
-    7.0,
+    7,
     23.33,
-    8.0,
+    8,
     1.594
   ],
   "basketball/2026-27/kbl/changwon-lg.png": [
@@ -23,36 +23,36 @@
   "basketball/2026-27/kbl/daegu-kogas.png": [
     24.33,
     3.33,
-    24.0,
+    24,
     3.67,
     1.8
   ],
   "basketball/2026-27/kbl/goyang-sono.png": [
-    7.0,
+    7,
     27.67,
-    7.0,
-    27.0,
+    7,
+    27,
     0.527
   ],
   "basketball/2026-27/kbl/seoul-samsung.png": [
-    36.0,
+    36,
     6.33,
     36.67,
-    7.0,
+    7,
     3.171
   ],
   "basketball/2026-27/kbl/seoul-sk.png": [
     20.67,
     6.67,
     20.33,
-    7.0,
+    7,
     1.463
   ],
   "basketball/2026-27/kbl/suwon-kt.png": [
     15.33,
-    0.0,
+    0,
     15.33,
-    0.0,
+    0,
     1.442
   ],
   "basketball/2026-27/kbl/ulsan-hyundai-mobis.png": [
@@ -67,7 +67,7 @@
     7.33,
     7.33,
     7.67,
-    1.0
+    1
   ],
   "kbo/KIA.png": [
     0,
@@ -1960,43 +1960,43 @@
     0.74
   ],
   "conference-league/aek-athens.png": [
-    0.0,
+    0,
     1.74,
-    0.0,
+    0,
     1.74,
     0.742
   ],
   "conference-league/aek-larnaca.png": [
-    0.0,
+    0,
     10.33,
-    0.0,
+    0,
     10.33,
     0.793
   ],
   "conference-league/apoel.png": [
-    0.0,
+    0,
     13.33,
-    0.0,
+    0,
     13.17,
     0.735
   ],
   "conference-league/az-alkmaar.png": [
     30.33,
-    0.0,
+    0,
     30.83,
-    0.0,
+    0,
     1.979
   ],
   "conference-league/aberdeen.png": [
-    0.0,
-    0.0,
+    0,
+    0,
     0.33,
-    0.0,
+    0,
     0.771
   ],
   "conference-league/astana.png": [
-    14.0,
-    0.0,
+    14,
+    0,
     17.5,
     0.5,
     1.453
@@ -2004,7 +2004,7 @@
   "conference-league/borac-banja-luka.png": [
     3.33,
     2.5,
-    0.0,
+    0,
     2.5,
     0.983
   ],
@@ -2016,73 +2016,73 @@
     0.799
   ],
   "conference-league/celje.png": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
+    0,
+    0,
+    0,
+    0,
+    1
   ],
   "conference-league/cercle-brugge.png": [
-    0.0,
+    0,
     8.33,
-    0.0,
-    9.0,
+    0,
+    9,
     0.827
   ],
   "conference-league/chelsea.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "conference-league/copenhagen.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "conference-league/crystal-palace.png": [
-    2.0,
-    0.0,
-    2.0,
-    0.0,
+    2,
+    0,
+    2,
+    0,
     0.8
   ],
   "conference-league/dinamo-minsk.png": [
-    0.0,
-    9.0,
-    0.0,
+    0,
+    9,
+    0,
     8.33,
     0.827
   ],
   "conference-league/djurgarden.png": [
-    0.0,
+    0,
     8.33,
-    0.0,
+    0,
     8.33,
     0.833
   ],
   "conference-league/drita.png": [
-    0.0,
+    0,
     20.5,
-    0.0,
+    0,
     21.17,
     0.583
   ],
   "conference-league/dynamo-kyiv.png": [
-    0.0,
+    0,
     14.75,
-    0.0,
+    0,
     14.75,
     0.542
   ],
   "conference-league/fiorentina.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "conference-league/gent.png": [
@@ -2093,23 +2093,23 @@
     1.002
   ],
   "conference-league/hjk-helsinki.png": [
-    0.0,
+    0,
     7.5,
-    0.0,
+    0,
     7.5,
     0.85
   ],
   "conference-league/hacken.png": [
     0.33,
-    0.0,
+    0,
     0.83,
-    0.0,
+    0,
     0.777
   ],
   "conference-league/hamrun-spartans.png": [
-    0.0,
-    19.0,
-    0.0,
+    0,
+    19,
+    0,
     19.67,
     0.613
   ],
@@ -2117,211 +2117,211 @@
     1.83,
     0.33,
     1.83,
-    0.0,
+    0,
     1.035
   ],
   "conference-league/heidenheim.png": [
-    0.0,
+    0,
     9.67,
-    0.0,
-    9.0,
+    0,
+    9,
     0.813
   ],
   "conference-league/istanbul-basaksehir.png": [
-    0.0,
+    0,
     11.17,
-    0.0,
+    0,
     11.83,
     0.77
   ],
   "conference-league/jagiellonia-bialystok.png": [
-    0.0,
+    0,
     18.33,
-    0.0,
+    0,
     18.33,
     0.633
   ],
   "conference-league/kups.png": [
     1.17,
     21.17,
-    0.0,
+    0,
     21.83,
     0.577
   ],
   "conference-league/lask.png": [
-    0.0,
+    0,
     9.67,
-    0.0,
+    0,
     9.67,
     0.807
   ],
   "conference-league/larne.png": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
+    0,
+    0,
+    0,
+    0,
+    1
   ],
   "conference-league/lausanne-sport.png": [
-    0.0,
+    0,
     13.33,
-    0.0,
+    0,
     13.17,
     0.735
   ],
   "conference-league/lech-poznan.png": [
-    0.0,
+    0,
     5.42,
-    0.0,
+    0,
     4.77,
     0.69
   ],
   "conference-league/legia-warsaw.png": [
     0.83,
-    0.0,
+    0,
     1.5,
-    0.0,
+    0,
     0.787
   ],
   "conference-league/lincoln-red-imps.png": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
+    0,
+    0,
+    0,
+    0,
+    1
   ],
   "conference-league/lugano.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "conference-league/mainz.png": [
     3.33,
-    0.0,
+    0,
     3.33,
-    0.0,
+    0,
     1.071
   ],
   "conference-league/mlada-boleslav.png": [
-    0.0,
+    0,
     18.33,
-    0.0,
+    0,
     18.33,
     0.633
   ],
   "conference-league/molde.png": [
-    29.0,
-    0.0,
+    29,
+    0,
     29.5,
-    0.0,
+    0,
     1.851
   ],
   "conference-league/noah.png": [
-    0.0,
-    19.0,
-    0.0,
+    0,
+    19,
+    0,
     19.67,
     0.613
   ],
   "conference-league/olimpija-ljubljana.png": [
-    0.0,
-    9.0,
-    0.0,
+    0,
+    9,
+    0,
     11.17,
     0.798
   ],
   "conference-league/omonia-nicosia.png": [
-    0.0,
+    0,
     7.83,
-    0.0,
+    0,
     8.33,
     0.838
   ],
   "conference-league/panathinaikos.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "conference-league/petrocub.png": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
+    0,
+    0,
+    0,
+    0,
+    1
   ],
   "conference-league/rakow-czestochowa.png": [
-    0.0,
+    0,
     7.5,
-    0.0,
+    0,
     7.5,
     0.85
   ],
   "conference-league/rapid-wien.png": [
     0.5,
     10.33,
-    0.0,
+    0,
     9.67,
     0.804
   ],
   "conference-league/rayo-vallecano.png": [
     15.83,
-    0.0,
-    16.0,
-    0.0,
+    0,
+    16,
+    0,
     1.127
   ],
   "conference-league/real-betis.png": [
     16.83,
-    0.0,
+    0,
     16.83,
-    0.0,
+    0,
     1.158
   ],
   "conference-league/rijeka.png": [
-    0.0,
+    0,
     8.33,
-    0.0,
+    0,
     8.33,
     0.833
   ],
   "conference-league/samsunspor.png": [
-    0.0,
+    0,
     9.33,
-    0.0,
+    0,
     9.17,
     0.815
   ],
   "conference-league/shamrock-rovers.png": [
-    0.0,
-    4.0,
-    0.0,
-    4.0,
+    0,
+    4,
+    0,
+    4,
     0.92
   ],
   "conference-league/shelbourne.png": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
+    0,
+    0,
+    0,
+    0,
+    1
   ],
   "conference-league/shkendija.png": [
-    0.0,
+    0,
     14.67,
-    0.0,
+    0,
     14.67,
     0.707
   ],
   "conference-league/sigma-olomouc.png": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
+    0,
+    0,
+    0,
+    0,
+    1
   ],
   "conference-league/sparta-prague.png": [
     11.33,
@@ -2331,60 +2331,60 @@
     0.97
   ],
   "conference-league/st-gallen.png": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
+    0,
+    0,
+    0,
+    0,
+    1
   ],
   "conference-league/strasbourg.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "conference-league/tsc-backa-topola.png": [
-    0.0,
+    0,
     1.83,
-    0.0,
+    0,
     1.83,
     0.963
   ],
   "conference-league/the-new-saints.png": [
-    0.0,
+    0,
     7.5,
-    0.0,
+    0,
     7.5,
     0.85
   ],
   "conference-league/universitatea-craiova.png": [
-    0.0,
+    0,
     14.67,
-    0.0,
+    0,
     14.67,
     0.707
   ],
   "conference-league/vikingur-reykjavik.png": [
-    0.0,
+    0,
     5.33,
-    0.0,
+    0,
     5.33,
     0.893
   ],
   "conference-league/vitoria-guimaraes.png": [
-    0.0,
+    0,
     17.5,
-    0.0,
+    0,
     17.5,
     0.65
   ],
   "conference-league/zrinjski-mostar.png": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
-    1.0
+    0,
+    0,
+    0,
+    0,
+    1
   ],
   "conference-league/pafos.svg": [
     0,
@@ -2408,31 +2408,31 @@
     0.793
   ],
   "champions-league/ac-milan.png": [
-    0.0,
+    0,
     8.24,
-    0.0,
+    0,
     8.24,
     0.642
   ],
   "champions-league/arsenal.png": [
     4.17,
-    0.0,
+    0,
     4.67,
-    0.0,
+    0,
     0.843
   ],
   "champions-league/aston-villa.png": [
-    0.0,
+    0,
     1.74,
-    0.0,
+    0,
     1.08,
     0.747
   ],
   "champions-league/atalanta.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/athletic-bilbao.png": [
@@ -2445,85 +2445,85 @@
   "champions-league/atletico-madrid.png": [
     13.5,
     12.58,
-    13.0,
+    13,
     12.8,
     0.78
   ],
   "champions-league/barcelona.png": [
     10.83,
-    0.0,
+    0,
     10.83,
-    0.0,
+    0,
     0.981
   ],
   "champions-league/bayer-leverkusen.png": [
-    20.0,
-    0.0,
+    20,
+    0,
     19.67,
     0.43,
     1.268
   ],
   "champions-league/bayern-munich.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/besiktas.png": [
     0.33,
-    0.0,
+    0,
     0.33,
-    0.0,
+    0,
     0.773
   ],
   "champions-league/bologna.png": [
-    0.0,
+    0,
     7.59,
-    0.0,
+    0,
     6.94,
     0.657
   ],
   "champions-league/borussia-dortmund.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/braga.png": [
     4.17,
-    0.0,
+    0,
     4.67,
-    0.0,
+    0,
     0.843
   ],
   "champions-league/brest.png": [
-    3.0,
-    0.0,
-    3.0,
-    0.0,
+    3,
+    0,
+    3,
+    0,
     0.817
   ],
   "champions-league/chelsea.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/club-brugge.png": [
-    0.0,
-    0.0,
-    0.0,
-    0.0,
+    0,
+    0,
+    0,
+    0,
     0.768
   ],
   "champions-league/copenhagen.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/dinamo-zagreb.png": [
@@ -2534,17 +2534,17 @@
     0.998
   ],
   "champions-league/dynamo-kyiv.png": [
-    0.0,
+    0,
     14.75,
-    0.0,
+    0,
     14.75,
     0.542
   ],
   "champions-league/eintracht-frankfurt.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/girona.png": [
@@ -2556,37 +2556,37 @@
   ],
   "champions-league/inter-milan.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/juventus.png": [
-    0.0,
+    0,
     8.24,
-    0.0,
+    0,
     8.24,
     0.642
   ],
   "champions-league/lazio.png": [
-    24.0,
-    0.0,
-    24.0,
-    0.0,
+    24,
+    0,
+    24,
+    0,
     1.478
   ],
   "champions-league/lens.png": [
-    0.0,
+    0,
     1.74,
-    0.0,
+    0,
     1.74,
     0.742
   ],
   "champions-league/lille.png": [
-    13.0,
-    0.0,
+    13,
+    0,
     13.5,
-    0.0,
+    0,
     1.045
   ],
   "champions-league/liverpool.png": [
@@ -2598,64 +2598,64 @@
   ],
   "champions-league/maccabi-haifa.png": [
     2.83,
-    0.0,
-    3.0,
-    0.0,
+    0,
+    3,
+    0,
     0.816
   ],
   "champions-league/malmo.png": [
-    0.0,
+    0,
     6.94,
-    0.0,
+    0,
     6.94,
     0.662
   ],
   "champions-league/manchester-city.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/manchester-united.png": [
     10.83,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.987
   ],
   "champions-league/marseille.png": [
     11.5,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.996
   ],
   "champions-league/monaco.png": [
-    0.0,
+    0,
     11.93,
-    0.0,
+    0,
     11.93,
     0.585
   ],
   "champions-league/napoli.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/newcastle-united.png": [
     11.33,
-    0.0,
+    0,
     11.5,
-    0.0,
+    0,
     0.996
   ],
   "champions-league/porto.png": [
-    0.0,
+    0,
     1.74,
-    0.0,
+    0,
     1.08,
     0.747
   ],
@@ -2667,17 +2667,17 @@
     1.002
   ],
   "champions-league/psv.png": [
-    18.0,
-    0.0,
-    18.0,
-    0.0,
+    18,
+    0,
+    18,
+    0,
     1.201
   ],
   "champions-league/rb-leipzig.png": [
     24.67,
-    0.0,
+    0,
     25.17,
-    0.0,
+    0,
     1.532
   ],
   "champions-league/real-madrid.png": [
@@ -2695,31 +2695,31 @@
     0.869
   ],
   "champions-league/red-star-belgrade.png": [
-    0.0,
+    0,
     7.59,
-    0.0,
+    0,
     6.94,
     0.657
   ],
   "champions-league/royal-antwerp.png": [
-    0.0,
+    0,
     8.24,
-    0.0,
+    0,
     8.24,
     0.642
   ],
   "champions-league/sevilla.png": [
-    3.0,
-    0.0,
-    3.0,
-    0.0,
+    3,
+    0,
+    3,
+    0,
     0.817
   ],
   "champions-league/slavia-prague.png": [
-    7.0,
-    0.0,
-    7.0,
-    0.0,
+    7,
+    0,
+    7,
+    0,
     0.893
   ],
   "champions-league/sparta-prague.png": [
@@ -2730,24 +2730,24 @@
     0.97
   ],
   "champions-league/sporting-cp.png": [
-    0.0,
+    0,
     1.08,
-    0.0,
+    0,
     1.08,
     0.752
   ],
   "champions-league/sturm-graz.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/stuttgart.png": [
     7.5,
-    0.0,
+    0,
     7.5,
-    0.0,
+    0,
     0.904
   ],
   "champions-league/tottenham.png": [
@@ -2759,37 +2759,37 @@
   ],
   "champions-league/union-berlin.png": [
     35.17,
-    0.0,
+    0,
     35.17,
-    0.0,
+    0,
     2.59
   ],
   "champions-league/union-saint-gilloise.png": [
     4.17,
-    0.0,
+    0,
     4.67,
-    0.0,
+    0,
     0.843
   ],
   "champions-league/viktoria-plzen.png": [
-    0.0,
+    0,
     3.25,
-    0.0,
+    0,
     2.6,
     0.723
   ],
   "champions-league/villarreal.png": [
     1.33,
-    0.0,
-    2.0,
-    0.0,
+    0,
+    2,
+    0,
     0.795
   ],
   "champions-league/young-boys.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "europa-league/anderlecht.png": [
@@ -2800,9 +2800,9 @@
     0.812
   ],
   "europa-league/aston-villa.png": [
-    0.0,
+    0,
     1.74,
-    0.0,
+    0,
     1.08,
     0.747
   ],
@@ -2815,44 +2815,44 @@
   ],
   "europa-league/az-alkmaar.png": [
     30.33,
-    0.0,
+    0,
     30.83,
-    0.0,
+    0,
     1.979
   ],
   "europa-league/basel.png": [
     0.33,
     3.9,
-    0.0,
+    0,
     3.25,
     0.716
   ],
   "europa-league/besiktas.png": [
     0.33,
-    0.0,
+    0,
     0.33,
-    0.0,
+    0,
     0.773
   ],
   "europa-league/bologna.png": [
-    0.0,
+    0,
     7.59,
-    0.0,
+    0,
     6.94,
     0.657
   ],
   "europa-league/braga.png": [
     4.17,
-    0.0,
+    0,
     4.67,
-    0.0,
+    0,
     0.843
   ],
   "europa-league/brann.png": [
     39.5,
-    0.0,
+    0,
     39.5,
-    0.0,
+    0,
     3.659
   ],
   "europa-league/dinamo-zagreb.png": [
@@ -2863,171 +2863,171 @@
     0.998
   ],
   "europa-league/dynamo-kyiv.png": [
-    0.0,
+    0,
     14.75,
-    0.0,
+    0,
     14.75,
     0.542
   ],
   "europa-league/eintracht-frankfurt.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "europa-league/elfsborg.png": [
     17.5,
-    0.0,
+    0,
     17.5,
-    0.0,
+    0,
     1.182
   ],
   "europa-league/fc-utrecht.png": [
-    8.0,
-    0.0,
+    8,
+    0,
     8.67,
-    0.0,
+    0,
     0.922
   ],
   "europa-league/fcsb.png": [
     1.5,
-    0.0,
+    0,
     1.33,
-    0.0,
+    0,
     0.791
   ],
   "europa-league/fenerbahce.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "europa-league/freiburg.png": [
-    0.0,
+    0,
     3.9,
-    0.0,
+    0,
     3.9,
     0.708
   ],
   "europa-league/genk.png": [
     1.33,
-    0.0,
+    0,
     1.33,
-    0.0,
+    0,
     0.789
   ],
   "europa-league/go-ahead-eagles.png": [
     7.5,
     1.3,
-    8.0,
-    0.0,
+    8,
+    0,
     0.897
   ],
   "europa-league/hoffenheim.png": [
     3.67,
-    0.0,
+    0,
     4.17,
-    0.0,
+    0,
     0.834
   ],
   "europa-league/lazio.png": [
-    24.0,
-    0.0,
-    24.0,
-    0.0,
+    24,
+    0,
+    24,
+    0,
     1.478
   ],
   "europa-league/lille.png": [
-    13.0,
-    0.0,
+    13,
+    0,
     13.5,
-    0.0,
+    0,
     1.045
   ],
   "europa-league/ludogorets.png": [
-    0.0,
+    0,
     7.59,
-    0.0,
+    0,
     7.59,
     0.652
   ],
   "europa-league/lyon.png": [
     4.67,
-    0.0,
+    0,
     5.33,
-    0.0,
+    0,
     0.854
   ],
   "europa-league/maccabi-tel-aviv.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "europa-league/malmo.png": [
-    0.0,
+    0,
     6.94,
-    0.0,
+    0,
     6.94,
     0.662
   ],
   "europa-league/manchester-united.png": [
     10.83,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.987
   ],
   "europa-league/midtjylland.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "europa-league/nice.png": [
-    2.0,
-    0.0,
+    2,
+    0,
     2.5,
-    0.0,
+    0,
     0.805
   ],
   "europa-league/nottingham-forest.png": [
-    0.0,
+    0,
     19.09,
-    0.0,
+    0,
     18.44,
     0.48
   ],
   "europa-league/panathinaikos.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "europa-league/paok.png": [
-    0.0,
+    0,
     3.25,
-    0.0,
+    0,
     2.6,
     0.723
   ],
   "europa-league/porto.png": [
-    0.0,
+    0,
     1.74,
-    0.0,
+    0,
     1.08,
     0.747
   ],
   "europa-league/real-betis.png": [
     16.83,
-    0.0,
+    0,
     16.83,
-    0.0,
+    0,
     1.158
   ],
   "europa-league/real-sociedad.png": [
@@ -3038,38 +3038,38 @@
     0.869
   ],
   "europa-league/red-star-belgrade.png": [
-    0.0,
+    0,
     7.59,
-    0.0,
+    0,
     6.94,
     0.657
   ],
   "europa-league/roma.png": [
-    0.0,
-    0.0,
+    0,
+    0,
     0.33,
-    0.0,
+    0,
     0.771
   ],
   "europa-league/slavia-prague.png": [
-    7.0,
-    0.0,
-    7.0,
-    0.0,
+    7,
+    0,
+    7,
+    0,
     0.893
   ],
   "europa-league/sturm-graz.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "europa-league/stuttgart.png": [
     7.5,
-    0.0,
+    0,
     7.5,
-    0.0,
+    0,
     0.904
   ],
   "europa-league/tottenham.png": [
@@ -3081,23 +3081,23 @@
   ],
   "europa-league/union-saint-gilloise.png": [
     4.17,
-    0.0,
+    0,
     4.67,
-    0.0,
+    0,
     0.843
   ],
   "europa-league/viktoria-plzen.png": [
-    0.0,
+    0,
     3.25,
-    0.0,
+    0,
     2.6,
     0.723
   ],
   "europa-league/young-boys.png": [
     11.33,
-    0.0,
+    0,
     11.33,
-    0.0,
+    0,
     0.994
   ],
   "champions-league/ajax.svg": [
@@ -3766,16 +3766,16 @@
     0.598
   ],
   "euro/croatia.png": [
-    0.0,
-    10.0,
-    0.0,
+    0,
+    10,
+    0,
     10.67,
     0.793
   ],
   "euro/czechia.png": [
-    0.0,
+    0,
     9.33,
-    0.0,
+    0,
     9.33,
     0.813
   ],
@@ -3787,23 +3787,23 @@
     0.659
   ],
   "euro/france.png": [
-    0.0,
+    0,
     3.12,
-    0.0,
+    0,
     3.12,
     0.781
   ],
   "euro/italy.png": [
     3.2,
-    23.0,
+    23,
     3.6,
-    24.0,
+    24,
     0.569
   ],
   "euro/spain.png": [
-    0.0,
-    20.0,
-    0.0,
+    0,
+    20,
+    0,
     20.67,
     0.593
   ],
@@ -3811,7 +3811,7 @@
     0.41,
     2.4,
     0.52,
-    3.0,
+    3,
     0.495
   ],
   "네이션스리그/2026-27/greece.svg": [
@@ -4002,5 +4002,19 @@
     7.33,
     8,
     0.984
+  ],
+  "champions-league/sabah.svg": [
+    0,
+    0,
+    0,
+    0,
+    0.799
+  ],
+  "champions-league/viking-fk.svg": [
+    0,
+    0,
+    0,
+    0,
+    1.681
   ]
 }
