@@ -1753,3 +1753,7 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 :is(.tlogo-wrap,.sc-logo):has(> img[src*="/teams/kbo/clean/KIA.png"]){background:#e6e9ef;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
 :is(.tlogo-wrap,.sc-logo):has(> img[src*="/teams/kbo/clean/KIA.png"]) > img{filter:none}
 .an-logos img[src*="/teams/kbo/clean/KIA.png"]{filter:drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff)}
+
+/* 2026-11-15 모바일 가로 넘침 수정: 분석 글의 넓은 표(min-width 560px)가 글 칸을 밀어내 글자가 잘리던 문제. 표는 자기 칸 안에서만 가로 스크롤한다. */
+.article-grid>*{min-width:0}
+@media(max-width:700px){.pt-name{font-size:clamp(10px,3.3vw,19px);overflow-wrap:normal;word-break:keep-all}}
