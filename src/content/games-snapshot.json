@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-15T10:40+09:00",
+  "updated_at": "2026-11-15T10:46+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-15T10:40+09:00",
+      "checked_at": "2026-11-15T10:46+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-15T10:40+09:00",
+      "checked_at": "2026-11-15T10:46+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -139,8 +139,8 @@
           "away_name": "Denver Nuggets",
           "home_name": "New Orleans Pelicans",
           "status": "live",
-          "away_score": 75,
-          "home_score": 69,
+          "away_score": 80,
+          "home_score": 74,
           "source_url": "https://www.espn.com/nba/game?gameId=401909980"
         },
         {
@@ -165,8 +165,8 @@
           "away_name": "Detroit Pistons",
           "home_name": "Miami Heat",
           "status": "live",
-          "away_score": 32,
-          "home_score": 34,
+          "away_score": 39,
+          "home_score": 37,
           "source_url": "https://www.espn.com/nba/game?gameId=401909982"
         },
         {
@@ -178,8 +178,8 @@
           "away_name": "Brooklyn Nets",
           "home_name": "Memphis Grizzlies",
           "status": "live",
-          "away_score": 23,
-          "home_score": 38,
+          "away_score": 27,
+          "home_score": 46,
           "source_url": "https://www.espn.com/nba/game?gameId=401909983"
         },
         {
@@ -191,8 +191,8 @@
           "away_name": "Chicago Bulls",
           "home_name": "Minnesota Timberwolves",
           "status": "live",
-          "away_score": 29,
-          "home_score": 17,
+          "away_score": 36,
+          "home_score": 22,
           "source_url": "https://www.espn.com/nba/game?gameId=401909984"
         },
         {
@@ -419,7 +419,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-15T10:40+09:00",
+      "checked_at": "2026-11-15T10:46+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -595,7 +595,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-15T10:40+09:00",
+      "checked_at": "2026-11-15T10:46+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -725,7 +725,7 @@
           "away_name": "New Jersey Devils",
           "home_name": "Washington Capitals",
           "status": "live",
-          "away_score": 3,
+          "away_score": 4,
           "home_score": 3,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892714"
         },
