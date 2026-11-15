@@ -1221,6 +1221,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
 <title>{esc(full_title)}</title>
 <meta name="description" content="{esc(desc)}">
 <meta name="robots" content="{robots}">
