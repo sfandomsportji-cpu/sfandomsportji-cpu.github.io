@@ -419,6 +419,9 @@ def poster_hero(a: Article) -> str:
     nl, nr = p.get('names', [a.away.upper(), a.home.upper()])
     if a.league == 'SOCCER':
         mk_l, mk_r = soccer_badge(a.away, 'lg'), soccer_badge(a.home, 'lg')
+    elif a.league in TEAM_LOGOS:
+        mk_l = square_logo(team_logo_rel(a.league, a.away), a.away) if team_logo_rel(a.league, a.away) else ''
+        mk_r = square_logo(team_logo_rel(a.league, a.home), a.home) if team_logo_rel(a.league, a.home) else ''
     else:
         mk_l, mk_r = team_mark(a.league, a.away, 'lg'), team_mark(a.league, a.home, 'lg')
     return (f'<div class="poster-hero" style="--bl:{bl};--br:{br};--tl:{tl};--tr:{tr}">'
