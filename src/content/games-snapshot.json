@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-17T15:29+09:00",
+  "updated_at": "2026-11-17T15:43+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-17T15:29+09:00",
+      "checked_at": "2026-11-17T15:43+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-17T15:29+09:00",
+      "checked_at": "2026-11-17T15:43+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -445,7 +445,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-17T15:29+09:00",
+      "checked_at": "2026-11-17T15:43+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -517,7 +517,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-17T15:29+09:00",
+      "checked_at": "2026-11-17T15:43+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -871,6 +871,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892749/islanders-jets"
+        },
+        {
+          "id": "NHL-401892744",
+          "league": "NHL",
+          "start_kst": "2026-11-20T09:30+09:00",
+          "away": "EDM",
+          "home": "TB",
+          "away_name": "Edmonton Oilers",
+          "home_name": "Tampa Bay Lightning",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892744/oilers-lightning"
         }
       ]
     }
