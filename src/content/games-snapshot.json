@@ -1,31 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-17T22:00+09:00",
+  "updated_at": "2026-11-18T01:11+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-17T22:00+09:00",
+      "checked_at": "2026-11-18T01:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-17T22:00+09:00",
+      "checked_at": "2026-11-18T01:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909993",
-          "league": "NBA",
-          "start_kst": "2026-11-16T11:00+09:00",
-          "away": "OKC",
-          "home": "SAC",
-          "away_name": "Oklahoma City Thunder",
-          "home_name": "Sacramento Kings",
-          "status": "final",
-          "away_score": 125,
-          "home_score": 103,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909993/thunder-kings"
-        },
         {
           "id": "NBA-401909994",
           "league": "NBA",
@@ -406,23 +393,10 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-17T22:00+09:00",
+      "checked_at": "2026-11-18T01:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NFL-401873064",
-          "league": "NFL",
-          "start_kst": "2026-11-16T10:20+09:00",
-          "away": "PIT",
-          "home": "CIN",
-          "away_name": "Pittsburgh Steelers",
-          "home_name": "Cincinnati Bengals",
-          "status": "final",
-          "away_score": 18,
-          "home_score": 38,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873064/steelers-bengals"
-        },
         {
           "id": "NFL-401873065",
           "league": "NFL",
@@ -452,36 +426,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-17T22:00+09:00",
+      "checked_at": "2026-11-18T01:11+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892724",
-          "league": "NHL",
-          "start_kst": "2026-11-16T11:00+09:00",
-          "away": "VAN",
-          "home": "VGK",
-          "away_name": "Vancouver Canucks",
-          "home_name": "Vegas Golden Knights",
-          "status": "final",
-          "away_score": 6,
-          "home_score": 3,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892724/canucks-golden-knights"
-        },
-        {
-          "id": "NHL-401892725",
-          "league": "NHL",
-          "start_kst": "2026-11-16T11:00+09:00",
-          "away": "NSH",
-          "home": "SJ",
-          "away_name": "Nashville Predators",
-          "home_name": "San Jose Sharks",
-          "status": "final",
-          "away_score": 2,
-          "home_score": 4,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892725/predators-sharks"
-        },
         {
           "id": "NHL-401892726",
           "league": "NHL",
