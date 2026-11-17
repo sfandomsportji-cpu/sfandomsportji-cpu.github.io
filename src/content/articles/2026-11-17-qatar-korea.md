@@ -17,7 +17,7 @@ kst: "11.17 23:00"
 summary: ["한국은 11월 13일 사우디아라비아에 2–3으로 졌어요. 사우디에 3골을 내준 건 42년 만이었어요", "카타르도 같은 날 호주에 0–3으로 졌고, 슈팅은 3개에 유효슈팅은 없었어요", "역대 전적은 한국이 6승 2무 3패로 앞서고, 마지막 만남은 2020년 11월 2–1 한국 승리예요"]
 glance: [["핵심", "한국 FIFA 랭킹 32위 · 카타르 60위, 둘 다 직전 경기에서 3골씩 내주고 졌어요"], ["변수", "한국은 올해 마지막 경기, 카타르는 로페테기 감독의 거취가 걸렸다는 보도가 나와요"], ["시선", "역대 6승 2무 3패 · 마지막 맞대결은 2020년 11월 한국이 2–1로 이겼어요"]]
 poster: {"colors":["#c8102e","#8a1538","#ffd9de","#f1d0da"],"big":["32위","60위"],"labels":["FIFA 랭킹","FIFA 랭킹"],"kick":"11월 17일(화) 23:00 KST · 카타르 도하 압둘라 빈 칼리파 스타디움 · 평가전"}
-sources: [{"label": "한국 1-0 엘살바도르 (뉴시스)", "url": "https://www.newsis.com/view/NISX20260604_0003656177"}, {"label": "한국 2-1 체코, 월드컵 첫 경기 (뉴시스)", "url": "https://www.newsis.com/view/NISX20260612_0003667279"}, {"label": "한국 0-1 남아공 (한국경제)", "url": "https://www.hankyung.com/article/202606257636Y"}, {"label": "멕시코, 체코 3-0·조별리그 3전 전승 (뉴데일리)", "url": "https://www.newdaily.co.kr/site/data/html/2026/06/25/2026062500277.html"}, {"label": "카타르, 호주에 0-3 완패…한국전 앞두고 로페테기 체제 흔들 (뉴시스)", "url": "https://nwww.newsis.com/view/NISX20261114_0003868005"}, {"label": "'호주에 0-3 완패' 카타르, 슈팅 1개에 72분 걸렸다 (스타뉴스)", "url": "https://www.starnewskorea.com/sports/2026/11/14/2026111412310587466"}, {"label": "카타르전, 이강인 활용·신예 발굴 시험대 (네이트 스포츠)", "url": "https://m.news.nate.com/view/20261116n37513"}, {"label": "한국 축구대표팀 11월 A매치 일정 공개 (스타뉴스)", "url": "https://www.starnewskorea.com/sports/2026/10/22/2026102217455953022"}, {"label": "한국, 우즈베키스탄 2-0 제압 (엑스포츠뉴스)", "url": "https://www.xportsnews.com/article/2204713"}, {"label": "모레노호, 우루과이에 1-4 (OSEN)", "url": "https://osen.co.kr/article/G1112883910"}, {"label": "모레노호, 에콰도르 완파 (SBS)", "url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008769386"}, {"label": "한국, 베네수엘라와 0-0 (인사이트)", "url": "https://www.insight.co.kr/news/576416"}, {"label": "'SON·조규성 동반 멀티 골' 트리니다드토바고전 5-0 (일간스포츠)", "url": "https://isplus.com/article/view/isp202605310045"}, {"label": "한국, 월드컵 1승 2패 탈락 (뉴데일리)", "url": "https://www.newdaily.co.kr/site/data/html/2026/06/28/2026062800028.html"}]
+sources: [{"label": "한국 2-3 사우디, 42년 만의 3실점 (경북매일)", "url": "https://www.kbmaeil.com/article/20261114500006"}, {"label": "사우디전 오현규·이재성 골, 21년 만의 패배 (노컷뉴스)", "url": "https://www.nocutnews.co.kr/news/6606881"}, {"label": "황희찬 도움, 이재성 추격골 (한민족센터·연합뉴스)", "url": "https://www.koreancenter.or.kr/news/articleView.html?idxno=1439280"}, {"label": "한국 1-0 엘살바도르 (뉴시스)", "url": "https://www.newsis.com/view/NISX20260604_0003656177"}, {"label": "한국 2-1 체코, 월드컵 첫 경기 (뉴시스)", "url": "https://www.newsis.com/view/NISX20260612_0003667279"}, {"label": "한국 0-1 남아공 (한국경제)", "url": "https://www.hankyung.com/article/202606257636Y"}, {"label": "멕시코, 체코 3-0·조별리그 3전 전승 (뉴데일리)", "url": "https://www.newdaily.co.kr/site/data/html/2026/06/25/2026062500277.html"}, {"label": "카타르, 호주에 0-3 완패…한국전 앞두고 로페테기 체제 흔들 (뉴시스)", "url": "https://nwww.newsis.com/view/NISX20261114_0003868005"}, {"label": "'호주에 0-3 완패' 카타르, 슈팅 1개에 72분 걸렸다 (스타뉴스)", "url": "https://www.starnewskorea.com/sports/2026/11/14/2026111412310587466"}, {"label": "카타르전, 이강인 활용·신예 발굴 시험대 (네이트 스포츠)", "url": "https://m.news.nate.com/view/20261116n37513"}, {"label": "한국 축구대표팀 11월 A매치 일정 공개 (스타뉴스)", "url": "https://www.starnewskorea.com/sports/2026/10/22/2026102217455953022"}, {"label": "한국, 우즈베키스탄 2-0 제압 (엑스포츠뉴스)", "url": "https://www.xportsnews.com/article/2204713"}, {"label": "모레노호, 우루과이에 1-4 (OSEN)", "url": "https://osen.co.kr/article/G1112883910"}, {"label": "모레노호, 에콰도르 완파 (SBS)", "url": "https://news.sbs.co.kr/news/endPage.do?news_id=N1008769386"}, {"label": "한국, 베네수엘라와 0-0 (인사이트)", "url": "https://www.insight.co.kr/news/576416"}, {"label": "'SON·조규성 동반 멀티 골' 트리니다드토바고전 5-0 (일간스포츠)", "url": "https://isplus.com/article/view/isp202605310045"}, {"label": "한국, 월드컵 1승 2패 탈락 (뉴데일리)", "url": "https://www.newdaily.co.kr/site/data/html/2026/06/28/2026062800028.html"}]
 ---
 화요일 밤 11시(한국시간이에요), 한국이 카타르 도하에서 카타르와 평가전을 치러요. 11월 중동 원정 2연전의 두 번째 경기이자 올해 마지막 A매치예요. 한국은 사흘 전 사우디아라비아에 2–3으로 졌고, 카타르는 같은 날 호주에 0–3으로 졌어요. 둘 다 직전 경기에서 세 골씩 내주고 마무리하러 온 셈이에요. 아시안컵(내년 1월)을 앞둔 마지막 점검 무대예요. 경기장은 도하의 압둘라 빈 칼리파 스타디움이에요.
 
@@ -49,6 +49,7 @@ sources: [{"label": "한국 1-0 엘살바도르 (뉴시스)", "url": "https://ww
 **한국**
 
 - 손흥민: 주장이에요. 10월 6일 우즈베키스탄전에서 프리킥으로 A매치 59호 골을 넣어 한국 남자 선수 역대 최다 득점 단독 1위가 됐어요.
+- 오현규, 이재성: 사우디전에서 오현규가 후반 시작 직후 동점골(1–1), 이재성이 후반 23분 황희찬의 패스를 받아 추격골(2–3)을 넣었어요.
 - 이강인: 올해 A매치 10경기에서 도움 2개가 공격포인트 전부라서 활용법이 관전 포인트로 꼽혀요.
 - 오세훈, 오현규: 오세훈은 10월 6일 헤더 골로 A매치 3호 골을 넣었어요. 오현규는 9월 24일 에콰도르전 선제골의 주인공이에요.
 - 김민재: 사우디전 뒤에도 수비의 중심으로 거론돼요. 10월 6일 우즈베키스탄전에는 명단에서 빠졌어요.
@@ -72,7 +73,7 @@ sources: [{"label": "한국 1-0 엘살바도르 (뉴시스)", "url": "https://ww
 
 ## 아직 모르는 것들
 
-양 팀 선발 명단과 부상 소식은 확인하지 못했어요. 한국의 사우디전 득점자와 멕시코전 스코어, 카타르의 최근 10경기 대부분은 이번 글에서 확인하지 못했어요. 경기 직전 발표가 가장 정확해요.
+양 팀 선발 명단과 부상 소식은 확인하지 못했어요. 멕시코전 스코어와 카타르의 최근 10경기 대부분은 이번 글에서 확인하지 못했어요. 경기 직전 발표가 가장 정확해요.
 
 ## 마지막으로 한마디, 오늘 경기 전망
 
