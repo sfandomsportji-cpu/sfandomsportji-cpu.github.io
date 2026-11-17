@@ -529,7 +529,7 @@ def team_badge(a: Article, i: int, size: str = 'lg') -> str:
     return badge(teams[i], team_color(teams[i], lg), size, league=lg if lg in LOGO_SOURCES else 'mlb')
 
 
-UEFA_LOGO_DIRS = ('conference-league/', 'champions-league/', 'europa-league/', 'euro/', '네이션스리그/')
+UEFA_LOGO_DIRS = ('conference-league/', 'champions-league/', 'europa-league/', 'euro/', '네이션스리그/', '친선경기/')
 
 
 def soccer_logo_url(rel: str) -> str:

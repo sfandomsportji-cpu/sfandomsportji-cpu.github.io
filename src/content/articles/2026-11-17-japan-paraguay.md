@@ -16,7 +16,7 @@ home: "JAPAN"
 kst: "11.17 22:10"
 summary: ["일본은 11월 14일 싱가포르에서 브라질을 3–2로 꺾었고, 9~10월 국내 4경기도 모두 이겼어요(에콰도르전은 PK승)", "파라과이는 11월 13일 싱가포르를 4–1로 이겨 월드컵 뒤 평가전 3연승이에요", "역대 12번 만나서 일본 5승 5무 2패, 마지막 만남은 2025년 10월 2–2 무승부예요"]
 glance: [["핵심", "일본 FIFA 랭킹 17위 · 파라과이 33위, 파라과이는 월드컵 16강까지 올랐고 최근 10경기 5승 3무 2패예요"], ["변수", "일본은 모리야스 감독이 아시안컵을 끝으로 물러나는 마지막 점검 시리즈예요"], ["시선", "역대 12번 맞붙어 일본 5승 5무 2패 · 직전 맞대결은 2–2였어요"]]
-poster: {"colors":["#bc002d","#d52b1e","#ffdfe5","#ffe0dc"],"big":["17위","33위"],"labels":["FIFA 랭킹","FIFA 랭킹"],"kick":"11월 17일(화) 22:10 KST · 싱가포르 국립경기장 · 평가전"}
+poster: {"colors":["#bc002d","#0b3d91","#ffdfe5","#dbe6ff"],"big":["17","33"],"labels":["FIFA 랭킹","FIFA 랭킹"],"kick":"11월 17일(화) 22:10 KST · 싱가포르 국립경기장 · 평가전"}
 sources: [{"label": "일본 3-2 브라질 (J.LEAGUE 공식 기록)", "url": "https://www.jleague.jp/match/friendly/2026/111414/"}, {"label": "일본 3-2 브라질, 사카모토 결승골 (테레비도쿄)", "url": "https://www.tv-tokyo.co.jp/sports/articles/2026/11/042925.html"}, {"label": "일본 2-2 네덜란드, 월드컵 조별리그 (J.LEAGUE)", "url": "https://www.jleague.jp/match/japan/2026/061404/review/"}, {"label": "일본 3-1 우루과이 (JFA)", "url": "https://jfa.jp/news/00036813/"}, {"label": "파라과이 최근 경기 결과 (ESPN)", "url": "https://www.espn.com/soccer/team/results/_/id/210/par"}, {"label": "싱가포르 vs 파라과이 폼 (Gainblers)", "url": "https://gainblers.com/ca/bets/football/international/friendly/singapore-paraguay/"}, {"label": "일본, 에콰도르와 0-0 뒤 PK 5-4 승리 (사커킹)", "url": "https://www.soccer-king.jp/news/japan/national/fixed/2211776.html"}, {"label": "일본 2-1 뉴질랜드, 키린컵 우승 (JFA)", "url": "https://jfa.jp/news/00036873/"}, {"label": "일본 2-1 베네수엘라 역전승 (JFA)", "url": "https://jfa.jp/news/00036832/"}, {"label": "모리야스 감독, 아시안컵 끝으로 퇴임 (구마니치)", "url": "https://kumanichi.com/articles/2042918"}, {"label": "싱가포르 vs 파라과이 프리뷰 (Sports Mole)", "url": "https://www.sportsmole.co.uk/football/singapore/preview/singapore-vs-paraguay-prediction-team-news-lineups_608909.html"}, {"label": "파라과이, 튀르키예에 1-0 (Dawn)", "url": "https://www.dawn.com/news/amp/2009440"}, {"label": "파라과이 스카우팅 리포트와 일본전 전적 (JFA)", "url": "https://www.jfa.jp/eng/news/00035578/"}, {"label": "일본 vs 파라과이 2025년 10월 프리뷰 (Sports Mole)", "url": "https://www.sportsmole.co.uk/football/japan/world-cup/preview/japan-vs-paraguay-prediction-team-news-lineups_583122.html"}]
 ---
 화요일 밤 10시 10분(한국시간이에요), 일본이 싱가포르 국립경기장에서 파라과이와 평가전을 치러요. 일본은 사흘 전 같은 경기장에서 브라질을 3–2로 꺾었고, 파라과이는 나흘 전 싱가포르를 4–1로 이기고 올라왔어요. 월드컵 이후 두 팀 모두 평가전에서 한 번도 지지 않았던 만큼 볼만한 경기예요.
@@ -80,6 +80,6 @@ sources: [{"label": "일본 3-2 브라질 (J.LEAGUE 공식 기록)", "url": "htt
 
 랭킹으로는 일본이 앞서고(17위 대 33위) 홈 팬이 많지 않은 중립 경기장이라 변수는 비슷해요. 일본은 월드컵 이후 한 골 차 승부가 많았고, 파라과이는 최근 평가전 5경기에서 실점이 한 골뿐이에요. 일본이 점유를 잡고 파라과이가 수비 라인을 내린 채 역습을 노리는 그림이 먼저 떠올라요. 한 골 승부일 가능성이 커 보여요. 여기까지는 집계하는 건 아니고 가볍게 짚어 본 전망이에요.
 
-FIFA 랭킹은 일본 7월 20일 기준, 파라과이는 11월 프리뷰 기사 기준이에요. 시각은 모두 한국시간이고, 경기 결과는 위 출처 기사를 따랐어요. 일본·파라과이 엠블럼 파일이 아직 없어서 상단에는 이름만 표시돼요.
+FIFA 랭킹은 일본 7월 20일 기준, 파라과이는 11월 프리뷰 기사 기준이에요. 시각은 모두 한국시간이고, 경기 결과는 위 출처 기사를 따랐어요.
 
 경기 분석에 궁금한 점은 쪽지나 댓글로 남겨 주세요.

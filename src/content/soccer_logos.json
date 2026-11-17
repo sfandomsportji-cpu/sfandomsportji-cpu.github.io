@@ -352,5 +352,10 @@
   "SABAH FK": "champions-league/sabah.svg",
   "SABAH FA": "champions-league/sabah.svg",
   "VIKING FK": "champions-league/viking-fk.svg",
-  "VIKING": "champions-league/viking-fk.svg"
+  "VIKING": "champions-league/viking-fk.svg",
+  "JAPAN": "친선경기/japan.png",
+  "PARAGUAY": "친선경기/paraguay.png",
+  "QATAR": "친선경기/qatar.png",
+  "KOREA": "친선경기/south-korea.png",
+  "SOUTH KOREA": "친선경기/south-korea.png"
 }
