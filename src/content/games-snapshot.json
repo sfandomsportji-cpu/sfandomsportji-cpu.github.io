@@ -1,44 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-17T20:10+09:00",
+  "updated_at": "2026-11-17T22:00+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-17T20:10+09:00",
+      "checked_at": "2026-11-17T22:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-17T20:10+09:00",
+      "checked_at": "2026-11-17T22:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909991",
-          "league": "NBA",
-          "start_kst": "2026-11-16T09:00+09:00",
-          "away": "HOU",
-          "home": "WSH",
-          "away_name": "Houston Rockets",
-          "home_name": "Washington Wizards",
-          "status": "final",
-          "away_score": 147,
-          "home_score": 119,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909991/rockets-wizards"
-        },
-        {
-          "id": "NBA-401909992",
-          "league": "NBA",
-          "start_kst": "2026-11-16T10:00+09:00",
-          "away": "ATL",
-          "home": "MIL",
-          "away_name": "Atlanta Hawks",
-          "home_name": "Milwaukee Bucks",
-          "status": "final",
-          "away_score": 113,
-          "home_score": 106,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909992/hawks-bucks"
-        },
         {
           "id": "NBA-401909993",
           "league": "NBA",
@@ -432,7 +406,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-17T20:10+09:00",
+      "checked_at": "2026-11-17T22:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -478,49 +452,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-17T20:10+09:00",
+      "checked_at": "2026-11-17T22:00+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892721",
-          "league": "NHL",
-          "start_kst": "2026-11-16T09:30+09:00",
-          "away": "EDM",
-          "home": "PHI",
-          "away_name": "Edmonton Oilers",
-          "home_name": "Philadelphia Flyers",
-          "status": "final",
-          "away_score": 5,
-          "home_score": 2,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892721/oilers-flyers"
-        },
-        {
-          "id": "NHL-401892722",
-          "league": "NHL",
-          "start_kst": "2026-11-16T10:00+09:00",
-          "away": "FLA",
-          "home": "DAL",
-          "away_name": "Florida Panthers",
-          "home_name": "Dallas Stars",
-          "status": "final",
-          "away_score": 1,
-          "home_score": 2,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892722/panthers-stars"
-        },
-        {
-          "id": "NHL-401892723",
-          "league": "NHL",
-          "start_kst": "2026-11-16T10:00+09:00",
-          "away": "CGY",
-          "home": "ANA",
-          "away_name": "Calgary Flames",
-          "home_name": "Anaheim Ducks",
-          "status": "final",
-          "away_score": 1,
-          "home_score": 6,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892723/flames-ducks"
-        },
         {
           "id": "NHL-401892724",
           "league": "NHL",
