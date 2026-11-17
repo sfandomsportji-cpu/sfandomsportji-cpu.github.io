@@ -7,8 +7,8 @@ subtitle: "마이애미는 어제 클리블랜드를 이기고 하루 만에 다
 kicker: "SFANDOM MAGAZINE · NBA"
 meta: "2026.11.15 10:00 KST · DETROIT PISTONS @ MIAMI HEAT · 매거진"
 league: "NBA"
-image: "/assets/photos/magazine/2026-11-14-det-mia-1-cover.jpg"
-image_alt: "AI로 만든 이미지: 파란 2번 유니폼 선수가 흰 유니폼 수비 사이에서 점프슛을 올리는 장면"
+image: "/assets/photos/magazine/2026-11-14-det-mia-5-drive.jpg"
+image_alt: "AI로 만든 이미지: 파란 2번 유니폼 선수가 검은 유니폼 수비 앞에서 공을 몰고 가는 장면"
 credit: "IMAGE · AI 생성 이미지 · SFANDOM 운영자 제공"
 slug: "det-mia-20261115"
 away: "DETROIT PISTONS"
@@ -75,9 +75,9 @@ credit: IMAGE · AI 생성 이미지 · SFANDOM 운영자 제공
 두 팀의 결장 명단과 선발 라인업은 아직 확인하지 못했어요. 경기 당일 공식 발표가 나오면 그쪽을 먼저 봐 주세요. 마이애미가 연전이라는 점이 체력 변수가 될 수 있지만, 숫자만으로 얼마나 영향을 줄지는 말씀드리기 어려워요.
 
 ::: photo
-src: /assets/photos/magazine/2026-11-14-det-mia-5-drive.jpg
-alt: AI로 만든 이미지: 파란 2번 유니폼 선수가 검은 유니폼 수비 앞에서 공을 몰고 가는 장면
-caption: 파란 디트로이트 2번이 검은 마이애미 유니폼 13번 수비를 앞에 두고 드리블해요. AI로 만든 이미지라서 실제 경기 사진이 아니고, 화면 속 글자와 숫자도 실제와 달라요.
+src: /assets/photos/magazine/2026-11-14-det-mia-1-cover.jpg
+alt: AI로 만든 이미지: 파란 2번 유니폼 선수가 흰 유니폼 수비 사이에서 점프슛을 올리는 장면
+caption: 파란 디트로이트 2번이 흰색 마이애미 수비 사이에서 점프슛을 올려요. AI로 만든 이미지라서 실제 경기 사진이 아니고, 화면 속 글자와 숫자도 실제와 달라요.
 credit: IMAGE · AI 생성 이미지 · SFANDOM 운영자 제공
 :::
 

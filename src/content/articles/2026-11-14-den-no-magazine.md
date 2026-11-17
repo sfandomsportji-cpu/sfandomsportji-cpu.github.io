@@ -7,8 +7,8 @@ subtitle: "뉴올리언스는 5연패 중에 어제도 경기를 치렀고, 덴�
 kicker: "SFANDOM MAGAZINE · NBA"
 meta: "2026.11.15 09:00 KST · DENVER NUGGETS @ NEW ORLEANS PELICANS · 매거진"
 league: "NBA"
-image: "/assets/photos/magazine/2026-11-14-den-no-1-cover.jpg"
-image_alt: "AI로 만든 이미지: 남색 15번 유니폼 선수가 흰 유니폼 수비를 앞에 두고 점프슛을 올리는 장면"
+image: "/assets/photos/magazine/2026-11-14-den-no-2-pass.jpg"
+image_alt: "AI로 만든 이미지: 남색 15번 유니폼 선수가 코트 한가운데서 옆으로 패스를 건네는 장면"
 credit: "IMAGE · AI 생성 이미지 · SFANDOM 운영자 제공"
 slug: "den-no-20261115"
 away: "DENVER NUGGETS"
@@ -32,9 +32,9 @@ sources: [{"label": "ESPN 덴버 너기츠 일정·결과", "url": "https://www.
 **덴버**는 10경기에서 6승 4패, 승률 0.600이에요. 경기당 평균 114.5점을 넣고 113.3점을 내줬어요. 득실 차이는 +1.2점이라 크게 앞서는 건 아니지만 안정적으로 균형을 맞추고 있어요. **뉴올리언스**는 13경기에서 4승 9패, 승률 0.308이에요. 평균 116.5점을 넣고 125.6점을 내줬어요. 득점은 나쁘지 않은데 실점이 많아서 득실 차이가 -9.2점이에요.
 
 ::: photo
-src: /assets/photos/magazine/2026-11-14-den-no-2-pass.jpg
-alt: AI로 만든 이미지: 남색 15번 유니폼 선수가 코트 한가운데서 옆으로 패스를 건네는 장면
-caption: 덴버 남색 유니폼 15번이 흰색 뉴올리언스 선수들 사이에서 공을 건네요. AI로 만든 이미지라서 실제 경기 사진이 아니고, 화면 속 글자와 숫자도 실제와 달라요.
+src: /assets/photos/magazine/2026-11-14-den-no-1-cover.jpg
+alt: AI로 만든 이미지: 남색 15번 유니폼 선수가 흰 유니폼 수비를 앞에 두고 점프슛을 올리는 장면
+caption: 덴버 남색 유니폼 15번이 흰색 뉴올리언스 수비를 앞에 두고 점프슛을 올려요. AI로 만든 이미지라서 실제 경기 사진이 아니고, 화면 속 글자와 숫자도 실제와 달라요.
 credit: IMAGE · AI 생성 이미지 · SFANDOM 운영자 제공
 :::
 
