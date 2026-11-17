@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-17T15:45+09:00",
+  "updated_at": "2026-11-17T16:07+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-17T15:45+09:00",
+      "checked_at": "2026-11-17T16:07+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-17T15:45+09:00",
+      "checked_at": "2026-11-17T16:07+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -441,11 +441,63 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401910018/suns-kings"
+        },
+        {
+          "id": "NBA-401910019",
+          "league": "NBA",
+          "start_kst": "2026-11-20T10:00+09:00",
+          "away": "GS",
+          "home": "MEM",
+          "away_name": "Golden State Warriors",
+          "home_name": "Memphis Grizzlies",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401910019/warriors-grizzlies"
+        },
+        {
+          "id": "NBA-401910020",
+          "league": "NBA",
+          "start_kst": "2026-11-20T10:00+09:00",
+          "away": "POR",
+          "home": "MIL",
+          "away_name": "Portland Trail Blazers",
+          "home_name": "Milwaukee Bucks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401910020/trail-blazers-bucks"
+        },
+        {
+          "id": "NBA-401910021",
+          "league": "NBA",
+          "start_kst": "2026-11-20T10:00+09:00",
+          "away": "NY",
+          "home": "MIN",
+          "away_name": "New York Knicks",
+          "home_name": "Minnesota Timberwolves",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401910021/knicks-timberwolves"
+        },
+        {
+          "id": "NBA-401910022",
+          "league": "NBA",
+          "start_kst": "2026-11-20T10:00+09:00",
+          "away": "LAC",
+          "home": "SA",
+          "away_name": "LA Clippers",
+          "home_name": "San Antonio Spurs",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401910022/clippers-spurs"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-17T15:45+09:00",
+      "checked_at": "2026-11-17T16:07+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -517,7 +569,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-17T15:45+09:00",
+      "checked_at": "2026-11-17T16:07+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -884,6 +936,32 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892744/oilers-lightning"
+        },
+        {
+          "id": "NHL-401892748",
+          "league": "NHL",
+          "start_kst": "2026-11-20T10:00+09:00",
+          "away": "CBJ",
+          "home": "CHI",
+          "away_name": "Columbus Blue Jackets",
+          "home_name": "Chicago Blackhawks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892748/blue-jackets-blackhawks"
+        },
+        {
+          "id": "NHL-401892750",
+          "league": "NHL",
+          "start_kst": "2026-11-20T10:00+09:00",
+          "away": "MIN",
+          "home": "CGY",
+          "away_name": "Minnesota Wild",
+          "home_name": "Calgary Flames",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892750/wild-flames"
         }
       ]
     }
