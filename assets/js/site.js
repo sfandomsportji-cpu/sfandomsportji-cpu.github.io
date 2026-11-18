@@ -352,6 +352,20 @@
      채널·경기 스레드·한 줄 평은 글 제목 앞의 [머리말]로 구분합니다. 예) "[NBA] 제목", "[PHI@NYK] 제목", "[한줄] 내용"
      게시판 저장소(posts 표)는 그대로 쓰고, 목록을 불러올 때 제목 머리말로 걸러 냅니다. */
   const QUICK = '한줄';
+  const NICK_A = ['새벽','직관','야구','농구','축구','주말','밤샘','역전','풀타임','연장전','버저비터','하프라인','불펜','리바운드','킥오프','스리쿼터'];
+  const NICK_B = ['응원단','수집가','연구원','통신원','관람객','해설가','지킴이','방랑자','대표','단장','선수','팬클럽'];
+  const nickHash = s => { let h = 2166136261; for (const c of String(s)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+  const seedNick = seed => { const h = nickHash(seed); return NICK_A[h % NICK_A.length] + NICK_B[(h >>> 8) % NICK_B.length] + (10 + (h >>> 16) % 90); };
+  const shownNick = (nick, seed) => { const n = String(nick || '').trim(); return !n || n.toUpperCase() === 'ANON' ? seedNick(seed) : n; };
+  const myNick = typed => {
+    const t = String(typed || '').trim().slice(0, 30);
+    try {
+      if (t) { localStorage.setItem('sfandom_nick', t); return t; }
+      let s = localStorage.getItem('sfandom_nick');
+      if (!s) { s = seedNick(Date.now() + '-' + Math.random()); localStorage.setItem('sfandom_nick', s); }
+      return s;
+    } catch (_) { return t || seedNick(Date.now() + '-' + Math.random()); }
+  };
   const splitTag = title => { const m = /^\[([^\]]{1,20})\]\s*(.*)$/.exec(title || ''); return m ? [m[1], m[2]] : ['자유', title || '']; };
   const likeTag = t => 'like.' + encodeURIComponent('[' + t + ']') + '*';
   const throttled = () => { let last = 0; try { last = Number(localStorage.getItem('sfandom_community_last_post_at') || 0); } catch (_) {} return Date.now() - last < 15000; };
@@ -371,7 +385,7 @@
       a.append(el('span', 'post-no', String(Math.max(1, total - ((page - 1) * size + i)))));
       const b = el('div', 'post-body');
       const meta = el('span', 'post-meta');
-      meta.append(el('b', null, '#' + tag), document.createTextNode(` · ${p.nickname || 'ANON'} · ${fmtTime(p.created_at)}` + (typeof p._cc === 'number' ? ` · 댓글 ${p._cc}` : '')));
+      meta.append(el('b', null, '#' + tag), document.createTextNode(` · ${shownNick(p.nickname, p.id)} · ${fmtTime(p.created_at)}` + (typeof p._cc === 'number' ? ` · 댓글 ${p._cc}` : '')));
       b.append(meta, el('strong', null, title || '(제목 없음)'), el('p', null, p.body || ''));
       if (typeof p.source_url === 'string' && /^\/news\/\d{4}\/\d{2}\/[a-z0-9-]+\/$/.test(p.source_url)) {
         const source = el('a', 'news-discussion-source', '원문 기사 보기 ↗');
@@ -402,7 +416,7 @@
         cs.slice(0, 3).reverse().forEach(c => {
           const item = el('div', 'pp-item');
           const meta = el('span', 'pp-meta');
-          meta.append(el('b', null, c.nickname || 'ANON'), document.createTextNode(' · ' + fmtTime(c.created_at)));
+          meta.append(el('b', null, shownNick(c.nickname, c.id)), document.createTextNode(' · ' + fmtTime(c.created_at)));
           item.append(meta, el('span', 'pp-text', c.body || ''));
           box.append(item);
         });
@@ -508,12 +522,13 @@
       } finally { busy = false; }
     };
 
+    { const bn = form && form.querySelector('[name=nickname]'); if (bn) bn.value = myNick(); }
     form?.addEventListener('submit', async e => {
       e.preventDefault();
       if (busy) return;
       const fd = new FormData(form);
       if (String(fd.get('website') || '').trim()) return;
-      const nickname = String(fd.get('nickname') || '').trim().slice(0, 30) || 'ANON';
+      const nickname = myNick(fd.get('nickname'));
       const ch = String(fd.get('channel') || '자유').trim().slice(0, 20);
       const raw = String(fd.get('title') || '').trim().replace(/^\[[^\]]*\]\s*/, '').slice(0, 100);
       const body = String(fd.get('body') || '').trim().slice(0, 2000);
@@ -526,7 +541,7 @@
         await sendPost(nickname, title, body);
         stamp();
         const keep = sel ? sel.value : '';
-        form.reset(); if (sel && keep) sel.value = keep;
+        form.reset(); if (sel && keep) sel.value = keep; { const bn = form.querySelector('[name=nickname]'); if (bn) bn.value = myNick(); }
         page = 1; status.textContent = '게시되었습니다.';
         busy = false;
         const visible = await load();
@@ -562,7 +577,7 @@
         if (!rows.length) { qList.append(el('div', 'empty', '첫 한 줄 평을 남겨보세요.')); return; }
         rows.forEach(p => {
           const row = el('div', 'quick-row');
-          row.append(el('span', 'quick-text', splitTag(p.title)[1]), el('span', 'quick-meta', `${p.nickname || 'ANON'} · ${fmtTime(p.created_at)}`));
+          row.append(el('span', 'quick-text', splitTag(p.title)[1]), el('span', 'quick-meta', `${shownNick(p.nickname, p.id)} · ${fmtTime(p.created_at)}`));
           qList.append(row);
         });
       } catch (_) {
@@ -583,10 +598,11 @@
       if (throttled()) { qStatus.textContent = '연속 등록 방지를 위해 잠시 후 다시 작성해 주세요.'; return; }
       qBusy = true; qStatus.textContent = '등록 중입니다…';
       const btn = qForm.querySelector('button'); if (btn) btn.disabled = true;
-      try { await sendPost('ANON', `[${QUICK}] ${text}`, text); stamp(); qForm.reset(); qStatus.textContent = '등록되었습니다.'; await qLoad(); }
+      try { await sendPost(myNick(fd.get('nickname')), `[${QUICK}] ${text}`, text); stamp(); qForm.reset(); { const qn = qForm.querySelector('[name=nickname]'); if (qn) qn.value = myNick(); } qStatus.textContent = '등록되었습니다.'; await qLoad(); }
       catch (err) { qStatus.textContent = postError(err); }
       finally { qBusy = false; if (btn) btn.disabled = false; }
     });
+    { const qn = qForm && qForm.querySelector('[name=nickname]'); if (qn) { qn.value = myNick(); } }
     qLoad();
   }
 

@@ -1503,6 +1503,7 @@ def game_threads_wide() -> str:
 def quick_box(size: int = 4) -> str:
     return (f'<div class="box quick" data-quick data-size="{size}"><div class="quick-head"><span class="display" style="font-size:26px">QUICK TALK</span><span class="muted" style="font-size:12px">한 줄로 가볍게</span></div>'
             f'<form class="quick-form" data-quick-form novalidate><label class="sr-only" for="qt">지금 경기 한 줄 평 (최대 60자)</label>'
+            f'<input class="quick-nick" name="nickname" type="text" maxlength="30" placeholder="닉네임" aria-label="닉네임" autocomplete="nickname">'
             f'<input id="qt" name="text" type="text" maxlength="60" placeholder="예: 1쿼터부터 분위기 좋네요" autocomplete="off">'
             f'<label class="hp" aria-hidden="true">website<input name="website" tabindex="-1" autocomplete="off"></label><button class="pill" type="submit">등록</button></form>'
             f'<p class="status" data-quick-status role="status"></p><div class="quick-list" data-quick-list><div class="empty">경기를 보며 떠오른 생각을 한 줄로 남겨 보세요.</div></div></div>')
@@ -2237,7 +2238,7 @@ def build_community():
     <form class="composer" id="write" data-board-form style="margin-top:32px" novalidate>
       <span class="box-title">WRITE · 글쓰기</span>
       <div class="row3"><div><label for="chn">채널</label><select id="chn" name="channel">{"".join(f'<option value="{esc(c)}"{" selected" if c == "자유" else ""}>{esc(c)}</option>' for c in CHANNELS)}</select></div>
-      <div><label for="nick">닉네임</label><input id="nick" name="nickname" maxlength="30" placeholder="ANON" autocomplete="nickname"></div>
+      <div><label for="nick">닉네임</label><input id="nick" name="nickname" maxlength="30" placeholder="닉네임" autocomplete="nickname"></div>
       <div><label for="ttl">제목</label><input id="ttl" name="title" maxlength="100" required placeholder="오늘 경기, 무슨 얘기 하고 싶어요?"></div></div>
       <div><label for="bdy">내용</label><textarea id="bdy" name="body" maxlength="2000" required></textarea></div>
       <label class="hp" aria-hidden="true">website<input name="website" tabindex="-1" autocomplete="off"></label>

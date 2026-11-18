@@ -4,6 +4,20 @@
    댓글·답글 화면은 community-thread.js 의 것을 그대로 씁니다. */
 (() => {
   "use strict";
+const NICK_A = ['새벽','직관','야구','농구','축구','주말','밤샘','역전','풀타임','연장전','버저비터','하프라인','불펜','리바운드','킥오프','스리쿼터'];
+const NICK_B = ['응원단','수집가','연구원','통신원','관람객','해설가','지킴이','방랑자','대표','단장','선수','팬클럽'];
+const nickHash = s => { let h = 2166136261; for (const c of String(s)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+const seedNick = seed => { const h = nickHash(seed); return NICK_A[h % NICK_A.length] + NICK_B[(h >>> 8) % NICK_B.length] + (10 + (h >>> 16) % 90); };
+const shownNick = (nick, seed) => { const n = String(nick || '').trim(); return !n || n.toUpperCase() === 'ANON' ? seedNick(seed) : n; };
+const myNick = typed => {
+  const t = String(typed || '').trim().slice(0, 30);
+  try {
+    if (t) { localStorage.setItem('sfandom_nick', t); return t; }
+    let s = localStorage.getItem('sfandom_nick');
+    if (!s) { s = seedNick(Date.now() + '-' + Math.random()); localStorage.setItem('sfandom_nick', s); }
+    return s;
+  } catch (_) { return t || seedNick(Date.now() + '-' + Math.random()); }
+};
   const box = document.querySelector("[data-news-comments]");
   const cfg = window.SFANDOM?.supabase;
   if (!box || !cfg?.url || !cfg.key) return;
@@ -54,7 +68,7 @@
     form = el("form");
     form.noValidate = true;
     form.setAttribute("data-news-comment-form", "");
-    const nick = el("input"); nick.name = "nickname"; nick.maxLength = 30; nick.placeholder = "닉네임 (선택)"; nick.setAttribute("aria-label", "닉네임");
+    const nick = el("input"); nick.name = "nickname"; nick.maxLength = 30; nick.placeholder = "닉네임"; nick.value = myNick(); nick.setAttribute("aria-label", "닉네임");
     const body = el("textarea"); body.name = "body"; body.maxLength = 2000; body.required = true; body.setAttribute("aria-label", "댓글 내용"); body.placeholder = box.dataset.question ? box.dataset.question + " 한 줄이면 충분해요." : "이 글에 대한 생각을 남겨 주세요.";
     const hp = el("label", "hp"); hp.setAttribute("aria-hidden", "true"); hp.append("website");
     const hpIn = el("input"); hpIn.name = "website"; hpIn.tabIndex = -1; hpIn.autocomplete = "off"; hp.append(hpIn);
@@ -66,7 +80,7 @@
       e.preventDefault();
       if (busy) return;
       if (String(hpIn.value || "").trim()) return;
-      const nickname = String(nick.value || "").trim().slice(0, 30) || "ANON";
+      const nickname = myNick(nick.value);
       const text = String(body.value || "").trim();
       if (text.length < 2 || text.length > 2000) return say("댓글은 2~2000자로 작성해 주세요.");
       busy = true; btn.disabled = true; say("댓글을 등록하고 있어요…");

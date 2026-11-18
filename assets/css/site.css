@@ -540,6 +540,10 @@ main{display:block}
 .quick-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .quick-form{display:flex;gap:8px;position:relative}
 .quick-form input[type=text]{flex:1;min-width:0;height:44px;border:1px solid var(--line-2);border-radius:999px;padding:0 16px;font-size:14px;background:var(--bg);color:var(--text)}
+.quick-form input.quick-nick[type=text]{flex:0 0 28%;max-width:120px}
+.fan-side .quick-form{flex-wrap:wrap}
+.fan-side .quick-form input.quick-nick[type=text]{flex:1 1 100%;max-width:none}
+@media(max-width:560px){.quick-form{flex-wrap:wrap}.quick-form input.quick-nick[type=text]{flex:1 1 100%;max-width:none}}
 .quick-form .hp{position:absolute;left:-9999px}
 .quick-list{display:flex;flex-direction:column}
 .quick-list .empty{padding:16px;background:transparent}

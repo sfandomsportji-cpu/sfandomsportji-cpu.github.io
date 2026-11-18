@@ -1,6 +1,20 @@
 /* SFANDOM threaded discussions. Optional enhancement, isolated from the core board. */
 (() => {
   "use strict";
+const NICK_A = ['새벽','직관','야구','농구','축구','주말','밤샘','역전','풀타임','연장전','버저비터','하프라인','불펜','리바운드','킥오프','스리쿼터'];
+const NICK_B = ['응원단','수집가','연구원','통신원','관람객','해설가','지킴이','방랑자','대표','단장','선수','팬클럽'];
+const nickHash = s => { let h = 2166136261; for (const c of String(s)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+const seedNick = seed => { const h = nickHash(seed); return NICK_A[h % NICK_A.length] + NICK_B[(h >>> 8) % NICK_B.length] + (10 + (h >>> 16) % 90); };
+const shownNick = (nick, seed) => { const n = String(nick || '').trim(); return !n || n.toUpperCase() === 'ANON' ? seedNick(seed) : n; };
+const myNick = typed => {
+  const t = String(typed || '').trim().slice(0, 30);
+  try {
+    if (t) { localStorage.setItem('sfandom_nick', t); return t; }
+    let s = localStorage.getItem('sfandom_nick');
+    if (!s) { s = seedNick(Date.now() + '-' + Math.random()); localStorage.setItem('sfandom_nick', s); }
+    return s;
+  } catch (_) { return t || seedNick(Date.now() + '-' + Math.random()); }
+};
   const board = document.querySelector("[data-board][data-size]");
   const hasBoard = !!(board && board.querySelector("[data-board-form]"));
   const list = hasBoard ? board.querySelector("[data-board-list]") : null;
@@ -103,7 +117,7 @@
       const form = el("form", "ct-form");
       const title = el("div", "ct-form-title", target ? "↳ " + nickname + "님에게 답글" : "새 댓글 작성");
       const nick = el("input"); nick.name="nickname"; nick.maxLength=30;
-      nick.placeholder="닉네임 (선택)"; nick.setAttribute("aria-label","닉네임");
+      nick.placeholder="닉네임"; nick.value=myNick(); nick.setAttribute("aria-label","닉네임");
       const body = el("textarea"); body.name="body"; body.maxLength=2000;
       body.rows=2; body.required=true; body.placeholder="서로 존중하며 자유롭게 이야기해 주세요.";
       body.setAttribute("aria-label","댓글 내용");
@@ -123,7 +137,7 @@
         submit.disabled=true; say("댓글을 등록하고 있어요…");
         try {
           await send({ action:"comment", post_id:id, parent_id:target || null,
-            nickname:nick.value.trim() || "ANON", body:text });
+            nickname:myNick(nick.value), body:text });
           say("댓글이 저장되었습니다. 목록을 확인하고 있어요.");
           loaded=false;
           const visible = await load(1);
@@ -153,12 +167,12 @@
         node.style.setProperty("--ct-indent", (Math.min(cur.depth,3)*8) + "px");
         node.id="comment-"+r.id;
         const meta=el("div","ct-meta");
-        const who=el("strong",null,r.nickname || "ANON");
+        const who=el("strong",null,shownNick(r.nickname,r.id));
         const when=el("span",null,r.created_at ? new Date(r.created_at).toLocaleString("ko-KR",{timeZone:"Asia/Seoul",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit"}) : "");
         meta.append(who,when);
         if(r.parent_id) {
           const parent = byId.get(r.parent_id);
-          meta.append(el("span","ct-parent-note",parent ? "↳ " + (parent.nickname || "ANON") + "님에게" : "↳ 이전 댓글에 대한 답글"));
+          meta.append(el("span","ct-parent-note",parent ? "↳ " + shownNick(parent.nickname,parent.id) + "님에게" : "↳ 이전 댓글에 대한 답글"));
         }
         const content=el("p","ct-message",r.body || "");
         const bar=el("div","ct-comment-actions");
@@ -166,7 +180,7 @@
         const report=button("신고","ct-small");
         const reportHere=el("span","ct-report-slot");
         const replyHere=el("div","ct-reply-composer");
-        reply.addEventListener("click",()=>{writeForm(r.id,r.nickname || "ANON",replyHere);replyHere.querySelector("textarea")?.focus();});
+        reply.addEventListener("click",()=>{writeForm(r.id,shownNick(r.nickname,r.id),replyHere);replyHere.querySelector("textarea")?.focus();});
         report.addEventListener("click",()=>makeReport("comment",r.id,reportHere,say));
         const remove=button("삭제","ct-small ct-admin-delete");
         remove.dataset.adminDeleteComment=r.id;
