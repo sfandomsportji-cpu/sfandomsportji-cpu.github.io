@@ -352,10 +352,9 @@
      채널·경기 스레드·한 줄 평은 글 제목 앞의 [머리말]로 구분합니다. 예) "[NBA] 제목", "[PHI@NYK] 제목", "[한줄] 내용"
      게시판 저장소(posts 표)는 그대로 쓰고, 목록을 불러올 때 제목 머리말로 걸러 냅니다. */
   const QUICK = '한줄';
-  const NICK_A = ['새벽','직관','야구','농구','축구','주말','밤샘','역전','풀타임','연장전','버저비터','하프라인','불펜','리바운드','킥오프','스리쿼터'];
-  const NICK_B = ['응원단','수집가','연구원','통신원','관람객','해설가','지킴이','방랑자','대표','단장','선수','팬클럽'];
+  const NICKS = ['삼성중독자','스포고니','라인쩔음'];
   const nickHash = s => { let h = 2166136261; for (const c of String(s)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
-  const seedNick = seed => { const h = nickHash(seed); return NICK_A[h % NICK_A.length] + NICK_B[(h >>> 8) % NICK_B.length] + (10 + (h >>> 16) % 90); };
+  const seedNick = seed => NICKS[nickHash(seed) % NICKS.length];
   const shownNick = (nick, seed) => { const n = String(nick || '').trim(); return !n || n.toUpperCase() === 'ANON' ? seedNick(seed) : n; };
   const myNick = typed => {
     const t = String(typed || '').trim().slice(0, 30);

@@ -4,10 +4,9 @@
    댓글·답글 화면은 community-thread.js 의 것을 그대로 씁니다. */
 (() => {
   "use strict";
-const NICK_A = ['새벽','직관','야구','농구','축구','주말','밤샘','역전','풀타임','연장전','버저비터','하프라인','불펜','리바운드','킥오프','스리쿼터'];
-const NICK_B = ['응원단','수집가','연구원','통신원','관람객','해설가','지킴이','방랑자','대표','단장','선수','팬클럽'];
+const NICKS = ['삼성중독자','스포고니','라인쩔음'];
 const nickHash = s => { let h = 2166136261; for (const c of String(s)) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
-const seedNick = seed => { const h = nickHash(seed); return NICK_A[h % NICK_A.length] + NICK_B[(h >>> 8) % NICK_B.length] + (10 + (h >>> 16) % 90); };
+const seedNick = seed => NICKS[nickHash(seed) % NICKS.length];
 const shownNick = (nick, seed) => { const n = String(nick || '').trim(); return !n || n.toUpperCase() === 'ANON' ? seedNick(seed) : n; };
 const myNick = typed => {
   const t = String(typed || '').trim().slice(0, 30);
