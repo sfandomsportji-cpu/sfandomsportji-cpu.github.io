@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-18T16:48+09:00",
+  "updated_at": "2026-11-18T19:44+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-18T16:48+09:00",
+      "checked_at": "2026-11-18T19:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-18T16:48+09:00",
+      "checked_at": "2026-11-18T19:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -467,11 +467,50 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401909310/pelicans-thunder"
+        },
+        {
+          "id": "NBA-401909311",
+          "league": "NBA",
+          "start_kst": "2026-11-21T11:30+09:00",
+          "away": "PHX",
+          "home": "UTAH",
+          "away_name": "Phoenix Suns",
+          "home_name": "Utah Jazz",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909311/suns-jazz"
+        },
+        {
+          "id": "NBA-401909312",
+          "league": "NBA",
+          "start_kst": "2026-11-21T12:00+09:00",
+          "away": "HOU",
+          "home": "DEN",
+          "away_name": "Houston Rockets",
+          "home_name": "Denver Nuggets",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909312/rockets-nuggets"
+        },
+        {
+          "id": "NBA-401909313",
+          "league": "NBA",
+          "start_kst": "2026-11-21T12:00+09:00",
+          "away": "SAC",
+          "home": "LAL",
+          "away_name": "Sacramento Kings",
+          "home_name": "Los Angeles Lakers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909313/kings-lakers"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-18T16:48+09:00",
+      "checked_at": "2026-11-18T19:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -504,7 +543,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-18T16:48+09:00",
+      "checked_at": "2026-11-18T19:44+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
