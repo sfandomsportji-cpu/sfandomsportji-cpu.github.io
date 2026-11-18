@@ -785,6 +785,28 @@ def hit_rate():
     return int(_rb.get('hit', 0)) + sum(r['verdict'] == 'hit' for r in done), int(_rb.get('total', 0)) + len(done)
 
 
+def track_block() -> str:
+    """복기 리포트의 종목별·월별 집계. 숫자는 src/content/track-record.json(src/tools/track_record.py가 results.csv에서 생성)만 쓴다.
+    승/패는 '분석 성공/빗나감'과 같은 기준이고, 건수가 적을 땐 퍼센트보다 승·패를 먼저 보게 안내한다."""
+    p = CONTENT / 'track-record.json'
+    if not p.exists():
+        return ''
+    d = json.loads(p.read_text(encoding='utf-8'))
+
+    def box(label, v):
+        n = v['ok'] + v['miss']
+        return (f'<div class="stat"><b>{v["ok"]}승 {v["miss"]}패</b>'
+                f'<span>{esc(label)} · {n}경기 · {v["ok"] / n * 100:.1f}%</span></div>')
+
+    boxes = ''.join(box(k, v) for k, v in d['by_sport'].items())
+    boxes += ''.join(box(f'{int(k[5:])}월', v) for k, v in d['by_month'].items())
+    since = d['since'][5:].replace('-', '.')
+    return (f'<h2 class="sec-title" style="font-size:28px;margin:6px 0 4px">종목·월별로 모아 보면 <span class="kr">{since}부터</span></h2>'
+            f'<p class="muted" style="font-size:14px;margin:0 0 12px">{since}부터는 분석 방향을 남긴 경기를 하나씩 세고 있어요. '
+            f'그 전 기록은 종목 구분 없이 합계로만 남아 있어서 여기엔 넣지 않았어요. 경기 수가 적을 때는 퍼센트보다 승·패 숫자를 먼저 봐 주세요.</p>'
+            f'<div class="stats" style="margin:0 0 26px">{boxes}</div>')
+
+
 def an_team(name: str, league: str) -> str:
     """분석 줄의 팀 표기. 축구는 로고를 이름 앞에 붙이고, 이름과 로고가 줄바꿈에서 갈라지지 않게 묶는다."""
     if league == 'SOCCER' and soccer_badge(name):
@@ -1882,7 +1904,7 @@ def build_lists():
     write('/analysis/review/', layout('복기 리포트 · 경기 전 전망과 결과', page_head('REVIEW <span class="accent">/</span> <span class="kr">복기 리포트</span>', RECORDS['note'],
           [('ANALYSIS', '/analysis/'), ('REVIEW', '')], tabs([('전체', '/analysis/'), ('NBA', '/analysis/nba/'), ('MLB', '/analysis/mlb/'), ('복기 리포트', '/analysis/review/')], '/analysis/review/'))
           + preserved_component('review-cycle-guide') + editorial_index(EDITORIAL_PATHS, BY_KEY, esc, 'before-after') + two_col(f'<div class="stats rv5" style="margin:0 0 12px"><div class="stat"><b>{cum_total}</b><span>RECORDS</span></div><div class="stat"><b>{cum_ok}</b><span>MATCHED</span></div><div class="stat"><b>{cum_total - cum_ok}</b><span>NOT MATCHED</span></div><div class="stat"><b>{(cum_ok / cum_total * 100 if cum_total else 0):.1f}%</b><span>RATE</span></div><div class="stat"><b>{updated[5:].replace("-", ".")}</b><span>UPDATED</span></div></div>'
-                    + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다르게 끝난 경기도 지우지 않아요. 어떤 생각이 빗나갔는지 다음 분석 때 다시 짚어 볼게요.</p>'),
+                    + track_block() + f'<div class="list">{recs}</div><p class="muted" style="font-size:14px;margin-top:20px">예상과 다르게 끝난 경기도 지우지 않아요. 어떤 생각이 빗나갔는지 다음 분석 때 다시 짚어 볼게요.</p>'),
           path='/analysis/review/', description=RECORDS['note'], active='/analysis/'))
 
 
