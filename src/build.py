@@ -682,7 +682,16 @@ def photo_small(a):
 
 def photo_cls(a):
     """직접 받은 사진은 크기와 관계없이 16:9로 가로를 꽉 채워 펼친다."""
-    return ' photo' if a.image.startswith('/assets/photos/') else ''
+    if not a.image.startswith('/assets/photos/'):
+        return ''
+    try:  # 세로 사진은 16:9로 자르면 머리·몸이 잘리므로 전체가 보이게 따로 표시한다
+        from PIL import Image
+        w, h = Image.open(ROOT / a.image.lstrip('/')).size
+        if h > w * 1.1:
+            return ' photo portrait-photo'
+    except Exception:
+        pass
+    return ' photo'
 
 
 def an_logos(a: Article) -> str:
