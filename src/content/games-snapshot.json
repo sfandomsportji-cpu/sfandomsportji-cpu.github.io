@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-19T15:52+09:00",
+  "updated_at": "2026-11-19T17:46+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-19T15:52+09:00",
+      "checked_at": "2026-11-19T17:46+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-19T15:52+09:00",
+      "checked_at": "2026-11-19T17:46+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -428,11 +428,50 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401910024/trail-blazers-knicks"
+        },
+        {
+          "id": "NBA-401910025",
+          "league": "NBA",
+          "start_kst": "2026-11-22T10:00+09:00",
+          "away": "LAC",
+          "home": "DAL",
+          "away_name": "LA Clippers",
+          "home_name": "Dallas Mavericks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401910025/clippers-mavericks"
+        },
+        {
+          "id": "NBA-401910026",
+          "league": "NBA",
+          "start_kst": "2026-11-22T10:00+09:00",
+          "away": "MEM",
+          "home": "MIN",
+          "away_name": "Memphis Grizzlies",
+          "home_name": "Minnesota Timberwolves",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401910026/grizzlies-timberwolves"
+        },
+        {
+          "id": "NBA-401910027",
+          "league": "NBA",
+          "start_kst": "2026-11-22T10:00+09:00",
+          "away": "NO",
+          "home": "SA",
+          "away_name": "New Orleans Pelicans",
+          "home_name": "San Antonio Spurs",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401910027/pelicans-spurs"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-19T15:52+09:00",
+      "checked_at": "2026-11-19T17:46+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -452,7 +491,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-19T15:52+09:00",
+      "checked_at": "2026-11-19T17:46+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -936,6 +975,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892764/golden-knights-jets"
+        },
+        {
+          "id": "NHL-401892765",
+          "league": "NHL",
+          "start_kst": "2026-11-22T11:00+09:00",
+          "away": "ANA",
+          "home": "UTA",
+          "away_name": "Anaheim Ducks",
+          "home_name": "Utah Mammoth",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892765/ducks-mammoth"
         }
       ]
     }
