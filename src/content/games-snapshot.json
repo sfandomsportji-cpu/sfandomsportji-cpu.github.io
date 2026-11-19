@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-19T13:00+09:00",
+  "updated_at": "2026-11-19T13:55+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-19T13:00+09:00",
+      "checked_at": "2026-11-19T13:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-19T13:00+09:00",
+      "checked_at": "2026-11-19T13:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -204,8 +204,8 @@
           "away_name": "Boston Celtics",
           "home_name": "Denver Nuggets",
           "status": "live",
-          "away_score": 61,
-          "home_score": 49,
+          "away_score": 92,
+          "home_score": 91,
           "source_url": "https://www.espn.com/nba/game?gameId=401910015"
         },
         {
@@ -217,8 +217,8 @@
           "away_name": "Utah Jazz",
           "home_name": "Los Angeles Lakers",
           "status": "live",
-          "away_score": 45,
-          "home_score": 45,
+          "away_score": 76,
+          "home_score": 74,
           "source_url": "https://www.espn.com/nba/game?gameId=401910017"
         },
         {
@@ -230,8 +230,8 @@
           "away_name": "Phoenix Suns",
           "home_name": "Sacramento Kings",
           "status": "live",
-          "away_score": 65,
-          "home_score": 60,
+          "away_score": 99,
+          "home_score": 90,
           "source_url": "https://www.espn.com/nba/game?gameId=401910018"
         },
         {
@@ -419,7 +419,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-19T13:00+09:00",
+      "checked_at": "2026-11-19T13:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -439,7 +439,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-19T13:00+09:00",
+      "checked_at": "2026-11-19T13:55+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -622,7 +622,7 @@
           "home_name": "Utah Mammoth",
           "status": "live",
           "away_score": 0,
-          "home_score": 0,
+          "home_score": 1,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892741"
         },
         {
