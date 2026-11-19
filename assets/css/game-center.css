@@ -225,3 +225,17 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 .ucl-note{margin:12px 0 0;color:#a9a8b8;font-size:12px}
 @media (max-width:900px){.ucl-grid{grid-template-columns:1fr}}
 @media (max-width:520px){.ucl-card{margin:10px;padding:14px}.ucl-top{flex-wrap:wrap}.ucl-top strong{font-size:18px}.ucl-slot li{grid-template-columns:minmax(0,1fr) 26px 34px 26px minmax(0,1fr);gap:5px;font-size:12.5px}.ucl-lg{width:26px;height:26px}.ucl-nm{white-space:normal;line-height:1.2}}
+
+/* 홈 경기 센터 카드 로고 확대 · 2026-11-19: 카드 폭에 비해 작던 팀 로고를 키운다(비율·중앙 정렬 유지, 늘리기·자르기 없음). */
+.sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap,
+.sf-scores--preview .sf-scores__logo .tlogo-wrap.kbo{width:104px;height:104px;min-width:104px;min-height:104px}
+.sf-scores--preview.is-tabbed .sf-scores__teams{gap:26px;padding:10px 0}
+.sf-scores--preview.is-tabbed .sf-scores__logo .tchip{font-size:24px}
+@media(max-width:700px){
+  .sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap,
+  .sf-scores--preview .sf-scores__logo .tlogo-wrap.kbo{width:80px;height:80px;min-width:80px;min-height:80px}
+  .sf-scores--preview.is-tabbed .sf-scores__teams{gap:18px}
+}
+/* 축구 엠블럼은 로고 파일 여백 때문에 같은 칸에서도 작아 보여 칸을 더 키운다. */
+.sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap.sc{width:132px;height:132px;min-width:132px;min-height:132px}
+@media(max-width:700px){.sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap.sc{width:96px;height:96px;min-width:96px;min-height:96px}}
