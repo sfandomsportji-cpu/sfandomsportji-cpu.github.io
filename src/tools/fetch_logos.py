@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MLB·NBA 공식 팀 로고를 한 번 받아 저장소에 보관합니다 (사이트는 외부 핫링크 없이 자체 파일만 사용).
+"""MLB·NBA·WK리그 공식 팀 로고를 한 번 받아 저장소에 보관합니다 (사이트는 외부 핫링크 없이 자체 파일만 사용).
 
     python3 src/tools/fetch_logos.py          # 없는 것만 받기
     python3 src/tools/fetch_logos.py --force  # 전부 다시 받기
@@ -8,6 +8,9 @@
 GitHub Actions(site-build.yml)가 빌드 전에 자동 실행합니다.
 """
 import pathlib
+import hashlib
+import json
+import xml.etree.ElementTree as ET
 import sys
 import urllib.request
 
@@ -26,6 +29,59 @@ SOURCES = {
     'mlb': (MLB, 'https://www.mlbstatic.com/team-logos/team-cap-on-dark/{id}.svg'),
     'nba': (NBA, 'https://cdn.nba.com/logos/nba/16106127{id:02d}/primary/L/logo.svg'),
 }
+
+
+
+# WK리그 공식 연맹 엠블럼: 원본을 로컬에만 저장하고 두 팀 모두 확보한 뒤 연결한다.
+WK_CRESTS = {
+    'gyeongju-hanswon': ('경주 한수원', '경주한수원WFC', 'GYEONGJU KHNP'),
+    'suwon-fc': ('수원FC 위민', '수원FC위민', 'SUWON FC WOMEN'),
+}
+
+
+def wk_svg_valid(data):
+    if len(data) <= 200:
+        return False
+    try:
+        root = ET.fromstring(data)
+        return root.tag in ('svg', '{http://www.w3.org/2000/svg}svg')
+    except ET.ParseError:
+        return False
+
+
+def fetch_wk_crests():
+    out = ROOT / 'assets' / 'teams' / 'soccer' / '2026-27' / 'wk-league'
+    out.mkdir(parents=True, exist_ok=True)
+    sources = {}
+    aliases = {}
+    for slug, names in WK_CRESTS.items():
+        path = out / (slug + '.svg')
+        url = 'https://www.kwff.or.kr/images/teams/' + slug + '.svg'
+        try:
+            data = path.read_bytes() if path.is_file() else b''
+            if not wk_svg_valid(data):
+                req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (sfandom-build)'})
+                with urllib.request.urlopen(req, timeout=20) as response:
+                    data = response.read()
+                if not wk_svg_valid(data):
+                    raise ValueError('not a valid SVG')
+                path.write_bytes(data)
+            sources[path.name] = {'source': url, 'sha256': hashlib.sha256(data).hexdigest()}
+            for name in names:
+                aliases[name] = 'wk-league/' + path.name
+        except Exception as e:
+            print(f'  WK League {slug}: {e}', file=sys.stderr)
+    if len(sources) != len(WK_CRESTS):
+        print('WK League: both official crests not yet available; mappings unchanged', file=sys.stderr)
+        return
+    manifest = out / 'sources.json'
+    manifest.write_text(json.dumps(sources, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    mapping = ROOT / 'src' / 'content' / 'soccer_logos.json'
+    original = json.loads(mapping.read_text(encoding='utf-8'))
+    if any(original.get(name) != rel for name, rel in aliases.items()):
+        original.update(aliases)
+        mapping.write_text(json.dumps(original, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    print('WK League: both official crests saved and mapped')
 
 
 def main():
@@ -51,6 +107,7 @@ def main():
                 fails += 1
                 print(f'  {league} {abbr}: {e}', file=sys.stderr)
         print(f'{league}: {got} downloaded')
+    fetch_wk_crests()
     return 0
 
 
