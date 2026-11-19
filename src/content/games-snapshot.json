@@ -1,70 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-19T21:36+09:00",
+  "updated_at": "2026-11-20T02:42+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-19T21:36+09:00",
+      "checked_at": "2026-11-20T02:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-19T21:36+09:00",
+      "checked_at": "2026-11-20T02:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401910003",
-          "league": "NBA",
-          "start_kst": "2026-11-18T10:00+09:00",
-          "away": "POR",
-          "home": "MIN",
-          "away_name": "Portland Trail Blazers",
-          "home_name": "Minnesota Timberwolves",
-          "status": "final",
-          "away_score": 105,
-          "home_score": 106,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401910003/trail-blazers-timberwolves"
-        },
-        {
-          "id": "NBA-401910004",
-          "league": "NBA",
-          "start_kst": "2026-11-18T10:00+09:00",
-          "away": "DET",
-          "home": "SA",
-          "away_name": "Detroit Pistons",
-          "home_name": "San Antonio Spurs",
-          "status": "final",
-          "away_score": 105,
-          "home_score": 93,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401910004/pistons-spurs"
-        },
-        {
-          "id": "NBA-401910006",
-          "league": "NBA",
-          "start_kst": "2026-11-18T12:30+09:00",
-          "away": "UTAH",
-          "home": "LAC",
-          "away_name": "Utah Jazz",
-          "home_name": "LA Clippers",
-          "status": "final",
-          "away_score": 132,
-          "home_score": 107,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401910006/jazz-clippers"
-        },
-        {
-          "id": "NBA-401910005",
-          "league": "NBA",
-          "start_kst": "2026-11-18T13:00+09:00",
-          "away": "CHA",
-          "home": "LAL",
-          "away_name": "Charlotte Hornets",
-          "home_name": "Los Angeles Lakers",
-          "status": "final",
-          "away_score": 114,
-          "home_score": 118,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401910005/hornets-lakers"
-        },
         {
           "id": "NBA-401910007",
           "league": "NBA",
@@ -471,7 +419,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-19T21:36+09:00",
+      "checked_at": "2026-11-20T02:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -491,62 +439,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-19T21:36+09:00",
+      "checked_at": "2026-11-20T02:42+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892734",
-          "league": "NHL",
-          "start_kst": "2026-11-18T10:00+09:00",
-          "away": "ANA",
-          "home": "STL",
-          "away_name": "Anaheim Ducks",
-          "home_name": "St. Louis Blues",
-          "status": "final",
-          "away_score": 6,
-          "home_score": 8,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892734/ducks-blues"
-        },
-        {
-          "id": "NHL-401892735",
-          "league": "NHL",
-          "start_kst": "2026-11-18T10:00+09:00",
-          "away": "NSH",
-          "home": "MIN",
-          "away_name": "Nashville Predators",
-          "home_name": "Minnesota Wild",
-          "status": "final",
-          "away_score": 3,
-          "home_score": 7,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892735/predators-wild"
-        },
-        {
-          "id": "NHL-401892737",
-          "league": "NHL",
-          "start_kst": "2026-11-18T12:00+09:00",
-          "away": "DAL",
-          "home": "VGK",
-          "away_name": "Dallas Stars",
-          "home_name": "Vegas Golden Knights",
-          "status": "final",
-          "away_score": 4,
-          "home_score": 3,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892737/stars-golden-knights"
-        },
-        {
-          "id": "NHL-401892738",
-          "league": "NHL",
-          "start_kst": "2026-11-18T12:00+09:00",
-          "away": "CGY",
-          "home": "SJ",
-          "away_name": "Calgary Flames",
-          "home_name": "San Jose Sharks",
-          "status": "final",
-          "away_score": 5,
-          "home_score": 2,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892738/flames-sharks"
-        },
         {
           "id": "NHL-401892739",
           "league": "NHL",
