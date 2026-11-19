@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-20T02:42+09:00",
+  "updated_at": "2026-11-20T08:50+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-20T02:42+09:00",
+      "checked_at": "2026-11-20T08:50+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-20T02:42+09:00",
+      "checked_at": "2026-11-20T08:50+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -419,7 +419,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-20T02:42+09:00",
+      "checked_at": "2026-11-20T08:50+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -439,7 +439,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-20T02:42+09:00",
+      "checked_at": "2026-11-20T08:50+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -819,6 +819,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892767/kraken-sharks"
+        },
+        {
+          "id": "NHL-401892768",
+          "league": "NHL",
+          "start_kst": "2026-11-23T02:30+09:00",
+          "away": "CAR",
+          "home": "NYR",
+          "away_name": "Carolina Hurricanes",
+          "home_name": "New York Rangers",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892768/hurricanes-rangers"
         }
       ]
     }
