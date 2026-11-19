@@ -2187,7 +2187,7 @@ def build_sitemap():
          + [k(f['kr'], f'/special/{f["id"]}/') for f in SPECIALS.get('features', []) if special_picks(f)[1]]),
         ('FAN BOARD', '/community/', '먼저 놀고. 가입 없이 쓰는 팬 게시판',
          [k('팬 보드', '/community/', True), k('글쓰기', '/community/#write', True), k('커뮤니티 규칙', '/rules/')]),
-        ('BLOG', SITE['blogs']['google']['url'], '뉴스 · 볼거리는 구글 · 네이버 블로그에서', blog_kids),
+        ('BLOG', SITE['blogs']['google']['url'], '뉴스 · 볼거리는 구글 블로그에서', blog_kids),
         ('MAGAZINE · INFO', '/magazine/', '긴 글과 사이트 안내',
          [k('매거진', '/magazine/'), k('소개', '/about/'), k('문의', '/contact/'), k('개인정보처리방침', '/privacy/'),
           k('광고 · 쿠키 고지', '/ads-cookies/'), k('이용약관', '/terms/'), k('법률고지', '/legal/'), k('검색', '/search/')]),

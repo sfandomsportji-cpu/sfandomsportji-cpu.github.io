@@ -48,11 +48,6 @@
       "label": "GOOGLE BLOG",
       "url": "https://sfandomji.blogspot.com",
       "feed": "https://sfandomji.blogspot.com/feeds/posts/default?alt=rss&max-results=20"
-    },
-    "naver": {
-      "label": "NAVER BLOG",
-      "url": "https://blog.naver.com/sfandomsport",
-      "feed": "https://rss.blog.naver.com/sfandomsport.xml"
     }
   },
   "analysis_record_base": {
