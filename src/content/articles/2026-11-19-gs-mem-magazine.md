@@ -7,8 +7,8 @@ subtitle: "멤피스는 10승 4패로 서부 5위, 골든스테이트는 8승 6�
 kicker: "SFANDOM MAGAZINE · NBA"
 meta: "2026.11.20 10:00 KST · GOLDEN STATE WARRIORS @ MEMPHIS GRIZZLIES · 매거진"
 league: "NBA"
-image: "/assets/photos/magazine/2026-11-19-gs-mem-1-gsw-shot.jpg"
-image_alt: "골든스테이트 검은 유니폼 선수가 뉴올리언스 수비 위로 점프해 슛을 던지는 장면"
+image: "/assets/photos/magazine/2026-11-19-gs-mem-3-gsw-layup.jpg"
+image_alt: "골든스테이트 검은 18번 유니폼 선수가 뉴올리언스 수비 사이로 레이업을 하는 장면"
 credit: "IMAGE · SFANDOM 운영자 제공"
 slug: "gs-mem-20261120"
 away: "GOLDEN STATE WARRIORS"
@@ -47,9 +47,9 @@ credit: IMAGE · SFANDOM 운영자 제공
 골든스테이트는 11월 2일 클리퍼스를 124–112, 3일 피닉스를 116–113, 6일 마이애미를 120–100, 8일 올랜도를 126–119로 이겼어요. 그런데 오늘 오전 댈러스 원정에서 94–116으로 크게 져서 3연패 중이에요.
 
 ::: photo
-src: /assets/photos/magazine/2026-11-19-gs-mem-3-gsw-layup.jpg
-alt: 골든스테이트 검은 18번 유니폼 선수가 뉴올리언스 수비 사이로 레이업을 하는 장면
-caption: 골든스테이트 검은색 18번 유니폼 선수가 뉴올리언스 수비 사이로 레이업을 해요. 이번 경기 장면이 아니라 골든스테이트이 뛰는 모습이에요.
+src: /assets/photos/magazine/2026-11-19-gs-mem-1-gsw-shot.jpg
+alt: 골든스테이트 검은 유니폼 선수가 뉴올리언스 수비 위로 점프해 슛을 던지는 장면
+caption: 골든스테이트 검은 유니폼 선수가 뉴올리언스 수비 위로 점프해 슛을 던져요. 이번 경기 장면이 아니라 골든스테이트가 뛰는 모습이에요.
 credit: IMAGE · SFANDOM 운영자 제공
 :::
 

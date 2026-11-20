@@ -7,8 +7,8 @@ subtitle: "미네소타는 10승 4패에 최근 10경기 7승 3패, 뉴욕은 8�
 kicker: "SFANDOM MAGAZINE · NBA"
 meta: "2026.11.20 10:00 KST · NEW YORK KNICKS @ MINNESOTA TIMBERWOLVES · 매거진"
 league: "NBA"
-image: "/assets/photos/magazine/2026-11-19-nyk-min-1-min-back.jpg"
-image_alt: "미네소타 파란 8번 유니폼 선수가 관중석을 향해 손짓하며 코트를 걷는 뒷모습"
+image: "/assets/photos/magazine/2026-11-19-nyk-min-3-nyk-break.jpg"
+image_alt: "뉴욕 흰색 11번 유니폼 선수가 공을 몰고 코트를 달리는 속공 장면"
 credit: "IMAGE · 뉴욕 닉스 제공"
 slug: "nyk-min-20261120"
 away: "NEW YORK KNICKS"
@@ -47,9 +47,9 @@ credit: IMAGE · 뉴욕 닉스 제공
 미네소타는 10월 29일 골든스테이트에 114–119로 졌지만 31일 클리퍼스를 127–101로 이겼어요. 11월 1일 샌안토니오 원정에서는 111–121로 졌어요. 그 뒤 확인된 경기는 밀워키 112–100, 휴스턴 원정 117–107, 뉴올리언스 115–109, 유타 115–100 승리예요. ESPN 기준으로 최근 10경기는 7승 3패예요(11월 10일~17일 경기는 확인하지 못했어요).
 
 ::: photo
-src: /assets/photos/magazine/2026-11-19-nyk-min-3-nyk-break.jpg
-alt: 뉴욕 흰색 11번 유니폼 선수가 공을 몰고 코트를 달리는 속공 장면
-caption: 뉴욕 흰색 11번 유니폼 선수가 공을 몰고 코트를 달리고, 뒤에서 상대 선수가 따라와요. 이번 경기 장면이 아니라 뉴욕이 뛰는 모습이에요.
+src: /assets/photos/magazine/2026-11-19-nyk-min-1-min-back.jpg
+alt: 미네소타 파란 8번 유니폼 선수가 관중석을 향해 손짓하며 코트를 걷는 뒷모습
+caption: 미네소타 파란색 8번 유니폼 선수가 관중석을 향해 손짓하며 코트를 걸어요. 이번 경기 장면이 아니라 미네소타가 뛰는 모습이에요.
 credit: IMAGE · 뉴욕 닉스 제공
 :::
 
