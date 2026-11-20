@@ -2335,9 +2335,9 @@ def build_static():
           path='/contact/', description='SFANDOM 문의 양식 · 오류 제보 · 권리침해 신고', noindex=True), index=False)
 
     ev_lede, ev_frag = page_fragment('event')
-    ev_body = page_head('EVENT<span class="accent">.</span> <span class="kr">주말 빅경기 맞히기</span>', ev_lede, [('이벤트', '')]) + \
+    ev_body = page_head('EVENT<span class="accent">.</span> <span class="kr">주말 주요경기 적중 밸런스 게임</span>', ev_lede, [('이벤트', '')]) + \
         f'<div class="wrap sec" style="padding-top:12px;max-width:960px;margin-left:0">{ev_frag.replace("__ENDPOINT__", esc(ep))}</div>'
-    write('/event/', layout('주말 빅경기 맞히기 이벤트', ev_body, path='/event/', description=ev_lede[:150]))
+    write('/event/', layout('주말 주요경기 적중 밸런스 게임', ev_body, path='/event/', description=ev_lede[:150]))
 
     cookies = '''<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div class="prose">
 <h2>광고 게재</h2>
