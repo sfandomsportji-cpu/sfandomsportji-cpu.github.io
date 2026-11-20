@@ -241,7 +241,13 @@
       if (v('title').length < 2 || v('body').length < 10) return say('제목과 내용을 조금 더 적어 주세요.', true);
       if (v('reply') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('reply'))) return say('이메일 주소 형식을 확인해 주세요.', true);
       if (!fd.get('agree')) return say('수집·보관 동의에 체크해 주세요.', true);
-      const message = `[${v('type')}] ${v('title').slice(0, 100)}\n\n${v('body').slice(0, 850)}`.slice(0, 1000);
+      let bodyText = v('body');
+      if (cf.hasAttribute('data-ev-count')) {                      // 이벤트 답안: 띄어쓰기·오타가 달라도 읽어서 표준 형식으로 바꿔 보냅니다.
+        const r = evParse(bodyText, +cf.dataset.evCount, (cf.dataset.evNodraw || '').split(',').map(Number));
+        if (r.bad.length) return say(`${r.bad.join('번, ')}번 답안을 알아보지 못했어요. 승·무·패 중 하나로 적어 주세요.`, true);
+        bodyText = `${r.text}\n\n(적어 주신 원문: ${bodyText.slice(0, 400)})`;
+      }
+      const message = `[${v('type')}] ${v('title').slice(0, 100)}\n\n${bodyText.slice(0, 850)}`.slice(0, 1000);
       btn.disabled = true; say('보내는 중입니다…');
       try {
         // 받는 쪽이 다른 주소라 응답 내용은 읽을 수 없습니다. 전송이 끝나면 접수 안내만 보여 줍니다.
@@ -263,6 +269,34 @@
       f.style.cssText = `left:${Math.random() * 100}%;width:${z}px;height:${z}px;animation-duration:${7 + Math.random() * 9}s;animation-delay:${-Math.random() * 14}s;--dx:${(Math.random() * 80 - 40) | 0}px`;
       snow.appendChild(f);
     }
+  }
+
+
+  /* ── 이벤트 답안 읽기: "1 승, 2무 3패", "1번 이김" 같은 여러 표기를 "1 승, 2 무, ..."로 통일 ── */
+  const EV_MAP = { 승: ['승', '숭', '승리', '이김', '이겨', '이긴다', '홈', '홈승', 'w', 'win', 'h'], 무: ['무', '무승부', '비김', '비겨', 'd', 'draw'], 패: ['패', '퍄', '패배', '짐', '져', '진다', '원정', '원정승', 'l', 'lose', 'a'] };
+  const evParse = (raw, n, nodraw) => {
+    const got = {};
+    String(raw).replace(/(\d{1,2})\s*[번.):=\-]*\s*([^\d\s,;\/]+)/g, (m, num, word) => {
+      const k = Object.keys(EV_MAP).find(key => EV_MAP[key].includes(word.toLowerCase()));
+      if (+num >= 1 && +num <= n) got[+num] = k || '?';
+    });
+    const bad = [], out = [];
+    for (let i = 1; i <= n; i++) {
+      const g = got[i];
+      if (!g || g === '?' || (g === '무' && nodraw.includes(i))) bad.push(i); else out.push(`${i} ${g}`);
+    }
+    return { bad, text: out.join(', ') };
+  };
+
+  const evBox = $('[data-ev-count]');
+  if (evBox) {
+    const ta = $('textarea', evBox), pv = $('[data-ev-preview]', evBox);
+    const show = () => {
+      if (!ta.value.trim()) { pv.textContent = ''; return; }
+      const r = evParse(ta.value, +evBox.dataset.evCount, (evBox.dataset.evNodraw || '').split(',').map(Number));
+      pv.textContent = r.bad.length ? `아직 못 읽은 번호: ${r.bad.join(', ')}` : `이렇게 접수돼요 → ${r.text}`;
+    };
+    ta.addEventListener('input', show);
   }
 
   /* ── 팀 로고: 못 불러오면 팀 색 약자 칩으로 ── */
