@@ -87,7 +87,10 @@
     <li data-n="5"><strong>"번호 + 승·무·패"로 10경기 모두 적어 주세요.</strong> 예: 1 승, 2 무, 3 패 … 10 패. 띄어쓰기와 쉼표는 마음대로 쓰셔도 돼요. 아래 칸에 적으면 "이렇게 접수돼요"가 바로 보이고, 빠진 경기가 있으면 몇 번인지 알려 드려요.</li>
     <li data-n="6"><strong>11월 21일(토) 낮 12시까지 보내 주세요.</strong> 덴버–휴스턴 경기가 시작되기 전까지예요(한국시간).</li>
     <li data-n="7"><strong>한 닉네임에 한 번만 인정돼요.</strong> 여러 번 보내시면 마지막에 보낸 쪽지만 세요. 고쳐서 다시 보내셔도 괜찮아요.</li>
-    <li data-n="8"><strong>맞힌 개수를 SFANDOM과 비교해요.</strong> 더 많이 맞히면 이기고, 같으면 비겨요. 상품은 없고 재미만 있어요. 결과는 경기가 모두 끝나면 이 페이지에 올릴게요.</li>
+    <li data-n="8"><strong>맞힌 개수를 SFANDOM과 비교해요.</strong> 더 많이 맞히면 이기고, 같으면 비겨요. 결과는 경기가 모두 끝나면 이 페이지에 올릴게요.</li>
+    <li data-n="9"><strong>10경기를 모두 맞히신 분께는 필립스 헤드폰을 드려요.</strong> 연기·취소된 경기가 있으면 그 경기를 뺀 나머지를 모두 맞힌 분이에요. 만점자가 여러 명이면 쪽지를 가장 먼저 보내신 1분께 드려요(접수시각 기준).</li>
+    <li data-n="10"><strong>참여하신 분 중 추첨으로 소정의 선물을 드려요.</strong> 인원과 선물은 결과를 올릴 때 함께 알려 드릴게요.</li>
+    <li data-n="11"><strong>당첨되시면 이메일로 연락드려요.</strong> 그래서 이메일 칸은 꼭 적어 주세요. 당첨 안내에만 쓰고, 다른 곳에는 쓰지 않아요.</li>
   </ol>
 </section>
 
@@ -126,12 +129,12 @@
     <input type="hidden" name="title" value="주말 주요경기 맞히기 밸런스 게임 답안">
     <div class="row">
       <div><label for="evName">닉네임</label><input id="evName" name="name" type="text" maxlength="40" autocomplete="nickname" placeholder="결과 발표 때 불러 드려요"></div>
-      <div><label for="evReply">이메일 <span class="opt">선택</span></label><input id="evReply" name="reply" type="email" maxlength="120" autocomplete="email" placeholder="name@example.com"></div>
+      <div><label for="evReply">이메일 <span class="opt">당첨 연락용 · 필수</span></label><input id="evReply" name="reply" type="email" maxlength="120" autocomplete="email" required placeholder="name@example.com"></div>
     </div>
     <div><label for="evBody">답안 (10경기)</label><textarea id="evBody" name="body" maxlength="850" required placeholder="1 승, 2 무, 3 패 … 10번까지 적어 주세요."></textarea>
       <p class="muted" data-ev-preview aria-live="polite" style="margin:8px 0 0"></p></div>
     <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <label class="check"><input type="checkbox" name="agree" required> 이벤트 참여 처리를 위해 위 내용을 수집·보관하는 데 동의합니다. <a href="/privacy/">개인정보처리방침</a></label>
+    <label class="check"><input type="checkbox" name="agree" required> 이벤트 참여와 당첨 안내를 위해 닉네임·이메일·답안을 수집·보관하는 데 동의합니다. <a href="/privacy/">개인정보처리방침</a></label>
     <div class="composer-foot"><span class="muted" data-contact-msg role="status" aria-live="polite"></span>
       <button class="pill" type="submit">쪽지 보내기</button></div>
   </form>
@@ -154,7 +157,7 @@
     <div class="copy"><span>© 2026 SFANDOM. ALL RIGHTS RESERVED.</span><span>기록 출처 · 각 리그·구단 공식 자료</span></div>
   </div>
 </footer>
-<script src="/assets/js/site.js?v=83e3b74c" defer></script>
+<script src="/assets/js/site.js?v=e7382ff0" defer></script>
 
 </body>
 </html>

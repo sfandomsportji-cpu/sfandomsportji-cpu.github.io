@@ -242,6 +242,7 @@
       if (v('reply') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('reply'))) return say('이메일 주소 형식을 확인해 주세요.', true);
       if (!fd.get('agree')) return say('수집·보관 동의에 체크해 주세요.', true);
       let bodyText = v('body');
+      if (cf.hasAttribute('data-ev-count') && !v('reply')) return say('당첨 연락을 위해 이메일을 적어 주세요.', true);
       if (cf.hasAttribute('data-ev-count')) {                      // 이벤트 답안: 띄어쓰기·오타가 달라도 읽어서 표준 형식으로 바꿔 보냅니다.
         const r = evParse(bodyText, +cf.dataset.evCount, (cf.dataset.evNodraw || '').split(',').map(Number));
         if (r.bad.length) return say(`${r.bad.join('번, ')}번 답안을 알아보지 못했어요. 승·무·패 중 하나로 적어 주세요.`, true);
