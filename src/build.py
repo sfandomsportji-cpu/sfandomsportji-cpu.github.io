@@ -2334,6 +2334,11 @@ def build_static():
     write('/contact/', layout('문의', page_head('CONTACT<span class="accent">.</span> <span class="kr">문의</span>', 'SFANDOM에 전하고 싶은 이야기가 있다면 쪽지로 남겨 주세요.', [('문의', '')]) + contact,
           path='/contact/', description='SFANDOM 문의 양식 · 오류 제보 · 권리침해 신고', noindex=True), index=False)
 
+    ev_lede, ev_frag = page_fragment('event')
+    ev_body = page_head('EVENT<span class="accent">.</span> <span class="kr">크리스마스 맞히기</span>', ev_lede, [('이벤트', '')]) + \
+        f'<div class="wrap sec" style="padding-top:12px;max-width:960px;margin-left:0">{ev_frag.replace("__ENDPOINT__", esc(ep))}</div>'
+    write('/event/', layout('크리스마스 맞히기 이벤트', ev_body, path='/event/', description=ev_lede[:150]))
+
     cookies = '''<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div class="prose">
 <h2>광고 게재</h2>
 <p>SFANDOM은 현재 Google AdSense 심사 중이며 광고를 게재하지 않습니다. 광고 배치 및 송출 기능은 비활성화되어 있습니다. 승인 이후 광고를 운영할 경우 별도로 안내합니다.</p>

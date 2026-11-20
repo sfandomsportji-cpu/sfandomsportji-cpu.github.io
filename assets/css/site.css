@@ -1764,3 +1764,34 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 /* 2026-11-15 모바일 가로 넘침 수정: 분석 글의 넓은 표(min-width 560px)가 글 칸을 밀어내 글자가 잘리던 문제. 표는 자기 칸 안에서만 가로 스크롤한다. */
 .article-grid>*{min-width:0}
 @media(max-width:700px){.pt-name{font-size:clamp(10px,3.3vw,19px);overflow-wrap:normal;word-break:keep-all}}
+
+/* Christmas event page (/event/): green + red + gold on the dark site theme. */
+.ev{display:flex;flex-direction:column;gap:34px}
+.ev h2{font-size:26px;margin:0 0 12px;color:#fff}
+.ev-hero{position:relative;text-align:center;padding:54px 22px 34px;border-radius:22px;border:1px solid #2f6b57;background:linear-gradient(160deg,#1c4d3e,#12302a 70%);overflow:hidden}
+.ev-garland{position:absolute;left:0;right:0;top:0;height:14px;display:flex;justify-content:space-around;background:linear-gradient(#0e2a22,#1c4d3e)}
+.ev-garland i{width:12px;height:12px;border-radius:50%;margin-top:6px;background:#c9313d;box-shadow:0 0 10px #c9313d}
+.ev-garland i:nth-child(3n+2){background:#f4b942;box-shadow:0 0 10px #f4b942}
+.ev-garland i:nth-child(3n){background:#fff6e4;box-shadow:0 0 10px #fff6e4}
+.ev-kicker{margin:0 0 14px;font-size:14px;font-weight:800;letter-spacing:.12em;color:#f4b942}
+.ev-vs{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin:0 0 14px;font-family:'Jua','Noto Sans KR',sans-serif;font-size:44px;color:#fff6e4}
+.ev-vs b{font-size:30px;color:#c9313d;background:#fff6e4;border-radius:999px;padding:2px 16px}
+.ev-vs img{height:51px;width:auto;max-width:100%;background:#010315;border-radius:12px;padding:6px 12px}
+.ev-sub{margin:0 auto 22px;max-width:560px;color:#fff6e4}
+.ev-lock{display:inline-flex;flex-direction:column;gap:6px;align-items:center;padding:14px 22px;border:2px dashed #f4b942;border-radius:16px;background:rgba(0,0,0,.25)}
+.ev-lock-label{font-size:13px;font-weight:800;color:#f4b942}
+.ev-lock code{font-size:24px;letter-spacing:.08em;color:#fff}
+.ev-lock small{font-size:13px;color:#e8dcc4;max-width:420px}
+.ev-rules ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px}
+.ev-note{margin:0 0 14px;color:var(--muted);font-size:15px}
+.ev-note code{font-size:13px;word-break:keep-all;color:#f4b942}
+.ev-group{display:flex;align-items:center;gap:10px;margin:22px 0 10px;font-size:19px;color:#f4b942}
+.ev-group span{font-size:13px;color:var(--muted)}
+.ev-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.ev-list li{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line-2);border-radius:14px;background:var(--panel)}
+.ev-list b{flex:0 0 32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#c9313d;color:#fff;font-size:15px}
+.ev-t{display:flex;flex-direction:column;font-weight:700;font-size:17px;line-height:1.35}
+.ev-t small{font-size:13px;font-weight:500;color:var(--muted)}
+.ev-t em{font-style:normal;color:var(--faint);font-size:13px;margin:0 4px}
+.ev-send .composer{border:1px solid #2f6b57}
+@media(max-width:700px){.ev-vs{font-size:34px}.ev-hero{padding:46px 14px 26px}.ev-lock code{font-size:20px}}
