@@ -1176,7 +1176,7 @@ HOT = ' class="hot"'
 
 def header(active: str) -> str:
     nav = ''.join(
-        f'<a href="{u}"{CUR if active == u else ""}{HOT if l == "NBA" and active != u else ""}>{l}</a>'
+        f'<a href="{u}"{CUR if active == u else ""}{HOT if l == "NBA" and active != u else ""}{' data-event' if l == "EVENT" else ""}>{l}</a>'
         for l, u in NAV)
     return f'''<a class="skip" href="#main">본문 바로가기</a>
 <header class="site-header">
@@ -2336,7 +2336,7 @@ def build_static():
 
     ev_lede, ev_frag = page_fragment('event')
     ev_body = page_head('EVENT<span class="accent">.</span> <span class="kr ev-h1">주말 주요경기 맞히기 밸런스 게임</span>', ev_lede, [('이벤트', '')]) + \
-        f'<div class="wrap sec" style="padding-top:12px;max-width:960px;margin-left:0">{ev_frag.replace("__ENDPOINT__", esc(ep))}</div>'
+        f'<div class="wrap sec ev-wrap" style="padding-top:12px">{ev_frag.replace("__ENDPOINT__", esc(ep))}</div>'
     write('/event/', layout('주말 주요경기 맞히기 밸런스 게임', ev_body, path='/event/', description=ev_lede[:150]))
 
     cookies = '''<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div class="prose">
