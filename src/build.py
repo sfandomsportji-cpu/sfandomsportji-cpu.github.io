@@ -1168,7 +1168,7 @@ def breadcrumb_ld(items: list[tuple[str, str]]) -> dict:
 
 
 NAV = [('NEWS', '/news/'), ('NBA', '/nba/'), ('MLB', '/mlb/'), ('ANALYSIS', '/analysis/'),
-       ('MAGAZINE', '/magazine/'), ('FAN BOARD', '/community/')]
+       ('MAGAZINE', '/magazine/'), ('FAN BOARD', '/community/'), ('EVENT', '/event/')]
 CUR = ' aria-current="page"'
 EXT = ' target="_blank" rel="noopener"'
 HOT = ' class="hot"'
