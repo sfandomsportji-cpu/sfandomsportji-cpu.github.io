@@ -254,6 +254,17 @@
     });
   }
 
+
+  /* ── 이벤트 페이지: 눈 내리는 배경 ── */
+  const snow = $('.ev-snow');
+  if (snow) {
+    for (let i = 0; i < 46; i++) {
+      const f = document.createElement('i'), z = 3 + Math.random() * 5;
+      f.style.cssText = `left:${Math.random() * 100}%;width:${z}px;height:${z}px;animation-duration:${7 + Math.random() * 9}s;animation-delay:${-Math.random() * 14}s;--dx:${(Math.random() * 80 - 40) | 0}px`;
+      snow.appendChild(f);
+    }
+  }
+
   /* ── 팀 로고: 못 불러오면 팀 색 약자 칩으로 ── */
   $$('img.tlogo').forEach(im => {
     const fail = () => im.parentNode && im.parentNode.classList.add('nologo');
