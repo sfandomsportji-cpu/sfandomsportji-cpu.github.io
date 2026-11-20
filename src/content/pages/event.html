@@ -21,7 +21,7 @@
 <section class="ev-rules" aria-labelledby="evRules">
   <h2 id="evRules">이렇게 놀아요 🎈</h2>
   <ol>
-    <li data-n="1"><strong>경기마다 하나씩 골라요.</strong> 축구와 K리그는 홈 승, 무, 원정 승 중 하나예요. NBA는 홈 승과 원정 승 중 하나예요.</li>
+    <li data-n="1"><strong>경기마다 하나씩 골라요.</strong> 축구와 K리그는 승·무·패 중 하나, NBA는 승·패 중 하나예요. 승·패는 왼쪽(홈) 팀 기준이에요. 예를 들어 첼시–리즈에서 첼시가 이기면 "승"이에요.</li>
     <li data-n="2"><strong>이긴 쪽이 맞아야 맞힌 경기예요.</strong> 승리를 골랐는데 무승부로 끝나면 틀린 걸로 세요.</li>
     <li data-n="3"><strong>최종 결과로 세요.</strong> 연장전은 포함하고, 연기되거나 취소된 경기는 모두에게서 빼요.</li>
     <li data-n="4"><strong>쪽지로 보내 주세요.</strong> 11월 21일(토) 낮 12시, 덴버–휴스턴 경기가 시작되기 전까지 보내 주시면 돼요.</li>
@@ -32,7 +32,7 @@
 
 <section class="ev-games" aria-labelledby="evGames">
   <h2 id="evGames">이번 주말 빅경기 10개 ⚽🏀</h2>
-  <p class="ev-note">시간은 한국시간이고, 왼쪽이 홈 팀이에요. 일정은 바뀔 수 있어요.</p>
+  <p class="ev-note">시간은 한국시간이고, 왼쪽이 홈 팀이에요(승·패는 왼쪽 팀 기준). 일정은 바뀔 수 있어요.</p>
 
   <h3 class="ev-group">해외축구 <span>6경기</span></h3>
   <ul class="ev-list">
@@ -59,7 +59,7 @@
 
 <section class="ev-send" aria-labelledby="evSend">
   <h2 id="evSend">쪽지로 살짝 알려 주세요 💌</h2>
-  <p class="ev-note">이렇게 적어 주세요 → <code>1 홈, 2 무, 3 원정, 4 홈, 5 홈, 6 원정, 7 홈, 8 원정, 9 무, 10 원정</code> (예시일 뿐이에요)</p>
+  <p class="ev-note">이렇게 적어 주세요 → <code>1 승, 2 무, 3 패, 4 승, 5 승, 6 패, 7 승, 8 패, 9 무, 10 패</code> (예시일 뿐이에요)</p>
   <form class="composer contact-form" data-contact data-endpoint="__ENDPOINT__" novalidate>
     <input type="hidden" name="type" value="맞히기 밸런스 게임">
     <input type="hidden" name="title" value="주말 주요경기 맞히기 밸런스 게임 답안">
@@ -67,7 +67,7 @@
       <div><label for="evName">닉네임</label><input id="evName" name="name" type="text" maxlength="40" autocomplete="nickname" placeholder="결과 발표 때 불러 드려요"></div>
       <div><label for="evReply">이메일 <span class="opt">선택</span></label><input id="evReply" name="reply" type="email" maxlength="120" autocomplete="email" placeholder="name@example.com"></div>
     </div>
-    <div><label for="evBody">답안 (10경기)</label><textarea id="evBody" name="body" maxlength="850" required placeholder="1 홈, 2 무, 3 원정 … 10번까지 적어 주세요."></textarea></div>
+    <div><label for="evBody">답안 (10경기)</label><textarea id="evBody" name="body" maxlength="850" required placeholder="1 승, 2 무, 3 패 … 10번까지 적어 주세요."></textarea></div>
     <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label class="check"><input type="checkbox" name="agree" required> 이벤트 참여 처리를 위해 위 내용을 수집·보관하는 데 동의합니다. <a href="/privacy/">개인정보처리방침</a></label>
     <div class="composer-foot"><span class="muted" data-contact-msg role="status" aria-live="polite"></span>
