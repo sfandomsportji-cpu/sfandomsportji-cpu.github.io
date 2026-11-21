@@ -1,0 +1,111 @@
+{
+  "header": {
+    "id": "401879233",
+    "competitions": [
+      {
+        "id": "401879233",
+        "date": "2026-11-21T12:30Z",
+        "competitors": [
+          {
+            "id": "382",
+            "homeAway": "home",
+            "team": {
+              "id": "382",
+              "displayName": "Manchester City",
+              "abbreviation": "MNC"
+            }
+          },
+          {
+            "id": "370",
+            "homeAway": "away",
+            "team": {
+              "id": "370",
+              "displayName": "Fulham",
+              "abbreviation": "FUL"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rosters": [
+    {
+      "homeAway": "home",
+      "team": {
+        "id": "382",
+        "displayName": "Manchester City"
+      },
+      "roster": [
+        {
+          "starter": true,
+          "active": true,
+          "jersey": "1",
+          "position": {
+            "abbreviation": "G"
+          },
+          "athlete": {
+            "id": "217092",
+            "displayName": "Gianluigi Donnarumma"
+          }
+        },
+        {
+          "starter": true,
+          "active": true,
+          "jersey": "6",
+          "position": {
+            "abbreviation": "CD-L"
+          },
+          "athlete": {
+            "id": "265907",
+            "displayName": "Marc Guéhi"
+          }
+        },
+        {
+          "starter": true,
+          "active": true,
+          "jersey": "3",
+          "position": {
+            "abbreviation": "CD-R"
+          },
+          "athlete": {
+            "id": "234878",
+            "displayName": "Rúben Dias"
+          }
+        }
+      ]
+    },
+    {
+      "homeAway": "away",
+      "team": {
+        "id": "370",
+        "displayName": "Fulham"
+      },
+      "roster": [
+        {
+          "starter": true,
+          "active": true,
+          "jersey": "1",
+          "position": {
+            "abbreviation": "G"
+          },
+          "athlete": {
+            "id": "153765",
+            "displayName": "Bernd Leno"
+          }
+        },
+        {
+          "starter": true,
+          "active": true,
+          "jersey": "3",
+          "position": {
+            "abbreviation": "CD-L"
+          },
+          "athlete": {
+            "id": "263110",
+            "displayName": "Calvin Bassey"
+          }
+        }
+      ]
+    }
+  ]
+}
