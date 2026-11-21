@@ -237,6 +237,33 @@ _res = _json.loads((R / 'src/content/results.json').read_text(encoding='utf-8'))
 _bad += [f'results.json:{k}' for k in _res if k not in _arts]
 check('42 예측(pick)은 away/home/draw만, 결과 기록은 실제 글에 연결됨', _bad)
 
+# 끝난 경기가 '예정'으로 남거나, 개막 뒤에도 NBA 허브 제목이 프리시즌인 채로 남지 않게 한다
+_nba = _json.loads((R / 'src/content/nba-2026.json').read_text(encoding='utf-8'))
+_stale = []
+for _grp in ('preseason_games', 'games'):
+    for _g in _nba.get(_grp, []):
+        if _g.get('result') and (str(_g.get('day', '')).upper() == 'UPCOMING' or '예정' in _g.get('tag', '')):
+            _stale.append(f'{_g["kst"]} {_g["away"]}-{_g["home"]}')
+for _g in (_nba.get('season_results') or {}).get('games', []):
+    if _g.get('result') and '예정' in _g.get('tag', ''):
+        _stale.append(f'{_g["kst"]} {_g["away"]}-{_g["home"]}')
+check('43 결과가 나온 NBA 경기에 "예정"·UPCOMING 표기가 남지 않음', _stale)
+
+_nba_title = (re.search(r'<title>([^<]*)</title>', H.get('nba/index.html', '')) or [None, ''])[1]
+import datetime as _dt
+_opened = _dt.datetime.now(_dt.timezone(_dt.timedelta(hours=9))) >= _dt.datetime.fromisoformat(_nba['opening_kst'])
+check('44 개막 뒤 NBA 허브 제목에 프리시즌 문구가 남지 않음', ['/nba/ ' + _nba_title] if (_opened and '프리시즌' in _nba_title) else [])
+
+# 홈 분석 기록 배지와 복기 리포트 상단 집계가 같은 숫자인지 확인한다
+_badge = re.search(r'data-rate[^>]*>[^<]*?(\d+)/(\d+)', H.get('index.html', ''))
+_rv = H.get('analysis/review/index.html', '')
+_rec = re.search(r'<b>(\d+)</b><span>RECORDS', _rv)
+_mat = re.search(r'<b>(\d+)</b><span>MATCHED', _rv)
+_mis = []
+if _badge and _rec and _mat and (int(_badge.group(1)), int(_badge.group(2))) != (int(_mat.group(1)), int(_rec.group(1))):
+    _mis.append(f'홈 {_badge.group(1)}/{_badge.group(2)} ≠ 복기 {_mat.group(1)}/{_rec.group(1)}')
+check('45 홈 분석 기록 배지와 복기 리포트 집계가 같은 숫자', _mis)
+
 fails = [r for r in res if not r[0]]
 for ok, name, note in res:
     print(('PASS ' if ok else 'FAIL ') + name + ('' if ok else '\n      → ' + note))

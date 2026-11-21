@@ -1741,9 +1741,13 @@ def build_article(a: Article):
     is_recap = any(w in (a.kicker or '').upper() for w in ('RECAP', 'RESULT'))
     question = a.question or ('이 경기에서 가장 기억에 남는 장면은?' if is_recap else '')
     question_html = f'<p class="nc-question">{esc(question)} <small>한 줄이면 충분해요.</small></p>' if question else ''
+    _abbr = {v: k for k, v in NBA_TEAM_NAMES.items()}
+    _ta, _th = _abbr.get(getattr(a, 'away', '')), _abbr.get(getattr(a, 'home', ''))
+    thread_cta = (f'<p class="nc-thread"><a class="pill" href="/community/?thread={quote(_ta + "@" + _th)}">{talk_icon()}{_ta} @ {_th} 경기 스레드에서 같이 이야기해요</a></p>'
+                  if a.kind == 'analysis' and getattr(a, 'league', '') == 'NBA' and _ta and _th else '')
     discussion_html = f'''<section class="news-comment-box" data-news-comments data-article-path="{esc(a.url)}" data-article-kind="{'news' if a.kind == 'news' else 'article'}" data-article-title="{esc(anchor_title)}" data-question="{esc(question)}" aria-label="토론">
           <h2>이 글 이야기하기</h2>
-          {question_html}
+          {question_html}{thread_cta}
           <p class="nc-intro">이 글에 남긴 댓글과 답글은 바로 아래에서 볼 수 있고, FAN BOARD에도 함께 올라가요.</p>
           <div data-discussion-mount><p class="news-comment-empty">댓글을 불러오는 중…</p></div>
           <noscript><a class="pill" href="/community/?topic={topic}#write">{talk_icon()}팬 보드에 글쓰기</a></noscript>
