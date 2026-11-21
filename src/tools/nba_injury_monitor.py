@@ -33,7 +33,7 @@ STATUSES = {
     "Doubtful": ("doubtful", "출전 불확실", "gray"),
 }
 # Relative PDF table boundaries: date, time, matchup, team, player, status, reason.
-BOUNDARIES = (0.12, 0.235, 0.305, 0.505, 0.70, 0.80)
+BOUNDARIES = (0.12, 0.23, 0.30, 0.495, 0.67, 0.78)
 MAX_PDF_BYTES = 12 * 1024 * 1024
 MAX_AGE = timedelta(minutes=90)
 UA = "SFANDOM-NBA-injury-audit/1.0 (https://sfandom.com/)"
