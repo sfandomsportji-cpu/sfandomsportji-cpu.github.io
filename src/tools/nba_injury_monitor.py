@@ -176,7 +176,27 @@ def parse_pages(pages):
     return rows
 
 
-def parse_pdf(pdf_bytes):
+def validate_report_header(first_page_text: str, expected_time: datetime) -> None:
+    """Ensure PDF body matches the timestamp claimed by the official PDF URL.
+
+    A valid filename with an outdated or corrupted PDF body is not trustworthy.
+    """
+    found = re.search(
+        r"Injury\s+Report:\s*(\d{1,2}/\d{1,2}/\d{2,4})\s+"
+        r"(\d{1,2}:\d{2})\s*(AM|PM)",
+        first_page_text or "", flags=re.IGNORECASE)
+    if not found:
+        raise injury_quality.DataQualityError(
+            "official PDF title or report timestamp is missing")
+    stamp = f"{found[1]} {found[2]} {found[3].upper()}"
+    fmt = "%m/%d/%Y %I:%M %p" if len(found[1].split("/")[-1]) == 4 else "%m/%d/%y %I:%M %p"
+    actual_local = datetime.strptime(stamp, fmt)
+    if actual_local != expected_time.replace(tzinfo=None):
+        raise injury_quality.DataQualityError(
+            "official PDF title timestamp does not match filename")
+
+
+def parse_pdf(pdf_bytes, *, expected_report_time=None):
     try:
         import pdfplumber
     except ImportError as exc:
@@ -184,6 +204,9 @@ def parse_pdf(pdf_bytes):
     with pdfplumber.open(BytesIO(pdf_bytes)) as pdf:
         if not 1 <= len(pdf.pages) <= 40:
             raise ValueError("NBA PDF page count outside safety bounds")
+        if expected_report_time is not None:
+            validate_report_header(
+                pdf.pages[0].extract_text() or "", expected_report_time)
         return parse_pages(pdf.pages)
 
 
@@ -225,7 +248,7 @@ def main(argv=None):
         previous = json.loads(Path(args.previous).read_text(encoding="utf-8"))
     now = datetime.now(timezone.utc)
     url, reported, pdf = fetch_official(now)
-    rows = parse_pdf(pdf)
+    rows = parse_pdf(pdf, expected_report_time=reported)
     checked = datetime.now(timezone.utc)
     age = sports_clock.freshness(
         reported.astimezone(timezone.utc).isoformat(),
