@@ -12,9 +12,12 @@ on:
       - "src/tools/nba_injury_monitor.py"
       - "src/tools/injury_failover.py"
       - "src/tools/injury_quality.py"
+      - "src/tools/nba_pdf_audit.py"
+      - "src/tools/external_nba_watchdog.py"
       - "src/tools/sports_clock.py"
       - "tests/test_nba_injury_monitor.py"
       - "tests/test_injury_quality.py"
+      - "tests/test_external_nba_watchdog.py"
       - "tests/test_sports_clock.py"
 
 permissions:
@@ -35,7 +38,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Offline timezone + status safety tests
-        run: python -m unittest discover -s tests -p "test_nba_injury_monitor.py" -v && python -m unittest discover -s tests -p "test_injury_quality.py" -v && python -m unittest discover -s tests -p "test_sports_clock.py" -v
+        run: python -m unittest discover -s tests -p "test_nba_injury_monitor.py" -v && python -m unittest discover -s tests -p "test_injury_quality.py" -v && python -m unittest discover -s tests -p "test_sports_clock.py" -v && python -m unittest discover -s tests -p "test_external_nba_watchdog.py" -v
 
   monitor:
     if: github.event_name != 'pull_request'
@@ -87,6 +90,35 @@ jobs:
                  --incident .monitor/incident.json
             echo "result=stale" >> "$GITHUB_OUTPUT"
           fi
+      - name: Emit verified heartbeat into audit artifact only
+        if: steps.run.outputs.result == 'verified'
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          from datetime import datetime, timezone
+          state = json.loads(Path(".monitor/current.json").read_text(encoding="utf-8"))
+          if (state.get("freshness") != "CURRENT"
+                  or state.get("publication_status") != "NOT_APPROVED"
+                  or state.get("public_display_allowed") is not False
+                  or not state.get("players")):
+              raise SystemExit("invalid verified state; heartbeat refused")
+          content = json.dumps(state, sort_keys=True, ensure_ascii=False).encode("utf-8")
+          heartbeat = {
+              "at_utc": datetime.now(timezone.utc).isoformat(),
+              "state": "VERIFIED_AUDIT_ONLY",
+              "source_report_at_utc": state.get("report_at_utc"),
+              "player_rows": len(state["players"]),
+              "snapshot_sha256": hashlib.sha256(content).hexdigest(),
+              "public_display_allowed": False,
+              "publish": False,
+          }
+          Path(".monitor/heartbeat.json").write_text(
+              json.dumps(heartbeat, ensure_ascii=False, sort_keys=True) + "\n",
+              encoding="utf-8")
+          PY
       - name: Audit artifact only (not website)
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
@@ -96,8 +128,10 @@ jobs:
             .monitor/current.json
             .monitor/changes.json
             .monitor/incident.json
+            .monitor/heartbeat.json
           if-no-files-found: warn
-          retention-days: 2
+          # GitHub artifacts are temporary: 30 days buys recovery time, not permanence.
+          retention-days: 30
       - name: Flag monitored schedule gaps (over 22 minutes)
         if: steps.run.outputs.result == 'verified'
         shell: bash
