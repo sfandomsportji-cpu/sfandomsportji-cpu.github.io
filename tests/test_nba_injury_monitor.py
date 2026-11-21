@@ -72,6 +72,46 @@ class MonitorSafetyTest(unittest.TestCase):
         self.assertIn("08_30AM", url)
         self.assertEqual(when.hour, 8)
 
+    def test_dst_duplicate_and_missing_et_report_times_blocked(self):
+        # PDF name carries Eastern clock time but no UTC offset.
+        # DST transition at 1:30AM in November has two possible UTC instants.
+        for tail in ("2026-11-01_01_30AM", "2026-03-08_02_30AM"):
+            url = "https://ak-static.cms.nba.com/referee/injury/Injury-Report_" + tail + ".pdf"
+            with self.subTest(url=url), self.assertRaises(ValueError):
+                m.report_datetime(url)
+
+    def test_gap_recovers_with_new_baseline_but_remains_unapproved(self):
+        import json
+        import tempfile
+        from unittest.mock import patch
+        now = datetime.now(timezone.utc)
+        reported = now - timedelta(minutes=15)
+        key = "2026-11-21|MIL@PHI|Milwaukee Bucks|Dieng, Ousmane"
+        value = {"official_status": "Out", "lineup": "not_verified"}
+        previous = {
+            "checked_at_utc": (now - timedelta(minutes=35)).isoformat(),
+            "source_url": "https://ak-static.cms.nba.com/referee/injury/previous.pdf",
+            "players": {key: value},
+        }
+        url = ("https://ak-static.cms.nba.com/referee/injury/"
+               "Injury-Report_2026-11-21_08_30AM.pdf")
+        with tempfile.TemporaryDirectory() as d:
+            base = Path(d)
+            prev = base / "prev.json"
+            result = base / "current.json"
+            changes = base / "changes.json"
+            prev.write_text(json.dumps(previous), encoding="utf-8")
+            with patch.object(m, "fetch_official", return_value=(url, reported, b"%PDF-1.7")):
+                with patch.object(m, "parse_pdf", return_value={key: value}):
+                    self.assertEqual(
+                        m.main(["--previous", str(prev), "--output", str(result),
+                                "--changes", str(changes)]), 0)
+            report = json.loads(result.read_text(encoding="utf-8"))
+            self.assertTrue(report["schedule_gap_alert"])
+            self.assertTrue(report["review_required"])
+            self.assertEqual(report["publication_status"], "NOT_APPROVED")
+            self.assertEqual(report["freshness"], "CURRENT")
+
     def test_stale_report_is_not_accepted(self):
         now = datetime(2026, 11, 21, 16, 0, tzinfo=timezone.utc)
         html = ('<a href="https://ak-static.cms.nba.com/referee/injury/'
