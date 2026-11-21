@@ -46,3 +46,26 @@ Wrong game/competition ID, missing or duplicate team, wrong team/home-away pair,
 - ESPN athlete IDs and official league player IDs are different namespaces until an explicit verified mapping exists.
 
 **Only a separate operator-approved production PR may connect this to a public site or editorial publication.**
+
+
+## Review follow-up: typed errors, injury age, confirmation and quarantine
+
+**P1 — stable recovery classification contract:** Every `ESPNAdapterError` has a `failure_kind` string. Examples: `wrong_match` (wrong event/team), `time_ambiguous` (naive clock), `time_reversal` (future injury update), and `invalid_data` (duplicate/invalid player). **Use the attribute, not English error text.** The PR #31 recovery-policy maintainer owns classifier integration; this PR intentionally does not edit that branch.
+
+**P1 — official confirmation remains external:** ESPN normalization adds `lineup_confirmation_state="UNVERIFIED"`. A future independent official-source verification layer may transition to `OFFICIAL_CONFIRMED`, `CONFLICT`, or `REVOKED` only after validating an authoritative source, event ID, player/team mapping, and publication time. The adapter itself cannot confirm lineups or publish. An ESPN `starter=true` flag does not grant approval.
+
+**P2 — age warnings:** An ESPN injury `date` more than **7 days** before collection triggers `STALE_ESPN_REPORT` and `STALE_ESPN_INJURIES`. No update timestamp triggers `UNDATED_ESPN_REPORT`; a post-event update stays `POST_EVENT_UPDATE` even when stale. Seven days is an *initial warning threshold*, not a medical or league-validity rule. Old reports may still describe a genuine long-term absence; **never infer recovery or availability from age**.
+
+**P2 — fail-closed scope:** A malformed/mismatched roster or injury row fails normalization for the **entire event**, rather than partially accepting a possibly wrong lineup. This is deliberate for pre-production accuracy. Raw input can be quarantined for investigation; per-row exceptions would require a separately reviewed completeness policy.
+
+### Integration snippet for PR #31 (not wired in this branch)
+
+```python
+kind = getattr(exc, "failure_kind", None)
+if kind not in (recovery_policy.BAD_DATA | recovery_policy.SYSTEM | recovery_policy.TRANSIENT):
+    kind = recovery_policy.classify_exception(exc)
+decision = recovery_policy.decide(kind)
+# No branch here changes publication_status or public_display_allowed.
+```
+
+**Integration status:** Typed error API + offline tests are added, but PR #31's classifier, publication approval, heartbeat, and the live NBA PDF comparison remain independent open work.
