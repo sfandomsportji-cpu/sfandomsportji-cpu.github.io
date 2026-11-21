@@ -11,8 +11,10 @@ on:
       - ".github/workflows/nba-injury-watch.yml"
       - "src/tools/nba_injury_monitor.py"
       - "src/tools/injury_failover.py"
+      - "src/tools/injury_quality.py"
       - "src/tools/sports_clock.py"
       - "tests/test_nba_injury_monitor.py"
+      - "tests/test_injury_quality.py"
       - "tests/test_sports_clock.py"
 
 permissions:
@@ -33,7 +35,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Offline timezone + status safety tests
-        run: python -m unittest discover -s tests -p "test_*monitor.py" -v && python -m unittest discover -s tests -p "test_sports_clock.py" -v
+        run: python -m unittest discover -s tests -p "test_nba_injury_monitor.py" -v && python -m unittest discover -s tests -p "test_injury_quality.py" -v && python -m unittest discover -s tests -p "test_sports_clock.py" -v
 
   monitor:
     if: github.event_name != 'pull_request'
