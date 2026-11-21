@@ -124,6 +124,23 @@ class MonitorSafetyTest(unittest.TestCase):
             self.assertEqual(report["publication_status"], "NOT_APPROVED")
             self.assertEqual(report["freshness"], "CURRENT")
 
+    def test_pdf_header_time_must_match_official_url(self):
+        url = ("https://ak-static.cms.nba.com/referee/injury/"
+               "Injury-Report_2026-11-20_07_15PM.pdf")
+        expected = m.report_datetime(url)
+        m.validate_report_header("Injury Report: 11/20/26 07:15 PM", expected)
+        with self.assertRaises(m.injury_quality.DataQualityError):
+            m.validate_report_header("Injury Report: 11/20/26 07:45 PM", expected)
+        with self.assertRaises(m.injury_quality.DataQualityError):
+            m.validate_report_header("not a current injury report", expected)
+
+    def test_failover_module_has_no_project_dependencies(self):
+        source = (Path(__file__).resolve().parents[1] /
+                  "src/tools/injury_failover.py").read_text(encoding="utf-8")
+        self.assertNotIn("import sports_clock", source)
+        self.assertNotIn("import nba_injury_monitor", source)
+        self.assertNotIn("import injury_quality", source)
+
     def test_stale_report_is_not_accepted(self):
         now = datetime(2026, 11, 21, 16, 0, tzinfo=timezone.utc)
         html = ('<a href="https://ak-static.cms.nba.com/referee/injury/'
