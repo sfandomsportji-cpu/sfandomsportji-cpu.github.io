@@ -13,6 +13,36 @@ import re
 
 STATUSES = {"Out", "Available", "Probable", "Questionable", "Doubtful"}
 GAME = re.compile(r"^[A-Z]{2,3}@[A-Z]{2,3}$")
+# Fixed identity list is an audit boundary, not a data feed. Reject unknown
+# team text instead of silently accepting a PDF header as a team name.
+NBA_TEAMS = {
+    "Atlanta Hawks": "ATL", "Boston Celtics": "BOS",
+    "Brooklyn Nets": "BKN", "Charlotte Hornets": "CHA",
+    "Chicago Bulls": "CHI", "Cleveland Cavaliers": "CLE",
+    "Dallas Mavericks": "DAL", "Denver Nuggets": "DEN",
+    "Detroit Pistons": "DET", "Golden State Warriors": "GSW",
+    "Houston Rockets": "HOU", "Indiana Pacers": "IND",
+    "LA Clippers": "LAC", "Los Angeles Lakers": "LAL",
+    "Memphis Grizzlies": "MEM", "Miami Heat": "MIA",
+    "Milwaukee Bucks": "MIL", "Minnesota Timberwolves": "MIN",
+    "New Orleans Pelicans": "NOP", "New York Knicks": "NYK",
+    "Oklahoma City Thunder": "OKC", "Orlando Magic": "ORL",
+    "Philadelphia 76ers": "PHI", "Phoenix Suns": "PHX",
+    "Portland Trail Blazers": "POR", "Sacramento Kings": "SAC",
+    "San Antonio Spurs": "SAS", "Toronto Raptors": "TOR",
+    "Utah Jazz": "UTA", "Washington Wizards": "WAS",
+}
+
+
+def validate_team_matchup(matchup: str, team: str) -> None:
+    if not isinstance(matchup, str) or not GAME.fullmatch(matchup):
+        raise DataQualityError("invalid NBA matchup code")
+    abbrev = NBA_TEAMS.get(team)
+    if abbrev is None or abbrev not in matchup.split("@"):
+        raise DataQualityError(
+            "NBA team identity does not belong to the matchup: "
+            + str(team)[:60] + " / " + matchup)
+
 
 
 class DataQualityError(ValueError):
@@ -44,6 +74,7 @@ def validate_rows(players: dict) -> dict:
             raise DataQualityError("invalid game date") from exc
         if not GAME.fullmatch(matchup) or "," not in player or len(team) < 3:
             raise DataQualityError("ambiguous game/team/player identity")
+        validate_team_matchup(matchup, team)
         if status not in STATUSES:
             raise DataQualityError("unrecognized injury status")
         if row.get("lineup") != "not_verified":
