@@ -60,15 +60,24 @@ def report_datetime(url):
     if not m:
         raise ValueError("unrecognized NBA report URL")
     raw = f"{m[1]} {m[2]}:{m[3]}{m[4]}"
-    return datetime.strptime(raw, "%Y-%m-%d %I:%M%p").replace(tzinfo=ZoneInfo("America/New_York"))
+    # NBA filename is ET, without a numeric offset. Reject ambiguous DST-hour
+    # reports rather than choosing the wrong UTC/KST instant.
+    naive = datetime.strptime(raw, "%Y-%m-%d %I:%M%p")
+    return sports_clock.attach_local_clock(naive, "America/New_York")
 
 
 def choose_latest(html_text, base_url, now=None):
     now = now or datetime.now(timezone.utc)
     parser = ListingLinks(base_url)
     parser.feed(html_text)
-    valid = [(report_datetime(url), url) for url in set(parser.links)]
-    valid = [(when, url) for when, url in valid if when.astimezone(timezone.utc) <= now + timedelta(minutes=5)]
+    valid = []
+    for url in set(parser.links):
+        try:
+            reported = report_datetime(url)
+        except ValueError:
+            continue  # malformed timestamp or DST ambiguity: never guess
+        if reported.astimezone(timezone.utc) <= now + timedelta(minutes=5):
+            valid.append((reported, url))
     if not valid:
         raise ValueError("no verified official NBA PDF link")
     when, url = max(valid, key=lambda pair: pair[0])
@@ -229,9 +238,13 @@ def main(argv=None):
         gap_minutes = (checked - sports_clock.parse_aware(previous_checked).astimezone(timezone.utc)).total_seconds() / 60
         current["check_gap_minutes"] = round(gap_minutes, 2)
         current["schedule_gap_alert"] = gap_minutes > 22
+        # A missed run must trigger human audit, not permanently lock out
+        # recovery: a freshly verified report may become the new baseline.
+        current["review_required"] = current["schedule_gap_alert"]
     else:
         current["check_gap_minutes"] = None
         current["schedule_gap_alert"] = None
+        current["review_required"] = True  # no history to compare yet
     atomic_json(args.output, current)
     atomic_json(args.changes, {
         "source_url": url, "initial_baseline": baseline, "changes": changes,
