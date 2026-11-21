@@ -23,10 +23,25 @@ EVENT_ID = re.compile(r"^[0-9]{1,24}$")
 KST = ZoneInfo("Asia/Seoul")
 UTC = timezone.utc
 SOURCE = "ESPN_SITE_API_SECONDARY"
+INJURY_STALE_AFTER = timedelta(days=7)  # preliminary warning threshold
+CONFIRMATION_STATES = frozenset({"UNVERIFIED", "OFFICIAL_CONFIRMED", "CONFLICT", "REVOKED"})
 
 
 class ESPNAdapterError(ValueError):
-    """Unsafe or incomplete ESPN payload: do not approve or publish."""
+    """Stable recovery category; callers must use failure_kind, not text.
+
+    This error never authorizes publication. PR #31 can consume
+    recovery_policy.decide(exc.failure_kind) after matching supported kinds.
+    """
+
+    KINDS = frozenset({"invalid_data", "wrong_match", "partial_parse",
+                       "time_ambiguous", "time_reversal", "layout_changed"})
+
+    def __init__(self, message: str, *, failure_kind: str = "invalid_data"):
+        super().__init__(message)
+        if failure_kind not in self.KINDS:
+            raise ValueError("unknown ESPN error classification")
+        self.failure_kind = failure_kind
 
 
 def summary_url(sport: str, event_id: str, league: str | None = None) -> str:
@@ -50,7 +65,8 @@ def parse_timestamp(value: str) -> datetime:
     except ValueError as exc:
         raise ESPNAdapterError("invalid timestamp") from exc
     if dt.tzinfo is None or dt.utcoffset() is None:
-        raise ESPNAdapterError("offset required for ESPN timestamp")
+        raise ESPNAdapterError("offset required for ESPN timestamp",
+                               failure_kind="time_ambiguous")
     return dt.astimezone(UTC)
 
 
@@ -85,9 +101,10 @@ def _event(payload: dict, expected_event_id: str | None) -> tuple[str, dict]:
     comp = comps[0]
     event_id = _id(header.get("id"), "header.id")
     if _id(comp.get("id"), "competition.id") != event_id:
-        raise ESPNAdapterError("competition id does not match event id")
+        raise ESPNAdapterError("competition id does not match event id",
+                               failure_kind="wrong_match")
     if expected_event_id is not None and event_id != _id(expected_event_id, "expected event id"):
-        raise ESPNAdapterError("wrong game response")
+        raise ESPNAdapterError("wrong game response", failure_kind="wrong_match")
     return event_id, comp
 
 
@@ -104,7 +121,8 @@ def _teams(competition: dict) -> tuple[list[dict], dict[str, str]]:
         competitor_id = _id(item.get("id"), "competitor.id")
         side = item.get("homeAway")
         if team_id != competitor_id or team_id in ids or side not in ("home", "away") or side in sides:
-            raise ESPNAdapterError("invalid/duplicate team id or side")
+            raise ESPNAdapterError("invalid/duplicate team id or side",
+                                   failure_kind="wrong_match")
         ids.add(team_id)
         sides.add(side)
         teams.append({"team_id": team_id, "name": _text(t.get("displayName"), "team name"),
@@ -125,7 +143,8 @@ def _injuries(payload: dict, team_sides: dict[str, str], event_time: datetime,
             raise ESPNAdapterError("invalid injury group")
         team_id = _id(group["team"].get("id"), "injury team.id")
         if team_id not in team_sides:
-            raise ESPNAdapterError("injury attached to a team outside this game")
+            raise ESPNAdapterError("injury attached to a team outside this game",
+                                   failure_kind="wrong_match")
         for row in _list(group.get("injuries"), "injuries[].injuries"):
             if not isinstance(row, dict) or not isinstance(row.get("athlete"), dict):
                 raise ESPNAdapterError("invalid injury player")
@@ -136,9 +155,21 @@ def _injuries(payload: dict, team_sides: dict[str, str], event_time: datetime,
             seen.add(key)
             updated = parse_timestamp(row["date"]) if row.get("date") else None
             if updated and updated > fetched_at + timedelta(minutes=2):
-                raise ESPNAdapterError("injury timestamp is in the future")
-            # Never project later updates backwards onto an older event.
+                raise ESPNAdapterError("injury timestamp is in the future",
+                                       failure_kind="time_reversal")
+            # Never backdate a historical event's later injury updates.
             after_event = updated is not None and updated > event_time
+            age_minutes = ((fetched_at - updated).total_seconds() / 60
+                           if updated is not None else None)
+            stale = updated is not None and fetched_at - updated > INJURY_STALE_AFTER
+            if after_event:
+                applicability = "POST_EVENT_UPDATE"
+            elif updated is None:
+                applicability = "UNDATED_ESPN_REPORT"
+            elif stale:
+                applicability = "STALE_ESPN_REPORT"
+            else:
+                applicability = "ESPN_REPORTED_NOT_OFFICIAL"
             result.append({
                 "team_id": team_id, "athlete_id": player_id,
                 "athlete_name": _text(row["athlete"].get("displayName"), "injury athlete name"),
@@ -146,7 +177,10 @@ def _injuries(payload: dict, team_sides: dict[str, str], event_time: datetime,
                 "source_updated_utc": updated.isoformat() if updated else None,
                 "injury_type_raw": row.get("details", {}).get("type") if isinstance(row.get("details"), dict) else None,
                 "espn_return_date_raw": row.get("details", {}).get("returnDate") if isinstance(row.get("details"), dict) else None,
-                "applicability": "POST_EVENT_UPDATE" if after_event else "ESPN_REPORTED_NOT_OFFICIAL",
+                "applicability": applicability,
+                "age_minutes_at_fetch": (round(max(0, age_minutes), 1)
+                                         if age_minutes is not None else None),
+                "stale_age_warning": stale,
                 "official_status_verified": False,
             })
     return result, True
@@ -164,7 +198,8 @@ def _roster_entries(payload: dict, sport: str, team_sides: dict[str, str]) -> tu
             raise ESPNAdapterError("invalid roster group")
         team_id = _id(group["team"].get("id"), "roster team id")
         if team_id not in team_sides or group.get("homeAway") != team_sides[team_id]:
-            raise ESPNAdapterError("roster assigned to wrong game team")
+            raise ESPNAdapterError("roster assigned to wrong game team",
+                                   failure_kind="wrong_match")
         for row in _list(group.get("roster"), "rosters[].roster"):
             if not isinstance(row, dict) or not isinstance(row.get("athlete"), dict):
                 raise ESPNAdapterError("invalid roster player")
@@ -218,6 +253,10 @@ def normalize_summary(sport: str, payload: dict, *, fetched_at: str,
         warnings.append("NO_ROSTER_SECTION: lineup not available from this payload")
     if any(x["applicability"] == "POST_EVENT_UPDATE" for x in injuries):
         warnings.append("POST_EVENT_INJURY_UPDATES: cannot reconstruct historical pregame injury status")
+    if any(x["stale_age_warning"] for x in injuries):
+        warnings.append("STALE_ESPN_INJURIES: update date older than 7 days at fetch")
+    if any(x["applicability"] == "UNDATED_ESPN_REPORT" for x in injuries):
+        warnings.append("UNDATED_ESPN_INJURIES: no reliable source update date")
     return {
         "sport": sport, "league": league, "provider": SOURCE,
         "event_id": event_id, "event_key": f"{sport}|espn|{league}|{event_id}",
@@ -230,6 +269,8 @@ def normalize_summary(sport: str, payload: dict, *, fetched_at: str,
         "teams": teams, "injuries": injuries, "roster": roster,
         "injury_section_present": has_injuries_section,
         "roster_section_present": has_rosters_section,
+        # An independent official-source verification layer owns this transition.
+        "lineup_confirmation_state": "UNVERIFIED",
         "official_lineup_confirmed": False,
         "publication_status": "NOT_APPROVED",
         "public_display_allowed": False,
