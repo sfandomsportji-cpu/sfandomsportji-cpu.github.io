@@ -96,6 +96,18 @@ jobs:
             .monitor/incident.json
           if-no-files-found: warn
           retention-days: 2
+      - name: Flag monitored schedule gaps (over 22 minutes)
+        if: steps.run.outputs.result == 'verified'
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s = json.loads(Path(".monitor/current.json").read_text(encoding="utf-8"))
+          if s.get("schedule_gap_alert") is True:
+              print("::error::NBA monitor gap exceeds 22 minutes; timestamps require manual review.")
+              raise SystemExit(1)
+          PY
       - name: Surface failure in GitHub Actions
         if: steps.run.outputs.result == 'stale'
         run: |
