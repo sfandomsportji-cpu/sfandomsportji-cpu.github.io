@@ -33,7 +33,6 @@ class MonitorSafetyTest(unittest.TestCase):
              "Dieng, Ousmane", "Out", "Injury"),
             ("", "", "", "", "Jones, Kam", "Probable", ""),
             ("", "", "", "Philadelphia 76ers", "Maxey, Tyrese", "Questionable", ""),
-            ("", "", "", "", "Unknown, Person", "Not Sure", ""),
             ("", "", "POR@NYK", "Portland Trail Blazers",
              "Avdija, Deni", "Available", ""),
             ("", "", "", "New York Knicks", "NOT YET SUBMITTED", "", ""),
@@ -46,6 +45,14 @@ class MonitorSafetyTest(unittest.TestCase):
         self.assertEqual(statuses["Maxey, Tyrese"], "Questionable")
         self.assertEqual(statuses["Avdija, Deni"], "Available")
         self.assertTrue(all(row["lineup"] == "not_verified" for row in rows.values()))
+
+    def test_new_unknown_player_status_blocks_entire_pdf(self):
+        page = FakePage([
+            ("11/21/2026", "01:00", "MIL@PHI", "Milwaukee Bucks",
+             "Unknown, Person", "Not Sure", "Unrecognized status"),
+        ])
+        with self.assertRaises(m.injury_quality.DataQualityError):
+            m.parse_pages([page])
 
     def test_parsing_continues_on_new_page(self):
         one = FakePage([("11/21/2026", "08:00", "LAC@DAL",
