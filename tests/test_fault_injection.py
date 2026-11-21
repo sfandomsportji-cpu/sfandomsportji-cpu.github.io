@@ -4,6 +4,7 @@ Offline only. The collector's fetch/parse are patched to fail in realistic ways;
 runner then follows the workflow's order (collector -> classify -> quarantine record ->
 stale failover). Each scenario checks what is left on disk.
 """
+import hashlib
 import json
 import sys
 import tempfile
@@ -48,7 +49,8 @@ class FaultInjectionTest(unittest.TestCase):
             argv = ["--previous", str(prev), "--output", str(base / "current.json"),
                     "--changes", str(base / "changes.json"),
                     "--incident", str(base / "incident.json"),
-                    "--quarantine", str(base / "quarantine.json")]
+                    "--quarantine", str(base / "quarantine.json"),
+                    "--evidence-dir", str(base / "quarantine")]
             fetch = effect.get("fetch", (URL, reported, b"%PDF-1.7"))
             with patch.object(m, "fetch_official",
                               **({"side_effect": fetch} if isinstance(fetch, Exception)
@@ -75,7 +77,23 @@ class FaultInjectionTest(unittest.TestCase):
             self.assertEqual(current["publication_status"], "NOT_APPROVED")
             self.assertEqual(current["players"], previous_snapshot(now)["players"],
                              "only the previous verified rows may be carried, for audit")
+            self.check_evidence(base, quarantine, effect)
             return quarantine
+
+    def check_evidence(self, base, quarantine, effect):
+        ev = quarantine["evidence"]
+        fetched = not isinstance(effect.get("fetch"), Exception)
+        parsed = isinstance(effect.get("parse"), dict)
+        self.assertEqual(ev["pdf_saved"], fetched, "PDF is kept only if it was downloaded")
+        self.assertEqual(ev["rows_saved"], parsed, "rows are kept only if parsing returned them")
+        if fetched:
+            data = (base / "quarantine" / ev["pdf_file"]).read_bytes()
+            self.assertEqual(data, b"%PDF-1.7")
+            self.assertEqual(hashlib.sha256(data).hexdigest(), ev["pdf_sha256"])
+        if parsed:
+            saved = json.loads((base / "quarantine" / ev["rows_file"]).read_text(encoding="utf-8"))
+            self.assertEqual(saved, effect["parse"])
+            self.assertEqual(ev["rows_count"], len(effect["parse"]))
 
     def test_source_unreachable(self):
         q = self.run_case({"fetch": RuntimeError("NBA official source unavailable: a:OSError")},
@@ -120,9 +138,11 @@ class FaultInjectionTest(unittest.TestCase):
                 code = rr.run(["--previous", str(prev), "--output", str(base / "current.json"),
                                "--changes", str(base / "changes.json"),
                                "--incident", str(base / "incident.json"),
-                               "--quarantine", str(base / "quarantine.json")])
+                               "--quarantine", str(base / "quarantine.json"),
+                               "--evidence-dir", str(base / "quarantine")])
             self.assertEqual(code, 0)
             self.assertFalse((base / "quarantine.json").exists())
+            self.assertFalse((base / "quarantine").exists(), "no evidence files on success")
             current = json.loads((base / "current.json").read_text(encoding="utf-8"))
             self.assertEqual(current["publication_status"], "NOT_APPROVED")
             self.assertFalse(current["public_display_allowed"])
