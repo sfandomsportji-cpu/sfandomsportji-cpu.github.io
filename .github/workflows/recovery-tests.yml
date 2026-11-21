@@ -8,7 +8,9 @@ on:
       - "src/tools/safe_mode.py"
       - "src/tools/recovery_policy.py"
       - "src/tools/watchdog.py"
+      - "src/tools/recovery_runner.py"
       - "tests/test_recovery.py"
+      - "tests/test_fault_injection.py"
 
 permissions:
   contents: read
@@ -27,4 +29,4 @@ jobs:
         with:
           python-version: "3.12"
       - name: Offline recovery tests
-        run: python -m unittest discover -s tests -p "test_recovery.py" -v
+        run: python -m unittest discover -s tests -p "test_recovery.py" -v && python -m unittest discover -s tests -p "test_fault_injection.py" -v

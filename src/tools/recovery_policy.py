@@ -16,7 +16,7 @@ MAX_GAP_MINUTES = 22     # collection gap that forces safe mode
 
 TRANSIENT = {"source_timeout", "source_http_error", "source_dns_error"}
 BAD_DATA = {"invalid_data", "wrong_match", "partial_parse", "layout_changed",
-            "time_ambiguous", "time_reversal"}
+            "time_ambiguous", "time_reversal", "stale_source"}
 SYSTEM = {"collector_failed", "build_failed", "clock_module_failed",
           "state_corrupt", "recovery_error"}
 # Retrying cannot fix these; go straight to a human.
@@ -60,6 +60,32 @@ def decide(kind, consecutive_failures=1, gap_minutes=0.0):
         return Decision(3, kind, SAFE.actions, False, True, "unclassified")
     except Exception:
         return SAFE
+
+
+def classify_exception(exc):
+    """Map a collector exception to a failure kind. Unknown -> "unknown" (stage 3)."""
+    try:
+        name = type(exc).__name__
+        msg = str(exc).lower()
+        if isinstance(exc, (TimeoutError, ConnectionError)) or "source unavailable" in msg:
+            return "source_timeout"
+        if "dependency unavailable" in msg:
+            return "collector_failed"
+        if "ambiguous local time" in msg or "nonexistent local time" in msg or "dst" in msg:
+            return "time_ambiguous"
+        if "source age or clock" in msg or "link is stale" in msg:
+            return "stale_source"
+        if ("sharp row drop" in msg or "no unambiguous player statuses" in msg
+                or "missing required player field" in msg):
+            return "partial_parse"
+        if ("page count" in msg or "report header" in msg or "not a pdf" in msg
+                or "unrecognized nba report url" in msg or "no verified official" in msg):
+            return "layout_changed"
+        if name == "DataQualityError":
+            return "invalid_data"
+        return "unknown"
+    except Exception:
+        return "unknown"
 
 
 def may_resume_publication(revalidated, operator_approved):
