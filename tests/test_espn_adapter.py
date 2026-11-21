@@ -107,6 +107,68 @@ class ESPNAdapterTests(unittest.TestCase):
         with self.assertRaisesRegex(a.ESPNAdapterError, "future"):
             a.normalize_summary("basketball", data, fetched_at=CAPTURE_AT)
 
+    def test_recovery_kind_is_stable_not_message_matching(self):
+        data = fixture("espn_nba_summary_excerpt.json")
+        with self.assertRaises(a.ESPNAdapterError) as ctx:
+            a.normalize_summary("basketball", data, fetched_at=CAPTURE_AT,
+                                expected_event_id="1")
+        self.assertEqual(ctx.exception.failure_kind, "wrong_match")
+        self.assertEqual(str(ctx.exception), "wrong game response")
+        with self.assertRaises(a.ESPNAdapterError) as ctx:
+            a.parse_timestamp("2026-11-21T12:00:00")
+        self.assertEqual(ctx.exception.failure_kind, "time_ambiguous")
+        with self.assertRaises(a.ESPNAdapterError) as ctx:
+            a.parse_timestamp("not-a-timestamp")
+        self.assertEqual(ctx.exception.failure_kind, "invalid_data")
+
+    def test_old_injury_warning_after_seven_days(self):
+        data = fixture("espn_nba_summary_excerpt.json")
+        data["injuries"][0]["injuries"][0]["date"] = "2026-11-01T10:00:00Z"
+        result = a.normalize_summary("basketball", data, fetched_at=CAPTURE_AT)
+        old = result["injuries"][0]
+        self.assertEqual(old["applicability"], "STALE_ESPN_REPORT")
+        self.assertTrue(old["stale_age_warning"])
+        self.assertGreater(old["age_minutes_at_fetch"], 7 * 24 * 60)
+        self.assertIn("STALE_ESPN_INJURIES", " ".join(result["warnings"]))
+        self.assertFalse(old["official_status_verified"])
+
+    def test_seven_day_boundary_is_only_warned_if_older(self):
+        data = fixture("espn_nba_summary_excerpt.json")
+        data["injuries"][0]["injuries"][0]["date"] = "2026-11-15T00:00:00Z"
+        result = a.normalize_summary("basketball", data, fetched_at=CAPTURE_AT)
+        self.assertFalse(result["injuries"][0]["stale_age_warning"])
+        self.assertEqual(result["injuries"][0]["applicability"],
+                         "ESPN_REPORTED_NOT_OFFICIAL")
+
+    def test_undated_injury_has_warning_and_no_freshness_claim(self):
+        data = fixture("espn_nba_summary_excerpt.json")
+        data["injuries"][0]["injuries"][0].pop("date")
+        result = a.normalize_summary("basketball", data, fetched_at=CAPTURE_AT)
+        self.assertEqual(result["injuries"][0]["applicability"], "UNDATED_ESPN_REPORT")
+        self.assertIsNone(result["injuries"][0]["age_minutes_at_fetch"])
+        self.assertIn("UNDATED_ESPN_INJURIES", " ".join(result["warnings"]))
+
+    def test_future_injury_has_time_reversal_kind(self):
+        data = fixture("espn_nba_summary_excerpt.json")
+        data["injuries"][0]["injuries"][0]["date"] = "2026-11-23T00:00Z"
+        with self.assertRaises(a.ESPNAdapterError) as ctx:
+            a.normalize_summary("basketball", data, fetched_at=CAPTURE_AT)
+        self.assertEqual(ctx.exception.failure_kind, "time_reversal")
+
+    def test_one_invalid_player_rejects_whole_event(self):
+        data = fixture("espn_soccer_summary_excerpt.json")
+        data["rosters"][0]["roster"][1]["athlete"].pop("id")
+        with self.assertRaises(a.ESPNAdapterError):
+            a.normalize_summary("soccer", data, fetched_at=CAPTURE_AT)
+
+    def test_confirmation_state_is_explicit_not_automatic(self):
+        result = a.normalize_summary("soccer", fixture("espn_soccer_summary_excerpt.json"),
+                                     fetched_at=CAPTURE_AT)
+        self.assertEqual(result["lineup_confirmation_state"], "UNVERIFIED")
+        self.assertIn("OFFICIAL_CONFIRMED", a.CONFIRMATION_STATES)
+        self.assertFalse(result["official_lineup_confirmed"])
+        self.assertFalse(result["public_display_allowed"])
+
     def test_all_three_sports_remain_nonpublishing(self):
         for sport, name in (("basketball", "espn_nba_summary_excerpt.json"),
                             ("soccer", "espn_soccer_summary_excerpt.json"),
