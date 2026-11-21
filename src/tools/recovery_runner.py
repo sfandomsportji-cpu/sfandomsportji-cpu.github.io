@@ -72,6 +72,66 @@ def quarantine_record(exc, decision, now, failures):
     }
 
 
+
+
+def run_espn_fixture(*, fixture_path, sport, event_id, fetched_at,
+                     quarantine_path, league=None, failures=1):
+    """Exercise ESPN adapter -> recovery policy -> quarantine, without HTTP.
+
+    The ESPN path NEVER invokes the NBA fallback or touches the official
+    collector's current/previous/changes files. A success is audit-only.
+    This is a deliberate preproduction integration probe, not live ingestion.
+    """
+    now = datetime.now(timezone.utc)
+    raw = None
+    try:
+        import espn_adapter
+        raw = Path(fixture_path).read_bytes()
+        try:
+            payload = json.loads(raw)
+        except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+            raise espn_adapter.ESPNAdapterError(
+                "invalid ESPN JSON payload", failure_kind="partial_parse") from exc
+        record = espn_adapter.normalize_summary(
+            sport, payload, fetched_at=fetched_at,
+            expected_event_id=event_id, league=league)
+        if record.get("public_display_allowed") is not False or (
+                record.get("publication_status") != "NOT_APPROVED"):
+            raise RuntimeError("ESPN adapter unexpectedly attempted publication")
+        print(json.dumps({
+            "source": "ESPN_SITE_API_SECONDARY",
+            "sport": sport,
+            "event_id": record["event_id"],
+            "lineup_confirmation_state": record["lineup_confirmation_state"],
+            "injury_records": len(record["injuries"]),
+            "roster_records": len(record["roster"]),
+            "publish": False,
+            "state": "OFFLINE_AUDIT_ONLY",
+        }, ensure_ascii=False))
+        return 0
+    except Exception as exc:
+        kind = policy.classify_exception(exc)
+        decision = policy.decide(kind, failures)
+        record = quarantine_record(exc, decision, now, failures)
+        record.update({
+            "source": "ESPN_SITE_API_SECONDARY",
+            "sport": sport,
+            "event_id_requested": event_id,
+            "input_sha256": hashlib.sha256(raw).hexdigest() if raw is not None else None,
+            "raw_espn_json_saved": False,
+            "current_snapshot_written": False,
+        })
+        try:
+            _write(quarantine_path, record)
+        except Exception as write_exc:
+            print(f"ESPN_QUARANTINE_WRITE_FAILED: {type(write_exc).__name__}",
+                  file=sys.stderr)
+            return 1
+        print(f"ESPN_RECOVERY: kind={decision.kind} stage={decision.stage} publish=False",
+              file=sys.stderr)
+        return 1
+
+
 def run(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--previous", default=".monitor/previous.json")
@@ -82,7 +142,20 @@ def run(argv=None):
     ap.add_argument("--evidence-dir", default=".monitor/quarantine")
     ap.add_argument("--failures", type=int, default=1,
                     help="consecutive failures so far, including this one")
+    ap.add_argument("--espn-fixture", help="local ESPN JSON only; never fetch HTTP")
+    ap.add_argument("--espn-sport", choices=("basketball", "soccer", "baseball"))
+    ap.add_argument("--espn-event-id", help="expected ESPN event ID")
+    ap.add_argument("--espn-fetched-at", help="UTC ISO timestamp with offset")
+    ap.add_argument("--espn-league", help="optional soccer competition code")
     args = ap.parse_args(argv)
+    if args.espn_fixture:
+        if not all((args.espn_sport, args.espn_event_id, args.espn_fetched_at)):
+            ap.error("ESPN offline mode needs sport, event id and fetched timestamp")
+        return run_espn_fixture(
+            fixture_path=args.espn_fixture, sport=args.espn_sport,
+            event_id=args.espn_event_id, fetched_at=args.espn_fetched_at,
+            league=args.espn_league, quarantine_path=args.quarantine,
+            failures=args.failures)
     now = datetime.now(timezone.utc)
     captured = {}
     collector = None
