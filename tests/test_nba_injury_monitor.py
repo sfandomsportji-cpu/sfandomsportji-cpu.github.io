@@ -87,7 +87,12 @@ class MonitorSafetyTest(unittest.TestCase):
         now = datetime.now(timezone.utc)
         reported = now - timedelta(minutes=15)
         key = "2026-11-21|MIL@PHI|Milwaukee Bucks|Dieng, Ousmane"
-        value = {"official_status": "Out", "lineup": "not_verified"}
+        value = {
+            "game_date": "2026-11-21", "matchup": "MIL@PHI",
+            "team": "Milwaukee Bucks", "player": "Dieng, Ousmane",
+            "official_status": "Out", "state": "out",
+            "lineup": "not_verified",
+        }
         previous = {
             "checked_at_utc": (now - timedelta(minutes=35)).isoformat(),
             "source_url": "https://ak-static.cms.nba.com/referee/injury/previous.pdf",
