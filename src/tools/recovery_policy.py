@@ -65,6 +65,11 @@ def decide(kind, consecutive_failures=1, gap_minutes=0.0):
 def classify_exception(exc):
     """Map a collector exception to a failure kind. Unknown -> "unknown" (stage 3)."""
     try:
+        # A typed error (e.g. ESPNAdapterError.failure_kind) is more reliable than
+        # message text. Only kinds this policy knows are trusted; others fall through.
+        declared = getattr(exc, "failure_kind", None)
+        if isinstance(declared, str) and declared in (TRANSIENT | BAD_DATA | SYSTEM):
+            return declared
         name = type(exc).__name__
         msg = str(exc).lower()
         if isinstance(exc, (TimeoutError, ConnectionError)) or "source unavailable" in msg:

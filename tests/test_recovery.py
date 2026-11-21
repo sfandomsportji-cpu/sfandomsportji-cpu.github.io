@@ -114,6 +114,39 @@ class PolicyTest(unittest.TestCase):
         self.assertTrue(rp.may_resume_publication(True, True))
 
 
+class ClassifierTest(unittest.TestCase):
+    def test_typed_failure_kind_wins_over_message(self):
+        class Typed(ValueError):
+            def __init__(self, msg, kind):
+                super().__init__(msg)
+                self.failure_kind = kind
+        self.assertEqual(rp.classify_exception(Typed("anything at all", "wrong_match")), "wrong_match")
+        self.assertEqual(rp.classify_exception(Typed("timestamp", "time_ambiguous")), "time_ambiguous")
+        self.assertEqual(rp.classify_exception(Typed("x", "time_reversal")), "time_reversal")
+
+    def test_unknown_declared_kind_is_not_trusted(self):
+        class Typed(ValueError):
+            failure_kind = "publish_now"
+        self.assertEqual(rp.classify_exception(Typed("weird")), "unknown")
+        self.assertEqual(rp.decide(rp.classify_exception(Typed("weird"))).stage, 3)
+
+    def test_non_string_declared_kind_is_ignored(self):
+        class Typed(ValueError):
+            failure_kind = ["wrong_match"]
+        self.assertEqual(rp.classify_exception(Typed("boom")), "unknown")
+
+    def test_typed_kinds_route_to_stage_two_without_publishing(self):
+        for kind in ("invalid_data", "wrong_match", "partial_parse",
+                     "time_ambiguous", "time_reversal", "layout_changed"):
+            d = rp.decide(kind)
+            self.assertEqual(d.stage, 2, kind)
+            self.assertFalse(d.publish)
+            self.assertIn("quarantine_new_data", d.actions)
+
+    def test_message_matching_still_works_for_untyped_errors(self):
+        self.assertEqual(rp.classify_exception(ValueError("sharp row drop: a")), "partial_parse")
+
+
 class WatchdogTest(unittest.TestCase):
     def test_states(self):
         ok = (NOW - timedelta(minutes=10)).isoformat()
