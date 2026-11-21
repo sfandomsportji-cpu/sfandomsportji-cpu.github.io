@@ -1,0 +1,30 @@
+name: Recovery modules tests (offline, no network, no publishing)
+
+# Runs only when the independent recovery modules change. Standard library only.
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/recovery-tests.yml"
+      - "src/tools/safe_mode.py"
+      - "src/tools/recovery_policy.py"
+      - "src/tools/watchdog.py"
+      - "tests/test_recovery.py"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: recovery-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  recovery-unit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Offline recovery tests
+        run: python -m unittest discover -s tests -p "test_recovery.py" -v
