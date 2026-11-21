@@ -1,0 +1,85 @@
+{
+  "header": {
+    "id": "401910023",
+    "competitions": [
+      {
+        "id": "401910023",
+        "date": "2026-11-21T18:00Z",
+        "competitors": [
+          {
+            "id": "20",
+            "homeAway": "home",
+            "team": {
+              "id": "20",
+              "displayName": "Philadelphia 76ers",
+              "abbreviation": "PHI"
+            }
+          },
+          {
+            "id": "15",
+            "homeAway": "away",
+            "team": {
+              "id": "15",
+              "displayName": "Milwaukee Bucks",
+              "abbreviation": "MIL"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "injuries": [
+    {
+      "team": {
+        "id": "20",
+        "displayName": "Philadelphia 76ers"
+      },
+      "injuries": [
+        {
+          "status": "Day-To-Day",
+          "date": "2026-11-21T16:25Z",
+          "athlete": {
+            "id": "4431678",
+            "displayName": "Tyrese Maxey"
+          },
+          "details": {
+            "type": "Foot",
+            "returnDate": "2026-11-21"
+          }
+        },
+        {
+          "status": "Out",
+          "date": "2026-11-20T22:13Z",
+          "athlete": {
+            "id": "4870562",
+            "displayName": "Dominick Barlow"
+          },
+          "details": {
+            "type": "Back",
+            "returnDate": "2026-11-21"
+          }
+        }
+      ]
+    },
+    {
+      "team": {
+        "id": "15",
+        "displayName": "Milwaukee Bucks"
+      },
+      "injuries": [
+        {
+          "status": "Out",
+          "date": "2026-11-15T23:46Z",
+          "athlete": {
+            "id": "4997526",
+            "displayName": "Ousmane Dieng"
+          },
+          "details": {
+            "type": "Finger",
+            "returnDate": "2026-12-14"
+          }
+        }
+      ]
+    }
+  ]
+}

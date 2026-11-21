@@ -10,6 +10,10 @@ on:
     paths:
       - ".github/workflows/nba-injury-watch.yml"
       - "src/tools/nba_injury_monitor.py"
+      - "src/tools/recovery_runner.py"
+      - "src/tools/recovery_policy.py"
+      - "tests/test_fault_injection.py"
+      - "tests/test_integration_espn_recovery.py"
       - "src/tools/injury_failover.py"
       - "src/tools/injury_quality.py"
       - "src/tools/nba_pdf_audit.py"
@@ -74,20 +78,19 @@ jobs:
             done <<< "$ids"
           fi
           exit 0
-      - name: Fetch official PDF; second URL; cached fallback
+      - name: Fetch official PDF using recovery runner (quarantine failures)
         id: run
         shell: bash
         run: |
-          if python src/tools/nba_injury_monitor.py \
+          if python src/tools/recovery_runner.py \
                  --previous .monitor/previous.json \
                  --output .monitor/current.json \
-                 --changes .monitor/changes.json; then
+                 --changes .monitor/changes.json \
+                 --incident .monitor/incident.json \
+                 --quarantine .monitor/quarantine.json \
+                 --evidence-dir .monitor/quarantine; then
             echo "result=verified" >> "$GITHUB_OUTPUT"
           else
-            python src/tools/injury_failover.py \
-                 --previous .monitor/previous.json \
-                 --output .monitor/current.json \
-                 --incident .monitor/incident.json
             echo "result=stale" >> "$GITHUB_OUTPUT"
           fi
       - name: Emit verified heartbeat into audit artifact only
@@ -128,6 +131,7 @@ jobs:
             .monitor/current.json
             .monitor/changes.json
             .monitor/incident.json
+            .monitor/quarantine.json
             .monitor/heartbeat.json
           if-no-files-found: warn
           # GitHub artifacts are temporary: 30 days buys recovery time, not permanence.
