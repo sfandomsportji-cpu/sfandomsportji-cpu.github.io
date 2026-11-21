@@ -6,6 +6,7 @@ from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src" / "tools"))
 import nba_injury_monitor as m
+import injury_failover as f
 
 
 class FakePage:
@@ -85,6 +86,27 @@ class MonitorSafetyTest(unittest.TestCase):
         changes, baseline = m.compare(old, {"players": {}})
         self.assertFalse(baseline)
         self.assertEqual(changes, [])
+
+    def test_failover_has_no_publish_path_and_preserves_previous_as_stale(self):
+        from datetime import datetime, timezone
+        old = {"source_url": "https://ak-static.cms.nba.com/old.pdf",
+               "checked_at_utc": "2026-11-21T11:00:00+00:00",
+               "players": {"some-player": {"official_status": "Out"}}}
+        result = f.fallback(old, datetime(2026, 11, 21, 12, 0, tzinfo=timezone.utc))
+        self.assertEqual(result["freshness"], "STALE")
+        self.assertEqual(result["publication_status"], "NOT_APPROVED")
+        self.assertFalse(result["public_display_allowed"])
+        self.assertEqual(result["previous_checked_at_utc"], old["checked_at_utc"])
+        self.assertEqual(result["players"], old["players"])
+
+    def test_workflow_has_read_only_permissions_and_no_publish_commands(self):
+        wf = (Path(__file__).resolve().parents[1] /
+              ".github/workflows/nba-injury-watch.yml").read_text(encoding="utf-8")
+        self.assertIn("contents: read", wf)
+        self.assertNotIn("contents: write", wf)
+        self.assertNotIn("git push", wf)
+        self.assertNotIn("src/build.py", wf)
+        self.assertIn("3,13,23,33,43,53 * * * *", wf)
 
     def test_diff_and_first_baseline(self):
         key = "2026-11-21|LAC@DAL|Dallas Mavericks|Martin, Caleb"
