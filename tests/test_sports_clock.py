@@ -45,6 +45,24 @@ class SportsClockTests(unittest.TestCase):
         self.assertNotEqual(a["event_key"], b["event_key"])
         self.assertEqual(a["date_venue"], b["date_venue"])
 
+    def test_december_to_january_cross_year_boundary(self):
+        event = clock.event_clock("basketball", "nba", "cross-year",
+                                  "2026-12-31T18:30:00-05:00",
+                                  "America/New_York")
+        self.assertEqual(event["date_venue"], "2026-12-31")
+        self.assertEqual(event["date_kst"], "2027-01-01")
+        self.assertEqual(event["start_kst"][11:16], "08:30")
+
+    def test_provider_game_id_remains_stable_across_time_corrections(self):
+        original = clock.event_clock("soccer", "league", "fixture-77",
+                                     "2026-11-21T22:00:00+01:00",
+                                     "Europe/Madrid")
+        moved = clock.event_clock("soccer", "league", "fixture-77",
+                                  "2026-11-22T00:00:00+01:00",
+                                  "Europe/Madrid")
+        self.assertEqual(original["event_key"], moved["event_key"])
+        self.assertNotEqual(original["date_venue"], moved["date_venue"])
+
     def test_reject_naive_and_wrong_sport(self):
         with self.assertRaises(ValueError):
             clock.parse_aware("2026-11-21T20:30")
