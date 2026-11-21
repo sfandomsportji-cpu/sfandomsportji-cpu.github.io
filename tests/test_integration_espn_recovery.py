@@ -124,6 +124,34 @@ class RealAdapterRunnerTest(unittest.TestCase):
         data["header"]["competitions"] = None
         self.check_rejected("basketball", "401910023", data, "invalid_data", 2)
 
+    def test_missing_fixture_triggers_safe_mode_without_writing_site_data(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            qpath = root / "quarantine.json"
+            with redirect_stderr(io.StringIO()), redirect_stdout(io.StringIO()):
+                code = runner.run([
+                    "--espn-fixture", str(root / "missing.json"),
+                    "--espn-sport", "soccer",
+                    "--espn-event-id", "401879233",
+                    "--espn-fetched-at", AT,
+                    "--quarantine", str(qpath),
+                ])
+            self.assertEqual(code, 1)
+            q = json.loads(qpath.read_text(encoding="utf-8"))
+            self.assertEqual(q["stage"], 3)
+            self.assertEqual(q["kind"], "unknown")
+            self.assertFalse(q["publish"])
+            self.assertFalse(q["current_snapshot_written"])
+            self.assertIsNone(q["input_sha256"])
+
+    def test_nba_workflow_uses_integrated_runner_not_legacy_path(self):
+        workflow = (ROOT / ".github" / "workflows" /
+                    "nba-injury-watch.yml").read_text(encoding="utf-8")
+        self.assertIn("python src/tools/recovery_runner.py", workflow)
+        self.assertIn(".monitor/quarantine.json", workflow)
+        self.assertNotIn("python src/tools/nba_injury_monitor.py", workflow)
+        self.assertNotIn(".monitor/quarantine/*.pdf", workflow)
+
     def test_bad_json_is_partial_parse_stage_two(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
