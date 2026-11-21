@@ -62,6 +62,36 @@ class MonitorSafetyTest(unittest.TestCase):
         rows = m.parse_pages([one, two])
         self.assertEqual(len(rows), 2)
 
+    def test_real_pdf_page_title_and_footer_keep_team_context(self):
+        # Reproduces the verified 2026-11-21 official NBA PDF layout:
+        # the title and page number occupy the 'team' column.
+        one = FakePage([
+            ("11/21/2026", "08:00 (ET)", "MEM@MIN",
+             "Memphis Grizzlies", "Boozer, Cameron", "Out", ""),
+            ("", "", "", "Page", "2 of 5", "", ""),
+        ])
+        two = FakePage([
+            ("", "", "", "Injury Report:", "11/21/26 01:15", "PM", ""),
+            ("", "", "", "", "Grant, Jerami", "Out", ""),
+            ("", "", "", "", "Jerome, Ty", "Available", ""),
+            ("", "", "", "Minnesota Timberwolves",
+             "Edwards, Anthony", "Out", ""),
+        ])
+        rows = m.parse_pages([one, two])
+        self.assertEqual(len(rows), 4)
+        grant = next(x for x in rows.values() if x["player"] == "Grant, Jerami")
+        jerome = next(x for x in rows.values() if x["player"] == "Jerome, Ty")
+        self.assertEqual(grant["team"], "Memphis Grizzlies")
+        self.assertEqual(jerome["team"], "Memphis Grizzlies")
+
+    def test_team_outside_matchup_is_never_accepted(self):
+        page = FakePage([
+            ("11/21/2026", "08:00 (ET)", "MEM@MIN",
+             "Atlanta Hawks", "Grant, Jerami", "Out", "")
+        ])
+        with self.assertRaises(m.injury_quality.DataQualityError):
+            m.parse_pages([page])
+
     def test_unparseable_document_fails_closed(self):
         with self.assertRaises(ValueError):
             m.parse_pages([FakePage([("", "", "", "",
