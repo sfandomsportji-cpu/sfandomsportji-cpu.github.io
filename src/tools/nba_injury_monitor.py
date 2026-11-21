@@ -18,6 +18,8 @@ import urllib.request
 from urllib.parse import urljoin, urlparse
 from zoneinfo import ZoneInfo
 
+import sports_clock
+
 LISTINGS = (
     "https://www.nba.com/players/injury-report",
     "https://official.nba.com/nba-injury-report-2026-27-season/",
@@ -204,14 +206,32 @@ def main(argv=None):
     now = datetime.now(timezone.utc)
     url, reported, pdf = fetch_official(now)
     rows = parse_pdf(pdf)
+    checked = datetime.now(timezone.utc)
+    age = sports_clock.freshness(
+        reported.astimezone(timezone.utc).isoformat(),
+        checked.isoformat(), checked.isoformat(),
+        max_source_age_minutes=90)
+    if age["state"] != "CURRENT":
+        raise ValueError("official source age or clock is not valid: " + age["reason"])
     current = {
         "league": "NBA", "source": "NBA official injury report",
+        "checked_at_utc": checked.isoformat(),
+        "checked_at_kst": checked.astimezone(ZoneInfo("Asia/Seoul")).isoformat(),
+        "freshness": age["state"],
         "source_url": url, "report_at_et": reported.isoformat(),
         "report_at_utc": reported.astimezone(timezone.utc).isoformat(),
         "lineup_source_verified": False, "publication_status": "NOT_APPROVED",
         "players": rows,
     }
     changes, baseline = compare(previous, current)
+    previous_checked = previous.get("checked_at_utc")
+    if previous_checked:
+        gap_minutes = (checked - sports_clock.parse_aware(previous_checked).astimezone(timezone.utc)).total_seconds() / 60
+        current["check_gap_minutes"] = round(gap_minutes, 2)
+        current["schedule_gap_alert"] = gap_minutes > 22
+    else:
+        current["check_gap_minutes"] = None
+        current["schedule_gap_alert"] = None
     atomic_json(args.output, current)
     atomic_json(args.changes, {
         "source_url": url, "initial_baseline": baseline, "changes": changes,
