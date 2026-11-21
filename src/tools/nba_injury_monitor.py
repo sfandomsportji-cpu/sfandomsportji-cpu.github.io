@@ -141,6 +141,11 @@ def parse_pages(pages):
             # to fake team "Injury Report:" instead of the previous real team.
             if team_cell.strip().startswith("Injury Report:"):
                 continue
+            # PDF footers are laid out as TEAM="Page", PLAYER="N of M".
+            # Never overwrite carried team context across a page break.
+            if team_cell.strip() == "Page" and re.fullmatch(
+                    r"\d+\s+of\s+\d+", player_cell.strip()):
+                continue
             if "Game Date" in date_cell or "Injury Report" in date_cell:
                 continue
             date_match = re.search(r"\b\d{2}/\d{2}/\d{4}\b", date_cell)
