@@ -19,6 +19,7 @@ from urllib.parse import urljoin, urlparse
 from zoneinfo import ZoneInfo
 
 import sports_clock
+import injury_quality
 
 LISTINGS = (
     "https://www.nba.com/players/injury-report",
@@ -146,14 +147,24 @@ def parse_pages(pages):
                 team = ""  # never carry team across matchups
             if team_cell:
                 team = team_cell.strip()
-            if not game_date or not matchup or not team:
-                continue
             status = status_cell.strip()
             player = player_cell.strip()
-            if status not in STATUSES or not player or "," not in player:
+            # Valid-looking status without a team/matchup is NOT silently
+            # discarded: a PDF column shift can attach it to the wrong game.
+            if status in STATUSES or "," in player:
+                if not game_date or not matchup or not team:
+                    raise injury_quality.DataQualityError(
+                        "status row without a verified game/date/team")
+                if status not in STATUSES or "," not in player:
+                    raise injury_quality.DataQualityError(
+                        "unexpected status/player column alignment")
+            else:
                 continue
             state, label, color = STATUSES[status]
             key = "|".join((game_date, matchup, team, player))
+            if key in rows:
+                raise injury_quality.DataQualityError(
+                    "duplicate player identity in official report")
             rows[key] = {
                 "game_date": game_date, "matchup": matchup, "team": team,
                 "player": player, "official_status": status,
@@ -222,11 +233,14 @@ def main(argv=None):
         max_source_age_minutes=90)
     if age["state"] != "CURRENT":
         raise ValueError("official source age or clock is not valid: " + age["reason"])
+    quality = injury_quality.validate_snapshot(previous, rows, reported.isoformat())
     current = {
         "league": "NBA", "source": "NBA official injury report",
         "checked_at_utc": checked.isoformat(),
         "checked_at_kst": checked.astimezone(ZoneInfo("Asia/Seoul")).isoformat(),
         "freshness": age["state"],
+        "quality": quality,
+        "public_display_allowed": False,
         "source_url": url, "report_at_et": reported.isoformat(),
         "report_at_utc": reported.astimezone(timezone.utc).isoformat(),
         "lineup_source_verified": False, "publication_status": "NOT_APPROVED",
