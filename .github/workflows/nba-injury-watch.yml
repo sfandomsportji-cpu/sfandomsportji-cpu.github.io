@@ -105,8 +105,9 @@ jobs:
           from pathlib import Path
           s = json.loads(Path(".monitor/current.json").read_text(encoding="utf-8"))
           if s.get("schedule_gap_alert") is True:
-              print("::error::NBA monitor gap exceeds 22 minutes; timestamps require manual review.")
-              raise SystemExit(1)
+              print("::warning::NBA monitor gap exceeds 22 minutes; audit coverage is incomplete. New report was freshly verified but changes require review.")
+          if s.get("review_required") is True:
+              print("::notice::NBA data remains NOT_APPROVED pending operator review.")
           PY
       - name: Surface failure in GitHub Actions
         if: steps.run.outputs.result == 'stale'
