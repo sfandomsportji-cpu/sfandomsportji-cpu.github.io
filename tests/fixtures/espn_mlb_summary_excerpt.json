@@ -1,0 +1,129 @@
+{
+  "header": {
+    "id": "401908025",
+    "competitions": [
+      {
+        "id": "401908025",
+        "date": "2026-10-15T17:00Z",
+        "competitors": [
+          {
+            "id": "5",
+            "homeAway": "home",
+            "team": {
+              "id": "5",
+              "displayName": "Cleveland Guardians",
+              "abbreviation": "CLE"
+            }
+          },
+          {
+            "id": "30",
+            "homeAway": "away",
+            "team": {
+              "id": "30",
+              "displayName": "Tampa Bay Rays",
+              "abbreviation": "TB"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "injuries": [
+    {
+      "team": {
+        "id": "5",
+        "displayName": "Cleveland Guardians"
+      },
+      "injuries": [
+        {
+          "status": "Out",
+          "date": "2026-11-20T22:34Z",
+          "athlete": {
+            "id": "4917897",
+            "displayName": "Colin Holderman"
+          },
+          "details": {
+            "type": "Wrist",
+            "returnDate": "2027-02-01"
+          }
+        }
+      ]
+    },
+    {
+      "team": {
+        "id": "30",
+        "displayName": "Tampa Bay Rays"
+      },
+      "injuries": [
+        {
+          "status": "Out",
+          "date": "2026-11-03T05:17Z",
+          "athlete": {
+            "id": "4208281",
+            "displayName": "Ryan Pepiot"
+          },
+          "details": {
+            "type": "Hip",
+            "returnDate": "2027-02-01"
+          }
+        }
+      ]
+    }
+  ],
+  "rosters": [
+    {
+      "homeAway": "home",
+      "team": {
+        "id": "5",
+        "displayName": "Cleveland Guardians"
+      },
+      "roster": [
+        {
+          "starter": true,
+          "active": true,
+          "jersey": "38",
+          "position": {
+            "abbreviation": "LF"
+          },
+          "athlete": {
+            "id": "41996",
+            "displayName": "Steven Kwan"
+          }
+        },
+        {
+          "starter": true,
+          "active": true,
+          "jersey": "11",
+          "position": {
+            "abbreviation": "3B"
+          },
+          "athlete": {
+            "id": "32801",
+            "displayName": "Jose Ramirez"
+          }
+        }
+      ]
+    },
+    {
+      "homeAway": "away",
+      "team": {
+        "id": "30",
+        "displayName": "Tampa Bay Rays"
+      },
+      "roster": [
+        {
+          "starter": true,
+          "active": true,
+          "jersey": "2",
+          "position": {
+            "abbreviation": "DH"
+          },
+          "athlete": {
+            "id": "33481",
+            "displayName": "Yandy Diaz"
+          }
+        }
+      ]
+    }
+  ]
+}
