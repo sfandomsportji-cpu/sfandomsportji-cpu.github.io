@@ -136,6 +136,16 @@ def parse_pages(pages):
     game_date = matchup = team = ""
     for page in pages:
         for date_cell, _time, match_cell, team_cell, player_cell, status_cell, _reason in lines_on_page(page):
+            # Repeated title on every PDF page falls into the TEAM column.
+            # Without this guard, continued player rows are silently assigned
+            # to fake team "Injury Report:" instead of the previous real team.
+            if team_cell.strip().startswith("Injury Report:"):
+                continue
+            # PDF footers are laid out as TEAM="Page", PLAYER="N of M".
+            # Never overwrite carried team context across a page break.
+            if team_cell.strip() == "Page" and re.fullmatch(
+                    r"\d+\s+of\s+\d+", player_cell.strip()):
+                continue
             if "Game Date" in date_cell or "Injury Report" in date_cell:
                 continue
             date_match = re.search(r"\b\d{2}/\d{2}/\d{4}\b", date_cell)
@@ -160,6 +170,9 @@ def parse_pages(pages):
                         "unexpected status/player column alignment")
             else:
                 continue
+            # A valid status must belong to one of the two teams named in the
+            # matchup. This is not inferred from a player's name or old row.
+            injury_quality.validate_team_matchup(matchup, team)
             state, label, color = STATUSES[status]
             key = "|".join((game_date, matchup, team, player))
             if key in rows:

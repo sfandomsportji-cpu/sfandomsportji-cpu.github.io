@@ -40,6 +40,14 @@ class QualityGateTests(unittest.TestCase):
         with self.assertRaises(q.DataQualityError):
             q.validate_rows(players)
 
+    def test_corrupted_nba_team_identity_is_rejected(self):
+        bad = row(team="Injury Report:")
+        with self.assertRaises(q.DataQualityError):
+            q.validate_rows(player_set([bad]))
+        bad = row(team="Atlanta Hawks")
+        with self.assertRaises(q.DataQualityError):
+            q.validate_rows(player_set([bad]))
+
     def test_new_unrecognized_status_is_quarantined(self):
         players = player_set([row(status="New Unexpected Status")])
         with self.assertRaises(q.DataQualityError):
