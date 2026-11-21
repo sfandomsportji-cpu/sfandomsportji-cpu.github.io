@@ -767,7 +767,9 @@ def game_result(a: Article):
     res['verdict'] = ''
     res.setdefault('reason', '')
     pick = getattr(a, 'pick', '')
-    if pick in ('away', 'home') and res['status'] == 'final':
+    if pick == 'draw' and res['status'] == 'final':
+        res['verdict'] = 'hit' if res['away'] == res['home'] else 'miss'
+    elif pick in ('away', 'home') and res['status'] == 'final':
         if res['away'] == res['home']:  # 승리 방향 분석인데 무승부로 끝난 경기는 빗나간 것으로 센다(승·패 집계에서 빠지지 않게)
             res['verdict'] = 'miss'
         else:
@@ -1168,7 +1170,7 @@ def breadcrumb_ld(items: list[tuple[str, str]]) -> dict:
 
 
 NAV = [('NEWS', '/news/'), ('NBA', '/nba/'), ('MLB', '/mlb/'), ('ANALYSIS', '/analysis/'),
-       ('MAGAZINE', '/magazine/'), ('FAN BOARD', '/community/'), ('EVENT', '/event/')]
+       ('MAGAZINE', '/magazine/'), ('FAN BOARD', '/community/')]
 CUR = ' aria-current="page"'
 EXT = ' target="_blank" rel="noopener"'
 HOT = ' class="hot"'
@@ -1176,7 +1178,7 @@ HOT = ' class="hot"'
 
 def header(active: str) -> str:
     nav = ''.join(
-        f'<a href="{u}"{CUR if active == u else ""}{HOT if l == "NBA" and active != u else ""}{' data-event' if l == "EVENT" else ""}>{l}</a>'
+        f'<a href="{u}"{CUR if active == u else ""}{HOT if l == "NBA" and active != u else ""}>{l}</a>'
         for l, u in NAV)
     return f'''<a class="skip" href="#main">본문 바로가기</a>
 <header class="site-header">
@@ -1725,9 +1727,9 @@ def build_article(a: Article):
             fallback_attr = f' onerror="this.onerror=null;this.src=\'{esc(a.photo_fallback)}\'"'
         fallback = '<div class="feature-fallback">DODGERS · NLCS</div>' if feature else ''
         fig = f'<figure class="figure {logo}{feature}{photo_cls(a)}"><img src="{esc(a.image)}" alt="{esc(a.image_alt)}" fetchpriority="high"{fallback_attr}>{fallback}{an_logos(a) if a.image.startswith('/assets/photos/') else ''}{cap}</figure>'
-    verdict_html = (f'<aside class="an-verdict art-verdict" aria-label="SFANDOM 분석"><b>SFANDOM 분석</b><strong>{esc(a.verdict)}</strong>'
-                    f'<em>{esc(getattr(a, "verdict_sub", ""))}</em>'
-                    '<p>더 자세한 내용이 궁금하시면 <a href="/contact/">쪽지</a>나 아래 댓글로 편하게 문의해 주세요.</p></aside>'
+    verdict_html = (f'<aside class="an-verdict art-verdict" aria-label="SFANDOM 분석"><details class="verdict-reveal"><summary><b>SFANDOM 분석</b><span class="vr-hint">눌러서 보기 +</span></summary>'
+                    f'<strong>{esc(a.verdict)}</strong><em>{esc(getattr(a, "verdict_sub", ""))}</em>'
+                    '<p>더 자세한 내용이 궁금하시면 <a href="/contact/">쪽지</a>나 아래 댓글로 편하게 문의해 주세요.</p></details></aside>'
                     ) if a.kind == 'analysis' and getattr(a, 'pick', '') and getattr(a, 'verdict', '') else ''
     srcs = ''.join(f'<span>{esc(s["label"])}</span>' for s in a.sources if s.get('label'))
     src_html = f'<div class="sources"><strong>출처</strong>{srcs}</div>' if srcs else ''
@@ -1895,9 +1897,9 @@ def build_lists():
         r = game_result(a)
         if not r or not r['verdict']:
             continue
-        side = a.away if a.pick == 'away' else a.home
+        side = '무승부' if a.pick == 'draw' else (a.away if a.pick == 'away' else a.home)
         auto_recs.append({'no': f'#A{len(auto_recs) + 1:02d}', 'date': a.date, 'league': a.league, 'match': f'{a.away} vs {a.home}',
-                          'venue': f'{getattr(a, "kst", "")} KST', 'outlook': f'{side} 우세 전망',
+                          'venue': f'{getattr(a, "kst", "")} KST', 'outlook': ('무승부 전망' if a.pick == 'draw' else f'{side} 우세 전망'),
                           'result': f'{a.away} {r["away"]}–{r["home"]} {a.home}',
                           'detail': f'경기 전에 남긴 전망과 끝난 뒤 결과를 그대로 맞춰 봤어요. 분석: {a.headline}',
                           'matched': r['verdict'] == 'hit', 'reason': '' if r['verdict'] == 'hit' else r.get('reason', '')})
@@ -2333,10 +2335,6 @@ def build_static():
 </div></div>'''
     write('/contact/', layout('문의', page_head('CONTACT<span class="accent">.</span> <span class="kr">문의</span>', 'SFANDOM에 전하고 싶은 이야기가 있다면 쪽지로 남겨 주세요.', [('문의', '')]) + contact,
           path='/contact/', description='SFANDOM 문의 양식 · 오류 제보 · 권리침해 신고', noindex=True), index=False)
-
-    ev_lede, ev_frag = page_fragment('event')
-    ev_body = f'<div class="wrap sec ev-wrap" style="padding:0">{ev_frag.replace("__ENDPOINT__", esc(ep))}</div>'
-    write('/event/', layout('주말 주요경기 맞히기 밸런스 게임', ev_body, path='/event/', description=ev_lede[:150]))
 
     cookies = '''<div class="wrap sec" style="padding-top:36px;max-width:960px;margin-left:0"><div class="prose">
 <h2>광고 게재</h2>

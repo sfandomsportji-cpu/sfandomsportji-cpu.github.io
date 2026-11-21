@@ -369,5 +369,15 @@
   "가시마 앤틀러스": "j1-league/kashima-antlers.svg",
   "시미즈 에스펄스": "j1-league/shimizu-s-pulse.svg",
   "비셀 고베": "j1-league/vissel-kobe.svg",
-  "미토 홀리호크": "j1-league/mito-hollyhock.svg"
+  "미토 홀리호크": "j1-league/mito-hollyhock.svg",
+  "첼시": "premier-league/chelsea-fc.png",
+  "리즈 유나이티드": "premier-league/leeds-united.png",
+  "니스": "europa-league/nice.png",
+  "파리 생제르맹": "ligue-1/paris-saint-germain.png",
+  "뉴캐슬 유나이티드": "champions-league/newcastle-united.png",
+  "아스널": "premier-league/arsenal-fc.png",
+  "세비야": "champions-league/sevilla.png",
+  "레알 베티스": "conference-league/real-betis.png",
+  "레알 마드리드": "la-liga/real-madrid.png",
+  "셀타 비고": "europa-league/celta-vigo.svg"
 }
