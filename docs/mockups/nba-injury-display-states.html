@@ -1,0 +1,40 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<style>
+body{font-size:16px;padding:36px 40px;width:1580px}
+.cap{font-family:var(--display);font-size:22px;letter-spacing:.01em;color:var(--muted);margin:0 0 6px}
+.cap b{color:var(--red)}
+.sub{font-size:14px;color:var(--faint);margin:0 0 14px;height:52px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.pn{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;height:330px}
+.pn h3{margin:0 0 2px;font-family:var(--head);font-weight:700;font-size:20px}
+.when{font-size:13px;color:var(--faint);margin-bottom:14px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-top:1px solid var(--line);font-size:16px}
+.st{font-family:var(--head);font-weight:700;font-size:13px;padding:3px 11px;border-radius:999px}
+.out{background:var(--red-soft);color:#ff6b80}
+.q{border:1px solid var(--line-2);color:var(--text-2)}
+.unk{color:var(--faint);font-size:14px}
+.stale{border:1px dashed var(--line-2);background:var(--panel-2);border-radius:10px;padding:16px;font-size:16px;line-height:1.6}
+.stale small{display:block;color:var(--faint);font-size:13px;margin-top:6px}
+.flag{display:inline-block;font-size:12px;font-family:var(--head);font-weight:700;color:var(--muted);border:1px solid var(--line-2);border-radius:6px;padding:2px 8px;margin-top:14px}
+.note{margin-top:26px;font-size:14px;color:var(--faint)}
+</style></head><body>
+<div class="grid">
+<div><p class="cap"><b>01</b> PR 병합 직후</p><p class="sub">지금 단계. 수집 결과는 Actions 보관함에만 쌓이고 사이트와는 연결되지 않아요.</p>
+<div class="pn"><h3>NBA 프리뷰</h3><div class="when">화면 변화 없음</div>
+<div class="row"><span>부상 현황 영역</span><span class="unk">표시 안 함</span></div>
+<div class="row"><span>선발 라인업 영역</span><span class="unk">표시 안 함</span></div>
+<span class="flag">NOT_APPROVED</span></div></div>
+
+<div><p class="cap"><b>02</b> 정상 · 표시 연결 후</p><p class="sub">별도 PR + 운영자 승인 후에만 가능. 확인 시각과 출처를 같이 보여 줘요.</p>
+<div class="pn"><h3>부상 현황</h3><div class="when">NBA 공식 보고서 기준 · 확인 11.22 08:40 KST</div>
+<div class="row"><span>선수 A</span><span class="st out">Out</span></div>
+<div class="row"><span>선수 B</span><span class="st q">Questionable</span></div>
+<div class="row"><span>선발 라인업</span><span class="unk">미확정</span></div></div></div>
+
+<div><p class="cap"><b>03</b> 장애 또는 90분 초과</p><p class="sub">수집이 끊기면 선수별 상태를 숨기고 확인 불가로 바꿔요.</p>
+<div class="pn"><h3>부상 현황</h3><div class="when">마지막 확인 11.22 06:55 KST</div>
+<div class="stale">현재 출전 정보를 확인하지 못했어요.<small>선수별 상태 숨김 · 선발 라인업 미확정</small></div></div></div>
+</div>
+<p class="note">예시 화면: 선수 이름은 가상(선수 A·B)이고, 실제 사이트의 site.css 색·글꼴 기준으로 그린 시안입니다.</p>
+</body></html>
