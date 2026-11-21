@@ -83,10 +83,8 @@ jobs:
           analysis = (root / "analysis/index.html").read_text(encoding="utf-8")
           review = (root / "analysis/review/index.html").read_text(encoding="utf-8")
           index = (root / "analysis/reading-paths/index.html").read_text(encoding="utf-8")
-          archived = (root / "analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/index.html").read_text(encoding="utf-8")
           assert 'id="cycleGuideTitle"' in analysis, "approved pregame guide lost"
           assert 'id="cycleReviewTitle"' in review, "approved postgame guide lost"
-          assert 'cycle-article-note' in archived, "archived analysis notice lost"
           import html, json
           groups = json.loads((root / "src/content/editorial-paths.json").read_text(encoding="utf-8"))["groups"]
           for g in groups:
@@ -94,7 +92,6 @@ jobs:
                   assert html.escape(g["title"]) in review, f"preview-review pair missing: {g['id']}"
           assert index.count('class="editorial-links__group"') == len(groups), "independent editorial groups missing"
           assert "INDEPENDENT STORIES" in index, "separate articles hidden"
-          assert 'editorial-links__related' in archived, "original related article links missing"
           print("PASS: approved 01-04 components persist; paired reviews and unique article links generated.")
           print("PASS: own magazine preserved; four-league game center generated.")
           PY

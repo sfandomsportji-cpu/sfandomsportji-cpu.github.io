@@ -1288,7 +1288,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 {('<link rel="stylesheet" href="/assets/css/about-page.css?v=20261013-purpose-v1">' if path == '/about/' else '')}
 {''}
 {('<link rel="stylesheet" href="/assets/css/game-center.css?v=20261119-logo-xl2">' if path in ('/', '/games/') else '')}
-{(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/', '/analysis/mlb/2026-10-11-nlcs-dodgers-brewers-game1/') else '')}
+{(f'<link rel="stylesheet" href="/assets/css/analysis-cycle.css?v={av("/assets/css/analysis-cycle.css")}">' if path in ('/analysis/', '/analysis/review/') else '')}
 {(f'<link rel="stylesheet" href="/assets/css/editorial-links.css?v={av("/assets/css/editorial-links.css")}">' if path.startswith(('/analysis/', '/news/', '/magazine/')) else '')}
 {thread_css}{news_comments_css}
 <script>window.SFANDOM={json.dumps(cfg, ensure_ascii=False)};</script>
@@ -1763,7 +1763,6 @@ def build_article(a: Article):
     {f'<p class="sub">{esc(a.subtitle)}</p>' if a.subtitle else ''}
     <div class="byline"><span>글 <b>SFANDOM & KAIRO</b></span><time datetime="{a.date}">{a.date_dot} KST</time>{f'<span>{esc(a.meta)}</span>' if a.meta else ''}</div>
   </header>
-  {preserved_component('nlcs-archived-preview-note') if a.file == '2026-10-11-nlcs-dodgers-brewers-game1.md' else ''}
   <div class="article-grid">
     <article>
       {matchup_strip(a) if a.kind == 'analysis' or (a.kind == 'news' and a.league == 'SOCCER' and getattr(a, 'away', '') and getattr(a, 'home', '')) else ''}
