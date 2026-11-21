@@ -1095,7 +1095,7 @@ def today_analysis() -> str:
     header_sub = f'{display_date.replace("-", ".")} 경기 분석' if upcoming else '최근 경기 분석'
 
     hit, total = hit_rate()
-    rate = f'<span data-rate title="경기 전에 남긴 예측과 실제 결과 기록">예측 {hit}/{total} · {hit / total * 100:.1f}%</span>' if total else ''
+    rate = f'<span data-rate title="경기 전에 남긴 분석 방향과 실제 결과를 맞춘 기록이에요 · 무승부로 끝나도 승리 방향 분석은 빗나감으로 세요 · 집계 기준은 복기 리포트에서 볼 수 있어요">예측 {hit}/{total} · {hit / total * 100:.1f}%</span>' if total else ''
     # 직접 받은 자료사진이 있는 글(오늘의 메인 특집)을 맨 위로 — 모든 줄은 접어 두고 사진 띠만 보이게
     picks = sorted(picks, key=lambda a: not (a.image.startswith('/assets/photos/') and (ROOT / a.image.lstrip('/')).is_file()))
     head = ('<div class="an-head" aria-hidden="true"><span>KST</span><span>MATCHUP</span>'
@@ -1976,9 +1976,13 @@ def build_hubs():
 <section class="sec" id="dates"><div class="bracket"><div class="bracket-head"><h2>KEY DATES</h2><span class="muted">{esc(NBA["note"])}</span></div><div class="rounds">{kd}</div></div></section>
 <section class="discuss"><div><h2>새 시즌 얘기는 팬 보드에서</h2><p>우승 후보, 기대되는 팀, 개막전 예상까지 편하게 얘기해 봐요.</p></div><a class="pill" href="/community/?topic={quote("[NBA] ")}#write">{talk_icon()}글쓰기</a></section>
 </div>''')
-    write('/nba/', layout('NBA 프리시즌 최종 결과·다음 경기 일정 (한국시간)', nba_body, path='/nba/', description='NBA 2026-27 프리시즌 결과와 다음 일정, 개막 주간 경기 정보를 한국시간으로 정리.', active='/nba/',
+    nba_seo_title = ('NBA 2026-27 정규시즌 일정·결과·경기 분석 (한국시간)' if opening_started else 'NBA 프리시즌 최종 결과·다음 경기 일정 (한국시간)')
+    nba_seo_desc = ('NBA 2026-27 정규시즌 최신 경기 결과와 다음 일정, 경기 프리뷰와 분석을 한국시간으로 정리했어요.' if opening_started
+                    else 'NBA 2026-27 프리시즌 결과와 다음 일정, 개막 주간 경기 정보를 한국시간으로 정리.')
+    write('/nba/', layout(nba_seo_title, nba_body, path='/nba/', description=nba_seo_desc, active='/nba/',
           ld=[breadcrumb_ld([('NBA', '/nba/')])]),
-          search={'u': '/nba/', 't': 'NBA 프리시즌 최종 점수와 다음 일정', 's': '프리시즌 종료 경기 · 다음 일정 · 정규시즌 개막', 'k': 'NBA', 'd': '2026.10.11', 'x': 'NBA 프리시즌 최신 확인 점수와 향후 일정'})
+          search=({'u': '/nba/', 't': 'NBA 정규시즌 일정·결과', 's': '정규시즌 경기 결과 · 다음 일정 · 경기 분석', 'k': 'NBA', 'd': '2026.10.11', 'x': 'NBA 2026-27 정규시즌 최신 결과와 일정'} if opening_started
+                  else {'u': '/nba/', 't': 'NBA 프리시즌 최종 점수와 다음 일정', 's': '프리시즌 종료 경기 · 다음 일정 · 정규시즌 개막', 'k': 'NBA', 'd': '2026.10.11', 'x': 'NBA 프리시즌 최신 확인 점수와 향후 일정'}))
     # 포스트시즌 특집
     wc = ''.join(wc_result(w) for w in PS['wildcard'])
     dsf = ''.join(ds_card(d, link=False, full=True) for d in PS['division'])
