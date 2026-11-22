@@ -274,7 +274,7 @@ def load_blogs() -> dict:
             print(f'blog {key}: 피드를 못 읽음 ({e.__class__.__name__}) — 캐시 사용')
     BLOG_CACHE.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding='utf-8')
     # 네이버 영상 카드는 일주일이 지나면 홈·매거진에서 내린다 (캐시 파일은 그대로 두고 화면에 쓰는 목록만 거른다)
-    cutoff = (dt.datetime.utcnow() + dt.timedelta(hours=9) - dt.timedelta(days=BLOG_MAX_AGE_DAYS['naver'])).strftime('%Y-%m-%d')
+    cutoff = (dt.datetime.now(dt.timezone(dt.timedelta(hours=9))) - dt.timedelta(days=BLOG_MAX_AGE_DAYS['naver'])).strftime('%Y-%m-%d')
     return {k: ([p for p in v if p.get('date', '') >= cutoff] if k in BLOG_MAX_AGE_DAYS else v) for k, v in cache.items()}
 
 
@@ -1258,6 +1258,7 @@ def layout(title: str, body: str, *, path: str, description: str = '', image: st
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>{esc(full_title)}</title>
 <meta name="description" content="{esc(desc)}">
 <meta name="robots" content="{robots}">
@@ -2374,7 +2375,7 @@ def build_static():
 def build_meta_files():
     urls = ''.join(f'  <url><loc>{BASE}{p["url"]}</loc><lastmod>{p["lastmod"]}</lastmod></url>\n' for p in sorted(PAGES, key=lambda p: p['url']))
     (ROOT / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n', encoding='utf-8')
-    (ROOT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /search/\nDisallow: /README.md\n\nSitemap: {BASE}/sitemap.xml\n', encoding='utf-8')
+    (ROOT / 'robots.txt').write_text(f'User-agent: *\nAllow: /\nDisallow: /src/\nDisallow: /search/\nDisallow: /README.md\nDisallow: /CLAUDE.md\nDisallow: /AGENTS.md\nDisallow: /.github/\n\nSitemap: {BASE}/sitemap.xml\n', encoding='utf-8')
     (ROOT / 'search-index.json').write_text(json.dumps(sorted(SEARCH, key=lambda s: s['d'], reverse=True), ensure_ascii=False), encoding='utf-8')
 
 

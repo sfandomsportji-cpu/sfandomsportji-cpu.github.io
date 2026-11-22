@@ -3,5 +3,8 @@ Allow: /
 Disallow: /src/
 Disallow: /search/
 Disallow: /README.md
+Disallow: /CLAUDE.md
+Disallow: /AGENTS.md
+Disallow: /.github/
 
 Sitemap: https://sfandom.com/sitemap.xml

@@ -17,3 +17,11 @@ dist/
 __pycache__/
 *.pyc
 *.bundle
+*.bak
+*.orig
+*.rej
+*.pem
+*.key
+.idea/
+.vscode/
+.claude/
