@@ -286,8 +286,6 @@ def blog_posts(limit: int = 6, core: bool = False) -> list[dict]:
     return sorted(allp, key=lambda p: p.get('date', ''), reverse=True)[:limit]
 
 
-_NAVER_PLAYER_KEYS: dict[str, tuple[str, str, int]] = {}
-
 
 def preserved_component(name: str) -> str:
     """Read approved markup from the permanent source tree."""

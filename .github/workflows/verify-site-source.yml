@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Compile Python sources
-        run: python3 -m py_compile src/build.py src/tools/sync_games.py src/tools/editorial_paths.py src/tools/naver_magazine.py
+        run: python3 -m py_compile src/build.py src/tools/sync_games.py src/tools/editorial_paths.py
       - name: Verify provider access and refresh snapshot in CI
         run: |
           python3 src/tools/sync_games.py
