@@ -379,5 +379,15 @@
   "세비야": "champions-league/sevilla.png",
   "레알 베티스": "conference-league/real-betis.png",
   "레알 마드리드": "la-liga/real-madrid.png",
-  "셀타 비고": "europa-league/celta-vigo.svg"
+  "셀타 비고": "europa-league/celta-vigo.svg",
+  "리버풀": "premier-league/liverpool-fc.png",
+  "맨체스터 유나이티드": "champions-league/manchester-united.png",
+  "베르더 브레멘": "bundesliga/sv-werder-bremen.png",
+  "함부르크": "bundesliga/hamburger-sv.png",
+  "AC 밀란": "serie-a/ac-milan.png",
+  "프로시노네": "serie-a/frosinone-calcio.png",
+  "아탈란타": "champions-league/atalanta.png",
+  "인터 밀란": "serie-a/inter-milan.png",
+  "헤타페": "la-liga/getafe-cf.png",
+  "아틀레티코 마드리드": "la-liga/atletico-de-madrid.png"
 }
