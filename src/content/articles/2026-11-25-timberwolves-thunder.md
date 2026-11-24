@@ -1,21 +1,22 @@
 ---
-kind: "magazine"
+kind: "analysis"
 date: "2026-11-25"
 priority: 898
 title: "2연패에 빠진 오클라호마시티 앞에 142점을 쏟아낸 미네소타가 찾아와요"
 subtitle: "오클라호마시티는 10승 8패 서부 10위, 미네소타는 13승 5패 서부 3위예요 — 직전 경기에서 한 팀은 142점을, 한 팀은 5점 차 패배를 기록했어요"
-kicker: "SFANDOM MAGAZINE · NBA"
-meta: "2026.11.26 09:30 KST · MINNESOTA TIMBERWOLVES @ OKLAHOMA CITY THUNDER · 매거진"
+kicker: "SFANDOM · NBA 2026-27 REGULAR SEASON"
+meta: "2026.11.26 09:30 KST · MINNESOTA TIMBERWOLVES vs OKLAHOMA CITY THUNDER · 경기 전 프리뷰"
 league: "NBA"
 image: ""
 image_alt: ""
 credit: ""
 slug: "min-okc-20261126"
-away: "MINNESOTA TIMBERWOLVES"
-home: "OKLAHOMA CITY THUNDER"
+away: "Minnesota Timberwolves"
+home: "Oklahoma City Thunder"
 kst: "11.26 09:30"
 summary: ["미네소타는 13승 5패 서부 3위예요. 직전 경기에서 브루클린을 142–116으로 이겼어요", "오클라호마시티는 10승 8패 서부 10위로 마이애미·인디애나 원정에서 2연패 중이에요", "인디애나전은 1쿼터 27–27, 3쿼터 40–40으로 팽팽했어요"]
 glance: [["핵심", "미네소타 13승 5패 · 오클라호마시티 10승 8패 2연패"], ["변수", "오클라호마시티는 이틀 연속 경기 뒤 하루 휴식"], ["시선", "미네소타 필드골 성공률 58.0%, 스틸 15개"]]
+poster: {"colors": ["#0C2340", "#007AC1", "#d6e4ff", "#d6efff"], "big": ["13", "10"], "labels": ["13승 5패 · 서부 3위", "10승 8패 · 서부 10위"], "kick": "11월 26일(목) 09:30 KST · 오클라호마시티 홈 · NBA 정규시즌"}
 sources: [{"label": "NBA 경기 기록(SportRadar, 11.25 확인)", "url": ""}, {"label": "SFANDOM 경기 기록", "url": ""}]
 verdict: "220점 오버"
 verdict_sub: "언더/오버 220점 오버 방향"

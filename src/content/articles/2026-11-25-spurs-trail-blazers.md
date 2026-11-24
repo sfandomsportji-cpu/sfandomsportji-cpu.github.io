@@ -1,22 +1,24 @@
 ---
-kind: "magazine"
+kind: "analysis"
 date: "2026-11-25"
 priority: 896
 title: "서부 1위 샌안토니오가 포틀랜드 원정에 와요, 직전 경기 2쿼터에만 41점을 몰아쳤죠"
 subtitle: "포틀랜드는 11승 6패 서부 7위, 샌안토니오는 15승 3패 서부 1위예요 — 둘 다 직전 경기를 원정에서 이기고 만나요"
-kicker: "SFANDOM MAGAZINE · NBA"
-meta: "2026.11.26 12:00 KST · SAN ANTONIO SPURS @ PORTLAND TRAIL BLAZERS · 매거진"
+kicker: "SFANDOM · NBA 2026-27 REGULAR SEASON"
+meta: "2026.11.26 12:00 KST · SAN ANTONIO SPURS vs PORTLAND TRAIL BLAZERS · 경기 전 프리뷰"
 league: "NBA"
 image: ""
 image_alt: ""
 credit: ""
 slug: "sas-por-20261126"
-away: "SAN ANTONIO SPURS"
-home: "PORTLAND TRAIL BLAZERS"
+away: "San Antonio Spurs"
+home: "Portland Trail Blazers"
 kst: "11.26 12:00"
 summary: ["샌안토니오는 15승 3패로 서부 1위예요. 확인된 최근 두 경기를 모두 이겼어요(뉴올리언스 114–91, 새크라멘토 원정 123–107)", "포틀랜드는 11승 6패 서부 7위예요. 직전 경기에서 필라델피아 원정을 128–111로 이겼어요", "두 팀 모두 하루를 쉬고 만나요"]
 glance: [["핵심", "서부 1위 샌안토니오 15승 3패 · 포틀랜드 11승 6패"], ["변수", "포틀랜드는 원정 뒤 홈 복귀, 두 팀 모두 하루 휴식"], ["시선", "샌안토니오 2쿼터 41점, 포틀랜드 벤치 54점"]]
+poster: {"colors": ["#2b2b2b", "#E03A3E", "#e8edf0", "#ffdede"], "big": ["15", "11"], "labels": ["15승 3패 · 서부 1위", "11승 6패 · 서부 7위"], "kick": "11월 26일(목) 12:00 KST · 포틀랜드 홈 · NBA 정규시즌"}
 sources: [{"label": "NBA 경기 기록(SportRadar, 11.25 확인)", "url": ""}, {"label": "SFANDOM 경기 기록", "url": ""}]
+pick: "away"
 verdict: "샌안토니오 승"
 verdict_sub: "샌안토니오 승리 방향"
 ---

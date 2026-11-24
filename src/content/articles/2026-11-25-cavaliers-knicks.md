@@ -1,22 +1,24 @@
 ---
-kind: "magazine"
+kind: "analysis"
 date: "2026-11-25"
 priority: 895
 title: "타운스 30점으로 인디애나를 잡은 닉스가 시카고에 진 클리블랜드를 홈에서 다시 만나요"
 subtitle: "뉴욕은 11승 6패 동부 4위, 클리블랜드는 9승 9패 동부 7위예요 — 보관 기록상 올 시즌 맞대결은 두 팀이 원정에서 한 번씩 이겼어요"
-kicker: "SFANDOM MAGAZINE · NBA"
-meta: "2026.11.26 09:30 KST · CLEVELAND CAVALIERS @ NEW YORK KNICKS · 매거진"
+kicker: "SFANDOM · NBA 2026-27 REGULAR SEASON"
+meta: "2026.11.26 09:30 KST · CLEVELAND CAVALIERS vs NEW YORK KNICKS · 경기 전 프리뷰"
 league: "NBA"
 image: ""
 image_alt: ""
 credit: ""
 slug: "cle-nyk-20261126"
-away: "CLEVELAND CAVALIERS"
-home: "NEW YORK KNICKS"
+away: "Cleveland Cavaliers"
+home: "New York Knicks"
 kst: "11.26 09:30"
 summary: ["뉴욕은 11승 6패 동부 4위예요. 직전 경기에서 타운스가 30점 13리바운드를 기록하며 인디애나를 113–106으로 이겼어요", "클리블랜드는 9승 9패 동부 7위예요. 직전 경기에서 시카고 원정을 108–122로 졌어요", "사이트 보관 기록상 올 시즌 맞대결은 1승 1패예요"]
 glance: [["핵심", "뉴욕 11승 6패 · 클리블랜드 9승 9패"], ["변수", "뉴욕은 이틀, 클리블랜드는 하루 휴식 후 원정"], ["시선", "클리블랜드 3점슛 25.8%, 실책 18개"]]
+poster: {"colors": ["#860038", "#006BB6", "#ffd9e2", "#d6ecff"], "big": ["9", "11"], "labels": ["9승 9패 · 동부 7위", "11승 6패 · 동부 4위"], "kick": "11월 26일(목) 09:30 KST · 뉴욕 홈 · NBA 정규시즌"}
 sources: [{"label": "NBA 경기 기록(SportRadar, 11.25 확인)", "url": ""}, {"label": "SFANDOM 경기 기록", "url": ""}]
+pick: "home"
 verdict: "뉴욕 승"
 verdict_sub: "뉴욕 승리 방향"
 ---

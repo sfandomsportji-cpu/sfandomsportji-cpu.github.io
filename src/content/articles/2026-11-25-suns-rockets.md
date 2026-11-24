@@ -1,22 +1,24 @@
 ---
-kind: "magazine"
+kind: "analysis"
 date: "2026-11-25"
 priority: 897
 title: "듀란트 32점 앞세운 휴스턴이 접전 끝에 이기고 온 피닉스를 홈에서 맞아요"
 subtitle: "휴스턴은 13승 5패 서부 4위, 피닉스는 9승 7패 서부 9위예요 — 직전 경기를 이긴 두 팀이 하루 쉬고 만나요"
-kicker: "SFANDOM MAGAZINE · NBA"
-meta: "2026.11.26 10:30 KST · PHOENIX SUNS @ HOUSTON ROCKETS · 매거진"
+kicker: "SFANDOM · NBA 2026-27 REGULAR SEASON"
+meta: "2026.11.26 10:30 KST · PHOENIX SUNS vs HOUSTON ROCKETS · 경기 전 프리뷰"
 league: "NBA"
 image: ""
 image_alt: ""
 credit: ""
 slug: "phx-hou-20261126"
-away: "PHOENIX SUNS"
-home: "HOUSTON ROCKETS"
+away: "Phoenix Suns"
+home: "Houston Rockets"
 kst: "11.26 10:30"
 summary: ["휴스턴은 13승 5패 서부 4위예요. 직전 경기에서 듀란트가 32점을 올려 클리퍼스를 116–104로 이겼어요", "피닉스는 9승 7패 서부 9위예요. 직전 경기에서 뉴올리언스 원정을 123–119로 이겼어요", "두 팀 모두 하루를 쉬고 만나요"]
 glance: [["핵심", "휴스턴 13승 5패 · 피닉스 9승 7패"], ["변수", "두 팀 모두 하루 휴식, 피닉스는 원정"], ["시선", "휴스턴 어시스트 36개, 피닉스 스틸 13개"]]
+poster: {"colors": ["#1D1160", "#CE1141", "#e0dcff", "#ffd9e2"], "big": ["9", "13"], "labels": ["9승 7패 · 서부 9위", "13승 5패 · 서부 4위"], "kick": "11월 26일(목) 10:30 KST · 휴스턴 홈 · NBA 정규시즌"}
 sources: [{"label": "NBA 경기 기록(SportRadar, 11.25 확인)", "url": ""}, {"label": "SFANDOM 경기 기록", "url": ""}]
+pick: "home"
 verdict: "휴스턴 승"
 verdict_sub: "휴스턴 승리 방향"
 ---
