@@ -1729,7 +1729,7 @@ def build_article(a: Article):
     verdict_html = (f'<aside class="an-verdict art-verdict" aria-label="SFANDOM 분석"><details class="verdict-reveal"><summary><b>SFANDOM 분석</b><span class="vr-hint">눌러서 보기 +</span></summary>'
                     f'<strong>{esc(a.verdict)}</strong><em>{esc(getattr(a, "verdict_sub", ""))}</em>'
                     '<p>더 자세한 내용이 궁금하시면 <a href="/contact/">쪽지</a>나 아래 댓글로 편하게 문의해 주세요.</p></details></aside>'
-                    ) if a.kind == 'analysis' and getattr(a, 'pick', '') and getattr(a, 'verdict', '') else ''
+                    ) if ((a.kind == 'analysis' and getattr(a, 'pick', '')) or a.kind == 'magazine') and getattr(a, 'verdict', '') else ''
     srcs = ''.join(f'<span>{esc(s["label"])}</span>' for s in a.sources if s.get('label'))
     src_html = f'<div class="sources"><strong>출처</strong>{srcs}</div>' if srcs else ''
     credit = f'<p class="credit">{esc(a.credit)}</p>' if a.credit and not a.credit.startswith('PHOTO') else ''
