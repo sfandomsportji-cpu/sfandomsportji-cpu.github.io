@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-26T14:10+09:00",
+  "updated_at": "2026-11-26T14:29+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-26T14:10+09:00",
+      "checked_at": "2026-11-26T14:29+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-26T14:10+09:00",
+      "checked_at": "2026-11-26T14:29+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -151,10 +151,10 @@
           "home": "GS",
           "away_name": "Sacramento Kings",
           "home_name": "Golden State Warriors",
-          "status": "live",
-          "away_score": 95,
-          "home_score": 110,
-          "source_url": "https://www.espn.com/nba/game?gameId=401909324"
+          "status": "final",
+          "away_score": 110,
+          "home_score": 129,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401909324/kings-warriors"
         },
         {
           "id": "NBA-401909325",
@@ -165,8 +165,8 @@
           "away_name": "San Antonio Spurs",
           "home_name": "Portland Trail Blazers",
           "status": "live",
-          "away_score": 91,
-          "home_score": 96,
+          "away_score": 107,
+          "home_score": 109,
           "source_url": "https://www.espn.com/nba/game?gameId=401909325"
         },
         {
@@ -341,7 +341,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-26T14:10+09:00",
+      "checked_at": "2026-11-26T14:29+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -413,7 +413,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-26T14:10+09:00",
+      "checked_at": "2026-11-26T14:29+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -581,10 +581,10 @@
           "home": "COL",
           "away_name": "Montreal Canadiens",
           "home_name": "Colorado Avalanche",
-          "status": "live",
+          "status": "final",
           "away_score": 0,
           "home_score": 6,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892792"
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892792/canadiens-avalanche"
         },
         {
           "id": "NHL-401892794",
@@ -594,10 +594,10 @@
           "home": "SEA",
           "away_name": "Chicago Blackhawks",
           "home_name": "Seattle Kraken",
-          "status": "live",
-          "away_score": 2,
-          "home_score": 0,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892794"
+          "status": "final",
+          "away_score": 3,
+          "home_score": 1,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892794/blackhawks-kraken"
         },
         {
           "id": "NHL-401892793",
@@ -609,7 +609,7 @@
           "home_name": "Anaheim Ducks",
           "status": "live",
           "away_score": 0,
-          "home_score": 5,
+          "home_score": 7,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892793"
         },
         {
