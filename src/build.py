@@ -454,6 +454,9 @@ def render_body(a: Article) -> str:
             out.append(f'<h2>{inline(b[3:])}</h2>')
         elif b.startswith('### '):
             out.append(f'<h3>{inline(b[4:])}</h3>')
+        elif all(l.lstrip().startswith('- ') for l in b.splitlines()):
+            items = ''.join(f'<li>{inline(l.lstrip()[2:].strip())}</li>' for l in b.splitlines())
+            out.append(f'<ul>{items}</ul>')
         else:
             out.append(f'<p>{inline(" ".join(b.splitlines()))}</p>')
     return '\n'.join(out)

@@ -1776,3 +1776,7 @@ section[aria-labelledby="fanTitle"] .fan-grid>.fan-side:last-child .gtw .gt-in{c
 html{font-size-adjust:.46}
 body{font-weight:400}
 h1,h2,h3,h4,b,strong{font-weight:400}
+
+/* 2026-11-26 글 본문 글머리 목록(- 항목)을 목록으로 표시 */
+.prose ul{margin:0 0 1.35em;padding-left:1.3em}
+.prose ul li{margin:0 0 .55em;line-height:1.7}
