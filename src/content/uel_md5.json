@@ -20,7 +20,7 @@
        ],
        "a": [
         "HAPOEL BEER-SHEVA",
-        "하포엘 베르셰바"
+        "베르셰바"
        ]
       },
       {
@@ -30,13 +30,13 @@
        ],
        "a": [
         "ARARAT-ARMENIA",
-        "아라라트-아르메니아"
+        "아라라트"
        ]
       },
       {
        "h": [
         "VIKTORIA PLZEN",
-        "빅토리아 플젠"
+        "플젠"
        ],
        "a": [
         "BENFICA",
@@ -47,7 +47,7 @@
       {
        "h": [
         "DINAMO ZAGREB",
-        "디나모 자그레브"
+        "자그레브"
        ],
        "a": [
         "BAYER LEVERKUSEN",
@@ -57,11 +57,11 @@
       {
        "h": [
         "OLYMPIACOS",
-        "올림피아코스"
+        "올림피아"
        ],
        "a": [
         "AC MILAN",
-        "AC 밀란"
+        "밀란"
        ],
        "href": "/analysis/soccer/2026-11-26-oly-mil-20261127/"
       },
@@ -72,23 +72,23 @@
        ],
        "a": [
         "LEVSKI SOFIA",
-        "레프스키 소피아"
+        "레프스키"
        ]
       },
       {
        "h": [
         "UNION SAINT-GILLOISE",
-        "위니옹 SG"
+        "위니옹"
        ],
        "a": [
         "LECH POZNAN",
-        "레흐 포즈난"
+        "레흐"
        ]
       },
       {
        "h": [
         "CELTA VIGO",
-        "셀타 비고"
+        "셀타"
        ],
        "a": [
         "BOURNEMOUTH",
@@ -104,27 +104,27 @@
       {
        "h": [
         "SPARTA PRAGUE",
-        "스파르타 프라하"
+        "스파르타"
        ],
        "a": [
         "AZ ALKMAAR",
-        "AZ 알크마르"
+        "AZ"
        ]
       },
       {
        "h": [
         "CRYSTAL PALACE",
-        "크리스탈 팰리스"
+        "팰리스"
        ],
        "a": [
         "REAL SOCIEDAD",
-        "레알 소시에다드"
+        "소시에다드"
        ]
       },
       {
        "h": [
         "FERENCVAROS",
-        "페렌츠바로시"
+        "페렌츠"
        ],
        "a": [
         "CELJE",
@@ -134,18 +134,18 @@
       {
        "h": [
         "JUVENTUS",
-        "유벤투스"
+        "유벤"
        ],
        "a": [
         "OMONIA NICOSIA",
-        "오모니아 니코시아"
+        "오모니아"
        ],
        "href": "/analysis/soccer/2026-11-26-juv-omo-20261127/"
       },
       {
        "h": [
         "NEC NIJMEGEN",
-        "NEC 네이메헌"
+        "NEC"
        ],
        "a": [
         "RENNES",
@@ -155,7 +155,7 @@
       {
        "h": [
         "OFI CRETE",
-        "OFI 크레타"
+        "OFI"
        ],
        "a": [
         "ANDERLECHT",
@@ -169,7 +169,7 @@
        ],
        "a": [
         "LILLESTROM",
-        "릴레스트룀"
+        "릴레스트"
        ]
       },
       {
@@ -199,7 +199,7 @@
        ],
        "a": [
         "STURM GRAZ",
-        "슈투름 그라츠"
+        "슈투름"
        ]
       }
      ]

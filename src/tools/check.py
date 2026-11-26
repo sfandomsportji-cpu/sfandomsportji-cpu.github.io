@@ -215,8 +215,8 @@ for f in sorted((R / 'src/content/articles').glob('*.md')):
         jbad.append((f.name, str(e)[:60]))
 check('39 데이터 파일과 글 머리말이 모두 올바른 형식', jbad)
 ref = ' '.join(ALL.values())
-# 보관용으로 남기는 것: 브랜드 필름 원본, 로고 묶음(assets/brand)
-orphans = [p for p in tracked if p.startswith('assets/') and not p.startswith(('assets/brand/', 'assets/teams/')) and pathlib.Path(p).name not in ref and p not in ('assets/sfandom-brand-film-20260901.mp4', LEGACY_SHARE_IMAGE)]
+# 보관용으로 남기는 것: 브랜드 필름 원본, 쓰레드 홍보 영상(2026-11-21, 사이트에선 안 쓰지만 보관), 로고 묶음(assets/brand)
+orphans = [p for p in tracked if p.startswith('assets/') and not p.startswith(('assets/brand/', 'assets/teams/')) and pathlib.Path(p).name not in ref and p not in ('assets/sfandom-brand-film-20260901.mp4', 'assets/videos/sfandom-threads-promo-2026-11-21.mp4', LEGACY_SHARE_IMAGE)]
 conf = []
 if (R / 'CNAME').read_text().strip() != 'sfandom.com': conf.append('CNAME')
 if not (R / 'ads.txt').read_text().strip(): conf.append('ads.txt')
