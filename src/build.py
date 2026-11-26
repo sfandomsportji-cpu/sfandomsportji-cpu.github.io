@@ -2669,15 +2669,23 @@ def art_cards(league: str, limit: int) -> str:
 
 
 def ucl_card() -> str:
-    """홈 축구 구간 상단: 챔피언스리그 리그 페이즈 일정 카드. 경기·시각·점수는 src/content/ucl_md5.json에서만 읽는다.
-    점수는 경기가 끝난 뒤 해당 경기에 "s": [홈, 원정]을 넣으면 VS 자리에 표시된다(반자동)."""
-    try:
-        d = json.loads((ROOT / 'src' / 'content' / 'ucl_md5.json').read_text(encoding='utf-8'))
-    except Exception:
-        return ''
+    """홈 축구 구간 상단: 유럽 대회(챔피언스·유로파리그) 일정 카드. 경기·시각·점수는 src/content/uel_md5.json(유로파리그)에서 읽고,
+    그 데이터가 없거나 숨김 기한이 지나면 ucl_md5.json(챔피언스리그)을 쓴다.
+    점수는 경기가 끝난 뒤 해당 경기에 "s": [홈, 원정]을 넣으면 VS 자리에 표시되고, "href"를 넣으면 그 경기 분석글로 연결된다(반자동)."""
     today = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
-    if today > d.get('hide_after', '9999-12-31'):
+    d = None
+    for name in ('uel_md5.json', 'ucl_md5.json'):
+        try:
+            cand = json.loads((ROOT / 'src' / 'content' / name).read_text(encoding='utf-8'))
+        except Exception:
+            continue
+        if today <= cand.get('hide_after', '9999-12-31'):
+            d = cand
+            break
+    if not d:
         return ''
+    uel = d.get('variant') == 'uel'
+    full = 'UEFA ' + ('EUROPA LEAGUE' if uel else 'CHAMPIONS LEAGUE')
 
     def mark(name_key: str, ko: str) -> str:
         b = soccer_badge(name_key)
@@ -2687,16 +2695,21 @@ def ucl_card() -> str:
         (hk, hn), (ak, an) = m['h'], m['a']
         sc = m.get('s')
         mid = f'<b class="ucl-score">{sc[0]}<i>:</i>{sc[1]}</b>' if sc else '<i class="ucl-vs">VS</i>'
-        return (f'<li><span class="ucl-nm l">{esc(hn)}</span><span class="ucl-lg">{mark(hk, hn)}</span>{mid}'
-                f'<span class="ucl-lg">{mark(ak, an)}</span><span class="ucl-nm r">{esc(an)}</span></li>')
+        inner = (f'<span class="ucl-nm l">{esc(hn)}</span><span class="ucl-lg">{mark(hk, hn)}</span>{mid}'
+                 f'<span class="ucl-lg">{mark(ak, an)}</span><span class="ucl-nm r">{esc(an)}</span>')
+        if m.get('href'):
+            return f'<li class="has-an"><a href="{esc(m["href"])}" aria-label="{esc(hn)} 대 {esc(an)} 분석 보기">{inner}<em class="ucl-an">분석</em></a></li>'
+        return f'<li>{inner}</li>'
 
     cols = ''
     for day in d['days']:
-        slots = ''.join(f'<div class="ucl-slot"><b class="ucl-time">{esc(s["time"])}</b>'
+        slots = ''.join(f'<div class="ucl-slot"><div class="ucl-slot-h"><b class="ucl-time">{esc(s["time"])}</b>'
+                        f'<span class="ucl-cnt">KST · {len(s["matches"])}경기</span></div>'
                         f'<ul>{"".join(row(m) for m in s["matches"])}</ul></div>' for s in day['slots'])
-        cols += f'<div class="ucl-day"><h4>{esc(day["label"])}<small>{esc(day["note"])}</small></h4>{slots}</div>'
-    return (f'<div class="ucl-card" aria-label="UEFA 챔피언스리그 {esc(d["sub"])} 일정"><div class="ucl-top"><strong>UEFA {esc(d["title"])}</strong>'
-            f'<span class="ucl-date">{esc(d["sub"])}</span></div><div class="ucl-grid">{cols}</div>'
+        cols += f'<div class="ucl-day"><h4>{esc(day["label"])}<small>{esc(day["note"])}</small></h4><div class="ucl-slots">{slots}</div></div>'
+    total = sum(len(s['matches']) for day in d['days'] for s in day['slots'])
+    return (f'<div class="ucl-card{" uel" if uel else ""}" aria-label="{full} {esc(d["sub"])} 일정"><div class="ucl-top"><strong>{full}</strong>'
+            f'<span class="ucl-date">{esc(d["sub"])} · {total}경기</span></div><div class="ucl-grid">{cols}</div>'
             f'<p class="ucl-note">{esc(d["note"])}</p></div>')
 
 
@@ -2730,7 +2743,7 @@ def game_scroll() -> tuple[str, list]:
     groups = (
         ('야구', '⚾', base_cards, 'NPB'),
         ('농구', '🏀', hoops_cards, f'NBA · 확인 {hoops_ver}'),
-        ('축구', '⚽', ucl_card() + art_cards('SOCCER', 6), 'UEFA 챔피언스리그 · 해외·국내 축구 · SFANDOM 분석 경기'),
+        ('축구', '⚽', ucl_card() + art_cards('SOCCER', 6), 'UEFA 유럽 대회 · 해외·국내 축구 · SFANDOM 분석 경기'),
     )
     out = []
     filled = tuple(g for g in groups if g[2])

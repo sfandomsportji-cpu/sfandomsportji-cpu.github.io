@@ -239,3 +239,29 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 /* 축구 엠블럼은 로고 파일 여백 때문에 같은 칸에서도 작아 보여 칸을 더 키운다. */
 .sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap.sc{width:132px;height:132px;min-width:132px;min-height:132px}
 @media(max-width:700px){.sf-scores--preview.is-tabbed .sf-scores__logo .tlogo-wrap.sc{width:96px;height:96px;min-width:96px;min-height:96px}}
+
+/* 유로파리그 5차전 대진표 (2026-11-26): 챔피언스 카드를 오렌지 포인트·시간대 패널·큰 로고로 키운 버전 */
+.ucl-card.uel{position:relative;overflow:hidden;padding:22px;border-color:#5a3a1c;background:radial-gradient(ellipse at 0 0,rgba(245,130,32,.30),rgba(20,20,28,0) 55%),radial-gradient(ellipse at 100% 100%,rgba(204,16,46,.20),rgba(20,20,28,0) 55%),#14141b}
+.ucl-card.uel::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,#f58220,#ffb347 50%,#cc102e)}
+.uel .ucl-top{margin-bottom:16px}
+.uel .ucl-top strong{font-size:26px;letter-spacing:.04em;background:linear-gradient(90deg,#fff,#ffcf9a);-webkit-background-clip:text;background-clip:text;color:transparent}
+.uel .ucl-date{background:#f58220;color:#1a1208;font-size:13px;border-radius:999px;padding:5px 12px}
+.uel .ucl-grid{grid-template-columns:1fr}
+.uel .ucl-day h4{font-size:20px;color:#ffb347;border-bottom:1px solid #4a3622}
+.uel .ucl-day h4 small{color:#c9b9a6}
+.uel .ucl-slots{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.uel .ucl-slot{margin:0;padding:14px;border:1px solid #3a2f26;border-radius:12px;background:rgba(255,255,255,.035)}
+.uel .ucl-slot-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.uel .ucl-time{margin:0;padding:4px 14px;font-size:20px;font-family:var(--head);background:linear-gradient(90deg,#f58220,#cc102e);border-radius:999px;letter-spacing:.03em}
+.uel .ucl-cnt{font-size:12px;font-weight:700;color:#c9b9a6}
+.uel .ucl-slot li{grid-template-columns:minmax(0,1fr) 42px 48px 42px minmax(0,1fr);gap:10px;padding:9px 6px;border-radius:10px;border-bottom:0;font-size:15px;transition:background .15s}
+.uel .ucl-slot li:nth-child(odd){background:rgba(255,255,255,.04)}
+.uel .ucl-slot li:hover{background:rgba(245,130,32,.14)}
+.uel .ucl-lg{width:42px;height:42px}
+.uel .ucl-vs{color:#f58220;font-size:14px}
+.uel .ucl-score{font-size:22px}
+.uel .ucl-slot li.has-an{padding:0}
+.uel .ucl-slot li a{display:grid;grid-template-columns:minmax(0,1fr) 42px 48px 42px minmax(0,1fr);gap:10px;align-items:center;padding:9px 6px;color:inherit;text-decoration:none;position:relative;border-radius:10px;box-shadow:inset 3px 0 0 #f58220}
+.uel .ucl-an{position:absolute;top:-1px;right:6px;transform:translateY(-50%);font-style:normal;font-size:10px;font-weight:800;letter-spacing:.06em;color:#1a1208;background:#ffb347;border-radius:999px;padding:1px 7px}
+@media (max-width:900px){.uel .ucl-slots{grid-template-columns:1fr}}
+@media (max-width:520px){.ucl-card.uel{padding:12px 10px}.uel .ucl-top strong{font-size:19px}.uel .ucl-slot{padding:8px 6px}.uel .ucl-time{font-size:16px}.uel .ucl-slot li,.uel .ucl-slot li a{grid-template-columns:minmax(0,1fr) 28px 26px 28px minmax(0,1fr);gap:4px;font-size:11.5px;padding:8px 2px}.uel .ucl-lg{width:28px;height:28px}.uel .ucl-score{font-size:15px}.uel .ucl-vs{font-size:11px}.uel .ucl-nm{white-space:normal;line-height:1.15;word-break:keep-all}.uel .ucl-day h4{font-size:17px;flex-wrap:wrap}}

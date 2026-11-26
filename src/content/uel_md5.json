@@ -1,0 +1,210 @@
+{
+ "variant": "uel",
+ "title": "유로파리그",
+ "sub": "리그 페이즈 5차전",
+ "updated": "11.26",
+ "hide_after": "2026-11-30",
+ "note": "시각은 한국시간이에요. 킥오프는 UEFA 공식 일정(현지 18:45·21:00 CET) 기준이며 경기 직전에 한 번 더 확인해 주세요.",
+ "days": [
+  {
+   "label": "11.27(금)",
+   "note": "현지 11.26(목) · 18경기",
+   "slots": [
+    {
+     "time": "02:45",
+     "matches": [
+      {
+       "h": [
+        "BESIKTAS",
+        "베식타시"
+       ],
+       "a": [
+        "HAPOEL BEER-SHEVA",
+        "하포엘 베르셰바"
+       ]
+      },
+      {
+       "h": [
+        "SALZBURG",
+        "잘츠부르크"
+       ],
+       "a": [
+        "ARARAT-ARMENIA",
+        "아라라트-아르메니아"
+       ]
+      },
+      {
+       "h": [
+        "VIKTORIA PLZEN",
+        "빅토리아 플젠"
+       ],
+       "a": [
+        "BENFICA",
+        "벤피카"
+       ],
+       "href": "/analysis/soccer/2026-11-26-plz-ben-20261127/"
+      },
+      {
+       "h": [
+        "DINAMO ZAGREB",
+        "디나모 자그레브"
+       ],
+       "a": [
+        "BAYER LEVERKUSEN",
+        "레버쿠젠"
+       ]
+      },
+      {
+       "h": [
+        "OLYMPIACOS",
+        "올림피아코스"
+       ],
+       "a": [
+        "AC MILAN",
+        "AC 밀란"
+       ],
+       "href": "/analysis/soccer/2026-11-26-oly-mil-20261127/"
+      },
+      {
+       "h": [
+        "MARSEILLE",
+        "마르세유"
+       ],
+       "a": [
+        "LEVSKI SOFIA",
+        "레프스키 소피아"
+       ]
+      },
+      {
+       "h": [
+        "UNION SAINT-GILLOISE",
+        "위니옹 SG"
+       ],
+       "a": [
+        "LECH POZNAN",
+        "레흐 포즈난"
+       ]
+      },
+      {
+       "h": [
+        "CELTA VIGO",
+        "셀타 비고"
+       ],
+       "a": [
+        "BOURNEMOUTH",
+        "본머스"
+       ],
+       "href": "/analysis/soccer/2026-11-26-cel-bou-20261127/"
+      }
+     ]
+    },
+    {
+     "time": "05:00",
+     "matches": [
+      {
+       "h": [
+        "SPARTA PRAGUE",
+        "스파르타 프라하"
+       ],
+       "a": [
+        "AZ ALKMAAR",
+        "AZ 알크마르"
+       ]
+      },
+      {
+       "h": [
+        "CRYSTAL PALACE",
+        "크리스탈 팰리스"
+       ],
+       "a": [
+        "REAL SOCIEDAD",
+        "레알 소시에다드"
+       ]
+      },
+      {
+       "h": [
+        "FERENCVAROS",
+        "페렌츠바로시"
+       ],
+       "a": [
+        "CELJE",
+        "첼예"
+       ]
+      },
+      {
+       "h": [
+        "JUVENTUS",
+        "유벤투스"
+       ],
+       "a": [
+        "OMONIA NICOSIA",
+        "오모니아 니코시아"
+       ],
+       "href": "/analysis/soccer/2026-11-26-juv-omo-20261127/"
+      },
+      {
+       "h": [
+        "NEC NIJMEGEN",
+        "NEC 네이메헌"
+       ],
+       "a": [
+        "RENNES",
+        "렌"
+       ]
+      },
+      {
+       "h": [
+        "OFI CRETE",
+        "OFI 크레타"
+       ],
+       "a": [
+        "ANDERLECHT",
+        "안데를레흐트"
+       ]
+      },
+      {
+       "h": [
+        "LYON",
+        "리옹"
+       ],
+       "a": [
+        "LILLESTROM",
+        "릴레스트룀"
+       ]
+      },
+      {
+       "h": [
+        "TORREENSE",
+        "토레엔세"
+       ],
+       "a": [
+        "CELTIC",
+        "셀틱"
+       ]
+      },
+      {
+       "h": [
+        "SUNDERLAND",
+        "선덜랜드"
+       ],
+       "a": [
+        "JAGIELLONIA BIALYSTOK",
+        "야기엘로니아"
+       ]
+      },
+      {
+       "h": [
+        "HOFFENHEIM",
+        "호펜하임"
+       ],
+       "a": [
+        "STURM GRAZ",
+        "슈투름 그라츠"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
