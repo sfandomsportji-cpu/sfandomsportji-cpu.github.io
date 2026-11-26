@@ -1,15 +1,15 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-26T15:54+09:00",
+  "updated_at": "2026-11-26T16:04+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-26T15:54+09:00",
+      "checked_at": "2026-11-26T16:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-26T15:54+09:00",
+      "checked_at": "2026-11-26T16:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -337,11 +337,37 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nba/game/_/gameId/401910047/nets-hornets"
+        },
+        {
+          "id": "NBA-401910048",
+          "league": "NBA",
+          "start_kst": "2026-11-29T10:00+09:00",
+          "away": "IND",
+          "home": "CHI",
+          "away_name": "Indiana Pacers",
+          "home_name": "Chicago Bulls",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401910048/pacers-bulls"
+        },
+        {
+          "id": "NBA-401910049",
+          "league": "NBA",
+          "start_kst": "2026-11-29T10:00+09:00",
+          "away": "OKC",
+          "home": "MIL",
+          "away_name": "Oklahoma City Thunder",
+          "home_name": "Milwaukee Bucks",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nba/game/_/gameId/401910049/thunder-bucks"
         }
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-26T15:54+09:00",
+      "checked_at": "2026-11-26T16:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -413,7 +439,7 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-26T15:54+09:00",
+      "checked_at": "2026-11-26T16:04+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -923,6 +949,19 @@
           "away_score": null,
           "home_score": null,
           "source_url": "https://www.espn.com/nhl/game/_/gameId/401892818/islanders-flyers"
+        },
+        {
+          "id": "NHL-401892819",
+          "league": "NHL",
+          "start_kst": "2026-11-29T10:00+09:00",
+          "away": "UTA",
+          "home": "DAL",
+          "away_name": "Utah Mammoth",
+          "home_name": "Dallas Stars",
+          "status": "scheduled",
+          "away_score": null,
+          "home_score": null,
+          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892819/mammoth-stars"
         }
       ]
     }
