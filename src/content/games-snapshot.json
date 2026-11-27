@@ -1,44 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-27T21:13+09:00",
+  "updated_at": "2026-11-27T21:47+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-27T21:13+09:00",
+      "checked_at": "2026-11-27T21:47+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-27T21:13+09:00",
+      "checked_at": "2026-11-27T21:47+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909319",
-          "league": "NBA",
-          "start_kst": "2026-11-26T09:30+09:00",
-          "away": "CLE",
-          "home": "NY",
-          "away_name": "Cleveland Cavaliers",
-          "home_name": "New York Knicks",
-          "status": "final",
-          "away_score": 102,
-          "home_score": 121,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909319/cavaliers-knicks"
-        },
-        {
-          "id": "NBA-401909320",
-          "league": "NBA",
-          "start_kst": "2026-11-26T09:30+09:00",
-          "away": "MIN",
-          "home": "OKC",
-          "away_name": "Minnesota Timberwolves",
-          "home_name": "Oklahoma City Thunder",
-          "status": "final",
-          "away_score": 113,
-          "home_score": 106,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909320/timberwolves-thunder"
-        },
         {
           "id": "NBA-401909321",
           "league": "NBA",
@@ -445,7 +419,7 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-27T21:13+09:00",
+      "checked_at": "2026-11-27T21:47+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
@@ -647,23 +621,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-27T21:13+09:00",
+      "checked_at": "2026-11-27T21:47+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892789",
-          "league": "NHL",
-          "start_kst": "2026-11-26T09:30+09:00",
-          "away": "VAN",
-          "home": "DET",
-          "away_name": "Vancouver Canucks",
-          "home_name": "Detroit Red Wings",
-          "status": "final",
-          "away_score": 1,
-          "home_score": 5,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892789/canucks-red-wings"
-        },
         {
           "id": "NHL-401892790",
           "league": "NHL",
