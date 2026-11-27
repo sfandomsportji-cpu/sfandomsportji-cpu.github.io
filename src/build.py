@@ -1033,10 +1033,10 @@ def ta_side(a: Article, side: str) -> str:
 
 
 def ta_board(picks: list) -> str:
-    """홈 분석 구역: 큰 카드 1개 + 옆에 클릭해서 들어가는 항목 3개."""
+    """홈 분석 구역: 큰 카드 1개 + 옆에 클릭해서 들어가는 항목 4개."""
     def key(a):
         return dict(getattr(a, 'glance', None) or []).get('핵심', '')
-    feat, rest = picks[0], picks[1:4]
+    feat, rest = picks[0], picks[1:5]
     photo = (f'<img class="ta-feat-img" src="{esc(feat.image)}" alt="{esc(feat.image_alt)}" loading="lazy" decoding="async">'
              if feat.image.startswith('/assets/photos/') and (ROOT / feat.image.lstrip('/')).is_file() else '')
     big = (f'<a class="ta-feat" href="{feat.url}">{photo}'
@@ -1089,7 +1089,7 @@ def today_analysis() -> str:
     is_final = lambda a: (getattr(a, 'kst', '') or '').endswith('final')
     prev_, fin_ = [a for a in rest if not is_final(a)], [a for a in rest if is_final(a)]
     # 프리뷰 3편 + 가장 최근 종료 복기 1편(맨 아래) 순서 — 큰 카드는 가장 새 프리뷰
-    picks = (upcoming[:4] + prev_[:3] + fin_[:1] + prev_[3:] + fin_[1:])[:4]
+    picks = (upcoming[:5] + prev_[:4] + fin_[:1] + prev_[4:] + fin_[1:])[:5]
     display_date = start_kst(upcoming[0]).date().isoformat() if upcoming else now_kst.date().isoformat()
     all_href = '/analysis/'
     all_label = '최신 분석 전체 →'
