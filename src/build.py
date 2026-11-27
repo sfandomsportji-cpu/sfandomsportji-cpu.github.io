@@ -2677,7 +2677,7 @@ def ucl_card() -> str:
     점수는 경기가 끝난 뒤 해당 경기에 "s": [홈, 원정]을 넣으면 VS 자리에 표시되고, "href"를 넣으면 그 경기 분석글로 연결된다(반자동)."""
     today = dt.datetime.now(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
     d = None
-    for name in ('uel_md5.json', 'ucl_md5.json'):
+    for name in ('today_board.json', 'uel_md5.json', 'ucl_md5.json'):
         try:
             cand = json.loads((ROOT / 'src' / 'content' / name).read_text(encoding='utf-8'))
         except Exception:
@@ -2687,8 +2687,9 @@ def ucl_card() -> str:
             break
     if not d:
         return ''
-    uel = d.get('variant') == 'uel'
-    full = 'UEFA ' + ('EUROPA LEAGUE' if uel else 'CHAMPIONS LEAGUE')
+    board = d.get('variant') == 'board'
+    uel = board or d.get('variant') == 'uel'
+    full = d.get('title', '오늘의 주요경기') if board else 'UEFA ' + ('EUROPA LEAGUE' if uel else 'CHAMPIONS LEAGUE')
 
     def mark(name_key: str, ko: str) -> str:
         b = soccer_badge(name_key)
@@ -2700,6 +2701,8 @@ def ucl_card() -> str:
         mid = f'<b class="ucl-score">{sc[0]}<i>:</i>{sc[1]}</b>' if sc else '<i class="ucl-vs">VS</i>'
         inner = (f'<span class="ucl-nm l">{esc(hn)}</span><span class="ucl-lg">{mark(hk, hn)}</span>{mid}'
                  f'<span class="ucl-lg">{mark(ak, an)}</span><span class="ucl-nm r">{esc(an)}</span>')
+        if m.get('lg'):
+            inner += f'<em class="ucl-tag">{esc(m["lg"])}</em>'
         if m.get('href'):
             return f'<li class="has-an"><a href="{esc(m["href"])}" aria-label="{esc(hn)} 대 {esc(an)} 분석 보기">{inner}<em class="ucl-an">분석</em></a></li>'
         return f'<li>{inner}</li>'
@@ -2711,7 +2714,7 @@ def ucl_card() -> str:
                         f'<ul>{"".join(row(m) for m in s["matches"])}</ul></div>' for s in day['slots'])
         cols += f'<div class="ucl-day"><h4>{esc(day["label"])}<small>{esc(day["note"])}</small></h4><div class="ucl-slots">{slots}</div></div>'
     total = sum(len(s['matches']) for day in d['days'] for s in day['slots'])
-    return (f'<div class="ucl-card{" uel" if uel else ""}" aria-label="{full} {esc(d["sub"])} 일정"><div class="ucl-top"><strong>{full}</strong>'
+    return (f'<div class="ucl-card{" uel" if uel else ""}{" board" if board else ""}" aria-label="{full} {esc(d["sub"])} 일정"><div class="ucl-top"><strong>{full}</strong>'
             f'<span class="ucl-date">{esc(d["sub"])} · {total}경기</span></div><div class="ucl-grid">{cols}</div>'
             f'<p class="ucl-note">{esc(d["note"])}</p></div>')
 

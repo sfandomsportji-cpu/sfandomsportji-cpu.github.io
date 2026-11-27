@@ -1,0 +1,26 @@
+{
+ "variant": "board",
+ "title": "오늘의 주요경기",
+ "sub": "5대 리그 금요일 밤 경기",
+ "hide_after": "2026-11-28",
+ "note": "시각은 한국시간이에요. 각 리그 공식 일정을 여러 곳에서 대조한 킥오프 기준이고, 경기 직전에 한 번 더 확인해 주세요. 점수는 경기가 끝난 뒤 반영해요.",
+ "days": [
+  {
+   "label": "11.28(토) 새벽",
+   "note": "현지 11.27(금) · 5경기",
+   "slots": [
+    {"time": "04:30", "matches": [
+      {"lg": "BUNDES", "h": ["WERDER BREMEN", "브레멘"], "a": ["GLADBACH", "글라트바흐"]}
+    ]},
+    {"time": "04:45", "matches": [
+      {"lg": "SERIE A", "h": ["VENEZIA", "베네치아"], "a": ["BOLOGNA", "볼로냐"]},
+      {"lg": "LIGUE 1", "h": ["BREST", "브레스트"], "a": ["PARIS FC", "파리FC"]}
+    ]},
+    {"time": "05:00", "matches": [
+      {"lg": "EPL", "h": ["NOTTINGHAM FOREST", "노팅엄"], "a": ["CHELSEA", "첼시"]},
+      {"lg": "LA LIGA", "h": ["LEVANTE", "레반테"], "a": ["RACING SANTANDER", "산탄데르"]}
+    ]}
+   ]
+  }
+ ]
+}

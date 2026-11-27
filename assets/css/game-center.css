@@ -265,3 +265,18 @@ a.sf-scores__game:hover{background:#29242f;color:#fff}
 .uel .ucl-an{position:absolute;top:-1px;right:6px;transform:translateY(-50%);font-style:normal;font-size:10px;font-weight:800;letter-spacing:.06em;color:#1a1208;background:#ffb347;border-radius:999px;padding:1px 7px}
 @media (max-width:900px){.uel .ucl-slots{grid-template-columns:1fr}}
 @media (max-width:520px){.ucl-card.uel{padding:12px 10px}.uel .ucl-top strong{font-size:19px}.uel .ucl-slot{padding:8px 6px}.uel .ucl-time{font-size:16px}.uel .ucl-slot li,.uel .ucl-slot li a{grid-template-columns:minmax(0,1fr) 28px 26px 28px minmax(0,1fr);gap:4px;font-size:11.5px;padding:8px 2px}.uel .ucl-lg{width:28px;height:28px}.uel .ucl-score{font-size:15px}.uel .ucl-vs{font-size:11px}.uel .ucl-nm{white-space:normal;line-height:1.15;word-break:keep-all}.uel .ucl-day h4{font-size:17px;flex-wrap:wrap}}
+
+/* 2026-11-27 홈 축구 구간: 오늘의 주요경기 보드 (data: src/content/today_board.json). 유로파 카드 자리를 대신한다. */
+.ucl-card.board{border-color:#1f4a52;background:radial-gradient(ellipse at 0 0,rgba(0,184,169,.26),rgba(20,20,28,0) 55%),radial-gradient(ellipse at 100% 100%,rgba(33,71,184,.24),rgba(20,20,28,0) 55%),#14141b}
+.ucl-card.board::before{background:linear-gradient(90deg,#00b8a9,#4cd5c8 50%,#2147b8)}
+.board .ucl-top strong{background:linear-gradient(90deg,#fff,#a8f0e8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.board .ucl-date{background:#00b8a9;color:#06201d}
+.board .ucl-day h4{color:#4cd5c8;border-bottom-color:#254a4d}
+.board .ucl-time{background:linear-gradient(90deg,#00b8a9,#2147b8)}
+.board .ucl-slot{border-color:#27403f}
+.board .ucl-slot li{position:relative}
+.board .ucl-slot li:hover{background:rgba(0,184,169,.14)}
+.board .ucl-vs{color:#4cd5c8}
+.board .ucl-tag{position:absolute;top:50%;left:10px;transform:translateY(-50%);font-style:normal;font-size:10px;font-weight:800;letter-spacing:.06em;color:#06201d;background:#4cd5c8;border-radius:999px;padding:1px 7px}
+@media (max-width:900px){.board .ucl-slots{grid-template-columns:1fr}}
+@media (max-width:520px){.board .ucl-slot li{padding-top:16px}.board .ucl-tag{top:3px;left:4px;transform:none;font-size:9px;padding:0 6px}}
