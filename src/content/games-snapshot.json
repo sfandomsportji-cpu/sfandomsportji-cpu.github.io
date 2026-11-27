@@ -1,57 +1,18 @@
 {
   "provider": "ESPN scoreboard (secondary)",
-  "updated_at": "2026-11-27T21:47+09:00",
+  "updated_at": "2026-11-27T22:52+09:00",
   "leagues": {
     "MLB": {
-      "checked_at": "2026-11-27T21:47+09:00",
+      "checked_at": "2026-11-27T22:52+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": []
     },
     "NBA": {
-      "checked_at": "2026-11-27T21:47+09:00",
+      "checked_at": "2026-11-27T22:52+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NBA-401909321",
-          "league": "NBA",
-          "start_kst": "2026-11-26T10:00+09:00",
-          "away": "LAC",
-          "home": "MEM",
-          "away_name": "LA Clippers",
-          "home_name": "Memphis Grizzlies",
-          "status": "final",
-          "away_score": 97,
-          "home_score": 115,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909321/clippers-grizzlies"
-        },
-        {
-          "id": "NBA-401909322",
-          "league": "NBA",
-          "start_kst": "2026-11-26T10:00+09:00",
-          "away": "BKN",
-          "home": "MIL",
-          "away_name": "Brooklyn Nets",
-          "home_name": "Milwaukee Bucks",
-          "status": "final",
-          "away_score": 104,
-          "home_score": 97,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909322/nets-bucks"
-        },
-        {
-          "id": "NBA-401909323",
-          "league": "NBA",
-          "start_kst": "2026-11-26T10:30+09:00",
-          "away": "PHX",
-          "home": "HOU",
-          "away_name": "Phoenix Suns",
-          "home_name": "Houston Rockets",
-          "status": "final",
-          "away_score": 104,
-          "home_score": 116,
-          "source_url": "https://www.espn.com/nba/game/_/gameId/401909323/suns-rockets"
-        },
         {
           "id": "NBA-401909324",
           "league": "NBA",
@@ -419,23 +380,10 @@
       ]
     },
     "NFL": {
-      "checked_at": "2026-11-27T21:47+09:00",
+      "checked_at": "2026-11-27T22:52+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NFL-401873079",
-          "league": "NFL",
-          "start_kst": "2026-11-26T10:00+09:00",
-          "away": "GB",
-          "home": "LAR",
-          "away_name": "Green Bay Packers",
-          "home_name": "Los Angeles Rams",
-          "status": "final",
-          "away_score": 13,
-          "home_score": 26,
-          "source_url": "https://www.espn.com/nfl/game/_/gameId/401873079/packers-rams"
-        },
         {
           "id": "NFL-401873081",
           "league": "NFL",
@@ -621,36 +569,10 @@
       ]
     },
     "NHL": {
-      "checked_at": "2026-11-27T21:47+09:00",
+      "checked_at": "2026-11-27T22:52+09:00",
       "coverage": "complete",
       "failed_dates": [],
       "games": [
-        {
-          "id": "NHL-401892790",
-          "league": "NHL",
-          "start_kst": "2026-11-26T10:00+09:00",
-          "away": "NSH",
-          "home": "DAL",
-          "away_name": "Nashville Predators",
-          "home_name": "Dallas Stars",
-          "status": "final",
-          "away_score": 3,
-          "home_score": 1,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892790/predators-stars"
-        },
-        {
-          "id": "NHL-401892791",
-          "league": "NHL",
-          "start_kst": "2026-11-26T10:00+09:00",
-          "away": "UTA",
-          "home": "MIN",
-          "away_name": "Utah Mammoth",
-          "home_name": "Minnesota Wild",
-          "status": "final",
-          "away_score": 4,
-          "home_score": 3,
-          "source_url": "https://www.espn.com/nhl/game/_/gameId/401892791/mammoth-wild"
-        },
         {
           "id": "NHL-401892792",
           "league": "NHL",
