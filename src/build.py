@@ -1767,7 +1767,7 @@ def build_article(a: Article):
   </header>
   <div class="article-grid">
     <article>
-      {matchup_strip(a) if a.kind == 'analysis' or (a.kind == 'news' and a.league == 'SOCCER' and getattr(a, 'away', '') and getattr(a, 'home', '')) else ''}
+      {matchup_strip(a) if a.kind == 'analysis' or (a.kind in ('news', 'magazine') and a.league == 'SOCCER' and getattr(a, 'away', '') and getattr(a, 'home', '') and not a.image) else ''}
       {fig}
       <div class="prose">{render_body(a)}</div>
       {verdict_html}

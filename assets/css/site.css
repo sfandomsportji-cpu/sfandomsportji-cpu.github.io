@@ -1780,3 +1780,9 @@ h1,h2,h3,h4,b,strong{font-weight:400}
 /* 2026-11-26 글 본문 글머리 목록(- 항목)을 목록으로 표시 */
 .prose ul{margin:0 0 1.35em;padding-left:1.3em}
 .prose ul li{margin:0 0 .55em;line-height:1.7}
+
+/* Home analysis big card: keep logos, VS, time chip and headline together so the logos do not float apart from the title (2026-11-28). Desktop only; the mobile card already uses min-height:0. */
+@media(min-width:901px){
+  #today-analysis .ta-feat{justify-content:center}
+  #today-analysis .ta-stage{flex:0 0 auto}
+}
